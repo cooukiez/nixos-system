@@ -1,4 +1,3 @@
-# imported directly in configuration.nix
 {
 	hardware.bluetooth = {
 	  enable = true;
