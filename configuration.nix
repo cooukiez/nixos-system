@@ -103,7 +103,7 @@
   ];
 
   # import base hardware configuration
-  imports = [
+  base_imports = [
     ./modules/base/bluetooth.nix
     ./modules/base/graphics.nix
     ./modules/base/network.nix
