@@ -83,7 +83,7 @@
   # locales / language
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.supportedLocales = [ "en_US.UTF-8" "de_DE.UTF-8" ];
-  console.keyMap = info.keymap;
+  console.keyMap = inputs.info.keymap;
 
   # user configuration
   users.users = {
