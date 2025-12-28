@@ -19,7 +19,7 @@
     # ./users.nix
 
     # import generated (nixos-generate-config) hardware configuration
-    ./modules/hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   nixpkgs = {
