@@ -40,7 +40,7 @@
       #   });
       # })
     ];
-	# configure your nixpkgs instance
+	  # configure your nixpkgs instance
     config = {
 	  # allow unfree packages
       allowUnfree = true;
@@ -108,7 +108,7 @@
     ./modules/base/graphics.nix
     ./modules/base/network.nix
     ./modules/base/sound.nix
-  ]
+  ];
 
   # system services
   services = {
