@@ -20,6 +20,12 @@
 
     # import generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+
+    # import base hardware modules
+    ./modules/base/bluetooth.nix
+    ./modules/base/graphics.nix
+    ./modules/base/network.nix
+    ./modules/base/sound.nix
   ];
 
   nixpkgs = {
@@ -100,14 +106,6 @@
   # swap configuration
   swapDevices = [
     { device = "/dev/disk/by-partlabel/swap"; }
-  ];
-
-  # import base hardware configuration
-  base_imports = [
-    ./modules/base/bluetooth.nix
-    ./modules/base/graphics.nix
-    ./modules/base/network.nix
-    ./modules/base/sound.nix
   ];
 
   # system services
