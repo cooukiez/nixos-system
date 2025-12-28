@@ -66,14 +66,13 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  
   # bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # kernel
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  
+   
   # hostname
   networking.hostName = "lvl";
 
