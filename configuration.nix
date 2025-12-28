@@ -74,10 +74,10 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
    
   # hostname
-  networking.hostName = info.hostname;
+  networking.hostName = inputs.info.hostname;
 
   # timezone
-  time.timeZone = info.timezone;
+  time.timeZone = inputs.info.timezone;
   services.timesyncd.enable = true;
 
   # locales / language
