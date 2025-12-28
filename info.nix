@@ -1,10 +1,10 @@
 {
-    name = "Ludwig Geyer";
-    email = "ludwig.geyer@mailbox.org";
+	name = "Ludwig Geyer";
+	email = "ludwig.geyer@mailbox.org";
 
-    hostname = "lvl";
+	hostname = "lvl";
 
-    timezone = "Europe/Berlin";
+	timezone = "Europe/Berlin";
 
-    keymap = "de";
+	keymap = "de";
 }
