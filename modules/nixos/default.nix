@@ -3,13 +3,6 @@
 {
   # list your module files here
   imports = [
-    ./common.nix
-
-    ./base/bluetooth.nix
-    ./base/graphics.nix
-    ./base/network.nix
-    ./base/sound.nix
-
     ./desktop/kde.nix
   ];
 }

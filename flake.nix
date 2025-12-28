@@ -1,6 +1,6 @@
 # https://github.com/Misterio77/nix-starter-configs
 {
-  description = "system configuration for lvl";
+  description = "system configuration for my laptop.";
 
   inputs = {
 	# nixpkgs stable nixpkgs-unstable
@@ -33,16 +33,15 @@
   } @ inputs: let
     # supported systems for flake packages, shell, etc.
     systems = [
-      "aarch64-linux"
-      "i686-linux"
       "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
     ];
-	# function that generates an attribute by calling a function you
+	  # function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
+    # general system info
+    info = import ./info.nix;
+
     # custom packages
     # accessible through 'nix build', 'nix shell', etc.
     packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
@@ -69,7 +68,7 @@
         modules = [
           # main config file
           ./configuration.nix
-          
+          # modules
           self.nixosModules
         ];
       };
@@ -78,7 +77,7 @@
     # standalone home-manager configuration entrypoint
     # available through 'home-manager --flake .#ludw@lvl'
     homeConfigurations = {
-      "ludw@lvl" = home-manager.lib.homeManagerConfiguration {
+      "ludw@${info.hostname}" = home-manager.lib.homeManagerConfiguration {
 		# home-manager requires 'pkgs' instance
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};

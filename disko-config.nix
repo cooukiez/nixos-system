@@ -1,10 +1,9 @@
-{ lib, ... }:
-
-{
+{ lib, ... }: {
   disko.devices.disk = {
     lvl-disk = {
       type = "disk";
-      device = "/dev/nvme0";
+      # todo: do not hardcode this
+      device = "/dev/nvme0n1";
       content = {
         type = "gpt";
         partitions = {

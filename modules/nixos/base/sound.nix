@@ -1,3 +1,4 @@
+# imported directly in configuration.nix
 {
   services.pipewire = {
     enable = true;
