@@ -12,7 +12,7 @@
         AutoEnable = true;
       };
     };
-	}
+	};
 
   services.blueman.enable = true;
 }
