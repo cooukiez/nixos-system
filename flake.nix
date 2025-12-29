@@ -50,7 +50,7 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # your custom packages and modifications, exported as overlays
-    #overlays = import ./overlays {inherit inputs;};
+    overlays = import ./overlays {inherit inputs;};
     
     # reusable nixos modules you might want to export
     # these are usually stuff you would upstream into nixpkgs
@@ -68,8 +68,6 @@
         modules = [
           # main config file
           ./configuration.nix
-          # modules
-          self.nixosModules
         ];
       };
     };
