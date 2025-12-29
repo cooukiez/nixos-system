@@ -1,4 +1,4 @@
-{ pkgs, info ... }: {
+{ pkgs, info, ... }: {
   # xserver configuration
   services.xserver = {
     enable = true;
