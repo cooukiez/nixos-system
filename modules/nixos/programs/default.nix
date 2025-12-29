@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   # SUID wrappers
   programs.mtr.enable = true;
   programs.gnupg.agent = {

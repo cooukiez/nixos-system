@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   # graphics hardware configuration
   hardware.graphics = {
     enable = true;

@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   imports = [
     ./display.nix
     ./hardware.nix
