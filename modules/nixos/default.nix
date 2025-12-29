@@ -2,12 +2,7 @@
 # these should be stuff you would like to share with others, not your personal configurations
 {
   # list your module files here
-  imports = [
-    ./base/bluetooth.nix
-    ./base/graphics.nix
-    ./base/network.nix
-    ./base/sound.nix
-
-    ./desktop/kde.nix
-  ];
+  common = import ./common;
+  desktop = import ./desktop;
+  programs = import ./programs;
 }

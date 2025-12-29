@@ -5,7 +5,10 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  info = import ./info.nix;
+in {
   # import other nixos modules here
   imports = [
     # use modules your own flake exports (from modules/nixos):
@@ -20,6 +23,10 @@
 
     # import generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
+
+    inputs.self.nixosModules.common
+    inputs.self.nixosModules.desktop
+    inputs.self.nixosModules.programs
   ];
 
   nixpkgs = {
@@ -74,16 +81,16 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
    
   # hostname
-  networking.hostName = inputs.info.hostname;
+  networking.hostName = info.hostname;
 
   # timezone
-  time.timeZone = inputs.info.timezone;
+  time.timeZone = info.timezone;
   services.timesyncd.enable = true;
 
   # locales / language
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.supportedLocales = [ "en_US.UTF-8" "de_DE.UTF-8" ];
-  console.keyMap = inputs.info.keymap;
+  console.keyMap = info.keymap;
 
   # user configuration
   users.users = {
@@ -101,80 +108,7 @@
   swapDevices = [
     { device = "/dev/disk/by-partlabel/swap"; }
   ];
-
-  # system services
-  services = {
-    # X11
-    xserver = {
-      enable = true;
-
-      xkb = {
-        layout = inputs.info.keymap;
-        options = "eurosign:e,caps:escape";
-        variant = "";
-      };
-    };
-
-    # remote desktop
-    xrdp = {
-      defaultWindowManager = "startplasma-x11";
-      enable = true;
-      openFirewall = true;
-    };
-
-    # firmware update services
-    fwupd.enable = true;
-
-    # openssh
-    openssh = {
-      enable = true;
-      settings = {
-        # opinionated: forbid root login through SSH
-        PermitRootLogin = "no";
-        # opinionated: keys and passwords
-        PasswordAuthentication = true;
-      };
-    };
-
-    # printing
-    printing.enable = true;
-
-    # touchpad
-    libinput.enable = true;
-  };
-
-  # system packages
-  environment.systemPackages = with pkgs; [
-    # base
-    vim
-    wget
-    git
-
-    # wayland
-    wayland-utils
-    wl-clipboard
-
-    # X11
-    xclip
-    
-    # programs
-    hardinfo2
-    vlc
-    mpv
-    pavucontrol
-    kdiff3
-  ];
   
-  programs.firefox.enable = true;
-  programs.neovim.enable = true;
-
-  # SUID wrappers
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
 }
