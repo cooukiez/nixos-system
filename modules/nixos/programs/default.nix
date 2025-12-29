@@ -14,7 +14,6 @@
 		pavucontrol
 		kdiff3
   ];
-
   
   # enable programs here
   programs.firefox.enable = true;

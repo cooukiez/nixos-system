@@ -9,6 +9,8 @@
 let
   info = import ./info.nix;
 in {
+  _module.args.info = info;
+  
   # import other nixos modules here
   imports = [
     # use modules your own flake exports (from modules/nixos):
