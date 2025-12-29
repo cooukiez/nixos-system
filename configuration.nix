@@ -90,7 +90,7 @@ in
 
   # locales / language
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.supportedLocales = [ "en_US.UTF-8" "de_DE.UTF-8" ];
+  i18n.extraLocales = [ "de_DE.UTF-8" ];
   console.keyMap = "de";
 
   # user configuration

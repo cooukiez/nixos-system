@@ -1,8 +1,4 @@
-{ pkgs, ... }:
-let
-  kdeApps = pkgs.kdeApplications;
-in
-{
+{ pkgs, ... }: {
   # enable sddm
   services.displayManager.sddm = {
     enable = true;
@@ -14,24 +10,24 @@ in
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
-    kdeApps.discover
-    kdeApps.kcalc
-    kdeApps.kcharselect
-    kdeApps.kclock
-    kdeApps.kcolorchooser
-    kdeApps.kolourpaint
-    kdeApps.ksystemlog
-    kdeApps.sddm-kcm
-    kdeApps.isoimagewriter
-    kdeApps.partitionmanager
-    kdeApps.elisa
-    kdeApps.kdepim-runtime
-    kdeApps.kmahjongg
-    kdeApps.kmines
-    kdeApps.konversation
-    kdeApps.kpat
-    kdeApps.ksudoku
-    kdeApps.ktorrent
+    kdePackages.discover
+    kdePackages.kcalc
+    kdePackages.kcharselect
+    kdePackages.kclock
+    kdePackages.kcolorchooser
+    kdePackages.kolourpaint
+    kdePackages.ksystemlog
+    kdePackages.sddm-kcm
+    kdePackages.isoimagewriter
+    kdePackages.partitionmanager
+    kdePackages.elisa
+    kdePackages.kdepim-runtime
+    kdePackages.kmahjongg
+    kdePackages.kmines
+    kdePackages.konversation
+    kdePackages.kpat
+    kdePackages.ksudoku
+    kdePackages.ktorrent
   ];
 
   # disable some kde services
