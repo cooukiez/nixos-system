@@ -10,11 +10,9 @@
   };
 
   # set LIBVA_DRIVER_NAME environment variable for video acceleration
-  environment.sessionVariables =
-    (config.environment.sessionVariables or {})
-    // {
-      LIBVA_DRIVER_NAME = "iHD";
-    };
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   # networking configuration
   networking.networkmanager.enable = true;

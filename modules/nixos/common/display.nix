@@ -10,13 +10,6 @@
     };
   };
 
-  # X11 utilities
-  environment.systemPackages =
-    (config.environment.systemPackages or [])
-    ++ (with pkgs; [
-      xclip
-    ]);
-
   # remote desktop
   services.xrdp = {
     defaultWindowManager = "startplasma-x11";
@@ -24,11 +17,13 @@
     openFirewall = true;
   };
 
-  # wayland configuration
-  environment.systemPackages =
-    (config.environment.systemPackages or [])
-    ++ (with pkgs; [
-      wayland-utils
-      wl-clipboard
-    ]);
+  # required system packages
+  environment.systemPackages = with pkgs; [
+    # X11 utilities
+    xclip
+  
+    # wayland utilities
+    wayland-utils
+    wl-clipboard
+  ];
 }

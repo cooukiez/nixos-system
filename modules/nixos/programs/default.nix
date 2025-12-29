@@ -7,15 +7,14 @@
   };
 
   # programs in pkgs
-  environment.systemPackages =
-	(config.environment.systemPackages or [])
-	++ (with pkgs; [
+  environment.systemPackages = with pkgs; [
 		hardinfo2
 		vlc
 		mpv
 		pavucontrol
 		kdiff3
-	]);
+  ];
+
   
   # enable programs here
   programs.firefox.enable = true;
