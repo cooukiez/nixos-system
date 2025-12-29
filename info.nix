@@ -5,6 +5,4 @@
 	hostname = "lvl";
 
 	timezone = "Europe/Berlin";
-
-	keymap = "de";
 }

@@ -4,7 +4,7 @@
     enable = true;
 
     xkb = {
-      layout = info.keymap;
+      layout = "de";
       options = "eurosign:e,caps:escape";
       variant = "";
     };

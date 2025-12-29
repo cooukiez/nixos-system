@@ -8,9 +8,8 @@
 }:
 let
   info = import ./info.nix;
-in {
-  _module.args.info = info;
-  
+in
+{
   # import other nixos modules here
   imports = [
     # use modules your own flake exports (from modules/nixos):
@@ -92,7 +91,7 @@ in {
   # locales / language
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.supportedLocales = [ "en_US.UTF-8" "de_DE.UTF-8" ];
-  console.keyMap = info.keymap;
+  console.keyMap = "de";
 
   # user configuration
   users.users = {
