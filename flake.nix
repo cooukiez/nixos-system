@@ -23,6 +23,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -50,7 +55,14 @@
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     # your custom packages and modifications, exported as overlays
-    overlays = import ./overlays {inherit inputs;};
+    overlays = {
+      inherit (import ./overlays { inherit inputs; })
+        additions
+        modifications
+        unstable-packages;
+
+      nur = inputs.nur.overlays.default;
+    };
     
     # reusable nixos modules you might want to export
     # these are usually stuff you would upstream into nixpkgs

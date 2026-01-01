@@ -54,7 +54,17 @@
 
   # enable home-manager and git
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+
+    extraConfig = {
+      credential = {
+        credentialStore = "secretservice";
+        helper = "${pkgs.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager-core";
+      };
+    };
+  };
+
 
   # nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
