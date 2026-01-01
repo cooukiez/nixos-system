@@ -55,9 +55,6 @@ in
     };
   };
 
-  # nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
-
   home = {
     username = "${userConfig.name}";
     homeDirectory = "/home/${userConfig.name}";
