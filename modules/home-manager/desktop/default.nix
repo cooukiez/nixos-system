@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   # set gpg agent specific to KDE/Kwallet
   services.gpg-agent = {
     pinentry.package = lib.mkForce pkgs.kwalletcli;

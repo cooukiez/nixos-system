@@ -1,9 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./display.nix
     ./hardware.nix
   ];
-  
+
   # enable firmware update services
   services.fwupd.enable = true;
 
@@ -27,6 +28,8 @@
     killall
     mesa
 
+    # nixos related
+    nixfmt-rfc-style
     home-manager
   ];
 

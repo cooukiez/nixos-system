@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # xserver configuration
   services.xserver = {
     enable = true;
@@ -35,7 +36,7 @@
   environment.systemPackages = with pkgs; [
     # X11 utilities
     xclip
-  
+
     # wayland utilities
     wayland-utils
     wl-clipboard

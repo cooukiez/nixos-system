@@ -7,7 +7,8 @@
   userConfig,
   pkgs,
   ...
-}: {
+}:
+{
   # import other nixos modules here
   imports = [
     # use modules your own flake exports (from modules/nixos):
@@ -29,15 +30,15 @@
   ];
 
   nixpkgs = {
-	# add overlays here
+    # add overlays here
     overlays = [
-	  # add overlays your own flake exports (from overlays and pkgs dir):
+      # add overlays your own flake exports (from overlays and pkgs dir):
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.nur
 
-	  # add overlays exported from other flakes:
+      # add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
       # or define it inline:
@@ -47,9 +48,9 @@
       #   });
       # })
     ];
-	  # configure your nixpkgs instance
+    # configure your nixpkgs instance
     config = {
-	  # allow unfree packages
+      # allow unfree packages
       allowUnfree = true;
       permittedInsecurePackages = [
         "dotnet-sdk-6.0.428"
@@ -58,24 +59,26 @@
     };
   };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      # enable flakes and new nix command
-      experimental-features = "nix-command flakes";
-      # opinionated: disable global registry
-      flake-registry = "";
-      # workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
-    };
-    # opinionated: disable channels
-    channel.enable = false;
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        # enable flakes and new nix command
+        experimental-features = "nix-command flakes";
+        # opinionated: disable global registry
+        flake-registry = "";
+        # workaround for https://github.com/NixOS/nix/issues/9574
+        nix-path = config.nix.nixPath;
+      };
+      # opinionated: disable channels
+      channel.enable = false;
 
-    # opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
+      # opinionated: make flake registry and nix path match flake inputs
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    };
 
   # boot settings
   boot = {
@@ -100,7 +103,7 @@
     NetworkManager-wait-online.enable = false;
     plymouth-quit-wait.enable = false;
   };
-   
+
   # hostname
   networking.hostName = hostname;
 
@@ -110,7 +113,7 @@
 
   # locales / language
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocales = [];
+  i18n.extraLocales = [ ];
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_IE.UTF-8";
     LC_IDENTIFICATION = "en_IE.UTF-8";
@@ -132,7 +135,12 @@
   users.users.${userConfig.name} = {
     description = userConfig.fullName;
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "audio"
+      "video"
+    ];
     #openssh.authorizedKeys.keys = [];
     password = "CHANGE-ME"; # replace after install with passwd
     shell = pkgs.zsh;
@@ -140,12 +148,12 @@
 
   # passwordless sudo
   security.sudo.wheelNeedsPassword = false;
-  
+
   # swap configuration
   swapDevices = [
     { device = "/dev/disk/by-partlabel/swap"; }
   ];
-  
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
 }

@@ -3,6 +3,7 @@
   inputs,
   lib,
   config,
+  userConfig,
   pkgs,
   ...
 }:
@@ -26,15 +27,15 @@ in
   ];
 
   nixpkgs = {
-	# add overlays here
+    # add overlays here
     overlays = [
-	  # add overlays your own flake exports (from overlays and pkgs dir):
+      # add overlays your own flake exports (from overlays and pkgs dir):
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.nur
 
-	  # add overlays exported from other flakes:
+      # add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
       # or define it inline:
@@ -44,9 +45,9 @@ in
       #   });
       # })
     ];
-	  # configure your nixpkgs instance
+    # configure your nixpkgs instance
     config = {
-	  # allow unfree packages
+      # allow unfree packages
       allowUnfree = true;
       permittedInsecurePackages = [
         "dotnet-sdk-6.0.428"

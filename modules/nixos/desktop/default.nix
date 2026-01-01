@@ -1,11 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # enable sddm
   services.displayManager.sddm = {
     enable = true;
     enableHidpi = true;
     wayland.enable = true;
   };
-  
+
   # enable plasma
   services.desktopManager.plasma6.enable = true;
 

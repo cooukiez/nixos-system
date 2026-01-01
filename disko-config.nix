@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   disko.devices.disk = {
     lvl-disk = {
       type = "disk";
@@ -32,11 +33,46 @@
               type = "btrfs";
               extraArgs = [ "--force" ];
               subvolumes = {
-                "root" = { mountpoint = "/"; mountOptions = [ "subvol=root" "compress=zstd" "noatime" ]; };
-                "nix"  = { mountpoint = "/nix"; mountOptions = [ "subvol=nix" "compress=zstd" "noatime" ]; };
-                "home" = { mountpoint = "/home"; mountOptions = [ "subvol=home" "compress=zstd" "noatime" ]; };
-                "var"  = { mountpoint = "/var"; mountOptions = [ "subvol=var" "compress=zstd" "noatime" ]; };
-                "data" = { mountpoint = "/data"; mountOptions = [ "subvol=data" "compress=zstd" "noatime" ]; };
+                "root" = {
+                  mountpoint = "/";
+                  mountOptions = [
+                    "subvol=root"
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
+                "nix" = {
+                  mountpoint = "/nix";
+                  mountOptions = [
+                    "subvol=nix"
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
+                "home" = {
+                  mountpoint = "/home";
+                  mountOptions = [
+                    "subvol=home"
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
+                "var" = {
+                  mountpoint = "/var";
+                  mountOptions = [
+                    "subvol=var"
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
+                "data" = {
+                  mountpoint = "/data";
+                  mountOptions = [
+                    "subvol=data"
+                    "compress=zstd"
+                    "noatime"
+                  ];
+                };
               };
             };
           };

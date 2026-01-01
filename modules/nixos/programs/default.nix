@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # SUID wrappers
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -14,7 +15,7 @@
     pavucontrol
     kdiff3
   ];
-  
+
   # enable programs here
   programs.firefox.enable = true;
   programs.neovim.enable = true;
