@@ -29,8 +29,9 @@
     mesa
 
     # nixos related
-    nixfmt-rfc-style
     home-manager
+    nixfmt-rfc-style
+    nixfmt-tree
   ];
 
   # fonts configuration
