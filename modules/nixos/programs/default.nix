@@ -13,7 +13,10 @@
     vlc
     mpv
     pavucontrol
-    kdiff3
+    libnotify
+
+    # appearance
+    papirus-icon-theme
   ];
 
   # enable programs here

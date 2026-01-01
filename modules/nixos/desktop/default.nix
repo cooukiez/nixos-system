@@ -30,6 +30,9 @@
     kdePackages.ksudoku
     kdePackages.ktorrent
     #kdePackages.ksshaskpass
+
+    kdotool
+    kdiff3
   ];
 
   # disable some kde services

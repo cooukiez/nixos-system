@@ -95,6 +95,7 @@
           };
           modules = [
             ./home/${username}
+            inputs.plasma-manager.homeModules.plasma-manager
           ];
         };
     in
