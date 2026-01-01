@@ -55,9 +55,12 @@ in
     };
   };
 
+  # nicely reload system units when changing configs
+  systemd.user.startServices = "sd-switch";
+
   home = {
-    username = "ludw";
-    homeDirectory = "/home/ludw";
+    username = "${userConfig.name}";
+    homeDirectory = "/home/${userConfig.name}";
 
     sessionVariables = {
       #GIT_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";

@@ -1,4 +1,5 @@
 # https://github.com/Misterio77/nix-starter-configs
+# https://github.com/AlexNabokikh/nix-config
 {
   description = "system configuration for my laptop.";
 
@@ -36,16 +37,65 @@
     home-manager,
     ...
   } @ inputs: let
+    inherit (self) outputs;
+
+    # define user configurations
+    users = {
+      "ludw.gyr" = {
+        inherit (users.ludw)
+          email
+          fullName
+          githubName
+          githubEmail
+          ;
+        name = "ludw.gyr";
+      };
+      ludw = {
+        email = "ludwig.geyer@mailbox.org";
+        fullName = "Ludwig Geyer";
+        githubName = "cooukiez";
+        githubEmail = "ludwig-geyer@web.de";
+        name = "ludw";
+      };
+    };
+
+
     # supported systems for flake packages, shell, etc.
+    lvlSystem = "x86_64-linux";
     systems = [
-      "x86_64-linux"
+      lvlSystem
     ];
-	  # function that generates an attribute by calling a function you
+    # function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
-    # general system info
-    info = import ./info.nix;
+    mkNixosConfiguration =
+      hostname: username:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs hostname;
+            userConfig = users.${username};
+            nixosModules = "${self}/modules/nixos";
+          };
+          modules = [
+            # main config file
+            ./configuration.nix
+          ];
+        };
+
+    mkHomeConfiguration =
+      system: username: hostname:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs { inherit system; };
+        extraSpecialArgs = {
+          inherit inputs outputs;
+          userConfig = users.${username};
+          nhModules = "${self}/modules/home-manager";
+        };
+        modules = [
+          ./home/${username}
+        ];
+      };
   in {
     # custom packages
     # accessible through 'nix build', 'nix shell', etc.
@@ -75,27 +125,13 @@
     # nixos configuration entrypoint
     # available through 'nixos-rebuild --flake .#lvl'
     nixosConfigurations = {
-      lvl = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          # main config file
-          ./configuration.nix
-        ];
-      };
+      lvl = mkNixosConfiguration "lvl" "ludw";
     };
 
     # standalone home-manager configuration entrypoint
     # available through 'home-manager --flake .#ludw@lvl'
     homeConfigurations = {
-      "ludw@${info.hostname}" = home-manager.lib.homeManagerConfiguration {
-		# home-manager requires 'pkgs' instance
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs;};
-        modules = [
-          # main home-manager configuration
-          ./home-manager/home.nix
-        ];
-      };
+      "ludw@lvl" = mkHomeConfiguration lvlSystem "ludw" "lvl";
     };
   };
 }

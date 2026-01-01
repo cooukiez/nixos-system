@@ -1,15 +1,13 @@
 # system configuration file
 {
   inputs,
+  hostname,
   lib,
   config,
+  userConfig,
   pkgs,
   ...
-}:
-let
-  info = import ./info.nix;
-in
-{
+}: {
   # import other nixos modules here
   imports = [
     # use modules your own flake exports (from modules/nixos):
@@ -79,36 +77,69 @@ in
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  # bootloader
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot settings
+  boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
+    consoleLogLevel = 0;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "rd.udev.log_level=3"
+      "boot.shell_on_fail"
+    ];
 
-  # kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+    loader.efi.canTouchEfiVariables = true;
+    loader.systemd-boot.enable = true;
+    loader.timeout = 0;
+    plymouth.enable = true;
+  };
+
+  # disable systemd services that are affecting the boot time
+  systemd.services = {
+    NetworkManager-wait-online.enable = false;
+    plymouth-quit-wait.enable = false;
+  };
    
   # hostname
-  networking.hostName = info.hostname;
+  networking.hostName = hostname;
 
   # timezone
-  time.timeZone = info.timezone;
+  time.timeZone = "Europe/Berlin";
   services.timesyncd.enable = true;
 
   # locales / language
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocales = [];
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_IE.UTF-8";
+    LC_IDENTIFICATION = "en_IE.UTF-8";
+    LC_MEASUREMENT = "en_IE.UTF-8";
+    LC_MONETARY = "en_IE.UTF-8";
+    LC_NAME = "en_IE.UTF-8";
+    LC_NUMERIC = "en_IE.UTF-8";
+    LC_PAPER = "en_IE.UTF-8";
+    LC_TELEPHONE = "en_IE.UTF-8";
+    LC_TIME = "en_IE.UTF-8";
+  };
+
   console.keyMap = "de";
 
+  # PATH configuration
+  environment.localBinInPath = true;
+
   # user configuration
-  users.users = {
-    ludw = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
-      openssh.authorizedKeys.keys = [
-        # todo: add your SSH public key here
-      ];
-      password = "CHANGE-ME"; # replace after install with passwd
-    };
+  users.users.${userConfig.name} = {
+    description = userConfig.fullName;
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
+    #openssh.authorizedKeys.keys = [];
+    password = "CHANGE-ME"; # replace after install with passwd
+    shell = pkgs.zsh;
   };
+
+  # passwordless sudo
+  security.sudo.wheelNeedsPassword = false;
   
   # swap configuration
   swapDevices = [

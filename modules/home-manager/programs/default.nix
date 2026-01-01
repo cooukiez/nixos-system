@@ -1,12 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, userConfig, ... }: {
   programs.git = {
     enable = true;
     lfs.enable = true;
 
     settings = {
       user = {
-        name  = info.github_name;
-        email = info.github_email;
+        name  = userConfig.githubName;
+        email = userConifg.githubEmail;
       };
 
       credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
