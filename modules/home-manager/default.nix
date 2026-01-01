@@ -3,4 +3,6 @@
 {
   # list your module files here
   # my-module = import ./my-module.nix;
+  desktop = import ./desktop;
+  programs = import ./programs;
 }

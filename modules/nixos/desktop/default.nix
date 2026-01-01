@@ -28,7 +28,7 @@
     kdePackages.kpat
     kdePackages.ksudoku
     kdePackages.ktorrent
-    kdePackages.ksshaskpass
+    #kdePackages.ksshaskpass
   ];
 
   # disable some kde services

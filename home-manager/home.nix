@@ -20,6 +20,9 @@ in
 
     # also split up your configuration and import pieces of it here:
     # ./nvim.nix
+
+    inputs.self.homeManagerModules.desktop
+    inputs.self.homeManagerModules.programs
   ];
 
   nixpkgs = {
@@ -57,8 +60,9 @@ in
     homeDirectory = "/home/ludw";
 
     sessionVariables = {
-      GIT_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-      SSH_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+      #GIT_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+      #SSH_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+
     };
   };
 
@@ -66,22 +70,8 @@ in
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
 
-  # enable home-manager and git
+  # enable home-manager
   programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-
-    settings = {
-      user = {
-        name  = info.github_name;
-        email = info.github_email;
-      };
-
-      credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
-    };
-  };
-
 
   # nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
