@@ -5,7 +5,11 @@
   config,
   pkgs,
   ...
-}: {
+}:
+let
+  info = import ../info.nix;
+in
+{
   # import other home-manager modules here
   imports = [
     # use modules your own flake exports (from modules/home-manager):
@@ -19,14 +23,15 @@
   ];
 
   nixpkgs = {
-    # add overlays here
+	# add overlays here
     overlays = [
-      # add overlays your own flake exports (from overlays and pkgs dir):
+	  # add overlays your own flake exports (from overlays and pkgs dir):
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
+      inputs.self.overlays.nur
 
-      # add overlays exported from other flakes:
+	  # add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
       # or define it inline:
@@ -36,16 +41,25 @@
       #   });
       # })
     ];
-    # configure nixpkgs instance
+	  # configure your nixpkgs instance
     config = {
 	  # allow unfree packages
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "dotnet-sdk-6.0.428"
+        "dotnet-runtime-6.0.36"
+      ];
     };
   };
 
   home = {
     username = "ludw";
     homeDirectory = "/home/ludw";
+
+    sessionVariables = {
+      GIT_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+      SSH_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+    };
   };
 
   # add stuff for your user as you see fit:
@@ -56,12 +70,15 @@
   programs.home-manager.enable = true;
   programs.git = {
     enable = true;
+    lfs.enable = true;
 
-    extraConfig = {
-      credential = {
-        credentialStore = "secretservice";
-        helper = "${pkgs.nur.repos.utybo.git-credential-manager}/bin/git-credential-manager-core";
+    settings = {
+      user = {
+        name  = info.github_name;
+        email = info.github_email;
       };
+
+      credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
     };
   };
 

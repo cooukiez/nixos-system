@@ -8,11 +8,11 @@
 
   # programs in pkgs
   environment.systemPackages = with pkgs; [
-		hardinfo2
-		vlc
-		mpv
-		pavucontrol
-		kdiff3
+    hardinfo2
+    vlc
+    mpv
+    pavucontrol
+    kdiff3
   ];
   
   # enable programs here

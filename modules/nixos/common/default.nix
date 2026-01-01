@@ -12,5 +12,7 @@
     vim
     wget
     git
+
+    home-manager
   ];
 }
