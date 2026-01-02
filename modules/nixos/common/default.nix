@@ -30,6 +30,17 @@
     unixtools.quota
     tree
 
+    # libraries
+    libnotify
+    libdbusmenu
+    libdbusmenu-gtk2
+    libdbusmenu-gtk3
+    libdbusmenu-qt4
+    lxqt.libdbusmenu-lxqt
+    appmenu-glib-translator
+    haskellPackages.gi-dbusmenu
+    haskellPackages.gi-dbusmenugtk3
+
     # nixos related
     home-manager
     nixfmt-rfc-style

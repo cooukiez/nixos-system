@@ -1,0 +1,54 @@
+{ pkgs }:
+
+pkgs.stdenv.mkDerivation rec {
+  pname = "libdbusmenu-qt4";
+  version = "0.9.3+16.04.20160218";
+
+  src = pkgs.fetchurl {
+    url = "https://archive.ubuntu.com/ubuntu/pool/main/${pname::4}/${pname}/${pname}_${version}.orig.tar.gz";
+    sha256 = "a8e6358a31c44ccdf1bfc46c95a77a6bfc7fc1f536aadb913ed4f4405c570cf6";
+  };
+
+  nativeBuildInputs = [
+    pkgs.cmake
+  ];
+
+  buildInputs = [
+    pkgs.gcc
+    pkgs.glibc
+    pkgs.qt4
+  ];
+
+  # Build phase
+  buildPhase = ''
+    mkdir -p build
+    cd build
+    cmake ../${pname}-${version} \
+      -DCMAKE_INSTALL_PREFIX=/usr \
+      -D CMAKE_BUILD_TYPE="None" \
+      -D WITH_DOC=OFF \
+      -D USE_QT4=ON
+    make
+  '';
+
+  # Installation phase
+  installPhase = ''
+    cd build
+    make DESTDIR=$out install
+  '';
+
+  # Documentation
+  postInstall = ''
+    install -vDm644 ../${pname}-${version}/NEWS    $out/usr/share/doc/${pname}/NEWS
+    install -vDm644 ../${pname}-${version}/README  $out/usr/share/doc/${pname}/README
+    install -vDm644 ../${pname}-${version}/COPYING $out/usr/share/licenses/${pname}/COPYING
+  '';
+
+  meta = with pkgs.lib; {
+    description = "A library that provides a Qt implementation of the DBusMenu spec";
+    homepage = "https://github.com/desktop-app/libdbusmenu-qt";
+    license = licenses.lgpl21;
+    platforms = platforms.linux;
+    maintainers = with maintainers; [ pkgs.maintainers.vitaliikuzhdin ];
+  };
+}

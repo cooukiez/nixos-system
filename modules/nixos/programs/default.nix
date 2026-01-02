@@ -13,7 +13,6 @@
     mpv
     pavucontrol
     inkscape
-    libnotify
 
     # appearance
     papirus-icon-theme
