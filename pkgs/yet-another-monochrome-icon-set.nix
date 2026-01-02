@@ -1,7 +1,7 @@
 { pkgs }:
 
 pkgs.stdenv.mkDerivation rec {
-  pname = "yamis";
+  pname = "yet-another-monochrome-icon-set";
   version = "1.2";
 
   src = pkgs.fetchFromBitbucket {

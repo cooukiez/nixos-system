@@ -26,6 +26,7 @@
     numix-icon-theme
     numix-icon-theme-circle
     numix-icon-theme-square
+    yet-another-monochrome-icon-set
     hardcode-tray
   ];
 
