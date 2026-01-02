@@ -85,19 +85,14 @@
 
     panels = [
       {
+        location = "top";
         alignment = "left";
         height = 28;
         lengthMode = "fill";
-        location = "top";
         opacity = "translucent";
         widgets = [
           {
             kicker = {
-
-            };
-          }
-          {
-            kickerdash = {
 
             };
           }
@@ -116,20 +111,31 @@
           {
             systemTray = {
               icons.scaleToFit = true;
+              icons.spacing = "small";
               items = {
                 showAll = false;
-                shown = [
-                  "org.kde.plasma.keyboardlayout"
-                  "org.kde.plasma.networkmanagement"
-                  "org.kde.plasma.volume"
-                ];
-                hidden = [
+                shown = [];
+                hidden = [];
+                extra = [
+                  "plasmashell_microphone"
+                  "org.kde.kscreen"
                   "org.kde.plasma.battery"
+                  "org.kde.plasma.bluetooth"
                   "org.kde.plasma.brightness"
+                  "org.kde.plasma.cameraindicator"
                   "org.kde.plasma.clipboard"
                   "org.kde.plasma.devicenotifier"
+                  "org.kde.plasma.diskquota"
+                  "org.kde.plasma.kclock_1x2"
+                  "org.kde.plasma.keyboardlayout"
+                  "org.kde.plasma.keyboardindicator"
+                  "org.kde.plasma.manage-inputmethod"
                   "org.kde.plasma.mediacontroller"
-                  "plasmashell_microphone"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.notifications"
+                  "org.kde.plasma.printmanager"
+                  "org.kde.plasma.volume"
+                  "org.kde.plasma.weather"
                   "xdg-desktop-portal-kde"
                 ];
                 configs = {
@@ -156,6 +162,22 @@
                   fontWeight = 400;
                 };
               };
+            };
+          }
+        ];
+      }
+      {
+        location = "right";
+        alignment = "center";
+        height = 28;
+        floating = true;
+        hiding = "autohide";
+        lengthMode = "fit";
+        opacity = "translucent";
+        widgets = [
+          {
+            kickerdash = {
+
             };
           }
         ];
