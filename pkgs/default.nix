@@ -9,10 +9,15 @@ let
   #   yetAnotherMonochromeIconSet = import ./yamis.nix {
   #     inherit pkgs;
   #   };
+
+  breezeChameleonIcons = import ./breeze-chameleon {
+    inherit pkgs;
+  };
 in
 {
   # example = pkgs.callPackage ./example { };
   hardcode-tray = hardcodeTray;
+  breeze-chameleon-icons = breezeChameleonIcons;
 
   #   yet-another-monochrome-icon-set = yetAnotherMonochromeIconSet;
 }

@@ -24,14 +24,17 @@
     papirus-icon-theme
 #     tela-icon-theme
 #     tela-circle-icon-theme
-    tango-icon-theme
-    reversal-icon-theme
-    qogir-icon-theme
-    numix-icon-theme
-    numix-icon-theme-circle
-    numix-icon-theme-square
-    whitesur-icon-theme
-    whitesur-cursors
+#     tango-icon-theme
+#     fluent-icon-theme
+#     reversal-icon-theme
+#     qogir-icon-theme
+#     numix-icon-theme
+#     numix-icon-theme-circle
+#     numix-icon-theme-square
+#     whitesur-icon-theme
+#     whitesur-cursors
+#     adwaita-icon-theme-legacy
+    breeze-chameleon-icons
     hardcode-tray
   ];
 

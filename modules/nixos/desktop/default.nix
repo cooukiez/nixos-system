@@ -31,6 +31,7 @@
     kdePackages.ktorrent
     kdePackages.koi
     kdePackages.kiconthemes
+    kdePackages.qtstyleplugin-kvantum
     #kdePackages.ksshaskpass
 
     kdotool
