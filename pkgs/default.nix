@@ -5,11 +5,11 @@ pkgs: let
     inherit pkgs;
   };
 
-  libdbusmenuQt4 = import ./libdbusmenu-qt4.nix {
+  appmenuGtkModule = import ./appmenu-gtk-module.nix {
     inherit pkgs;
   };
 in {
   # example = pkgs.callPackage ./example { };
   hardcode-tray = hardcodeTray;
-  libdbusmenu-qt4 = libdbusmenuQt4;
+  appmenu-gtk-module = appmenuGtkModule;
 }
