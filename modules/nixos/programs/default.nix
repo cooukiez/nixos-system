@@ -7,6 +7,8 @@
     enableSSHSupport = true;
   };
 
+  services.flatpak.enable = true;
+
   environment.systemPackages = with pkgs; [
     hardinfo2
     vlc
@@ -15,17 +17,21 @@
     gimp2-with-plugins
     krita
     inkscape
+    icon-slicer
+    windsurf
 
     # appearance
     papirus-icon-theme
-    tela-icon-theme
-    #     tela-circle-icon-theme
+#     tela-icon-theme
+#     tela-circle-icon-theme
     tango-icon-theme
     reversal-icon-theme
     qogir-icon-theme
     numix-icon-theme
     numix-icon-theme-circle
     numix-icon-theme-square
+    whitesur-icon-theme
+    whitesur-cursors
     hardcode-tray
   ];
 

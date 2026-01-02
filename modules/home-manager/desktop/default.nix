@@ -24,7 +24,7 @@
 
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
-      iconTheme = "Papirus-Dark";
+      iconTheme = "breeze-dark";
 
       cursor = {
         cursorFeedback = "None";
@@ -163,7 +163,7 @@
                   customDateFormat = "ddd d ";
                   autoFontAndSize = false;
                   fontStyleName = "Inter";
-                  fontSize = 7;
+                  fontSize = 6;
                   fontWeight = 400;
                 };
               };
