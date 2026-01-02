@@ -36,7 +36,6 @@
     libdbusmenu-gtk2
     libdbusmenu-gtk3
     lxqt.libdbusmenu-lxqt
-    appmenu-gtk-module
     appmenu-glib-translator
     haskellPackages.gi-dbusmenu
     haskellPackages.gi-dbusmenugtk3

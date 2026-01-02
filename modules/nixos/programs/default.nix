@@ -12,6 +12,7 @@
     vlc
     mpv
     pavucontrol
+    gimp2-with-plugins
     inkscape
 
     # appearance
