@@ -13,10 +13,19 @@
     mpv
     pavucontrol
     gimp2-with-plugins
+    krita
     inkscape
 
     # appearance
     papirus-icon-theme
+    tela-icon-theme
+    tela-circle-icon-theme
+    tango-icon-theme
+    reversal-icon-theme
+    qogir-icon-theme
+    numix-icon-theme
+    numix-icon-theme-circle
+    numix-icon-theme-square
     hardcode-tray
   ];
 

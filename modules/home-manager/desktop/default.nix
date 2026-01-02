@@ -19,7 +19,7 @@
 
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
-      iconTheme = "Papirus Dark";
+      iconTheme = "Papirus-Dark";
 
       cursor = {
         cursorFeedback = "None";
@@ -92,7 +92,7 @@
         opacity = "translucent";
         widgets = [
           {
-            kicker = {
+            kickoff = {
 
             };
           }
