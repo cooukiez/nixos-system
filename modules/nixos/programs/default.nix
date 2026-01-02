@@ -7,12 +7,12 @@
     enableSSHSupport = true;
   };
 
-  # programs in pkgs
   environment.systemPackages = with pkgs; [
     hardinfo2
     vlc
     mpv
     pavucontrol
+    inkscape
     libnotify
 
     # appearance

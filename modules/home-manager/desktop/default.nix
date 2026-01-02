@@ -110,7 +110,7 @@
           }
           {
             systemTray = {
-              icons.scaleToFit = true;
+              icons.scaleToFit = false;
               icons.spacing = "small";
               items = {
                 showAll = false;
