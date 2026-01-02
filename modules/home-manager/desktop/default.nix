@@ -19,7 +19,7 @@
 
       theme = "breeze-dark";
       colorScheme = "BreezeDark";
-      iconTheme = "Papirus";
+      iconTheme = "Papirus Dark";
 
       cursor = {
         cursorFeedback = "None";
@@ -40,23 +40,23 @@
         pointSize = 10;
       };
       general = {
-        family = "JetBrainsMono Nerd Font Mono";
+        family = "Inter";
         pointSize = 10;
       };
       menu = {
-        family = "JetBrainsMono Nerd Font Mono";
+        family = "Inter";
         pointSize = 10;
       };
       small = {
-        family = "JetBrainsMono Nerd Font Mono";
+        family = "Inter";
         pointSize = 8;
       };
       toolbar = {
-        family = "JetBrainsMono Nerd Font Mono";
+        family = "Inter";
         pointSize = 10;
       };
       windowTitle = {
-        family = "JetBrainsMono Nerd Font Mono";
+        family = "Inter";
         pointSize = 10;
       };
     };

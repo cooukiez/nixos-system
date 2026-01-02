@@ -27,6 +27,7 @@
     gnumake
     killall
     mesa
+    unixtools.quota
 
     # nixos related
     home-manager
@@ -39,5 +40,6 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.meslo-lg
     roboto
+    inter
   ];
 }

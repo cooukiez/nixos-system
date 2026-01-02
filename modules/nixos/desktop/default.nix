@@ -29,6 +29,8 @@
     kdePackages.kpat
     kdePackages.ksudoku
     kdePackages.ktorrent
+    kdePackages.koi
+    kdePackages.kiconthemes
     #kdePackages.ksshaskpass
 
     kdotool
