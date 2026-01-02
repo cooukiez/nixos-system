@@ -5,7 +5,7 @@ pkgs: let
     inherit pkgs;
   };
 
-  yetAnotherMonochromeIconSet = import ./yet-another-monochrome-icon-set.nix {
+  yetAnotherMonochromeIconSet = import ./yamis.nix {
     inherit pkgs;
   };
 in {
