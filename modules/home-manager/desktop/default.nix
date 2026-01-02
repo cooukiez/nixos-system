@@ -82,5 +82,84 @@
       general.askForConfirmationOnLogout = false;
       sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
     };
+
+    panels = [
+      {
+        alignment = "left";
+        height = 28;
+        lengthMode = "fill";
+        location = "top";
+        opacity = "translucent";
+        widgets = [
+          {
+            kicker = {
+
+            };
+          }
+          {
+            kickerdash = {
+
+            };
+          }
+          {
+            appMenu = {
+
+            };
+          }
+          {
+            panelSpacer = {
+              settings = {
+                expanding = true;
+              };
+            };
+          }
+          {
+            systemTray = {
+              icons.scaleToFit = true;
+              items = {
+                showAll = false;
+                shown = [
+                  "org.kde.plasma.keyboardlayout"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.volume"
+                ];
+                hidden = [
+                  "org.kde.plasma.battery"
+                  "org.kde.plasma.brightness"
+                  "org.kde.plasma.clipboard"
+                  "org.kde.plasma.devicenotifier"
+                  "org.kde.plasma.mediacontroller"
+                  "plasmashell_microphone"
+                  "xdg-desktop-portal-kde"
+                ];
+                configs = {
+                  "org.kde.plasma.notifications".config = {
+                    Shortcuts = {
+                      global = "Meta+N";
+                    };
+                  };
+                };
+              };
+            };
+          }
+          {
+            digitalClock = {
+              settings = {
+                Appearance = {
+                  use24hFormat = 2;
+                  dateDisplayFormat = "BesideTime";
+                  dateFormat = "custom";
+                  customDateFormat = "ddd d ";
+                  autoFontAndSize = false;
+                  fontStyleName = "Inter";
+                  fontSize = 7;
+                  fontWeight = 400;
+                };
+              };
+            };
+          }
+        ];
+      }
+    ];
   };
 }
