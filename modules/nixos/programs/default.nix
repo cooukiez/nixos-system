@@ -17,6 +17,7 @@
 
     # appearance
     papirus-icon-theme
+    hardcode-tray
   ];
 
   # enable programs here

@@ -28,6 +28,7 @@
     killall
     mesa
     unixtools.quota
+    tree
 
     # nixos related
     home-manager
