@@ -19,14 +19,13 @@
     # appearance
     papirus-icon-theme
     tela-icon-theme
-    tela-circle-icon-theme
+    #     tela-circle-icon-theme
     tango-icon-theme
     reversal-icon-theme
     qogir-icon-theme
     numix-icon-theme
     numix-icon-theme-circle
     numix-icon-theme-square
-    yet-another-monochrome-icon-set
     hardcode-tray
   ];
 

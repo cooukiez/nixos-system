@@ -29,6 +29,9 @@
     mesa
     unixtools.quota
     tree
+    bottom
+    btop
+    htop
 
     # libraries
     libnotify
@@ -44,6 +47,7 @@
     home-manager
     nixfmt-rfc-style
     nixfmt-tree
+    nix-prefetch-git
   ];
 
   # fonts configuration

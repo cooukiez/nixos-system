@@ -1,4 +1,9 @@
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     inputs.plasma-manager.homeModules.plasma-manager
@@ -114,8 +119,8 @@
               icons.spacing = "small";
               items = {
                 showAll = false;
-                shown = [];
-                hidden = [];
+                shown = [ ];
+                hidden = [ ];
                 extra = [
                   "plasmashell_microphone"
                   "org.kde.kscreen"

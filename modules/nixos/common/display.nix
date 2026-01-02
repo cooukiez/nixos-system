@@ -13,6 +13,8 @@
     excludePackages = with pkgs; [ xterm ];
   };
 
+  xdg.icons.enable = true;
+
   # wayland configuration
   programs.xwayland.enable = true;
 
