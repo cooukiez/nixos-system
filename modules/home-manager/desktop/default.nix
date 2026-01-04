@@ -15,6 +15,11 @@
     extraConfig = "pinentry-program ${pkgs.kwalletcli}/bin/pinentry-kwallet";
   };
 
+  home.packages = with pkgs; [
+#     python313Packages.kde-material-you-colors
+    kde-rounded-corners
+  ];
+
   programs.plasma = {
     enable = true;
 
@@ -279,14 +284,14 @@
           BrowserApplication = "firefox.desktop";
         };
         KDE = {
-#           AnimationDurationFactor = 0;
+          AnimationDurationFactor = 0;
         };
       };
       klaunchrc.FeedbackStyle.BusyCursor = false;
       klipperrc.General.MaxClipItems = 8192;
 
       kwinrc = {
-#         Effect-overview.BorderActivate = 9;
+        Effect-overview.BorderActivate = 9;
 
         Plugins = {
           blurEnabled = true;
@@ -295,21 +300,21 @@
           screenedgeEnabled = false;
         };
 
-#         "Round-Corners" = {
-#           ActiveOutlineAlpha = 255;
-#           ActiveOutlineUseCustom = false;
-#           ActiveOutlineUsePalette = true;
-#           AnimationDuration = 0;
-#           DisableOutlineTile = false;
-#           DisableRoundTile = false;
-#           InactiveCornerRadius = 8;
-#           InactiveOutlineAlpha = 0;
-#           InactiveSecondOutlineThickness = 0;
-#           OutlineThickness = 1;
-#           SecondOutlineThickness = 0;
-#           Size = 8;
-#           UseNativeDecorationShadows = false;
-#         };
+        "Round-Corners" = {
+          ActiveOutlineAlpha = 255;
+          ActiveOutlineUseCustom = false;
+          ActiveOutlineUsePalette = true;
+          AnimationDuration = 0;
+          DisableOutlineTile = false;
+          DisableRoundTile = false;
+          InactiveCornerRadius = 5;
+          InactiveOutlineAlpha = 155;
+          InactiveSecondOutlineThickness = 0;
+          OutlineThickness = 1;
+          SecondOutlineThickness = 0;
+          Size = 5;
+          UseNativeDecorationShadows = false;
+        };
 
         "Script-krohnkite" = {
 #           floatingClass = "org.freedesktop.impl.portal.desktop.kde";
@@ -360,5 +365,23 @@
       "dolphin/view_properties/global/.directory"."Dolphin"."ViewMode" = 1;
       "dolphin/view_properties/global/.directory"."Settings"."HiddenFilesShown" = true;
     };
+
+    window-rules = [
+      {
+        apply = {
+          noborder = {
+            value = true;
+            apply = "initially";
+          };
+        };
+        description = "Hide titlebar by default";
+        match = {
+          window-class = {
+            value = ".*";
+            type = "regex";
+          };
+        };
+      }
+    ];
   };
 }
