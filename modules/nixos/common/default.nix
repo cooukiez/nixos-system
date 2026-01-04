@@ -42,7 +42,10 @@
     appmenu-glib-translator
     haskellPackages.gi-dbusmenu
     haskellPackages.gi-dbusmenugtk3
-    appmenu-gtk-module
+#     appmenu-gtk-module
+    libappindicator-gtk2
+    libappindicator-gtk3
+    libappindicator
 
     # nixos related
     home-manager

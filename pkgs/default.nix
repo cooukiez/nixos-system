@@ -2,9 +2,7 @@
 # build them using 'nix build .#example'
 pkgs:
 let
-  appmenuGtkModule = import ./appmenu-gtk-module {
-    inherit pkgs;
-  };
+  appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
 
   hardcodeTray = import ./hardcode-tray.nix {
     inherit pkgs;

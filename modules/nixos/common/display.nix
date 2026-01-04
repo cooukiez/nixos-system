@@ -60,6 +60,8 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XCURSOR_SIZE = "24";
-    GTK_MODULES = "appmenu-gtk-module";
+    UBUNTU_MENUPROXY=1;
+
+#     GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
   };
 }

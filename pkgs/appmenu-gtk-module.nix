@@ -1,54 +1,67 @@
-{ pkgs }:
+{
+  stdenv,
+  lib,
+  fetchFromGitLab,
+  fetchpatch,
+  meson,
+  cmake,
+  pkg-config,
+  systemd,
+  gtk-doc,
+  docbook-xsl-nons,
+  ninja,
+  glib,
+  gtk3,
+  wrapGAppsHook3
+}:
 
-pkgs.stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "appmenu-gtk-module";
-  version = "25.04";
+  version = "0.7.6";
 
-  src = pkgs.fetchFromGitLab {
+  outputs = [ "out" "devdoc" ];
+
+  src = fetchFromGitLab {
     owner = "vala-panel-project";
     repo = "vala-panel-appmenu";
     rev = version;
-    sha256 = "sha256-843b24f98f02feb8cbfdda26630018ae95f8ac4959de9deb88cf1a13506f845f=";
+    hash = "sha256-tWIlKbvBgF3E451xZ7dar8DOOXJCyQFEMZEuyuXzl/s=";
   };
 
+  sourceRoot = "source/subprojects/appmenu-gtk-module";
+
   nativeBuildInputs = [
-    pkgs.meson
-    pkgs.ninja
-    pkgs.pkg-config
+    glib
+    meson
+    cmake
+    pkg-config
+    systemd
+    gtk-doc
+    docbook-xsl-nons
+    ninja
+    wrapGAppsHook3
   ];
 
-  buildInputs = [
-    pkgs.gtk3
-    pkgs.glib
-    pkgs.gdk-pixbuf
-  ];
+  buildInputs = [ gtk3 ];
+
+  preConfigure = ''
+    substituteInPlace meson_options.txt --replace "value: ['2','3']" "value: ['3']"
+  '';
 
   mesonFlags = [
-    "-Dgtk=3"
+    "-Dgtk_doc=true"
+    "--prefix=${placeholder "out"}"
   ];
 
-  configurePhase = ''
-    meson setup build subprojects/appmenu-gtk-module \
-      --prefix=$out \
-      -Dgtk=3
+  env.PKG_CONFIG_GTK__3_0_LIBDIR = "${placeholder "out"}/lib";
+  env.PKG_CONFIG_SYSTEMD_SYSTEMDUSERUNITDIR = "${placeholder "out"}/lib/systemd/user";
+
+  postInstall = ''
+    glib-compile-schemas "$out/share/glib-2.0/schemas"
   '';
 
-  buildPhase = ''
-    ninja -C build
-  '';
-
-  installPhase = ''
-    ninja -C build install
-
-    mkdir -p $out/etc/X11/xinit/xinitrc.d
-    cp ${./80-appmenu-gtk-module.sh} \
-      $out/etc/X11/xinit/xinitrc.d/80-appmenu-gtk-module.sh
-  '';
-
-  meta = with pkgs.lib; {
-    description = "application menu gtk module";
-    homepage = "https://gitlab.com/vala-panel-project/vala-panel-appmenu/";
-    license = licenses.lgpl3Only;
-    platforms = platforms.linux;
+  meta = with lib; {
+    description = "Port of the Unity GTK 3 Module";
+    license = licenses.lgpl3Plus;
   };
 }

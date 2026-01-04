@@ -40,12 +40,16 @@
   # enable programs here
   programs.firefox = {
     enable = true;
-    package = pkgs.unstable.firefox;
+    package = pkgs.firefox-esr;
 
     nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
     preferences = {
       "widget.use-xdg-desktop-portal.file-picker" = 1;
     };
+  };
+
+  programs.thunderbird = {
+    enable = true;
   };
 
   environment.sessionVariables = {
@@ -54,4 +58,11 @@
   };
 
   programs.neovim.enable = true;
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/etc/nixos"; # sets NH_OS_FLAKE variable for you
+  };
 }
