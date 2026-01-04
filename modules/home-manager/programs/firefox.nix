@@ -1,17 +1,19 @@
 { pkgs, userConfig, ... }:
 {
   programs.firefox = {
+    enable = true;
+    package = pkgs.unstable.firefox;
+
     policies = {
       DefaultDownloadDirectory = "\${home}/Downloads";
     };
-  };
 
-  profiles.default = {
-    id = 0;
-    name = "default";
-    isDefault = true;
+    profiles.default = {
+      id = 0;
+      name = "default";
+      isDefault = true;
 
-    settings = {
+      settings = {
         # performance
         "gfx.webrender.all" = true;
         "layers.acceleration.force-enabled" = true;
@@ -35,12 +37,27 @@
         # full kde polish?
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
-        # sync
-        "services.sync.engine.bookmarks" = true;
-        "services.sync.engine.history" = true;
-        "services.sync.engine.passwords" = true;
-        "services.sync.engine.tabs" = true;
-        "services.sync.engine.addons" = true;
+        # content blocking
+        "browser.contentblocking.category" = "strict";
+
+        # set locale
+        "browser.search.region" = "DE";
+        "browser.search.isUS" = false;
+        "distribution.searchplugins.defaultLocale" = "en-US";
+        "general.useragent.locale" = "en-Us";
+
+        # default browser
+        "browser.shell.checkDefaultBrowser" = false;
+
+        # sponsors
+        "browser.newtabpage.activity-stream.system.showSponsored" = false;
+        "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
+        "browser.urlbar.suggest.quicksuggest.sponsored" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored" = false;
+        "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+
+        # new tab pinned
+        "browser.newtabpage.pinned" = [];
       };
 
       # extensions can be declarative

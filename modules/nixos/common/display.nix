@@ -60,5 +60,6 @@
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     XCURSOR_SIZE = "24";
+    GTK_MODULES = "appmenu-gtk-module";
   };
 }

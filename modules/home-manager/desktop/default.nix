@@ -308,7 +308,7 @@
           DisableOutlineTile = false;
           DisableRoundTile = false;
           InactiveCornerRadius = 5;
-          InactiveOutlineAlpha = 155;
+          InactiveOutlineAlpha = 255;
           InactiveSecondOutlineThickness = 0;
           OutlineThickness = 1;
           SecondOutlineThickness = 0;

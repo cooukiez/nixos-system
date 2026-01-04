@@ -42,6 +42,7 @@
     appmenu-glib-translator
     haskellPackages.gi-dbusmenu
     haskellPackages.gi-dbusmenugtk3
+    appmenu-gtk-module
 
     # nixos related
     home-manager

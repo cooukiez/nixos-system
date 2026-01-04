@@ -2,6 +2,10 @@
 # build them using 'nix build .#example'
 pkgs:
 let
+  appmenuGtkModule = import ./appmenu-gtk-module {
+    inherit pkgs;
+  };
+
   hardcodeTray = import ./hardcode-tray.nix {
     inherit pkgs;
   };
@@ -16,6 +20,7 @@ let
 in
 {
   # example = pkgs.callPackage ./example { };
+  appmenu-gtk-module = appmenuGtkModule;
   hardcode-tray = hardcodeTray;
   breeze-chameleon-icons = breezeChameleonIcons;
 

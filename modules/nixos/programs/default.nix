@@ -18,7 +18,6 @@
     krita
     inkscape
     icon-slicer
-    (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true;}) {})
 
     # appearance
     papirus-icon-theme
@@ -41,6 +40,8 @@
   # enable programs here
   programs.firefox = {
     enable = true;
+    package = pkgs.unstable.firefox;
+
     nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
     preferences = {
       "widget.use-xdg-desktop-portal.file-picker" = 1;
