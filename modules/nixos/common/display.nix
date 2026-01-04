@@ -13,7 +13,17 @@
     excludePackages = with pkgs; [ xterm ];
   };
 
-  xdg.icons.enable = true;
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
+    };
+
+    icons.enable = true;
+  };
 
   # wayland configuration
   programs.xwayland.enable = true;

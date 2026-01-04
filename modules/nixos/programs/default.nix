@@ -18,7 +18,7 @@
     krita
     inkscape
     icon-slicer
-    windsurf
+    (wrapFirefox (firefox-unwrapped.override { pipewireSupport = true;}) {})
 
     # appearance
     papirus-icon-theme
@@ -34,11 +34,23 @@
 #     whitesur-icon-theme
 #     whitesur-cursors
 #     adwaita-icon-theme-legacy
-    breeze-chameleon-icons
+#     breeze-chameleon-icons
     hardcode-tray
   ];
 
   # enable programs here
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
+    preferences = {
+      "widget.use-xdg-desktop-portal.file-picker" = 1;
+    };
+  };
+
+  environment.sessionVariables = {
+    # smoother scrolling for firefox
+    MOZ_USE_XINPUT2 = "1";
+  };
+
   programs.neovim.enable = true;
 }

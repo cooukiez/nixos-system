@@ -14,4 +14,10 @@
       credential.credentialStore = "secretservice";
     };
   };
+
+  programs.firefox = {
+    policies = {
+      DefaultDownloadDirectory = "\${home}/Downloads";
+    };
+  };
 }

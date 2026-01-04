@@ -10,7 +10,7 @@ let
   #     inherit pkgs;
   #   };
 
-  breezeChameleonIcons = import ./breeze-chameleon {
+  breezeChameleonIcons = import ./breeze-chameleon.nix {
     inherit pkgs;
   };
 in
