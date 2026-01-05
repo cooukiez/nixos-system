@@ -76,7 +76,13 @@
       };
     };
 
-    krunner.activateWhenTypingOnDesktop = true;
+    krunner = {
+      activateWhenTypingOnDesktop = true;
+      historyBehavior = "enableSuggestions";
+      position = "top";
+      shortcuts.launch = "Meta+R";
+      shortcuts.runCommandOnClipboard = "Shift+Enter";
+    };
 
     kwin = {
       nightLight = {

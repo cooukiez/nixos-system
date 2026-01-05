@@ -24,6 +24,8 @@ in
 
     inputs.self.homeManagerModules.desktop
     inputs.self.homeManagerModules.programs
+
+    inputs.zen-browser.homeModules.twilight
   ];
 
   nixpkgs = {

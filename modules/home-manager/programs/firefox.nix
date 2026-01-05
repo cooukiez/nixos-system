@@ -34,7 +34,7 @@
         "widget.gtk.global-menu.enabled" = true;
         "widget.gtk.global-menu.wayland.enabled" = true;
         "widget.gtk.native-context-menus" = false;
-        # full kde polish?
+        # custom stylesheets
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
         # content blocking

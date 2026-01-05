@@ -5,13 +5,36 @@
     package = pkgs.unstable.thunderbird;
 
     profiles.default = {
-      id = 0;
-      name = "default";
       isDefault = true;
 
       settings = {
+        # performance
+        "gfx.webrender.all" = true;
+        "layers.acceleration.force-enabled" = true;
+        "media.hardware-video-decoding.enabled" = true;
+        "network.http.pipelining" = true;
+        "network.http.pipelining.maxrequests" = 8;
 
+        # kde integration
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "widget.use-xdg-desktop-portal.settings" = 1;
+        "widget.gtk.global-menu.enabled" = true;
+        "widget.gtk.global-menu.wayland.enabled" = true;
+        "widget.gtk.native-context-menus" = false;
+
+        # custom stylesheets
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
       };
+
+      userChrome = ''
+        .titlebar-buttonbox-container {
+          display: none !important;
+        }
+
+        .titlebar-spacer {
+          display: none !important;
+        }
+      '';
     };
   };
 }

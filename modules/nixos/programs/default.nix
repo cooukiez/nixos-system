@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   # SUID wrappers
   programs.mtr.enable = true;
@@ -18,6 +18,8 @@
     krita
     inkscape
     icon-slicer
+
+    inputs.zen-browser.packages.${pkgs.system}.twilight
 
     # appearance
     papirus-icon-theme
