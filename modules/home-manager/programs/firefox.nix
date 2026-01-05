@@ -25,15 +25,15 @@
 
         # ui tweaks
         "browser.tabs.drawInTitlebar" = true; # hides window buttons (see note below)
-        "browser.compactmode.show" = true;
-        "browser.uidensity" = 1; # compact
+        "browser.compactmode.show" = true; # set for compact
+        "browser.uidensity" = 0; # 1 for compact
 
         # kde integration
         "widget.use-xdg-desktop-portal.file-picker" = 1;
         "widget.use-xdg-desktop-portal.settings" = 1;
         "widget.gtk.global-menu.enabled" = true;
         "widget.gtk.global-menu.wayland.enabled" = true;
-        "widget.gtk.native-context-menus" = true;
+        "widget.gtk.native-context-menus" = false;
         # full kde polish?
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
@@ -60,11 +60,24 @@
         "browser.newtabpage.pinned" = [];
       };
 
+      extraConfig = ''
+        user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+      '';
+
       # extensions can be declarative
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
 #         ublock-origin
 #         bitwarden
       ];
     };
+  };
+
+  home.file.".mozilla/firefox/default/chrome/userChrome.css" = {
+    text = ''
+      /* Remove close button*/
+      .titlebar-buttonbox-container {
+        display:none
+      }
+    '';
   };
 }

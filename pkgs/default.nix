@@ -2,15 +2,15 @@
 # build them using 'nix build .#example'
 pkgs:
 let
-  appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
+#   appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
 
   hardcodeTray = import ./hardcode-tray.nix {
     inherit pkgs;
   };
 
-  #   yetAnotherMonochromeIconSet = import ./yamis.nix {
-  #     inherit pkgs;
-  #   };
+#   yetAnotherMonochromeIconSet = import ./yamis.nix {
+#     inherit pkgs;
+#   };
 
   breezeChameleonIcons = import ./breeze-chameleon.nix {
     inherit pkgs;
@@ -18,9 +18,9 @@ let
 in
 {
   # example = pkgs.callPackage ./example { };
-  appmenu-gtk-module = appmenuGtkModule;
   hardcode-tray = hardcodeTray;
   breeze-chameleon-icons = breezeChameleonIcons;
 
-  #   yet-another-monochrome-icon-set = yetAnotherMonochromeIconSet;
+#   appmenu-gtk-module = appmenuGtkModule;
+#   yet-another-monochrome-icon-set = yetAnotherMonochromeIconSet;
 }

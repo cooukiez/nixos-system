@@ -40,7 +40,7 @@
   # enable programs here
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-esr;
+    package = pkgs.unstable.firefox;
 
     nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
     preferences = {
@@ -50,6 +50,7 @@
 
   programs.thunderbird = {
     enable = true;
+    package = pkgs.unstable.thunderbird;
   };
 
   environment.sessionVariables = {

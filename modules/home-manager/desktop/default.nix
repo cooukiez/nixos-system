@@ -18,6 +18,11 @@
   home.packages = with pkgs; [
 #     python313Packages.kde-material-you-colors
     kde-rounded-corners
+    kdePackages.krohnkite
+
+    # better blur
+    inputs.kwin-effects-better-blur-dx.packages.${pkgs.system}.default # Wayland
+    inputs.kwin-effects-better-blur-dx.packages.${pkgs.system}.x11 # X11
   ];
 
   programs.plasma = {
@@ -309,6 +314,7 @@
           DisableRoundTile = false;
           InactiveCornerRadius = 5;
           InactiveOutlineAlpha = 255;
+          InactiveOutlineUsePalette = true;
           InactiveSecondOutlineThickness = 0;
           OutlineThickness = 1;
           SecondOutlineThickness = 0;
@@ -383,5 +389,21 @@
         };
       }
     ];
+  };
+
+  programs.kate = {
+    enable = true;
+
+    editor = {
+      brackets.automaticallyAddClosing = true;
+      brackets.highlightMatching = true;
+      brackets.highlightRangeBetween = true;
+
+      indent.autodetect = false;
+      indent.width = 2;
+      indent.replaceWithSpaces = true;
+      indent.showLines = true;
+      tabWidth = 4;
+    };
   };
 }
