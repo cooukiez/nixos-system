@@ -46,7 +46,7 @@
       splashScreen.theme = "none";
 
       tooltipDelay = 1;
-      wallpaper = "";
+      wallpaper = import ./wallpaper.nix;
     };
 
     fonts = {
