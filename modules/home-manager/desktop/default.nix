@@ -46,7 +46,7 @@
       splashScreen.theme = "none";
 
       tooltipDelay = 1;
-      #wallpaper = "${config.wallpaper}";
+      wallpaper = "";
     };
 
     fonts = {
@@ -135,10 +135,12 @@
           }
           {
             plasmaPanelColorizer = {
-              settings = {
-                isEnabled = true;
-                hideWidget = false;
+              general = {
+                enable = true;
+                hideWidget = true;
               };
+
+              panelBackground.originalBackground.hide = true; panelBackground.originalBackground.opacity = 0.0;
             };
           }
           {
@@ -149,6 +151,7 @@
                 showAll = false;
                 shown = [ ];
                 hidden = [
+                  "org.kde.plasma.weather"
                 ];
                 extra = [
                   "plasmashell_microphone"
@@ -169,7 +172,6 @@
                   "org.kde.plasma.networkmanagement"
                   "org.kde.plasma.notifications"
                   "org.kde.plasma.volume"
-                  "org.kde.plasma.weather"
                   "xdg-desktop-portal-kde"
                 ];
                 configs = {
@@ -386,16 +388,36 @@
             apply = "initially";
           };
         };
-        description = "Hide titlebar by default";
+        description = "Hide titlebar for kde apps";
         match = {
           window-class = {
-            value = ".*";
+            value = "org\.kde\.(dolphin|ark|kate|konsole|gwenview|discover|elisa|kcalc|infocenter|konversation|ktorrent|kolourpaint|krita|okular)";
             type = "regex";
           };
+
+          window-types = [ "normal" ];
+        };
+      }
+      {
+        apply = {
+          noborder = {
+            value = true;
+            apply = "initially";
+          };
+        };
+        description = "Hide titlebar for system settings";
+        match = {
+          window-class = {
+            value = "systemsettings";
+            type = "substring";
+          };
+
+          window-types = [ "normal" ];
         };
       }
     ];
   };
+
 
   programs.kate = {
     enable = true;
