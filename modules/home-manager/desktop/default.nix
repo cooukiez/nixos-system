@@ -25,6 +25,12 @@
     inputs.kwin-effects-better-blur-dx.packages.${pkgs.system}.x11 # X11
   ];
 
+  # install:
+  # icons -> Breeze Chameleon Dark
+  #
+  # top panel -> set colorizer to disable background
+  # top panel -> enable floating for only applets
+
   programs.plasma = {
     enable = true;
 
@@ -46,7 +52,7 @@
       splashScreen.theme = "none";
 
       tooltipDelay = 1;
-      wallpaper = ../../../files/piazza-gae-aulenti-bw-edited.jpg;
+      wallpaper = ./wallpaper.jpg;
     };
 
     fonts = {
@@ -96,6 +102,17 @@
       virtualDesktops = {
         number = 5;
         rows = 1;
+      };
+
+      titlebarButtons = {
+        left = [
+          "more-window-actions"
+        ];
+        right = [
+          "minimize"
+          "maximize"
+          "close"
+        ];
       };
     };
 
@@ -215,6 +232,12 @@
           {
             kickerdash = {
 
+            };
+          }
+          {
+            plasmaPanelColorizer = {
+              general.enable = true;
+              general.hideWidget = true;
             };
           }
         ];
@@ -411,22 +434,5 @@
         };
       }
     ];
-  };
-
-
-  programs.kate = {
-    enable = true;
-
-    editor = {
-      brackets.automaticallyAddClosing = true;
-      brackets.highlightMatching = true;
-      brackets.highlightRangeBetween = true;
-
-      indent.autodetect = false;
-      indent.width = 2;
-      indent.replaceWithSpaces = true;
-      indent.showLines = true;
-      tabWidth = 4;
-    };
   };
 }
