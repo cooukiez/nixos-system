@@ -46,7 +46,7 @@
       splashScreen.theme = "none";
 
       tooltipDelay = 1;
-      wallpaper = import ./wallpaper.nix;
+      wallpaper = ../../../files/piazza-gae-aulenti-bw-edited.jpg;
     };
 
     fonts = {
@@ -135,12 +135,8 @@
           }
           {
             plasmaPanelColorizer = {
-              general = {
-                enable = true;
-                hideWidget = true;
-              };
-
-              panelBackground.originalBackground.hide = true; panelBackground.originalBackground.opacity = 0.0;
+              general.enable = true;
+              general.hideWidget = true;
             };
           }
           {
@@ -154,24 +150,24 @@
                   "org.kde.plasma.weather"
                 ];
                 extra = [
-                  "plasmashell_microphone"
                   "org.kde.kscreen"
                   "org.kde.plasma.battery"
-                  "org.kde.plasma.brightness"
-                  "org.kde.plasma.clipboard"
-                  "org.kde.plasma.diskquota"
-                  "org.kde.plasma.manage-inputmethod"
-                  "org.kde.plasma.printmanager"
                   "org.kde.plasma.bluetooth"
+                  "org.kde.plasma.brightness"
                   "org.kde.plasma.cameraindicator"
+                  "org.kde.plasma.clipboard"
                   "org.kde.plasma.devicenotifier"
-                  "org.kde.plasma.kclock_1x2"
-                  "org.kde.plasma.keyboardlayout"
+                  "org.kde.plasma.diskquota"
                   "org.kde.plasma.keyboardindicator"
+                  "org.kde.plasma.keyboardlayout"
+                  "org.kde.plasma.kclock_1x2"
+                  "org.kde.plasma.manage-inputmethod"
                   "org.kde.plasma.mediacontroller"
                   "org.kde.plasma.networkmanagement"
                   "org.kde.plasma.notifications"
+                  "org.kde.plasma.printmanager"
                   "org.kde.plasma.volume"
+                  "plasmashell_microphone"
                   "xdg-desktop-portal-kde"
                 ];
                 configs = {
@@ -211,7 +207,6 @@
       {
         location = "right";
         alignment = "center";
-        height = 28;
         floating = true;
         hiding = "autohide";
         lengthMode = "fit";
