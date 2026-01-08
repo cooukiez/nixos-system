@@ -58,6 +58,9 @@
 
         # new tab pinned
         "browser.newtabpage.pinned" = [];
+
+        # disable requirement for extension signatures
+        "xpinstall.signatures.required" = false;
       };
 
       extraConfig = ''

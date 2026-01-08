@@ -18,6 +18,8 @@
     krita
     inkscape
     icon-slicer
+    google-chrome
+    bluez-tools
 
     inputs.zen-browser.packages.${pkgs.system}.twilight
 

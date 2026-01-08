@@ -221,27 +221,28 @@
           }
         ];
       }
-      {
-        location = "right";
-        alignment = "center";
-        floating = true;
-        hiding = "autohide";
-        lengthMode = "fit";
-        opacity = "translucent";
-        widgets = [
-          {
-            kickerdash = {
-
-            };
-          }
-          {
-            plasmaPanelColorizer = {
-              general.enable = true;
-              general.hideWidget = true;
-            };
-          }
-        ];
-      }
+#       {
+#         location = "right";
+#         alignment = "center";
+#         height = 28;
+#         floating = true;
+#         hiding = "autohide";
+#         lengthMode = "fit";
+#         opacity = "translucent";
+#         widgets = [
+#           {
+#             kickerdash = {
+#
+#             };
+#           }
+#           {
+#             plasmaPanelColorizer = {
+#               general.enable = true;
+#               general.hideWidget = true;
+#             };
+#           }
+#         ];
+#       }
     ];
 
 #     powerdevil = {
@@ -427,6 +428,23 @@
         match = {
           window-class = {
             value = "systemsettings";
+            type = "substring";
+          };
+
+          window-types = [ "normal" ];
+        };
+      }
+      {
+        apply = {
+          noborder = {
+            value = true;
+            apply = "initially";
+          };
+        };
+        description = "Hide titlebar for google chrome";
+        match = {
+          window-class = {
+            value = "google-chrome";
             type = "substring";
           };
 
