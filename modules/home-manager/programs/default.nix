@@ -7,5 +7,6 @@
     ./konsole.nix
     ./thunderbird.nix
     ./zen-browser.nix
+    ./zsh.nix
   ];
 }

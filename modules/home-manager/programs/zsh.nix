@@ -11,13 +11,19 @@
       ll = "ls -la";
       gs = "git status";
 
-      update-system = "sudo nixos-rebuild switch";
-      update-home = "home-manager switch --flake /etc/nixos#'ludw@lvl'";
+      us = "sudo nixos-rebuild switch --upgrade-all";
+      uh = "home-manager switch --flake /etc/nixos#'ludw@lvl'";
+
+      nus = "nh os switch /etc/nixos#nixosConfigurations.lvl --update";
+      nuh = "nh home switch /etc/nixos#homeConfigurations.ludw@lvl.activationPackage";
+      nuuh = "nh home switch /etc/nixos#homeConfigurations.ludw@lvl.activationPackage --update";
     };
 
-    initExtra = ''
+    initContent = ''
       bindkey -v
       export EDITOR=vim
     '';
+
+    history.size = 16384;
   };
 }
