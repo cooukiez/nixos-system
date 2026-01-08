@@ -7,9 +7,7 @@
       name = "default";
 
       extraConfig = {
-        General = {
-          TerminalMargin = 7;
-        };
+
       };
     };
   };
