@@ -11,6 +11,7 @@
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # packages for kde
     kdePackages.discover
     kdePackages.kcalc
     kdePackages.kcharselect
@@ -36,6 +37,9 @@
 
     kdotool
     kdiff3
+
+    # noctalia packages
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # disable some kde services

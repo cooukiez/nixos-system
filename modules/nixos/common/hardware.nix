@@ -9,11 +9,6 @@
     ];
   };
 
-  # set LIBVA_DRIVER_NAME environment variable for video acceleration
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
-  };
-
   # networking configuration
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
@@ -96,6 +91,12 @@
       };
     };
   };
+
+  # power profiles
+  services.power-profiles-daemon.enable = true;
+
+  # battery
+  services.upower.enable = true;
 
   # touchpad services
   services.libinput.enable = true;

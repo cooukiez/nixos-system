@@ -25,6 +25,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    # noctalia shell
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,10 +77,18 @@
         };
         ludw = {
           email = "ludwig.geyer@mailbox.org";
-          fullName = "Ludwig Geyer";
+          fullName = "Ludwig";
           githubName = "cooukiez";
           githubEmail = "ludwig-geyer@web.de";
           name = "ludw";
+        };
+
+        ceirs = {
+          email = "ludwig.geyer@mailbox.org";
+          fullName = "Ludwig";
+          githubName = "cooukiez";
+          githubEmail = "ludwig-geyer@web.de";
+          name = "ceirs";
         };
       };
 
@@ -152,12 +166,14 @@
       # available through 'nixos-rebuild --flake .#lvl'
       nixosConfigurations = {
         lvl = mkNixosConfiguration "lvl" "ludw";
+        lvl-ceirs = mkNixosConfiguration "lvl" "ceirs";
       };
 
       # standalone home-manager configuration entrypoint
       # available through 'home-manager --flake .#ludw@lvl'
       homeConfigurations = {
         "ludw@lvl" = mkHomeConfiguration lvlSystem "ludw" "lvl";
+        "ceirs@lvl" = mkHomeConfiguration lvlSystem "ceirs" "lvl";
       };
     };
 }

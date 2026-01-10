@@ -17,6 +17,12 @@
       nus = "nh os switch /etc/nixos#nixosConfigurations.lvl --update";
       nuh = "nh home switch /etc/nixos#homeConfigurations.ludw@lvl.activationPackage";
       nuuh = "nh home switch /etc/nixos#homeConfigurations.ludw@lvl.activationPackage --update";
+
+      nixos-kate = "kate /etc/nixos";
+
+      help = "bash -c 'help'";
+
+      c = "clear";
     };
 
     initContent = ''

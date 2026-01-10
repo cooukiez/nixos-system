@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ lib, pkgs, inputs, ... }:
 {
   # SUID wrappers
   programs.mtr.enable = true;
@@ -20,6 +20,10 @@
     icon-slicer
     google-chrome
     bluez-tools
+    tldr
+    tlrc
+    homebank
+    sioyek
 
     inputs.zen-browser.packages.${pkgs.system}.twilight
 
@@ -55,11 +59,6 @@
   programs.thunderbird = {
     enable = true;
     package = pkgs.unstable.thunderbird;
-  };
-
-  environment.sessionVariables = {
-    # smoother scrolling for firefox
-    MOZ_USE_XINPUT2 = "1";
   };
 
   programs.neovim.enable = true;

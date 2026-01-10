@@ -53,15 +53,4 @@
     wayland-utils
     wl-clipboard
   ];
-
-  # enable wayland support in chromium and electron based applications
-  # remove decorations for QT apps
-  # set cursor size
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    XCURSOR_SIZE = "24";
-    UBUNTU_MENUPROXY=1;
-
-#     GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
-  };
 }

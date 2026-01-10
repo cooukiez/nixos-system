@@ -22,7 +22,7 @@ in
     # also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    inputs.self.homeManagerModules.desktop.kde
+    inputs.self.homeManagerModules.desktop.noctalia
     inputs.self.homeManagerModules.programs
 
     inputs.zen-browser.homeModules.twilight
@@ -63,9 +63,6 @@ in
     homeDirectory = "/home/${userConfig.name}";
 
     sessionVariables = {
-      #GIT_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-      #SSH_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-
     };
   };
 

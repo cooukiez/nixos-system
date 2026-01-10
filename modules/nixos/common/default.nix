@@ -17,6 +17,23 @@
   # enable zsh
   programs.zsh.enable = true;
 
+  environment.sessionVariables = {
+    # enable wayland support in chromium and electron based applications
+    # remove decorations for QT apps
+    # set cursor size
+    NIXOS_OZONE_WL = "1";
+    XCURSOR_SIZE = "24";
+    UBUNTU_MENUPROXY=1;
+
+#     GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
+
+    # set LIBVA_DRIVER_NAME environment variable for video acceleration
+    LIBVA_DRIVER_NAME = "iHD";
+
+    # smoother scrolling for firefox
+    MOZ_USE_XINPUT2 = "1";
+  };
+
   # system packages
   environment.systemPackages = with pkgs; [
     vim
@@ -32,6 +49,8 @@
     bottom
     btop
     htop
+    toybox
+    ffmpeg
 
     # libraries
     libnotify
