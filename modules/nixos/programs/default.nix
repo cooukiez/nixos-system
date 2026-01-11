@@ -14,35 +14,20 @@
     vlc
     mpv
     pavucontrol
-    gimp2-with-plugins
+    gimp-with-plugins
     krita
     inkscape
     icon-slicer
     google-chrome
     bluez-tools
-    tldr
-    tlrc
     homebank
     sioyek
-
-    inputs.zen-browser.packages.${pkgs.system}.twilight
-
-    # appearance
-    papirus-icon-theme
-#     tela-icon-theme
-#     tela-circle-icon-theme
-#     tango-icon-theme
-#     fluent-icon-theme
-#     reversal-icon-theme
-#     qogir-icon-theme
-#     numix-icon-theme
-#     numix-icon-theme-circle
-#     numix-icon-theme-square
-#     whitesur-icon-theme
-#     whitesur-cursors
-#     adwaita-icon-theme-legacy
-#     breeze-chameleon-icons
+    discord
+    legcord
     hardcode-tray
+
+    # enable zen-browser from flake
+    inputs.zen-browser.packages.${pkgs.system}.twilight
   ];
 
   # enable programs here
@@ -68,5 +53,16 @@
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/etc/nixos"; # sets NH_OS_FLAKE variable for you
+  };
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+      thunar-vcs-plugin
+      thunar-dropbox-plugin
+      thunar-media-tags-plugin
+    ];
   };
 }

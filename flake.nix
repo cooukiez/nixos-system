@@ -66,15 +66,6 @@
 
       # define user configurations
       users = {
-        "ludw.gyr" = {
-          inherit (users.ludw)
-            email
-            fullName
-            githubName
-            githubEmail
-            ;
-          name = "ludw.gyr";
-        };
         ludw = {
           email = "ludwig.geyer@mailbox.org";
           fullName = "Ludwig";
@@ -85,7 +76,7 @@
 
         ceirs = {
           email = "ludwig.geyer@mailbox.org";
-          fullName = "Ludwig";
+          fullName = "Ceirs";
           githubName = "cooukiez";
           githubEmail = "ludwig-geyer@web.de";
           name = "ceirs";
@@ -102,11 +93,10 @@
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
       mkNixosConfiguration =
-        hostname: username:
+        hostname:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs hostname;
-            userConfig = users.${username};
+            inherit inputs outputs hostname users;
             nixosModules = "${self}/modules/nixos";
           };
           modules = [
@@ -165,8 +155,7 @@
       # nixos configuration entrypoint
       # available through 'nixos-rebuild --flake .#lvl'
       nixosConfigurations = {
-        lvl = mkNixosConfiguration "lvl" "ludw";
-        lvl-ceirs = mkNixosConfiguration "lvl" "ceirs";
+        lvl = mkNixosConfiguration "lvl";
       };
 
       # standalone home-manager configuration entrypoint

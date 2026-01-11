@@ -22,7 +22,7 @@ in
     # also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    inputs.self.homeManagerModules.desktop.noctalia
+    inputs.self.homeManagerModules.desktop-noctalia
     inputs.self.homeManagerModules.programs
 
     inputs.zen-browser.homeModules.twilight
@@ -63,6 +63,7 @@ in
     homeDirectory = "/home/${userConfig.name}";
 
     sessionVariables = {
+      START_NOCTALIA = "true";
     };
   };
 
@@ -72,6 +73,9 @@ in
 
   # enable home-manager
   programs.home-manager.enable = true;
+
+  # enable hyprland
+  wayland.windowManager.hyprland.enable = true;
 
   # nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

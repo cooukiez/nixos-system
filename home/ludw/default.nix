@@ -22,7 +22,7 @@ in
     # also split up your configuration and import pieces of it here:
     # ./nvim.nix
 
-    inputs.self.homeManagerModules.desktop.kde
+    inputs.self.homeManagerModules.desktop-kde
     inputs.self.homeManagerModules.programs
 
     inputs.zen-browser.homeModules.twilight

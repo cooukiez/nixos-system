@@ -4,7 +4,7 @@
   hostname,
   lib,
   config,
-  userConfig,
+  users,
   pkgs,
   ...
 }:
@@ -132,19 +132,23 @@
   environment.localBinInPath = true;
 
   # user configuration
-  users.users.${userConfig.name} = {
-    description = userConfig.fullName;
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "audio"
-      "video"
-    ];
-    #openssh.authorizedKeys.keys = [];
-    password = "CHANGE-ME"; # replace after install with passwd
-    shell = pkgs.zsh;
-  };
+  users.users =
+  lib.mapAttrs
+    (_: user:
+      {
+        description = user.fullName;
+        isNormalUser = true;
+        extraGroups = [
+          "wheel"
+          "networkmanager"
+          "audio"
+          "video"
+        ];
+        password = "CHANGE-ME";
+        shell = pkgs.zsh;
+      }
+    )
+    users;
 
   # passwordless sudo
   security.sudo.wheelNeedsPassword = false;

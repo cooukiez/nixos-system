@@ -3,6 +3,7 @@
 {
   # list your module files here
   # my-module = import ./my-module.nix;
-  desktop = import ./desktop;
+  desktop-noctalia = import ./desktop/noctalia;
+  desktop-kde = import ./desktop/kde;
   programs = import ./programs;
 }

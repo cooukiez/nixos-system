@@ -36,6 +36,7 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
+    # core / cli utilities
     vim
     wget
     git
@@ -51,6 +52,8 @@
     htop
     toybox
     ffmpeg
+    tldr
+    tlrc
 
     # libraries
     libnotify

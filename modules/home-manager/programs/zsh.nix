@@ -12,11 +12,11 @@
       gs = "git status";
 
       us = "sudo nixos-rebuild switch --upgrade-all";
-      uh = "home-manager switch --flake /etc/nixos#'ludw@lvl'";
+      uh = "home-manager switch --flake /etc/nixos#${userConfig.name}@lvl";
 
       nus = "nh os switch /etc/nixos#nixosConfigurations.lvl --update";
-      nuh = "nh home switch /etc/nixos#homeConfigurations.ludw@lvl.activationPackage";
-      nuuh = "nh home switch /etc/nixos#homeConfigurations.ludw@lvl.activationPackage --update";
+      nuh = "nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@lvl.activationPackage";
+      nuuh = "nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@lvl.activationPackage --update";
 
       nixos-kate = "kate /etc/nixos";
 

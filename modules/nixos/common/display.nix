@@ -52,5 +52,6 @@
     # wayland utilities
     wayland-utils
     wl-clipboard
+    cliphist # wayland clipboard history manager
   ];
 }

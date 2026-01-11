@@ -6,6 +6,8 @@
 }:
 {
   imports = [
+    ./packages.nix
+
     inputs.plasma-manager.homeModules.plasma-manager
   ];
 
@@ -15,6 +17,7 @@
     extraConfig = "pinentry-program ${pkgs.kwalletcli}/bin/pinentry-kwallet";
   };
 
+  # kde internal packages
   home.packages = with pkgs; [
 #     python313Packages.kde-material-you-colors
     kde-rounded-corners
