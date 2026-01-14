@@ -12,7 +12,6 @@
     kdePackages.kcolorchooser
     kdePackages.kolourpaint
     kdePackages.ksystemlog
-    kdePackages.sddm-kcm
     kdePackages.isoimagewriter
     kdePackages.partitionmanager
     kdePackages.elisa
@@ -25,6 +24,7 @@
     kdePackages.ktorrent
     kdePackages.kiconthemes
     kdePackages.qtstyleplugin-kvantum
+    kdePackages.kcmutils
     #kdePackages.ksshaskpass
 
     kdotool

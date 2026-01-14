@@ -11,8 +11,14 @@
   # enable devmon for device management
   services.devmon.enable = true;
 
-  # openssh daemon
-  services.openssh.enable = true;
+  # common container config
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   # enable zsh
   programs.zsh.enable = true;
@@ -30,7 +36,7 @@
     MOZ_USE_XINPUT2 = "1";
 
     # add gtk modules like this
-#     GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
+    # GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
   };
 
   # system packages
@@ -64,7 +70,7 @@
     appmenu-glib-translator
     haskellPackages.gi-dbusmenu
     haskellPackages.gi-dbusmenugtk3
-#     appmenu-gtk-module
+    # appmenu-gtk-module
     libappindicator-gtk2
     libappindicator-gtk3
     libappindicator

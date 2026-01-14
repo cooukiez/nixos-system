@@ -1,16 +1,22 @@
 { inputs, pkgs, ... }:
 {
+environment.etc."sddm/themes/lvl-sddm-theme".source = ./lvl-sddm-theme;
+
   # enable sddm
   services.displayManager.sddm = {
     enable = true;
     enableHidpi = true;
     wayland.enable = true;
+    theme = "lvl-sddm-theme";
   };
 
   # enable plasma, adds desktop entries to sddm
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # kde package for configuration of sddm
+    kdePackages.sddm-kcm
+
     # noctalia packages
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
@@ -29,6 +35,6 @@
   # disable some kde services
   systemd.user.services = {
     "app-org.kde.discover.notifier@autostart".enable = false;
-    # "app-org.kde.kalendarac@autostart".enable = false;
+    "app-org.kde.kalendarac@autostart".enable = false;
   };
 }

@@ -13,17 +13,6 @@
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
-  # openssh
-  services.openssh = {
-    enable = true;
-    settings = {
-      # opinionated: forbid root login through SSH
-      PermitRootLogin = "no";
-      # opinionated: keys and passwords
-      PasswordAuthentication = true;
-    };
-  };
-
   # audio configuration
   services.pipewire = {
     enable = true;

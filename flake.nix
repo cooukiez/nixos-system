@@ -3,10 +3,7 @@
 {
   description = "system configuration for my laptop.";
 
-  inputs = let
-    extraInputs = import ./flake-extra-inputs.nix;
-  in
-  {
+  inputs = {
     # nixpkgs stable nixpkgs-unstable
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -26,7 +23,32 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    inherit (extraInputs) plasma-manager noctalia zen-browser;
+    # declarative kde plasma manager
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    # noctalia shell
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # zen browser flake
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        # IMPORTANT: using "libgbm" and is only available in unstable so ensure
+        # to have it up-to-date or simply not specify the nixpkgs input
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
+
+    # copyparty flake
+    copyparty.url = "github:9001/copyparty";
   };
 
   outputs =
