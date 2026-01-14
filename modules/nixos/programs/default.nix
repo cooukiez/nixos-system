@@ -25,6 +25,7 @@
     discord
     legcord
     hardcode-tray
+    renderdoc
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.system}.twilight

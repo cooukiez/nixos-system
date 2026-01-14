@@ -22,10 +22,6 @@
 #     python313Packages.kde-material-you-colors
     kde-rounded-corners
     kdePackages.krohnkite
-
-    # better blur
-    inputs.kwin-effects-better-blur-dx.packages.${pkgs.system}.default # Wayland
-    inputs.kwin-effects-better-blur-dx.packages.${pkgs.system}.x11 # X11
   ];
 
   # install:

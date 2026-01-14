@@ -3,14 +3,13 @@
 {
   description = "system configuration for my laptop.";
 
-  inputs = {
+  inputs = let
+    extraInputs = import ./flake-extra-inputs.nix;
+  in
+  {
     # nixpkgs stable nixpkgs-unstable
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # home manager
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # nixos profiles to optimize settings for different hardware
     hardware.url = "github:nixos/nixos-hardware";
@@ -18,40 +17,16 @@
     # declarative flatpak manager
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.6.0";
 
-    # declarative kde plasma manager
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    # noctalia shell
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # blur for kde
-    kwin-effects-better-blur-dx = {
-      url = "github:xarblu/kwin-effects-better-blur-dx";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # home manager
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # zen browser flake
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        # IMPORTANT: using "libgbm" and is only available in unstable so ensure
-        # to have it up-to-date or simply not specify the nixpkgs input
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
-    };
+    inherit (extraInputs) plasma-manager noctalia zen-browser;
   };
 
   outputs =
