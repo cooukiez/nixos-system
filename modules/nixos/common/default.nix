@@ -45,6 +45,7 @@
     killall
     mesa
     unixtools.quota
+    cifs-utils
     tree
     bottom
     btop

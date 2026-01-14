@@ -85,8 +85,8 @@
     krunner = {
       activateWhenTypingOnDesktop = true;
       historyBehavior = "enableSuggestions";
-      position = "top";
-      shortcuts.launch = "Meta+R";
+      position = "center";
+#       shortcuts.launch = "Meta+R";
       shortcuts.runCommandOnClipboard = "Shift+Enter";
     };
 
@@ -262,9 +262,6 @@
 #     };
 
     shortcuts = {
-      konsole = {
-        _launch = "Meta+Q";
-      };
       ksmserver = {
         "Lock Session" = [
           "Screensaver"
@@ -296,7 +293,10 @@
         Overview = "Meta+W";
         "Grid View" = "Meta+G";
 
-        "KrohnkiteMonocleLayout" = [ ];
+        KrohnkiteMonocleLayout = [ ];
+        KrohnkiteFloatAll = [ ];
+        KrohnkiteRotate = [ ];
+        KrohnkiteSetMaster = [ ];
 
         "Switch to Desktop 1" = "Meta+1";
         "Switch to Desktop 2" = "Meta+2";
@@ -402,7 +402,10 @@
 
       yakuake.toggle-window-state = "F12";
 
+      "services/org.kde.krunner.desktop"."_launch" = "Meta+R";
       "services/org.kde.dolphin.desktop"."_launch" = "Meta+E";
+      "services/org.kde.konsole.desktop"."_launch" = "Meta+Q";
+      "firefox.desktop"."_launch" = "Meta+Shift+F";
     };
 
 
@@ -433,12 +436,15 @@
 
       kwinrc = {
         Effect-overview.BorderActivate = 9;
+        Effect-cube.BackgroundColor = "0,0,0";
+        Effect-slide.SlideBackground = false;
 
         Plugins = {
           blurEnabled = true;
           dimscreenEnabled = false;
           krohnkiteEnabled = true;
           screenedgeEnabled = false;
+          wobblywindowsEnabled = true;
         };
 
         "Round-Corners" = {
