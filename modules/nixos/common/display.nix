@@ -30,6 +30,7 @@
 
   # remote desktop
   services.xrdp = {
+    # plasma is only wm with x11 support
     defaultWindowManager = "startplasma-x11";
     enable = true;
     openFirewall = true;

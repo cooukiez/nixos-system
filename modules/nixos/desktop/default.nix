@@ -7,7 +7,7 @@
     wayland.enable = true;
   };
 
-  # enable plasma
+  # enable plasma, adds desktop entries to sddm
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [

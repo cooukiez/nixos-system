@@ -19,19 +19,18 @@
 
   environment.sessionVariables = {
     # enable wayland support in chromium and electron based applications
-    # remove decorations for QT apps
-    # set cursor size
     NIXOS_OZONE_WL = "1";
-    XCURSOR_SIZE = "24";
+    # remove decorations for QT apps
     UBUNTU_MENUPROXY=1;
-
-#     GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
-
+    # set cursor size
+    XCURSOR_SIZE = "24";
     # set LIBVA_DRIVER_NAME environment variable for video acceleration
     LIBVA_DRIVER_NAME = "iHD";
-
     # smoother scrolling for firefox
     MOZ_USE_XINPUT2 = "1";
+
+    # add gtk modules like this
+#     GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
   };
 
   # system packages

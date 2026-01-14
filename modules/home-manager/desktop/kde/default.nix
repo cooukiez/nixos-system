@@ -30,9 +30,6 @@
 
   # install:
   # icons -> Breeze Chameleon Dark
-  #
-  # top panel -> set colorizer to disable background
-  # top panel -> enable floating for only applets
 
   programs.plasma = {
     enable = true;
@@ -129,7 +126,8 @@
         location = "top";
         alignment = "left";
         height = 32;
-        floating = false;
+        floating = true;
+        hiding = "windowsgobelow";
         lengthMode = "fill";
         opacity = "translucent";
         widgets = [
@@ -214,7 +212,7 @@
                   autoFontAndSize = false;
                   fontStyleName = "Inter";
                   fontSize = 6;
-                  fontWeight = 400;
+                  fontWeight = 300;
                 };
               };
             };
@@ -264,13 +262,22 @@
 #     };
 
     shortcuts = {
+      konsole = {
+        _launch = "Meta+Q";
+      };
       ksmserver = {
         "Lock Session" = [
           "Screensaver"
-          "Meta+Alt+L"
+          "Meta+Shift+L"
         ];
         "LogOut" = [
-          "Meta+Alt+Q"
+          "Meta+Shift+Q"
+        ];
+        "Reboot" = [
+          "Meta+Shift+R"
+        ];
+        "Shut Down" = [
+          "Meta+Shift+P"
         ];
       };
 
@@ -279,7 +286,18 @@
       };
 
       kwin = {
+        Cube = "Meta+U";
+
+        Expose = "Ctrl+F9";
+        ExposeClass = "Ctrl+F10";
+        ExposeAll = ["Meta+O" "Launch (C)"];
+        ExposeClassCurrentDesktop = [ ];
+
+        Overview = "Meta+W";
+        "Grid View" = "Meta+G";
+
         "KrohnkiteMonocleLayout" = [ ];
+
         "Switch to Desktop 1" = "Meta+1";
         "Switch to Desktop 2" = "Meta+2";
         "Switch to Desktop 3" = "Meta+3";
@@ -287,14 +305,102 @@
         "Switch to Desktop 5" = "Meta+5";
         "Switch to Desktop 6" = "Meta+6";
         "Switch to Desktop 7" = "Meta+7";
-        "Window Close" = "Meta+C";
+        "Switch to Desktop 8" = "Meta+8";
+        "Switch to Desktop 9" = "Meta+9";
+        "Switch to Desktop 10" = "Meta+0";
+
+        "Window to Desktop 1" = "Meta+Shift+1";
+        "Window to Desktop 2" = "Meta+Shift+2";
+        "Window to Desktop 3" = "Meta+Shift+3";
+        "Window to Desktop 4" = "Meta+Shift+4";
+        "Window to Desktop 5" = "Meta+Shift+5";
+        "Window to Desktop 6" = "Meta+Shift+6";
+        "Window to Desktop 7" = "Meta+Shift+7";
+        "Window to Desktop 8" = "Meta+Shift+8";
+        "Window to Desktop 9" = "Meta+Shift+9";
+        "Window to Desktop 10" = "Meta+Shift+0";
+
+        "Switch to Next Desktop" = [ ];
+        "Switch to Previous Desktop" = [ ];
+
+        "Switch to Next Screen" = [ ];
+        "Switch to Previous Screen" = [ ];
+
+        "Switch One Desktop Down" = "Meta+Down";
+        "Switch One Desktop Up" = "Meta+Up";
+        "Switch One Desktop to the Left" = "Meta+Left";
+        "Switch One Desktop to the Right" = "Meta+Right";
+
+        "Window One Desktop Down" = "Meta+Shift+Down";
+        "Window One Desktop Up" = "Meta+Shift+Up";
+        "Window One Desktop to the Left" = "Meta+Shift+Left";
+        "Window One Desktop to the Right" = "Meta+Shift+Right";
+
+        "Switch to Screen Above" = [ ];
+        "Switch to Screen Below" = [ ];
+        "Switch to Screen to the Left" = [ ];
+        "Switch to Screen to the Right" = [ ];
+
+        "Window One Screen Down" = [ ];
+        "Window One Screen Up" = [ ];
+        "Window One Screen to the Left" = [ ];
+        "Window One Screen to the Right" = [ ];
+
+
+        "Window to Next Desktop" = [ ];
+        "Window to Next Screen" = [ ];
+        "Window to Previous Desktop" = [ ];
+        "Window to Previous Screen" = [ ];
+
+        "Switch Window Down" = "Meta+Alt+Down";
+        "Switch Window Left" = "Meta+Alt+Left";
+        "Switch Window Right" = "Meta+Alt+Right";
+        "Switch Window Up" = "Meta+Alt+Up";
+
+        "Walk Through Windows" = ["Meta+Tab" "Alt+Tab"];
+        "Walk Through Windows (Reverse)" = ["Meta+Shift+Tab" "Alt+Shift+Tab"];
+
+        "Window Quick Tile Bottom" = "Meta+Down";
+        "Window Quick Tile Bottom Left" = [ ];
+        "Window Quick Tile Bottom Right" = [ ];
+        "Window Quick Tile Left" = "Meta+Left";
+        "Window Quick Tile Right" = "Meta+Right";
+        "Window Quick Tile Top" = "Meta+Up";
+        "Window Quick Tile Top Left" = [ ];
+        "Window Quick Tile Top Right" = [ ];
+
+        "Window Close" = ["Meta+C" "Alt+F4"];
+        "Kill Window" = ["Meta+Shift+C" "Alt+Shift+F4"];
+        "Show Desktop" = "Meta+D";
         "Window Fullscreen" = "Meta+F";
         "Window Move Center" = "Meta+Alt+C";
+
+        "Window Operations Menu" = "Alt+F3";
+
+        disableInputCapture = [ ];
       };
 
       plasmashell = {
-        "show-on-mouse-pos" = "";
+        "activate task manager entry 1" = [ ];
+        "activate task manager entry 2" = [ ];
+        "activate task manager entry 3" = [ ];
+        "activate task manager entry 4" = [ ];
+        "activate task manager entry 5" = [ ];
+        "activate task manager entry 6" = [ ];
+        "activate task manager entry 7" = [ ];
+        "activate task manager entry 8" = [ ];
+        "activate task manager entry 9" = [ ];
+        "activate task manager entry 10" = [ ];
+
+        "manage activities" = "Meta+A";
+
+        "next activity" = [ ];
+        "previous activity" = [ ];
+
+        show-on-mouse-pos = [ ];
       };
+
+      yakuake.toggle-window-state = "F12";
 
       "services/org.kde.dolphin.desktop"."_launch" = "Meta+E";
     };
@@ -354,11 +460,11 @@
 
         "Script-krohnkite" = {
 #           floatingClass = "org.freedesktop.impl.portal.desktop.kde";
-          screenGapBetween = 5;
-          screenGapBottom = 5;
-          screenGapLeft = 5;
-          screenGapRight = 5;
-          screenGapTop = 5;
+          screenGapBetween = 8;
+          screenGapBottom = 8;
+          screenGapLeft = 8;
+          screenGapRight = 8;
+          screenGapTop = 48;
         };
 
         Windows = {
@@ -380,7 +486,7 @@
         };
       };
 
-      plasmarc.OSD.Enabled = false;
+      plasmarc.OSD.Enabled = true;
       spectaclerc = {
         Annotations = {
           annotationToolType = 8;
@@ -395,11 +501,6 @@
 
         ImageSave.imageCompressionQuality = 100;
       };
-    };
-
-    dataFile = {
-      "dolphin/view_properties/global/.directory"."Dolphin"."ViewMode" = 1;
-      "dolphin/view_properties/global/.directory"."Settings"."HiddenFilesShown" = true;
     };
 
     window-rules = [
@@ -455,5 +556,46 @@
         };
       }
     ];
+
+
+    dataFile = {
+      "dolphin/view_properties/global/.directory"."Dolphin"."ViewMode" = 1;
+      "dolphin/view_properties/global/.directory"."Settings"."HiddenFilesShown" = true;
+
+      "kate/anonymous.katesession"."Kate Plugins".bookmarksplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".cmaketoolsplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".compilerexplorer = false;
+      "kate/anonymous.katesession"."Kate Plugins".eslintplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".externaltoolsplugin = true;
+      "kate/anonymous.katesession"."Kate Plugins".formatplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katebacktracebrowserplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katebuildplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katecloseexceptplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katecolorpickerplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katectagsplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katefilebrowserplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katefiletreeplugin = true;
+      "kate/anonymous.katesession"."Kate Plugins".kategdbplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".kategitblameplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katekonsoleplugin = true;
+      "kate/anonymous.katesession"."Kate Plugins".kateprojectplugin = true;
+      "kate/anonymous.katesession"."Kate Plugins".katereplicodeplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katesearchplugin = true;
+      "kate/anonymous.katesession"."Kate Plugins".katesnippetsplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katesqlplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katesymbolviewerplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katexmlcheckplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".katexmltoolsplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".keyboardmacrosplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".ktexteditorpreviewplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".latexcompletionplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".lspclientplugin = true;
+      "kate/anonymous.katesession"."Kate Plugins".openlinkplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".rainbowparens = false;
+      "kate/anonymous.katesession"."Kate Plugins".rbqlplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".tabswitcherplugin = true;
+      "kate/anonymous.katesession"."Kate Plugins".templateplugin = false;
+      "kate/anonymous.katesession"."Kate Plugins".textfilterplugin = true;
+    };
   };
 }
