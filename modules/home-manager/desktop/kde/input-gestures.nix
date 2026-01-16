@@ -1,27 +1,27 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
-  xdg.configFile."libinput-gestures/libinput-gestures.conf".text = ''
+  xdg.configFile."libinput-gestures.conf".text = ''
     # three finger gestures
-
-    gesture swipe left 3 xdotool key Meta+Right
-    gesture swipe right 3 xdotool key Meta+Left
-    gesture swipe up 3 xdotool key Meta+G
-    gesture swipe down 3 xdotool key Meta+W
+    gesture swipe left 3 xdotool key Super+Right
+    gesture swipe right 3 xdotool key Super+Left
+    gesture swipe up 3 xdotool key Super+G
+    gesture swipe down 3 xdotool key Super+W
   '';
 
-  systemd.user.services.libinput-gestures = {
-    Unit = {
-      Description = "libinput gestures";
-      PartOf = [ "graphical-session.target" ];
-    };
-
-    Service = {
-      ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
-      Restart = "on-failure";
-    };
-
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
+systemd.user.services.libinput-gestures = {
+  Unit = {
+    Description = "libinput gestures";
+    PartOf = [ "graphical-session.target" ];
   };
+
+  Service = {
+    ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
+    Environment = "DISPLAY=:0";
+  };
+
+  Install = {
+    WantedBy = [ "graphical-session.target" ];
+  };
+};
+
 }

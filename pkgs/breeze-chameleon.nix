@@ -33,6 +33,5 @@ pkgs.stdenv.mkDerivation rec {
     description = "Breeze Chameleon icon themes (Dark and Light variants) for KDE";
     license = licenses.gpl3;
     homepage = "https://github.com/L4ki/Breeze-Chameleon-Icons";
-    maintainers = with maintainers; [ ];
   };
 }

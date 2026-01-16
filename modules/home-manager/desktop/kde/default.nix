@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./input-gestures.nix
     ./packages.nix
 
     inputs.plasma-manager.homeModules.plasma-manager
@@ -440,7 +441,7 @@
           dimscreenEnabled = false;
           krohnkiteEnabled = true;
           screenedgeEnabled = false;
-          wobblywindowsEnabled = true;
+          wobblywindowsEnabled = false;
         };
 
         "Round-Corners" = {
@@ -516,42 +517,8 @@
         description = "Hide titlebar for kde apps";
         match = {
           window-class = {
-            value = "org\.kde\.(dolphin|ark|kate|konsole|gwenview|discover|elisa|kcalc|infocenter|konversation|ktorrent|kolourpaint|krita|okular)";
+            value = "dolphin|ark|kate|konsole|gwenview|discover|elisa|kcalc|infocenter|konversation|ktorrent|kolourpaint|krita|okular|settings|google-chrome";
             type = "regex";
-          };
-
-          window-types = [ "normal" ];
-        };
-      }
-      {
-        apply = {
-          noborder = {
-            value = true;
-            apply = "initially";
-          };
-        };
-        description = "Hide titlebar for system settings";
-        match = {
-          window-class = {
-            value = "systemsettings";
-            type = "substring";
-          };
-
-          window-types = [ "normal" ];
-        };
-      }
-      {
-        apply = {
-          noborder = {
-            value = true;
-            apply = "initially";
-          };
-        };
-        description = "Hide titlebar for google chrome";
-        match = {
-          window-class = {
-            value = "google-chrome";
-            type = "substring";
           };
 
           window-types = [ "normal" ];

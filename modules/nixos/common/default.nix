@@ -50,6 +50,7 @@
     gnumake
     killall
     mesa
+    xmodmap
     unixtools.quota
     cifs-utils
     tree
@@ -61,6 +62,8 @@
     tldr
     tlrc
     xdotool
+    neofetch
+    fastfetch
 
     # libraries
     libnotify
@@ -81,13 +84,16 @@
     qt6.qtmultimedia
     libxcursor
     libxcb-cursor
+    libinput
     libinput-gestures
+    wmctrl
 
     # nixos related
     home-manager
     nixfmt-rfc-style
     nixfmt-tree
     nix-prefetch-git
+    nix-search
   ];
 
   # fonts configuration
