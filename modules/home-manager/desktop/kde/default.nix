@@ -21,8 +21,8 @@
   # kde internal packages
   home.packages = with pkgs; [
 #     python313Packages.kde-material-you-colors
-#     kde-rounded-corners
-    kde-rounded-corners-x11
+    kde-rounded-corners
+#     kde-rounded-corners-x11
     kdePackages.krohnkite
   ];
 
