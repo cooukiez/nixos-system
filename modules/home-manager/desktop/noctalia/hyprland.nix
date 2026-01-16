@@ -8,9 +8,9 @@ let
     monitor=eDP-1,1920x1080@60,auto,1
     monitor=HDMI-A-1,1920x1080@60,auto,1
 
-    ###################
-    ### MY PROGRAMS ###
-    ###################
+    ################
+    ### PROGRAMS ###
+    ################
     $terminal = kitty
     $fileManager = thunar
     # $menu =
@@ -21,6 +21,7 @@ let
     #################
     ### AUTOSTART ###
     #################
+    exec-once = qs -c noctalia-shell
     # exec-once =
 
     #############################
@@ -34,7 +35,7 @@ let
     #####################
     general {
         gaps_in = 5
-        gaps_out = 5
+        gaps_out = 10
         border_size = 0
         resize_on_border = false
         allow_tearing = false
@@ -42,21 +43,31 @@ let
     }
 
     decoration {
-        rounding = 5
+        rounding = 20
         active_opacity = 1.0
         inactive_opacity = 1.0
+
         shadow {
             enabled = false
             range = 4
             render_power = 3
             color = rgba(1a1a1aee)
         }
+
         blur {
-            enabled = false
+            enabled = true
             size = 3
             passes = 2
             vibrancy = 0.1696
         }
+    }
+
+    layerrule {
+      name = noctalia
+      match:namespace = noctalia-background-.*$
+      ignore_alpha = 0.5
+      blur = true
+      blur_popups = true
     }
 
     animations {
@@ -98,9 +109,9 @@ let
         disable_hyprland_logo = true
     }
 
-    #################
+    #############
     ### INPUT ###
-    #################
+    #############
     input {
         kb_layout = de
         follow_mouse = 1
@@ -129,22 +140,22 @@ let
     bind = $mainMod, C, killactive
     bind = $mainMod, M, exit
     bind = $mainMod, F, fullscreen
-    bind = $mainMod SHIFT, N, exec, swaync-client -t -sw
     bind = $mainMod, V, togglefloating
     bind = $mainMod, R, exec, $menu
     bind = $mainMod, P, pseudo
     bind = $mainMod, J, togglesplit
-    bind = $mainMod, W, exec, ~/.config/hypr/set_wallpaper.sh
+    # bind = $mainMod, W, exec, ~/.config/hypr/set_wallpaper.sh
     bind = $mainMod SHIFT, R, exec, reboot
     bind = $mainMod SHIFT, F, exec, $browser
-    bind = $mainMod SHIFT, D, exec, $zen-browser
+    bind = $mainMod SHIFT, D, exec, $alt-browser
     bind = $mainMod, E, exec, $fileManager
     bind = $mainMod, Q, exec, $terminal
     bind = CTRL_SHIFT, escape, exec, $system-monitor
-    bind = $mainMod SHIFT, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
+    # todo: replace with noctalia clipboard history command
+    # bind = $mainMod SHIFT, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
-    bind = $thirdMod SHIFT, H, exec, hyprctl keyword monitor ,3840x2160@60,auto,2
-    bind = $thirdMod SHIFT, L, exec, hyprctl keyword monitor ,1920x1080@60,auto,1
+    # bind = $thirdMod SHIFT, H, exec, hyprctl keyword monitor ,3840x2160@60,auto,2
+    # bind = $thirdMod SHIFT, L, exec, hyprctl keyword monitor ,1920x1080@60,auto,1
 
     bind = $thirdMod, left, movefocus, l
     bind = $thirdMod, right, movefocus, r
@@ -200,11 +211,11 @@ let
     bindl = , XF86AudioPlay, exec, playerctl play-pause
     bindl = , XF86AudioPrev, exec, playerctl previous
 
-    bind = , Print, exec, ~/.config/hypr/capture.sh 0
-    bind = $mainMod, Print, exec, ~/.config/hypr/capture.sh 1
-    bind = $mainMod SHIFT, Print, exec, ~/.config/hypr/capture.sh 2
-    bind = $thirdMod SHIFT, Print, exec, ~/.config/hypr/capture.sh 3
-    bind = $mainMod SHIFT, Q, exec, ~/.config/hypr/capture.sh stop
+    # bind = , Print, exec, ~/.config/hypr/capture.sh 0
+    # bind = $mainMod, Print, exec, ~/.config/hypr/capture.sh 1
+    # bind = $mainMod SHIFT, Print, exec, ~/.config/hypr/capture.sh 2
+    # bind = $thirdMod SHIFT, Print, exec, ~/.config/hypr/capture.sh 3
+    # bind = $mainMod SHIFT, Q, exec, ~/.config/hypr/capture.sh stop
 
     ##############################
     ### WINDOWS AND WORKSPACES ###
@@ -212,7 +223,6 @@ let
     windowrulev2 = suppressevent maximize, class:.*
     windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
   '';
-
 in
 {
   wayland.windowManager.hyprland = {
