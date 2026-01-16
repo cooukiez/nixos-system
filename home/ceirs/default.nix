@@ -40,6 +40,18 @@ in
       # add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
+      (self: super: {
+        gnome = super.gnome.overrideScope' (gself: gsuper: {
+          nautilus = gsuper.nautilus.overrideAttrs (nsuper: {
+            # Use super.gst_all_1 here to pull it from the package set
+            buildInputs = nsuper.buildInputs ++ (with super.gst_all_1; [
+              gst-plugins-good
+              gst-plugins-bad
+            ]);
+          });
+        });
+      })
+
       # or define it inline:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -63,7 +75,7 @@ in
     homeDirectory = "/home/${userConfig.name}";
 
     sessionVariables = {
-      #       START_NOCTALIA = "true";
+      # START_NOCTALIA = "true";
     };
   };
 

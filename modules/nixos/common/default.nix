@@ -87,6 +87,8 @@
     libinput
     libinput-gestures
     wmctrl
+    gtk3
+    gtk4
 
     # nixos related
     home-manager

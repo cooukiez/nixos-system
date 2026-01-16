@@ -21,7 +21,7 @@ let
     #################
     ### AUTOSTART ###
     #################
-    exec-once = qs -c noctalia-shell
+    exec-once = noctalia-shell
     # exec-once =
 
     #############################
@@ -43,7 +43,7 @@ let
     }
 
     decoration {
-        rounding = 20
+        rounding = 10
         active_opacity = 1.0
         inactive_opacity = 1.0
 

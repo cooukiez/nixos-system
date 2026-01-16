@@ -63,6 +63,11 @@
     flake = "/etc/nixos"; # sets NH_OS_FLAKE variable for you
   };
 
+  # running gnome apps outside of gnome
+  # (nautilus)
+  programs.dconf.enable = true;
+  services.gvfs.enable = true;
+
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [

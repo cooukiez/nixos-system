@@ -3,16 +3,17 @@
   programs.vscode = {
     enable = true;
 
-    settings = {
-      "window.titleBarStyle" = "custom";
-    };
+    profiles.default = {
+      userSettings = {
+        "window.titleBarStyle" = "custom";
+        "window.controlsStyle" = "hidden";
 
-    userSettings = {
-      "editor.insertSpaces" = true;
-      "editor.tabSize" = 2;
-      "editor.detectIndentation" = false;
+        "editor.insertSpaces" = true;
+        "editor.tabSize" = 2;
+        "editor.detectIndentation" = false;
 
-      "editor.formatOnSave" = true;
+        "editor.formatOnSave" = true;
+      };
     };
   };
 }

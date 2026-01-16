@@ -65,7 +65,6 @@ in
     sessionVariables = {
       #GIT_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
       #SSH_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
-
     };
   };
 
