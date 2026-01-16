@@ -1,13 +1,11 @@
 { inputs, pkgs, ... }:
 {
-environment.etc."sddm/themes/lvl-sddm-theme".source = ./lvl-sddm-theme;
-
   # enable sddm
   services.displayManager.sddm = {
     enable = true;
     enableHidpi = true;
     wayland.enable = true;
-    theme = "lvl-sddm-theme";
+    theme = "sddm-astronaut-theme";
   };
 
   # enable plasma, adds desktop entries to sddm
@@ -16,6 +14,15 @@ environment.etc."sddm/themes/lvl-sddm-theme".source = ./lvl-sddm-theme;
   environment.systemPackages = with pkgs; [
     # kde package for configuration of sddm
     kdePackages.sddm-kcm
+
+    # deprecated
+    (pkgs.runCommand "lvl-sddm-theme" {} ''
+      mkdir -p $out/share/sddm/themes
+      cp -r ${./lvl-sddm-theme} $out/share/sddm/themes/lvl-sddm-theme
+    '')
+
+    # new sddm theme
+    sddm-astronaut
 
     # noctalia packages
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default

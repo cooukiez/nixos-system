@@ -143,6 +143,7 @@
           "networkmanager"
           "audio"
           "video"
+          "input"
         ];
         password = "CHANGE-ME";
         shell = pkgs.zsh;

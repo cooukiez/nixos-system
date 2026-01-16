@@ -60,6 +60,7 @@
     ffmpeg
     tldr
     tlrc
+    xdotool
 
     # libraries
     libnotify
@@ -74,6 +75,13 @@
     libappindicator-gtk2
     libappindicator-gtk3
     libappindicator
+    qt6.qtbase
+    qt6.qtsvg
+    qt6.qtvirtualkeyboard
+    qt6.qtmultimedia
+    libxcursor
+    libxcb-cursor
+    libinput-gestures
 
     # nixos related
     home-manager
