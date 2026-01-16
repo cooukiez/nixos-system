@@ -32,6 +32,7 @@
     hardcode-tray
     renderdoc
     github-desktop
+    vscode
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.system}.twilight

@@ -62,14 +62,6 @@ let
         }
     }
 
-    layerrule {
-      name = noctalia
-      match:namespace = noctalia-background-.*$
-      ignore_alpha = 0.5
-      blur = true
-      blur_popups = true
-    }
-
     animations {
         enabled = true
         bezier = easeOutQuint,0.23,1,0.32,1
@@ -222,6 +214,8 @@ let
     ##############################
     windowrulev2 = suppressevent maximize, class:.*
     windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
+
+    layerrule = blur, ignorealpha 0.5, noctalia-background-.*$
   '';
 in
 {
@@ -230,8 +224,7 @@ in
     package = pkgs.hyprland;
     xwayland.enable = true;
     systemd.enable = true;
-    settings = {
-      home.file.".config/hypr/hyprland.conf".text = hyprconfig;
-    };
+
+    extraConfig = hyprconfig;
   };
 }
