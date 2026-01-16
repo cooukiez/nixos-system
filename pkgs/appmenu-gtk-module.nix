@@ -12,14 +12,17 @@
   ninja,
   glib,
   gtk3,
-  wrapGAppsHook3
+  wrapGAppsHook3,
 }:
 
 stdenv.mkDerivation rec {
   pname = "appmenu-gtk-module";
   version = "0.7.6";
 
-  outputs = [ "out" "devdoc" ];
+  outputs = [
+    "out"
+    "devdoc"
+  ];
 
   src = fetchFromGitLab {
     owner = "vala-panel-project";

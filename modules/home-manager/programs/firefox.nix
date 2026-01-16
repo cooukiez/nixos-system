@@ -57,7 +57,7 @@
         "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
         # new tab pinned
-        "browser.newtabpage.pinned" = [];
+        "browser.newtabpage.pinned" = [ ];
 
         # disable requirement for extension signatures
         "xpinstall.signatures.required" = false;
@@ -69,8 +69,8 @@
 
       # extensions can be declarative
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-#         ublock-origin
-#         bitwarden
+        #         ublock-origin
+        #         bitwarden
       ];
     };
   };

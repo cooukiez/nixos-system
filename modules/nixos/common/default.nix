@@ -27,7 +27,7 @@
     # enable wayland support in chromium and electron based applications
     NIXOS_OZONE_WL = "1";
     # remove decorations for QT apps
-    UBUNTU_MENUPROXY=1;
+    UBUNTU_MENUPROXY = 1;
     # set cursor size
     XCURSOR_SIZE = "24";
     # set LIBVA_DRIVER_NAME environment variable for video acceleration

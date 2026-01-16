@@ -20,9 +20,9 @@
 
   # kde internal packages
   home.packages = with pkgs; [
-#     python313Packages.kde-material-you-colors
+    #     python313Packages.kde-material-you-colors
     kde-rounded-corners
-#     kde-rounded-corners-x11
+    #     kde-rounded-corners-x11
     kdePackages.krohnkite
   ];
 
@@ -84,7 +84,7 @@
       activateWhenTypingOnDesktop = true;
       historyBehavior = "enableSuggestions";
       position = "center";
-#       shortcuts.launch = "Meta+R";
+      #       shortcuts.launch = "Meta+R";
       shortcuts.runCommandOnClipboard = "Shift+Enter";
     };
 
@@ -220,44 +220,44 @@
           }
         ];
       }
-#       {
-#         location = "right";
-#         alignment = "center";
-#         height = 28;
-#         floating = true;
-#         hiding = "autohide";
-#         lengthMode = "fit";
-#         opacity = "translucent";
-#         widgets = [
-#           {
-#             kickerdash = {
-#
-#             };
-#           }
-#           {
-#             plasmaPanelColorizer = {
-#               general.enable = true;
-#               general.hideWidget = true;
-#             };
-#           }
-#         ];
-#       }
+      #       {
+      #         location = "right";
+      #         alignment = "center";
+      #         height = 28;
+      #         floating = true;
+      #         hiding = "autohide";
+      #         lengthMode = "fit";
+      #         opacity = "translucent";
+      #         widgets = [
+      #           {
+      #             kickerdash = {
+      #
+      #             };
+      #           }
+      #           {
+      #             plasmaPanelColorizer = {
+      #               general.enable = true;
+      #               general.hideWidget = true;
+      #             };
+      #           }
+      #         ];
+      #       }
     ];
 
-#     powerdevil = {
-#       AC = {
-#         autoSuspend.action = "nothing";
-#         dimDisplay.enable = false;
-#         powerButtonAction = "shutDown";
-#         turnOffDisplay.idleTimeout = "never";
-#       };
-#       battery = {
-#         autoSuspend.action = "nothing";
-#         dimDisplay.enable = false;
-#         powerButtonAction = "shutDown";
-#         turnOffDisplay.idleTimeout = "never";
-#       };
-#     };
+    #     powerdevil = {
+    #       AC = {
+    #         autoSuspend.action = "nothing";
+    #         dimDisplay.enable = false;
+    #         powerButtonAction = "shutDown";
+    #         turnOffDisplay.idleTimeout = "never";
+    #       };
+    #       battery = {
+    #         autoSuspend.action = "nothing";
+    #         dimDisplay.enable = false;
+    #         powerButtonAction = "shutDown";
+    #         turnOffDisplay.idleTimeout = "never";
+    #       };
+    #     };
 
     shortcuts = {
       ksmserver = {
@@ -285,7 +285,10 @@
 
         Expose = "Ctrl+F9";
         ExposeClass = "Ctrl+F10";
-        ExposeAll = ["Meta+O" "Launch (C)"];
+        ExposeAll = [
+          "Meta+O"
+          "Launch (C)"
+        ];
         ExposeClassCurrentDesktop = [ ];
 
         Overview = "Meta+W";
@@ -344,7 +347,6 @@
         "Window One Screen to the Left" = [ ];
         "Window One Screen to the Right" = [ ];
 
-
         "Window to Next Desktop" = [ ];
         "Window to Next Screen" = [ ];
         "Window to Previous Desktop" = [ ];
@@ -355,8 +357,14 @@
         "Switch Window Right" = "Meta+Alt+Right";
         "Switch Window Up" = "Meta+Alt+Up";
 
-        "Walk Through Windows" = ["Meta+Tab" "Alt+Tab"];
-        "Walk Through Windows (Reverse)" = ["Meta+Shift+Tab" "Alt+Shift+Tab"];
+        "Walk Through Windows" = [
+          "Meta+Tab"
+          "Alt+Tab"
+        ];
+        "Walk Through Windows (Reverse)" = [
+          "Meta+Shift+Tab"
+          "Alt+Shift+Tab"
+        ];
 
         "Window Quick Tile Bottom" = "Meta+Down";
         "Window Quick Tile Bottom Left" = [ ];
@@ -367,8 +375,14 @@
         "Window Quick Tile Top Left" = [ ];
         "Window Quick Tile Top Right" = [ ];
 
-        "Window Close" = ["Meta+C" "Alt+F4"];
-        "Kill Window" = ["Meta+Shift+C" "Alt+Shift+F4"];
+        "Window Close" = [
+          "Meta+C"
+          "Alt+F4"
+        ];
+        "Kill Window" = [
+          "Meta+Shift+C"
+          "Alt+Shift+F4"
+        ];
         "Show Desktop" = "Meta+D";
         "Window Fullscreen" = "Meta+F";
         "Window Move Center" = "Meta+Alt+C";
@@ -405,7 +419,6 @@
       "services/org.kde.konsole.desktop"."_launch" = "Meta+Q";
       "firefox.desktop"."_launch" = "Meta+Shift+F";
     };
-
 
     spectacle = {
       shortcuts = {
@@ -463,7 +476,7 @@
         };
 
         "Script-krohnkite" = {
-#           floatingClass = "org.freedesktop.impl.portal.desktop.kde";
+          #           floatingClass = "org.freedesktop.impl.portal.desktop.kde";
           screenGapBetween = 8;
           screenGapBottom = 8;
           screenGapLeft = 8;
@@ -518,7 +531,7 @@
         description = "Hide titlebar for kde apps";
         match = {
           window-class = {
-            value = "dolphin|ark|kate|konsole|gwenview|discover|elisa|kcalc|infocenter|konversation|ktorrent|kolourpaint|krita|okular|settings|google-chrome";
+            value = "dolphin|ark|kate|konsole|gwenview|discover|elisa|kcalc|infocenter|konversation|ktorrent|kolourpaint|krita|okular|settings|google-chrome|github-desktop";
             type = "regex";
           };
 
@@ -526,7 +539,6 @@
         };
       }
     ];
-
 
     dataFile = {
       "dolphin/view_properties/global/.directory"."Dolphin"."ViewMode" = 1;

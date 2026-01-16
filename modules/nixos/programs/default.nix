@@ -1,4 +1,9 @@
-{ lib, pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   # SUID wrappers
   programs.mtr.enable = true;
@@ -26,6 +31,7 @@
     legcord
     hardcode-tray
     renderdoc
+    github-desktop
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.system}.twilight

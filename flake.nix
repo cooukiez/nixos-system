@@ -93,7 +93,12 @@
         hostname:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs hostname users;
+            inherit
+              inputs
+              outputs
+              hostname
+              users
+              ;
             nixosModules = "${self}/modules/nixos";
           };
           modules = [

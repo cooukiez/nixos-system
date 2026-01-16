@@ -1,4 +1,9 @@
-{ lib, pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   environment.systemPackages = with pkgs; [
     # enable copyparty from flake
@@ -26,17 +31,17 @@
 
   # ftp server
   services.vsftpd = {
-    enable = true;                # enable the service
-    listen = true;                # vsftpd listens for IPv4 connections
-    listen_ipv6 = false;          # disable IPv6 listening
-    anonymous_enable = false;     # disable anonymous login
-    local_enable = true;          # allow local users to log in
-    write_enable = true;          # allow uploads and modifications
-    chroot_local_user = true;     # restrict users to their home directories
-    local_umask = "022";          # default permissions for uploaded files
-    pasv_enable = true;           # enable passive mode
-    pasv_min_port = 30000;        # passive port range start
-    pasv_max_port = 31000;        # passive port range end
+    enable = true; # enable the service
+    listen = true; # vsftpd listens for IPv4 connections
+    listen_ipv6 = false; # disable IPv6 listening
+    anonymous_enable = false; # disable anonymous login
+    local_enable = true; # allow local users to log in
+    write_enable = true; # allow uploads and modifications
+    chroot_local_user = true; # restrict users to their home directories
+    local_umask = "022"; # default permissions for uploaded files
+    pasv_enable = true; # enable passive mode
+    pasv_min_port = 30000; # passive port range start
+    pasv_max_port = 31000; # passive port range end
   };
 
   # copyparty

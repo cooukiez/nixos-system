@@ -132,24 +132,19 @@
   environment.localBinInPath = true;
 
   # user configuration
-  users.users =
-  lib.mapAttrs
-    (_: user:
-      {
-        description = user.fullName;
-        isNormalUser = true;
-        extraGroups = [
-          "wheel"
-          "networkmanager"
-          "audio"
-          "video"
-          "input"
-        ];
-        password = "CHANGE-ME";
-        shell = pkgs.zsh;
-      }
-    )
-    users;
+  users.users = lib.mapAttrs (_: user: {
+    description = user.fullName;
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "audio"
+      "video"
+      "input"
+    ];
+    password = "CHANGE-ME";
+    shell = pkgs.zsh;
+  }) users;
 
   # passwordless sudo
   security.sudo.wheelNeedsPassword = false;

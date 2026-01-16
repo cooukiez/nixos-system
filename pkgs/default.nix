@@ -2,21 +2,21 @@
 # build them using 'nix build .#example'
 pkgs:
 let
-#   appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
+  #   appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
 
   hardcodeTray = import ./hardcode-tray.nix {
     inherit pkgs;
   };
 
-#   yetAnotherMonochromeIconSet = import ./yamis.nix {
-#     inherit pkgs;
-#   };
+  #   yetAnotherMonochromeIconSet = import ./yamis.nix {
+  #     inherit pkgs;
+  #   };
 
   breezeChameleonIcons = import ./breeze-chameleon.nix {
     inherit pkgs;
   };
 
-  kdeRoundedCornersX11 = pkgs.callPackage ./kde-rounded-corners-x11.nix {};
+  kdeRoundedCornersX11 = pkgs.callPackage ./kde-rounded-corners-x11.nix { };
 in
 {
   # example = pkgs.callPackage ./example { };
@@ -24,6 +24,6 @@ in
   breeze-chameleon-icons = breezeChameleonIcons;
   kde-rounded-corners-x11 = kdeRoundedCornersX11;
 
-#   appmenu-gtk-module = appmenuGtkModule;
-#   yet-another-monochrome-icon-set = yetAnotherMonochromeIconSet;
+  #   appmenu-gtk-module = appmenuGtkModule;
+  #   yet-another-monochrome-icon-set = yetAnotherMonochromeIconSet;
 }

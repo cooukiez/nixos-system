@@ -8,20 +8,20 @@
     gesture swipe down 3 xdotool key Super+W
   '';
 
-systemd.user.services.libinput-gestures = {
-  Unit = {
-    Description = "libinput gestures";
-    PartOf = [ "graphical-session.target" ];
-  };
+  systemd.user.services.libinput-gestures = {
+    Unit = {
+      Description = "libinput gestures";
+      PartOf = [ "graphical-session.target" ];
+    };
 
-  Service = {
-    ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
-    Environment = "DISPLAY=:0";
-  };
+    Service = {
+      ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
+      Environment = "DISPLAY=:0";
+    };
 
-  Install = {
-    WantedBy = [ "graphical-session.target" ];
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
   };
-};
 
 }

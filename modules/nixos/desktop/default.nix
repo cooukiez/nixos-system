@@ -16,7 +16,7 @@
     kdePackages.sddm-kcm
 
     # deprecated
-    (pkgs.runCommand "lvl-sddm-theme" {} ''
+    (pkgs.runCommand "lvl-sddm-theme" { } ''
       mkdir -p $out/share/sddm/themes
       cp -r ${./lvl-sddm-theme} $out/share/sddm/themes/lvl-sddm-theme
     '')

@@ -5,7 +5,7 @@
   kdePackages,
   libepoxy,
   libxcb,
-  lib
+  lib,
 }:
 
 stdenv.mkDerivation rec {

@@ -63,7 +63,7 @@ in
     homeDirectory = "/home/${userConfig.name}";
 
     sessionVariables = {
-#       START_NOCTALIA = "true";
+      #       START_NOCTALIA = "true";
     };
   };
 
