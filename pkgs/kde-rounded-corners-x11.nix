@@ -28,6 +28,7 @@ stdenv.mkDerivation rec {
   buildInputs = [
     kdePackages.kcmutils
     kdePackages.kwin
+    kdePackages.kwin-x11
     libepoxy
     libxcb
     kdePackages.qtbase

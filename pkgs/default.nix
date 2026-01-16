@@ -15,11 +15,14 @@ let
   breezeChameleonIcons = import ./breeze-chameleon.nix {
     inherit pkgs;
   };
+
+  kdeRoundedCornersX11 = pkgs.callPackage ./kde-rounded-corners-x11.nix {};
 in
 {
   # example = pkgs.callPackage ./example { };
   hardcode-tray = hardcodeTray;
   breeze-chameleon-icons = breezeChameleonIcons;
+  kde-rounded-corners-x11 = kdeRoundedCornersX11;
 
 #   appmenu-gtk-module = appmenuGtkModule;
 #   yet-another-monochrome-icon-set = yetAnotherMonochromeIconSet;
