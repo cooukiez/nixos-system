@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./programs
     ./input-gestures.nix
     ./packages.nix
 

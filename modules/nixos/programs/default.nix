@@ -5,6 +5,10 @@
   ...
 }:
 {
+  imports = [
+    inputs.spicetify-nix.nixosModules.default
+  ];
+
   # SUID wrappers
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -33,6 +37,7 @@
     renderdoc
     github-desktop
     vscode
+    spotify
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.system}.twilight
@@ -77,5 +82,13 @@
       thunar-dropbox-plugin
       thunar-media-tags-plugin
     ];
+  };
+
+  programs.spicetify =
+  let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in
+  {
+    enable = true;
   };
 }

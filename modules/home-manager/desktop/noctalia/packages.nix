@@ -7,6 +7,7 @@
     # packages for noctalia
     kitty
     mission-center
+    apostrophe
 
     glib
     gsettings-desktop-schemas

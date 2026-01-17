@@ -31,7 +31,7 @@
     kdiff3
 
     # appearance themes / icons
-    papirus-icon-theme
+    #     papirus-icon-theme
     #     tela-icon-theme
     #     tela-circle-icon-theme
     #     tango-icon-theme

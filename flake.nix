@@ -49,6 +49,9 @@
 
     # copyparty flake
     copyparty.url = "github:9001/copyparty";
+
+    # spicetify flake
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
