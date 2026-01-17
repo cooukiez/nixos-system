@@ -5,6 +5,10 @@
   ...
 }:
 {
+  imports = [
+    inputs.spicetify-nix.nixosModules.default
+  ];
+
   # SUID wrappers
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -77,6 +81,32 @@
       thunar-vcs-plugin
       thunar-dropbox-plugin
       thunar-media-tags-plugin
+    ];
+  };
+
+  programs.spicetify =
+  let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+  in
+  {
+    enable = true;
+
+    enabledExtensions = with spicePkgs.extensions; [
+      adblock
+      # hidePodcasts
+      shuffle
+    ];
+
+    enabledCustomApps = with spicePkgs.apps; [
+      marketplace
+      lyricsPlus
+      newReleases
+      # ncsVisualizer
+    ];
+
+    enabledSnippets = with spicePkgs.snippets; [
+      rotatingCoverart
+      # pointer
     ];
   };
 }
