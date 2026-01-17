@@ -16,6 +16,8 @@
     adwaita-qt
     adwaita-qt6
     adwaita-icon-theme
+    gtk3
+    gtk4
 
     # for debugging
     nwg-look

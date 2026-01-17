@@ -9,7 +9,22 @@
   };
 
   # enable plasma, adds desktop entries to sddm
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6 = {
+    enable = true;
+  };
+
+  # exclude packages so they are not installed system-wide
+  environment.plasma6.excludePackages = with pkgs; [
+    kdePackages.kate
+    kdePackages.dolphin
+    kdePackages.konsole
+    kdePackages.okular
+    kdePackages.gwenview
+    kdePackages.ark
+    kdePackages.spectacle
+    kdePackages.discover
+    kdePackages.khelpcenter
+  ];
 
   environment.systemPackages = with pkgs; [
     # kde package for configuration of sddm

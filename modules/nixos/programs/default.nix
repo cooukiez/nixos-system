@@ -5,10 +5,6 @@
   ...
 }:
 {
-  imports = [
-    inputs.spicetify-nix.nixosModules.default
-  ];
-
   # SUID wrappers
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -82,13 +78,5 @@
       thunar-dropbox-plugin
       thunar-media-tags-plugin
     ];
-  };
-
-  programs.spicetify =
-  let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-  in
-  {
-    enable = true;
   };
 }

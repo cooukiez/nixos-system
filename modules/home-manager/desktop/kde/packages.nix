@@ -4,7 +4,19 @@
 }:
 {
   home.packages = with pkgs; [
-    # packages for kde
+    # core kde applications
+    kdePackages.plasma-workspace
+    kdePackages.kate
+    kdePackages.dolphin
+    kdePackages.konsole
+    kdePackages.systemsettings
+    kdePackages.okular
+    kdePackages.gwenview
+    kdePackages.ark
+    kdePackages.spectacle
+    kdePackages.plasma-systemmonitor
+
+    # kde utilities
     kdePackages.discover
     kdePackages.kcalc
     kdePackages.kcharselect
@@ -14,19 +26,33 @@
     kdePackages.ksystemlog
     kdePackages.isoimagewriter
     kdePackages.partitionmanager
+
+    # multimedia and pim
     kdePackages.elisa
     kdePackages.kdepim-runtime
+
+    # games
     kdePackages.kmahjongg
     kdePackages.kmines
-    kdePackages.konversation
     kdePackages.kpat
     kdePackages.ksudoku
-    kdePackages.ktorrent
-    kdePackages.kiconthemes
-    kdePackages.qtstyleplugin-kvantum
-    kdePackages.kcmutils
-    #kdePackages.ksshaskpass
 
+    # network and tools
+    kdePackages.konversation
+    kdePackages.ktorrent
+
+    # theming and integration
+    kdePackages.kiconthemes
+    kdePackages.kcmutils
+    kdePackages.qtstyleplugin-kvantum
+
+    # system tools
+    kdePackages.systemsettings
+    kdePackages.drkonqi
+    kdePackages.khelpcenter
+    kdePackages.kcrash
+
+    # non-kde helpers
     kdotool
     kdiff3
 

@@ -89,6 +89,9 @@ in
   # enable hyprland
   wayland.windowManager.hyprland.enable = true;
 
+  # disable plasma
+  programs.plasma.enable = false;
+
   # nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
