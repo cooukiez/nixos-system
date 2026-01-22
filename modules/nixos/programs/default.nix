@@ -17,6 +17,26 @@
   };
 
   services.flatpak.enable = true;
+  systemd.services.flatpak-flathub = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    path = [ pkgs.flatpak ];
+    script = ''
+      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
+
+  # flatpak apps
+  systemd.services.flatpak-apps = {
+    wantedBy = [ "multi-user.target" ];
+    after = [ "flatpak-flathub.service" ];
+    requires = [ "flatpak-flathub.service" ];
+    path = [ pkgs.flatpak ];
+    script = ''
+      flatpak install -y --system flathub com.github.vikdevelop.photopea_app
+    '';
+  };
 
   environment.systemPackages = with pkgs; [
     hardinfo2
@@ -38,6 +58,9 @@
     github-desktop
     vscode
     spotify
+    strawberry
+    qbittorrent-enhanced
+    qbittorrent-cli
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.system}.twilight

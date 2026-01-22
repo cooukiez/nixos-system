@@ -21,7 +21,7 @@ let
     #################
     ### AUTOSTART ###
     #################
-    exec-once = noctalia-shell
+    exec-once = dbus-update-activation-environment --systemd --all
     # exec-once =
 
     #############################
@@ -29,6 +29,9 @@ let
     #############################
     env = XCURSOR_SIZE,24
     env = HYPRCURSOR_SIZE,24
+    #env = QT_QPA_PLATFORM,wayland
+    #env = QT_QPA_PLATFORMTHEME,qt6ct
+    env = QS_ICON_THEME,Papirus-Dark
 
     #####################
     ### LOOK AND FEEL ###
@@ -215,7 +218,9 @@ let
     windowrulev2 = suppressevent maximize, class:.*
     windowrulev2 = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0
 
-    layerrule = blur, ignorealpha 0.5, noctalia-background-.*$
+    layerrule = blur, noctalia-background-.*$
+    layerrule = blurpopups, noctalia-background-.*$
+    layerrule = ignorealpha 0.5, noctalia-background-.*$
   '';
 in
 {

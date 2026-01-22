@@ -13,11 +13,11 @@
     gsettings-desktop-schemas
     gnome-themes-extra
     adw-gtk3
-    adwaita-qt
     adwaita-qt6
     adwaita-icon-theme
     gtk3
     gtk4
+    kdePackages.qt6ct
 
     # for debugging
     nwg-look

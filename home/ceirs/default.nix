@@ -76,6 +76,10 @@ in
 
     sessionVariables = {
       # START_NOCTALIA = "true";
+
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_ENABLE_HIGHDPI_SCALING = "1";
+      QT_SCALE_FACTOR_ROUNDING_POLICY = "PassThrough";
     };
   };
 
