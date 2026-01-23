@@ -27,6 +27,8 @@
     inputs.self.nixosModules.common
     inputs.self.nixosModules.desktop
     inputs.self.nixosModules.programs
+
+    inputs.niri.nixosModules.niri
   ];
 
   nixpkgs = {

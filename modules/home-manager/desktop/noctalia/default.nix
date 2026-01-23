@@ -6,11 +6,9 @@
 }:
 {
   imports = [
-    ./hyprland.nix
+    ./niri.nix
     ./packages.nix
     ./style.nix
-
-    inputs.noctalia.homeModules.default
   ];
 
   programs.noctalia-shell = {

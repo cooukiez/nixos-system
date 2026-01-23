@@ -26,6 +26,9 @@ in
     inputs.self.homeManagerModules.programs
 
     inputs.zen-browser.homeModules.twilight
+
+    inputs.niri.homeModules.niri
+    inputs.noctalia.homeModules.default
   ];
 
   nixpkgs = {
@@ -39,6 +42,8 @@ in
 
       # add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
+
+      inputs.niri.overlays.niri
 
       (self: super: {
         gnome = super.gnome.overrideScope' (gself: gsuper: {
