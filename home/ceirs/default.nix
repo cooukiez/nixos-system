@@ -85,6 +85,16 @@ in
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_ENABLE_HIGHDPI_SCALING = "1";
       QT_SCALE_FACTOR_ROUNDING_POLICY = "PassThrough";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      QS_ICON_THEME = "Papirus-Dark";
+
+      ELM_DISPLAY = "wl";
+      # GDK_BACKEND = "wayland,x11";
+      CLUTTER_BACKEND = "wayland";
+
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
+
+      XCURSOR_SIZE = "24";
     };
   };
 

@@ -27,11 +27,7 @@ let
     #############################
     ### ENVIRONMENT VARIABLES ###
     #############################
-    env = XCURSOR_SIZE,24
     env = HYPRCURSOR_SIZE,24
-    #env = QT_QPA_PLATFORM,wayland
-    #env = QT_QPA_PLATFORMTHEME,qt6ct
-    env = QS_ICON_THEME,Papirus-Dark
 
     #####################
     ### LOOK AND FEEL ###

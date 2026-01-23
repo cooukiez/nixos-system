@@ -1,6 +1,266 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.niri.settings = {
-    outputs."eDP-1".scale = 2.0;
+    prefer-no-csd = true;
+    hotkey-overlay.skip-at-startup = true;
+    screenshot-path = "~/Pictures/Screenshots/%Y-%m-%d-%H%M%S.png";
+    xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+
+    input = {
+      keyboard = {
+        xkb = {
+          layout = "de";
+        };
+      };
+
+      touchpad = {
+        enable = true;
+        tap = true;
+
+        accel-speed = 0.25;
+        scroll-factor = 1.5;
+        natural-scroll = true;
+      };
+
+      mouse = {
+        enable = true;
+        accel-speed = 0.5;
+        natural-scroll = false;
+      };
+
+      trackpoint = {
+        enable = true;
+        accel-speed = 1.0;
+        natural-scroll = false;
+      };
+
+      focus-follows-mouse = {
+        enable = true;
+        max-scroll-amount = "25%";
+      };
+
+      power-key-handling.enable = true;
+      warp-mouse-to-focus.enable = true;
+
+      mod-key = "Super";
+      mod-key-nested = "Alt";
+  };
+
+    outputs."eDP-1" = {
+      mode = {
+        width = 1920;
+        height = 1080;
+        refresh = 60.000;
+      };
+      scale = 2.0;
+    };
+
+    switch-events = {
+      lid-close.action.spawn = ["notify-send" "The laptop lid is closed!"];
+      lid-open.action.spawn = ["notify-send" "The laptop lid is open!"];
+    };
+
+    overview = {
+      workspace-shadow = {
+        enable = false;
+      };
+    };
+
+    layout = {
+      gaps = 5;
+      struts = {
+        left = 10;
+        right = 10;
+        top = 10;
+        bottom = 10;
+      };
+
+      border.enable = false;
+
+      default-column-width.proportion = 0.5;
+
+      preset-column-widths = [
+        { proportion = 1.0 / 3.0; }
+        { proportion = 0.5; }
+        { proportion = 2.0 / 3.0; }
+      ];
+
+      preset-window-heights = [
+        { proportion = 1.0 / 3.0; }
+        { proportion = 0.5; }
+        { proportion = 2.0 / 3.0; }
+        { proportion = 1.0; }
+      ];
+
+      focus-ring = {
+        enable = false;
+      };
+
+      shadow = {
+        enable = true;
+        draw-behind-window = true;
+        softness = 30;
+        spread = 5;
+        offset.x = 0;
+        offset.y = 5;
+        color = "#00000070";
+      };
+
+      tab-indicator = {
+        enable = true;
+        place-within-column = true;
+        position = "top";
+
+        width = 8;
+        corner-radius = 8;
+        gap = 8;
+        gaps-between-tabs = 8;
+
+        active = {
+          color = "rgba(224, 224, 224, 100%)";
+        };
+
+        inactive = {
+          color = "rgba(224, 224, 224, 30%)";
+        };
+        
+        length.total-proportion = 1.0;
+      };
+
+    };
+
+    layer-rules = [
+      {
+        matches = [
+          {
+            namespace = "^noctalia-overview*";
+          }
+        ];
+        
+        place-within-backdrop = true;
+      }
+    ];
+
+    window-rules = [
+      {
+        geometry-corner-radius =
+          let
+            radius = 10.0;
+          in
+          {
+            bottom-left = radius;
+            bottom-right = radius;
+            top-left = radius;
+            top-right = radius;
+          };
+        clip-to-geometry = true;
+        draw-border-with-background = false;
+      }
+    ];
+
+    binds =
+    with config.lib.niri.actions;
+
+    {
+      "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"];
+      "XF86AudioRaiseVolume".hotkey-overlay.title = "Raise Volume";
+      "XF86AudioLowerVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"];
+      "XF86AudioLowerVolume".hotkey-overlay.title = "Lower volume";
+
+      "XF86AudioMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"];
+      "XF86AudioMute".hotkey-overlay.title = "Mute sound";
+      "XF86AudioMicMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"];
+      "XF86AudioMicMute".hotkey-overlay.title = "Mute microphone";
+
+      "Mod+TouchpadScrollDown".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"];
+      "Mod+TouchpadScrollDown".hotkey-overlay.title = "Scroll volume up";
+      "Mod+TouchpadScrollUp".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"];
+      "Mod+TouchpadScrollUp".hotkey-overlay.title = "Scroll volume down";
+
+      "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "5%+"];
+      "XF86MonBrightnessUp".hotkey-overlay.title = "Increase brightness";
+      "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "5%-"];
+      "XF86MonBrightnessDown".hotkey-overlay.title = "Decrease brightness";
+
+      "Mod+Shift+TouchpadScrollDown".action.spawn = ["brightnessctl" "set" "2%+"];
+      "Mod+Shift+TouchpadScrollDown".hotkey-overlay.title = "Scroll brightness up";
+      "Mod+Shift+TouchpadScrollUp".action.spawn = ["brightnessctl" "set" "2%-"];
+      "Mod+Shift+TouchpadScrollUp".hotkey-overlay.title = "Scroll brightness down";
+
+      "XF86RFKill".action.spawn = ["noctalia-shell" "ipc" "call" "wifi" "disable" ";" "noctalia-shell" "ipc" "call" "bluetooth" "disable"];
+      "XF86RFKill".hotkey-overlay.title = "Airplane mode";
+
+      "XF86Bluetooth".action.spawn = ["noctalia-shell" "ipc" "call" "bluetooth" "toggle"];
+      "XF86Bluetooth".hotkey-overlay.title = "Toggle bluetooth";
+
+      "XF86Tools".action.spawn = ["noctalia-shell" "ipc" "call" "settings" "toggle"];
+      "XF86Tools".hotkey-overlay.title = "Open settings";
+
+      "Mod+E".action.spawn = ["thunar"];
+      "Mod+E".hotkey-overlay.title = "Open file manager";
+      "Mod+Q".action.spawn = ["kitty"];
+      "Mod+Q".hotkey-overlay.title = "Open terminal";
+      "Mod+Shift+F".action.spawn = ["firefox"];
+      "Mod+Shift+F".hotkey-overlay.title = "Open firefox";
+      "Mod+Shift+D".action.spawn = ["zen-browser"];
+      "Mod+Shift+D".hotkey-overlay.title = "Open zen-browser";
+
+      "Mod+F1".action.spawn = ["noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"];
+      "Mod+F1".hotkey-overlay.title = "Toggle this cheatsheet";
+
+      "Mod+C".action = close-window;
+      "Mod+H".action = maximize-column;
+      "Mod+S".action = toggle-overview;
+
+      "Mod+1".action.focus-workspace = 1;
+      "Mod+2".action.focus-workspace = 2;
+      "Mod+3".action.focus-workspace = 3;
+      "Mod+4".action.focus-workspace = 4;
+      "Mod+5".action.focus-workspace = 5;
+      "Mod+6".action.focus-workspace = 6;
+      "Mod+7".action.focus-workspace = 7;
+      "Mod+8".action.focus-workspace = 8;
+      "Mod+9".action.focus-workspace = 9;
+      "Mod+0".action.focus-workspace = 10;
+
+      "Mod+Shift+1".action.move-column-to-workspace = 1;
+      "Mod+Shift+2".action.move-column-to-workspace = 2;
+      "Mod+Shift+3".action.move-column-to-workspace = 3;
+      "Mod+Shift+4".action.move-column-to-workspace = 4;
+      "Mod+Shift+5".action.move-column-to-workspace = 5;
+      "Mod+Shift+6".action.move-column-to-workspace = 6;
+      "Mod+Shift+7".action.move-column-to-workspace = 7;
+      "Mod+Shift+8".action.move-column-to-workspace = 8;
+      "Mod+Shift+9".action.move-column-to-workspace = 9;
+      "Mod+Shift+0".action.move-column-to-workspace = 10;
+
+      "Mod+Left".action = focus-column-or-monitor-left;
+      "Mod+Right".action = focus-column-or-monitor-right;
+      "Mod+Up".action = focus-window-or-workspace-up;
+      "Mod+Down".action = focus-window-or-workspace-down;
+
+      "Mod+Shift+Return".action = move-window-to-monitor-next;
+
+      "Mod+Shift+Left".action = move-column-left-or-to-monitor-left;
+      "Mod+Shift+Right".action = move-column-right-or-to-monitor-right;
+      "Mod+Shift+Up".action = move-window-up-or-to-workspace-up;
+      "Mod+Shift+Down".action = move-window-down-or-to-workspace-down;
+
+      "Mod+V".action = toggle-window-floating;
+      "Mod+F".action = fullscreen-window;
+      "Mod+G".action = toggle-windowed-fullscreen;
+
+      "Ctrl+Alt+Left".action = consume-or-expel-window-left;
+      "Ctrl+Alt+Right".action = consume-or-expel-window-right;
+      
+      "Ctrl+Alt+Q".action = switch-preset-column-width;
+      "Ctrl+Alt+A".action = switch-preset-window-height;
+      "Ctrl+Alt+S".action = expand-column-to-available-width;
+
+      "Mod+Shift+M".action.quit.skip-confirmation = true;
+      "Mod+Shift+M".hotkey-overlay.title = "Quit compositor";
+
+      "Mod+W".action = toggle-column-tabbed-display;
+    };
   };
 }

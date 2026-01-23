@@ -4,6 +4,8 @@
 }:
 {
   home.packages = with pkgs; [
+    quickshell
+    
     # packages for noctalia
     kitty
     mission-center
@@ -18,6 +20,13 @@
     gtk3
     gtk4
     kdePackages.qt6ct
+
+    # controls
+    playerctl
+    brightnessctl
+
+    # extra
+    gnome-keyring
 
     # for debugging
     nwg-look
