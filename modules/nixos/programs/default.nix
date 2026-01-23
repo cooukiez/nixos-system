@@ -61,19 +61,32 @@
     strawberry
     qbittorrent-enhanced
     qbittorrent-cli
+    intel-gpu-tools
 
     # enable zen-browser from flake
-    inputs.zen-browser.packages.${pkgs.system}.twilight
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
+
+    # the goose
+    inputs.honklet.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # enable programs here
   programs.firefox = {
     enable = true;
-    package = pkgs.unstable.firefox;
+    package = pkgs.firefox;
 
-    nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
+    languagePacks = [ "en-US" "de" ];
+
+    nativeMessagingHosts.packages = [
+      pkgs.kdePackages.plasma-browser-integration
+    ];
+
     preferences = {
       "widget.use-xdg-desktop-portal.file-picker" = 1;
+    };
+
+    policies = {
+      DisableTelemetry = true;
     };
   };
 

@@ -68,9 +68,57 @@
       '';
 
       # extensions can be declarative
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        #         ublock-origin
-        #         bitwarden
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+        bitwarden
+        clearurls
+        darkreader
+        facebook-container
+        google-container
+        i-dont-care-about-cookies
+        passbolt
+        privacy-badger
+        return-youtube-dislikes
+        sponsorblock
+        tampermonkey
+        ublock-origin
+
+        # adaptive-tab-bar-colour
+      ]
+      ++ [
+        # librezam
+        (pkgs.fetchFirefoxAddon {
+          name = "librezam";
+          url = "https://addons.mozilla.org/firefox/downloads/latest/librezam/addon.xpi";
+          sha256 = "sha256-nOtrH+wUaJ9jQ2iT532agJ2THJQNvj9CUAEI1hIGXtc=";
+        })
+
+        # reddit ad remover
+        (pkgs.fetchFirefoxAddon {
+          name = "reddit-ad-remover";
+          url = "https://addons.mozilla.org/firefox/downloads/latest/reddit-ad-remover/addon.xpi";
+          sha256 = "sha256-7HkaD5Zw07QVzB+HsHP6Q0zjOHTLyPHNDPn/ZYPnJ8E=";
+        })
+
+        # reddit nsfw unblocker
+        (pkgs.fetchFirefoxAddon {
+          name = "reddit-nsfw-unblocker";
+          url = "https://addons.mozilla.org/firefox/downloads/latest/reddit-nsfw-unblocker/addon.xpi";
+          sha256 = "sha256-T3Q5E3Nmz5OrG9+IkSpZ1CF2HBupS2aAWG1nEpH9FAg=";
+        })
+
+        # vertauschte wörter
+        (pkgs.fetchFirefoxAddon {
+          name = "vertauschte-woerter";
+          url = "https://addons.mozilla.org/firefox/downloads/latest/vertauschte-woerter/addon.xpi";
+          sha256 = "sha256-qDQ2NzWMI21uqs+94+U7XKpsRKDXVGa2dVJK6eFrmrc=";
+        })
+
+        # youtube blur
+        (pkgs.fetchFirefoxAddon {
+          name = "youtube-blur";
+          url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-blur/addon.xpi";
+          sha256 = "sha256-caYyDM5u8acTxxv2TbxwLUHt7cd/9lrkb0tyNdzW0jo=";
+        })
       ];
     };
   };

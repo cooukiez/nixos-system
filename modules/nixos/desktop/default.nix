@@ -1,5 +1,9 @@
 { inputs, pkgs, ... }:
 {
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
+
   # enable sddm
   services.displayManager.sddm = {
     enable = true;
@@ -44,12 +48,19 @@
   ];
 
   # enable hyprland
+  /*
   programs.hyprland = {
     # install the packages from nixpkgs
     enable = true;
     # enable xwayland
     xwayland.enable = true;
   };
+  */
+
+  niri-flake.cache.enable = true;
+  # programs.niri = {
+    # package = pkgs.niri;
+  # };
 
   # enable screen recorder for noctalia
   programs.gpu-screen-recorder.enable = true;

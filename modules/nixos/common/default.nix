@@ -11,6 +11,8 @@
   # enable devmon for device management
   services.devmon.enable = true;
 
+  services.dbus.enable = true;
+
   # common container config
   virtualisation = {
     containers.enable = true;
@@ -64,6 +66,8 @@
     xdotool
     neofetch
     fastfetch
+    unzip
+    cmake
 
     # libraries
     libnotify
@@ -87,6 +91,14 @@
     libinput
     libinput-gestures
     wmctrl
+    libsForQt5.qt5.qtbase
+    libsForQt5.qt5.qtdeclarative
+    libsForQt5.qt5.qtmultimedia
+
+    # wine compatibilty
+    wineWowPackages.stable
+    winetricks
+    wineWowPackages.waylandFull
 
     # nixos related
     home-manager

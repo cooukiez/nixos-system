@@ -23,6 +23,12 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # niri
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # declarative kde plasma manager
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
@@ -52,6 +58,11 @@
 
     # spicetify flake
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
+    honklet = {
+      url = "github:hannahfluch/honklet";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

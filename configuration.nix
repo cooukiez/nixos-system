@@ -41,6 +41,8 @@
       # add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
 
+      inputs.niri.overlays.niri
+
       # or define it inline:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
