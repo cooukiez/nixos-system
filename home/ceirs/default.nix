@@ -95,8 +95,8 @@ in
   # enable home-manager
   programs.home-manager.enable = true;
 
-  # enable hyprland
-  wayland.windowManager.hyprland.enable = true;
+  # enable hyprland, currently using niri so disabled
+  # wayland.windowManager.hyprland.enable = true;
 
   # disable plasma
   programs.plasma.enable = false;
