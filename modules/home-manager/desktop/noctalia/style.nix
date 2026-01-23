@@ -37,28 +37,6 @@
       base0F = "#5e5e5e";
     };
 
-    /*
-    base16Scheme = {
-      base00 = "#131313"; # background (mSurface)
-      base01 = "#1f1f1f"; # surface variant
-      base02 = "#474747"; # outline
-      base03 = "#c6c6c6"; # secondary text / comments
-      base04 = "#e2e2e2"; # tertiary text
-      base05 = "#e2e2e2"; # default foreground (mOnSurface)
-      base06 = "#6e6e6e"; # primary foreground
-      base07 = "#6e6e6e"; # bright foreground
-
-      base08 = "#ffb4ab"; # error
-      base09 = "#e2e2e2"; # hover / highlight
-      base0A = "#c6c6c6"; # secondary
-      base0B = "#ffffff"; # primary
-      base0C = "#e2e2e2"; # tertiary
-      base0D = "#ffffff"; # accent
-      base0E = "#c6c6c6"; # secondary accent
-      base0F = "#690005"; # error foreground
-    };
-    */
-
     fonts = {
       serif = {
         name = "Inter";
@@ -89,10 +67,37 @@
     };
   };
 
+  home.file.".config/noctalia/colors.json".text = ''
+  {
+    "mPrimary": "#ffffff",
+    "mOnPrimary": "#1b1b1b",
+
+    "mSecondary": "#c6c6c6",
+    "mOnSecondary": "#1b1b1b",
+
+    "mTertiary": "#e2e2e2",
+    "mOnTertiary": "#1b1b1b",
+
+    "mError": "#ffb4ab",
+    "mOnError": "#690005",
+
+    "mSurface": "#131313",
+    "mOnSurface": "#e2e2e2",
+
+    "mSurfaceVariant": "#1f1f1f",
+    "mOnSurfaceVariant": "#c6c6c6",
+    
+    "mOutline": "#474747",
+    "mShadow": "#000000",
+
+    "mHover": "#e2e2e2",
+    "mOnHover": "#1b1b1b"
+  }
+  '';
 
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
-      button-layout = ":";
+      button-layout = lib.mkForce ":";
     };
     "org/gnome/desktop/interface" = {
       color-scheme = lib.mkForce "prefer-dark";
@@ -136,48 +141,6 @@
     };
   };
 
-  home.file.".config/gtk-3.0/gtk-bak.css".text = ''
-    @define-color accent_color #6e6e6e;
-    @define-color accent_bg_color #6e6e6e;
-    @define-color accent_fg_color #1b1b1b;
-    @define-color window_bg_color #131313;
-    @define-color window_fg_color #e2e2e2;
-    @define-color headerbar_bg_color #131313;
-    @define-color headerbar_fg_color #e2e2e2;
-    @define-color popover_bg_color #474747;
-    @define-color popover_fg_color #c6c6c6;
-    @define-color view_bg_color #131313;
-    @define-color view_fg_color #e2e2e2;
-    @define-color card_bg_color #131313;
-    @define-color card_fg_color #e2e2e2;
-
-    @define-color sidebar_bg_color #1f1f1f;
-    @define-color sidebar_fg_color #e2e2e2;
-    @define-color sidebar_border_color @window_bg_color;
-    @define-color sidebar_backdrop_color @window_bg_color;
-  '';
-
-  home.file.".config/gtk-4.0/gtk-bak.css".text = ''
-    @define-color accent_color #6e6e6e;
-    @define-color accent_bg_color #6e6e6e;
-    @define-color accent_fg_color #1b1b1b;
-    @define-color window_bg_color #131313;
-    @define-color window_fg_color #e2e2e2;
-    @define-color headerbar_bg_color #131313;
-    @define-color headerbar_fg_color #e2e2e2;
-    @define-color popover_bg_color #474747;
-    @define-color popover_fg_color #c6c6c6;
-    @define-color view_bg_color #131313;
-    @define-color view_fg_color #e2e2e2;
-    @define-color card_bg_color #131313;
-    @define-color card_fg_color #e2e2e2;
-
-    @define-color sidebar_bg_color #1f1f1f;
-    @define-color sidebar_fg_color #e2e2e2;
-    @define-color sidebar_border_color @window_bg_color;
-    @define-color sidebar_backdrop_color @window_bg_color;
-  '';
-
   qt = {
     enable = true;
     style.name = "Adwaita-Dark";
@@ -186,14 +149,17 @@
       Appearance = {
         color_scheme_path = "$HOME/.config/qt6ct/colors/noctalia.conf";
         custom_palette = true;
-        icon_theme = "Papirus-Dark";
         standard_dialogs = "default";
+
         style = "Adwaita-Dark";
+        icon_theme = "Papirus-Dark";
       };
+
       Fonts = {
         fixed = "\"JetBrainsMono NF, 10\"";
         general = "\"Inter, 10\"";
       };
+
       Interface = {
         activate_item_on_single_click = 1;
         buttonbox_layout = 2;
@@ -209,6 +175,7 @@
         underline_shortcut = 1;
         wheel_scroll_lines = 3;
       };
+
       Troubleshooting = {
         force_raster_widgets = 1;
         ignored_applications = "@Invalid()";
