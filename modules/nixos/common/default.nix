@@ -68,6 +68,8 @@
     fastfetch
     unzip
     cmake
+    stress-ng
+    bench
 
     # libraries
     libnotify

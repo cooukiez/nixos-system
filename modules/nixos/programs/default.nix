@@ -35,6 +35,7 @@
     path = [ pkgs.flatpak ];
     script = ''
       flatpak install -y --system flathub com.github.vikdevelop.photopea_app
+      flatpak install -y --system flathub com.leinardi.gst
     '';
   };
 
@@ -62,6 +63,9 @@
     qbittorrent-enhanced
     qbittorrent-cli
     intel-gpu-tools
+    furmark
+    firestarter
+    geekbench
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight

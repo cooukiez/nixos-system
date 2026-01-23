@@ -187,7 +187,7 @@
       "Mod+Shift+TouchpadScrollUp".action.spawn = ["brightnessctl" "set" "2%-"];
       "Mod+Shift+TouchpadScrollUp".hotkey-overlay.title = "Scroll brightness down";
 
-      "XF86RFKill".action.spawn = ["noctalia-shell" "ipc" "call" "wifi" "disable" ";" "noctalia-shell" "ipc" "call" "bluetooth" "disable"];
+      "XF86RFKill".action.spawn = ["noctalia-shell" "ipc" "call" "wifi" "disable"];
       "XF86RFKill".hotkey-overlay.title = "Airplane mode";
 
       "XF86Bluetooth".action.spawn = ["noctalia-shell" "ipc" "call" "bluetooth" "toggle"];
@@ -207,6 +207,30 @@
 
       "Mod+F1".action.spawn = ["noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"];
       "Mod+F1".hotkey-overlay.title = "Toggle this cheatsheet";
+
+      "Mod+A".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "toggle"];
+      "Mod+A".hotkey-overlay.title = "Open application launcher";
+
+      "Mod+R".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "command"];
+      "Mod+R".hotkey-overlay.title = "Open command runner";
+
+      "Mod+Shift+E".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "emoji"];
+      "Mod+Shift+E".hotkey-overlay.title = "Open emoji selector";
+
+      "Mod+Shift+V".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "clipboard"];
+      "Mod+Shift+V".hotkey-overlay.title = "Open clipboard history";
+
+      "Mod+X".action.spawn = ["noctalia-shell" "ipc" "call" "controlCenter" "toggle"];
+      "Mod+X".hotkey-overlay.title = "Open control center";
+
+      "Mod+Shift+I".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "toggle"];
+      "Mod+Shift+I".hotkey-overlay.title = "Open session menu";
+
+      "Mod+L".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"];
+      "Mod+L".hotkey-overlay.title = "Lock and suspend";
+
+      "Print".action.screenshot = [ ];
+      "Mod+Print".action.screenshot-screen = [ ];
 
       "Mod+C".action = close-window;
       "Mod+H".action = maximize-column;

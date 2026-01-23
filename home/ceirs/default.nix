@@ -29,6 +29,7 @@ in
 
     inputs.niri.homeModules.niri
     inputs.noctalia.homeModules.default
+    inputs.stylix.homeModules.stylix
   ];
 
   nixpkgs = {

@@ -29,6 +29,7 @@
     inputs.self.nixosModules.programs
 
     inputs.niri.nixosModules.niri
+    inputs.stylix.nixosModules.stylix
   ];
 
   nixpkgs = {

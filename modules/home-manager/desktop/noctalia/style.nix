@@ -1,14 +1,101 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
+  stylix = {
+    enable = true;
+
+    targets.noctalia-shell.enable = false;
+    targets.kitty.enable = false;
+    targets.firefox.enable = false;
+    targets.zen-browser.enable = false;
+    targets.vscode.enable = false;
+
+    targets.firefox.profileNames = [ "default" ];
+    targets.zen-browser.profileNames = [ "default" ];
+    enableReleaseChecks = false;
+
+    base16Scheme = {
+      base00 = "#101010";
+      base01 = "#252525";
+      base02 = "#464646";
+      base03 = "#525252";
+      base04 = "#ababab";
+      base05 = "#b9b9b9";
+      base06 = "#e3e3e3";
+      base07 = "#f7f7f7";
+      
+      base08 = "#7c7c7c";
+      base09 = "#999999";
+      base0A = "#a0a0a0";
+      base0B = "#8e8e8e";
+      base0C = "#868686";
+      base0D = "#686868";
+      base0E = "#747474";
+      base0F = "#5e5e5e";
+    };
+
+    /*
+    base16Scheme = {
+      base00 = "#131313"; # background (mSurface)
+      base01 = "#1f1f1f"; # surface variant
+      base02 = "#474747"; # outline
+      base03 = "#c6c6c6"; # secondary text / comments
+      base04 = "#e2e2e2"; # tertiary text
+      base05 = "#e2e2e2"; # default foreground (mOnSurface)
+      base06 = "#6e6e6e"; # primary foreground
+      base07 = "#6e6e6e"; # bright foreground
+
+      base08 = "#ffb4ab"; # error
+      base09 = "#e2e2e2"; # hover / highlight
+      base0A = "#c6c6c6"; # secondary
+      base0B = "#ffffff"; # primary
+      base0C = "#e2e2e2"; # tertiary
+      base0D = "#ffffff"; # accent
+      base0E = "#c6c6c6"; # secondary accent
+      base0F = "#690005"; # error foreground
+    };
+    */
+
+    fonts = {
+      serif = {
+        name = "Inter";
+        package = pkgs.inter;
+      };
+
+      sansSerif = {
+        name = "Inter";
+        package = pkgs.inter;
+      };
+
+      monospace = {
+        name = "JetBrainsMono Nerd Font";
+        package = pkgs.nerd-fonts.jetbrains-mono;
+      };
+
+      emoji = {
+        name = "Noto Color Emoji";
+        package = pkgs.noto-fonts-color-emoji;
+      };
+
+      sizes = {
+        applications = 10;
+        terminal = 10;
+        desktop = 10;
+        popups = 10;
+      };
+    };
+  };
+
+
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
       button-layout = ":";
     };
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
+      color-scheme = lib.mkForce "prefer-dark";
     };
   };
 
@@ -43,18 +130,13 @@
 
     colorScheme = "dark";
 
-    font = {
-      name = "Inter";
-      size = 10;
-    };
-
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
     };
   };
 
-  home.file.".config/gtk-3.0/gtk.css".text = ''
+  home.file.".config/gtk-3.0/gtk-bak.css".text = ''
     @define-color accent_color #6e6e6e;
     @define-color accent_bg_color #6e6e6e;
     @define-color accent_fg_color #1b1b1b;
@@ -75,7 +157,7 @@
     @define-color sidebar_backdrop_color @window_bg_color;
   '';
 
-  home.file.".config/gtk-4.0/gtk.css".text = ''
+  home.file.".config/gtk-4.0/gtk-bak.css".text = ''
     @define-color accent_color #6e6e6e;
     @define-color accent_bg_color #6e6e6e;
     @define-color accent_fg_color #1b1b1b;
