@@ -56,6 +56,9 @@
     kdotool
     kdiff3
 
+    # krunner plugins
+    jetbrains-runner
+
     # appearance themes / icons
     #     papirus-icon-theme
     #     tela-icon-theme

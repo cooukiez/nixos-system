@@ -71,6 +71,14 @@
     morgen
     bitwarden-desktop
     bitwarden-cli
+    jetbrains.rider
+    jetbrains.rust-rover
+    jetbrains.webstorm
+    jetbrains.pycharm
+    jetbrains.phpstorm
+    jetbrains.idea
+    jetbrains.clion
+    jetbrains-toolbox
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
