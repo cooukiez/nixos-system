@@ -28,7 +28,7 @@
     ext4magic
     extundelete
     galleta
-    ghidra
+    #ghidra
     p0f
     pdf-parser
     regripper
@@ -117,7 +117,7 @@
 
     ### web applications ###
     apache-users
-    burpsuite
+    #burpsuite
     davtest
     dirb
     gobuster

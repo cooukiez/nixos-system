@@ -5,7 +5,7 @@
 {
   home.packages = with pkgs; [
     quickshell
-    
+
     # packages for noctalia
     kitty
     mission-center
@@ -23,6 +23,7 @@
     kdePackages.qt6ct
     adwaita-icon-theme
     gtk3
+    libsecret
 
     # controls
     playerctl

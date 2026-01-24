@@ -71,6 +71,7 @@
     stress-ng
     bench
     vnstat
+    dmidecode
 
     # from flakes
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default

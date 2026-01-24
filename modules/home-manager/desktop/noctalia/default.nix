@@ -26,6 +26,32 @@
     ];
   };
 
+  # fix for vscode keyring
+  home.file.".vscode/argv.json".text = ''
+    {
+      "password-store": "gnome-libsecret",
+	    "enable-crash-reporter": true,
+	    "enable-crash-reporter": true
+    }
+  '';
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    enableZshIntegration = true;
+  };
+
+  xdg.portal.config = {
+    common = {
+      default = [
+        "gtk"
+      ];
+      "org.freedesktop.impl.portal.Secret" = [
+        "gnome-keyring"
+      ];
+    };
+  };
+
   systemd.user.services.noctalia = {
     Unit = {
       Description = "Noctalia Shell";
