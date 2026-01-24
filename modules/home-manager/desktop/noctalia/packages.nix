@@ -12,6 +12,7 @@
     apostrophe
     gnome-calendar
     menulibre
+    gedit
 
     glib
     gsettings-desktop-schemas

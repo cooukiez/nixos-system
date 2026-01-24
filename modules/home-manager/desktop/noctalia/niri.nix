@@ -46,7 +46,7 @@
       mod-key-nested = "Alt";
   };
 
-    outputs."eDP-1" = {
+    outputs.eDP-1 = {
       enable = true;
       mode = {
         width = 1920;
@@ -165,6 +165,9 @@
           {
             app-id = "kitty";
           }
+          {
+            app-id = "thunar";
+          }
         ];
 
         open-maximized = false;
@@ -261,6 +264,11 @@
       "Mod+8".action.focus-workspace = 8;
       "Mod+9".action.focus-workspace = 9;
       "Mod+0".action.focus-workspace = 10;
+
+      "Mod+WheelScrollDown".action = focus-workspace-down;
+      "Mod+WheelScrollUp".action = focus-workspace-up;
+      "Mod+WheelScrollRight".action = focus-column-right;
+      "Mod+WheelScrollLeft".action = focus-column-left;
 
       "Mod+Shift+1".action.move-column-to-workspace = 1;
       "Mod+Shift+2".action.move-column-to-workspace = 2;

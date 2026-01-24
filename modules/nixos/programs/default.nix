@@ -82,6 +82,7 @@
     zathura
     zathuraPkgs.zathura_core
     zathuraPkgs.zathura_pdf_mupdf
+    imv
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
