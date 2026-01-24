@@ -23,6 +23,7 @@
     kdePackages.ark
     kdePackages.spectacle
     kdePackages.discover
+    kdePackages.elisa
     kdePackages.khelpcenter
   ];
 

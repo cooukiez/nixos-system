@@ -90,10 +90,13 @@
       tab_bar_align = "left";
       active_tab_font_style = "bold";
       inactive_tab_font_style = "normal";
+
+      # testing
+      confirm_close = "no";
     };
 
     keybindings = {
-      "ctrl+shift+backspace" = "change_font_size all 0";
+      "ctrl+shift+backspace" = "clear_terminal reset active";
 
       # window management
       "ctrl+shift+enter" = "new_window";
@@ -113,11 +116,7 @@
     };
 
     extraConfig = ''
-      # themes
-      include GruvBox_DarkHard.conf
-
-      # include Wryan.conf
-      # include VSCode_Dark.conf
+      map kitty@zsh set-option confirm_close no
     '';
   };
 }

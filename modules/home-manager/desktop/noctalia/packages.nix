@@ -11,6 +11,7 @@
     mission-center
     apostrophe
     gnome-calendar
+    menulibre
 
     glib
     gsettings-desktop-schemas
