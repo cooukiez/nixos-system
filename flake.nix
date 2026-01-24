@@ -62,6 +62,9 @@
     # copyparty flake
     copyparty.url = "github:9001/copyparty";
 
+    # agenix flake
+    agenix.url = "github:ryantm/agenix";
+
     # spicetify flake
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 

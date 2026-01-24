@@ -13,19 +13,18 @@
     metasploit
     msfpc
     routersploit
-    set
     sqlmap
     thc-ipv6
     yersinia
 
     ### forensics ###
-    binwalk-full
-    bulk-extractor
+    #binwalk-full
+    #bulk-extractor
     capstone
     dc3dd
     ddrescue
     ddrescueview
-    distorm3
+    #distorm3
     ext4magic
     extundelete
     galleta
@@ -34,7 +33,7 @@
     pdf-parser
     regripper
     sleuthkit
-    volatility
+    #volatility
 
     ### hardware ###
     apktool
@@ -61,7 +60,7 @@
     sn0int
     sslsplit
     sslstrip
-    sslyze
+    #sslyze
     theharvester
     testssl
     wireshark
@@ -75,7 +74,7 @@
     cewl
     chntpw
     cmospwd
-    creddump
+    #creddump
     crowbar
     crunch
     hash-identifier
@@ -86,7 +85,7 @@
     john
     johnny
     ncrack
-    patator
+    #patator
     phrasendrescher
     seclists
     truecrack
@@ -132,7 +131,7 @@
     wfuzz
     whatweb
     wpscan
-    xsser
+    #xsser
     zap
 
     ### wireless ###
@@ -149,7 +148,7 @@
     mfoc
     multimon-ng
     pixiewps
-    pyrit
+    #pyrit
     redfang
     wifite2
   ];

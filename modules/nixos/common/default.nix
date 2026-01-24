@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./display.nix
@@ -72,6 +72,9 @@
     bench
     vnstat
 
+    # from flakes
+    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
+
     # libraries
     libnotify
     libdbusmenu
@@ -97,6 +100,7 @@
     libsForQt5.qt5.qtbase
     libsForQt5.qt5.qtdeclarative
     libsForQt5.qt5.qtmultimedia
+    dotnetCorePackages.sdk_9_0-bin
 
     # wine compatibilty
     wineWowPackages.stable

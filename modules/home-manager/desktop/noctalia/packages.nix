@@ -13,6 +13,7 @@
     gnome-calendar
     menulibre
     gedit
+    seahorse
 
     glib
     gsettings-desktop-schemas
@@ -28,7 +29,6 @@
     brightnessctl
 
     # compatibility
-    gnome-keyring
     nautilus
 
     # for debugging

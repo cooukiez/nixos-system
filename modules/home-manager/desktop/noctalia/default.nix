@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ./mimetypes.nix
     ./niri.nix
     ./packages.nix
     ./style.nix
@@ -14,6 +15,15 @@
   programs.noctalia-shell = {
     enable = true;
     systemd.enable = true;
+  };
+
+  services.gnome-keyring = {
+    enable = true;
+    components = [
+      "pkcs11"
+      "secrets"
+      "ssh"
+    ];
   };
 
   systemd.user.services.noctalia = {

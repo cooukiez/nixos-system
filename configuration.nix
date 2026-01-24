@@ -39,6 +39,9 @@ in
 
     inputs.niri.nixosModules.niri
     inputs.stylix.nixosModules.stylix
+    inputs.copyparty.nixosModules.default
+    inputs.agenix.nixosModules.default
+    inputs.spicetify-nix.nixosModules.default
   ];
 
   nixpkgs = {
@@ -54,6 +57,7 @@ in
       # neovim-nightly-overlay.overlays.default
 
       inputs.niri.overlays.niri
+      inputs.copyparty.overlays.default
 
       # or define it inline:
       # (final: prev: {

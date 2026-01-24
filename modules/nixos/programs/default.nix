@@ -6,7 +6,8 @@
 }:
 {
   imports = [
-    inputs.spicetify-nix.nixosModules.default
+    ./network-services.nix
+    ./penetration-testing.nix
   ];
 
   # SUID wrappers
@@ -84,10 +85,8 @@
     zathuraPkgs.zathura_pdf_mupdf
     imv
 
-    # enable zen-browser from flake
+    # from flakes
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
-
-    # the goose
     inputs.honklet.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
