@@ -56,8 +56,8 @@
     };
 
     switch-events = {
-      lid-close.action.spawn = ["notify-send" "The laptop lid is closed!"];
-      lid-open.action.spawn = ["notify-send" "The laptop lid is open!"];
+      lid-close.action.spawn = ["noctalia-shell" "ipc" "call" "lockScreen" "lock"];
+      # lid-open.action.spawn = ["notify-send" "welcome back"];
     };
 
     overview = {
@@ -153,8 +153,20 @@
             top-left = radius;
             top-right = radius;
           };
+
         clip-to-geometry = true;
         draw-border-with-background = false;
+        open-maximized = true;
+        open-fullscreen = false;
+      }
+      {
+        matches = [
+          {
+            app-id = "kitty";
+          }
+        ];
+
+        open-maximized = false;
       }
     ];
 
@@ -223,8 +235,8 @@
       "Mod+X".action.spawn = ["noctalia-shell" "ipc" "call" "controlCenter" "toggle"];
       "Mod+X".hotkey-overlay.title = "Open control center";
 
-      "Mod+Shift+I".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "toggle"];
-      "Mod+Shift+I".hotkey-overlay.title = "Open session menu";
+      "Mod+I".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "toggle"];
+      "Mod+I".hotkey-overlay.title = "Open session menu";
 
       "Mod+L".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"];
       "Mod+L".hotkey-overlay.title = "Lock and suspend";

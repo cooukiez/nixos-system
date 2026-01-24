@@ -36,6 +36,7 @@
     script = ''
       flatpak install -y --system flathub com.github.vikdevelop.photopea_app
       flatpak install -y --system flathub com.leinardi.gst
+      flatpak install -y --system flathub be.alexandervanhee.gradia
     '';
   };
 
@@ -66,6 +67,10 @@
     furmark
     firestarter
     geekbench
+    sxiv
+    morgen
+    bitwarden-desktop
+    bitwarden-cli
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight

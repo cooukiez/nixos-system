@@ -67,7 +67,7 @@
     };
   };
 
-  home.file.".config/noctalia/colors.json".text = ''
+  home.file.".config/noctalia/colors-bak.json".text = ''
   {
     "mPrimary": "#ffffff",
     "mOnPrimary": "#1b1b1b",

@@ -10,23 +10,24 @@
     kitty
     mission-center
     apostrophe
+    gnome-calendar
 
     glib
     gsettings-desktop-schemas
     gnome-themes-extra
     adw-gtk3
     adwaita-qt6
+    kdePackages.qt6ct
     adwaita-icon-theme
     gtk3
-    gtk4
-    kdePackages.qt6ct
 
     # controls
     playerctl
     brightnessctl
 
-    # extra
+    # compatibility
     gnome-keyring
+    nautilus
 
     # for debugging
     nwg-look
