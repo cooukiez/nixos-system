@@ -6,10 +6,10 @@
 }:
 {
   imports = [
-    ./mimetypes.nix
     ./niri.nix
     ./packages.nix
     ./style.nix
+    ./xdg-config.nix
   ];
 
   programs.noctalia-shell = {
@@ -39,17 +39,6 @@
     enable = true;
     enableSshSupport = true;
     enableZshIntegration = true;
-  };
-
-  xdg.portal.config = {
-    common = {
-      default = [
-        "gtk"
-      ];
-      "org.freedesktop.impl.portal.Secret" = [
-        "gnome-keyring"
-      ];
-    };
   };
 
   systemd.user.services.noctalia = {

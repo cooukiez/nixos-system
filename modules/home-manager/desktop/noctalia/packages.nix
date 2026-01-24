@@ -14,6 +14,9 @@
     menulibre
     gedit
     seahorse
+    libreoffice-fresh # libreoffice-fresh gtk version
+    showtime
+    menulibre
 
     glib
     gsettings-desktop-schemas

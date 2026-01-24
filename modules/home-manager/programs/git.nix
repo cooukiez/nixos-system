@@ -13,6 +13,8 @@
       credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
       credential.credentialStore = "secretservice";
 
+      advice.defaultBranchName = false;
+
       safe = {
         directory = [ "/etc/nixos" ];
       };
