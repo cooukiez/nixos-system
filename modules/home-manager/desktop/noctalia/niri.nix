@@ -216,6 +216,8 @@
       "Mod+Shift+F".hotkey-overlay.title = "Open firefox";
       "Mod+Shift+D".action.spawn = ["zen-browser"];
       "Mod+Shift+D".hotkey-overlay.title = "Open zen-browser";
+      "Mod+Shift+C".action.spawn = ["code"];
+      "Mod+Shift+C".hotkey-overlay.title = "Open vscode";
 
       "Mod+F1".action.spawn = ["noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"];
       "Mod+F1".hotkey-overlay.title = "Toggle this cheatsheet";

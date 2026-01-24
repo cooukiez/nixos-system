@@ -3,7 +3,7 @@
   imports = [
     ./firefox.nix
     ./git.nix
-    #./kitty.nix
+    ./kitty.nix
     ./thunderbird.nix
     ./vscode.nix
     ./zen-browser.nix
