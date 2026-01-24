@@ -93,6 +93,7 @@
 
       # testing
       confirm_close = "no";
+      allow_remote_control = "yes";
     };
 
     keybindings = {

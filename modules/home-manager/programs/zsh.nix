@@ -26,7 +26,7 @@
     };
 
     initContent = ''
-      bindkey -v
+      bindkey -e
       export EDITOR=vim
     '';
 
