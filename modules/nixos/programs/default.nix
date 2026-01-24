@@ -68,7 +68,7 @@
     firestarter
     geekbench
     sxiv
-    morgen
+    # morgen
     bitwarden-desktop
     bitwarden-cli
     jetbrains.rider
@@ -79,6 +79,9 @@
     jetbrains.idea
     jetbrains.clion
     jetbrains-toolbox
+    zathura
+    zathuraPkgs.zathura_core
+    zathuraPkgs.zathura_pdf_mupdf
 
     # enable zen-browser from flake
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight

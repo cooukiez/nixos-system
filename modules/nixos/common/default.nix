@@ -70,6 +70,7 @@
     cmake
     stress-ng
     bench
+    vnstat
 
     # libraries
     libnotify

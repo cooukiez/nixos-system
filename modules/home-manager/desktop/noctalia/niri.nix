@@ -47,6 +47,7 @@
   };
 
     outputs."eDP-1" = {
+      enable = true;
       mode = {
         width = 1920;
         height = 1080;
