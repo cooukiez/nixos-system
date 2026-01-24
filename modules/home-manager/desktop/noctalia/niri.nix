@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   programs.niri.settings = {
     prefer-no-csd = true;
@@ -44,7 +49,7 @@
 
       mod-key = "Super";
       mod-key-nested = "Alt";
-  };
+    };
 
     outputs.eDP-1 = {
       enable = true;
@@ -57,7 +62,13 @@
     };
 
     switch-events = {
-      lid-close.action.spawn = ["noctalia-shell" "ipc" "call" "lockScreen" "lock"];
+      lid-close.action.spawn = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "lockScreen"
+        "lock"
+      ];
       # lid-open.action.spawn = ["notify-send" "welcome back"];
     };
 
@@ -124,7 +135,7 @@
         inactive = {
           color = "rgba(224, 224, 224, 30%)";
         };
-        
+
         length.total-proportion = 1.0;
       };
 
@@ -137,7 +148,7 @@
             namespace = "^noctalia-overview*";
           }
         ];
-        
+
         place-within-backdrop = true;
       }
     ];
@@ -175,139 +186,251 @@
     ];
 
     binds =
-    with config.lib.niri.actions;
+      with config.lib.niri.actions;
 
-    {
-      "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"];
-      "XF86AudioRaiseVolume".hotkey-overlay.title = "Raise Volume";
-      "XF86AudioLowerVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"];
-      "XF86AudioLowerVolume".hotkey-overlay.title = "Lower volume";
+      {
+        "XF86AudioRaiseVolume".action.spawn = [
+          "wpctl"
+          "set-volume"
+          "@DEFAULT_AUDIO_SINK@"
+          "0.1+"
+        ];
+        "XF86AudioRaiseVolume".hotkey-overlay.title = "Raise Volume";
+        "XF86AudioLowerVolume".action.spawn = [
+          "wpctl"
+          "set-volume"
+          "@DEFAULT_AUDIO_SINK@"
+          "0.1-"
+        ];
+        "XF86AudioLowerVolume".hotkey-overlay.title = "Lower volume";
 
-      "XF86AudioMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"];
-      "XF86AudioMute".hotkey-overlay.title = "Mute sound";
-      "XF86AudioMicMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"];
-      "XF86AudioMicMute".hotkey-overlay.title = "Mute microphone";
+        "XF86AudioMute".action.spawn = [
+          "wpctl"
+          "set-mute"
+          "@DEFAULT_AUDIO_SINK@"
+          "toggle"
+        ];
+        "XF86AudioMute".hotkey-overlay.title = "Mute sound";
+        "XF86AudioMicMute".action.spawn = [
+          "wpctl"
+          "set-mute"
+          "@DEFAULT_AUDIO_SOURCE@"
+          "toggle"
+        ];
+        "XF86AudioMicMute".hotkey-overlay.title = "Mute microphone";
 
-      "Mod+TouchpadScrollDown".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"];
-      "Mod+TouchpadScrollDown".hotkey-overlay.title = "Scroll volume up";
-      "Mod+TouchpadScrollUp".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"];
-      "Mod+TouchpadScrollUp".hotkey-overlay.title = "Scroll volume down";
+        "Mod+TouchpadScrollDown".action.spawn = [
+          "wpctl"
+          "set-volume"
+          "@DEFAULT_AUDIO_SINK@"
+          "0.02+"
+        ];
+        "Mod+TouchpadScrollDown".hotkey-overlay.title = "Scroll volume up";
+        "Mod+TouchpadScrollUp".action.spawn = [
+          "wpctl"
+          "set-volume"
+          "@DEFAULT_AUDIO_SINK@"
+          "0.02-"
+        ];
+        "Mod+TouchpadScrollUp".hotkey-overlay.title = "Scroll volume down";
 
-      "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "5%+"];
-      "XF86MonBrightnessUp".hotkey-overlay.title = "Increase brightness";
-      "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "5%-"];
-      "XF86MonBrightnessDown".hotkey-overlay.title = "Decrease brightness";
+        "XF86MonBrightnessUp".action.spawn = [
+          "brightnessctl"
+          "set"
+          "5%+"
+        ];
+        "XF86MonBrightnessUp".hotkey-overlay.title = "Increase brightness";
+        "XF86MonBrightnessDown".action.spawn = [
+          "brightnessctl"
+          "set"
+          "5%-"
+        ];
+        "XF86MonBrightnessDown".hotkey-overlay.title = "Decrease brightness";
 
-      "Mod+Shift+TouchpadScrollDown".action.spawn = ["brightnessctl" "set" "2%+"];
-      "Mod+Shift+TouchpadScrollDown".hotkey-overlay.title = "Scroll brightness up";
-      "Mod+Shift+TouchpadScrollUp".action.spawn = ["brightnessctl" "set" "2%-"];
-      "Mod+Shift+TouchpadScrollUp".hotkey-overlay.title = "Scroll brightness down";
+        "Mod+Shift+TouchpadScrollDown".action.spawn = [
+          "brightnessctl"
+          "set"
+          "2%+"
+        ];
+        "Mod+Shift+TouchpadScrollDown".hotkey-overlay.title = "Scroll brightness up";
+        "Mod+Shift+TouchpadScrollUp".action.spawn = [
+          "brightnessctl"
+          "set"
+          "2%-"
+        ];
+        "Mod+Shift+TouchpadScrollUp".hotkey-overlay.title = "Scroll brightness down";
 
-      "XF86RFKill".action.spawn = ["noctalia-shell" "ipc" "call" "wifi" "disable"];
-      "XF86RFKill".hotkey-overlay.title = "Airplane mode";
+        "XF86RFKill".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "wifi"
+          "disable"
+        ];
+        "XF86RFKill".hotkey-overlay.title = "Airplane mode";
 
-      "XF86Bluetooth".action.spawn = ["noctalia-shell" "ipc" "call" "bluetooth" "toggle"];
-      "XF86Bluetooth".hotkey-overlay.title = "Toggle bluetooth";
+        "XF86Bluetooth".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "bluetooth"
+          "toggle"
+        ];
+        "XF86Bluetooth".hotkey-overlay.title = "Toggle bluetooth";
 
-      "XF86Tools".action.spawn = ["noctalia-shell" "ipc" "call" "settings" "toggle"];
-      "XF86Tools".hotkey-overlay.title = "Open settings";
+        "XF86Tools".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "settings"
+          "toggle"
+        ];
+        "XF86Tools".hotkey-overlay.title = "Open settings";
 
-      "Mod+E".action.spawn = ["thunar"];
-      "Mod+E".hotkey-overlay.title = "Open file manager";
-      "Mod+Q".action.spawn = ["kitty"];
-      "Mod+Q".hotkey-overlay.title = "Open terminal";
-      "Mod+Shift+F".action.spawn = ["firefox"];
-      "Mod+Shift+F".hotkey-overlay.title = "Open firefox";
-      "Mod+Shift+D".action.spawn = ["zen-browser"];
-      "Mod+Shift+D".hotkey-overlay.title = "Open zen-browser";
-      "Mod+Shift+C".action.spawn = ["code"];
-      "Mod+Shift+C".hotkey-overlay.title = "Open vscode";
+        "Mod+E".action.spawn = [ "thunar" ];
+        "Mod+E".hotkey-overlay.title = "Open file manager";
+        "Mod+Q".action.spawn = [ "kitty" ];
+        "Mod+Q".hotkey-overlay.title = "Open terminal";
+        "Mod+Shift+F".action.spawn = [ "firefox" ];
+        "Mod+Shift+F".hotkey-overlay.title = "Open firefox";
+        "Mod+Shift+D".action.spawn = [ "zen-browser" ];
+        "Mod+Shift+D".hotkey-overlay.title = "Open zen-browser";
+        "Mod+Shift+C".action.spawn = [ "code" ];
+        "Mod+Shift+C".hotkey-overlay.title = "Open vscode";
 
-      "Mod+F1".action.spawn = ["noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle"];
-      "Mod+F1".hotkey-overlay.title = "Toggle this cheatsheet";
+        "Mod+F1".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "plugin:keybind-cheatsheet"
+          "toggle"
+        ];
+        "Mod+F1".hotkey-overlay.title = "Toggle this cheatsheet";
 
-      "Mod+A".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "toggle"];
-      "Mod+A".hotkey-overlay.title = "Open application launcher";
+        "Mod+A".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "launcher"
+          "toggle"
+        ];
+        "Mod+A".hotkey-overlay.title = "Open application launcher";
 
-      "Mod+R".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "command"];
-      "Mod+R".hotkey-overlay.title = "Open command runner";
+        "Mod+R".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "launcher"
+          "command"
+        ];
+        "Mod+R".hotkey-overlay.title = "Open command runner";
 
-      "Mod+Shift+E".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "emoji"];
-      "Mod+Shift+E".hotkey-overlay.title = "Open emoji selector";
+        "Mod+Shift+E".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "launcher"
+          "emoji"
+        ];
+        "Mod+Shift+E".hotkey-overlay.title = "Open emoji selector";
 
-      "Mod+Shift+V".action.spawn = ["noctalia-shell" "ipc" "call" "launcher" "clipboard"];
-      "Mod+Shift+V".hotkey-overlay.title = "Open clipboard history";
+        "Mod+Shift+V".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "launcher"
+          "clipboard"
+        ];
+        "Mod+Shift+V".hotkey-overlay.title = "Open clipboard history";
 
-      "Mod+X".action.spawn = ["noctalia-shell" "ipc" "call" "controlCenter" "toggle"];
-      "Mod+X".hotkey-overlay.title = "Open control center";
+        "Mod+X".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "controlCenter"
+          "toggle"
+        ];
+        "Mod+X".hotkey-overlay.title = "Open control center";
 
-      "Mod+I".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "toggle"];
-      "Mod+I".hotkey-overlay.title = "Open session menu";
+        "Mod+I".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "sessionMenu"
+          "toggle"
+        ];
+        "Mod+I".hotkey-overlay.title = "Open session menu";
 
-      "Mod+L".action.spawn = ["noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"];
-      "Mod+L".hotkey-overlay.title = "Lock and suspend";
+        "Mod+L".action.spawn = [
+          "noctalia-shell"
+          "ipc"
+          "call"
+          "sessionMenu"
+          "lockAndSuspend"
+        ];
+        "Mod+L".hotkey-overlay.title = "Lock and suspend";
 
-      "Print".action.screenshot = [ ];
-      "Mod+Print".action.screenshot-screen = [ ];
+        "Print".action.screenshot = [ ];
+        "Mod+Print".action.screenshot-screen = [ ];
 
-      "Mod+C".action = close-window;
-      "Mod+H".action = maximize-column;
-      "Mod+S".action = toggle-overview;
+        "Mod+C".action = close-window;
+        "Mod+H".action = maximize-column;
+        "Mod+S".action = toggle-overview;
 
-      "Mod+1".action.focus-workspace = 1;
-      "Mod+2".action.focus-workspace = 2;
-      "Mod+3".action.focus-workspace = 3;
-      "Mod+4".action.focus-workspace = 4;
-      "Mod+5".action.focus-workspace = 5;
-      "Mod+6".action.focus-workspace = 6;
-      "Mod+7".action.focus-workspace = 7;
-      "Mod+8".action.focus-workspace = 8;
-      "Mod+9".action.focus-workspace = 9;
-      "Mod+0".action.focus-workspace = 10;
+        "Mod+1".action.focus-workspace = 1;
+        "Mod+2".action.focus-workspace = 2;
+        "Mod+3".action.focus-workspace = 3;
+        "Mod+4".action.focus-workspace = 4;
+        "Mod+5".action.focus-workspace = 5;
+        "Mod+6".action.focus-workspace = 6;
+        "Mod+7".action.focus-workspace = 7;
+        "Mod+8".action.focus-workspace = 8;
+        "Mod+9".action.focus-workspace = 9;
+        "Mod+0".action.focus-workspace = 10;
 
-      "Mod+WheelScrollDown".action = focus-workspace-down;
-      "Mod+WheelScrollUp".action = focus-workspace-up;
-      "Mod+WheelScrollRight".action = focus-column-right;
-      "Mod+WheelScrollLeft".action = focus-column-left;
+        "Mod+WheelScrollDown".action = focus-workspace-down;
+        "Mod+WheelScrollUp".action = focus-workspace-up;
+        "Mod+WheelScrollRight".action = focus-column-right;
+        "Mod+WheelScrollLeft".action = focus-column-left;
 
-      "Mod+Shift+1".action.move-column-to-workspace = 1;
-      "Mod+Shift+2".action.move-column-to-workspace = 2;
-      "Mod+Shift+3".action.move-column-to-workspace = 3;
-      "Mod+Shift+4".action.move-column-to-workspace = 4;
-      "Mod+Shift+5".action.move-column-to-workspace = 5;
-      "Mod+Shift+6".action.move-column-to-workspace = 6;
-      "Mod+Shift+7".action.move-column-to-workspace = 7;
-      "Mod+Shift+8".action.move-column-to-workspace = 8;
-      "Mod+Shift+9".action.move-column-to-workspace = 9;
-      "Mod+Shift+0".action.move-column-to-workspace = 10;
+        "Mod+Shift+1".action.move-column-to-workspace = 1;
+        "Mod+Shift+2".action.move-column-to-workspace = 2;
+        "Mod+Shift+3".action.move-column-to-workspace = 3;
+        "Mod+Shift+4".action.move-column-to-workspace = 4;
+        "Mod+Shift+5".action.move-column-to-workspace = 5;
+        "Mod+Shift+6".action.move-column-to-workspace = 6;
+        "Mod+Shift+7".action.move-column-to-workspace = 7;
+        "Mod+Shift+8".action.move-column-to-workspace = 8;
+        "Mod+Shift+9".action.move-column-to-workspace = 9;
+        "Mod+Shift+0".action.move-column-to-workspace = 10;
 
-      "Mod+Left".action = focus-column-or-monitor-left;
-      "Mod+Right".action = focus-column-or-monitor-right;
-      "Mod+Up".action = focus-window-or-workspace-up;
-      "Mod+Down".action = focus-window-or-workspace-down;
+        "Mod+Left".action = focus-column-or-monitor-left;
+        "Mod+Right".action = focus-column-or-monitor-right;
+        "Mod+Up".action = focus-window-or-workspace-up;
+        "Mod+Down".action = focus-window-or-workspace-down;
 
-      "Mod+Shift+Return".action = move-window-to-monitor-next;
+        "Mod+Shift+Return".action = move-window-to-monitor-next;
 
-      "Mod+Shift+Left".action = move-column-left-or-to-monitor-left;
-      "Mod+Shift+Right".action = move-column-right-or-to-monitor-right;
-      "Mod+Shift+Up".action = move-window-up-or-to-workspace-up;
-      "Mod+Shift+Down".action = move-window-down-or-to-workspace-down;
+        "Mod+Shift+Left".action = move-column-left-or-to-monitor-left;
+        "Mod+Shift+Right".action = move-column-right-or-to-monitor-right;
+        "Mod+Shift+Up".action = move-window-up-or-to-workspace-up;
+        "Mod+Shift+Down".action = move-window-down-or-to-workspace-down;
 
-      "Mod+V".action = toggle-window-floating;
-      "Mod+F".action = fullscreen-window;
-      "Mod+G".action = toggle-windowed-fullscreen;
+        "Mod+V".action = toggle-window-floating;
+        "Mod+F".action = fullscreen-window;
+        "Mod+G".action = toggle-windowed-fullscreen;
 
-      "Ctrl+Alt+Left".action = consume-or-expel-window-left;
-      "Ctrl+Alt+Right".action = consume-or-expel-window-right;
-      
-      "Ctrl+Alt+Q".action = switch-preset-column-width;
-      "Ctrl+Alt+A".action = switch-preset-window-height;
-      "Ctrl+Alt+S".action = expand-column-to-available-width;
+        "Ctrl+Alt+Left".action = consume-or-expel-window-left;
+        "Ctrl+Alt+Right".action = consume-or-expel-window-right;
 
-      "Mod+Shift+M".action.quit.skip-confirmation = true;
-      "Mod+Shift+M".hotkey-overlay.title = "Quit compositor";
+        "Ctrl+Alt+Q".action = switch-preset-column-width;
+        "Ctrl+Alt+A".action = switch-preset-window-height;
+        "Ctrl+Alt+S".action = expand-column-to-available-width;
 
-      "Mod+W".action = toggle-column-tabbed-display;
-    };
+        "Mod+Shift+M".action.quit.skip-confirmation = true;
+        "Mod+Shift+M".hotkey-overlay.title = "Quit compositor";
+
+        "Mod+W".action = toggle-column-tabbed-display;
+      };
   };
 }

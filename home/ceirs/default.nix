@@ -47,15 +47,19 @@ in
       inputs.niri.overlays.niri
 
       (self: super: {
-        gnome = super.gnome.overrideScope' (gself: gsuper: {
-          nautilus = gsuper.nautilus.overrideAttrs (nsuper: {
-            # Use super.gst_all_1 here to pull it from the package set
-            buildInputs = nsuper.buildInputs ++ (with super.gst_all_1; [
-              gst-plugins-good
-              gst-plugins-bad
-            ]);
-          });
-        });
+        gnome = super.gnome.overrideScope' (
+          gself: gsuper: {
+            nautilus = gsuper.nautilus.overrideAttrs (nsuper: {
+              # Use super.gst_all_1 here to pull it from the package set
+              buildInputs =
+                nsuper.buildInputs
+                ++ (with super.gst_all_1; [
+                  gst-plugins-good
+                  gst-plugins-bad
+                ]);
+            });
+          }
+        );
       })
 
       # or define it inline:

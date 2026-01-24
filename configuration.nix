@@ -10,11 +10,26 @@
 }:
 let
   bind_dirs = [
-    { source = "/data/documents"; target = "Documents"; }
-    { source = "/data/downloads"; target = "Downloads"; }
-    { source = "/data/music"; target = "Music"; }
-    { source = "/data/pictures"; target = "Pictures"; }
-    { source = "/data/videos"; target = "Videos"; }
+    {
+      source = "/data/documents";
+      target = "Documents";
+    }
+    {
+      source = "/data/downloads";
+      target = "Downloads";
+    }
+    {
+      source = "/data/music";
+      target = "Music";
+    }
+    {
+      source = "/data/pictures";
+      target = "Pictures";
+    }
+    {
+      source = "/data/videos";
+      target = "Videos";
+    }
   ];
 in
 {
@@ -164,24 +179,32 @@ in
     shell = pkgs.zsh;
   }) users;
 
-  systemd.mounts = lib.concatLists (lib.mapAttrsToList (username: _:
-    map (bind: {
-      where = "/home/${username}/${bind.target}";
-      what = bind.source;
-      type = "none";
-      options = "bind,rw,nofail";
-      unitConfig = {
-        DefaultDependencies = false;
-      };
-      after = [ "local-fs.target" "home.mount" ];
-      before = [ "remote-fs.target" ];
-      wantedBy = [ "multi-user.target" ];
-    }) bind_dirs
-  ) users);
+  systemd.mounts = lib.concatLists (
+    lib.mapAttrsToList (
+      username: _:
+      map (bind: {
+        where = "/home/${username}/${bind.target}";
+        what = bind.source;
+        type = "none";
+        options = "bind,rw,nofail";
+        unitConfig = {
+          DefaultDependencies = false;
+        };
+        after = [
+          "local-fs.target"
+          "home.mount"
+        ];
+        before = [ "remote-fs.target" ];
+        wantedBy = [ "multi-user.target" ];
+      }) bind_dirs
+    ) users
+  );
 
-  systemd.tmpfiles.rules = lib.concatLists (lib.mapAttrsToList (username: _:
-    map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") bind_dirs
-  ) users);
+  systemd.tmpfiles.rules = lib.concatLists (
+    lib.mapAttrsToList (
+      username: _: map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") bind_dirs
+    ) users
+  );
 
   # passwordless sudo
   security.sudo.wheelNeedsPassword = false;

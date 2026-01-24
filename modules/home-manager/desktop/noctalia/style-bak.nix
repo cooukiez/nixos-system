@@ -1,25 +1,25 @@
 {
   /*
-  # old base16Scheme
-  base16Scheme = {
-    base00 = "#131313"; # background (mSurface)
-    base01 = "#1f1f1f"; # surface variant
-    base02 = "#474747"; # outline
-    base03 = "#c6c6c6"; # secondary text / comments
-    base04 = "#e2e2e2"; # tertiary text
-    base05 = "#e2e2e2"; # default foreground (mOnSurface)
-    base06 = "#6e6e6e"; # primary foreground
-    base07 = "#6e6e6e"; # bright foreground
+    # old base16Scheme
+    base16Scheme = {
+      base00 = "#131313"; # background (mSurface)
+      base01 = "#1f1f1f"; # surface variant
+      base02 = "#474747"; # outline
+      base03 = "#c6c6c6"; # secondary text / comments
+      base04 = "#e2e2e2"; # tertiary text
+      base05 = "#e2e2e2"; # default foreground (mOnSurface)
+      base06 = "#6e6e6e"; # primary foreground
+      base07 = "#6e6e6e"; # bright foreground
 
-    base08 = "#ffb4ab"; # error
-    base09 = "#e2e2e2"; # hover / highlight
-    base0A = "#c6c6c6"; # secondary
-    base0B = "#ffffff"; # primary
-    base0C = "#e2e2e2"; # tertiary
-    base0D = "#ffffff"; # accent
-    base0E = "#c6c6c6"; # secondary accent
-    base0F = "#690005"; # error foreground
-  };
+      base08 = "#ffb4ab"; # error
+      base09 = "#e2e2e2"; # hover / highlight
+      base0A = "#c6c6c6"; # secondary
+      base0B = "#ffffff"; # primary
+      base0C = "#e2e2e2"; # tertiary
+      base0D = "#ffffff"; # accent
+      base0E = "#c6c6c6"; # secondary accent
+      base0F = "#690005"; # error foreground
+    };
   */
 
   home.file.".config/gtk-3.0/gtk-bak.css".text = ''

@@ -27,7 +27,7 @@
       base05 = "#CBCBCB";
       base06 = "#DCDCDC";
       base07 = "#E3E3E3";
-      
+
       base08 = "#d21d3b";
       base09 = "#db4a62";
       base0A = "#e47789";
@@ -69,31 +69,31 @@
   };
 
   home.file.".config/noctalia/colors.json".text = ''
-  {
-    "mPrimary": "#ffffff",
-    "mOnPrimary": "#1b1b1b",
+    {
+      "mPrimary": "#ffffff",
+      "mOnPrimary": "#1b1b1b",
 
-    "mSecondary": "#c6c6c6",
-    "mOnSecondary": "#1b1b1b",
+      "mSecondary": "#c6c6c6",
+      "mOnSecondary": "#1b1b1b",
 
-    "mTertiary": "#e2e2e2",
-    "mOnTertiary": "#1b1b1b",
+      "mTertiary": "#e2e2e2",
+      "mOnTertiary": "#1b1b1b",
 
-    "mError": "#ffb4ab",
-    "mOnError": "#690005",
+      "mError": "#ffb4ab",
+      "mOnError": "#690005",
 
-    "mSurface": "#131313",
-    "mOnSurface": "#e2e2e2",
+      "mSurface": "#131313",
+      "mOnSurface": "#e2e2e2",
 
-    "mSurfaceVariant": "#1f1f1f",
-    "mOnSurfaceVariant": "#c6c6c6",
-    
-    "mOutline": "#474747",
-    "mShadow": "#000000",
+      "mSurfaceVariant": "#1f1f1f",
+      "mOnSurfaceVariant": "#c6c6c6",
+      
+      "mOutline": "#474747",
+      "mShadow": "#000000",
 
-    "mHover": "#e2e2e2",
-    "mOnHover": "#1b1b1b"
-  }
+      "mHover": "#e2e2e2",
+      "mOnHover": "#1b1b1b"
+    }
   '';
 
   dconf.settings = {
@@ -107,7 +107,7 @@
 
   gtk = {
     enable = true;
-    
+
     gtk2.theme = {
       package = pkgs.adw-gtk3;
       name = "adw-gtk3-dark";

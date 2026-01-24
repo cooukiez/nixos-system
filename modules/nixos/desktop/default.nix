@@ -46,12 +46,12 @@
 
   # enable hyprland
   /*
-  programs.hyprland = {
-    # install the packages from nixpkgs
-    enable = true;
-    # enable xwayland
-    xwayland.enable = true;
-  };
+    programs.hyprland = {
+      # install the packages from nixpkgs
+      enable = true;
+      # enable xwayland
+      xwayland.enable = true;
+    };
   */
 
   niri-flake.cache.enable = true;
