@@ -4,6 +4,15 @@
   inputs,
   ...
 }:
+let
+  # fix this and put in nautilus extensions
+  nautilusBackspaceSrc = pkgs.fetchFromGitHub {
+    owner = "TheWeirdDev";
+    repo = "nautilus-backspace";
+    rev = "main";
+    sha256 = "sha256-4x5bMIgwNIp9nxuCHWLLNvWG2zuviyEOyCZgVLRZ5W4=";
+  };
+in
 {
   imports = [
     ./network-services.nix
@@ -69,10 +78,8 @@
     firestarter
     geekbench
     sxiv
-    # morgen
     bitwarden-desktop
     bitwarden-cli
-    jetbrains.rider
     jetbrains.rust-rover
     jetbrains.webstorm
     jetbrains.pycharm
@@ -84,6 +91,12 @@
     zathuraPkgs.zathura_core
     zathuraPkgs.zathura_pdf_mupdf
     imv
+
+    # nautilus for niri
+    nautilus
+    nautilus-python
+    nautilus-open-any-terminal
+    code-nautilus
 
     # from flakes
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight

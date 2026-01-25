@@ -13,6 +13,14 @@
     excludePackages = with pkgs; [ xterm ];
   };
 
+  /*
+    services.logind = {
+      enable = true;
+      idleAction = "suspend";
+      idleActionSec = "15m";
+    };
+  */
+
   xdg = {
     portal = {
       enable = true;
@@ -38,5 +46,9 @@
     wayland-utils
     wl-clipboard
     cliphist # wayland clipboard history manager
+    wf-recorder
+    wlinhibit
+    grim
+    slurp
   ];
 }

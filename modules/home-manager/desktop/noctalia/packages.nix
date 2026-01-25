@@ -10,16 +10,16 @@
     kitty
     mission-center
     apostrophe
-    nautilus
-    gnome-calendar
-    gnome-contacts
-    menulibre
+    libreoffice-fresh
+    sly
+
+    # gnome apps
+    loupe
     gedit
     seahorse
-    libreoffice-fresh # libreoffice-fresh gtk version
     showtime
-    #menulibre
-    sly
+    gnome-calendar
+    gnome-contacts
     gnome-maps
     gnome-frog
     gnome-notes
@@ -28,29 +28,23 @@
     gnome-graphs
     gnome-clocks
     gnome-weather
-    #gnome-commander
     gnome-text-editor
     gnome-font-viewer
     gnome-calculator
-    loupe
 
+    # libraries / packages
     glib
-    gsettings-desktop-schemas
-    gnome-themes-extra
+    gtk3
     adw-gtk3
     adwaita-qt6
     kdePackages.qt6ct
+    gnome-themes-extra
     adwaita-icon-theme
-    gtk3
-    libsecret
-
-    # controls
-    playerctl
-    brightnessctl
-    wlinhibit
+    gsettings-desktop-schemas
 
     # compatibility
     gnome-online-accounts
+    libsecret
 
     # for debugging
     nwg-look

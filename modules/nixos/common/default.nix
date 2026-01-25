@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./display.nix
@@ -36,10 +41,17 @@
     LIBVA_DRIVER_NAME = "iHD";
     # smoother scrolling for firefox
     MOZ_USE_XINPUT2 = "1";
+    # nautilus extension path
+    NAUTILUS_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions";
+    NAUTILUS_4_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
 
     # add gtk modules like this
     # GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
   };
+
+  environment.pathsToLink = [
+    "/share/nautilus-python/extensions"
+  ];
 
   # system packages
   environment.systemPackages = with pkgs; [
@@ -72,6 +84,8 @@
     bench
     vnstat
     dmidecode
+    playerctl
+    brightnessctl
 
     # from flakes
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default

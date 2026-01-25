@@ -19,23 +19,23 @@
 
     # horizon base16
     base16Scheme = {
-      base00 = "#1C1C1C";
-      base01 = "#232323";
+      base00 = "#101010";
+      base01 = "#202020";
       base02 = "#2E2E2E";
-      base03 = "#6F6F6F";
-      base04 = "#9D9D9D";
-      base05 = "#CBCBCB";
-      base06 = "#DCDCDC";
-      base07 = "#E3E3E3";
+      base03 = "#333333";
+      base04 = "#999999";
+      base05 = "#C1C1C1";
+      base06 = "#999999";
+      base07 = "#C1C1C1";
 
-      base08 = "#d21d3b";
-      base09 = "#db4a62";
-      base0A = "#e47789";
-      base0B = "#eda4b0";
-      base0C = "#0cabba";
-      base0D = "#d21d3b";
-      base0E = "#a02edd";
-      base0F = "#e16b30";
+      base08 = "#3485E3";
+      base09 = "#AAAAAA";
+      base0A = "#70A9EB";
+      base0B = "#D6E6F9";
+      base0C = "#AAAAAA";
+      base0D = "#3485E3";
+      base0E = "#999999";
+      base0F = "#444444";
     };
 
     fonts = {
@@ -95,15 +95,6 @@
       "mOnHover": "#1b1b1b"
     }
   '';
-
-  dconf.settings = {
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = lib.mkForce ":";
-    };
-    "org/gnome/desktop/interface" = {
-      color-scheme = lib.mkForce "prefer-dark";
-    };
-  };
 
   gtk = {
     enable = true;

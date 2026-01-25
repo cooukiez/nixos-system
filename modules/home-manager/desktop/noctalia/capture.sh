@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # define directories
 SCREENSHOT_DIR=~/Pictures/Screenshots

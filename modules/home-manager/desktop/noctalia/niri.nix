@@ -187,107 +187,48 @@
 
     binds =
       with config.lib.niri.actions;
-
+      let
+        wpctl = spawn "wpctl";
+        brightnessctl = spawn "brightnessctl";
+        noctalia-ipc = spawn "noctalia-shell" "ipc" "call";
+        capture-script = spawn "/etc/nixos/modules/home-manager/desktop/noctalia/capture.sh";
+      in
       {
-        "XF86AudioRaiseVolume".action.spawn = [
-          "wpctl"
-          "set-volume"
-          "@DEFAULT_AUDIO_SINK@"
-          "0.1+"
-        ];
+        "XF86AudioRaiseVolume".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
         "XF86AudioRaiseVolume".hotkey-overlay.title = "Raise Volume";
-        "XF86AudioLowerVolume".action.spawn = [
-          "wpctl"
-          "set-volume"
-          "@DEFAULT_AUDIO_SINK@"
-          "0.1-"
-        ];
+        "XF86AudioLowerVolume".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-";
         "XF86AudioLowerVolume".hotkey-overlay.title = "Lower volume";
 
-        "XF86AudioMute".action.spawn = [
-          "wpctl"
-          "set-mute"
-          "@DEFAULT_AUDIO_SINK@"
-          "toggle"
-        ];
+        "XF86AudioMute".action = wpctl "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
         "XF86AudioMute".hotkey-overlay.title = "Mute sound";
-        "XF86AudioMicMute".action.spawn = [
-          "wpctl"
-          "set-mute"
-          "@DEFAULT_AUDIO_SOURCE@"
-          "toggle"
-        ];
+        "XF86AudioMicMute".action = wpctl "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
         "XF86AudioMicMute".hotkey-overlay.title = "Mute microphone";
 
-        "Mod+TouchpadScrollDown".action.spawn = [
-          "wpctl"
-          "set-volume"
-          "@DEFAULT_AUDIO_SINK@"
-          "0.02+"
-        ];
+        "Mod+TouchpadScrollDown".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+";
         "Mod+TouchpadScrollDown".hotkey-overlay.title = "Scroll volume up";
-        "Mod+TouchpadScrollUp".action.spawn = [
-          "wpctl"
-          "set-volume"
-          "@DEFAULT_AUDIO_SINK@"
-          "0.02-"
-        ];
+        "Mod+TouchpadScrollUp".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-";
         "Mod+TouchpadScrollUp".hotkey-overlay.title = "Scroll volume down";
 
-        "XF86MonBrightnessUp".action.spawn = [
-          "brightnessctl"
-          "set"
-          "5%+"
-        ];
+        "XF86MonBrightnessUp".action = brightnessctl "set" "5%+";
         "XF86MonBrightnessUp".hotkey-overlay.title = "Increase brightness";
-        "XF86MonBrightnessDown".action.spawn = [
-          "brightnessctl"
-          "set"
-          "5%-"
-        ];
+        "XF86MonBrightnessDown".action = brightnessctl "set" "5%-";
         "XF86MonBrightnessDown".hotkey-overlay.title = "Decrease brightness";
 
-        "Mod+Shift+TouchpadScrollDown".action.spawn = [
-          "brightnessctl"
-          "set"
-          "2%+"
-        ];
+        "Mod+Shift+TouchpadScrollDown".action = brightnessctl "set" "2%+";
         "Mod+Shift+TouchpadScrollDown".hotkey-overlay.title = "Scroll brightness up";
-        "Mod+Shift+TouchpadScrollUp".action.spawn = [
-          "brightnessctl"
-          "set"
-          "2%-"
-        ];
+        "Mod+Shift+TouchpadScrollUp".action = brightnessctl "set" "2%-";
         "Mod+Shift+TouchpadScrollUp".hotkey-overlay.title = "Scroll brightness down";
 
-        "XF86RFKill".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "wifi"
-          "disable"
-        ];
+        "XF86RFKill".action = noctalia-ipc "wifi" "disable";
         "XF86RFKill".hotkey-overlay.title = "Airplane mode";
 
-        "XF86Bluetooth".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "bluetooth"
-          "toggle"
-        ];
+        "XF86Bluetooth".action = noctalia-ipc "bluetooth" "toggle";
         "XF86Bluetooth".hotkey-overlay.title = "Toggle bluetooth";
 
-        "XF86Tools".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "settings"
-          "toggle"
-        ];
+        "XF86Tools".action = noctalia-ipc "settings" "toggle";
         "XF86Tools".hotkey-overlay.title = "Open settings";
 
-        "Mod+E".action.spawn = [ "thunar" ];
+        "Mod+E".action.spawn = [ "nautilus" ];
         "Mod+E".hotkey-overlay.title = "Open file manager";
         "Mod+Q".action.spawn = [ "kitty" ];
         "Mod+Q".hotkey-overlay.title = "Open terminal";
@@ -298,80 +239,36 @@
         "Mod+Shift+C".action.spawn = [ "code" ];
         "Mod+Shift+C".hotkey-overlay.title = "Open vscode";
 
-        "Mod+F1".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "plugin:keybind-cheatsheet"
-          "toggle"
-        ];
+        "Mod+F1".action = noctalia-ipc "plugin:keybind-cheatsheet" "toggle";
         "Mod+F1".hotkey-overlay.title = "Toggle this cheatsheet";
 
-        "Mod+A".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "launcher"
-          "toggle"
-        ];
+        "Mod+A".action = noctalia-ipc "launcher" "toggle";
         "Mod+A".hotkey-overlay.title = "Open application launcher";
 
-        "Mod+R".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "launcher"
-          "command"
-        ];
+        "Mod+R".action = noctalia-ipc "launcher" "command";
         "Mod+R".hotkey-overlay.title = "Open command runner";
 
-        "Mod+Shift+E".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "launcher"
-          "emoji"
-        ];
+        "Mod+Shift+E".action = noctalia-ipc "launcher" "emoji";
         "Mod+Shift+E".hotkey-overlay.title = "Open emoji selector";
 
-        "Mod+Shift+V".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "launcher"
-          "clipboard"
-        ];
+        "Mod+Shift+V".action = noctalia-ipc "launcher" "clipboard";
         "Mod+Shift+V".hotkey-overlay.title = "Open clipboard history";
 
-        "Mod+X".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "controlCenter"
-          "toggle"
-        ];
+        "Mod+X".action = noctalia-ipc "controlCenter" "toggle";
         "Mod+X".hotkey-overlay.title = "Open control center";
 
-        "Mod+I".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "sessionMenu"
-          "toggle"
-        ];
+        "Mod+I".action = noctalia-ipc "sessionMenu" "toggle";
         "Mod+I".hotkey-overlay.title = "Open session menu";
 
-        "Mod+L".action.spawn = [
-          "noctalia-shell"
-          "ipc"
-          "call"
-          "sessionMenu"
-          "lockAndSuspend"
-        ];
+        "Mod+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
         "Mod+L".hotkey-overlay.title = "Lock and suspend";
 
-        "Print".action.screenshot = [ ];
-        "Mod+Print".action.screenshot-screen = [ ];
+        "Print".action = capture-script "0";
+        "Mod+Print".action = capture-script "1";
+
+        "Mod+F2".action = capture-script "2";
+        "Mod+F3".action = capture-script "3";
+        "Mod+F4".action = capture-script "stop";
 
         "Mod+C".action = close-window;
         "Mod+H".action = maximize-column;

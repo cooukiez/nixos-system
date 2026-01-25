@@ -26,13 +26,25 @@
     ];
   };
 
+  dconf.settings = {
+    "org/gnome/desktop/wm/preferences" = {
+      button-layout = lib.mkForce ":";
+    };
+    "org/gnome/desktop/interface" = {
+      color-scheme = lib.mkForce "prefer-dark";
+    };
+    "com/github/stunkymonkey/nautilus-open-any-terminal" = {
+      terminal = "kitty";
+    };
+  };
+
   # fix for vscode keyring
   home.file.".vscode/argv.json".text = ''
-        {
-          "password-store": "gnome-libsecret",
-    	    "enable-crash-reporter": true,
-    	    "enable-crash-reporter": true
-        }
+    {
+      "password-store": "gnome-libsecret",
+      "enable-crash-reporter": true,
+      "enable-crash-reporter": true
+    }
   '';
 
   services.gpg-agent = {
