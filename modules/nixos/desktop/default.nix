@@ -8,13 +8,6 @@
     theme = "sddm-astronaut-theme";
   };
 
-  services.logind = {
-    settings = {
-      IdleAction = "suspend";
-      IdleActionSec = "15min";
-    };
-  };
-
   # enable plasma, adds desktop entries to sddm
   services.desktopManager.plasma6 = {
     enable = true;
