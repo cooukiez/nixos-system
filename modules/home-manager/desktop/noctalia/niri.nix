@@ -260,8 +260,8 @@
         "Mod+I".action = noctalia-ipc "sessionMenu" "toggle";
         "Mod+I".hotkey-overlay.title = "Open session menu";
 
-        "Mod+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
-        "Mod+L".hotkey-overlay.title = "Lock and suspend";
+        "Mod+Shift+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
+        "Mod+Shift+L".hotkey-overlay.title = "Lock and suspend";
 
         "Print".action = capture-script "0";
         "Mod+Print".action = capture-script "1";

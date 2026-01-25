@@ -13,14 +13,6 @@
     excludePackages = with pkgs; [ xterm ];
   };
 
-  /*
-    services.logind = {
-      enable = true;
-      idleAction = "suspend";
-      idleActionSec = "15m";
-    };
-  */
-
   xdg = {
     portal = {
       enable = true;
