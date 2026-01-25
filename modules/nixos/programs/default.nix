@@ -91,6 +91,7 @@ in
     zathuraPkgs.zathura_core
     zathuraPkgs.zathura_pdf_mupdf
     imv
+    gpu-screen-recorder-gtk
 
     # nautilus for niri
     nautilus
@@ -132,6 +133,8 @@ in
   };
 
   programs.neovim.enable = true;
+
+  programs.gpu-screen-recorder.enable = true;
 
   programs.nh = {
     enable = true;

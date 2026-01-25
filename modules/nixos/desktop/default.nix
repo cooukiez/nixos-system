@@ -60,9 +60,6 @@
     package = pkgs.niri-unstable;
   };
 
-  # enable screen recorder for noctalia
-  programs.gpu-screen-recorder.enable = true;
-
   # disable some kde services
   systemd.user.services = {
     "app-org.kde.discover.notifier@autostart".enable = false;
