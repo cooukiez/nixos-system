@@ -3,6 +3,6 @@
   programs.zathura.enable = true;
 
   programs.zathura.options = {
-    selection = "clipboard";
+    selection-clipboard = "clipboard";
   };
 }
