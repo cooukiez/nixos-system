@@ -10,13 +10,29 @@
     kitty
     mission-center
     apostrophe
+    nautilus
     gnome-calendar
+    gnome-contacts
     menulibre
     gedit
     seahorse
     libreoffice-fresh # libreoffice-fresh gtk version
     showtime
-    menulibre
+    #menulibre
+    sly
+    gnome-maps
+    gnome-frog
+    gnome-notes
+    gnome-music
+    gnome-photos
+    gnome-graphs
+    gnome-clocks
+    gnome-weather
+    #gnome-commander
+    gnome-text-editor
+    gnome-font-viewer
+    gnome-calculator
+    loupe
 
     glib
     gsettings-desktop-schemas
@@ -33,7 +49,7 @@
     brightnessctl
 
     # compatibility
-    nautilus
+    gnome-online-accounts
 
     # for debugging
     nwg-look

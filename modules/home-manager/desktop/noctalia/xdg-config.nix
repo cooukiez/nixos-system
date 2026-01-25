@@ -1,16 +1,44 @@
 { config, pkgs, ... }:
+let
+  disabled_desktop_entry = ''
+    [Desktop Entry]
+    Type=Application
+    Name=disabled-application
+    Exec=false
+    NoDisplay=true
+  '';
+in
 {
   xdg = {
     enable = true;
 
-    portal.config = {
-      common = {
-        default = [
-          "gtk"
-        ];
-        "org.freedesktop.impl.portal.Secret" = [
-          "gnome-keyring"
-        ];
+    autostart = {
+      enable = true;
+      readOnly = true;
+      entries = [ ];
+    };
+
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+
+      configPackages = with pkgs; [
+        #gnome.gnome-session
+      ];
+
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gnome
+      ];
+
+      config = {
+        common = {
+          default = [
+            "gtk"
+          ];
+          "org.freedesktop.impl.portal.Secret" = [
+            "gnome-keyring"
+          ];
+        };
       };
     };
 
@@ -25,17 +53,17 @@
         "application/pdf" = [ "org.pwmt.zathura.desktop" ];
 
         # images
-        "image/png" = [ "imv.desktop" ];
-        "image/jpeg" = [ "imv.desktop" ];
-        "image/webp" = [ "imv.desktop" ];
-        "image/gif" = [ "imv.desktop" ];
-        "image/bmp" = [ "imv.desktop" ];
+        "image/png" = [ "loupe.desktop" ];
+        "image/jpeg" = [ "loupe.desktop" ];
+        "image/webp" = [ "loupe.desktop" ];
+        "image/gif" = [ "loupe.desktop" ];
+        "image/bmp" = [ "loupe.desktop" ];
 
         # videos
-        "video/mp4" = [ "mpv.desktop" ];
-        "video/x-matroska" = [ "mpv.desktop" ];
-        "video/webm" = [ "mpv.desktop" ];
-        "video/x-msvideo" = [ "mpv.desktop" ];
+        "video/mp4" = [ "showtime.desktop" ];
+        "video/x-matroska" = [ "showtime.desktop" ];
+        "video/webm" = [ "showtime.desktop" ];
+        "video/x-msvideo" = [ "showtime.desktop" ];
 
         # directories
         "inode/directory" = [ "thunar.desktop" ];
@@ -46,9 +74,15 @@
         "text/html" = [ "firefox.desktop" ];
       };
     };
-
-    desktopEntries."kmenuedit.desktop" = {
-      noDisplay = true;
-    };
   };
+
+  xdg.dataFile."applications/kdesystemsettings.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.kmenuedit.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/systemsettings.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.kinfocenter.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.plasma-systemmonitor.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.plasma.emojier.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/kwalletmanager5-kwalletd.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.kwalletmanager.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.drkonqi.coredump.gui.desktop".text = disabled_desktop_entry;
 }

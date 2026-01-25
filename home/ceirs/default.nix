@@ -47,7 +47,7 @@ in
       inputs.niri.overlays.niri
 
       (self: super: {
-        gnome = super.gnome.overrideScope' (
+        gnome = super.gnome.overrideScope (
           gself: gsuper: {
             nautilus = gsuper.nautilus.overrideAttrs (nsuper: {
               # Use super.gst_all_1 here to pull it from the package set
@@ -112,9 +112,6 @@ in
 
   # enable hyprland, currently using niri so disabled
   # wayland.windowManager.hyprland.enable = true;
-
-  # disable plasma
-  programs.plasma.enable = false;
 
   # nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
