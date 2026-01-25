@@ -47,6 +47,7 @@
     # controls
     playerctl
     brightnessctl
+    wlinhibit
 
     # compatibility
     gnome-online-accounts
