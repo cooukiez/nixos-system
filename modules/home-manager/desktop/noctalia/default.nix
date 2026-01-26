@@ -7,51 +7,11 @@
 {
   imports = [
     ./niri.nix
+    ./noctalia.nix
     ./packages.nix
     ./style.nix
     ./xdg-config.nix
   ];
-
-  programs.noctalia-shell = {
-    enable = true;
-    systemd.enable = true;
-  };
-
-  services.gnome-keyring = {
-    enable = true;
-    components = [
-      "pkcs11"
-      "secrets"
-      "ssh"
-    ];
-  };
-
-  dconf.settings = {
-    "org/gnome/desktop/wm/preferences" = {
-      button-layout = lib.mkForce ":";
-    };
-    "org/gnome/desktop/interface" = {
-      color-scheme = lib.mkForce "prefer-dark";
-    };
-    "com/github/stunkymonkey/nautilus-open-any-terminal" = {
-      terminal = "kitty";
-    };
-  };
-
-  # fix for vscode keyring
-  home.file.".vscode/argv.json".text = ''
-    {
-      "password-store": "gnome-libsecret",
-      "enable-crash-reporter": true,
-      "enable-crash-reporter": true
-    }
-  '';
-
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-    enableZshIntegration = true;
-  };
 
   systemd.user.services.noctalia = {
     Unit = {
@@ -69,5 +29,20 @@
     Install = {
       WantedBy = [ "graphical-session.target" ];
     };
+  };
+
+  services.gnome-keyring = {
+    enable = true;
+    components = [
+      "pkcs11"
+      "secrets"
+      "ssh"
+    ];
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    enableZshIntegration = true;
   };
 }

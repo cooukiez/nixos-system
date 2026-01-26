@@ -86,6 +86,10 @@
     playerctl
     brightnessctl
     inetutils
+    rustup
+    gcc
+    clang
+    ventoy
 
     # from flakes
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default

@@ -4,10 +4,12 @@
   plugins.neo-tree = {
     enable = true;
 
-    filesystem = {
-      window = {
-        mappings = {
-          "<leader>e" = "close_window";
+    settings = {
+      filesystem = {
+        window = {
+          mappings = {
+            "<leader>e" = "close_window";
+          };
         };
       };
     };

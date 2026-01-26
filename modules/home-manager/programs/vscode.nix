@@ -1,5 +1,14 @@
 { pkgs, userConfig, ... }:
 {
+  # fix for vscode keyring
+  home.file.".vscode/argv.json".text = ''
+    {
+      "password-store": "gnome-libsecret",
+      "enable-crash-reporter": true,
+      "enable-crash-reporter": true
+    }
+  '';
+
   programs.vscode = {
     enable = true;
 
