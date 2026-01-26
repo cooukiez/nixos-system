@@ -10,4 +10,6 @@
     ./zen-browser.nix
     ./zsh.nix
   ];
+
+  programs.nvim.enable = true;
 }
