@@ -27,23 +27,27 @@
     kdePackages.khelpcenter
   ];
 
+  # noctalia calendar support
+  services.gnome.evolution-data-server.enable = true;
+
   environment.systemPackages = with pkgs; [
     # kde package for configuration of sddm
     kdePackages.sddm-kcm
 
     # deprecated
     /*
-    (pkgs.runCommand "lvl-sddm-theme" { } ''
-      mkdir -p $out/share/sddm/themes
-      cp -r ${./lvl-sddm-theme} $out/share/sddm/themes/lvl-sddm-theme
-    '')
+      (pkgs.runCommand "lvl-sddm-theme" { } ''
+        mkdir -p $out/share/sddm/themes
+        cp -r ${./lvl-sddm-theme} $out/share/sddm/themes/lvl-sddm-theme
+      '')
     */
 
     # new sddm theme
     sddm-astronaut
 
     # noctalia packages
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override
+    { calendarSupport = true; }
   ];
 
   # enable hyprland
