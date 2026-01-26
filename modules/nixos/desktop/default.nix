@@ -46,8 +46,9 @@
     sddm-astronaut
 
     # noctalia packages
-    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override
-    { calendarSupport = true; }
+    (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+      calendarSupport = true;
+    })
   ];
 
   # enable hyprland

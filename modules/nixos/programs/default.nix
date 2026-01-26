@@ -93,6 +93,7 @@ in
     zathuraPkgs.zathura_pdf_mupdf
     imv
     gpu-screen-recorder-gtk
+    meld
 
     # nautilus for niri
     nautilus
