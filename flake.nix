@@ -48,9 +48,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nvim config flake
-    nvim = {
-      url = "path:./nvim";
+    # nixos vim config with nixvim
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

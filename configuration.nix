@@ -54,6 +54,7 @@ in
 
     inputs.niri.nixosModules.niri
     inputs.stylix.nixosModules.stylix
+    inputs.nixvim.nixosModules.default
     inputs.copyparty.nixosModules.default
     inputs.agenix.nixosModules.default
     inputs.spicetify-nix.nixosModules.default

@@ -30,6 +30,7 @@ in
     inputs.niri.homeModules.niri
     inputs.noctalia.homeModules.default
     inputs.stylix.homeModules.stylix
+    inputs.nixvim.homeModules.default
   ];
 
   nixpkgs = {
