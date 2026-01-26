@@ -38,7 +38,7 @@
     ### hardware ###
     apktool
     arduino
-    bytecode-viewer
+    #bytecode-viewer
     dex2jar
     enjarify
 

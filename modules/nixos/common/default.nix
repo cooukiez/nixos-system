@@ -82,10 +82,10 @@
     cmake
     stress-ng
     bench
-    vnstat
     dmidecode
     playerctl
     brightnessctl
+    inetutils
 
     # from flakes
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default

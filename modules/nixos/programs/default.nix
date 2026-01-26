@@ -78,6 +78,7 @@ in
     firestarter
     geekbench
     sxiv
+    affine
     bitwarden-desktop
     bitwarden-cli
     jetbrains.rust-rover
