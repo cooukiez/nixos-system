@@ -1,7 +1,7 @@
 { pkgs, userConfig, ... }:
 {
   imports = [
-    ./nixvim
+    ./nvim
 
     ./firefox.nix
     ./git.nix
@@ -12,6 +12,4 @@
     ./zen-browser.nix
     ./zsh.nix
   ];
-
-  nvim.enable = true;
 }
