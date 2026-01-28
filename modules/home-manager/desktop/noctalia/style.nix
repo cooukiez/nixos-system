@@ -28,12 +28,12 @@
       base06 = "#999999";
       base07 = "#C1C1C1";
 
-      base08 = "#3485E3";
+      base08 = "#3584E4";
       base09 = "#AAAAAA";
       base0A = "#70A9EB";
       base0B = "#D6E6F9";
       base0C = "#AAAAAA";
-      base0D = "#3485E3";
+      base0D = "#3584E4";
       base0E = "#999999";
       base0F = "#444444";
     };

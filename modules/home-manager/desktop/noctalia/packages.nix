@@ -38,7 +38,7 @@
     adw-gtk3
     adwaita-qt6
     kdePackages.qt6ct
-    gnome-themes-extra
+    # gnome-themes-extra
     adwaita-icon-theme
     gsettings-desktop-schemas
 

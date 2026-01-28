@@ -34,19 +34,12 @@ in
     path = [ pkgs.flatpak ];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
-  };
 
-  # flatpak apps
-  systemd.services.flatpak-apps = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "flatpak-flathub.service" ];
-    requires = [ "flatpak-flathub.service" ];
-    path = [ pkgs.flatpak ];
-    script = ''
       flatpak install -y --system flathub com.github.vikdevelop.photopea_app
       flatpak install -y --system flathub com.leinardi.gst
       flatpak install -y --system flathub be.alexandervanhee.gradia
+      flatpak install -y --system flathub edu.mit.Scratch
+      flatpak install -y --system flathub org.turbowarp.TurboWarp
     '';
   };
 
@@ -94,6 +87,7 @@ in
     imv
     gpu-screen-recorder-gtk
     meld
+    signal-desktop
 
     # nautilus for niri
     nautilus

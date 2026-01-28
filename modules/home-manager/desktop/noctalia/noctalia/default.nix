@@ -28,6 +28,9 @@
     enable = true;
     systemd.enable = true;
 
+    plugins = import ./plugins.nix;
+    pluginSettings = import ./plugin-settings.nix;
+
     colors = {
       mPrimary = "#ffffff";
       mOnPrimary = "#1b1b1b";

@@ -90,6 +90,7 @@
     gcc
     clang
     ventoy
+    ripgrep
 
     # from flakes
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
