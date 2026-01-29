@@ -5,7 +5,6 @@
   on 2026-01-01
 */
 
-
 { pkgs, ... }:
 {
   # graphics hardware configuration
@@ -95,12 +94,6 @@
   # battery
   services.upower.enable = true;
 
-  # touchpad services
+  # enable touchpad and other input functionality
   services.libinput.enable = true;
-
-  # printing services
-  services.printing.enable = true;
-
-  # location services
-  services.locate.enable = true;
 }

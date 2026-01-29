@@ -19,3 +19,24 @@ let
     sha256 = "sha256-4x5bMIgwNIp9nxuCHWLLNvWG2zuviyEOyCZgVLRZ5W4=";
   };
 in
+{
+  environment.systemPackages = with pkgs; [
+    # nautilus from gnome
+    nautilus
+    nautilus-python
+    nautilus-open-any-terminal
+    code-nautilus
+  ];
+
+  # thunar file manager
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
+      thunar-vcs-plugin
+      thunar-dropbox-plugin
+      thunar-media-tags-plugin
+    ];
+  };
+}

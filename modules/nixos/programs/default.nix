@@ -5,7 +5,6 @@
   on 2026-01-25
 */
 
-
 {
   pkgs,
   inputs,
@@ -25,6 +24,17 @@ in
     ./network-services.nix
     ./penetration-testing.nix
   ];
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/etc/nixos"; # sets NH_OS_FLAKE variable for you
+  };
+
+  # running gnome apps outside of gnome
+  programs.dconf.enable = true;
+  services.gvfs.enable = true;
 
   # SUID wrappers
   programs.mtr.enable = true;
@@ -52,8 +62,6 @@ in
 
   environment.systemPackages = with pkgs; [
     hardinfo2
-    vlc
-    mpv
     pavucontrol
     gimp-with-plugins
     krita
@@ -62,25 +70,22 @@ in
     google-chrome
     bluez-tools
     homebank
-    sioyek
     discord
     legcord
     hardcode-tray
     renderdoc
     github-desktop
     vscode
-    spotify
-    strawberry
     qbittorrent-enhanced
     qbittorrent-cli
     intel-gpu-tools
     furmark
     firestarter
     geekbench
-    sxiv
     affine
     bitwarden-desktop
     bitwarden-cli
+    gpu-screen-recorder
     jetbrains.rust-rover
     jetbrains.webstorm
     jetbrains.pycharm
@@ -88,104 +93,15 @@ in
     jetbrains.idea
     jetbrains.clion
     jetbrains-toolbox
-    zathura
-    zathuraPkgs.zathura_core
-    zathuraPkgs.zathura_pdf_mupdf
-    imv
     gpu-screen-recorder-gtk
     meld
     signal-desktop
     gephi
-
-    # nautilus for niri
-    nautilus
-    nautilus-python
-    nautilus-open-any-terminal
-    code-nautilus
 
     # from flakes
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
     inputs.honklet.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
-  # enable programs here
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox;
-
-    languagePacks = [
-      "en-US"
-      "de"
-    ];
-
-    nativeMessagingHosts.packages = [
-      pkgs.kdePackages.plasma-browser-integration
-    ];
-
-    preferences = {
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
-    };
-
-    policies = {
-      DisableTelemetry = true;
-    };
-  };
-
-  programs.thunderbird = {
-    enable = true;
-    package = pkgs.unstable.thunderbird;
-  };
-
   programs.neovim.enable = true;
-
-  programs.gpu-screen-recorder.enable = true;
-
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/etc/nixos"; # sets NH_OS_FLAKE variable for you
-  };
-
-  # running gnome apps outside of gnome
-  # (nautilus)
-  programs.dconf.enable = true;
-  services.gvfs.enable = true;
-
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-      thunar-vcs-plugin
-      thunar-dropbox-plugin
-      thunar-media-tags-plugin
-    ];
-  };
-
-  programs.spicetify =
-    let
-      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-    in
-    {
-      enable = true;
-
-      enabledExtensions = with spicePkgs.extensions; [
-        adblock
-        # hidePodcasts
-        shuffle
-      ];
-
-      enabledCustomApps = with spicePkgs.apps; [
-        marketplace
-        lyricsPlus
-        newReleases
-        # ncsVisualizer
-      ];
-
-      enabledSnippets = with spicePkgs.snippets; [
-        rotatingCoverart
-        # pointer
-      ];
-    };
 }

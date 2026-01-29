@@ -5,7 +5,6 @@
   on 2026-01-25
 */
 
-
 {
   lib,
   pkgs,
@@ -76,7 +75,7 @@ in
     '';
   };
 
-  # copyparty
+  # copyparty, fast file sharing server
   services.copyparty = {
     enable = true;
 
@@ -89,8 +88,6 @@ in
 
     accounts = {
       pm = {
-        # provide the path to a file containing the password, keeping it out of /nix/store
-        # must be readable by the copyparty service user
         passwordFile = "${copyparty_pm_password}";
       };
     };
@@ -100,9 +97,7 @@ in
     };
 
     volumes = {
-      # volume at "/" (the webroot)
       "/" = {
-        # share the contents of "/srv/copyparty"
         path = "/srv/copyparty";
 
         # see `copyparty --help-accounts`
@@ -129,7 +124,6 @@ in
       };
     };
 
-    # you may increase the open file limit for the process
     openFilesLimit = 8192;
   };
 }
