@@ -1,8 +1,8 @@
 /*
-  modules/home-manager/programs/zen-browser.nix
+  modules/home-manager/programs/browsers/zen-browser.nix
 
   created by ludw
-  on 2026-01-06
+  on 2026-01-29
 */
 
 {

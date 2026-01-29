@@ -2,7 +2,7 @@
   modules/home-manager/desktop/noctalia/style.nix
 
   created by ludw
-  on 2026-01-25
+  on 2026-01-29
 */
 
 {

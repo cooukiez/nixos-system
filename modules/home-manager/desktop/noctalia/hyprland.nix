@@ -2,7 +2,7 @@
   modules/home-manager/desktop/noctalia/hyprland.nix
 
   created by ludw
-  on 2026-01-10
+  on 2026-01-29
 */
 
 { config, pkgs, ... }:

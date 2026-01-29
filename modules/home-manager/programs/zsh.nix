@@ -2,7 +2,7 @@
   modules/home-manager/programs/zsh.nix
 
   created by ludw
-  on 2026-01-08
+  on 2026-01-29
 */
 
 {

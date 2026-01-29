@@ -2,7 +2,7 @@
   modules/home-manager/programs/nvim/lsp.nix
 
   created by ludw
-  on 2026-01-26
+  on 2026-01-29
 */
 
 {

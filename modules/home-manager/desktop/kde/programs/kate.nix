@@ -2,7 +2,7 @@
   modules/home-manager/desktop/kde/programs/kate.nix
 
   created by ludw
-  on 2026-01-07
+  on 2026-01-29
 */
 
 { pkgs, userConfig, ... }:

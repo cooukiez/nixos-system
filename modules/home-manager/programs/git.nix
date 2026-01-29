@@ -2,7 +2,7 @@
   modules/home-manager/programs/git.nix
 
   created by ludw
-  on 2026-01-04
+  on 2026-01-29
 */
 
 { pkgs, userConfig, ... }:
