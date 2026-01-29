@@ -36,26 +36,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # noctalia shell written in quickshell
+    # home-manager / noctalia shell written in quickshell
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # declarative kde plasma manager
+    # home-manager / declarative kde plasma manager
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
 
-    # stylix, configure appearance for apps
+    # home-manager / stylix, configure appearance for apps
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # nixos vim config with nixvim
+    # home-manager / nixos vim config with nixvim
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -5,10 +5,12 @@
   on 2026-01-01
 */
 
-
-{ pkgs, ... }:
 {
-  # xserver configuration
+  pkgs,
+  ...
+}:
+{
+  # xserver / x11 configuration
   services.xserver = {
     enable = true;
 
@@ -21,6 +23,17 @@
     excludePackages = with pkgs; [ xterm ];
   };
 
+  # wayland configuration
+  programs.xwayland.enable = true;
+
+  # system packages
+  environment.systemPackages = with pkgs; [
+    # wayland utilities
+    wayland-utils
+    wlinhibit
+  ];
+
+  # xdg desktop portal
   xdg = {
     portal = {
       enable = true;
@@ -34,21 +47,11 @@
     icons.enable = true;
   };
 
-  # wayland configuration
-  programs.xwayland.enable = true;
-
-  # required system packages
-  environment.systemPackages = with pkgs; [
-    # X11 utilities
-    xclip
-
-    # wayland utilities
-    wayland-utils
-    wl-clipboard
-    cliphist # wayland clipboard history manager
-    wf-recorder
-    wlinhibit
-    grim
-    slurp
+  # fonts configuration
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.meslo-lg
+    roboto
+    inter
   ];
 }

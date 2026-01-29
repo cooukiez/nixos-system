@@ -5,7 +5,6 @@
   on 2026-01-25
 */
 
-
 # system configuration file
 {
   inputs,
@@ -41,28 +40,18 @@ let
   ];
 in
 {
-  # import other nixos modules here
   imports = [
-    # use modules your own flake exports (from modules/nixos):
-    # inputs.self.nixosModules.example
-
-    # modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-
-    # split up your configuration and import pieces of it here:
-    # ./users.nix
-
-    # import generated (nixos-generate-config) hardware configuration
+    # import generated hardware configuration
     ./hardware-configuration.nix
 
+    # import other system configuration modules
     inputs.self.nixosModules.common
     inputs.self.nixosModules.desktop
     inputs.self.nixosModules.programs
 
+    # todo: hardware optimizations
+
     inputs.niri.nixosModules.niri
-    inputs.stylix.nixosModules.stylix
-    inputs.nixvim.nixosModules.default
     inputs.copyparty.nixosModules.default
     inputs.agenix.nixosModules.default
     inputs.spicetify-nix.nixosModules.default

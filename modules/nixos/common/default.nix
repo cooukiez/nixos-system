@@ -5,7 +5,6 @@
   on 2026-01-16
 */
 
-
 {
   config,
   pkgs,
@@ -18,12 +17,6 @@
     ./hardware.nix
   ];
 
-  # enable firmware update services
-  services.fwupd.enable = true;
-
-  # enable devmon for device management
-  services.devmon.enable = true;
-
   services.dbus.enable = true;
 
   # common container config
@@ -34,9 +27,6 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-
-  # enable zsh
-  programs.zsh.enable = true;
 
   environment.sessionVariables = {
     # enable wayland support in chromium and electron based applications
@@ -100,6 +90,12 @@
     clang
     ventoy
     ripgrep
+    xclip
+    wl-clipboard
+    cliphist
+    wf-recorder
+    grim
+    slurp
 
     # from flakes
     inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -131,24 +127,11 @@
     libsForQt5.qt5.qtmultimedia
     dotnetCorePackages.sdk_9_0-bin
 
-    # wine compatibilty
-    wineWowPackages.stable
-    winetricks
-    wineWowPackages.waylandFull
-
     # nixos related
     home-manager
     nixfmt-rfc-style
     nixfmt-tree
     nix-prefetch-git
     nix-search
-  ];
-
-  # fonts configuration
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.meslo-lg
-    roboto
-    inter
   ];
 }

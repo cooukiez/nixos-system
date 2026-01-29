@@ -7,6 +7,12 @@
 
 { pkgs, ... }:
 {
+  # power profiles
+  services.power-profiles-daemon.enable = true;
+
+  # battery
+  services.upower.enable = true;
+
   # graphics hardware configuration
   hardware.graphics = {
     enable = true;
@@ -31,25 +37,42 @@
       support32Bit = true;
     };
 
-    jack.enable = true;
+    # opens UDP ports 6001-6002
+    raopOpenFirewall = true;
 
-    # bluetooth enhancements for pipewire
-    wireplumber.extraConfig.bluetoothEnhancements = {
-      "monitor.bluez.properties" = {
-        "bluez5.enable-sbc-xq" = true;
-        "bluez5.enable-msbc" = true;
-        "bluez5.enable-hw-volume" = true;
-        "bluez5.roles" = [
-          "hsp_hs"
-          "hsp_ag"
-          "hfp_hf"
-          "hfp_ag"
+    extraConfig.pipewire = {
+      # airplay configuration
+      "10-airplay" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-raop-discover";
+
+            # increase the buffer size if dropouts/glitches
+            # args = {
+            #   "raop.latency.ms" = 500;
+            # };
+          }
         ];
       };
+
+      # disable system bell
+      "99-silent-bell.conf" = {
+        "context.properties" = {
+          "module.x11.bell" = false;
+        };
+      };
+
+      # todo: fix bluetooth codecs here
+      # see https://wiki.nixos.org/wiki/PipeWire
     };
+
+    jack.enable = true;
   };
 
-  # bluetooth configuration
+  # allow pipewire real-time scheduling
+  security.rtkit.enable = true;
+
+  # bluetooth fixing
   boot.extraModprobeConfig = ''
     # keep bluetooth coexistence disabled for better audio stability
     options iwlwifi bt_coex_active=0
@@ -70,6 +93,7 @@
     options iwlmvm power_scheme=1
   '';
 
+  # bluetooth configuration
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -80,6 +104,8 @@
         # when enabled other devices can connect faster to us
         # the tradeoff is increased power consumption
         FastConnectable = true;
+        # enable A2DP audio sink
+        Enable = "Source,Sink,Media,Socket";
       };
       Policy = {
         # enable all controllers when they are found
@@ -87,12 +113,6 @@
       };
     };
   };
-
-  # power profiles
-  services.power-profiles-daemon.enable = true;
-
-  # battery
-  services.upower.enable = true;
 
   # enable touchpad and other input functionality
   services.libinput.enable = true;

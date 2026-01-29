@@ -5,13 +5,12 @@
   on 2026-01-22
 */
 
-
 {
   pkgs,
   ...
 }:
 {
-  # https://github.com/NixOS/nixpkgs/issues/81418
+  # list from https://github.com/NixOS/nixpkgs/issues/81418
   environment.systemPackages = with pkgs; [
     ### exploitation ###
     commix

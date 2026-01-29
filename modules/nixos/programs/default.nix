@@ -10,19 +10,14 @@
   inputs,
   ...
 }:
-let
-  # fix this and put in nautilus extensions
-  _nautilusBackspaceSrc = pkgs.fetchFromGitHub {
-    owner = "TheWeirdDev";
-    repo = "nautilus-backspace";
-    rev = "main";
-    sha256 = "sha256-4x5bMIgwNIp9nxuCHWLLNvWG2zuviyEOyCZgVLRZ5W4=";
-  };
-in
 {
   imports = [
+    ./file-explorers.nix
+    ./media.nix
     ./network-services.nix
     ./penetration-testing.nix
+    ./services.nix
+    ./web.nix
   ];
 
   programs.nh = {
@@ -32,10 +27,6 @@ in
     flake = "/etc/nixos"; # sets NH_OS_FLAKE variable for you
   };
 
-  # running gnome apps outside of gnome
-  programs.dconf.enable = true;
-  services.gvfs.enable = true;
-
   # SUID wrappers
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -43,22 +34,34 @@ in
     enableSSHSupport = true;
   };
 
-  services.flatpak.enable = true;
-  systemd.services.flatpak-flathub = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    path = [ pkgs.flatpak ];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  # enable flatpak and install apps from flathub
+  services.flatpak = {
+    enable = true;
+    remotes = [
+      {
+        name = "flathub";
+        location = "https://flathub.org/repo/flathub.flatpakrepo";
+      }
+    ];
 
-      flatpak install -y --system flathub com.github.vikdevelop.photopea_app
-      flatpak install -y --system flathub com.leinardi.gst
-      flatpak install -y --system flathub be.alexandervanhee.gradia
-      flatpak install -y --system flathub edu.mit.Scratch
-      flatpak install -y --system flathub org.turbowarp.TurboWarp
-    '';
+    # declare packages declaratively
+    services.flatpak.packages = [
+      "com.github.vikdevelop.photopea_app"
+      "com.leinardi.gst"
+      "be.alexandervanhee.gradia"
+      "edu.mit.Scratch"
+      "org.turbowarp.TurboWarp"
+    ];
+
+    services.flatpak.update.onActivation = true;
   };
+
+  # running gnome apps outside of gnome
+  programs.dconf.enable = true;
+  services.gvfs.enable = true;
+
+  # enable zsh as shell
+  programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
     hardinfo2
@@ -67,17 +70,11 @@ in
     krita
     inkscape
     icon-slicer
-    google-chrome
     bluez-tools
     homebank
-    discord
-    legcord
     hardcode-tray
     renderdoc
     github-desktop
-    vscode
-    qbittorrent-enhanced
-    qbittorrent-cli
     intel-gpu-tools
     furmark
     firestarter
@@ -86,6 +83,11 @@ in
     bitwarden-desktop
     bitwarden-cli
     gpu-screen-recorder
+    gpu-screen-recorder-gtk
+    meld
+    gephi
+
+    # code editors / IDE
     jetbrains.rust-rover
     jetbrains.webstorm
     jetbrains.pycharm
@@ -93,15 +95,17 @@ in
     jetbrains.idea
     jetbrains.clion
     jetbrains-toolbox
-    gpu-screen-recorder-gtk
-    meld
-    signal-desktop
-    gephi
+    vscode
+
+    # wine compatibilty
+    wineWowPackages.stable
+    winetricks
+    wineWowPackages.waylandFull
 
     # from flakes
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
     inputs.honklet.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
+  # enalbe nvim console editor
   programs.neovim.enable = true;
 }
