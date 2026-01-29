@@ -11,6 +11,7 @@
   disko.devices.disk = {
     lvl-disk = {
       type = "disk";
+
       # todo: do not hardcode this
       device = "/dev/nvme0n1";
       content = {
@@ -27,13 +28,11 @@
               mountOptions = [ "umask=0077" ];
             };
           };
-
           swap = {
             type = "8200";
             size = "32G";
             label = "swap";
           };
-
           nixos = {
             size = "100%";
             label = "nixos";

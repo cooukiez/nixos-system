@@ -5,17 +5,30 @@
   on 2026-01-02
 */
 
-
-{ pkgs }:
-
+{
+  stdenv,
+  lib,
+  pkg-config,
+  meson,
+  ninja,
+  gobject-introspection,
+  gtk3,
+  librsvg,
+  imagemagick,
+  python3,
+  fetchFromGitHub,
+  makeWrapper,
+  wrapGAppsHook3,
+  inkscape,
+}:
 let
-  pythonEnv = pkgs.python3.withPackages (ps: [ ps.pygobject3 ]);
+  pythonEnv = python3.withPackages (ps: [ ps.pygobject3 ]);
 in
-pkgs.stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "hardcode-tray";
   version = "4.3";
 
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "bilelmoussaoui";
     repo = "Hardcode-Tray";
     rev = "v4.3";
@@ -23,20 +36,20 @@ pkgs.stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [
-    pkgs.meson
-    pkgs.ninja
-    pkgs.pkg-config
-    pkgs.gobject-introspection
-    pkgs.makeWrapper
-    pkgs.wrapGAppsHook3
+    meson
+    ninja
+    pkg-config
+    gobject-introspection
+    makeWrapper
+    wrapGAppsHook3
   ];
 
   buildInputs = [
     pythonEnv
-    pkgs.gtk3
-    pkgs.librsvg
-    pkgs.inkscape
-    pkgs.imagemagick
+    gtk3
+    librsvg
+    inkscape
+    imagemagick
   ];
 
   postInstall = ''
@@ -45,7 +58,7 @@ pkgs.stdenv.mkDerivation rec {
       --set PYTHONPATH ${pythonEnv}/${pythonEnv.sitePackages}
   '';
 
-  meta = with pkgs.lib; {
+  meta = with lib; {
     description = "Fixes hardcoded tray icons in Linux.";
     homepage = "https://github.com/bilelmoussaoui/Hardcode-Tray";
     license = licenses.gpl3;

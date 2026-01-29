@@ -1,4 +1,13 @@
+/*
+  modules/nixos/programs/web.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
+  inputs,
+  hostSystem,
   pkgs,
   ...
 }:
@@ -15,8 +24,7 @@
     # torrenting
     qbittorrent-enhanced
     qbittorrent-cli
-
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.twilight
+    inputs.zen-browser.packages.${hostSystem}.twilight
   ];
 
   programs.firefox = {
@@ -27,11 +35,9 @@
       "en-US"
       "de"
     ];
-
     nativeMessagingHosts.packages = [
       pkgs.kdePackages.plasma-browser-integration
     ];
-
     preferences = {
       "widget.use-xdg-desktop-portal.file-picker" = 1;
     };

@@ -5,8 +5,13 @@
   on 2026-01-01
 */
 
-{ pkgs, ... }:
 {
+  pkgs,
+  ...
+}:
+{
+  # todo: hardware optimizations
+
   # power profiles
   services.power-profiles-daemon.enable = true;
 
@@ -31,7 +36,6 @@
     enable = true;
     audio.enable = true;
     pulse.enable = true;
-
     alsa = {
       enable = true;
       support32Bit = true;
@@ -39,14 +43,12 @@
 
     # opens UDP ports 6001-6002
     raopOpenFirewall = true;
-
     extraConfig.pipewire = {
       # airplay configuration
       "10-airplay" = {
         "context.modules" = [
           {
             name = "libpipewire-module-raop-discover";
-
             # increase the buffer size if dropouts/glitches
             # args = {
             #   "raop.latency.ms" = 500;
@@ -65,7 +67,6 @@
       # todo: fix bluetooth codecs here
       # see https://wiki.nixos.org/wiki/PipeWire
     };
-
     jack.enable = true;
   };
 
@@ -76,19 +77,14 @@
   boot.extraModprobeConfig = ''
     # keep bluetooth coexistence disabled for better audio stability
     options iwlwifi bt_coex_active=0
-
     # enable software crypto (helps coexistence sometimes)
     options iwlwifi swcrypto=1
-
     # disable power saving on wifi module to reduce radio state changes that might disrupt bluetooth
     options iwlwifi power_save=0
-
     # disable unscheduled automatic power save delivery (U-APSD) to improve audio stability
     options iwlwifi uapsd_disable=1
-
     # disable D0i3 power state to avoid problematic power transitions
     options iwlwifi d0i3_disable=1
-
     # set power scheme for performance (iwlmvm)
     options iwlmvm power_scheme=1
   '';

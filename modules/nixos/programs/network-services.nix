@@ -6,9 +6,9 @@
 */
 
 {
-  lib,
-  pkgs,
   inputs,
+  hostSystem,
+  pkgs,
   ...
 }:
 let
@@ -18,8 +18,10 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    # enable copyparty from flake
+    # enable copyparty standalone package
     pkgs.copyparty
+    # age encrypted secrets management
+    inputs.agenix.packages.${hostSystem}.default
   ];
 
   # openssh
@@ -41,9 +43,6 @@ in
     openFirewall = true;
   };
 
-  # network statistics
-  services.vnstat.enable = true;
-
   # ftp server
   services.vsftpd = {
     enable = true;
@@ -51,8 +50,10 @@ in
     # local users
     localUsers = true;
     writeEnable = true;
+
     chrootlocalUser = true;
     allowWriteableChroot = true;
+
     localRoot = null; # optional, keep home directory as root
 
     # anonymous access
@@ -66,9 +67,7 @@ in
     extraConfig = ''
       listen=YES
       listen_ipv6=NO
-
       local_umask=022
-
       pasv_enable=YES
       pasv_min_port=30000
       pasv_max_port=31000
@@ -78,7 +77,6 @@ in
   # copyparty, fast file sharing server
   services.copyparty = {
     enable = true;
-
     user = "copyparty";
     group = "copyparty";
 

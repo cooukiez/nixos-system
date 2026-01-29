@@ -6,9 +6,7 @@
 */
 
 {
-  config,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -53,79 +51,75 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
-    # core / cli utilities
+    # core / cli, sorted alphabetically
+    bench
+    bottom
+    brightnessctl
+    btop
+    cifs-utils
+    clang
+    cliphist
+    cmake
     coreutils
-    vim
-    wget
-    git
+    dmidecode
+    fastfetch
+    ffmpeg
     gcc
+    gcc
+    git
     glib
     gnumake
+    grim
+    htop
+    inetutils
     killall
     mesa
-    xmodmap
-    unixtools.quota
-    cifs-utils
-    tree
-    bottom
-    btop
-    htop
-    toybox
-    ffmpeg
+    neofetch
+    playerctl
+    ripgrep
+    rustup
+    slurp
+    stress-ng
     tldr
     tlrc
-    xdotool
-    neofetch
-    fastfetch
+    toybox
+    tree
+    unixtools.quota
     unzip
-    cmake
-    stress-ng
-    bench
-    dmidecode
-    playerctl
-    brightnessctl
-    inetutils
-    rustup
-    gcc
-    clang
     ventoy
-    ripgrep
-    xclip
-    wl-clipboard
-    cliphist
+    vim
     wf-recorder
-    grim
-    slurp
+    wget
+    wl-clipboard
+    xclip
+    xdotool
+    xmodmap
+    wmctrl
 
-    # from flakes
-    inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
-
-    # libraries
-    libnotify
+    # libraries, sorted alphabetically
+    appmenu-glib-translator
+    dotnetCorePackages.sdk_9_0-bin
+    haskellPackages.gi-dbusmenu
+    haskellPackages.gi-dbusmenugtk3
+    libappindicator
+    libappindicator-gtk2
+    libappindicator-gtk3
     libdbusmenu
     libdbusmenu-gtk2
     libdbusmenu-gtk3
-    lxqt.libdbusmenu-lxqt
-    appmenu-glib-translator
-    haskellPackages.gi-dbusmenu
-    haskellPackages.gi-dbusmenugtk3
-    # appmenu-gtk-module
-    libappindicator-gtk2
-    libappindicator-gtk3
-    libappindicator
-    qt6.qtbase
-    qt6.qtsvg
-    qt6.qtvirtualkeyboard
-    qt6.qtmultimedia
-    libxcursor
-    libxcb-cursor
     libinput
     libinput-gestures
-    wmctrl
+    libnotify
     libsForQt5.qt5.qtbase
     libsForQt5.qt5.qtdeclarative
     libsForQt5.qt5.qtmultimedia
-    dotnetCorePackages.sdk_9_0-bin
+    libxcb-cursor
+    libxcursor
+    lxqt.libdbusmenu-lxqt
+    qt6.qtbase
+    qt6.qtmultimedia
+    qt6.qtsvg
+    qt6.qtvirtualkeyboard
 
     # nixos related
     home-manager

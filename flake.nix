@@ -2,11 +2,11 @@
   flake.nix
 
   created by ludw
-  on 2026-01-16
+  on 2026-01-29
 */
 
-# https://github.com/Misterio77/nix-starter-configs
-# https://github.com/AlexNabokikh/nix-config
+# start config from https://github.com/Misterio77/nix-starter-configs
+# inspired by https://github.com/AlexNabokikh/nix-config
 {
   description = "system configuration for my laptop.";
 
@@ -18,6 +18,9 @@
     # nixos profiles to optimize settings for different hardware
     hardware.url = "github:nixos/nixos-hardware";
 
+    # declarative flatpak manager
+    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.6.0";
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,35 +30,32 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # declarative flatpak manager
-    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.6.0";
-
-    # niri, wayland window manager
+    # niri
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # home-manager / noctalia shell written in quickshell
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # stylix
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # home-manager / declarative kde plasma manager
+    # declarative kde plasma manager
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
 
-    # home-manager / stylix, configure appearance for apps
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # noctalia shell
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # home-manager / nixos vim config with nixvim
+    # nixos vim config with nixvim
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -65,13 +65,20 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
+        # IMPORTANT: using "libgbm" and is only available in unstable so ensure
+        # to have it up-to-date or simply not specify the nixpkgs input
+        nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
     };
 
+    # copyparty flake
     copyparty.url = "github:9001/copyparty";
+
+    # agenix flake
     agenix.url = "github:ryantm/agenix";
+
+    # spicetify flake
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     honklet = {

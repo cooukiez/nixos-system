@@ -13,13 +13,11 @@
   # xserver / x11 configuration
   services.xserver = {
     enable = true;
-
     xkb = {
       layout = "de";
       options = "eurosign:e,caps:escape";
       variant = "";
     };
-
     excludePackages = with pkgs; [ xterm ];
   };
 
@@ -43,7 +41,6 @@
         xdg-desktop-portal-gtk
       ];
     };
-
     icons.enable = true;
   };
 

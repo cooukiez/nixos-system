@@ -5,24 +5,21 @@
   on 2026-01-16
 */
 
-
 {
   stdenv,
   lib,
-  fetchFromGitLab,
-  fetchpatch,
-  meson,
-  cmake,
   pkg-config,
-  systemd,
-  gtk-doc,
-  docbook-xsl-nons,
+  meson,
   ninja,
   glib,
   gtk3,
+  gtk-doc,
+  docbook-xsl-nons,
+  systemd,
+  fetchFromGitLab,
+  cmake,
   wrapGAppsHook3,
 }:
-
 stdenv.mkDerivation rec {
   pname = "appmenu-gtk-module";
   version = "0.7.6";
@@ -40,7 +37,6 @@ stdenv.mkDerivation rec {
   };
 
   sourceRoot = "source/subprojects/appmenu-gtk-module";
-
   nativeBuildInputs = [
     glib
     meson
@@ -54,7 +50,6 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs = [ gtk3 ];
-
   preConfigure = ''
     substituteInPlace meson_options.txt --replace "value: ['2','3']" "value: ['3']"
   '';
@@ -66,7 +61,6 @@ stdenv.mkDerivation rec {
 
   env.PKG_CONFIG_GTK__3_0_LIBDIR = "${placeholder "out"}/lib";
   env.PKG_CONFIG_SYSTEMD_SYSTEMDUSERUNITDIR = "${placeholder "out"}/lib/systemd/user";
-
   postInstall = ''
     glib-compile-schemas "$out/share/glib-2.0/schemas"
   '';

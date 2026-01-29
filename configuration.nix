@@ -6,6 +6,7 @@
 */
 
 # system configuration file
+
 {
   inputs,
   hostname,
@@ -48,37 +49,23 @@ in
     inputs.self.nixosModules.common
     inputs.self.nixosModules.desktop
     inputs.self.nixosModules.programs
-
-    # todo: hardware optimizations
-
+    inputs.nix-flatpak.nixosModules.nix-flatpak
     inputs.niri.nixosModules.niri
     inputs.copyparty.nixosModules.default
     inputs.agenix.nixosModules.default
     inputs.spicetify-nix.nixosModules.default
   ];
-
   nixpkgs = {
     # add overlays here
     overlays = [
-      # add overlays your own flake exports (from overlays and pkgs dir):
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.nur
-
-      # add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
       inputs.niri.overlays.niri
       inputs.copyparty.overlays.default
-
-      # or define it inline:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
+
     # configure your nixpkgs instance
     config = {
       # allow unfree packages
@@ -90,7 +77,6 @@ in
       ];
     };
   };
-
   nix =
     let
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -104,9 +90,9 @@ in
         # workaround for https://github.com/NixOS/nix/issues/9574
         nix-path = config.nix.nixPath;
       };
+
       # opinionated: disable channels
       channel.enable = false;
-
       # opinionated: make flake registry and nix path match flake inputs
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
@@ -123,7 +109,6 @@ in
       "rd.udev.log_level=3"
       "boot.shell_on_fail"
     ];
-
     loader.efi.canTouchEfiVariables = true;
     loader.systemd-boot.enable = true;
     loader.timeout = 0;
@@ -157,7 +142,6 @@ in
     LC_TELEPHONE = "en_IE.UTF-8";
     LC_TIME = "en_IE.UTF-8";
   };
-
   console.keyMap = "de";
 
   # PATH configuration
@@ -189,10 +173,12 @@ in
         unitConfig = {
           DefaultDependencies = false;
         };
+
         after = [
           "local-fs.target"
           "home.mount"
         ];
+
         before = [ "remote-fs.target" ];
         wantedBy = [ "multi-user.target" ];
       }) bind_dirs
@@ -217,6 +203,6 @@ in
   zramSwap.memoryPercent = 50;
   zramSwap.algorithm = "lz4";
 
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+  # see https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
 }

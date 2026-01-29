@@ -5,7 +5,6 @@
   on 2026-01-25
 */
 
-
 # use this to configure home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
@@ -23,24 +22,18 @@ in
   imports = [
     # use modules your own flake exports (from modules/home-manager):
     # inputs.self.homeManagerModules.example
-
     # modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
-
     # also split up your configuration and import pieces of it here:
     # ./nvim.nix
-
     inputs.self.homeManagerModules.desktop-noctalia
     inputs.self.homeManagerModules.programs
-
     inputs.zen-browser.homeModules.twilight
-
     inputs.niri.homeModules.niri
     inputs.noctalia.homeModules.default
     inputs.stylix.homeModules.stylix
     inputs.nixvim.homeModules.default
   ];
-
   nixpkgs = {
     # add overlays here
     overlays = [
@@ -49,12 +42,9 @@ in
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.nur
-
       # add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
-
       inputs.niri.overlays.niri
-
       (self: super: {
         gnome = super.gnome.overrideScope (
           gself: gsuper: {
@@ -70,7 +60,6 @@ in
           }
         );
       })
-
       # or define it inline:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -88,43 +77,32 @@ in
       ];
     };
   };
-
   home = {
     username = "${userConfig.name}";
     homeDirectory = "/home/${userConfig.name}";
-
     sessionVariables = {
       # START_NOCTALIA = "true";
-
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_ENABLE_HIGHDPI_SCALING = "1";
       QT_SCALE_FACTOR_ROUNDING_POLICY = "PassThrough";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       QS_ICON_THEME = "Papirus-Dark";
-
       ELM_DISPLAY = "wl";
       # GDK_BACKEND = "wayland,x11";
       CLUTTER_BACKEND = "wayland";
-
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
-
       XCURSOR_SIZE = "24";
     };
   };
-
   # add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   # home.packages = with pkgs; [ steam ];
-
   # enable home-manager
   programs.home-manager.enable = true;
-
   # enable hyprland, currently using niri so disabled
   # wayland.windowManager.hyprland.enable = true;
-
   # nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.11";
 }

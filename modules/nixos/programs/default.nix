@@ -6,8 +6,9 @@
 */
 
 {
-  pkgs,
   inputs,
+  hostSystem,
+  pkgs,
   ...
 }:
 {
@@ -37,15 +38,9 @@
   # enable flatpak and install apps from flathub
   services.flatpak = {
     enable = true;
-    remotes = [
-      {
-        name = "flathub";
-        location = "https://flathub.org/repo/flathub.flatpakrepo";
-      }
-    ];
 
     # declare packages declaratively
-    services.flatpak.packages = [
+    packages = [
       "com.github.vikdevelop.photopea_app"
       "com.leinardi.gst"
       "be.alexandervanhee.gradia"
@@ -53,39 +48,61 @@
       "org.turbowarp.TurboWarp"
     ];
 
-    services.flatpak.update.onActivation = true;
+    update.onActivation = true;
+
+    # see https://github.com/gmodena/nix-flatpak?tab=readme-ov-file#overrides
+    overrides = {
+      global = {
+        # force Wayland by default
+        Context.sockets = [
+          "wayland"
+          # "!x11"
+          # "!fallback-x11"
+        ];
+        Environment = {
+          # fix un-themed cursor in some wayland apps
+          XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
+          # force correct theme for some gtk apps
+          GTK_THEME = "Adwaita:dark";
+        };
+      };
+    };
   };
 
   # running gnome apps outside of gnome
   programs.dconf.enable = true;
   services.gvfs.enable = true;
 
+  # gnome calendar support
+  services.gnome.evolution-data-server.enable = true;
+
   # enable zsh as shell
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
-    hardinfo2
-    pavucontrol
-    gimp-with-plugins
-    krita
-    inkscape
-    icon-slicer
-    bluez-tools
-    homebank
-    hardcode-tray
-    renderdoc
-    github-desktop
-    intel-gpu-tools
-    furmark
-    firestarter
-    geekbench
+    # general programs, sorted alphabetically
     affine
-    bitwarden-desktop
     bitwarden-cli
+    bitwarden-desktop
+    bluez-tools
+    firestarter
+    furmark
+    geekbench
+    gephi
+    gimp-with-plugins
+    github-desktop
     gpu-screen-recorder
     gpu-screen-recorder-gtk
+    hardcode-tray
+    hardinfo2
+    homebank
+    icon-slicer
+    inkscape
+    intel-gpu-tools
+    krita
     meld
-    gephi
+    pavucontrol
+    renderdoc
 
     # code editors / IDE
     jetbrains.rust-rover
@@ -103,7 +120,7 @@
     wineWowPackages.waylandFull
 
     # from flakes
-    inputs.honklet.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.honklet.packages.${hostSystem}.default
   ];
 
   # enalbe nvim console editor

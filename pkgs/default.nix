@@ -5,33 +5,14 @@
   on 2026-01-16
 */
 
+# custom packages
 
-# custom packages, that can be defined similarly to ones from nixpkgs
-# build them using 'nix build .#example'
 pkgs:
 let
-  #   appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
-
-  hardcodeTray = import ./hardcode-tray.nix {
-    inherit pkgs;
-  };
-
-  #   yetAnotherMonochromeIconSet = import ./yamis.nix {
-  #     inherit pkgs;
-  #   };
-
-  breezeChameleonIcons = import ./breeze-chameleon.nix {
-    inherit pkgs;
-  };
-
-  kdeRoundedCornersX11 = pkgs.callPackage ./kde-rounded-corners-x11.nix { };
+  # appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
+  hardcodeTray = pkgs.callPackage ./hardcode-tray.nix { };
 in
 {
-  # example = pkgs.callPackage ./example { };
   hardcode-tray = hardcodeTray;
-  breeze-chameleon-icons = breezeChameleonIcons;
-  kde-rounded-corners-x11 = kdeRoundedCornersX11;
-
-  #   appmenu-gtk-module = appmenuGtkModule;
-  #   yet-another-monochrome-icon-set = yetAnotherMonochromeIconSet;
+  # appmenu-gtk-module = appmenuGtkModule;
 }

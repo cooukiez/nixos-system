@@ -7,7 +7,6 @@
 
 {
   pkgs,
-  inputs,
   ...
 }:
 let

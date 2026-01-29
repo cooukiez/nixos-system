@@ -5,12 +5,17 @@
   on 2026-01-25
 */
 
-
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  hostSystem,
+  pkgs,
+  ...
+}:
 {
   # enable sddm
   services.displayManager.sddm = {
     enable = true;
+    # required for 4k displays
     enableHidpi = true;
     wayland.enable = true;
     theme = "sddm-astronaut-theme";
@@ -35,31 +40,16 @@
     kdePackages.khelpcenter
   ];
 
-  # noctalia calendar support
-  services.gnome.evolution-data-server.enable = true;
-
   environment.systemPackages = with pkgs; [
-    # kde package for configuration of sddm
-    kdePackages.sddm-kcm
-
-    # deprecated
-    /*
-      (pkgs.runCommand "lvl-sddm-theme" { } ''
-        mkdir -p $out/share/sddm/themes
-        cp -r ${./lvl-sddm-theme} $out/share/sddm/themes/lvl-sddm-theme
-      '')
-    */
-
-    # new sddm theme
+    # sddm theme
     sddm-astronaut
-
     # noctalia packages
-    (inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+    (inputs.noctalia.packages.${hostSystem}.default.override {
       calendarSupport = true;
     })
   ];
 
-  # enable hyprland
+  # currently no using hyprland
   /*
     programs.hyprland = {
       # install the packages from nixpkgs
@@ -72,10 +62,11 @@
   niri-flake.cache.enable = true;
   programs.niri = {
     enable = true;
+    # flake should ideally follow nixpkgs-unstable as well
     package = pkgs.niri-unstable;
   };
 
-  # disable some kde services
+  # disable kde services
   systemd.user.services = {
     "app-org.kde.discover.notifier@autostart".enable = false;
     "app-org.kde.kalendarac@autostart".enable = false;
