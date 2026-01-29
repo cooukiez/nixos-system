@@ -2,8 +2,9 @@
   modules/home-manager/programs/nvim/mini.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-26
 */
+
 
 {
   # collection of various small independent plugins/modules

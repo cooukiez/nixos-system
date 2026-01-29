@@ -2,8 +2,9 @@
   modules/home-manager/programs/nvim/indent-blankline.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-26
 */
+
 
 {
   # add indentation guides even on blank lines

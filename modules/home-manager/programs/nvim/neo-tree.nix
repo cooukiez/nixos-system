@@ -2,8 +2,9 @@
   modules/home-manager/programs/nvim/neo-tree.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-26
 */
+
 
 {
   # plugin to browse the file system

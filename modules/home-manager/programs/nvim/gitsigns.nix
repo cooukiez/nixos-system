@@ -2,8 +2,9 @@
   modules/home-manager/programs/nvim/gitsigns.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-26
 */
+
 
 {
   # adds git related signs to the gutter, as well as utilities for managing changes

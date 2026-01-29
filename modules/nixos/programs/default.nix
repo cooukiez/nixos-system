@@ -2,7 +2,7 @@
   modules/nixos/programs/default.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-25
 */
 
 
@@ -13,7 +13,7 @@
 }:
 let
   # fix this and put in nautilus extensions
-  nautilusBackspaceSrc = pkgs.fetchFromGitHub {
+  _nautilusBackspaceSrc = pkgs.fetchFromGitHub {
     owner = "TheWeirdDev";
     repo = "nautilus-backspace";
     rev = "main";

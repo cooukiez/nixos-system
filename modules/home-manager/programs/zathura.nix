@@ -2,8 +2,9 @@
   modules/home-manager/programs/zathura.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-25
 */
+
 
 { pkgs, userConfig, ... }:
 {

@@ -2,8 +2,9 @@
   modules/home-manager/programs/thunderbird.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-05
 */
+
 
 { pkgs, userConfig, ... }:
 {

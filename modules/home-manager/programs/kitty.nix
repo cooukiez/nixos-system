@@ -2,8 +2,9 @@
   modules/home-manager/programs/kitty.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-25
 */
+
 
 { config, pkgs, ... }:
 

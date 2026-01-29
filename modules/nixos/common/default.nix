@@ -2,8 +2,9 @@
   modules/nixos/common/default.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-01-16
 */
+
 
 {
   config,
@@ -63,6 +64,7 @@
   # system packages
   environment.systemPackages = with pkgs; [
     # core / cli utilities
+    coreutils
     vim
     wget
     git
