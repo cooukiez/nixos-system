@@ -7,8 +7,8 @@
 
 {
   imports = [
-    ./browsers
     ./nvim
+    ./web
 
     ./git.nix
     ./kitty.nix

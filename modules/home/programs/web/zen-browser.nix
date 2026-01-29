@@ -6,6 +6,11 @@
 */
 
 {
+  pkgs,
+  ...
+}:
+{
+  # see https://github.com/0xc000022070/zen-browser-flake
   programs.zen-browser = {
     enable = true;
 
@@ -61,6 +66,33 @@
 
         # disable requirement for extension signatures
         "xpinstall.signatures.required" = false;
+      };
+
+      # see https://github.com/0xc000022070/zen-browser-flake#search
+      search = {
+        # needed for nix to overwrite search settings on rebuild
+        force = true;
+        default = "google";
+
+        engines = {
+          mynixos = {
+            name = "My NixOS";
+            urls = [
+              {
+                template = "https://mynixos.com/search?q={searchTerms}";
+                params = [
+                  {
+                    name = "query";
+                    value = "searchTerms";
+                  }
+                ];
+              }
+            ];
+
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@nx" ];
+          };
+        };
       };
     };
   };

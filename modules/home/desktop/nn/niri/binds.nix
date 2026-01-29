@@ -15,6 +15,20 @@ let
   brightnessctl = spawn "brightnessctl";
   noctalia-ipc = spawn "noctalia-shell" "ipc" "call";
 
+  # set screen resolution to 1920x1080@60 on laptop display
+  low-resolution = spawn "bash" "-c" ''
+    niri msg output "eDP-1" custom-mode "1920x1080@60.000"
+    niri msg output "eDP-1" scale 1.0
+    notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 1920x1080@60." -i "$f"
+  '';
+
+  # set screen resolution to 3480x2160@60 on laptop display
+  high-resolution = spawn "bash" "-c" ''
+    niri msg output "eDP-1" mode "3480x2160@60.000"
+    niri msg output "eDP-1" scale 2.0
+    notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 3480x2160@60." -i "$f"
+  '';
+
   # entire command for fullscreen screenshot
   screenshot-full = spawn "bash" "-c" ''
     mkdir -p ~/Pictures/Screenshots
@@ -124,8 +138,14 @@ in
   "Mod+I".action = noctalia-ipc "sessionMenu" "toggle";
   "Mod+I".hotkey-overlay.title = "Open session menu";
 
-  "Mod+Shift+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
-  "Mod+Shift+L".hotkey-overlay.title = "Lock and suspend";
+  # "Mod+Shift+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
+  # "Mod+Shift+L".hotkey-overlay.title = "Lock and suspend";
+
+  "Mod+Shift+L".action = low-resolution;
+  "Mod+Shift+L".hotkey-overlay.title = "Apply low resolution";
+
+  "Mod+Shift+H".action = high-resolution;
+  "Mod+Shift+H".hotkey-overlay.title = "Apply high resolution";
 
   "Print".action = screenshot-full;
   "Mod+Print".action = screenshot-region;
