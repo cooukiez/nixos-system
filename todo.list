@@ -1,0 +1,14 @@
+- [x] nvim config -> nix cats, https://nixcats.org
+- [-] firefox extension fixes
+- [x] add zen-browser configuration
+- [ ] configure mime-types completely
+- [ ] syncthing configuration
+- [x] niri/noctalia resolution settings to 1920x1080 automated
+- [ ] noctalia display resolution accurately
+- [ ] zen-browser complete configuration
+- [x] noctalia configuration
+- [x] rewriting flake / nixos config and adding headers (also for deprecated files)
+	- [x] nixos system rewrite
+	- [x] home manager rewrite
+- [ ] adding all my repos in code and resetting the build dirs
+- [ ] sorting all my scripts that I wrote at some point
