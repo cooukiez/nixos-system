@@ -1,3 +1,10 @@
+/*
+  modules/home/desktop/kde/plasma/shortcuts.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   ksmserver = {
     "Lock Session" = [

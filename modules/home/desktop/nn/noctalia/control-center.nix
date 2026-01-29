@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/noctalia/control-center.nix
+  modules/home/desktop/nn/noctalia/control-center.nix
 
   created by ludw
   on 2026-01-29

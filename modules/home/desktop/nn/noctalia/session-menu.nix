@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/noctalia/session-menu.nix
+  modules/home/desktop/nn/noctalia/session-menu.nix
 
   created by ludw
   on 2026-01-29

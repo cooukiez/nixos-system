@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/browsers/zen-browser.nix
+  modules/home/programs/browsers/zen-browser.nix
 
   created by ludw
   on 2026-01-29

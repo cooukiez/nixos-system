@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/noctalia/bar.nix
+  modules/home/desktop/nn/noctalia/bar.nix
 
   created by ludw
   on 2026-01-29

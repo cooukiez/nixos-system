@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/browsers/default.nix
+  modules/home/programs/browsers/default.nix
 
   created by ludw
   on 2026-01-29

@@ -2,7 +2,7 @@
   modules/nixos/programs/penetration-testing.nix
 
   created by ludw
-  on 2026-01-22
+  on 2026-01-29
 */
 
 {

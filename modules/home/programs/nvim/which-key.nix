@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/which-key.nix
+  modules/home/programs/nvim/which-key.nix
 
   created by ludw
   on 2026-01-29

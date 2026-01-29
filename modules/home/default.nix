@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/default.nix
+  modules/home/default.nix
 
   created by ludw
   on 2026-01-29

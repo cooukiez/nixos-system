@@ -1,3 +1,10 @@
+/*
+  modules/home/desktop/kde/plasma/data-file.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   "dolphin/view_properties/global/.directory"."Dolphin"."ViewMode" = 1;
   "dolphin/view_properties/global/.directory"."Settings"."HiddenFilesShown" = true;

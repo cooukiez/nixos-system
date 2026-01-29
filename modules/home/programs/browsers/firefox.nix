@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/browsers/firefox.nix
+  modules/home/programs/browsers/firefox.nix
 
   created by ludw
   on 2026-01-29

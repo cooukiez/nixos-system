@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/noctalia/desktop-widgets.nix
+  modules/home/desktop/nn/noctalia/desktop-widgets.nix
 
   created by ludw
   on 2026-01-29

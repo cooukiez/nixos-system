@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/todo-comments.nix
+  modules/home/programs/nvim/todo-comments.nix
 
   created by ludw
   on 2026-01-29

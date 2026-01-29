@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/blink-cmp.nix
+  modules/home/programs/nvim/blink-cmp.nix
 
   created by ludw
   on 2026-01-29

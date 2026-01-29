@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/conform.nix
+  modules/home/programs/nvim/conform.nix
 
   created by ludw
   on 2026-01-29

@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/niri.nix
+  modules/home/desktop/nn/niri/default.nix
 
   created by ludw
   on 2026-01-29

@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/vscode.nix
+  modules/home/programs/vscode.nix
 
   created by ludw
   on 2026-01-29

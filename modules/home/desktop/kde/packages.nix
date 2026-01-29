@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/kde/packages.nix
+  modules/home/desktop/kde/packages.nix
 
   created by ludw
   on 2026-01-29

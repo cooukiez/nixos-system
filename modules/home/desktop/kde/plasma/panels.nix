@@ -1,3 +1,10 @@
+/*
+  modules/home/desktop/kde/plasma/panels.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 [
   {
     location = "top";

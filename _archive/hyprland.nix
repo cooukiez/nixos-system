@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/hyprland.nix
+  _archive/hyprland.nix
 
   created by ludw
   on 2026-01-29

@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/noctalia/app-launcher.nix
+  modules/home/desktop/nn/noctalia/app-launcher.nix
 
   created by ludw
   on 2026-01-29

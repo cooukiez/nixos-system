@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/git.nix
+  modules/home/programs/git.nix
 
   created by ludw
   on 2026-01-29

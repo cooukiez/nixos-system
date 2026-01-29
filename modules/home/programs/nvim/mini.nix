@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/mini.nix
+  modules/home/programs/nvim/mini.nix
 
   created by ludw
   on 2026-01-29

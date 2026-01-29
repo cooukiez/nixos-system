@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/gitsigns.nix
+  modules/home/programs/nvim/gitsigns.nix
 
   created by ludw
   on 2026-01-29

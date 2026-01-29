@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/style.nix
+  modules/home/desktop/nn/style.nix
 
   created by ludw
   on 2026-01-29

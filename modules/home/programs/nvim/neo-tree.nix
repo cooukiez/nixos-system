@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/neo-tree.nix
+  modules/home/programs/nvim/neo-tree.nix
 
   created by ludw
   on 2026-01-29

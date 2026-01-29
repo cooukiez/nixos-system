@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/default.nix
+  modules/home/programs/nvim/default.nix
 
   created by ludw
   on 2026-01-29

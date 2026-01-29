@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/zsh.nix
+  modules/home/programs/zsh.nix
 
   created by ludw
   on 2026-01-29

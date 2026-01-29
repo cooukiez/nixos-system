@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/thunderbird.nix
+  modules/home/programs/thunderbird.nix
 
   created by ludw
   on 2026-01-29

@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/kde/input-gestures.nix
+  modules/home/desktop/kde/input-gestures.nix
 
   created by ludw
   on 2026-01-29

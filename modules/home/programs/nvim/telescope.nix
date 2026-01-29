@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/telescope.nix
+  modules/home/programs/nvim/telescope.nix
 
   created by ludw
   on 2026-01-29

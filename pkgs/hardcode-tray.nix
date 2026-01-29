@@ -2,7 +2,7 @@
   pkgs/hardcode-tray.nix
 
   created by ludw
-  on 2026-01-02
+  on 2026-01-29
 */
 
 {

@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/programs/nvim/indent-blankline.nix
+  modules/home/programs/nvim/indent-blankline.nix
 
   created by ludw
   on 2026-01-29

@@ -1,5 +1,5 @@
 /*
-  modules/home-manager/desktop/noctalia/packages.nix
+  modules/home/desktop/nn/packages.nix
 
   created by ludw
   on 2026-01-29
