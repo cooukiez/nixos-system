@@ -149,7 +149,11 @@
           };
 
           extraSpecialArgs = {
-            inherit inputs outputs;
+            inherit
+              inputs
+              outputs
+              hostSystem
+              ;
             userConfig = users.${username};
             nhModules = "${self}/modules/home";
           };

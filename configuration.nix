@@ -9,14 +9,15 @@
 
 {
   inputs,
-  hostname,
-  lib,
   config,
-  users,
   pkgs,
+  lib,
+  hostname,
+  users,
   ...
 }:
 let
+  # todo: add way to configure mount target per user
   bind_dirs = [
     {
       source = "/data/documents";
@@ -163,6 +164,14 @@ in
     shell = pkgs.zsh;
   }) users;
 
+  # create bind targers
+  systemd.tmpfiles.rules = lib.concatLists (
+    lib.mapAttrsToList (
+      username: _: map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") bind_dirs
+    ) users
+  );
+
+  # bind mount configuration
   systemd.mounts = lib.concatLists (
     lib.mapAttrsToList (
       username: _:
@@ -186,12 +195,6 @@ in
     ) users
   );
 
-  systemd.tmpfiles.rules = lib.concatLists (
-    lib.mapAttrsToList (
-      username: _: map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") bind_dirs
-    ) users
-  );
-
   # passwordless sudo
   security.sudo.wheelNeedsPassword = false;
 
@@ -200,6 +203,7 @@ in
     { device = "/dev/disk/by-partlabel/swap"; }
   ];
 
+  # zram configuration
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;
   zramSwap.algorithm = "lz4";

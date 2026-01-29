@@ -14,7 +14,6 @@
     ./niri
     ./noctalia
 
-    ./niri.nix
     ./packages.nix
     ./style.nix
     ./xdg-config.nix

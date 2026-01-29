@@ -43,12 +43,6 @@
   environment.systemPackages = with pkgs; [
     # sddm theme
     sddm-astronaut
-
-    # todo: install noctalia as home package
-    # noctalia packages
-    (inputs.noctalia.packages.${hostSystem}.default.override {
-      calendarSupport = true;
-    })
   ];
 
   # currently no using hyprland
@@ -64,7 +58,6 @@
   niri-flake.cache.enable = true;
   programs.niri = {
     enable = true;
-    # flake should ideally follow nixpkgs-unstable as well
     package = pkgs.niri-unstable;
   };
 

@@ -6,6 +6,7 @@
 */
 
 {
+  config,
   pkgs,
   lib,
   ...
@@ -23,7 +24,7 @@
 
     xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-    binds = import ./binds.nix { inherit lib; };
+    binds = import ./binds.nix { inherit config; };
 
     input = {
       keyboard = {

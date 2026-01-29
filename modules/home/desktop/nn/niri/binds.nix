@@ -1,8 +1,8 @@
 {
-  lib,
+  config,
   ...
 }:
-with lib.niri.actions;
+with config.lib.niri.actions;
 let
   wpctl = spawn "wpctl";
   brightnessctl = spawn "brightnessctl";

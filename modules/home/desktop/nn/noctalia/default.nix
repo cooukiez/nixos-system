@@ -6,6 +6,8 @@
 */
 
 {
+  inputs,
+  hostSystem,
   pkgs,
   ...
 }:
@@ -31,6 +33,11 @@
   programs.noctalia-shell = {
     enable = true;
     systemd.enable = true;
+    package = (
+      inputs.noctalia.packages.${hostSystem}.default.override {
+        calendarSupport = true;
+      }
+    );
 
     plugins = import ./plugins.nix;
     pluginSettings = import ./plugin-settings.nix;
