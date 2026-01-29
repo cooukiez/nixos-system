@@ -149,7 +149,6 @@ let
     bind = $mainMod, E, exec, $fileManager
     bind = $mainMod, Q, exec, $terminal
     bind = CTRL_SHIFT, escape, exec, $system-monitor
-    # todo: replace with noctalia clipboard history command
     # bind = $mainMod SHIFT, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy
 
     # bind = $thirdMod SHIFT, H, exec, hyprctl keyword monitor ,3840x2160@60,auto,2

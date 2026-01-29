@@ -6,6 +6,7 @@
 */
 
 {
+  config,
   pkgs,
   lib,
   ...
@@ -128,7 +129,7 @@
 
     qt6ctSettings = {
       Appearance = {
-        color_scheme_path = "$HOME/.config/qt6ct/colors/noctalia.conf";
+        color_scheme_path = "${config.home.homeDirectory}/.config/qt6ct/colors/noctalia.conf";
         # enable custom palette instead of system palette
         custom_palette = true;
         standard_dialogs = "default";

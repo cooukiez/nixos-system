@@ -7,6 +7,7 @@
 
 {
   inputs,
+  config,
   hostSystem,
   pkgs,
   ...
@@ -228,7 +229,7 @@
         enabled = true;
         showHiddenFiles = false;
         overviewEnabled = true;
-        directory = "$HOME/Pictures/Wallpapers";
+        directory = "${config.home.homeDirectory}/Pictures/Wallpapers";
 
         setWallpaperOnAllMonitors = true;
         monitorDirectories = [ ];
