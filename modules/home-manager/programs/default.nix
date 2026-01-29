@@ -5,9 +5,9 @@
   on 2026-01-01
 */
 
-{ pkgs, userConfig, ... }:
 {
   imports = [
+    ./browsers
     ./nvim
 
     ./firefox.nix

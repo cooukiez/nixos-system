@@ -5,7 +5,10 @@
   on 2026-01-05
 */
 
-{ pkgs, userConfig, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   programs.thunderbird = {
     enable = true;

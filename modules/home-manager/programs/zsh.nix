@@ -5,7 +5,10 @@
   on 2026-01-08
 */
 
-{ pkgs, userConfig, ... }:
+{
+  userConfig,
+  ...
+}:
 {
   programs.zsh = {
     enable = true;

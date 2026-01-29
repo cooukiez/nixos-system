@@ -5,8 +5,6 @@
   on 2026-01-25
 */
 
-{ config, pkgs, ... }:
-
 {
   programs.kitty = {
     enable = true;
@@ -17,25 +15,21 @@
     };
 
     settings = {
-      # selection colors
+      # start: colorscheme = gruvbox
       selection_foreground = "#ebdbb2";
       selection_background = "#d65d0e";
 
-      # window border colors
       active_border_color = "#8ec07c";
       inactive_border_color = "#665c54";
 
-      # tab colors
       active_tab_foreground = "#ebdbb2";
       active_tab_background = "#458588";
       inactive_tab_foreground = "#ebdbb2";
       inactive_tab_background = "#8ec07c";
 
-      # basic colors
       background = "#1d2021";
       foreground = "#ebdbb2";
 
-      # 16 colors
       color0 = "#3c3836";
       color1 = "#cc241d";
       color2 = "#98971a";
@@ -52,6 +46,7 @@
       color13 = "#d3869b";
       color14 = "#8ec07c";
       color15 = "#fbf1c7";
+      # end: colorscheme
 
       # cursor
       cursor = "#bdae93";
@@ -72,6 +67,8 @@
       term = "xterm-kitty";
       enable_audio_bell = "no";
       linux_display_server = "wayland";
+      confirm_close = "no";
+      allow_remote_control = "yes";
 
       # scrollback
       scrollback_lines = 5000;
@@ -97,10 +94,6 @@
       tab_bar_align = "left";
       active_tab_font_style = "bold";
       inactive_tab_font_style = "normal";
-
-      # testing
-      confirm_close = "no";
-      allow_remote_control = "yes";
     };
 
     keybindings = {

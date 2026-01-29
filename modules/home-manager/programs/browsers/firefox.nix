@@ -5,7 +5,10 @@
   on 2026-01-25
 */
 
-{ pkgs, userConfig, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   programs.firefox = {
     enable = true;
