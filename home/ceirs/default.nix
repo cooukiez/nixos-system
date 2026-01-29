@@ -19,38 +19,31 @@ let
   info = import ../info.nix;
 in
 {
-  # import other home-manager modules here
+  # import home-manager modules here
   imports = [
-    # use modules your own flake exports (from modules/home-manager):
-    # inputs.self.homeManagerModules.example
-    # modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-    # also split up your configuration and import pieces of it here:
-    # ./nvim.nix
     inputs.self.homeManagerModules.desktop-nn
     inputs.self.homeManagerModules.programs
-    inputs.zen-browser.homeModules.twilight
+
     inputs.niri.homeModules.niri
     inputs.noctalia.homeModules.default
     inputs.stylix.homeModules.stylix
     inputs.nixvim.homeModules.default
+    inputs.zen-browser.homeModules.twilight
   ];
   nixpkgs = {
     # add overlays here
     overlays = [
-      # add overlays your own flake exports (from overlays and pkgs dir):
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.nur
-      # add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
+
       inputs.niri.overlays.niri
+
       (self: super: {
         gnome = super.gnome.overrideScope (
           gself: gsuper: {
             nautilus = gsuper.nautilus.overrideAttrs (nsuper: {
-              # Use super.gst_all_1 here to pull it from the package set
               buildInputs =
                 nsuper.buildInputs
                 ++ (with super.gst_all_1; [
@@ -61,14 +54,9 @@ in
           }
         );
       })
-      # or define it inline:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
-    # configure your nixpkgs instance
+
+    # configure nixpkgs instance
     config = {
       # allow unfree packages
       allowUnfree = true;
@@ -78,32 +66,35 @@ in
       ];
     };
   };
+
   home = {
     username = "${userConfig.name}";
     homeDirectory = "/home/${userConfig.name}";
     sessionVariables = {
-      # START_NOCTALIA = "true";
+      # qt settings
       QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       QT_ENABLE_HIGHDPI_SCALING = "1";
       QT_SCALE_FACTOR_ROUNDING_POLICY = "PassThrough";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      # todo: select icon theme
       QS_ICON_THEME = "Papirus-Dark";
+
+      # wayland settings
       ELM_DISPLAY = "wl";
-      # GDK_BACKEND = "wayland,x11";
       CLUTTER_BACKEND = "wayland";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
+      # GDK_BACKEND = "wayland,x11";
+
       XCURSOR_SIZE = "24";
     };
   };
-  # add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+
   # enable home-manager
   programs.home-manager.enable = true;
-  # enable hyprland, currently using niri so disabled
-  # wayland.windowManager.hyprland.enable = true;
+
   # nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.11";
 }
