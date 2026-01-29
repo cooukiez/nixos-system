@@ -25,7 +25,7 @@
         "network.http.pipelining" = true;
         "network.http.pipelining.maxrequests" = 8;
 
-        # kde integration
+        # desktop integration
         "widget.use-xdg-desktop-portal.file-picker" = 1;
         "widget.use-xdg-desktop-portal.settings" = 1;
         "widget.gtk.global-menu.enabled" = true;

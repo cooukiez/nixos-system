@@ -8,6 +8,7 @@
 {
   imports = [
     ./firefox.nix
+    ./thunderbird.nix
     ./zen-browser.nix
   ];
 }

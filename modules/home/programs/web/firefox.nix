@@ -38,7 +38,7 @@
         "browser.compactmode.show" = true; # set for compact
         "browser.uidensity" = 0; # 1 for compact
 
-        # kde integration
+        # desktop integration
         "widget.use-xdg-desktop-portal.file-picker" = 1;
         "widget.use-xdg-desktop-portal.settings" = 1;
         "widget.gtk.global-menu.enabled" = true;
@@ -72,10 +72,6 @@
         # disable requirement for extension signatures
         "xpinstall.signatures.required" = false;
       };
-
-      extraConfig = ''
-        user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-      '';
     };
   };
 
