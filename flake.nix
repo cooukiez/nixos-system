@@ -7,8 +7,9 @@
 
 # start config from https://github.com/Misterio77/nix-starter-configs
 # inspired by https://github.com/AlexNabokikh/nix-config
+
 {
-  description = "system configuration for my laptop.";
+  description = "system configuration for my laptop";
 
   inputs = {
     # nixpkgs stable nixpkgs-unstable
@@ -30,32 +31,32 @@
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    # niri
+    # niri, scrolling wayland compositor
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # stylix
+    # home-manager / stylix, configure application style
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # declarative kde plasma manager
+    # home-manager / declarative kde plasma manager
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
 
-    # noctalia shell
+    # home-manager / noctalia shell, written in quickshell
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixos vim config with nixvim
+    # home-manager / nixos vim config with nixvim
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,13 +73,8 @@
       };
     };
 
-    # copyparty flake
     copyparty.url = "github:9001/copyparty";
-
-    # agenix flake
     agenix.url = "github:ryantm/agenix";
-
-    # spicetify flake
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     honklet = {
@@ -117,12 +113,11 @@
       };
 
       # supported systems for flake packages, shell, etc.
-      lvlSystem = "x86_64-linux";
+      hostSystem = "x86_64-linux";
       systems = [
-        lvlSystem
+        hostSystem
       ];
-      # function that generates an attribute by calling a function you
-      # pass to it, with each system as an argument
+
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
       mkNixosConfiguration =
@@ -132,6 +127,7 @@
             inherit
               inputs
               outputs
+              hostSystem
               hostname
               users
               ;
@@ -165,13 +161,11 @@
     in
     {
       # custom packages
-      # accessible through 'nix build', 'nix shell', etc.
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      # formatter for your nix files, available through 'nix fmt'
-      # other options beside 'alejandra' include 'nixpkgs-fmt'
+      # formatter for your nix files
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-      # your custom packages and modifications, exported as overlays
+      # custom packages and modifications, exported as overlays
       overlays = {
         inherit (import ./overlays { inherit inputs; })
           additions
@@ -182,25 +176,21 @@
         nur = inputs.nur.overlays.default;
       };
 
-      # reusable nixos modules you might want to export
-      # these are usually stuff you would upstream into nixpkgs
+      # nixos system modules
       nixosModules = import ./modules/nixos;
 
-      # reusable home-manager modules you might want to export
-      # these are usually stuff you would upstream into home-manager
+      # home-manager modules
       homeManagerModules = import ./modules/home-manager;
 
       # nixos configuration entrypoint
-      # available through 'nixos-rebuild --flake .#lvl'
       nixosConfigurations = {
         lvl = mkNixosConfiguration "lvl";
       };
 
       # standalone home-manager configuration entrypoint
-      # available through 'home-manager --flake .#ludw@lvl'
       homeConfigurations = {
-        "ludw@lvl" = mkHomeConfiguration lvlSystem "ludw" "lvl";
-        "ceirs@lvl" = mkHomeConfiguration lvlSystem "ceirs" "lvl";
+        "ludw@lvl" = mkHomeConfiguration hostSystem "ludw" "lvl";
+        "ceirs@lvl" = mkHomeConfiguration hostSystem "ceirs" "lvl";
       };
     };
 }

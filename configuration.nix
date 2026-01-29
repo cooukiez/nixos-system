@@ -49,6 +49,7 @@ in
     inputs.self.nixosModules.common
     inputs.self.nixosModules.desktop
     inputs.self.nixosModules.programs
+
     inputs.nix-flatpak.nixosModules.nix-flatpak
     inputs.niri.nixosModules.niri
     inputs.copyparty.nixosModules.default
