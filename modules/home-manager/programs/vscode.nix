@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/vscode.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 { pkgs, userConfig, ... }:
 {
   # fix for vscode keyring

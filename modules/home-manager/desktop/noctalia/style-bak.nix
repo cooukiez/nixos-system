@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/noctalia/style-bak.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   /*
     # old base16Scheme

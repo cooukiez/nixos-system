@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/debug.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # https://nix-community.github.io/nixvim/plugins/dap/index.html
   plugins.dap = {

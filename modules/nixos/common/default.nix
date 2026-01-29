@@ -1,3 +1,10 @@
+/*
+  modules/nixos/common/default.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   config,
   pkgs,

@@ -1,3 +1,10 @@
+/*
+  overlays/default.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 # file defines overlays
 { inputs, ... }:
 {

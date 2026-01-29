@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/noctalia/noctalia/session-menu.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   position = "center";
 

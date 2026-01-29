@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/kde/input-gestures.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 { config, pkgs, ... }:
 {
   xdg.configFile."libinput-gestures.conf".text = ''

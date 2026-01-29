@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/lint.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html

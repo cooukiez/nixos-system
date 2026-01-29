@@ -1,5 +1,12 @@
+/*
+  modules/nixos/programs/default.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
+
 {
-  lib,
   pkgs,
   inputs,
   ...
@@ -88,6 +95,7 @@ in
     gpu-screen-recorder-gtk
     meld
     signal-desktop
+    gephi
 
     # nautilus for niri
     nautilus

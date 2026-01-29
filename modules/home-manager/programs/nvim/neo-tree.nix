@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/neo-tree.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # plugin to browse the file system
   # https://nix-community.github.io/nixvim/plugins/neo-tree/index.html?highlight=neo-tree#pluginsneo-treepackage

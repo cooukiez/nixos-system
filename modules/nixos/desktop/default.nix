@@ -1,3 +1,10 @@
+/*
+  modules/nixos/desktop/default.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 { inputs, pkgs, ... }:
 {
   # enable sddm

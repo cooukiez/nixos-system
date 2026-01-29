@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/blink-cmp.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # snippet engine for Neovim
   # https://nix-community.github.io/nixvim/plugins/luasnip/index.html

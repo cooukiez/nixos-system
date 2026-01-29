@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/autopairs.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # inserts matching pairs of parens, brackets, etc.
   # https://nix-community.github.io/nixvim/plugins/nvim-autopairs/index.html

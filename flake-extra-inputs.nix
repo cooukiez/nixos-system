@@ -1,3 +1,10 @@
+/*
+  flake-extra-inputs.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # declarative kde plasma manager
   plasma-manager = {

@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/noctalia/xdg-config.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 { config, pkgs, ... }:
 let
   disabled_desktop_entry = ''

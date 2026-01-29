@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/noctalia/dconf.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   dconf.settings = {
     # probably not required an already set by stylix

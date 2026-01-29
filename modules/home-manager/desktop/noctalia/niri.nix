@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/noctalia/niri.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   config,
   pkgs,

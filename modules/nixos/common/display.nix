@@ -1,3 +1,10 @@
+/*
+  modules/nixos/common/display.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 { pkgs, ... }:
 {
   # xserver configuration

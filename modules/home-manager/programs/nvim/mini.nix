@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/mini.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # collection of various small independent plugins/modules
   # https://nix-community.github.io/nixvim/plugins/mini.html

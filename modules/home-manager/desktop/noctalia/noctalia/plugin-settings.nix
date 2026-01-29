@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/noctalia/noctalia/plugin-settings.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   catwalk = {
     minimumThreshold = 20;

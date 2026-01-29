@@ -1,3 +1,10 @@
+/*
+  home/ceirs/default.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 # use this to configure home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,

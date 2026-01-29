@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/default.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 { config, pkgs, ... }:
 let
   # read all files in the current directory

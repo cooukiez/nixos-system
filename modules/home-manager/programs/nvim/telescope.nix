@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/telescope.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # fuzzy finder (files, lsp, etc)
   # https://nix-community.github.io/nixvim/plugins/telescope/index.html

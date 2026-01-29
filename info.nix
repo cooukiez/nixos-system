@@ -1,3 +1,10 @@
+/*
+  info.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   name = "Ludwig Geyer";
   email = "ludwig.geyer@mailbox.org";

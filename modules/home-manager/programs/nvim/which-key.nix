@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/which-key.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # useful plugin to show pending keybinds
   # https://nix-community.github.io/nixvim/plugins/which-key/index.html

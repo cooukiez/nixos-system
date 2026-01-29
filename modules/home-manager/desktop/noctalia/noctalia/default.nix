@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/noctalia/noctalia/default.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   config,
   inputs,

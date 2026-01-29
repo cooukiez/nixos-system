@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/lsp.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 { pkgs, ... }:
 {
   # useful status updates for lsp

@@ -1,3 +1,10 @@
+/*
+  pkgs/default.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 # custom packages, that can be defined similarly to ones from nixpkgs
 # build them using 'nix build .#example'
 pkgs:

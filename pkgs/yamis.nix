@@ -1,3 +1,10 @@
+/*
+  pkgs/yamis.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 # disabled
 { pkgs }:
 

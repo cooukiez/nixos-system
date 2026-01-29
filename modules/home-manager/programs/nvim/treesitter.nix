@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/treesitter.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 { pkgs, ... }:
 {
   # highlight, edit, and navigate code

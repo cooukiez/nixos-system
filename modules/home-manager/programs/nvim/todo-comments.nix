@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/programs/nvim/todo-comments.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   # highlight todo, notes, etc. in comments
   # https://nix-community.github.io/nixvim/plugins/todo-comments/index.html

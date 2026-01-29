@@ -1,3 +1,10 @@
+/*
+  modules/home-manager/desktop/noctalia/noctalia/control-center.nix
+
+  created by ludw
+  on 2026-01-29
+*/
+
 {
   position = "close_to_bar_button";
   diskPath = "/";
