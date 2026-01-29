@@ -9,8 +9,6 @@
   position = "center";
   sortByMostUsed = true;
   viewMode = "grid";
-  customLaunchPrefix = "";
-  customLaunchPrefixEnabled = false;
 
   autoPasteClipboard = false;
   clipboardWrapText = true;
@@ -27,9 +25,11 @@
   ];
 
   terminalCommand = "kitty -e";
+  # todo: put in screenshot tool
   screenshotAnnotationTool = "";
 
   showCategories = true;
+  # will add dark background to icons
   showIconBackground = false;
 
   useApp2Unit = false;

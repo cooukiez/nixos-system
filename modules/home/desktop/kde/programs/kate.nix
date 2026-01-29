@@ -5,7 +5,6 @@
   on 2026-01-29
 */
 
-{ pkgs, userConfig, ... }:
 {
   programs.kate = {
     enable = true;

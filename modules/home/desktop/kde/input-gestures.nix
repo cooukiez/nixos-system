@@ -5,8 +5,12 @@
   on 2026-01-29
 */
 
-{ config, pkgs, ... }:
 {
+  pkgs,
+  ...
+}:
+{
+  # enable three finger gestures for workspace switching
   xdg.configFile."libinput-gestures.conf".text = ''
     # three finger gestures
     gesture swipe left 3 xdotool key Super+Right

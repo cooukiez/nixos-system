@@ -112,7 +112,7 @@
     jetbrains.idea
     jetbrains.clion
     jetbrains-toolbox
-    vscode
+    unstable.vscode
 
     # wine compatibilty
     wineWowPackages.stable

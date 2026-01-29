@@ -14,6 +14,7 @@
     }
   ];
 
+  # install noctalia plugins here
   states = {
     catwalk = {
       enabled = true;
