@@ -151,11 +151,10 @@
           extraSpecialArgs = {
             inherit inputs outputs;
             userConfig = users.${username};
-            nhModules = "${self}/modules/home-manager";
+            nhModules = "${self}/modules/home";
           };
           modules = [
             ./home/${username}
-            inputs.plasma-manager.homeModules.plasma-manager
           ];
         };
     in
@@ -180,7 +179,7 @@
       nixosModules = import ./modules/nixos;
 
       # home-manager modules
-      homeManagerModules = import ./modules/home-manager;
+      homeManagerModules = import ./modules/home;
 
       # nixos configuration entrypoint
       nixosConfigurations = {

@@ -26,6 +26,7 @@ in
     # inputs.nix-colors.homeManagerModules.default
     # also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    inputs.plasma-manager.homeModules.plasma-manager
     inputs.self.homeManagerModules.desktop-kde
     inputs.self.homeManagerModules.programs
     inputs.zen-browser.homeModules.twilight
