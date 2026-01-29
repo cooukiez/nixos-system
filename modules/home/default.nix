@@ -7,7 +7,12 @@
 
 {
   # list module files here
-  desktop-noctalia = import ./desktop/noctalia;
+
+  # kde plasma desktop
   desktop-kde = import ./desktop/kde;
+
+  # noctalia / niri desktop
+  desktop-nn = import ./desktop/nn;
+
   programs = import ./programs;
 }

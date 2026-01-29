@@ -5,7 +5,8 @@
   on 2026-01-25
 */
 
-# use this to configure home environment (it replaces ~/.config/nixpkgs/home.nix)
+# configure home environment
+
 {
   inputs,
   lib,
@@ -26,7 +27,7 @@ in
     # inputs.nix-colors.homeManagerModules.default
     # also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    inputs.self.homeManagerModules.desktop-noctalia
+    inputs.self.homeManagerModules.desktop-nn
     inputs.self.homeManagerModules.programs
     inputs.zen-browser.homeModules.twilight
     inputs.niri.homeModules.niri

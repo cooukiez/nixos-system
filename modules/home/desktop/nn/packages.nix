@@ -13,7 +13,7 @@
   home.packages = with pkgs; [
     quickshell
 
-    # packages for noctalia
+    # programs
     kitty
     mission-center
     apostrophe
@@ -40,14 +40,13 @@
     gnome-calculator
 
     # libraries / packages
-    glib
-    gtk3
     adw-gtk3
-    adwaita-qt6
-    kdePackages.qt6ct
-    # gnome-themes-extra
     adwaita-icon-theme
+    adwaita-qt6
+    glib
     gsettings-desktop-schemas
+    gtk3
+    kdePackages.qt6ct
 
     # compatibility
     gnome-online-accounts

@@ -5,7 +5,10 @@
   on 2026-01-29
 */
 
-{ config, pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 let
   disabled_desktop_entry = ''
     [Desktop Entry]
@@ -30,19 +33,22 @@ in
       xdgOpenUsePortal = true;
 
       configPackages = with pkgs; [
-        #gnome.gnome-session
+        gnome-session
       ];
 
+      # gtk portal is required but installed system-wide
       extraPortals = with pkgs; [
         xdg-desktop-portal-gnome
       ];
 
+      # should be set by niri but as backup
       config = {
         common = {
           default = [
             "gtk"
           ];
           "org.freedesktop.impl.portal.Secret" = [
+            # we rely on gnome de
             "gnome-keyring"
           ];
         };
@@ -83,6 +89,7 @@ in
     };
   };
 
+  # remove kde app entries from start menu
   xdg.dataFile."applications/kdesystemsettings.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/org.kde.kmenuedit.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/systemsettings.desktop".text = disabled_desktop_entry;

@@ -6,10 +6,7 @@
 */
 
 {
-  config,
-  inputs,
   pkgs,
-  lib,
   ...
 }:
 {

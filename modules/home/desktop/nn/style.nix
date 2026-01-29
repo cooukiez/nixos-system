@@ -14,6 +14,10 @@
   stylix = {
     enable = true;
 
+    # todo: remove this and fix error
+    enableReleaseChecks = false;
+
+    # disable stylix targets we configure ourselves
     targets.noctalia-shell.enable = false;
     targets.kitty.enable = false;
     targets.firefox.enable = false;
@@ -22,7 +26,6 @@
 
     targets.firefox.profileNames = [ "default" ];
     targets.zen-browser.profileNames = [ "default" ];
-    enableReleaseChecks = false;
 
     # horizon base16
     base16Scheme = {
@@ -78,6 +81,9 @@
   gtk = {
     enable = true;
 
+    # adwaita dark theme is not working for gtk4
+    # so we set the theme seperately for gtk2, gtk3 and gtk4
+
     gtk2.theme = {
       package = pkgs.adw-gtk3;
       name = "adw-gtk3-dark";
@@ -94,12 +100,14 @@
     };
 
     gtk4.extraConfig = {
+      # set the gtk4 thme in extra config
       gtk-theme-name = "adw-gtk3-dark";
       gtk-enable-animations = false;
       gtk-menu-popup-delay = 0;
     };
 
     cursorTheme = {
+      # todo: select cursor theme
       name = "Adwaita";
       size = 24;
     };
@@ -114,15 +122,21 @@
 
   qt = {
     enable = true;
+
+    # global qt widget style
     style.name = "Adwaita-Dark";
 
     qt6ctSettings = {
       Appearance = {
         color_scheme_path = "$HOME/.config/qt6ct/colors/noctalia.conf";
+        # enable custom palette instead of system palette
         custom_palette = true;
         standard_dialogs = "default";
 
+        # qt widget style used inside qt6ct
         style = "Adwaita-Dark";
+
+        # todo: select cursor theme
         icon_theme = "Papirus-Dark";
       };
 
@@ -133,22 +147,31 @@
 
       Interface = {
         activate_item_on_single_click = 1;
-        buttonbox_layout = 2;
-        cursor_flash_time = 1000;
-        dialog_buttons_have_icons = 1;
         double_click_interval = 400;
-        gui_effects = "@Invalid()";
+        cursor_flash_time = 1000;
+
+        buttonbox_layout = 2; # layout style for dialog button boxes
+        dialog_buttons_have_icons = 1;
+        toolbutton_style = 4; # toolbar button style
+        underline_shortcut = 1;
+
+        # keyboard shortcut scheme preset
         keyboard_scheme = 2;
+
+        # mouse wheel scroll lines per step
+        wheel_scroll_lines = 3;
+
         menus_have_icons = true;
         show_shortcuts_in_context_menus = true;
+
+        gui_effects = "@Invalid()";
         stylesheets = "@Invalid()";
-        toolbutton_style = 4;
-        underline_shortcut = 1;
-        wheel_scroll_lines = 3;
       };
 
       Troubleshooting = {
         force_raster_widgets = 1;
+
+        # list of apps ignored by qt6ct settings
         ignored_applications = "@Invalid()";
       };
     };

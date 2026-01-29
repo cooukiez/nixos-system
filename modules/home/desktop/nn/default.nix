@@ -6,13 +6,12 @@
 */
 
 {
-  inputs,
-  pkgs,
   lib,
   ...
 }:
 {
   imports = [
+    ./niri
     ./noctalia
 
     ./niri.nix
@@ -31,7 +30,7 @@
   };
 
   dconf.settings = {
-    # probably not required an already set by stylix
+    # required to force setting and overwrite multiple others
     "org/gnome/desktop/interface" = {
       color-scheme = lib.mkForce "prefer-dark";
     };
