@@ -5,7 +5,6 @@
   on 2026-01-27
 */
 
-
 {
   position = "center";
   sortByMostUsed = true;

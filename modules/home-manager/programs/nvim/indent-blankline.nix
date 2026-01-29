@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # add indentation guides even on blank lines
   # https://nix-community.github.io/nixvim/plugins/indent-blankline/index.html

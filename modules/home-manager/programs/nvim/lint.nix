@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html

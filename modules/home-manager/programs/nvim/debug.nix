@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # https://nix-community.github.io/nixvim/plugins/dap/index.html
   plugins.dap = {

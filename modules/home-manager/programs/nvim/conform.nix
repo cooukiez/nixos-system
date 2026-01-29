@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 { pkgs, ... }:
 {
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extrapackages

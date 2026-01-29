@@ -5,7 +5,6 @@
   on 2026-01-06
 */
 
-
 { pkgs, userConfig, ... }:
 {
   programs.zen-browser = {

@@ -5,7 +5,6 @@
   on 2026-01-24
 */
 
-
 { config, pkgs, ... }:
 let
   disabled_desktop_entry = ''

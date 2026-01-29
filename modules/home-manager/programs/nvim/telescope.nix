@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # fuzzy finder (files, lsp, etc)
   # https://nix-community.github.io/nixvim/plugins/telescope/index.html

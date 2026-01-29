@@ -5,7 +5,6 @@
   on 2026-01-16
 */
 
-
 { pkgs, userConfig, ... }:
 {
   # fix for vscode keyring

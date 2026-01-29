@@ -5,7 +5,6 @@
   on 2026-01-17
 */
 
-
 { pkgs, userConfig, ... }:
 {
   imports = [

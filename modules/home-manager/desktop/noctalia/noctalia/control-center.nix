@@ -5,7 +5,6 @@
   on 2026-01-27
 */
 
-
 {
   position = "close_to_bar_button";
   diskPath = "/";

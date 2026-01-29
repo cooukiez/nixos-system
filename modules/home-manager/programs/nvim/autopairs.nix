@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # inserts matching pairs of parens, brackets, etc.
   # https://nix-community.github.io/nixvim/plugins/nvim-autopairs/index.html

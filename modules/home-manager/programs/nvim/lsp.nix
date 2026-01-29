@@ -5,8 +5,10 @@
   on 2026-01-26
 */
 
-
-{ pkgs, ... }:
+{
+  pkgs,
+  ...
+}:
 {
   # useful status updates for lsp
   # https://nix-community.github.io/nixvim/plugins/fidget/index.html

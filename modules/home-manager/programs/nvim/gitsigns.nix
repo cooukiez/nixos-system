@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # adds git related signs to the gutter, as well as utilities for managing changes
   # https://nix-community.github.io/nixvim/plugins/gitsigns/index.html

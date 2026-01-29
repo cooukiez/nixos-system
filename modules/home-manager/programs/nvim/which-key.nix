@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # useful plugin to show pending keybinds
   # https://nix-community.github.io/nixvim/plugins/which-key/index.html

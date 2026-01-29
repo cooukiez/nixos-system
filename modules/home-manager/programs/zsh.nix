@@ -5,7 +5,6 @@
   on 2026-01-08
 */
 
-
 { pkgs, userConfig, ... }:
 {
   programs.zsh = {

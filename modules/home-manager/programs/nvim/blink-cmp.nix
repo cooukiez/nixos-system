@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # snippet engine for Neovim
   # https://nix-community.github.io/nixvim/plugins/luasnip/index.html

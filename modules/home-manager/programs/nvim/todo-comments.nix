@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # highlight todo, notes, etc. in comments
   # https://nix-community.github.io/nixvim/plugins/todo-comments/index.html

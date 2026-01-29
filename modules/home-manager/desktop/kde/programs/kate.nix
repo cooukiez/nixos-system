@@ -5,7 +5,6 @@
   on 2026-01-07
 */
 
-
 { pkgs, userConfig, ... }:
 {
   programs.kate = {

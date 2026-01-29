@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   dconf.settings = {
     # probably not required an already set by stylix

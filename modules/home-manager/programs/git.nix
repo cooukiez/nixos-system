@@ -5,7 +5,6 @@
   on 2026-01-04
 */
 
-
 { pkgs, userConfig, ... }:
 {
   programs.git = {

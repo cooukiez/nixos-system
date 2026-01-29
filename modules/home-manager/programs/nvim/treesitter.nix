@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 { pkgs, ... }:
 {
   # highlight, edit, and navigate code

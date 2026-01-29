@@ -5,7 +5,6 @@
   on 2026-01-26
 */
 
-
 {
   # collection of various small independent plugins/modules
   # https://nix-community.github.io/nixvim/plugins/mini.html

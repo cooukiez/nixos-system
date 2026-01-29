@@ -5,7 +5,6 @@
   on 2026-01-27
 */
 
-
 {
   barType = "floating";
   floating = true;
