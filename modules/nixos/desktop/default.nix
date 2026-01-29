@@ -43,6 +43,8 @@
   environment.systemPackages = with pkgs; [
     # sddm theme
     sddm-astronaut
+
+    # todo: install noctalia as home package
     # noctalia packages
     (inputs.noctalia.packages.${hostSystem}.default.override {
       calendarSupport = true;
