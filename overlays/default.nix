@@ -5,14 +5,12 @@
   on 2026-01-01
 */
 
-# file defines overlays
-
 {
   inputs,
   ...
 }:
 {
-  # this one brings our custom packages from the 'pkgs' directory
+  # custom packages from package directory
   additions = final: _prev: import ../pkgs final.pkgs;
 
   # see https://nixos.wiki/wiki/Overlays
