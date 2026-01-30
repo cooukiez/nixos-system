@@ -82,9 +82,6 @@
   gtk = {
     enable = true;
 
-    # adwaita dark theme is not working for gtk4
-    # so we set the theme seperately for gtk2, gtk3 and gtk4
-
     gtk2.theme = {
       package = pkgs.adw-gtk3;
       name = "adw-gtk3-dark";
@@ -100,7 +97,6 @@
     };
 
     gtk4.extraConfig = {
-      # set the gtk4 thme in extra config
       gtk-theme-name = "adw-gtk3-dark";
       gtk-enable-animations = false;
     };
