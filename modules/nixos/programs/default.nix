@@ -76,6 +76,9 @@
   # gnome calendar support
   services.gnome.evolution-data-server.enable = true;
 
+  services.gnome.tracker.enable = true;
+  services.gnome.tracker-miners.enable = true;
+
   # enable zsh as shell
   programs.zsh.enable = true;
 
@@ -103,6 +106,8 @@
     meld
     pavucontrol
     renderdoc
+    slack
+    slack-cli
 
     # code editors / IDE
     jetbrains.rust-rover

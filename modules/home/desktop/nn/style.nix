@@ -97,14 +97,12 @@
 
     gtk3.extraConfig = {
       gtk-enable-animations = false;
-      gtk-menu-popup-delay = 0;
     };
 
     gtk4.extraConfig = {
       # set the gtk4 thme in extra config
       gtk-theme-name = "adw-gtk3-dark";
       gtk-enable-animations = false;
-      gtk-menu-popup-delay = 0;
     };
 
     cursorTheme = {

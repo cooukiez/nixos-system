@@ -43,33 +43,18 @@ in
   xdg = {
     enable = true;
 
-    autostart = {
-      enable = true;
-      readOnly = true;
-      entries = [ ];
-    };
+    /*
+      autostart = {
+        enable = true;
+        readOnly = true;
+        entries = [ ];
+      };
+    */
 
     portal = {
-      enable = true;
-      xdgOpenUsePortal = false;
-
-      configPackages = with pkgs; [
-
-      ];
-
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
-        # xdg-desktop-portal-gnome
-      ];
-
       config = {
         common = {
-          default = "*";
-
-          "org.freedesktop.impl.portal.Secret" = [
-            "gnome-keyring"
-          ];
+          "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
         };
       };
     };

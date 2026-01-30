@@ -84,6 +84,9 @@ in
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
       # GDK_BACKEND = "wayland,x11";
 
+      # pretend desktop is gnome
+      XDG_CURRENT_DESKTOP = "GNOME";
+
       XCURSOR_SIZE = "24";
     };
   };
