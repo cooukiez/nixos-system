@@ -1,7 +1,9 @@
 - [x] nvim config -> nix cats, https://nixcats.org
 - [-] firefox extension fixes
 - [x] add zen-browser configuration
-- [ ] configure mime-types completely
+- [-] configure mime-types completely
+	- [ ] fix mime-types not applying
+	- [ ] gtk-desktop-portal not starting correctly
 - [-] syncthing configuration
 - [x] niri/noctalia resolution settings to 1920x1080 automated
 - [ ] noctalia display resolution accurately

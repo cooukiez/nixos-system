@@ -59,6 +59,7 @@ in
       };
     };
 
+    configFile."mimeapps.list".force = true;
     mimeApps = {
       enable = true;
 
