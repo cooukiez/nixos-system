@@ -2,7 +2,7 @@
 - [-] firefox extension fixes
 - [x] add zen-browser configuration
 - [ ] configure mime-types completely
-- [ ] syncthing configuration
+- [-] syncthing configuration
 - [x] niri/noctalia resolution settings to 1920x1080 automated
 - [ ] noctalia display resolution accurately
 - [ ] zen-browser complete configuration

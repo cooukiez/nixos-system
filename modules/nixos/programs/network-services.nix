@@ -12,6 +12,8 @@
   ...
 }:
 let
+  # unsafe passwords go here
+  syncthing_password = "PcVonLudw";
   copyparty_pm_password = pkgs.writeText "copyparty-pm-password" ''
     fileupload123
   '';
@@ -41,6 +43,17 @@ in
     defaultWindowManager = "startplasma-x11";
     enable = true;
     openFirewall = true;
+  };
+
+  # see https://wiki.nixos.org/wiki/Syncthing
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
+
+    settings.gui = {
+      user = "net";
+      password = "${syncthing_password}";
+    };
   };
 
   # ftp server
