@@ -28,6 +28,7 @@
       nuh = "nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@lvl.activationPackage";
       nuuh = "nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@lvl.activationPackage --update";
 
+      nix-dir = "cd /etc/nixos";
       nixos-kate = "kate /etc/nixos";
 
       help = "bash -c 'help'";

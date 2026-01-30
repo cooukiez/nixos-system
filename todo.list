@@ -6,6 +6,7 @@
 - [x] niri/noctalia resolution settings to 1920x1080 automated
 - [ ] noctalia display resolution accurately
 - [ ] zen-browser complete configuration
+- [ ] fix suspending
 - [x] noctalia configuration
 - [x] rewriting flake / nixos config and adding headers (also for deprecated files)
 	- [x] nixos system rewrite

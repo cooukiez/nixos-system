@@ -76,6 +76,7 @@
     mesa
     neofetch
     playerctl
+    python3
     ripgrep
     rustup
     slurp

@@ -17,6 +17,27 @@ let
     Exec=false
     NoDisplay=true
   '';
+
+  general-editor = [ "nvim.desktop" ];
+  intermediate-editor = [ "code.desktop" ];
+
+  python-editor = [ "pycharm.desktop" ];
+  json-editor = intermediate-editor;
+  java-editor = [ "idea.desktop" ];
+  cpp-editor = [ "clion.desktop" ];
+  rust-editor = [ "rust-rover.desktop" ];
+  web-source-editor = [ "webstorm.desktop" ];
+  php-editor = [ "phpstorm.desktop" ];
+  nix-editor = intermediate-editor;
+
+  pdf-viewer = [ "org.pwmt.zathura.desktop" ];
+  image-viewer = [ "loupe.desktop" ];
+  audio-player = [ "org.gnome.Music.desktop" ];
+  video-player = [ "showtime.desktop" ];
+  archive-manager = [ "org.gnome.Nautilus.desktop" ];
+  file-manager = [ "org.gnome.Nautilus.desktop" ];
+
+  browser = [ "firefox.desktop" ];
 in
 {
   xdg = {
@@ -30,25 +51,23 @@ in
 
     portal = {
       enable = true;
-      xdgOpenUsePortal = true;
+      xdgOpenUsePortal = false;
 
       configPackages = with pkgs; [
-        gnome-session
+
       ];
 
-      # gtk portal is required but installed system-wide
       extraPortals = with pkgs; [
-        xdg-desktop-portal-gnome
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+        # xdg-desktop-portal-gnome
       ];
 
-      # should be set by niri but as backup
       config = {
         common = {
-          default = [
-            "gtk"
-          ];
+          default = "*";
+
           "org.freedesktop.impl.portal.Secret" = [
-            # we rely on gnome de
             "gnome-keyring"
           ];
         };
@@ -59,32 +78,107 @@ in
       enable = true;
 
       defaultApplications = {
-        # text
-        "text/plain" = [ "org.gnome.gedit.desktop" ];
+        # plain text
+        "text/plain" = general-editor;
+        "application/octet-stream" = general-editor;
+
+        # pyhton
+        "text/x-python" = python-editor;
+        "application/x-python-code" = python-editor;
+
+        # json
+        "application/json" = json-editor;
+        "application/ld+json" = json-editor;
+        "text/json" = json-editor;
+
+        # java
+        "text/x-java" = java-editor;
+        "text/x-java-source" = java-editor;
+
+        # c / cpp
+        "text/x-c" = cpp-editor;
+        "text/x-c++" = cpp-editor;
+        "text/x-c++src" = cpp-editor;
+        "text/x-chdr" = cpp-editor;
+        "text/x-c++hdr" = cpp-editor;
+
+        # rust
+        "text/rust" = rust-editor;
+        "text/x-rust" = rust-editor;
+
+        # web source, with intermediate editor
+        "text/html" = intermediate-editor;
+        "application/xhtml+xml" = intermediate-editor;
+        "text/css" = intermediate-editor;
+        "application/javascript" = intermediate-editor;
+        "text/javascript" = intermediate-editor;
+        "application/x-typescript" = intermediate-editor;
+
+        # php
+        "text/x-php" = php-editor;
+        "application/x-php" = php-editor;
+
+        # nix
+        "text/x-nix" = nix-editor;
+
+        # config / markup / data
+        "application/xml" = general-editor;
+        "text/xml" = general-editor;
+        "text/x-yaml" = general-editor;
+        "application/x-yaml" = general-editor;
+        "application/toml" = general-editor;
+        "text/csv" = general-editor;
+
+        # shell
+        "application/x-shellscript" = general-editor;
+        "text/x-shellscript" = general-editor;
 
         # pdf
-        "application/pdf" = [ "org.pwmt.zathura.desktop" ];
+        "application/pdf" = pdf-viewer;
 
         # images
-        "image/png" = [ "loupe.desktop" ];
-        "image/jpeg" = [ "loupe.desktop" ];
-        "image/webp" = [ "loupe.desktop" ];
-        "image/gif" = [ "loupe.desktop" ];
-        "image/bmp" = [ "loupe.desktop" ];
+        "image/png" = image-viewer;
+        "image/jpeg" = image-viewer;
+        "image/webp" = image-viewer;
+        "image/gif" = image-viewer;
+        "image/bmp" = image-viewer;
+        "image/tiff" = image-viewer;
+        "image/svg+xml" = image-viewer;
+        "image/heif" = image-viewer;
+        "image/heic" = image-viewer;
+        "image/x-xcf" = image-viewer;
+
+        # audio
+        "audio/mpeg" = audio-player;
+        "audio/flac" = audio-player;
+        "audio/ogg" = audio-player;
+        "audio/wav" = audio-player;
 
         # videos
-        "video/mp4" = [ "showtime.desktop" ];
-        "video/x-matroska" = [ "showtime.desktop" ];
-        "video/webm" = [ "showtime.desktop" ];
-        "video/x-msvideo" = [ "showtime.desktop" ];
+        "video/mp4" = video-player;
+        "video/webm" = video-player;
+        "video/x-matroska" = video-player;
+        "video/x-msvideo" = video-player;
+        "video/quicktime" = video-player;
+        "video/mpeg" = video-player;
+        "video/ogg" = video-player;
+
+        # archives
+        "application/zip" = archive-manager;
+        "application/x-tar" = archive-manager;
+        "application/x-gzip" = archive-manager;
+        "application/x-bzip2" = archive-manager;
+        "application/x-7z-compressed" = archive-manager;
+        "application/x-rar" = archive-manager;
 
         # directories
         "inode/directory" = [ "thunar.desktop" ];
 
         # browser
-        "x-scheme-handler/http" = [ "firefox.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" ];
-        "text/html" = [ "firefox.desktop" ];
+        "x-scheme-handler/http" = browser;
+        "x-scheme-handler/https" = browser;
+        "x-scheme-handler/about" = browser;
+        "x-scheme-handler/unknown" = browser;
       };
     };
   };

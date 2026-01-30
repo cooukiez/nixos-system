@@ -31,19 +31,6 @@
     wlinhibit
   ];
 
-  # xdg desktop portal
-  xdg = {
-    portal = {
-      enable = true;
-      wlr.enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-    };
-    icons.enable = true;
-  };
-
   # fonts configuration
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
