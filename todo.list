@@ -8,7 +8,7 @@
 - [x] niri/noctalia resolution settings to 1920x1080 automated
 - [ ] noctalia display resolution accurately
 - [ ] zen-browser complete configuration
-- [ ] fix suspending
+- [ ] fix suspending in niri
 - [x] noctalia configuration
 - [x] fix gnome music and other gnome apps not working
 - [x] rewriting flake / nixos config and adding headers (also for deprecated files)
