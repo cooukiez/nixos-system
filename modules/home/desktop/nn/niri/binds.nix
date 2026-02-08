@@ -121,22 +121,22 @@ in
   "Mod+F1".hotkey-overlay.title = "Toggle this cheatsheet";
 
   "Mod+D".action = noctalia-ipc "launcher" "toggle";
-  "Mod+D".hotkey-overlay.title = "Open application launcher";
+  "Mod+D".hotkey-overlay.title = "Application launcher";
 
   "Mod+R".action = noctalia-ipc "launcher" "command";
-  "Mod+R".hotkey-overlay.title = "Open command runner";
+  "Mod+R".hotkey-overlay.title = "Command runner";
 
   "Mod+Shift+E".action = noctalia-ipc "launcher" "emoji";
   "Mod+Shift+E".hotkey-overlay.title = "Open emoji selector";
 
   "Mod+Shift+V".action = noctalia-ipc "launcher" "clipboard";
-  "Mod+Shift+V".hotkey-overlay.title = "Open clipboard history";
+  "Mod+Shift+V".hotkey-overlay.title = "Clipboard history";
 
   "Mod+X".action = noctalia-ipc "controlCenter" "toggle";
-  "Mod+X".hotkey-overlay.title = "Open control center";
+  "Mod+X".hotkey-overlay.title = "Control center";
 
   "Mod+P".action = noctalia-ipc "sessionMenu" "toggle";
-  "Mod+P".hotkey-overlay.title = "Open session menu";
+  "Mod+P".hotkey-overlay.title = "Session menu";
 
   # "Mod+Shift+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
   # "Mod+Shift+L".hotkey-overlay.title = "Lock and suspend";
@@ -148,11 +148,16 @@ in
   "Mod+Shift+H".hotkey-overlay.title = "Apply high resolution";
 
   "Print".action = screenshot-full;
+  "Print".hotkey-overlay.title = "Screenshot full screen";
   "Mod+Print".action = screenshot-region;
+  "Mod+Print".hotkey-overlay.title = "Screenshot region";
 
   "Mod+F2".action = record-full;
+  "Mod+F2".hotkey-overlay.title = "Record full screen";
   "Mod+F3".action = record-region;
+  "Mod+F3".hotkey-overlay.title = "Record region";
   "Mod+F4".action = record-stop;
+  "Mod+F4".hotkey-overlay.title = "Stop all recordings";
 
   "Mod+C".action = close-window;
   "Mod+H".action = maximize-column;
