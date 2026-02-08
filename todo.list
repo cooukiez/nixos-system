@@ -2,8 +2,8 @@
 - [-] firefox extension fixes
 - [x] add zen-browser configuration
 - [-] configure mime-types completely
-	- [ ] fix mime-types not applying
-	- [ ] gtk-desktop-portal not starting correctly
+	- [-] fix mime-types not applying
+	- [-] gtk-desktop-portal not starting correctly
 - [-] syncthing configuration
 - [x] niri/noctalia resolution settings to 1920x1080 automated
 - [ ] noctalia display resolution accurately
@@ -16,3 +16,7 @@
 	- [x] home manager rewrite
 - [ ] adding all my repos in code and resetting the build dirs
 - [ ] sorting all my scripts that I wrote at some point
+- [x] kde apps installed system-wide and then desktop-files disabled (no exclusions)
+- [x] hardware configuration with nixos-hardware
+- [x] change noctalia session menu key to mod+p
+- [x] change noctalia launcher key to mod+d

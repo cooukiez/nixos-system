@@ -43,7 +43,7 @@
     packages = [
       "com.github.vikdevelop.photopea_app"
       "com.leinardi.gst"
-      "be.alexandervanhee.gradia"
+      # "be.alexandervanhee.gradia"
       "edu.mit.Scratch"
       "org.turbowarp.TurboWarp"
     ];
@@ -102,7 +102,7 @@
     icon-slicer
     inkscape
     intel-gpu-tools
-    ipscan
+    unstable.ipscan
     krita
     meld
     pavucontrol

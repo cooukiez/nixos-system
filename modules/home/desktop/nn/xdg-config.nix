@@ -18,22 +18,24 @@ let
     NoDisplay=true
   '';
 
-  general-editor = [ "nvim.desktop" ];
+  # default applications
+  general-editor = [ "code.desktop" ];
   intermediate-editor = [ "code.desktop" ];
 
   python-editor = [ "pycharm.desktop" ];
-  json-editor = intermediate-editor;
   java-editor = [ "idea.desktop" ];
   cpp-editor = [ "clion.desktop" ];
   rust-editor = [ "rust-rover.desktop" ];
+  json-editor = [ "code.desktop" ];
   web-source-editor = [ "webstorm.desktop" ];
   php-editor = [ "phpstorm.desktop" ];
-  nix-editor = intermediate-editor;
+  nix-editor = [ "code.desktop" ];
 
   pdf-viewer = [ "org.pwmt.zathura.desktop" ];
-  image-viewer = [ "loupe.desktop" ];
+  image-viewer = [ "imv.desktop" ];
+  backup-image-viewer = [ "org.gnome.Loupe.desktop" ];
   audio-player = [ "org.gnome.Music.desktop" ];
-  video-player = [ "showtime.desktop" ];
+  video-player = [ "org.gnome.Showtime.desktop" ];
   archive-manager = [ "org.gnome.Nautilus.desktop" ];
   file-manager = [ "org.gnome.Nautilus.desktop" ];
 
@@ -58,6 +60,8 @@ in
     };
 
     configFile."mimeapps.list".force = true;
+    dataFile."applications/mimeapps.list".force = true;
+
     mimeApps = {
       enable = true;
 
@@ -124,6 +128,7 @@ in
         "image/png" = image-viewer;
         "image/jpeg" = image-viewer;
         "image/webp" = image-viewer;
+        "image/ico" = backup-image-viewer;
         "image/gif" = image-viewer;
         "image/bmp" = image-viewer;
         "image/tiff" = image-viewer;

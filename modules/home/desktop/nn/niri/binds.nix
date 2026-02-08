@@ -120,8 +120,8 @@ in
   "Mod+F1".action = noctalia-ipc "plugin:keybind-cheatsheet" "toggle";
   "Mod+F1".hotkey-overlay.title = "Toggle this cheatsheet";
 
-  "Mod+A".action = noctalia-ipc "launcher" "toggle";
-  "Mod+A".hotkey-overlay.title = "Open application launcher";
+  "Mod+D".action = noctalia-ipc "launcher" "toggle";
+  "Mod+D".hotkey-overlay.title = "Open application launcher";
 
   "Mod+R".action = noctalia-ipc "launcher" "command";
   "Mod+R".hotkey-overlay.title = "Open command runner";
@@ -135,8 +135,8 @@ in
   "Mod+X".action = noctalia-ipc "controlCenter" "toggle";
   "Mod+X".hotkey-overlay.title = "Open control center";
 
-  "Mod+I".action = noctalia-ipc "sessionMenu" "toggle";
-  "Mod+I".hotkey-overlay.title = "Open session menu";
+  "Mod+P".action = noctalia-ipc "sessionMenu" "toggle";
+  "Mod+P".hotkey-overlay.title = "Open session menu";
 
   # "Mod+Shift+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
   # "Mod+Shift+L".hotkey-overlay.title = "Lock and suspend";

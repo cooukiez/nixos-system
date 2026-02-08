@@ -33,6 +33,7 @@
     strawberry
 
     # image viewers
+    xnviewmp
     sxiv
     imv
 

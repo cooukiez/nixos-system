@@ -81,7 +81,6 @@
     ripgrep
     rustup
     slurp
-    stress-ng
     tldr
     tlrc
     toybox
@@ -122,6 +121,7 @@
     qt6.qtmultimedia
     qt6.qtsvg
     qt6.qtvirtualkeyboard
+    shared-mime-info
 
     # nixos related
     home-manager
