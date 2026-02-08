@@ -43,13 +43,11 @@ in
   xdg = {
     enable = true;
 
-    /*
-      autostart = {
-        enable = true;
-        readOnly = true;
-        entries = [ ];
-      };
-    */
+    autostart = {
+      enable = true;
+      readOnly = true;
+      entries = [ ];
+    };
 
     portal = {
       config = {
@@ -169,13 +167,25 @@ in
     };
   };
 
-  # remove kde app entries from start menu
+  # remove system wide app entries from start menu
+  # see /run/current-system/sw/share/applications
   xdg.dataFile."applications/kdesystemsettings.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/org.kde.kmenuedit.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/systemsettings.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/org.kde.kinfocenter.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/org.kde.plasma-systemmonitor.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.dolphin.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.kwrite.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/org.kde.plasma.emojier.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.kate.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.ark.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.elisa.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.okular.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.konsole.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.khelpcenter.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.discover.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.gwenview.desktop".text = disabled_desktop_entry;
+  xdg.dataFile."applications/org.kde.spectacle.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/kwalletmanager5-kwalletd.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/org.kde.kwalletmanager.desktop".text = disabled_desktop_entry;
   xdg.dataFile."applications/org.kde.drkonqi.coredump.gui.desktop".text = disabled_desktop_entry;

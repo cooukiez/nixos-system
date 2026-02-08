@@ -102,6 +102,7 @@
     icon-slicer
     inkscape
     intel-gpu-tools
+    ipscan
     krita
     meld
     pavucontrol

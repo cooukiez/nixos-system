@@ -19,6 +19,7 @@
     apostrophe
     libreoffice-fresh
     sly
+    pdfarranger
 
     # gnome apps
     loupe
