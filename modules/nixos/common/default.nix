@@ -60,6 +60,7 @@
     clang
     cliphist
     cmake
+    cpuid
     coreutils
     dmidecode
     fastfetch

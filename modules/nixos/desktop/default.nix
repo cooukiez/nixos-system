@@ -26,20 +26,6 @@
     enable = true;
   };
 
-  # exclude packages so they are not installed system-wide
-  environment.plasma6.excludePackages = with pkgs; [
-    kdePackages.kate
-    kdePackages.dolphin
-    kdePackages.konsole
-    kdePackages.okular
-    kdePackages.gwenview
-    kdePackages.ark
-    kdePackages.spectacle
-    kdePackages.discover
-    kdePackages.elisa
-    kdePackages.khelpcenter
-  ];
-
   environment.systemPackages = with pkgs; [
     # sddm theme
     sddm-astronaut

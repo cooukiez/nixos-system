@@ -8,7 +8,8 @@
 {
   position = "center";
   sortByMostUsed = true;
-  viewMode = "grid";
+  # alternative: grid
+  viewMode = "list";
 
   autoPasteClipboard = false;
   clipboardWrapText = true;

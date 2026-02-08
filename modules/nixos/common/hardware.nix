@@ -22,7 +22,6 @@
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
-      # for broadwell (2014) or newer processors
       intel-media-driver
     ];
   };

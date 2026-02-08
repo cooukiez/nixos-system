@@ -66,6 +66,9 @@
     # krunner plugins
     jetbrains-runner
 
+    # programs
+    libreoffice-qt-fresh
+
     # appearance themes / icons
     #     papirus-icon-theme
     #     tela-icon-theme

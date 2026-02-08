@@ -87,6 +87,7 @@
     bitwarden-cli
     bitwarden-desktop
     bluez-tools
+    cpu-x
     firestarter
     furmark
     geekbench
