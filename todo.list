@@ -6,17 +6,17 @@
 	- [-] gtk-desktop-portal not starting correctly
 - [-] syncthing configuration
 - [x] niri/noctalia resolution settings to 1920x1080 automated
-- [ ] noctalia display resolution accurately
-- [ ] zen-browser complete configuration
-- [ ] fix suspending in niri
 - [x] noctalia configuration
 - [x] fix gnome music and other gnome apps not working
 - [x] rewriting flake / nixos config and adding headers (also for deprecated files)
 	- [x] nixos system rewrite
 	- [x] home manager rewrite
-- [ ] adding all my repos in code and resetting the build dirs
-- [ ] sorting all my scripts that I wrote at some point
 - [x] kde apps installed system-wide and then desktop-files disabled (no exclusions)
 - [x] hardware configuration with nixos-hardware
 - [x] change noctalia session menu key to mod+p
 - [x] change noctalia launcher key to mod+d
+- [ ] noctalia display resolution accurately
+- [ ] zen-browser complete configuration
+- [ ] fix suspending in niri
+- [ ] adding all my repos in code and resetting the build dirs
+- [ ] sorting all my scripts that I wrote at some point
