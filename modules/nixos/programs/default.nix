@@ -75,9 +75,8 @@
 
   # gnome calendar support
   services.gnome.evolution-data-server.enable = true;
-
-  services.gnome.tracker.enable = true;
-  services.gnome.tracker-miners.enable = true;
+  services.gnome.tinysparql.enable = true;
+  services.gnome.localsearch.enable = true;
 
   # enable zsh as shell
   programs.zsh.enable = true;

@@ -10,6 +10,7 @@
 - [ ] zen-browser complete configuration
 - [ ] fix suspending
 - [x] noctalia configuration
+- [x] fix gnome music and other gnome apps not working
 - [x] rewriting flake / nixos config and adding headers (also for deprecated files)
 	- [x] nixos system rewrite
 	- [x] home manager rewrite
