@@ -17,12 +17,12 @@
 - [x] change noctalia launcher key to mod+d
 - [-] noctalia display resolution accurately
 - [-] zen-browser complete configuration
-- [x] fix niri keybinds, zen-browser mod+shift+g & settings mod+i
-- [ ] chrome configuration
+- [x] fix niri keybinds, zen-browser mod+shift+d & settings mod+i
+- [x] chrome configuration
 - [x] pinned programs in noctalia
+- [ ] obsidian configuration
 - [ ] adding all my repos in code and resetting the build dirs
 - [ ] sorting all my scripts that I wrote at some point
-- [ ] obsidian configuration
 ---
 - [ ] fix laptops session states
 	- [ ] fix suspending in niri

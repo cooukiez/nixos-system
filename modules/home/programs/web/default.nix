@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./chrome.nix
     ./firefox.nix
     ./thunderbird.nix
     ./zen-browser.nix

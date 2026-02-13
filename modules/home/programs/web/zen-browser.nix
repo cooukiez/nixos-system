@@ -110,6 +110,7 @@
 
       nativeMessagingHosts = [
         pkgs.firefoxpwa
+        pkgs.kdePackages.plasma-browser-integration
       ];
 
       profiles.default = {

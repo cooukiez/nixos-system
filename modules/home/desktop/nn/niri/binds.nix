@@ -116,8 +116,8 @@ in
   "Mod+Q".hotkey-overlay.title = "Open terminal";
   "Mod+Shift+F".action.spawn = [ "firefox" ];
   "Mod+Shift+F".hotkey-overlay.title = "Open firefox";
-  "Mod+Shift+G".action.spawn = [ "zen-browser" ];
-  "Mod+Shift+G".hotkey-overlay.title = "Open zen-browser";
+  "Mod+Shift+D".action.spawn = [ "zen" ];
+  "Mod+Shift+D".hotkey-overlay.title = "Open zen-browser";
   "Mod+Shift+C".action.spawn = [ "code" ];
   "Mod+Shift+C".hotkey-overlay.title = "Open vscode";
 
