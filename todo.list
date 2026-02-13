@@ -16,14 +16,16 @@
 - [x] change noctalia session menu key to mod+p
 - [x] change noctalia launcher key to mod+d
 - [-] noctalia display resolution accurately
-- [ ] zen-browser complete configuration
+- [-] zen-browser complete configuration
+- [x] fix niri keybinds, zen-browser mod+shift+g & settings mod+i
 - [ ] chrome configuration
 - [x] pinned programs in noctalia
----
+- [ ] adding all my repos in code and resetting the build dirs
+- [ ] sorting all my scripts that I wrote at some point
 - [ ] obsidian configuration
+---
 - [ ] fix laptops session states
 	- [ ] fix suspending in niri
 	- [ ] fix hibernation not locking session
-- [ ] adding all my repos in code and resetting the build dirs
-- [ ] sorting all my scripts that I wrote at some point
 - [ ] adding possibility of different bind-mounts and also fix the bind mount order
+- [ ] fix zen-browser configuration not applying

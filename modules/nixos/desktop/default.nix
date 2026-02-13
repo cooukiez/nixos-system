@@ -21,6 +21,9 @@
     theme = "sddm-astronaut-theme";
   };
 
+  # set default session to niri
+  services.displayManager.defaultSession = "niri";
+
   # enable plasma, adds desktop entries to sddm
   services.desktopManager.plasma6 = {
     enable = true;

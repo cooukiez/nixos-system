@@ -14,10 +14,6 @@
     enable = true;
     package = pkgs.unstable.firefox;
 
-    policies = {
-      DefaultDownloadDirectory = "\${home}/Downloads";
-    };
-
     profiles.default = {
       id = 0;
       name = "default";

@@ -107,6 +107,8 @@ in
 
   "XF86Tools".action = noctalia-ipc "settings" "toggle";
   "XF86Tools".hotkey-overlay.title = "Open settings";
+  "Mod+I".action = noctalia-ipc "settings" "toggle";
+  "Mod+I".hotkey-overlay.title = "Open settings";
 
   "Mod+E".action.spawn = [ "nautilus" ];
   "Mod+E".hotkey-overlay.title = "Open file manager";
@@ -114,8 +116,8 @@ in
   "Mod+Q".hotkey-overlay.title = "Open terminal";
   "Mod+Shift+F".action.spawn = [ "firefox" ];
   "Mod+Shift+F".hotkey-overlay.title = "Open firefox";
-  "Mod+Shift+D".action.spawn = [ "zen-browser" ];
-  "Mod+Shift+D".hotkey-overlay.title = "Open zen-browser";
+  "Mod+Shift+G".action.spawn = [ "zen-browser" ];
+  "Mod+Shift+G".hotkey-overlay.title = "Open zen-browser";
   "Mod+Shift+C".action.spawn = [ "code" ];
   "Mod+Shift+C".hotkey-overlay.title = "Open vscode";
 
