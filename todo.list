@@ -20,7 +20,7 @@
 - [x] fix niri keybinds, zen-browser mod+shift+d & settings mod+i
 - [x] chrome configuration
 - [x] pinned programs in noctalia
-- [ ] obsidian configuration
+- [x] obsidian configuration
 - [ ] adding all my repos in code and resetting the build dirs
 - [ ] sorting all my scripts that I wrote at some point
 ---
