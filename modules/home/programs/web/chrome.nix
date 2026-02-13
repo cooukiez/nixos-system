@@ -1,3 +1,10 @@
+/*
+  modules/home/programs/web/chrome.nix
+
+  created by ludw
+  on 2026-02-13
+*/
+
 {
   pkgs,
   ...
