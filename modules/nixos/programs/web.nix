@@ -20,6 +20,8 @@
     signal-desktop
     discord
     legcord
+    element-desktop
+    # cinny-desktop
 
     # torrenting
     qbittorrent-enhanced

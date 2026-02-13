@@ -15,8 +15,15 @@
 - [x] hardware configuration with nixos-hardware
 - [x] change noctalia session menu key to mod+p
 - [x] change noctalia launcher key to mod+d
-- [ ] noctalia display resolution accurately
+- [-] noctalia display resolution accurately
 - [ ] zen-browser complete configuration
-- [ ] fix suspending in niri
+- [ ] chrome configuration
+- [x] pinned programs in noctalia
+---
+- [ ] obsidian configuration
+- [ ] fix laptops session states
+	- [ ] fix suspending in niri
+	- [ ] fix hibernation not locking session
 - [ ] adding all my repos in code and resetting the build dirs
 - [ ] sorting all my scripts that I wrote at some point
+- [ ] adding possibility of different bind-mounts and also fix the bind mount order

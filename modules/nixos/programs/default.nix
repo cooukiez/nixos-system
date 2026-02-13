@@ -105,6 +105,7 @@
     unstable.ipscan
     krita
     meld
+    obsidian
     pavucontrol
     renderdoc
     slack

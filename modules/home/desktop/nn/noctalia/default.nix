@@ -22,8 +22,8 @@
 
     Service = {
       ExecStart = "${pkgs.quickshell}/bin/qs -c noctalia-shell";
-      Restart = "on-failure";
-      RestartSec = 1;
+      # Restart = "on-failure";
+      # RestartSec = 5;
     };
 
     Install = {

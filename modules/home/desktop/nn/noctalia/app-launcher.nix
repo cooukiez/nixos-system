@@ -23,6 +23,10 @@
     "code"
     "org.gnome.Nautilus"
     "spotify"
+    "obsidian"
+    "signal"
+    # "thunderbird"
+    # "github-desktop"
   ];
 
   terminalCommand = "kitty -e";
