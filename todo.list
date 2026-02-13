@@ -21,8 +21,8 @@
 - [x] chrome configuration
 - [x] pinned programs in noctalia
 - [x] obsidian configuration
-- [ ] adding all my repos in code and resetting the build dirs
-- [ ] sorting all my scripts that I wrote at some point
+- [x] adding all my repos in code and resetting the build dirs
+- [-] sorting all my scripts that I wrote at some point
 ---
 - [ ] fix laptops session states
 	- [ ] fix suspending in niri
