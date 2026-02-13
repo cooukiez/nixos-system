@@ -78,6 +78,8 @@
       desktopWidgets = import ./desktop-widgets.nix;
       sessionMenu = import ./session-menu.nix;
 
+      # colorSchemes.predefinedScheme = "Monochrome";
+
       general = {
         autoStartAuth = false;
         avatarImage = "/home/ceirs/.face";

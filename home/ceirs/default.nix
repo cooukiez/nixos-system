@@ -82,6 +82,7 @@ in
       ELM_DISPLAY = "wl";
       CLUTTER_BACKEND = "wayland";
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
+      ELECTRON_PASSWORD_STORE = "gnome-libsecret";
       # GDK_BACKEND = "wayland,x11";
 
       # pretend desktop is gnome

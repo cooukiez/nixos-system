@@ -208,6 +208,9 @@ in
   zramSwap.memoryPercent = 50;
   zramSwap.algorithm = "lz4";
 
+  nix.optimise.automatic = true;
+  nix.optimise.dates = [ "03:45" ];
+
   # see https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";
 }

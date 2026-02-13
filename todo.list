@@ -23,6 +23,7 @@
 - [x] obsidian configuration
 - [x] adding all my repos in code and resetting the build dirs
 - [-] sorting all my scripts that I wrote at some point
+- [x] fix element not using secret store
 ---
 - [ ] fix laptops session states
 	- [ ] fix suspending in niri

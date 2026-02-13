@@ -5,7 +5,11 @@
   on 2026-01-29
 */
 
-{ pkgs, userConfig, ... }:
+{
+  pkgs,
+  userConfig,
+  ...
+}:
 {
   programs.git = {
     enable = true;

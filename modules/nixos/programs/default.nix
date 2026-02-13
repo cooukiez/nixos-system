@@ -110,15 +110,14 @@
     renderdoc
     slack
     slack-cli
+    qdirstat
 
     # code editors / IDE
-    jetbrains.rust-rover
-    jetbrains.webstorm
-    jetbrains.pycharm
-    jetbrains.phpstorm
-    jetbrains.idea
-    jetbrains.clion
-    jetbrains-toolbox
+    unstable.jetbrains.rust-rover
+    unstable.jetbrains.pycharm
+    unstable.jetbrains.idea
+    unstable.jetbrains.clion
+    unstable.jetbrains-toolbox
     unstable.vscode
 
     # wine compatibilty

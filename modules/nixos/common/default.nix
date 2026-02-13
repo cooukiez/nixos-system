@@ -41,6 +41,8 @@
     NAUTILUS_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions";
     NAUTILUS_4_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
 
+    VCPKG_FORCE_SYSTEM_BINARIES = 1;
+
     # add gtk modules like this
     # GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
   };
@@ -48,6 +50,8 @@
   environment.pathsToLink = [
     "/share/nautilus-python/extensions"
   ];
+
+  programs.nix-ld.enable = true;
 
   # system packages
   environment.systemPackages = with pkgs; [
@@ -60,8 +64,9 @@
     clang
     cliphist
     cmake
-    cpuid
     coreutils
+    cpuid
+    curl
     dmidecode
     fastfetch
     ffmpeg
@@ -70,6 +75,7 @@
     git
     glib
     gnumake
+    gnutar
     grim
     htop
     inetutils
@@ -77,9 +83,9 @@
     mesa
     neofetch
     playerctl
-    python3
     ripgrep
     rustup
+    shared-mime-info
     slurp
     tldr
     tlrc
@@ -92,10 +98,11 @@
     wf-recorder
     wget
     wl-clipboard
+    wmctrl
     xclip
     xdotool
     xmodmap
-    wmctrl
+    zip
 
     # libraries, sorted alphabetically
     appmenu-glib-translator
@@ -121,7 +128,14 @@
     qt6.qtmultimedia
     qt6.qtsvg
     qt6.qtvirtualkeyboard
-    shared-mime-info
+
+    # python
+    (python3.withPackages (
+      ps: with ps; [
+        numpy
+        pandas
+      ]
+    ))
 
     # nixos related
     home-manager
