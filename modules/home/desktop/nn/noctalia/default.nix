@@ -8,6 +8,7 @@
 {
   inputs,
   config,
+  userConfig,
   hostSystem,
   pkgs,
   ...
@@ -30,6 +31,9 @@
       WantedBy = [ "graphical-session.target" ];
     };
   };
+
+  # copy avatar picture
+  home.file.".face".source = userConfig.avatar;
 
   programs.noctalia-shell = {
     enable = true;
