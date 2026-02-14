@@ -6,6 +6,12 @@
 */
 
 {
+  services.hypridle = {
+    enable = true;
+    # timeout = 30 * 60; # 30 minutes
+    # command = "noctalia-shell ipc call lockScreen lockAndSuspend";
+  };
+
   /*
     services.swayidle =
       let

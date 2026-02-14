@@ -82,7 +82,7 @@
 
       general = {
         autoStartAuth = false;
-        avatarImage = "/home/ceirs/.face";
+        avatarImage = "${config.home.homeDirectory}/.face";
 
         compactLockScreen = false;
         enableLockScreenCountdown = true;

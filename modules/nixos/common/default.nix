@@ -56,41 +56,106 @@
   # system packages
   environment.systemPackages = with pkgs; [
     # core / cli, sorted alphabetically
+    aria2
+    asciinema
+    bandwhich
+    bat
     bench
     bottom
     brightnessctl
+    browsh
     btop
+    buku
     cifs-utils
     clang
     cliphist
     cmake
+    cmatrix
+    cmus
+    cointop
+    cope
     coreutils
+    cowsay
     cpuid
+    ctop
     curl
+    ddgr
+    dfc
+    diff-so-fancy
+    diffutils
     dmidecode
+    dog
+    dua
+    duf
+    entr
+    exiftool
+    eza
     fastfetch
+    fdupes
+    fff
     ffmpeg
+    figlet
+    fortune
+    fzf
     gcc
-    gcc
+    gdb
+    gdb-dashboard
     git
+    glances
     glib
     gnumake
     gnutar
+    gping
     grim
     htop
+    httpie
+    hyperfine
     inetutils
+    # jq
+    just
+    kdash
+    khal
     killall
+    lazydocker
+    lazygit
+    lolcat
+    man
+    mangl
+    mani
+    manim
+    manix
     mesa
+    most
+    mutt
+    navi
     neofetch
+    newsboat
+    ngrok
     playerctl
+    procs
+    # ps
+    rclone
+    rip2
     ripgrep
+    rsync
     rustup
+    scc
+    sd
     shared-mime-info
+    sl
     slurp
+    speedtest-cli
+    surge
+    taskwarrior2
+    tealdeer
     tldr
     tlrc
+    tmate
     toybox
+    transfer-sh
+    tre
     tree
+    tuir
     unixtools.quota
     unzip
     ventoy
@@ -102,6 +167,8 @@
     xclip
     xdotool
     xmodmap
+    xsel
+    yazi
     zip
 
     # libraries, sorted alphabetically
@@ -128,6 +195,7 @@
     qt6.qtmultimedia
     qt6.qtsvg
     qt6.qtvirtualkeyboard
+    vulkan-tools
 
     # python
     (python3.withPackages (

@@ -98,6 +98,9 @@ in
       # opinionated: make flake registry and nix path match flake inputs
       registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
       nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+
+      optimise.automatic = true;
+      optimise.dates = [ "03:45" ];
     };
 
   # boot settings
@@ -207,9 +210,6 @@ in
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;
   zramSwap.algorithm = "lz4";
-
-  nix.optimise.automatic = true;
-  nix.optimise.dates = [ "03:45" ];
 
   # see https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.11";

@@ -27,8 +27,8 @@ let
   cpp-editor = [ "clion.desktop" ];
   rust-editor = [ "rust-rover.desktop" ];
   json-editor = [ "code.desktop" ];
-  web-source-editor = [ "webstorm.desktop" ];
-  php-editor = [ "phpstorm.desktop" ];
+  # web-source-editor = [ "webstorm.desktop" ];
+  # php-editor = [ "phpstorm.desktop" ];
   nix-editor = [ "code.desktop" ];
 
   pdf-viewer = [ "org.pwmt.zathura.desktop" ];
@@ -103,8 +103,8 @@ in
         "application/x-typescript" = intermediate-editor;
 
         # php
-        "text/x-php" = php-editor;
-        "application/x-php" = php-editor;
+        "text/x-php" = intermediate-editor;
+        "application/x-php" = intermediate-editor;
 
         # nix
         "text/x-nix" = nix-editor;

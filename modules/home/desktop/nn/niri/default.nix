@@ -20,7 +20,7 @@
     prefer-no-csd = true;
     hotkey-overlay.skip-at-startup = true;
 
-    screenshot-path = "~/Pictures/Screenshots/%Y-%m-%d-%H%M%S.png";
+    screenshot-path = "${config.home.homeDirectory}/Pictures/Screenshots/%Y-%m-%d-%H%M%S.png";
 
     xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
@@ -77,13 +77,7 @@
     };
 
     switch-events = {
-      lid-close.action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "lockScreen"
-        "lock"
-      ];
+      # lid-close.action.spawn = ["notify-send" "lid closed"];
       # lid-open.action.spawn = ["notify-send" "welcome back"];
     };
 
