@@ -85,10 +85,16 @@ in
       ELECTRON_PASSWORD_STORE = "gnome-libsecret";
       # GDK_BACKEND = "wayland,x11";
 
+      # enable wayland support in chromium and electron based applications
+      NIXOS_OZONE_WL = "1";
+
       # pretend desktop is gnome
       XDG_CURRENT_DESKTOP = "GNOME";
 
       XCURSOR_SIZE = "24";
+
+      # smoother scrolling for firefox
+      MOZ_USE_XINPUT2 = "1";
     };
   };
 

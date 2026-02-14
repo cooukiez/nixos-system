@@ -27,24 +27,14 @@
   };
 
   environment.sessionVariables = {
-    # enable wayland support in chromium and electron based applications
-    NIXOS_OZONE_WL = "1";
-    # remove decorations for QT apps
-    UBUNTU_MENUPROXY = 1;
-    # set cursor size
-    XCURSOR_SIZE = "24";
     # set LIBVA_DRIVER_NAME environment variable for video acceleration
     LIBVA_DRIVER_NAME = "iHD";
-    # smoother scrolling for firefox
-    MOZ_USE_XINPUT2 = "1";
-    # nautilus extension path
+
+    # fix for nautilus extension path
     NAUTILUS_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions";
     NAUTILUS_4_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
 
     VCPKG_FORCE_SYSTEM_BINARIES = 1;
-
-    # add gtk modules like this
-    # GTK_MODULES = "\${GTK_MODULES}:appmenu-gtk-module";
   };
 
   environment.pathsToLink = [
@@ -72,13 +62,12 @@
     cliphist
     cmake
     cmatrix
-    # cmus
-    # cointop
-    # cope
+    cmus
+    cointop
     coreutils
     cowsay
     cpuid
-    # ctop
+    ctop
     curl
     ddgr
     dfc
@@ -113,24 +102,23 @@
     hyperfine
     inetutils
     jq
-    # just
-    # kdash
-    # khal
+    just
+    kdash
+    khal
     killall
-    # lazydocker
-    # lazygit
+    lazydocker
+    lazygit
     lolcat
-    # mangl
-    # mani
-    # manim
-    # manix
+    mangl
+    mani
+    manix
     mesa
-    # most
-    # mutt
-    # navi
+    most
+    mutt
+    navi
     neofetch
-    # newsboat
-    # ngrok
+    newsboat
+    ngrok
     playerctl
     procs
     rclone
@@ -145,16 +133,16 @@
     slurp
     speedtest-cli
     surge
-    # taskwarrior2
+    taskwarrior2
     tealdeer
     tldr
     tlrc
-    # tmate
-    # toybox
-    # transfer-sh
-    # tre
+    tmate
+    toybox
+    transfer-sh
+    tre
     tree
-    # tuir
+    tuir
     unixtools.quota
     unzip
     ventoy
@@ -166,8 +154,8 @@
     xclip
     xdotool
     xmodmap
-    # xsel
-    # yazi
+    xsel
+    yazi
     zip
 
     # libraries, sorted alphabetically

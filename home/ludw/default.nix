@@ -54,6 +54,12 @@ in
     sessionVariables = {
       #GIT_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
       #SSH_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+
+      # remove decorations for QT apps
+      UBUNTU_MENUPROXY = 1;
+
+      # set cursor size
+      XCURSOR_SIZE = "24";
     };
   };
 
