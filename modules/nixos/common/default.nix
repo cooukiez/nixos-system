@@ -52,123 +52,123 @@
   ];
 
   programs.nix-ld.enable = true;
+  # programs.command-not-found = true;
 
   # system packages
   environment.systemPackages = with pkgs; [
     # core / cli, sorted alphabetically
-    aria2
-    asciinema
-    bandwhich
-    bat
-    bench
+    # aria2
+    # asciinema
+    # bandwhich
+    # bat
+    # bench
     bottom
     brightnessctl
-    browsh
+    # browsh
     btop
-    buku
+    # buku
     cifs-utils
     clang
     cliphist
     cmake
-    cmatrix
-    cmus
-    cointop
-    cope
+    # cmatrix
+    # cmus
+    # cointop
+    # cope
     coreutils
-    cowsay
+    # cowsay
     cpuid
-    ctop
+    # ctop
     curl
-    ddgr
-    dfc
-    diff-so-fancy
-    diffutils
-    dmidecode
-    dog
-    dua
-    duf
-    entr
-    exiftool
-    eza
+    # ddgr
+    # dfc
+    # diff-so-fancy
+    # diffutils
+    # dmidecode
+    # dog
+    # dua
+    # duf
+    # entr
+    # exiftool
+    # eza
     fastfetch
-    fdupes
-    fff
+    # fdupes
+    # fff
     ffmpeg
-    figlet
-    fortune
+    # figlet
+    # fortune
     fzf
-    gcc
-    gdb
-    gdb-dashboard
+    # gcc
+    # gdb
+    # gdb-dashboard
     git
-    glances
+    # glances
     glib
     gnumake
-    gnutar
-    gping
+    # gnutar
+    # gping
     grim
     htop
-    httpie
-    hyperfine
+    # httpie
+    # hyperfine
     inetutils
     # jq
-    just
-    kdash
-    khal
+    # just
+    # kdash
+    # khal
     killall
-    lazydocker
-    lazygit
-    lolcat
-    man
-    mangl
-    mani
-    manim
-    manix
+    # lazydocker
+    # lazygit
+    # lolcat
+    # mangl
+    # mani
+    # manim
+    # manix
     mesa
-    most
-    mutt
-    navi
+    # most
+    # mutt
+    # navi
     neofetch
-    newsboat
-    ngrok
+    # newsboat
+    # ngrok
     playerctl
-    procs
+    # procs
     # ps
-    rclone
-    rip2
+    # rclone
+    # rip2
     ripgrep
-    rsync
+    # rsync
     rustup
-    scc
-    sd
+    # scc
+    # sd
     shared-mime-info
-    sl
+    # sl
     slurp
-    speedtest-cli
+    # speedtest-cli
     surge
-    taskwarrior2
-    tealdeer
+    # taskwarrior2
+    # tealdeer
     tldr
     tlrc
-    tmate
-    toybox
-    transfer-sh
-    tre
+    # tmate
+    # toybox
+    # transfer-sh
+    # tre
     tree
-    tuir
+    # tuir
     unixtools.quota
     unzip
     ventoy
     vim
     wf-recorder
-    wget
+    # wget
     wl-clipboard
     wmctrl
     xclip
     xdotool
     xmodmap
-    xsel
-    yazi
+    # xsel
+    # yazi
     zip
 
     # libraries, sorted alphabetically
