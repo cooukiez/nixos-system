@@ -57,26 +57,26 @@
   # system packages
   environment.systemPackages = with pkgs; [
     # core / cli, sorted alphabetically
-    # aria2
-    # asciinema
-    # bandwhich
-    # bat
-    # bench
+    aria2
+    asciinema
+    bandwhich
+    bat
+    bench
     bottom
     brightnessctl
-    # browsh
+    browsh
     btop
-    # buku
+    buku
     cifs-utils
     clang
     cliphist
     cmake
-    # cmatrix
+    cmatrix
     # cmus
     # cointop
     # cope
     coreutils
-    # cowsay
+    cowsay
     cpuid
     # ctop
     curl
@@ -84,12 +84,12 @@
     # dfc
     # diff-so-fancy
     # diffutils
-    # dmidecode
+    dmidecode
     # dog
     # dua
     # duf
     # entr
-    # exiftool
+    exiftool
     # eza
     fastfetch
     # fdupes
@@ -98,8 +98,8 @@
     # figlet
     # fortune
     fzf
-    # gcc
-    # gdb
+    gcc
+    gdb
     # gdb-dashboard
     git
     # glances
@@ -112,14 +112,14 @@
     # httpie
     # hyperfine
     inetutils
-    # jq
+    jq
     # just
     # kdash
     # khal
     killall
     # lazydocker
     # lazygit
-    # lolcat
+    lolcat
     # mangl
     # mani
     # manim
@@ -132,22 +132,21 @@
     # newsboat
     # ngrok
     playerctl
-    # procs
-    # ps
-    # rclone
-    # rip2
+    procs
+    rclone
+    rip2
     ripgrep
-    # rsync
+    rsync
     rustup
-    # scc
-    # sd
+    scc
+    sd
     shared-mime-info
-    # sl
+    sl
     slurp
-    # speedtest-cli
+    speedtest-cli
     surge
     # taskwarrior2
-    # tealdeer
+    tealdeer
     tldr
     tlrc
     # tmate
@@ -161,7 +160,7 @@
     ventoy
     vim
     wf-recorder
-    # wget
+    wget
     wl-clipboard
     wmctrl
     xclip
