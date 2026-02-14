@@ -80,37 +80,37 @@
     cpuid
     # ctop
     curl
-    # ddgr
-    # dfc
-    # diff-so-fancy
-    # diffutils
+    ddgr
+    dfc
+    diff-so-fancy
+    diffutils
     dmidecode
-    # dog
-    # dua
-    # duf
-    # entr
+    dog
+    dua
+    duf
+    entr
     exiftool
-    # eza
+    eza
     fastfetch
-    # fdupes
-    # fff
+    fdupes
+    fff
     ffmpeg
-    # figlet
-    # fortune
+    figlet
+    fortune
     fzf
     gcc
     gdb
-    # gdb-dashboard
+    gdb-dashboard
     git
-    # glances
+    glances
     glib
     gnumake
-    # gnutar
-    # gping
+    gnutar
+    gping
     grim
     htop
-    # httpie
-    # hyperfine
+    httpie
+    hyperfine
     inetutils
     jq
     # just
