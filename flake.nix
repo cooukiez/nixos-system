@@ -103,6 +103,7 @@
           githubName = "cooukiez";
           githubEmail = "ludwig-geyer@web.de";
           name = "ludw";
+          avatar = ./files/avatar/ludw.jpg;
         };
 
         ceirs = {
@@ -111,6 +112,7 @@
           githubName = "cooukiez";
           githubEmail = "ludwig-geyer@web.de";
           name = "ceirs";
+          avatar = ./files/avatar/ceirs.jpg;
         };
       };
 

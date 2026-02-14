@@ -102,11 +102,13 @@
     icon-slicer
     inkscape
     intel-gpu-tools
+    imagemagick
     unstable.ipscan
     krita
     meld
     obsidian
     pavucontrol
+    pinta
     renderdoc
     slack
     slack-cli

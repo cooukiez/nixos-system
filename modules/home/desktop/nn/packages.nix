@@ -39,6 +39,7 @@
     gnome-text-editor
     gnome-font-viewer
     gnome-calculator
+    gthumb
 
     # libraries / packages
     adw-gtk3
