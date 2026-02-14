@@ -77,8 +77,20 @@
     };
 
     switch-events = {
-      # lid-close.action.spawn = ["notify-send" "lid closed"];
-      # lid-open.action.spawn = ["notify-send" "welcome back"];
+      lid-close.action.spawn = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "lockScreen"
+        "lock"
+      ];
+      lid-open.action.spawn = [
+        "noctalia-shell"
+        "ipc"
+        "call"
+        "lockScreen"
+        "lock"
+      ];
     };
 
     overview = {

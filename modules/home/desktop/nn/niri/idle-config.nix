@@ -8,8 +8,28 @@
 {
   services.hypridle = {
     enable = true;
-    # timeout = 30 * 60; # 30 minutes
-    # command = "noctalia-shell ipc call lockScreen lockAndSuspend";
+
+    settings = {
+      general = {
+        ignore_dbus_inhibit = false;
+        lock_cmd = "noctalia-shell ipc call sessionMenu lockAndSuspend";
+      };
+
+      listener = [
+        # lock after 10 min
+        {
+          timeout = 10 * 60;
+          on-timeout = "noctalia-shell ipc call sessionMenu lockAndSuspend";
+        }
+
+        # turn off screen after 5 min
+        {
+          timeout = 5 * 60;
+          on-timeout = "niri msg action power-off-monitors";
+          on-resume = "niri msg action power-on-monitors";
+        }
+      ];
+    };
   };
 
   /*

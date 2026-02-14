@@ -24,11 +24,13 @@
 - [x] adding all my repos in code and resetting the build dirs
 - [-] sorting all my scripts that I wrote at some point
 - [x] fix element not using secret store
-- [ ] fix laptops session states
-	- [ ] fix suspending in niri
-	- [ ] fix hibernation not locking session
+- [-] fix laptops session states
+	- [x] fix suspending in niri
+	- [-] fix hibernation not locking session
+- [ ] avatar picture for user accounts
 ---
 - [ ] adding possibility of different bind-mounts and also fix the bind mount order
 - [ ] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [ ] issue in plasma/x11 start menu continuesly expanding
+- [ ] issue noctalia hibernation not locking session
 - [ ] fix zen-browser configuration not applying
