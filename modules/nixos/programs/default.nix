@@ -81,12 +81,16 @@
   # enable zsh as shell
   programs.zsh.enable = true;
 
+  # nvim console editor
+  programs.neovim.enable = true;
+
   environment.systemPackages = with pkgs; [
     # general programs, sorted alphabetically
     affine
     bitwarden-cli
     bitwarden-desktop
     bluez-tools
+    bottles
     cpu-x
     firestarter
     furmark
@@ -99,6 +103,7 @@
     googleearth-pro
     hardcode-tray
     hardinfo2
+    heroic
     homebank
     icon-slicer
     inkscape
@@ -106,6 +111,8 @@
     imagemagick
     unstable.ipscan
     krita
+    lutris
+    mangohud
     meld
     obsidian
     pavucontrol
@@ -129,10 +136,10 @@
     winetricks
     wineWowPackages.waylandFull
 
+    # proton
+    protonup-ng
+
     # from flakes
     inputs.honklet.packages.${hostSystem}.default
   ];
-
-  # enalbe nvim console editor
-  programs.neovim.enable = true;
 }
