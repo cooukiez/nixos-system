@@ -76,6 +76,7 @@ in
         "dotnet-sdk-6.0.428"
         "dotnet-runtime-6.0.36"
         "ventoy-1.1.07"
+        "googleearth-pro-7.3.6.10201"
       ];
     };
   };

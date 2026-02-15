@@ -48,4 +48,11 @@
     enableSshSupport = true;
     enableZshIntegration = true;
   };
+
+  xresources = {
+    properties = {
+      # for 4k displays
+      "Xft.dpi" = 192;
+    };
+  };
 }

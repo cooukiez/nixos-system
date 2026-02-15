@@ -182,6 +182,7 @@
     qt6.qtmultimedia
     qt6.qtsvg
     qt6.qtvirtualkeyboard
+    tesseract
     vulkan-tools
 
     # python
@@ -191,6 +192,10 @@
         pandas
       ]
     ))
+
+    # node
+    nodejs_24
+    nodePackages_latest.vercel
 
     # nixos related
     home-manager

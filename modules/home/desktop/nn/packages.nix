@@ -26,6 +26,7 @@
     gedit
     seahorse
     showtime
+    unstable.gImageReader
     gnome-calendar
     gnome-contacts
     gnome-maps

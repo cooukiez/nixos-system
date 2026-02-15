@@ -96,6 +96,7 @@
     github-desktop
     gpu-screen-recorder
     gpu-screen-recorder-gtk
+    googleearth-pro
     hardcode-tray
     hardinfo2
     homebank
@@ -113,6 +114,7 @@
     slack
     slack-cli
     qdirstat
+    gparted
 
     # code editors / IDE
     unstable.jetbrains.rust-rover

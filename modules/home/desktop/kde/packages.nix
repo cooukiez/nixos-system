@@ -67,7 +67,8 @@
     jetbrains-runner
 
     # programs
-    libreoffice-qt-fresh
+    unstable.gImageReader-qt
+    unstable.libreoffice-qt-fresh
 
     # appearance themes / icons
     #     papirus-icon-theme
