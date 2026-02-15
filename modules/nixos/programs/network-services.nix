@@ -50,46 +50,69 @@ in
     enable = true;
     openDefaultPorts = true;
 
-    settings.gui = {
-      user = "net";
-      password = "${syncthing_password}";
-    };
+    # overrideDevices = true;
+    # overrideFolders = true;
 
-    settings.folders = {
-      "general" = {
-        path = "/srv/sync";
-        devices = [ ];
-        ignorePerms = true;
+    # environment.STNODEFAULTFOLDER = "true";
+
+    guiAddress = "127.0.0.1:8384";
+    group = "users";
+
+    settings = {
+      gui = {
+        user = "net";
+        password = "${syncthing_password}";
       };
 
-      # data folders
-      "documents" = {
-        path = "/data/documents";
-        devices = [ ];
-        ignorePerms = true;
+      devices = {
+        "pvl" = {
+          id = "DFG5KAQ-5B3ECWH-NAXD36K-22VHGJ6-4G7REOC-74KTSWX-U66WICY-VMYXZAO";
+        };
       };
-      "downloads" = {
-        path = "/data/downloads";
-        devices = [ ];
-        ignorePerms = true;
-      };
-      "music" = {
-        path = "/data/music";
-        devices = [ ];
-        ignorePerms = true;
-      };
-      "pictures" = {
-        path = "/data/pictures";
-        devices = [ ];
-        ignorePerms = true;
-      };
-      "videos" = {
-        path = "/data/videos";
-        devices = [ ];
-        ignorePerms = true;
+
+      folders = {
+        "general" = {
+          path = "/srv/sync";
+          devices = [ "pvl" ];
+          ignorePerms = true;
+        };
+
+        # data folders
+        "documents" = {
+          path = "/data/documents";
+          devices = [ "pvl" ];
+          ignorePerms = true;
+        };
+        "downloads" = {
+          path = "/data/downloads";
+          devices = [ "pvl" ];
+          ignorePerms = true;
+        };
+        "music" = {
+          path = "/data/music";
+          devices = [ "pvl" ];
+          ignorePerms = true;
+        };
+        "pictures" = {
+          path = "/data/pictures";
+          devices = [ "pvl" ];
+          ignorePerms = true;
+        };
+        "videos" = {
+          path = "/data/videos";
+          devices = [ "pvl" ];
+          ignorePerms = true;
+        };
       };
     };
   };
+
+  /*
+    users.users.syncthing = {
+      isSystemUser = true;
+      extraGroups = [ "users" ];
+    };
+  */
 
   # ftp server
   services.vsftpd = {

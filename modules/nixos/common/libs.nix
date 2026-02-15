@@ -16,7 +16,6 @@
     gvfs
     libnotify
     tesseract
-    usbmuxd
     vulkan-tools
 
     # gtk / qt
