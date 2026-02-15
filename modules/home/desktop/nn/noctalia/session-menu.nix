@@ -21,26 +21,26 @@
     {
       action = "lock";
       enabled = true;
-      countdownEnabled = true;
+      countdownEnabled = false;
       command = "";
     }
     {
       action = "suspend";
       enabled = true;
       countdownEnabled = true;
-      command = "";
+      command = "niri msg action power-off-monitors && noctalia-shell ipc call lockScreen lock && systemctl suspend";
     }
     {
       action = "hibernate";
       enabled = true;
       countdownEnabled = true;
-      command = "";
+      command = "niri msg action power-off-monitors && noctalia-shell ipc call lockScreen lock && systemctl hibernate";
     }
     {
       action = "reboot";
       enabled = true;
       countdownEnabled = true;
-      command = "";
+      command = "systemctl reboot";
     }
     {
       action = "logout";
@@ -52,7 +52,13 @@
       action = "shutdown";
       enabled = true;
       countdownEnabled = true;
+      command = "systemctl poweroff";
+    }
+    {
+      action = "rebootToUefi";
       command = "";
+      countdownEnabled = true;
+      enabled = false;
     }
   ];
 }
