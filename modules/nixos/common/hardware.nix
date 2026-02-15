@@ -111,4 +111,10 @@
 
   # enable touchpad and other input functionality
   services.libinput.enable = true;
+
+  # mounting usb devices
+  services.usbmuxd = {
+    enable = true;
+    package = pkgs.usbmuxd2;
+  };
 }

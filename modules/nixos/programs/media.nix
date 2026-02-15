@@ -37,6 +37,9 @@
     sxiv
     imv
 
+    # camera suite
+    gphoto2
+
     # pdf
     sioyek
     zathura

@@ -54,6 +54,41 @@ in
       user = "net";
       password = "${syncthing_password}";
     };
+
+    settings.folders = {
+      "general" = {
+        path = "/srv/sync";
+        devices = [ ];
+        ignorePerms = true;
+      };
+
+      # data folders
+      "documents" = {
+        path = "/data/documents";
+        devices = [ ];
+        ignorePerms = true;
+      };
+      "downloads" = {
+        path = "/data/downloads";
+        devices = [ ];
+        ignorePerms = true;
+      };
+      "music" = {
+        path = "/data/music";
+        devices = [ ];
+        ignorePerms = true;
+      };
+      "pictures" = {
+        path = "/data/pictures";
+        devices = [ ];
+        ignorePerms = true;
+      };
+      "videos" = {
+        path = "/data/videos";
+        devices = [ ];
+        ignorePerms = true;
+      };
+    };
   };
 
   # ftp server
@@ -136,5 +171,40 @@ in
     };
 
     openFilesLimit = 8192;
+  };
+
+  # samba
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "smbnix";
+        "netbios name" = "smbnix";
+        "security" = "user";
+
+        # "hosts allow" = "192.168.0. 127.0.0.1 localhost";
+        # "hosts deny" = "0.0.0.0/0";
+
+        "guest account" = "nobody";
+        "map to guest" = "bad user";
+      };
+
+      "data" = {
+        "path" = "/data";
+        "browseable" = "no";
+        "read only" = "no";
+        "guest ok" = "no";
+        "create mask" = "0664";
+        "directory mask" = "0775";
+        "force group" = "users";
+      };
+    };
+  };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
   };
 }
