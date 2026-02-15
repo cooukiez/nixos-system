@@ -29,7 +29,7 @@
 	- [-] fix hibernation not locking session
 - [x] avatar picture for noctalia accounts
 - [x] automatic session selector for user accounts
-- [ ] adding possibility of different bind-mounts and also fix the bind mount order
+- [x] adding possibility of different bind-mounts and also fix the bind mount order
 - [x] issue noctalia hibernation not locking session
 - [x] plasma desktop customize lock screen
 ---

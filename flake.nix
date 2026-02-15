@@ -95,8 +95,8 @@
     let
       inherit (self) outputs;
 
-      # define user configurations
-      users = import ./user-configurations.nix;
+      # define user configuration
+      users = import ./user-configuration.nix;
 
       # supported systems for flake packages, shell, etc.
       hostSystem = "x86_64-linux";
