@@ -96,25 +96,7 @@
       inherit (self) outputs;
 
       # define user configurations
-      users = {
-        ludw = {
-          email = "ludwig.geyer@mailbox.org";
-          fullName = "Ludwig";
-          githubName = "cooukiez";
-          githubEmail = "ludwig-geyer@web.de";
-          name = "ludw";
-          avatar = ./files/avatar/ludw.jpg;
-        };
-
-        ceirs = {
-          email = "ludwig.geyer@mailbox.org";
-          fullName = "Ceirs";
-          githubName = "cooukiez";
-          githubEmail = "ludwig-geyer@web.de";
-          name = "ceirs";
-          avatar = ./files/avatar/ceirs.jpg;
-        };
-      };
+      users = import ./user-configurations.nix;
 
       # supported systems for flake packages, shell, etc.
       hostSystem = "x86_64-linux";

@@ -16,31 +16,6 @@
   users,
   ...
 }:
-let
-  # todo: add way to configure mount target per user
-  bind_dirs = [
-    {
-      source = "/data/documents";
-      target = "Documents";
-    }
-    {
-      source = "/data/downloads";
-      target = "Downloads";
-    }
-    {
-      source = "/data/music";
-      target = "Music";
-    }
-    {
-      source = "/data/pictures";
-      target = "Pictures";
-    }
-    {
-      source = "/data/videos";
-      target = "Videos";
-    }
-  ];
-in
 {
   imports = [
     # import generated hardware configuration
@@ -168,17 +143,18 @@ in
     shell = pkgs.zsh;
   }) users;
 
-  # create bind targers
+  # create bind targets (directories)
   systemd.tmpfiles.rules = lib.concatLists (
     lib.mapAttrsToList (
-      username: _: map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") bind_dirs
+      username: user:
+      map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") (user.bindDirs or [ ])
     ) users
   );
 
   # bind mount configuration
   systemd.mounts = lib.concatLists (
     lib.mapAttrsToList (
-      username: _:
+      username: user:
       map (bind: {
         where = "/home/${username}/${bind.target}";
         what = bind.source;
@@ -195,7 +171,7 @@ in
 
         before = [ "remote-fs.target" ];
         wantedBy = [ "multi-user.target" ];
-      }) bind_dirs
+      }) (user.bindDirs or [ ])
     ) users
   );
 
