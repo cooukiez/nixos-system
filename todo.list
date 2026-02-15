@@ -28,7 +28,7 @@
 	- [x] fix suspending in niri
 	- [-] fix hibernation not locking session
 - [x] avatar picture for noctalia accounts
-- [ ] automatic session selector for user accounts
+- [x] automatic session selector for user accounts
 - [ ] adding possibility of different bind-mounts and also fix the bind mount order
 - [x] issue noctalia hibernation not locking session
 ---
@@ -37,3 +37,4 @@
 - [-] feature request noctalia fast user switching
 - [ ] fix zen-browser configuration not applying
 - [ ] avatar for plasma desktop
+- [ ] plasma desktop customize lock screen

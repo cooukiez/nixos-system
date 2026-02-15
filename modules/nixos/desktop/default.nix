@@ -11,6 +11,37 @@
   pkgs,
   ...
 }:
+let
+  autoSessionScript = pkgs.writeShellApplication {
+    name = "auto-session-selector";
+    text = ''
+      case "$USER" in
+        ceirs)
+          exec niri-session
+          ;;
+        ludw)
+          exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed \
+               ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland
+          ;;
+        *)
+          echo "no session configured for user $USER."
+          ;;
+      esac
+    '';
+  };
+
+  autoSessionDesktop =
+    (pkgs.writeTextDir "share/wayland-sessions/auto-selection.desktop" ''
+      [Desktop Entry]
+      Name=Automatic Session
+      Comment=User-specific session auto-detect
+      Exec=${autoSessionScript}/bin/auto-session-selector
+      Type=Application
+    '').overrideAttrs
+      (_: {
+        passthru.providedSessions = [ "auto-selection" ];
+      });
+in
 {
   # enable sddm
   services.displayManager.sddm = {
@@ -21,8 +52,9 @@
     theme = "sddm-astronaut-theme";
   };
 
-  # set default session to niri
-  services.displayManager.defaultSession = "niri";
+  # set default session to auto-selection
+  services.displayManager.sessionPackages = [ autoSessionDesktop ];
+  services.displayManager.defaultSession = "auto-selection";
 
   # enable plasma, adds desktop entries to sddm
   services.desktopManager.plasma6 = {
