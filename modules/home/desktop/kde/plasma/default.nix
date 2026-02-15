@@ -6,7 +6,21 @@
 */
 
 {
+  pkgs,
+  ...
+}:
+let
+  breezeChameleonDark = pkgs.fetchzip {
+    url = "https://github.com/cooukiez/breeze-chameleon-dark-upstream/releases/download/latest/Breeze-Chameleon-Dark.tar.xz";
+    sha256 = "sha256-18d1HcluLQbMcigaGn5tG01xzTug5sNyGZawot0zrG8=";
+  };
+in
+{
   # todo: install breeze chameleon dark
+  home.file.".local/share/icons/Breeze-Chameleon-Dark" = {
+    source = breezeChameleonDark;
+    recursive = true;
+  };
 
   programs.plasma = {
     enable = true;

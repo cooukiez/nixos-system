@@ -1,4 +1,8 @@
 {
+  pkgs,
+  ...
+}:
+{
   # java support
   programs.java.enable = true;
 

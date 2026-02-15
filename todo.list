@@ -33,6 +33,9 @@
 - [x] issue noctalia hibernation not locking session
 - [x] plasma desktop customize lock screen
 - [x] add redi user
+- [ ] fork of breeze chameleon theme
+- [ ] system backups
+- [ ] fix xresources not setting hidpi correctly
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

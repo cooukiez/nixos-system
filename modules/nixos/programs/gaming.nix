@@ -7,12 +7,15 @@
     # programs
     heroic
     mangohud
+    badlion-client
+    lunar-client
 
     (prismlauncher.override {
       additionalPrograms = [ ffmpeg ];
 
       jdks = [
-
+        pkgs.jdk
+        pkgs.jdk8
       ];
     })
 

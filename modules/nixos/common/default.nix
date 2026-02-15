@@ -13,6 +13,7 @@
   imports = [
     ./display.nix
     ./hardware.nix
+    ./libs.nix
   ];
 
   services.dbus.enable = true;

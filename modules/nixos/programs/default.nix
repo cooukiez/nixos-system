@@ -14,6 +14,7 @@
 {
   imports = [
     ./file-explorers.nix
+    ./gaming.nix
     ./media.nix
     ./network-services.nix
     ./penetration-testing.nix
