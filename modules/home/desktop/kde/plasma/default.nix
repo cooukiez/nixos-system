@@ -15,6 +15,8 @@
     shortcuts = import ./shortcuts.nix;
     dataFile = import ./data-file.nix;
 
+    kscreenlocker.appearance.wallpaper = ./lockscreen.jpg;
+
     workspace = {
       enableMiddleClickPaste = false;
       clickItemTo = "select";
