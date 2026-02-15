@@ -102,6 +102,7 @@
     gpu-screen-recorder
     gpu-screen-recorder-gtk
     googleearth-pro
+    gthumb
     hardcode-tray
     hardinfo2
     heroic

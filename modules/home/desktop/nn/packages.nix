@@ -40,19 +40,19 @@
     gnome-text-editor
     gnome-font-viewer
     gnome-calculator
-    gthumb
 
     # libraries / packages
     adw-gtk3
     adwaita-icon-theme
     adwaita-qt6
     glib
-    gsettings-desktop-schemas
     gtk3
     kdePackages.qt6ct
 
     # compatibility
     gnome-online-accounts
+    gsettings-desktop-schemas
+    adwaita-icon-theme
     libsecret
 
     # for debugging

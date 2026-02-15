@@ -13,7 +13,7 @@
     libimobiledevice
     libimobiledevice-glue
     libgphoto2
-    gvfs
+    # gvfs
     libnotify
     tesseract
     vulkan-tools
