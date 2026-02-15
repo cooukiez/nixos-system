@@ -23,6 +23,9 @@ let
           exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed \
                ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland
           ;;
+        redi)
+          exec niri-session
+          ;;
         *)
           echo "no session configured for user $USER."
           ;;

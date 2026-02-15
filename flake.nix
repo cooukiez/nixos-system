@@ -180,8 +180,9 @@
 
       # standalone home-manager configuration entrypoint
       homeConfigurations = {
-        "ludw@lvl" = mkHomeConfiguration hostSystem "ludw" "lvl";
         "ceirs@lvl" = mkHomeConfiguration hostSystem "ceirs" "lvl";
+        "ludw@lvl" = mkHomeConfiguration hostSystem "ludw" "lvl";
+        "redi@lvl" = mkHomeConfiguration hostSystem "redi" "lvl";
       };
     };
 }

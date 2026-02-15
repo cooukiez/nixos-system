@@ -1,4 +1,37 @@
 {
+  ceirs = {
+    email = "ludwig.geyer@mailbox.org";
+    fullName = "Ceirs";
+    githubName = "cooukiez";
+    githubEmail = "ludwig-geyer@web.de";
+    name = "ceirs";
+
+    avatar = ./files/avatar/ceirs.jpg;
+
+    bindDirs = [
+      {
+        source = "/data/documents";
+        target = "Documents";
+      }
+      {
+        source = "/data/downloads";
+        target = "Downloads";
+      }
+      {
+        source = "/data/music";
+        target = "Music";
+      }
+      {
+        source = "/data/pictures";
+        target = "Pictures";
+      }
+      {
+        source = "/data/videos";
+        target = "Videos";
+      }
+    ];
+  };
+
   ludw = {
     email = "ludwig.geyer@mailbox.org";
     fullName = "Ludwig";
@@ -32,18 +65,18 @@
     ];
   };
 
-  ceirs = {
-    email = "ludwig.geyer@mailbox.org";
-    fullName = "Ceirs";
+  redi = {
+    email = "ludwig@redi-school.org";
+    fullName = "Ludwig";
     githubName = "cooukiez";
     githubEmail = "ludwig-geyer@web.de";
-    name = "ceirs";
+    name = "redi";
 
-    avatar = ./files/avatar/ceirs.jpg;
+    avatar = ./files/avatar/redi.jpg;
 
     bindDirs = [
       {
-        source = "/data/documents";
+        source = "/data/documents/work/redi";
         target = "Documents";
       }
       {
@@ -55,11 +88,11 @@
         target = "Music";
       }
       {
-        source = "/data/pictures";
+        source = "/data/documents/work/redi/pictures";
         target = "Pictures";
       }
       {
-        source = "/data/videos";
+        source = "/data/documents/work/redi/videos";
         target = "Videos";
       }
     ];
