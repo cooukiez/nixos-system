@@ -31,10 +31,11 @@
 - [x] automatic session selector for user accounts
 - [ ] adding possibility of different bind-mounts and also fix the bind mount order
 - [x] issue noctalia hibernation not locking session
+- [x] plasma desktop customize lock screen
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding
 - [-] feature request noctalia fast user switching
 - [ ] fix zen-browser configuration not applying
 - [ ] avatar for plasma desktop
-- [ ] plasma desktop customize lock screen
+- [ ] find better plasma lock screen background
