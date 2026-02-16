@@ -240,6 +240,24 @@
         "type": "github"
       }
     },
+    "gamemaker": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1770829637,
+        "narHash": "sha256-N08C8Gcu2Q75Ft8eW7SWWcF7ZkJjjOLmJgExahJTDjE=",
+        "owner": "skirlez",
+        "repo": "gamemaker-flake",
+        "rev": "0e402d155dcbae60b848fa61c4a40758a487c903",
+        "type": "github"
+      },
+      "original": {
+        "owner": "skirlez",
+        "repo": "gamemaker-flake",
+        "type": "github"
+      }
+    },
     "gnome-shell": {
       "flake": false,
       "locked": {
@@ -476,6 +494,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1771043024,
         "narHash": "sha256-O1XDr7EWbRp+kHrNNgLWgIrB0/US5wvw9K6RERWAj6I=",
         "owner": "nixos",
@@ -490,7 +524,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1770197578,
         "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
@@ -556,11 +590,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771240842,
-        "narHash": "sha256-rxgDgdYIZ5Wx21DHubbo7Z/PQXgtlU0lodExxNHv0BQ=",
+        "lastModified": 1771243446,
+        "narHash": "sha256-MKHAKMGbQiFGdepDpijtbHiSvU/v6MopHLJlGu2gUlU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "ac2a05eb4bf320567d7a63218d1f1b55c5a71145",
+        "rev": "727ffc017bd7ed8c6123a19998e5c97de2f9804a",
         "type": "github"
       },
       "original": {
@@ -621,12 +655,13 @@
       "inputs": {
         "agenix": "agenix",
         "copyparty": "copyparty",
+        "gamemaker": "gamemaker",
         "hardware": "hardware",
         "home-manager": "home-manager_2",
         "honklet": "honklet",
         "niri": "niri",
         "nix-flatpak": "nix-flatpak",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "noctalia": "noctalia",
@@ -639,7 +674,7 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "systems": "systems_4"
       },
       "locked": {
@@ -889,11 +924,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1771222275,
-        "narHash": "sha256-df+Un2QnDj95MQxmsnopCtSy/meWO2RDHuMGAqq3nlc=",
+        "lastModified": 1771242844,
+        "narHash": "sha256-/pmDDpCIY2oopOzIOERmkY/QvNhLQXH0XoLksU3t1dI=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "a20f5d0c6454b5b24a497afb280427c9af33a0be",
+        "rev": "231ae41b0cd867046ff0bc3c1a7707e244fe8127",
         "type": "github"
       },
       "original": {

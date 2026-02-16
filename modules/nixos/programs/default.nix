@@ -90,40 +90,57 @@
     affine
     bitwarden-cli
     bitwarden-desktop
+    blender
     bluez-tools
     bottles
+    chemtool
     cpu-x
+    dbeaver-bin
+    design
+    dune3d
     firestarter
+    freecad
     furmark
     geekbench
+    geogebra6
     gephi
     gimp-with-plugins
     github-desktop
+    googleearth-pro
+    gparted
     gpu-screen-recorder
     gpu-screen-recorder-gtk
-    googleearth-pro
     gthumb
     hardcode-tray
     hardinfo2
     heroic
     homebank
     icon-slicer
+    unstable.ipscan
+    imagemagick
     inkscape
     intel-gpu-tools
-    imagemagick
-    unstable.ipscan
     krita
+    librecad
     lutris
     mangohud
     meld
+    muse-sounds-manager
+    musescore
     obsidian
+    openscad
+    openseeface
+    orca-slicer
     pavucontrol
     pinta
+    qdirstat
     renderdoc
     slack
     slack-cli
-    qdirstat
-    gparted
+    solvespace
+    sql-studio
+    unityhub
+    zoom-us
 
     # code editors / IDE
     unstable.jetbrains.rust-rover
@@ -132,6 +149,7 @@
     unstable.jetbrains.clion
     unstable.jetbrains-toolbox
     unstable.vscode
+    inputs.gamemaker.packages.${hostSystem}.default
 
     # wine compatibilty
     wineWowPackages.stable

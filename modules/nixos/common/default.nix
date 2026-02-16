@@ -113,6 +113,7 @@
     mangl
     mani
     manix
+    mariadb
     mesa
     most
     mutt

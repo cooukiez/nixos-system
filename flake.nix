@@ -78,6 +78,7 @@
     copyparty.url = "github:9001/copyparty";
     agenix.url = "github:ryantm/agenix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    gamemaker.url = "github:skirlez/gamemaker-flake";
 
     honklet = {
       url = "github:hannahfluch/honklet";
