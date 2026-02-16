@@ -23,7 +23,8 @@
     # torrenting
     qbittorrent-enhanced
     qbittorrent-cli
-    inputs.zen-browser.packages.${hostSystem}.twilight
+
+    # inputs.zen-browser.packages.${hostSystem}.twilight
 
     # browser extensions
     firefoxpwa

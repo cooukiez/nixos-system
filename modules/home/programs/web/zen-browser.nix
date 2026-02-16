@@ -7,7 +7,9 @@
 
 {
   config,
+  inputs,
   pkgs,
+  hostSystem,
   ...
 }:
 {
@@ -84,6 +86,7 @@
     in
     {
       enable = true;
+      package = inputs.zen-browser.packages.${hostSystem}.twilight;
 
       policies = {
         AutofillAddressEnabled = true;
