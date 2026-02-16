@@ -79,6 +79,7 @@
     dua
     duf
     entr
+    exfatprogs
     exiftool
     eza
     fastfetch
@@ -116,11 +117,14 @@
     mariadb
     mesa
     most
+    mtools
     mutt
     navi
     neofetch
     newsboat
     ngrok
+    ntfsprogs
+    parted
     playerctl
     procs
     rclone

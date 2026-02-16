@@ -116,7 +116,7 @@
         cavaFrameRate = 30;
         mprisBlacklist = [ ];
         preferredPlayer = "";
-        visualizerType = "linear";
+        visualizerType = "none";
         volumeFeedback = false;
         # change this if audio too low
         volumeOverdrive = false;
