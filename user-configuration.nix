@@ -1,3 +1,10 @@
+/*
+  user-configuration.nix
+
+  created by ludw
+  on 2026-02-15
+*/
+
 {
   ceirs = {
     email = "ludwig.geyer@mailbox.org";

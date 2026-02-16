@@ -2,7 +2,7 @@
   modules/home/desktop/nn/noctalia/plugins.nix
 
   created by ludw
-  on 2026-01-29
+  on 2026-02-14
 */
 
 {

@@ -1,3 +1,10 @@
+/*
+  modules/nixos/programs/gaming.nix
+
+  created by ludw
+  on 2026-02-15
+*/
+
 {
   pkgs,
   ...
