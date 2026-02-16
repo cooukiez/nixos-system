@@ -2,7 +2,7 @@
   flake.nix
 
   created by ludw
-  on 2026-02-14
+  on 2026-02-16
 */
 
 # start config from https://github.com/Misterio77/nix-starter-configs

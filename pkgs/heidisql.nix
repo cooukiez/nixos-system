@@ -1,3 +1,10 @@
+/*
+  pkgs/heidisql.nix
+
+  created by ludw
+  on 2026-02-16
+*/
+
 {
   stdenv,
   lib,

@@ -2,7 +2,7 @@
   modules/home/desktop/nn/noctalia/desktop-widgets.nix
 
   created by ludw
-  on 2026-02-14
+  on 2026-02-16
 */
 
 {
