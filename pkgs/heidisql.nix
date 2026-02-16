@@ -6,9 +6,13 @@
   autoPatchelfHook,
   makeWrapper,
   glib,
-  gtk3,
+  gtk2,
   libX11,
   sqlite,
+  pango,
+  cairo,
+  gdk-pixbuf,
+  atk,
 }:
 stdenv.mkDerivation rec {
   pname = "heidisql";
@@ -16,8 +20,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/HeidiSQL/HeidiSQL/releases/download/v${version}/heidisql_${version}_amd64.deb";
-    # Run `nix-prefetch-url [url]` to verify this hash
-    hash = "sha256-R3N29Y6k0fDqGvXn7V2XvBqB6Y9C9K5J8L9M0N1P2Q3=";
+    hash = "sha256-1woLZ+E16WPowYRzk4RYI8SXaU3sht4GNJhItaBrrr8=";
   };
 
   nativeBuildInputs = [
@@ -26,12 +29,15 @@ stdenv.mkDerivation rec {
     makeWrapper
   ];
 
-  # Runtime dependencies for the native Linux build
   buildInputs = [
     glib
-    gtk3
+    gtk2
     libX11
     sqlite
+    pango
+    cairo
+    gdk-pixbuf
+    atk
   ];
 
   unpackPhase = "dpkg-deb -x $src .";
@@ -39,25 +45,30 @@ stdenv.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/bin
     mkdir -p $out/share/heidisql
+    mkdir -p $out/bin
 
-    # Move the extracted files to the nix store
-    # Based on the current .deb structure:
-    cp -r usr/bin/* $out/bin/ || true
-    cp -r usr/share/* $out/share/ || true
-
-    # If the binary is specifically located in /opt/heidisql
-    if [ -d "opt/heidisql" ]; then
-      cp -r opt/heidisql/* $out/share/heidisql/
-      ln -s $out/share/heidisql/heidisql $out/bin/heidisql
+    if [ -d usr/share ]; then
+      cp -r usr/share/* $out/share/
     fi
+
+    # actual app files are usually in opt/heidisql or usr/lib/heidisql
+    if [ -d opt/heidisql ]; then
+      cp -r opt/heidisql/* $out/share/heidisql/
+    elif [ -d usr/lib/heidisql ]; then
+      cp -r usr/lib/heidisql/* $out/share/heidisql/
+    fi
+
+    # create our own clean wrapper script
+    makeWrapper $out/share/heidisql/heidisql $out/bin/heidisql \
+      --prefix LD_LIBRARY_PATH : "$out/share/heidisql" \
+      --set HS_DIR "$out/share/heidisql"
 
     runHook postInstall
   '';
 
   meta = with lib; {
-    description = "Native Linux build of HeidiSQL (GTK3)";
+    description = "Native Linux build of HeidiSQL";
     homepage = "https://www.heidisql.com/";
     license = licenses.gpl2Only;
     platforms = [ "x86_64-linux" ];

@@ -10,9 +10,11 @@
 pkgs:
 let
   # appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
+  heidiSql = pkgs.callPackage ./heidisql.nix { };
   hardcodeTray = pkgs.callPackage ./hardcode-tray.nix { };
 in
 {
+  heidisql = heidiSql;
   hardcode-tray = hardcodeTray;
   # appmenu-gtk-module = appmenuGtkModule;
 }

@@ -113,6 +113,7 @@
     gthumb
     hardcode-tray
     hardinfo2
+    heidisql
     heroic
     homebank
     icon-slicer
