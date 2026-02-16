@@ -38,6 +38,7 @@
 - [x] photos backup
 - [ ] system backups
 - [ ] fix xresources not setting hidpi correctly
+- [ ] fix display scaling for jetbrains programs
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

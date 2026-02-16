@@ -33,9 +33,12 @@
 
   # fonts configuration
   fonts.packages = with pkgs; [
+    corefonts
+    dejavu_fonts
+    inter
+    liberation_ttf
     nerd-fonts.jetbrains-mono
     nerd-fonts.meslo-lg
     roboto
-    inter
   ];
 }

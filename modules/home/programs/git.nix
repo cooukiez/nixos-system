@@ -27,7 +27,10 @@
       advice.defaultBranchName = false;
 
       safe = {
-        directory = [ "/etc/nixos" ];
+        directory = [
+          "/etc/nixos"
+          "data/documents/vault"
+        ];
       };
     };
   };

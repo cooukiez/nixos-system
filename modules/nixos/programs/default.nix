@@ -88,6 +88,8 @@
   environment.systemPackages = with pkgs; [
     # general programs, sorted alphabetically
     affine
+    ausweisapp
+    ausweiskopie
     bitwarden-cli
     bitwarden-desktop
     blender
@@ -95,9 +97,11 @@
     bottles
     chemtool
     cpu-x
+    davinci-resolve
     dbeaver-bin
     design
     dune3d
+    figma-linux
     firestarter
     freecad
     furmark
@@ -106,6 +110,7 @@
     gephi
     gimp-with-plugins
     github-desktop
+    godot
     googleearth-pro
     gparted
     gpu-screen-recorder
@@ -129,6 +134,7 @@
     muse-sounds-manager
     musescore
     obsidian
+    onlyoffice-desktopeditors
     openscad
     openseeface
     orca-slicer
