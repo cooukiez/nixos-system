@@ -24,6 +24,9 @@
     qbittorrent-enhanced
     qbittorrent-cli
     inputs.zen-browser.packages.${hostSystem}.twilight
+
+    # browser extensions
+    firefoxpwa
   ];
 
   programs.firefox = {

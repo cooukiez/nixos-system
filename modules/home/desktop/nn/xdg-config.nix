@@ -29,7 +29,6 @@ let
   json-editor = [ "code.desktop" ];
   # web-source-editor = [ "webstorm.desktop" ];
   # php-editor = [ "phpstorm.desktop" ];
-  nix-editor = [ "code.desktop" ];
 
   pdf-viewer = [ "org.pwmt.zathura.desktop" ];
   image-viewer = [ "imv.desktop" ];
@@ -107,7 +106,7 @@ in
         "application/x-php" = intermediate-editor;
 
         # nix
-        "text/x-nix" = nix-editor;
+        "text/x-nix" = intermediate-editor;
 
         # config / markup / data
         "application/xml" = general-editor;

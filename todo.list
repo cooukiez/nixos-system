@@ -33,7 +33,9 @@
 - [x] issue noctalia hibernation not locking session
 - [x] plasma desktop customize lock screen
 - [x] add redi user
-- [ ] fork of breeze chameleon theme
+- [x] fork of breeze chameleon theme
+- [x] syncthing setup
+- [x] photos backup
 - [ ] system backups
 - [ ] fix xresources not setting hidpi correctly
 ---

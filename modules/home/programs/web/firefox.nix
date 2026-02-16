@@ -12,7 +12,7 @@
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.unstable.firefox;
+    package = null;
 
     profiles.default = {
       id = 0;

@@ -7,6 +7,8 @@
 
 {
   imports = [
+    ./webapps
+
     ./chrome.nix
     ./firefox.nix
     ./thunderbird.nix
