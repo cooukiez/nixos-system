@@ -27,6 +27,7 @@
 
     # browser extensions
     firefoxpwa
+    kdePackages.plasma-browser-integration
   ];
 
   programs.firefox = {
