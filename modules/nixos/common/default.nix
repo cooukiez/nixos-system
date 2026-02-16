@@ -12,6 +12,7 @@
 {
   imports = [
     ./display.nix
+    ./drive.nix
     ./hardware.nix
     ./libs.nix
   ];
