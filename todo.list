@@ -36,9 +36,9 @@
 - [x] fork of breeze chameleon theme
 - [x] syncthing setup
 - [x] photos backup
-- [ ] system backups
-- [ ] fix xresources not setting hidpi correctly
-- [ ] fix display scaling for jetbrains programs
+- [x] system snapshots
+- [/] fix xresources not setting hidpi correctly
+- [x] fix display scaling for jetbrains programs
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

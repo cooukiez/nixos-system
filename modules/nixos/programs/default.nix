@@ -147,12 +147,14 @@
     solvespace
     sql-studio
     unityhub
+    wl-crosshair
     zoom-us
 
     # code editors / IDE
+    unstable.jetbrains.jdk
     unstable.jetbrains.rust-rover
-    unstable.jetbrains.pycharm
-    unstable.jetbrains.idea
+    unstable.jetbrains.pycharm-oss
+    unstable.jetbrains.idea-oss
     unstable.jetbrains.clion
     unstable.jetbrains-toolbox
     unstable.vscode
