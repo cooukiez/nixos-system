@@ -9,6 +9,8 @@
   accounts.email.accounts = {
     ludwigWeb = {
       enable = true;
+      primary = true;
+
       address = "ludwig-geyer@web.de";
       userName = "ludwig-geyer@web.de";
 
