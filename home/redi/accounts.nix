@@ -59,7 +59,7 @@
       thunderbird.profiles = [ "default" ];
     };
 
-    cookiecenter = {
+    webAccount = {
       enable = true;
       address = "cookiecenter@web.de";
       userName = "cookiecenter@web.de";
@@ -79,7 +79,6 @@
         };
       };
 
-      # name = "cookiecenter";
       realName = "Web Account";
 
       thunderbird.enable = true;
