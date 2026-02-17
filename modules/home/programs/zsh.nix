@@ -29,7 +29,7 @@
       nuuh = "nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@lvl.activationPackage --update";
 
       cns = "sudo sh -c 'nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d && nix-store --optimise && nix-store --verify --check-contents --repair'";
-      cnu = "nix-env --delete-generations old && nix profile wipe-history && home-manager expire-generations \"-0 seconds\" && nix-collect-garbage -d";
+      cnh = "nix-env --delete-generations old && nix profile wipe-history && home-manager expire-generations \"-0 seconds\" && nix-collect-garbage -d";
 
       nd = "cd /etc/nixos";
       nk = "kate /etc/nixos";

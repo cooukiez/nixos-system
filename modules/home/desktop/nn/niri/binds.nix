@@ -19,7 +19,7 @@ let
   low-resolution = spawn "bash" "-c" ''
     niri msg output "eDP-1" custom-mode "1920x1080@60.000"
     niri msg output "eDP-1" scale 1.0
-    xrdb -merge <<< "Xft.dpi: 96"
+    # xrdb -merge <<< "Xft.dpi: 96"
     notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 1920x1080@60." -i "$f"
   '';
 
@@ -27,7 +27,7 @@ let
   high-resolution = spawn "bash" "-c" ''
     niri msg output "eDP-1" mode "3480x2160@60.000"
     niri msg output "eDP-1" scale 2.0
-    xrdb -merge <<< "Xft.dpi: 192"
+    # xrdb -merge <<< "Xft.dpi: 192"
     notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 3480x2160@60." -i "$f"
   '';
 

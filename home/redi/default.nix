@@ -95,6 +95,8 @@ in
 
       # smoother scrolling for firefox
       MOZ_USE_XINPUT2 = "1";
+
+      _JAVA_OPTIONS = "-Dawt.toolkit.name=WLToolkit";
     };
   };
 
