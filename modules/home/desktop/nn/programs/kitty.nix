@@ -1,8 +1,8 @@
 /*
-  modules/home/programs/kitty.nix
+  modules/home/desktop/nn/programs/kitty.nix
 
   created by ludw
-  on 2026-02-16
+  on 2026-02-17
 */
 
 {

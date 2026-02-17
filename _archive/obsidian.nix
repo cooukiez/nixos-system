@@ -1,5 +1,5 @@
 /*
-  modules/home/programs/obsidian.nix
+  _archive/obsidian.nix
 
   created by ludw
   on 2026-02-16

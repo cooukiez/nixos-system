@@ -1,3 +1,10 @@
+/*
+  modules/nixos/common/drive.nix
+
+  created by ludw
+  on 2026-02-16
+*/
+
 {
   pkgs,
   ...
