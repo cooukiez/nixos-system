@@ -29,6 +29,8 @@ in
     inputs.stylix.homeModules.stylix
     inputs.nixvim.homeModules.default
     inputs.zen-browser.homeModules.twilight
+
+    ./accounts.nix
   ];
   nixpkgs = {
     # add overlays here
