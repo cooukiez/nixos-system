@@ -14,6 +14,7 @@
   imports = [
     ./niri
     ./noctalia
+    ./programs
 
     ./packages.nix
     ./style.nix

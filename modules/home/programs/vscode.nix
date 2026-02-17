@@ -6,6 +6,10 @@
 */
 
 {
+  pkgs,
+  ...
+}:
+{
   # fix for vscode keyring
   home.file.".vscode/argv.json".text = ''
     {

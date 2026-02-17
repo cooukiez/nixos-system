@@ -27,14 +27,18 @@ let
   cpp-editor = [ "clion.desktop" ];
   rust-editor = [ "rust-rover.desktop" ];
   json-editor = [ "code.desktop" ];
+
   # web-source-editor = [ "webstorm.desktop" ];
   # php-editor = [ "phpstorm.desktop" ];
 
   pdf-viewer = [ "org.pwmt.zathura.desktop" ];
+
   image-viewer = [ "imv.desktop" ];
   backup-image-viewer = [ "org.gnome.Loupe.desktop" ];
+
   audio-player = [ "org.gnome.Music.desktop" ];
   video-player = [ "org.gnome.Showtime.desktop" ];
+
   archive-manager = [ "org.gnome.Nautilus.desktop" ];
   file-manager = [ "org.gnome.Nautilus.desktop" ];
 

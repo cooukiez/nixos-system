@@ -79,9 +79,6 @@
   services.gnome.tinysparql.enable = true;
   services.gnome.localsearch.enable = true;
 
-  # nvim console editor
-  programs.neovim.enable = true;
-
   environment.systemPackages = with pkgs; [
     # general programs, sorted alphabetically
     affine

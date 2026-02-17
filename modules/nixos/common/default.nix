@@ -46,6 +46,12 @@
   programs.nix-ld.enable = true;
   # programs.command-not-found = true;
 
+  # nvim console editor
+  programs.neovim.enable = true;
+
+  # zsh shell
+  programs.zsh.enable = true;
+
   # system packages
   environment.systemPackages = with pkgs; [
     # core / cli, sorted alphabetically

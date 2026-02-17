@@ -11,8 +11,6 @@
     ./web
 
     ./git.nix
-    ./kitty.nix
-    # ./obsidian.nix
     ./vscode.nix
     ./zathura.nix
     ./zsh.nix
