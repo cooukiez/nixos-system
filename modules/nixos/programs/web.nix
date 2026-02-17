@@ -15,16 +15,14 @@
   environment.systemPackages = with pkgs; [
     # messenger
     signal-desktop
-    discord
-    legcord
+    unstable.discord
+    unstable.legcord
     element-desktop
     # cinny-desktop
 
     # torrenting
     qbittorrent-enhanced
     qbittorrent-cli
-
-    # inputs.zen-browser.packages.${hostSystem}.twilight
 
     # browser extensions
     firefoxpwa
@@ -33,7 +31,7 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
+    package = pkgs.unstable.firefox;
 
     languagePacks = [
       "en-US"
@@ -71,10 +69,5 @@
         Fingerprinting = true;
       };
     };
-  };
-
-  programs.thunderbird = {
-    enable = true;
-    package = pkgs.unstable.thunderbird;
   };
 }

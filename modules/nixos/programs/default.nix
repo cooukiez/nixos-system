@@ -79,9 +79,6 @@
   services.gnome.tinysparql.enable = true;
   services.gnome.localsearch.enable = true;
 
-  # enable zsh as shell
-  programs.zsh.enable = true;
-
   # nvim console editor
   programs.neovim.enable = true;
 
@@ -157,7 +154,6 @@
     unstable.jetbrains.idea-oss
     unstable.jetbrains.clion
     unstable.jetbrains-toolbox
-    unstable.vscode
     inputs.gamemaker.packages.${hostSystem}.default
 
     # wine compatibilty

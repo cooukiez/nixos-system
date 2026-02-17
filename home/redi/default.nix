@@ -100,6 +100,23 @@ in
     };
   };
 
+  accounts.email.accounts = {
+    ludwig = {
+      thunderbird.enable = true;
+      thunderbird.profiles = [ "default" ];
+    };
+
+    kids = {
+      thunderbird.enable = true;
+      thunderbird.profiles = [ "default" ];
+    };
+
+    cookiecenter = {
+      thunderbird.enable = true;
+      thunderbird.profiles = [ "default" ];
+    };
+  };
+
   # enable home-manager
   programs.home-manager.enable = true;
 

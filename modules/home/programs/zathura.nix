@@ -6,9 +6,11 @@
 */
 
 {
-  programs.zathura.enable = true;
+  programs.zathura = {
+    enable = true;
 
-  programs.zathura.options = {
-    selection-clipboard = "clipboard";
+    options = {
+      selection-clipboard = "clipboard";
+    };
   };
 }
