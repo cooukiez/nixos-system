@@ -16,7 +16,6 @@ let
   };
 in
 {
-  # todo: install breeze chameleon dark
   home.file.".local/share/icons/Breeze-Chameleon-Dark" = {
     source = breezeChameleonDark;
     recursive = true;

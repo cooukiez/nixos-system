@@ -17,12 +17,15 @@
       btrfs-progs
     ];
     script = ''
-      mkdir -p /snapshots/system
       DATE=$(date +%Y-%m-%d-%H%M)
 
-      btrfs subvolume snapshot -r / /snapshots/system/root-$DATE
-      btrfs subvolume snapshot -r /nix /snapshots/system/nix-$DATE
-      btrfs subvolume snapshot -r /var /snapshots/system/var-$DATE
+      mkdir -p /snapshots/system/root-$DATE
+      mkdir -p /snapshots/system/nix-$DATE
+      mkdir -p /snapshots/system/var-$DATE
+
+      btrfs subvolume snapshot -r / /snapshots/system/root-$DATE/root
+      btrfs subvolume snapshot -r /nix /snapshots/system/nix-$DATE/nix
+      btrfs subvolume snapshot -r /var /snapshots/system/var-$DATE/var
     '';
   };
 
@@ -43,10 +46,9 @@
       btrfs-progs
     ];
     script = ''
-      mkdir -p /snapshots/home
       DATE=$(date +%Y-%m-%d-%H%M)
-
-      btrfs subvolume snapshot -r /home /snapshots/home/home-$DATE
+      mkdir -p /snapshots/home/home-$DATE
+      btrfs subvolume snapshot -r /home /snapshots/home/home-$DATE/home
     '';
   };
 
@@ -67,10 +69,9 @@
       btrfs-progs
     ];
     script = ''
-      mkdir -p /snapshots/data
       DATE=$(date +%Y-%m-%d-%H%M)
-
-      btrfs subvolume snapshot -r /data /snapshots/data/data-$DATE
+      mkdir -p /snapshots/data/data-$DATE
+      btrfs subvolume snapshot -r /data /snapshots/data/data-$DATE/data
     '';
   };
 
@@ -91,9 +92,24 @@
       btrfs-progs
     ];
     script = ''
-      find /snapshots/system -maxdepth 1 -type d -mtime +14 -exec btrfs subvolume delete {} \;
-      find /snapshots/home -maxdepth 1 -type d -mtime +7 -exec btrfs subvolume delete {} \;
-      find /snapshots/data -maxdepth 1 -type d -mtime +3 -exec btrfs subvolume delete {} \;
+      find /snapshots/system -mindepth 1 -maxdepth 1 -type d -mtime +14 -exec sh -c '
+        for dir do
+          btrfs subvolume delete "$dir"/*
+          rmdir "$dir"
+        done
+      ' sh {} +; \
+      find /snapshots/home -mindepth 1 -maxdepth 1 -type d -mtime +7 -exec sh -c '
+        for dir do
+          btrfs subvolume delete "$dir"/*
+          rmdir "$dir"
+        done
+      ' sh {} +; \
+      find /snapshots/data -mindepth 1 -maxdepth 1 -type d -mtime +3 -exec sh -c '
+        for dir do
+          btrfs subvolume delete "$dir"/*
+          rmdir "$dir"
+        done
+      ' sh {} +
     '';
   };
 

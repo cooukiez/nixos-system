@@ -10,8 +10,6 @@
   ...
 }:
 {
-  # todo: hardware optimizations
-
   # power profiles
   services.power-profiles-daemon.enable = true;
 
