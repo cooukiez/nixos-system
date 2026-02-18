@@ -2,7 +2,7 @@
   _archive/obsidian.nix
 
   created by ludw
-  on 2026-02-16
+  on 2026-02-17
 */
 
 # not in use and externally managed via git repository

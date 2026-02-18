@@ -1,3 +1,10 @@
+/*
+  modules/nixos/programs/cli-tools.nix
+
+  created by ludw
+  on 2026-02-18
+*/
+
 {
   pkgs,
   ...

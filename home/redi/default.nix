@@ -2,7 +2,7 @@
   home/redi/default.nix
 
   created by ludw
-  on 2026-02-16
+  on 2026-02-17
 */
 
 # configure home environment

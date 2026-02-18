@@ -2,7 +2,7 @@
   hardware-configuration.nix
 
   created by ludw
-  on 2026-02-16
+  on 2026-02-17
 */
 
 # do not modify this file
