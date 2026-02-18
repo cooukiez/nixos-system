@@ -40,6 +40,8 @@
 - [/] fix xresources not setting hidpi correctly
 - [x] fix display scaling for jetbrains programs
 - [x] fix zen-browser configuration not applying
+- [x] noctalia auto-update plugins
+- [ ] noctalia polkit
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

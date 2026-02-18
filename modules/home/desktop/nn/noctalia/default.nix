@@ -112,6 +112,10 @@
         telemetryEnabled = false;
       };
 
+      plugins = {
+        autoUpdate = true;
+      };
+
       audio = {
         cavaFrameRate = 30;
         mprisBlacklist = [ ];
