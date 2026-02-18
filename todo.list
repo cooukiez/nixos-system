@@ -42,6 +42,7 @@
 - [x] fix zen-browser configuration not applying
 - [x] noctalia auto-update plugins
 - [ ] noctalia polkit
+- [ ] update zen-browser pinned tabs to per user pinned tabs
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding
