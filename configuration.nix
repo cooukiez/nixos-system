@@ -139,6 +139,7 @@
       "audio"
       "video"
       "input"
+      "docker"
     ];
     password = "CHANGE-ME";
     shell = pkgs.zsh;
