@@ -8,7 +8,7 @@ PUBLIC_KEY="age1ly49z83aaalg38yr4fl24nhu4cvl0467rcsx6lnp9s4eklcer3tqjmnv4p"
 KEY_FILE="/data/key.age"
 
 if [[ -z "$SECURE_FILE" ]]; then
-    echo "Usage: editsecret <file.age>"
+    echo "Usage: edit-secret <file.age>"
     exit 1
 fi
 
@@ -28,7 +28,7 @@ if [[ -f "$SECURE_FILE" ]]; then
     age -d -i <(age -d "$KEY_FILE") "$SECURE_FILE" > "$TMP_FILE"
 fi
 
-# edit with Neovim
+# edit with nvim
 nvim "$TMP_FILE"
 
 # re-encrypt using Public Key (no password needed to lock)

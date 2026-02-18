@@ -9,6 +9,9 @@
   pkgs,
   ...
 }:
+let
+  edit-secret = pkgs.writeShellScriptBin "edit-secret" (builtins.readFile ./scripts/edit-secret.sh);
+in
 {
   # nvim base editor
   programs.neovim.enable = true;
@@ -38,6 +41,7 @@
     dog
     dua
     duf
+    edit-secret
     entr
     eza
     fff
