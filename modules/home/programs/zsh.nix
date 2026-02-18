@@ -61,6 +61,30 @@
         sudo chmod -R g+s "$1"
         sudo chown -R root:users "$1"
       }
+
+      editsecret() {
+        local SECURE_FILE=$1
+        local PUBLIC_KEY="age1ly49z83aaalg38yr4fl24nhu4cvl0467rcsx6lnp9s4eklcer3tqjmnv4p"
+        local KEY_FILE="/data/key.age"
+        
+        # create secure temp file in RAM (if /dev/shm exists) or protected temp dir
+        local TMP_FILE=$(mktemp /tmp/age-edit.XXXXXX)
+        trap "rm -f $TMP_FILE" EXIT
+
+        # decrypt if the file already exists
+        if [[ -f "$SECURE_FILE" ]]; then
+          # this will prompt for password to unlock the private key
+          age -d -i <(age -d "$KEY_FILE") "$SECURE_FILE" > "$TMP_FILE"
+        fi
+
+        # open in nvim
+        nvim "$TMP_FILE"
+
+        # re-encrypt on exit using the public key
+        age -r "$PUBLIC_KEY" -o "$SECURE_FILE" "$TMP_FILE"
+        
+        echo "File re-encrypted and saved to $SECURE_FILE"
+      }
     '';
 
     history.size = 16384;

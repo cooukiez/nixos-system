@@ -47,6 +47,19 @@ in
       maplocalleader = " ";
 
       have_nerd_font = true;
+
+      #gpg_encryption_method = "symmetric";
+      #gpg_use_agent = 1;
+
+      #GPGPreferArmor = 1;
+      #GPGPreferSign = 1;
+
+      /*
+        GPGDefaultRecipients = [
+          "ludwig.geyer@mailbox.org"
+          "ludwig@redi-school.org"
+        ];
+      */
     };
 
     # see `:help 'clipboard'`
@@ -224,6 +237,25 @@ in
           end
         '';
       }
+      {
+        event = [
+          "BufReadPre"
+          "FileReadPre"
+        ];
+        pattern = [
+          "*.gpg"
+          "*.pgp"
+          "*.asc"
+        ];
+        desc = "Disable security-risky features for encrypted files";
+        callback.__raw = ''
+          function()
+            vim.opt_local.swapfile = false
+            vim.opt_local.undofile = false
+            vim.opt_local.shada = ""
+          end
+        '';
+      }
     ];
 
     diagnostic = {
@@ -278,6 +310,7 @@ in
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraplugins
     extraPlugins = with pkgs.vimPlugins; [
       # add a vim plugin that is not implemented in nixvim
+      vim-gnupg
     ];
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraconfigluapost

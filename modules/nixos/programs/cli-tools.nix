@@ -53,6 +53,7 @@
     just
     kdash
     khal
+    kittysay
     lazydocker
     lazygit
     lolcat

@@ -46,7 +46,7 @@
       # "be.alexandervanhee.gradia"
       "com.github.vikdevelop.photopea_app"
       "com.leinardi.gst"
-      "com.odnoyko.valot"
+      # "com.odnoyko.valot"
       "edu.mit.Scratch"
       "io.github.giantpinkrobots.flatsweep"
       "org.turbowarp.TurboWarp"

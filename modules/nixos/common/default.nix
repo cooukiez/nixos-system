@@ -6,7 +6,9 @@
 */
 
 {
+  inputs,
   pkgs,
+  hostSystem,
   ...
 }:
 {
@@ -56,6 +58,7 @@
   # system packages
   environment.systemPackages = with pkgs; [
     # core packages, sorted alphabetically
+    age
     cifs-utils
     clang
     cmake
@@ -81,6 +84,7 @@
     mesa
     mtools
     ntfsprogs
+    openssl
     parted
     rclone
     rsync
@@ -92,6 +96,9 @@
     unzip
     wget
     zip
+
+    # encryption
+    inputs.agenix.packages.${hostSystem}.default
 
     # nixos related
     home-manager
