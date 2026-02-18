@@ -105,6 +105,9 @@ in
   # enable home-manager
   programs.home-manager.enable = true;
 
+  # surpress zen config migration warning
+  programs.zen-browser.suppressXdgMigrationWarning = true;
+
   # nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

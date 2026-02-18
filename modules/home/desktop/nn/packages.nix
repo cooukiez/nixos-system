@@ -14,12 +14,13 @@
     quickshell
 
     # programs
-    kitty
-    mission-center
     apostrophe
+    gapless
+    kitty
     libreoffice-fresh
-    sly
+    mission-center
     pdfarranger
+    sly
 
     # gnome apps
     baobab
@@ -33,7 +34,7 @@
     gnome-maps
     gnome-frog
     gnome-notes
-    gnome-music
+    # gnome-music
     gnome-photos
     gnome-graphs
     gnome-clocks

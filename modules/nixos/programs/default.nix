@@ -44,8 +44,8 @@
     # declare packages declaratively
     packages = [
       # "be.alexandervanhee.gradia"
-      "com.github.vikdevelop.photopea_app"
-      "com.leinardi.gst"
+      # "com.github.vikdevelop.photopea_app"
+      # "com.leinardi.gst"
       # "com.odnoyko.valot"
       "edu.mit.Scratch"
       "io.github.giantpinkrobots.flatsweep"
