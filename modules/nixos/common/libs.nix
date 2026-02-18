@@ -14,21 +14,23 @@
   programs.java.enable = true;
 
   environment.systemPackages = with pkgs; [
-    # general libraries, sorted alphabetically
+    # general tools / libraries, sorted alphabetically
+    bluez-tools
+    ffmpeg
     fuse3
     ifuse
+    imagemagick
+    intel-gpu-tools
+    libgphoto2
     libimobiledevice
     libimobiledevice-glue
-    libgphoto2
-    # gvfs
     libnotify
+    mariadb
+    nvtopPackages.full
     tesseract
     vulkan-tools
 
-    # gtk / qt
-    libappindicator
-    libappindicator-gtk2
-    libappindicator-gtk3
+    # widgets / input
     libsForQt5.qt5.qtbase
     libsForQt5.qt5.qtdeclarative
     libsForQt5.qt5.qtmultimedia
@@ -36,14 +38,15 @@
     qt6.qtmultimedia
     qt6.qtsvg
     qt6.qtvirtualkeyboard
-
-    # input libraries
     libinput
     libinput-gestures
     libxcb-cursor
     libxcursor
 
     # appmenu support
+    libappindicator
+    libappindicator-gtk2
+    libappindicator-gtk3
     appmenu-glib-translator
     haskellPackages.gi-dbusmenu # not needed
     haskellPackages.gi-dbusmenugtk3 # not needed
@@ -52,7 +55,12 @@
     libdbusmenu-gtk3
     lxqt.libdbusmenu-lxqt
 
+    #
+    # development libraries
+    #
+
     # dotnet
+    dotnetCorePackages.sdk_8_0-bin
     dotnetCorePackages.sdk_9_0-bin
 
     # python
@@ -66,5 +74,17 @@
     # node
     nodejs_24
     nodePackages_latest.vercel
+
+    #
+    # compatibility layers
+    #
+
+    # wine compatibilty
+    wineWowPackages.stable
+    winetricks
+    wineWowPackages.waylandFull
+
+    # proton
+    protonup-ng
   ];
 }

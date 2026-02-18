@@ -13,6 +13,7 @@
 }:
 {
   imports = [
+    ./cli-tools.nix
     ./file-explorers.nix
     ./gaming.nix
     ./media.nix
@@ -43,14 +44,13 @@
     # declare packages declaratively
     packages = [
       # "be.alexandervanhee.gradia"
-
       "com.github.vikdevelop.photopea_app"
       "com.leinardi.gst"
-      "edu.mit.Scratch"
-      "org.turbowarp.TurboWarp"
-      "io.github.giantpinkrobots.flatsweep"
-      "page.codeberg.lo_vely.Nucleus"
       "com.odnoyko.valot"
+      "edu.mit.Scratch"
+      "io.github.giantpinkrobots.flatsweep"
+      "org.turbowarp.TurboWarp"
+      "page.codeberg.lo_vely.Nucleus"
     ];
 
     update.onActivation = true;
@@ -90,10 +90,8 @@
     affine
     ausweisapp
     ausweiskopie
-    bitwarden-cli
     bitwarden-desktop
     blender
-    bluez-tools
     bottles
     chemtool
     cpu-x
@@ -124,9 +122,7 @@
     homebank
     icon-slicer
     ipscan
-    imagemagick
     inkscape
-    intel-gpu-tools
     joplin-desktop
     krita
     librecad
@@ -146,8 +142,8 @@
     pinta
     qdirstat
     renderdoc
+    rustdesk
     slack
-    slack-cli
     solvespace
     sql-studio
     timeshift
@@ -174,14 +170,6 @@
     unstable.jetbrains.clion
     unstable.jetbrains-toolbox
     inputs.gamemaker.packages.${hostSystem}.default
-
-    # wine compatibilty
-    wineWowPackages.stable
-    winetricks
-    wineWowPackages.waylandFull
-
-    # proton
-    protonup-ng
 
     # from flakes
     inputs.honklet.packages.${hostSystem}.default
