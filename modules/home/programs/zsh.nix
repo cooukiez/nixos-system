@@ -34,6 +34,8 @@
       nd = "cd /etc/nixos";
       nk = "kate /etc/nixos";
 
+      gtop = "sudo intel_gpu_top";
+
       help = "bash -c 'help'";
 
       c = "clear";

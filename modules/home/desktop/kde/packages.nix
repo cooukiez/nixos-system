@@ -33,6 +33,7 @@
     kdePackages.ksystemlog
     kdePackages.isoimagewriter
     kdePackages.partitionmanager
+    kdePackages.sweeper
 
     # multimedia and pim
     kdePackages.elisa

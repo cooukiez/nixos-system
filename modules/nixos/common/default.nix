@@ -54,7 +54,7 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
-    # core / cli, sorted alphabetically
+    # core packages, sorted alphabetically
     aria2
     asciinema
     bandwhich
@@ -123,6 +123,7 @@
     manix
     mariadb
     mesa
+    metadata
     most
     mtools
     mutt
@@ -131,6 +132,7 @@
     newsboat
     ngrok
     ntfsprogs
+    nvtopPackages.full
     parted
     playerctl
     procs

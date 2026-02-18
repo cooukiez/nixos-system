@@ -22,6 +22,11 @@
     # declarative flatpak manager
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.6.0";
 
+    nix-snapd = {
+      url = "github:nix-community/nix-snapd";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs-unstable";

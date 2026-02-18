@@ -22,6 +22,7 @@
     pdfarranger
 
     # gnome apps
+    baobab
     loupe
     gedit
     seahorse

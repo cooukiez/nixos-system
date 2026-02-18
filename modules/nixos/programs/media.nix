@@ -29,6 +29,7 @@
     mpv
 
     # audio
+    audacity
     spotify
     strawberry
 

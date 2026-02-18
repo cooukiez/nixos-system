@@ -42,11 +42,15 @@
 
     # declare packages declaratively
     packages = [
+      # "be.alexandervanhee.gradia"
+
       "com.github.vikdevelop.photopea_app"
       "com.leinardi.gst"
-      # "be.alexandervanhee.gradia"
       "edu.mit.Scratch"
       "org.turbowarp.TurboWarp"
+      "io.github.giantpinkrobots.flatsweep"
+      "page.codeberg.lo_vely.Nucleus"
+      "com.odnoyko.valot"
     ];
 
     update.onActivation = true;
@@ -63,12 +67,14 @@
         Environment = {
           # fix un-themed cursor in some wayland apps
           XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
-          # force correct theme for some gtk apps
+          # force correct theme for some gtk appsjoplin-desktop
           GTK_THEME = "Adwaita:dark";
         };
       };
     };
   };
+
+  services.snap.enable = true;
 
   # running gnome apps outside of gnome
   programs.dconf.enable = true;
@@ -98,6 +104,7 @@
     figma-linux
     firestarter
     freecad
+    fsv
     furmark
     geekbench
     geogebra6
@@ -116,15 +123,18 @@
     heroic
     homebank
     icon-slicer
-    unstable.ipscan
+    ipscan
     imagemagick
     inkscape
     intel-gpu-tools
+    joplin-desktop
     krita
     librecad
     lutris
     mangohud
     meld
+    metadata-cleaner
+    minder
     muse-sounds-manager
     musescore
     obsidian
@@ -140,9 +150,21 @@
     slack-cli
     solvespace
     sql-studio
+    timeshift
     unityhub
     wl-crosshair
     zoom-us
+    zotero
+    displaycal
+    rapidraw
+    rapid-photo-downloader
+    digikam
+    darktable
+    scribus
+    upscayl
+    safeeyes
+    shutter
+    calibre
 
     # code editors / IDE
     unstable.jetbrains.jdk

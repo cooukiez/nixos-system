@@ -27,6 +27,7 @@
     inputs.self.nixosModules.programs
 
     inputs.nix-flatpak.nixosModules.nix-flatpak
+    inputs.nix-snapd.nixosModules.default
     inputs.niri.nixosModules.niri
     inputs.copyparty.nixosModules.default
     inputs.agenix.nixosModules.default
