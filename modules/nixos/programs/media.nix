@@ -28,18 +28,35 @@
     vlc
     mpv
 
-    # audio
+    # music
+    audacious
+    audacious-plugins
     audacity
     spotify
-    strawberry
+
+    # audio tools
+    bpm-tools
+    picard
 
     # image viewers
+    gthumb
     xnviewmp
     sxiv
     imv
 
-    # camera suite
+    # image tools
+    gimp-with-plugins
+    inkscape
+    krita
+    pinta
+    rapidraw
+    darktable
+    upscayl
+
+    # photo management
     gphoto2
+    rapid-photo-downloader
+    digikam
 
     # pdf
     sioyek

@@ -18,6 +18,7 @@
     bluez-tools
     ffmpeg
     fuse3
+    go
     icu
     ifuse
     imagemagick

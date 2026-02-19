@@ -15,33 +15,42 @@
 
     # programs
     apostrophe
+    euphonica
     gapless
+    keypunch
     kitty
     libreoffice-fresh
+    metadata-cleaner
     mission-center
     pdfarranger
+    # plattenalbum
+    quick-lookup
+    saber
     sly
+    snapshot
 
     # gnome apps
     baobab
-    loupe
+    decibels
     gedit
+    gnome-calculator
+    gnome-calendar
+    gnome-clocks
+    gnome-contacts
+    gnome-font-viewer
+    gnome-frog
+    gnome-graphs
+    gnome-maps
+    # gnome-music
+    gnome-notes
+    gnome-obfuscate
+    gnome-photos
+    gnome-text-editor
+    gnome-weather
+    loupe
     seahorse
     showtime
     unstable.gImageReader
-    gnome-calendar
-    gnome-contacts
-    gnome-maps
-    gnome-frog
-    gnome-notes
-    # gnome-music
-    gnome-photos
-    gnome-graphs
-    gnome-clocks
-    gnome-weather
-    gnome-text-editor
-    gnome-font-viewer
-    gnome-calculator
 
     # libraries / packages
     adw-gtk3
@@ -52,10 +61,10 @@
     kdePackages.qt6ct
 
     # compatibility
-    gnome-online-accounts
-    gsettings-desktop-schemas
     adwaita-icon-theme
     libsecret
+    gnome-online-accounts
+    gsettings-desktop-schemas
 
     # for debugging
     nwg-look

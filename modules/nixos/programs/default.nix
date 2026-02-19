@@ -51,6 +51,7 @@
       "io.github.giantpinkrobots.flatsweep"
       "org.turbowarp.TurboWarp"
       "page.codeberg.lo_vely.Nucleus"
+      "tech.digiroad.Convertidor"
     ];
 
     update.onActivation = true;
@@ -107,14 +108,12 @@
     geekbench
     geogebra6
     gephi
-    gimp-with-plugins
     github-desktop
     godot
     googleearth-pro
     gparted
     gpu-screen-recorder
     gpu-screen-recorder-gtk
-    gthumb
     hardcode-tray
     hardinfo2
     heidisql
@@ -122,9 +121,8 @@
     homebank
     icon-slicer
     ipscan
-    inkscape
+    jflap
     joplin-desktop
-    krita
     librecad
     lutris
     mangohud
@@ -139,7 +137,6 @@
     openseeface
     orca-slicer
     pavucontrol
-    pinta
     qdirstat
     renderdoc
     rustdesk
@@ -151,15 +148,11 @@
     zoom-us
     zotero
     displaycal
-    rapidraw
-    rapid-photo-downloader
-    digikam
-    darktable
     scribus
-    upscayl
     safeeyes
     shutter
     calibre
+    zed-editor
 
     # code editors / IDE
     inputs.gamemaker.packages.${hostSystem}.default

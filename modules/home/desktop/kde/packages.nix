@@ -38,6 +38,7 @@
     # multimedia and pim
     kdePackages.elisa
     kdePackages.kdepim-runtime
+    kdePackages.koko
 
     # games
     kdePackages.kmahjongg
@@ -68,7 +69,8 @@
     jetbrains-runner
 
     # programs
-    unstable.gImageReader-qt
-    unstable.libreoffice-qt-fresh
+    gImageReader-qt
+    libreoffice-qt-fresh
+    strawberry
   ];
 }
