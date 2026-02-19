@@ -147,7 +147,6 @@
     solvespace
     sql-studio
     timeshift
-    unityhub
     wl-crosshair
     zoom-us
     zotero
@@ -163,13 +162,16 @@
     calibre
 
     # code editors / IDE
-    unstable.jetbrains.jdk
-    unstable.jetbrains.rust-rover
-    unstable.jetbrains.pycharm-oss
-    unstable.jetbrains.idea-oss
-    unstable.jetbrains.clion
-    unstable.jetbrains-toolbox
     inputs.gamemaker.packages.${hostSystem}.default
+    unityhub
+    unstable.jetbrains-toolbox
+    unstable.jetbrains.clion
+    unstable.jetbrains.idea-oss
+    unstable.jetbrains.jdk
+    unstable.jetbrains.pycharm-oss
+    unstable.jetbrains.rider
+    unstable.jetbrains.rust-rover
+    unstable.jetbrains.webstorm
 
     # from flakes
     inputs.honklet.packages.${hostSystem}.default

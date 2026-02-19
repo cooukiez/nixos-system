@@ -11,6 +11,7 @@
 }:
 let
   edit-secret = pkgs.writeShellScriptBin "edit-secret" (builtins.readFile ./scripts/edit-secret.sh);
+  fix-perms = pkgs.writeShellScriptBin "fix-perms" (builtins.readFile ./scripts/fix-perms.sh);
 in
 {
   # nvim base editor
@@ -46,6 +47,7 @@ in
     eza
     fff
     figlet
+    fix-perms
     fortune
     gdb-dashboard
     glances

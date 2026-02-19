@@ -60,8 +60,11 @@
     #
 
     # dotnet
-    dotnetCorePackages.sdk_8_0-bin
-    dotnetCorePackages.sdk_9_0-bin
+    (dotnetCorePackages.combinePackages [
+      dotnetCorePackages.sdk_8_0-bin
+      dotnetCorePackages.sdk_9_0-bin
+      dotnetCorePackages.sdk_10_0-bin
+    ])
 
     # python
     (python3.withPackages (
@@ -87,4 +90,11 @@
     # proton
     protonup-ng
   ];
+
+  environment.shellAliases = {
+    # dotnet version aliases
+    dotnet8 = "${pkgs.dotnetCorePackages.sdk_8_0-bin}/bin/dotnet";
+    dotnet9 = "${pkgs.dotnetCorePackages.sdk_9_0-bin}/bin/dotnet";
+    dotnet10 = "${pkgs.dotnetCorePackages.sdk_10_0-bin}/bin/dotnet";
+  };
 }
