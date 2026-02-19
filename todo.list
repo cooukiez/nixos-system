@@ -43,7 +43,8 @@
 - [x] noctalia auto-update plugins
 - [ ] noctalia polkit
 - [ ] update zen-browser pinned tabs to per user pinned tabs
-- [ ] put fixperms also in an external script
+- [x] put fixperms also in an external script
+- [-] move back to symlinks instead of bindmounts
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

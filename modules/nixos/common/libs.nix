@@ -18,6 +18,7 @@
     bluez-tools
     ffmpeg
     fuse3
+    icu
     ifuse
     imagemagick
     intel-gpu-tools
@@ -29,6 +30,8 @@
     nvtopPackages.full
     tesseract
     vulkan-tools
+    yt-dlp
+    zlib
 
     # widgets / input
     libsForQt5.qt5.qtbase

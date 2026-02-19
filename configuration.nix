@@ -145,35 +145,49 @@
     shell = pkgs.zsh;
   }) users;
 
-  # create bind targets (directories)
+  /*
+    # create bind targets (directories)
+    systemd.tmpfiles.rules = lib.concatLists (
+      lib.mapAttrsToList (
+        username: user:
+        map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") (user.bindDirs or [ ])
+      ) users
+    );
+
+    # bind mount configuration
+    systemd.mounts = lib.concatLists (
+      lib.mapAttrsToList (
+        username: user:
+        map (bind: {
+          where = "/home/${username}/${bind.target}";
+          what = bind.source;
+          type = "none";
+          options = "bind,rw,nofail";
+          unitConfig = {
+            DefaultDependencies = false;
+          };
+
+          after = [
+            "local-fs.target"
+            "home.mount"
+          ];
+
+          before = [ "remote-fs.target" ];
+          wantedBy = [ "multi-user.target" ];
+        }) (user.bindDirs or [ ])
+      ) users
+    );
+  */
+
   systemd.tmpfiles.rules = lib.concatLists (
     lib.mapAttrsToList (
       username: user:
-      map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") (user.bindDirs or [ ])
-    ) users
-  );
-
-  # bind mount configuration
-  systemd.mounts = lib.concatLists (
-    lib.mapAttrsToList (
-      username: user:
-      map (bind: {
-        where = "/home/${username}/${bind.target}";
-        what = bind.source;
-        type = "none";
-        options = "bind,rw,nofail";
-        unitConfig = {
-          DefaultDependencies = false;
-        };
-
-        after = [
-          "local-fs.target"
-          "home.mount"
-        ];
-
-        before = [ "remote-fs.target" ];
-        wantedBy = [ "multi-user.target" ];
-      }) (user.bindDirs or [ ])
+      lib.concatLists (
+        map (bind: [
+          "r /home/${username}/${bind.target}"
+          "L /home/${username}/${bind.target} - - - - ${bind.source}"
+        ]) (user.bindDirs or [ ])
+      )
     ) users
   );
 
