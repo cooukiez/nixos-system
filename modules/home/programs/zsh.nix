@@ -52,17 +52,6 @@
 
       # set prompt style
       PROMPT='%F{yellow}%n%F{blue}@%m%f:%~$ '
-
-      fixperms() {
-        if [ -z "$1" ]; then
-          echo "please provide a directory."
-          return 1
-        fi
-
-        sudo chmod -R 775 "$1"
-        sudo chmod -R g+s "$1"
-        sudo chown -R root:users "$1"
-      }
     '';
 
     history.size = 16384;
