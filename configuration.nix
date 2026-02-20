@@ -23,6 +23,7 @@
 
     # import other system configuration modules
     inputs.self.nixosModules.common
+    inputs.self.nixosModules.dashboard
     inputs.self.nixosModules.desktop
     inputs.self.nixosModules.programs
 

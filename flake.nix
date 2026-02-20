@@ -110,6 +110,7 @@
         hostSystem
       ];
 
+      # set local subnet static IP
       staticIP = "192.168.178.24";
 
       forAllSystems = nixpkgs.lib.genAttrs systems;

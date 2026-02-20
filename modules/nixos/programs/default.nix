@@ -16,7 +16,6 @@
     ./cli-tools.nix
     ./file-explorers.nix
     ./gaming.nix
-    ./homepage-dashboard.nix
     ./media.nix
     ./network-services.nix
     ./penetration-testing.nix
