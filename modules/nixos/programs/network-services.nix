@@ -152,7 +152,7 @@ in
     group = "copyparty";
 
     settings.i = "0.0.0.0";
-    settings.p = 8000;
+    settings.p = 3923;
     settings.no-reload = true;
 
     accounts = {
