@@ -52,6 +52,8 @@
       "org.turbowarp.TurboWarp"
       "page.codeberg.lo_vely.Nucleus"
       "tech.digiroad.Convertidor"
+      "org.vinegarhq.Sober"
+      "org.vinegarhq.Vinegar"
     ];
 
     update.onActivation = true;

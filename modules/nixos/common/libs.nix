@@ -29,6 +29,7 @@
     libnotify
     mariadb
     nvtopPackages.full
+    pandoc
     tesseract
     vulkan-tools
     yt-dlp

@@ -214,15 +214,17 @@ in
         "map to guest" = "bad user";
       };
 
-      "data" = {
-        "path" = "/data";
-        "browseable" = "no";
-        "read only" = "no";
-        "guest ok" = "no";
-        "create mask" = "0664";
-        "directory mask" = "0775";
-        "force group" = "users";
-      };
+      /*
+        "data" = {
+          "path" = "/data";
+          "browseable" = "no";
+          "read only" = "no";
+          "guest ok" = "no";
+          "create mask" = "0664";
+          "directory mask" = "0775";
+          "force group" = "users";
+        };
+      */
     };
   };
 
