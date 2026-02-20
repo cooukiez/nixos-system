@@ -110,6 +110,8 @@
         hostSystem
       ];
 
+      staticIP = "192.168.178.24";
+
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
       mkNixosConfiguration =
@@ -121,6 +123,7 @@
               outputs
               hostSystem
               hostname
+              staticIP
               users
               ;
             nixosModules = "${self}/modules/nixos";
@@ -147,6 +150,7 @@
               inputs
               outputs
               hostSystem
+              staticIP
               ;
             userConfig = users.${username};
             nhModules = "${self}/modules/home";
