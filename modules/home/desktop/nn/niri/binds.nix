@@ -142,6 +142,8 @@ in
   "Mod+P".action = noctalia-ipc "sessionMenu" "toggle";
   "Mod+P".hotkey-overlay.title = "Session menu";
 
+  "Mod+Shift+P".action = power-off-monitors;
+
   # "Mod+Shift+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
   # "Mod+Shift+L".hotkey-overlay.title = "Lock and suspend";
 

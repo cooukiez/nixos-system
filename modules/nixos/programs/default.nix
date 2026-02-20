@@ -49,11 +49,11 @@
       # "com.odnoyko.valot"
       "edu.mit.Scratch"
       "io.github.giantpinkrobots.flatsweep"
+      "org.vinegarhq.Sober"
       "org.turbowarp.TurboWarp"
+      "org.vinegarhq.Vinegar"
       "page.codeberg.lo_vely.Nucleus"
       "tech.digiroad.Convertidor"
-      "org.vinegarhq.Sober"
-      "org.vinegarhq.Vinegar"
     ];
 
     update.onActivation = true;
@@ -167,6 +167,7 @@
     unstable.jetbrains.rider
     unstable.jetbrains.rust-rover
     unstable.jetbrains.webstorm
+    unstable.jetbrains.datagrip
 
     # from flakes
     inputs.honklet.packages.${hostSystem}.default

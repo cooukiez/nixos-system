@@ -8,6 +8,7 @@
 {
   inputs,
   pkgs,
+  lib,
   hostSystem,
   ...
 }:
@@ -44,6 +45,7 @@
     NAUTILUS_4_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
 
     VCPKG_FORCE_SYSTEM_BINARIES = 1;
+    LD_LIBRARY_PATH = [ "${pkgs.zlib}/lib" ];
   };
 
   environment.pathsToLink = [
