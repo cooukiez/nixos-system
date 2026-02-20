@@ -10,6 +10,7 @@
   ...
 }:
 let
+  del-snaps = pkgs.writeShellScriptBin "del-snaps" (builtins.readFile ./scripts/del-snaps.sh);
   edit-secret = pkgs.writeShellScriptBin "edit-secret" (builtins.readFile ./scripts/edit-secret.sh);
   fix-perms = pkgs.writeShellScriptBin "fix-perms" (builtins.readFile ./scripts/fix-perms.sh);
   snaps-du = pkgs.writeShellScriptBin "snaps-du" (builtins.readFile ./scripts/snaps-du.sh);
@@ -38,6 +39,7 @@ in
     cowsay
     ctop
     ddgr
+    del-snaps
     dfc
     diff-so-fancy
     dog
