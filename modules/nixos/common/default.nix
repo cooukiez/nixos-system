@@ -83,6 +83,7 @@
     inetutils
     jq
     killall
+    lsof
     mesa
     mtools
     ntfsprogs
@@ -91,6 +92,7 @@
     rclone
     rsync
     rustup
+    sd
     shared-mime-info
     toybox
     tree

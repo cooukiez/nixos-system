@@ -41,11 +41,12 @@
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
       inputs.self.overlays.nur
+
       inputs.niri.overlays.niri
       inputs.copyparty.overlays.default
     ];
 
-    # configure your nixpkgs instance
+    # configure nixpkgs instance
     config = {
       # allow unfree packages
       allowUnfree = true;

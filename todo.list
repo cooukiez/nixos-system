@@ -49,9 +49,12 @@
 - [ ] change cursor for nnn desktop
 - [ ] fprintd integration (also with bitwarden)
 - [ ] update browser configuration, extension settings and homepage to homepage dashboard
+- [ ] fix sddm not found
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding
 - [-] feature request noctalia fast user switching
 - [ ] avatar for plasma desktop
 - [ ] find better plasma lock screen background
+- [ ] update niri window switcher config
+- [ ] update niri default resolution

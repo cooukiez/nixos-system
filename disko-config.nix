@@ -11,7 +11,6 @@
     lvl-disk = {
       type = "disk";
 
-      # todo: do not hardcode this
       device = "/dev/nvme0n1";
       content = {
         type = "gpt";

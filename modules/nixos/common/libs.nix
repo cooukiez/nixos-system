@@ -30,6 +30,7 @@
     mariadb
     nvtopPackages.full
     pandoc
+    shared-mime-info
     tesseract
     vulkan-tools
     yt-dlp

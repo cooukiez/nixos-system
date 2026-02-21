@@ -81,7 +81,6 @@ in
     rip2
     ripgrep
     scc
-    sd
     sl
     sla2pdf
     slack-cli
@@ -92,9 +91,7 @@ in
     tealdeer
     tldr
     tlrc
-    tmate
     transfer-sh
-    tre
     tuir
     ventoy
 

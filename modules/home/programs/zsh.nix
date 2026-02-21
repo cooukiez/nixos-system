@@ -45,7 +45,7 @@
 
     initContent = ''
       bindkey -e
-      export EDITOR=vim
+      export EDITOR=nvim
 
       # enable colors
       autoload -U colors && colors

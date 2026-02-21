@@ -5,6 +5,7 @@
   on 2026-02-17
 */
 
+# generated config by nixos
 # do not modify this file
 
 {
