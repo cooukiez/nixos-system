@@ -2,7 +2,7 @@
   modules/home/desktop/nn/noctalia/bar.nix
 
   created by ludw
-  on 2026-02-17
+  on 2026-02-18
 */
 
 {
