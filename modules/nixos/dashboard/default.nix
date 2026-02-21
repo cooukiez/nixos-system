@@ -90,7 +90,7 @@
           {
             "Syncthing" = {
               icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg";
-              href = "http://${staticIP}:8384";
+              href = "http://127.0.0.1:8384";
               description = "Continuous File Synchronization";
               ping = "${staticIP}";
             };

@@ -7,9 +7,36 @@
 
 {
   accounts.email.accounts = {
-    ludwigWeb = {
+    ludwigMailbox = {
       enable = true;
       primary = true;
+
+      address = "ludwig.geyer@mailbox.org";
+      userName = "ludwig.geyer@mailbox.org";
+
+      imap = {
+        host = "imap.mailbox.org";
+        port = 993;
+        tls.enable = true;
+      };
+
+      smtp = {
+        host = "smtp.mailbox.org";
+        port = 587;
+        tls = {
+          enable = true;
+          useStartTls = true;
+        };
+      };
+
+      realName = "Ludwig Geyer";
+
+      thunderbird.enable = true;
+      thunderbird.profiles = [ "default" ];
+    };
+
+    ludwigWeb = {
+      enable = true;
 
       address = "ludwig-geyer@web.de";
       userName = "ludwig-geyer@web.de";
