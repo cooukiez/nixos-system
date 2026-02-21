@@ -41,13 +41,14 @@
 - [x] fix display scaling for jetbrains programs
 - [x] fix zen-browser configuration not applying
 - [x] noctalia auto-update plugins
-- [ ] noctalia polkit
-- [ ] update zen-browser pinned tabs to per user pinned tabs
 - [x] put fixperms also in an external script
 - [-] move back to symlinks instead of bindmounts
+- [x] homepage dashboard setup for services (copyparty / syncthing / vsftpd)
+- [ ] noctalia polkit
+- [ ] update zen-browser pinned tabs to per user pinned tabs
 - [ ] change cursor for nnn desktop
-- [ ] homepage dashboard setup for services (copyparty / syncthing / vsftpd)
 - [ ] fprintd integration (also with bitwarden)
+- [ ] update browser configuration, extension settings and homepage to homepage dashboard
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding
