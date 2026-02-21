@@ -66,7 +66,6 @@ in
     lazydocker
     lazygit
     lolcat
-    mangl
     mani
     manix
     metadata

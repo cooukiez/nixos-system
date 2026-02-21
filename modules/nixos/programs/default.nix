@@ -127,6 +127,7 @@
     joplin-desktop
     librecad
     lutris
+    mangl
     mangohud
     meld
     metadata-cleaner
