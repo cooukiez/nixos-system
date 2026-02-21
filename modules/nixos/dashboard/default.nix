@@ -37,6 +37,9 @@
       }
     ];
 
+    # logos: https://github.com/homarr-labs/dashboard-icons.git
+    # icons: https://pictogrammers.com/library/mdi/
+
     services = [
       {
         "System Monitor" = [
@@ -86,7 +89,7 @@
         "File Management" = [
           {
             "Syncthing" = {
-              icon = "syncthing.png";
+              icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg";
               href = "http://${staticIP}:8384";
               description = "Continuous File Synchronization";
               ping = "${staticIP}";
@@ -94,7 +97,7 @@
           }
           {
             "Copyparty" = {
-              icon = "folder.png";
+              icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/copyparty.svg";
               href = "http://${staticIP}:3923";
               description = "File Server & Gallery";
               ping = "${staticIP}";
@@ -106,7 +109,7 @@
         "Network Storage" = [
           {
             "VSFTPD" = {
-              icon = "server.png";
+              icon = "mdi-server-network";
               href = "ftp://${staticIP}";
               description = "FTP Server";
             };
