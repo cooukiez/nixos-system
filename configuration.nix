@@ -119,6 +119,7 @@
         22 # allow openssh
         80 # allow http
         3923 # allow copyparty
+        8080 # allow http / transfer-sh
         8082 # allow dashboard
       ];
       allowedUDPPorts = [ ];

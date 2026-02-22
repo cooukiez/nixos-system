@@ -20,94 +20,89 @@ in
   programs.neovim.enable = true;
 
   environment.systemPackages = with pkgs; [
+    bat # file viewer with syntax highlighting
+    bottom # interactive system monitor
+    cmus # terminal music player
+    cointop # cryptocurrency dashboard
+    ctop # container metrics dashboard
+    duf # disk usage viewer
+    fff # simple file
+    gdb-dashboard # gdb interface
+    glances # system monitor with curses interface
+    gping # ping visualizer
+    htop # interactive process viewer
+    khal # interactive calendar client
+    lazydocker # interactive docker manager
+    lazygit # interactive git client
+    navi # interactive cheatsheet browser
+    newsboat # RSS feed reader
+    procs # interactive process viewer
+    taskwarrior2 # TUI task manager
+    tuir # reddit terminal client
+    bandwhich # network bandwidth monitor
+    btop # system monitor with curses interface
+
     # cli tools, sorted alphabetically
     aria2
-    asciinema
-    bandwhich
-    bat
     bench
-    clean
     bitwarden-cli
-    bottom
-    brightnessctl
-    browsh
-    btop
-    buku
-    cliphist
-    cmatrix
-    cmus
-    cointop
-    cowsay
-    ctop
+    clean
     ddgr
-    del-snaps
     dfc
     diff-so-fancy
     dog
     dua
-    duf
-    edit-secret
     entr
     eza
-    fff
-    figlet
-    fix-perms
-    fortune
-    gdb-dashboard
-    glances
-    gping
-    htop
     httpie
     hyperfine
     joplin-cli
     just
-    kdash
-    khal
-    kittysay
-    lazydocker
-    lazygit
-    lolcat
     mani
-    manix
-    metadata
-    most
-    mutt
-    navi
-    neofetch
-    newsboat
     ngrok
-    playerctl
-    procs
+    powertop
     rip2
     ripgrep
     scc
-    sl
     sla2pdf
     slack-cli
-    snaps-du
     speedtest-cli
     surge
-    taskwarrior2
     tealdeer
     tldr
     tlrc
-    transfer-sh
-    tuir
-    ventoy
+    tlrc
+
+    # my system tools
+    del-snaps
+    edit-secret
+    fix-perms
+    snaps-du
+
+    # playful tools
+    asciinema
+    cmatrix
+    cowsay
+    figlet
+    fortune
+    kittysay
+    lolcat
+    sl
 
     # window / system control
+    brightnessctl
+    playerctl
     wmctrl
     xdotool
     xmodmap
 
-    # clipboard tools
-    wl-clipboard
-    xclip
-    xsel
-
-    # screenshot / recording tools
+    # clipboard / screenshot /
+    cliphist
     grim
     slurp
     wf-recorder
+    wl-clipboard
+    xclip
+    xsel
   ];
 }

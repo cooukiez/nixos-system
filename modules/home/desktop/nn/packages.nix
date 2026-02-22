@@ -15,6 +15,7 @@
 
     # programs
     apostrophe
+    errands
     euphonica
     gapless
     keypunch

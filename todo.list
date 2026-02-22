@@ -50,6 +50,7 @@
 - [ ] fprintd integration (also with bitwarden)
 - [ ] update browser configuration, extension settings and homepage to homepage dashboard
 - [ ] fix sddm not found
+- [ ] niri on lid close change back to sleeping
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

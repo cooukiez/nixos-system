@@ -102,6 +102,7 @@
     dbeaver-bin
     design
     dune3d
+    feishin
     figma-linux
     firestarter
     freecad

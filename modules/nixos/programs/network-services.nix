@@ -232,4 +232,15 @@ in
     enable = true;
     openFirewall = true;
   };
+
+  # transfer-sh
+  services.transfer-sh = {
+    enable = true;
+
+    provider = "local";
+
+    settings = {
+      listener = ":8080";
+    };
+  };
 }
