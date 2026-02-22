@@ -25,7 +25,8 @@ in
     asciinema
     bandwhich
     bat
-    bench
+    benchgit
+    clean
     bitwarden-cli
     bottom
     brightnessctl
