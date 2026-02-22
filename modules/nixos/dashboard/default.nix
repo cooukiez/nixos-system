@@ -17,7 +17,7 @@
     widgets = [
       {
         greeting = {
-          text = "Welcome back, networker!";
+          text = "My Laptop";
           help = true;
         };
       }

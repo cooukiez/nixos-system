@@ -57,6 +57,9 @@
   # zsh shell
   programs.zsh.enable = true;
 
+  # enable all terminfo
+  environment.enableAllTerminfo = true;
+
   # system packages
   environment.systemPackages = with pkgs; [
     # core packages, sorted alphabetically

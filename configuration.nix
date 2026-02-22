@@ -110,6 +110,19 @@
     hostName = hostname;
     nameservers = [ "1.1.1.1" ];
     networkmanager.enable = true;
+
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [
+        20 # allow ftp data
+        21 # allow ftp control
+        22 # allow openssh
+        80 # allow http
+        3923 # allow copyparty
+        8082 # allow dashboard
+      ];
+      allowedUDPPorts = [ ];
+    };
   };
 
   # timezone
