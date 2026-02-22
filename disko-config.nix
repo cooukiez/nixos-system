@@ -5,7 +5,10 @@
   on 2026-02-18
 */
 
-{ lib, ... }:
+{
+  lib,
+  ...
+}:
 {
   disko.devices.disk = {
     lvl-disk = {

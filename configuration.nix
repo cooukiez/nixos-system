@@ -106,7 +106,11 @@
   };
 
   # hostname
-  networking.hostName = hostname;
+  networking = {
+    hostName = hostname;
+    nameservers = [ "1.1.1.1" ];
+    networkmanager.enable = true;
+  };
 
   # timezone
   time.timeZone = "Europe/Berlin";
