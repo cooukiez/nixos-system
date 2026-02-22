@@ -2,7 +2,7 @@
   modules/home/desktop/nn/programs/kitty.nix
 
   created by ludw
-  on 2026-02-18
+  on 2026-02-21
 */
 
 {
