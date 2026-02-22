@@ -24,10 +24,6 @@
     ];
   };
 
-  # networking configuration
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
-
   # audio configuration
   services.pipewire = {
     enable = true;
