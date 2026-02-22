@@ -44,13 +44,15 @@
 - [x] put fixperms also in an external script
 - [-] move back to symlinks instead of bindmounts
 - [x] homepage dashboard setup for services (copyparty / syncthing / vsftpd)
-- [ ] noctalia polkit
-- [ ] update zen-browser pinned tabs to per user pinned tabs
+- [x] fix sddm not found
+- [-] niri on lid close change back to sleeping
+- [x] change homepage dashboard name
 - [ ] change cursor for nnn desktop
-- [ ] fprintd integration (also with bitwarden)
+- [ ] use agenix secret storage for storing secrets in copyparty and other stuff
+- [ ] update zen-browser pinned tabs to per user pinned tabs
 - [ ] update browser configuration, extension settings and homepage to homepage dashboard
-- [ ] fix sddm not found
-- [ ] niri on lid close change back to sleeping
+- [ ] fprintd integration (also with bitwarden)
+- [ ] noctalia polkit
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

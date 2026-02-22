@@ -57,7 +57,6 @@
         };
       };
 
-      # todo: fix bluetooth codecs here
       # see https://wiki.nixos.org/wiki/PipeWire
     };
     jack.enable = true;

@@ -233,13 +233,14 @@ in
     openFirewall = true;
   };
 
-  # transfer-sh
+  # transfer-sh for uploading files
   services.transfer-sh = {
     enable = true;
 
     provider = "local";
 
     settings = {
+      # this does not work
       listener = ":8080";
     };
   };

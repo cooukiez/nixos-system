@@ -78,18 +78,15 @@
 
     switch-events = {
       lid-close.action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "lockScreen"
-        "lock"
+        "sh"
+        "-c"
+        "niri msg action power-off-monitors && noctalia-shell ipc call lockScreen lock && systemctl suspend"
       ];
+
       lid-open.action.spawn = [
-        "noctalia-shell"
-        "ipc"
-        "call"
-        "lockScreen"
-        "lock"
+        "sh"
+        "-c"
+        "noctalia-shell ipc call lockScreen lock"
       ];
     };
 
