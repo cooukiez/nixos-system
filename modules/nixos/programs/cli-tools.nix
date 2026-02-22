@@ -20,6 +20,8 @@ in
   programs.neovim.enable = true;
 
   environment.systemPackages = with pkgs; [
+    ### tui tools, sorted alphabetically ###
+
     bat # file viewer with syntax highlighting
     bottom # interactive system monitor
     cmus # terminal music player
@@ -37,12 +39,13 @@ in
     navi # interactive cheatsheet browser
     newsboat # RSS feed reader
     procs # interactive process viewer
-    taskwarrior2 # TUI task manager
+    taskwarrior2 # task manager
     tuir # reddit terminal client
     bandwhich # network bandwidth monitor
     btop # system monitor with curses interface
 
-    # cli tools, sorted alphabetically
+    ### cli tools, sorted alphabetically ###
+
     aria2
     bench
     bitwarden-cli

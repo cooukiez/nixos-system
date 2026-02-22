@@ -98,11 +98,9 @@
     bottles
     chemtool
     cpu-x
-    davinci-resolve
     dbeaver-bin
     design
     dune3d
-    feishin
     figma-linux
     firestarter
     freecad

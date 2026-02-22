@@ -32,6 +32,7 @@
     audacious
     audacious-plugins
     audacity
+    feishin
     spotify
 
     # audio tools
@@ -57,6 +58,9 @@
     gphoto2
     rapid-photo-downloader
     digikam
+
+    # video tools
+    davinci-resolve
 
     # pdf
     sioyek
