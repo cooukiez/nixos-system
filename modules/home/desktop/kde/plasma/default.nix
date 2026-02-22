@@ -82,7 +82,7 @@ in
       activateWhenTypingOnDesktop = true;
       historyBehavior = "enableSuggestions";
       position = "center";
-      #       shortcuts.launch = "Meta+R";
+      # shortcuts.launch = "Meta+R";
       shortcuts.runCommandOnClipboard = "Shift+Enter";
     };
 
@@ -188,7 +188,7 @@ in
         };
 
         "Script-krohnkite" = {
-          #           floatingClass = "org.freedesktop.impl.portal.desktop.kde";
+          # floatingClass = "org.freedesktop.impl.portal.desktop.kde";
           screenGapBetween = 8;
           screenGapBottom = 8;
           screenGapLeft = 8;

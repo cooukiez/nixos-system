@@ -38,6 +38,7 @@ in
     lazygit # interactive git client
     navi # interactive cheatsheet browser
     newsboat # RSS feed reader
+    powertop # power consumption monitor
     procs # interactive process viewer
     taskwarrior2 # task manager
     tuir # reddit terminal client
@@ -57,13 +58,15 @@ in
     dua
     entr
     eza
+    hexdump
     httpie
     hyperfine
     joplin-cli
     just
     mani
+    metadata
+    neofetch
     ngrok
-    powertop
     rip2
     ripgrep
     scc
@@ -75,6 +78,7 @@ in
     tldr
     tlrc
     tlrc
+    ventoy
 
     # my system tools
     del-snaps
