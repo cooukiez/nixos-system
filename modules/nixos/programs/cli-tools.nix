@@ -25,7 +25,7 @@ in
     asciinema
     bandwhich
     bat
-    benchgit
+    bench
     clean
     bitwarden-cli
     bottom
