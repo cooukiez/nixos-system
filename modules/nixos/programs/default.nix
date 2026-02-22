@@ -49,8 +49,10 @@
       # "com.odnoyko.valot"
       "edu.mit.Scratch"
       "io.github.giantpinkrobots.flatsweep"
-      "org.vinegarhq.Sober"
+      "org.freedownloadmanager.Manager"
+      "org.jdownloader.JDownloader"
       "org.turbowarp.TurboWarp"
+      "org.vinegarhq.Sober"
       "org.vinegarhq.Vinegar"
       "page.codeberg.lo_vely.Nucleus"
       "tech.digiroad.Convertidor"
@@ -96,10 +98,12 @@
     bitwarden-desktop
     blender
     bottles
+    calibre
     chemtool
     cpu-x
     dbeaver-bin
     design
+    displaycal
     dune3d
     figma-linux
     firestarter
@@ -142,19 +146,18 @@
     qdirstat
     renderdoc
     rustdesk
+    safeeyes
+    scribus
+    shutter
     slack
+    sniffnet
     solvespace
     sql-studio
     timeshift
     wl-crosshair
+    zed-editor
     zoom-us
     zotero
-    displaycal
-    scribus
-    safeeyes
-    shutter
-    calibre
-    zed-editor
 
     # code editors / IDE
     inputs.gamemaker.packages.${hostSystem}.default
