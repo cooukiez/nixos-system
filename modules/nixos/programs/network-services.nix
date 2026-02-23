@@ -6,19 +6,18 @@
 */
 
 {
+  config,
   inputs,
   hostSystem,
   pkgs,
   ...
 }:
-let
-  # unsafe passwords go here
-  syncthing_password = "PcVonLudw";
-  copyparty_pm_password = pkgs.writeText "copyparty-pm-password" ''
-    fileupload123
-  '';
-in
 {
+  age.secrets."copyparty-pw".file = ../../../secrets/copyparty-pw.age;
+  age.secrets."syncthing-pw".file = ../../../secrets/syncthing-pw.age;
+
+  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+
   environment.systemPackages = with pkgs; [
     # enable copyparty standalone package
     pkgs.copyparty
@@ -61,7 +60,7 @@ in
     settings = {
       gui = {
         user = "net";
-        password = "${syncthing_password}";
+        password = "$(${pkgs.coreutils}/bin/cat ${config.age.secrets."syncthing-pw".path})";
       };
 
       devices = {
@@ -157,7 +156,7 @@ in
 
     accounts = {
       pm = {
-        passwordFile = "${copyparty_pm_password}";
+        passwordFile = config.age.secrets."copyparty-pw".path;
       };
     };
 
