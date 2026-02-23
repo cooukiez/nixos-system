@@ -11,9 +11,39 @@
   lib,
   ...
 }:
+let
+  # Define the custom McMojave cursor package
+  mcmojave-cursor-theme = pkgs.stdenv.mkDerivation {
+    pname = "mcmojave-cursors";
+    version = "master";
+
+    src = pkgs.fetchFromGitHub {
+      owner = "vinceliuice";
+      repo = "McMojave-cursors";
+      rev = "master";
+      # Ensure this matches your nix-prefetch-git output
+      sha256 = "sha256-4YqSucpxA7jsuJ9aADjJfKRPgPR89oq2l0T1N28+GV0=";
+    };
+
+    # We skip the install.sh script because it tries to write to $HOME.
+    # Instead, we manually copy the 'dist' folder to the Nix store output.
+    installPhase = ''
+      runHook preInstall
+
+      mkdir -p $out/share/icons/McMojave-cursors
+      cp -pr dist/* $out/share/icons/McMojave-cursors/
+
+      runHook postInstall
+    '';
+  };
+in
 {
   imports = [
     ./idle-config.nix
+  ];
+
+  home.packages = [
+    mcmojave-cursor-theme
   ];
 
   programs.niri.settings = {
@@ -88,6 +118,11 @@
         "-c"
         "noctalia-shell ipc call lockScreen lock"
       ];
+    };
+
+    cursor = {
+      theme = "McMojave-cursors";
+      # size is set in env
     };
 
     overview = {
