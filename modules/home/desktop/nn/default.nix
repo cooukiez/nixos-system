@@ -21,6 +21,12 @@
     ./xdg-config.nix
   ];
 
+  home.pointerCursor = {
+    name = "McMojave-cursors";
+    package = mcmojave-cursor-theme;
+    size = 24;
+  };
+
   services.gnome-keyring = {
     enable = true;
     components = [

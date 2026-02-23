@@ -93,8 +93,6 @@ in
       # pretend desktop is gnome
       XDG_CURRENT_DESKTOP = "GNOME";
 
-      XCURSOR_SIZE = "24";
-
       # smoother scrolling for firefox
       MOZ_USE_XINPUT2 = "1";
 
