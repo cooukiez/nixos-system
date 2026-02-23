@@ -78,7 +78,7 @@ in
       QT_ENABLE_HIGHDPI_SCALING = "1";
       QT_SCALE_FACTOR_ROUNDING_POLICY = "PassThrough";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-      QS_ICON_THEME = "Papirus-Dark";
+      # QS_ICON_THEME = "Papirus-Dark";
 
       # wayland settings
       ELM_DISPLAY = "wl";
