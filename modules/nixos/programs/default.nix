@@ -47,9 +47,10 @@
       # "com.github.vikdevelop.photopea_app"
       # "com.leinardi.gst"
       # "com.odnoyko.valot"
+      # "org.freedownloadmanager.Manager"
+
       "edu.mit.Scratch"
       "io.github.giantpinkrobots.flatsweep"
-      "org.freedownloadmanager.Manager"
       "org.jdownloader.JDownloader"
       "org.turbowarp.TurboWarp"
       "org.vinegarhq.Sober"

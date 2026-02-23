@@ -13,8 +13,17 @@
   ...
 }:
 {
-  age.secrets."copyparty-pw".file = ../../../secrets/copyparty-pw.age;
-  age.secrets."syncthing-pw".file = ../../../secrets/syncthing-pw.age;
+  age.secrets.copyparty-pw = {
+    file = ../../../secrets/copyparty-pw.age;
+    owner = "copyparty";
+    group = "copyparty";
+  };
+
+  age.secrets.syncthing-pw = {
+    file = ../../../secrets/syncthing-pw.age;
+    owner = "syncthing";
+    group = "users";
+  };
 
   age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
@@ -60,7 +69,7 @@
     settings = {
       gui = {
         user = "net";
-        password = "$(${pkgs.coreutils}/bin/cat ${config.age.secrets."syncthing-pw".path})";
+        password = "%{file:${config.age.secrets.syncthing-pw.path}}%";
       };
 
       devices = {
@@ -156,7 +165,7 @@
 
     accounts = {
       pm = {
-        passwordFile = config.age.secrets."copyparty-pw".path;
+        passwordFile = config.age.secrets.copyparty-pw.path;
       };
     };
 
