@@ -5,7 +5,7 @@
 }:
 stdenv.mkDerivation rec {
   pname = "mcmojave-cursors";
-  version = "none";
+  version = "master";
 
   src = fetchFromGitHub {
     owner = "vinceliuice";

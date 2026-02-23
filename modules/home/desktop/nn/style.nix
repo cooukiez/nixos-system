@@ -12,6 +12,13 @@
   ...
 }:
 {
+  # set cursor theme
+  home.pointerCursor = {
+    name = "McMojave-cursors";
+    package = pkgs.mcmojave-cursor-theme;
+    size = 24;
+  };
+
   stylix = {
     enable = true;
 
@@ -92,19 +99,8 @@
       name = "adw-gtk3-dark";
     };
 
-    gtk3.extraConfig = {
-      gtk-enable-animations = false;
-    };
-
     gtk4.extraConfig = {
       gtk-theme-name = "adw-gtk3-dark";
-      gtk-enable-animations = false;
-    };
-
-    cursorTheme = {
-      # todo: select cursor theme
-      name = "Adwaita";
-      size = 24;
     };
 
     colorScheme = "dark";
@@ -128,10 +124,7 @@
         custom_palette = true;
         standard_dialogs = "default";
 
-        # qt widget style used inside qt6ct
         style = "Adwaita-Dark";
-
-        # todo: select cursor theme
         icon_theme = "Papirus-Dark";
       };
 

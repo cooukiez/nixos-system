@@ -62,7 +62,6 @@
     kdePackages.qt6ct
 
     # compatibility
-    adwaita-icon-theme
     libsecret
     gnome-online-accounts
     gsettings-desktop-schemas
