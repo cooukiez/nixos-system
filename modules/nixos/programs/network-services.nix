@@ -66,10 +66,11 @@
     guiAddress = "127.0.0.1:8384";
     group = "users";
 
+    guiPasswordFile = config.age.secrets.syncthing-pw.path;
+
     settings = {
       gui = {
         user = "net";
-        password = "%{file:${config.age.secrets.syncthing-pw.path}}%";
       };
 
       devices = {
