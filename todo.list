@@ -49,15 +49,16 @@
 - [x] change homepage dashboard name
 - [x] change cursor for nnn desktop
 - [x] use noctalia internal binds for volume control
-- [ ] use agenix secret storage for storing secrets in copyparty and other stuff
+- [x] use agenix secret storage for storing secrets in copyparty and other stuff
 - [ ] update zen-browser pinned tabs to per user pinned tabs
-- [ ] update browser configuration, extension settings and homepage to homepage dashboard
+- [ ] homepage for browsers to homepage dashboard
 - [ ] fprintd integration (also with bitwarden)
 - [ ] noctalia polkit
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding
 - [-] feature request noctalia fast user switching
+- [ ] update browser configuration, extension settings 
 - [ ] avatar for plasma desktop
 - [ ] find better plasma lock screen background
 - [ ] update niri window switcher config

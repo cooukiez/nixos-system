@@ -22,8 +22,10 @@ in
   environment.systemPackages = with pkgs; [
     ### tui tools, sorted alphabetically ###
 
+    bandwhich # network bandwidth monitor
     bat # file viewer with syntax highlighting
     bottom # interactive system monitor
+    btop # system monitor with curses interface
     cmus # terminal music player
     cointop # cryptocurrency dashboard
     ctop # container metrics dashboard
@@ -40,10 +42,9 @@ in
     newsboat # RSS feed reader
     powertop # power consumption monitor
     procs # interactive process viewer
+    s-tui # monitoring tool with power consumption
     taskwarrior2 # task manager
     tuir # reddit terminal client
-    bandwhich # network bandwidth monitor
-    btop # system monitor with curses interface
 
     ### cli tools, sorted alphabetically ###
 
