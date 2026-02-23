@@ -12,5 +12,10 @@
     options = {
       selection-clipboard = "clipboard";
     };
+
+    extraConfig = ''
+      set font "JetBrainsMono Nerd Font 10"
+      map <F9> toggle statusbar
+    '';
   };
 }
