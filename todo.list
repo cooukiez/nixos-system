@@ -48,8 +48,8 @@
 - [-] niri on lid close change back to sleeping
 - [x] change homepage dashboard name
 - [x] change cursor for nnn desktop
+- [x] use noctalia internal binds for volume control
 - [ ] use agenix secret storage for storing secrets in copyparty and other stuff
-- [ ] use noctalia internal binds for volume control
 - [ ] update zen-browser pinned tabs to per user pinned tabs
 - [ ] update browser configuration, extension settings and homepage to homepage dashboard
 - [ ] fprintd integration (also with bitwarden)

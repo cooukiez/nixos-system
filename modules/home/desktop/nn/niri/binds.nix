@@ -74,24 +74,24 @@ let
   '';
 in
 {
-  "XF86AudioRaiseVolume".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
+  "XF86AudioRaiseVolume".action = noctalia-ipc "volume" "increase";
   "XF86AudioRaiseVolume".hotkey-overlay.title = "Raise Volume";
-  "XF86AudioLowerVolume".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-";
+  "XF86AudioLowerVolume".action = noctalia-ipc "volume" "decrease";
   "XF86AudioLowerVolume".hotkey-overlay.title = "Lower volume";
 
-  "XF86AudioMute".action = wpctl "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+  "XF86AudioMute".action = noctalia-ipc "volume" "muteOutput";
   "XF86AudioMute".hotkey-overlay.title = "Mute sound";
-  "XF86AudioMicMute".action = wpctl "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
+  "XF86AudioMicMute".action = noctalia-ipc "volume" "muteInput";
   "XF86AudioMicMute".hotkey-overlay.title = "Mute microphone";
 
-  "Mod+TouchpadScrollDown".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+";
+  "Mod+TouchpadScrollDown".action = noctalia-ipc "volume" "increase";
   "Mod+TouchpadScrollDown".hotkey-overlay.title = "Scroll volume up";
-  "Mod+TouchpadScrollUp".action = wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-";
+  "Mod+TouchpadScrollUp".action = noctalia-ipc "volume" "decrease";
   "Mod+TouchpadScrollUp".hotkey-overlay.title = "Scroll volume down";
 
-  "XF86MonBrightnessUp".action = brightnessctl "set" "5%+";
+  "XF86MonBrightnessUp".action = noctalia-ipc "brightness" "increase";
   "XF86MonBrightnessUp".hotkey-overlay.title = "Increase brightness";
-  "XF86MonBrightnessDown".action = brightnessctl "set" "5%-";
+  "XF86MonBrightnessDown".action = noctalia-ipc "brightness" "decrease";
   "XF86MonBrightnessDown".hotkey-overlay.title = "Decrease brightness";
 
   "Mod+Shift+TouchpadScrollDown".action = brightnessctl "set" "2%+";
