@@ -52,7 +52,7 @@
         # USER
         {
           monitor = "";
-          text = "    $USER";
+          text = "Hello, $USER";
           color = "rgba(216, 222, 233, 0.80)";
           font_size = 18;
           font_family = "SF Pro Display Bold";
@@ -75,7 +75,7 @@
           font_color = "rgb(200, 200, 200)";
           fade_on_empty = false;
           font_family = "SF Pro Display Bold";
-          placeholder_text = ''<i><span foreground="##ffffff99">🔒 Enter Pass</span></i>'';
+          # placeholder_text = ''<i><span foreground="##ffffff99"></span></i>'';
           hide_input = false;
           position = "0, -250";
           halign = "center";

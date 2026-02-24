@@ -11,7 +11,7 @@ stdenvNoCC.mkDerivation rec {
 
   src = fetchurl {
     url = "https://www.1001fonts.com/download/steelfish.zip";
-    hash = "sha256-R/8yEa8vVsh8YtH9vI+02M1y2O3jBqHq1A1E1G5D8vE=";
+    hash = "sha256-R3B92Y60phVPNtVZy843wMe2jjaVXwzipBDYsyrSefQ=";
   };
 
   nativeBuildInputs = [ unzip ];
