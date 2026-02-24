@@ -14,6 +14,7 @@
 {
   imports = [
     ./idle-config.nix
+    ./lock-screen.nix
   ];
 
   programs.niri.settings = {
