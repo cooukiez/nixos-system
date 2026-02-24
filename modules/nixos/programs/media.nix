@@ -43,7 +43,6 @@
     gthumb
     xnviewmp
     sxiv
-    imv
 
     # image tools
     gimp-with-plugins
@@ -64,6 +63,8 @@
 
     # pdf
     sioyek
+
+    # zathura
     zathura
     zathuraPkgs.zathura_core
     zathuraPkgs.zathura_pdf_mupdf
