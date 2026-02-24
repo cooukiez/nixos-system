@@ -86,10 +86,12 @@
       };
     };
 
-    copyparty.url = "github:9001/copyparty";
     agenix.url = "github:ryantm/agenix";
+    copyparty.url = "github:9001/copyparty";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     gamemaker.url = "github:skirlez/gamemaker-flake";
+
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
 
     honklet = {
       url = "github:hannahfluch/honklet";

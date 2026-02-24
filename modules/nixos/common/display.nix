@@ -6,7 +6,9 @@
 */
 
 {
+  inputs,
   pkgs,
+  hostSystem,
   ...
 }:
 {
@@ -35,6 +37,10 @@
   fonts.packages = with pkgs; [
     corefonts
     dejavu_fonts
+    inputs.apple-fonts.packages.${hostSystem}.sf-compact
+    inputs.apple-fonts.packages.${hostSystem}.sf-mono
+    inputs.apple-fonts.packages.${hostSystem}.sf-pro
+    inputs.apple-fonts.packages.${hostSystem}.sf-pro-nerd
     inter
     liberation_ttf
     nerd-fonts.jetbrains-mono

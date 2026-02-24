@@ -54,6 +54,9 @@
 - [ ] homepage for browsers to homepage dashboard
 - [x] fprintd integration (also with bitwarden)
 - [x] noctalia polkit
+- [ ] sort flake inputs
+- [ ] sort kde packages
+- [ ] hyprlock, replace noctalia lockscreen
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

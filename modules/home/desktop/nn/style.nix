@@ -31,7 +31,7 @@
     targets.firefox.enable = false;
     targets.zen-browser.enable = false;
     targets.vscode.enable = false;
-    stylix.targets.hyprlock.colors.enable = false;
+    targets.hyprlock.colors.enable = false;
 
     targets.firefox.profileNames = [ "default" ];
     targets.zen-browser.profileNames = [ "default" ];
