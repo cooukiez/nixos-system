@@ -51,39 +51,17 @@
     enableZshIntegration = true;
   };
 
-  services.kanshi = {
-    enable = true;
-    settings = [
-      /*
-        {
-          profile = {
-            name = "mobile_4k";
-            outputs = [
-              {
-                criteria = "eDP-1";
-                mode = "3840x2160";
-                scale = 2.0;
-              }
-            ];
-            exec = [ "${pkgs.bash}/bin/bash -c \"echo 'Xft.dpi: 192' | ${pkgs.xorg.xrdb}/bin/xrdb -merge\"" ];
-          };
-        }
-      */
-      /*
-        {
-          profile = {
-            name = "mobile_1080p";
-            outputs = [
-              {
-                criteria = "eDP-1";
-                mode = "1920x1080";
-                scale = 1.0;
-              }
-            ];
-            exec = [ "${pkgs.bash}/bin/bash -c \"echo 'Xft.dpi: 96' | ${pkgs.xorg.xrdb}/bin/xrdb -merge\"" ];
-          };
-        }
-      */
-    ];
+  systemd.user.services."niri-flake-polkit" = {
+    Unit = {
+      Description = "Disabled Niri Polkit Agent (replaced by Noctalia)";
+    };
+    Install = {
+      WantedBy = lib.mkForce [ ];
+    };
+    Service = {
+      ExecStart = lib.mkForce "${pkgs.coreutils}/bin/true";
+    };
   };
+
+  # systemd.user.services."niri-flake-polkit".enable = false;
 }

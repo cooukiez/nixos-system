@@ -52,8 +52,8 @@
 - [x] use agenix secret storage for storing secrets in copyparty and other stuff
 - [ ] update zen-browser pinned tabs to per user pinned tabs
 - [ ] homepage for browsers to homepage dashboard
-- [ ] fprintd integration (also with bitwarden)
-- [ ] noctalia polkit
+- [x] fprintd integration (also with bitwarden)
+- [x] noctalia polkit
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
 - [-] issue in plasma/x11 start menu continuesly expanding

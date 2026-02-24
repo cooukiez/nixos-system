@@ -64,6 +64,10 @@ in
     enable = true;
   };
 
+  environment.plasma6.excludePackages = with pkgs; [
+    kdePackages.polkit-kde-agent-1
+  ];
+
   environment.systemPackages = with pkgs; [
     # sddm theme
     sddm-astronaut

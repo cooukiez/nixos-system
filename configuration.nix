@@ -214,6 +214,9 @@
   # passwordless sudo
   security.sudo.wheelNeedsPassword = false;
 
+  # enable polkit
+  security.polkit.enable = true;
+
   # swap configuration
   swapDevices = [
     { device = "/dev/disk/by-partlabel/swap"; }
