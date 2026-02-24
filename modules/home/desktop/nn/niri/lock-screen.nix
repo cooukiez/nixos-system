@@ -52,7 +52,7 @@
         # USER
         {
           monitor = "";
-          text = "Hello, $USER";
+          text = "Welcome back, $USER!";
           color = "rgba(216, 222, 233, 0.80)";
           font_size = 18;
           font_family = "SF Pro Display Bold";
