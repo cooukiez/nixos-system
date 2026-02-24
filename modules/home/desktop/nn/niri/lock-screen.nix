@@ -75,7 +75,7 @@
           font_color = "rgb(200, 200, 200)";
           fade_on_empty = false;
           font_family = "SF Pro Display Bold";
-          # placeholder_text = ''<i><span foreground="##ffffff99"></span></i>'';
+          placeholder_text = ''<i><span foreground="##ffffff99">Enter Password</span></i>'';
           hide_input = false;
           position = "0, -250";
           halign = "center";
