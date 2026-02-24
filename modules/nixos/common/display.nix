@@ -46,5 +46,6 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.meslo-lg
     roboto
+    steelfish-fonts
   ];
 }
