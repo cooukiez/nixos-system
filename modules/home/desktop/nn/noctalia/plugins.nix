@@ -64,6 +64,10 @@
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+    polkit-agent = {
+      enabled = true;
+      sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    };
   };
 
   version = 1;

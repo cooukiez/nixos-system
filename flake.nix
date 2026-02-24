@@ -57,6 +57,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    # home-manager / quickshell, declarative shell configuration
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # home-manager / noctalia shell, written in quickshell
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";

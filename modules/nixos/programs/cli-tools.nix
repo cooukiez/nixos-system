@@ -42,7 +42,7 @@ in
     newsboat # RSS feed reader
     powertop # power consumption monitor
     procs # interactive process viewer
-    s-tui # monitoring tool with power consumption
+    s-tui # monitoring tool
     taskwarrior2 # task manager
     tuir # reddit terminal client
 

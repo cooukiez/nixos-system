@@ -13,6 +13,14 @@
   pkgs,
   ...
 }:
+let
+  customQuickshell = inputs.quickshell.packages.${hostSystem}.default;
+
+  overriddenNoctalia = inputs.noctalia.packages.${hostSystem}.default.override {
+    calendarSupport = true;
+    quickshell = customQuickshell;
+  };
+in
 {
   systemd.user.services.noctalia = {
     Unit = {
@@ -22,7 +30,7 @@
     };
 
     Service = {
-      ExecStart = "${pkgs.quickshell}/bin/qs -c noctalia-shell";
+      ExecStart = "${overriddenNoctalia}/bin/noctalia-shell";
       # Restart = "on-failure";
       # RestartSec = 5;
     };
@@ -37,12 +45,7 @@
 
   programs.noctalia-shell = {
     enable = true;
-    systemd.enable = true;
-    package = (
-      inputs.noctalia.packages.${hostSystem}.default.override {
-        calendarSupport = true;
-      }
-    );
+    package = overriddenNoctalia;
 
     plugins = import ./plugins.nix;
     pluginSettings = import ./plugin-settings.nix;

@@ -6,12 +6,14 @@
 */
 
 {
+  inputs,
   pkgs,
+  hostSystem,
   ...
 }:
 {
   home.packages = with pkgs; [
-    quickshell
+    inputs.quickshell.packages.${hostSystem}.default
 
     # programs
     apostrophe
