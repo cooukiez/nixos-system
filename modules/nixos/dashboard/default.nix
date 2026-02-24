@@ -129,6 +129,7 @@
       title = "lvl";
       headerStyle = "clean";
       background = "/background.png";
+
       layout = {
         "System Monitor" = {
           style = "row";

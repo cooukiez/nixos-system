@@ -133,7 +133,7 @@
             # main config file
             ./configuration.nix
 
-            inputs.hardware.nixosModules.lenovo-thinkpad-x1-yoga
+            inputs.hardware.nixosModules.lenovo-thinkpad-x1-yoga-8th-gen
           ];
         };
 
