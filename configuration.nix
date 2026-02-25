@@ -30,8 +30,9 @@
     inputs.nix-flatpak.nixosModules.nix-flatpak
     inputs.nix-snapd.nixosModules.default
     inputs.niri.nixosModules.niri
-    inputs.copyparty.nixosModules.default
     inputs.agenix.nixosModules.default
+
+    inputs.copyparty.nixosModules.default
     inputs.spicetify-nix.nixosModules.default
   ];
   nixpkgs = {
@@ -99,6 +100,8 @@
     plymouth.enable = true;
   };
 
+  hardware.enableAllFirmware = true;
+
   # disable systemd services that are affecting the boot time
   systemd.services = {
     NetworkManager-wait-online.enable = false;
@@ -124,6 +127,10 @@
       ];
       allowedUDPPorts = [ ];
     };
+
+    extraHosts = ''
+      192.168.178.51 homepage.localhost
+    '';
   };
 
   # timezone
@@ -216,6 +223,9 @@
 
   # enable polkit
   security.polkit.enable = true;
+
+  # for generating entropy for the system
+  services.haveged.enable = true;
 
   # swap configuration
   swapDevices = [

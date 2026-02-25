@@ -26,6 +26,7 @@ in
 
     inputs.plasma-manager.homeModules.plasma-manager
     inputs.nixvim.homeModules.default
+
     inputs.zen-browser.homeModules.twilight
 
     ./accounts.nix

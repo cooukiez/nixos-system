@@ -11,7 +11,7 @@
   ...
 }:
 let
-  formattedWeather = pkgs.writeShellScript "formatted-weather" (
+  formattedWeather = pkgs.writeShellScriptBin "formatted-weather" (
     builtins.readFile ./scripts/formatted-weather.sh
   );
 in
@@ -65,6 +65,12 @@ in
     Service = {
       ExecStart = "${formattedWeather}";
       Restart = "on-failure";
+      Path = [
+        pkgs.bash
+        pkgs.coreutils
+        pkgs.curl
+        pkgs.jq
+      ];
     };
     Install = {
       WantedBy = [ "default.target" ];

@@ -75,7 +75,12 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # zen browser flake
+    agenix.url = "github:ryantm/agenix";
+
+    copyparty.url = "github:9001/copyparty";
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    gamemaker.url = "github:skirlez/gamemaker-flake";
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -85,11 +90,6 @@
         home-manager.follows = "home-manager";
       };
     };
-
-    agenix.url = "github:ryantm/agenix";
-    copyparty.url = "github:9001/copyparty";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    gamemaker.url = "github:skirlez/gamemaker-flake";
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
 

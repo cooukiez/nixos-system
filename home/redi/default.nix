@@ -28,6 +28,7 @@ in
     inputs.noctalia.homeModules.default
     inputs.stylix.homeModules.stylix
     inputs.nixvim.homeModules.default
+
     inputs.zen-browser.homeModules.twilight
 
     ./accounts.nix
