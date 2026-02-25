@@ -21,6 +21,7 @@ while true; do
     echo "Raw weather: Temp: $TEMP, Code: $CODE"
 
     if [[ "$TEMP" == "null" || -z "$TEMP" || "$CODE" == "null" || -z "$CODE" ]]; then
+        sleep 10
         continue
     fi
 
