@@ -10,6 +10,11 @@
   lib,
   ...
 }:
+let
+  formattedWeather = pkgs.writeShellScript "formatted-weather" (
+    builtins.readFile ./scripts/formattedWeather.sh
+  );
+in
 {
   imports = [
     ./niri
@@ -51,6 +56,30 @@
     enableZshIntegration = true;
   };
 
+  # weather daemon
+  systemd.user.services.hyprlock-weather = {
+    Unit = {
+      Description = "Update cached formatted weather";
+      After = [ "network-online.target" ];
+    };
+    Service = {
+      ExecStart = "${weatherDaemon}";
+      Restart = "on-failure";
+      # Ensure curl is available to the script
+      Environment = "PATH=${
+        lib.makeBinPath [
+          pkgs.curl
+          pkgs.gawk
+          pkgs.coreutils
+        ]
+      }";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
+  # disable niri selecting polkit agent
   systemd.user.services."niri-flake-polkit" = {
     Unit = {
       Description = "Disabled Niri Polkit Agent (replaced by Noctalia)";
