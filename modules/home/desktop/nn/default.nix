@@ -12,7 +12,7 @@
 }:
 let
   formattedWeather = pkgs.writeShellScript "formatted-weather" (
-    builtins.readFile ./scripts/formattedWeather.sh
+    builtins.readFile ./scripts/formatted-weather.sh
   );
 in
 {
@@ -63,9 +63,9 @@ in
       After = [ "network-online.target" ];
     };
     Service = {
-      ExecStart = "${weatherDaemon}";
+      ExecStart = "${formattedWeather}";
       Restart = "on-failure";
-      # Ensure curl is available to the script
+      # dependencies
       Environment = "PATH=${
         lib.makeBinPath [
           pkgs.curl

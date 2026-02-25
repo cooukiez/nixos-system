@@ -10,7 +10,9 @@ let
   displayScale = 2;
 
   songDetails = pkgs.writeShellScript "songdetails.sh" (builtins.readFile ./scripts/songdetails.sh);
-  weather = pkgs.writeShellScript "weather.sh" (builtins.readFile ./scripts/weather.sh);
+  weatherDetails = pkgs.writeShellScript "weatherdetails.sh" (
+    builtins.readFile ./scripts/weatherdetails.sh
+  );
 in
 {
   programs.hyprlock = {
