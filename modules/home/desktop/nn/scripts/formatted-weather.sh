@@ -9,12 +9,20 @@ while true; do
     LAT=$(echo "$LOC" | jq -r '.lat')
     LON=$(echo "$LOC" | jq -r '.lon')
 
+    echo "Current location: Lat: $LAT, Lon: $LON"
+
     # fetch weather
     DATA=$(curl -s "https://api.open-meteo.com/v1/forecast?latitude=$LAT&longitude=$LON&current=temperature_2m,weather_code&timezone=auto")
-    
+
     # extract
     TEMP=$(echo "$DATA" | jq '.current.temperature_2m | round')
     CODE=$(echo "$DATA" | jq '.current.weather_code')
+
+    echo "Raw weather: Temp: $TEMP, Code: $CODE"
+
+    if [[ "$TEMP" == "null" || -z "$TEMP" || "$CODE" == "null" || -z "$CODE" ]]; then
+        continue
+    fi
 
     case $CODE in
         0) ICON="󰖙" ;; # clear
@@ -29,8 +37,10 @@ while true; do
         *) ICON="󰖐" ;; # unknown
     esac
 
-    echo "$ICON ${TEMP}°C" > /tmp/formatted_weather
+    echo "Current weather: $ICON ${TEMP}°C"
 
-    # wait 30 min
-    sleep 1800
+    echo "$ICON   ${TEMP}°C" > /tmp/formatted_weather
+
+    # wait 5 min
+    sleep 300
 done

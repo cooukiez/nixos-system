@@ -33,7 +33,7 @@ in
 
           path = "${./lockscreen.jpg}";
 
-          blur_passes = 1;
+          blur_passes = 2;
 
           contrast = 0.8916;
           brightness = 0.8172;
@@ -72,6 +72,20 @@ in
           halign = "center";
           valign = "center";
         }
+        # weather
+        {
+          monitor = primaryMonitor;
+
+          text = ''cmd[update:12000] echo "$(${weatherDetails})"'';
+          color = "rgba(216, 222, 233, 0.80)";
+
+          font_size = 18 * displayScale;
+          font_family = "SF Pro Nerd Display";
+
+          position = "${toString (-50 * displayScale)}, ${toString (490 * displayScale)}";
+          halign = "right";
+          valign = "center";
+        }
         # user
         {
           monitor = primaryMonitor;
@@ -94,23 +108,9 @@ in
           color = "rgba(216, 222, 233, 0.80)";
 
           font_size = 18 * displayScale;
-          font_family = "SF Pro Nerd Display Bold";
+          font_family = "SF Pro Nerd Display";
 
           position = "0, ${toString (50 * displayScale)}";
-          halign = "center";
-          valign = "bottom";
-        }
-        # weather
-        {
-          monitor = primaryMonitor;
-
-          text = ''cmd[update:1000] echo "$(${weatherDetails})"'';
-          color = "rgba(216, 222, 233, 0.80)";
-
-          font_size = 18 * displayScale;
-          font_family = "SF Pro Nerd Thin Bold";
-
-          position = "0, ${toString (100 * displayScale)}";
           halign = "center";
           valign = "bottom";
         }

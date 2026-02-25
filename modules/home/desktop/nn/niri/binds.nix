@@ -144,8 +144,8 @@ in
 
   "Mod+Shift+P".action = power-off-monitors;
 
-  # "Mod+Shift+L".action = noctalia-ipc "sessionMenu" "lockAndSuspend";
-  # "Mod+Shift+L".hotkey-overlay.title = "Lock and suspend";
+  "Mod+L".action.spawn = [ "hyprlock" ];
+  "Mod+L".hotkey-overlay.title = "Lockscreen";
 
   "Mod+Shift+L".action = low-resolution;
   "Mod+Shift+L".hotkey-overlay.title = "Apply low resolution";

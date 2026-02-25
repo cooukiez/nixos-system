@@ -65,14 +65,6 @@ in
     Service = {
       ExecStart = "${formattedWeather}";
       Restart = "on-failure";
-      # dependencies
-      Environment = "PATH=${
-        lib.makeBinPath [
-          pkgs.curl
-          pkgs.gawk
-          pkgs.coreutils
-        ]
-      }";
     };
     Install = {
       WantedBy = [ "default.target" ];
