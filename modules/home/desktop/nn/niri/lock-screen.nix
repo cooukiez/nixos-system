@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }:
@@ -7,6 +8,9 @@ let
   primaryMonitor = "eDP-1";
   # 4k display scaling factor
   displayScale = 2;
+
+  songDetails = pkgs.writeShellScript "songdetails.sh" (builtins.readFile ./scripts/songdetails.sh);
+  weather = pkgs.writeShellScript "weather.sh" (builtins.readFile ./scripts/weather.sh);
 in
 {
   programs.hyprlock = {
@@ -81,6 +85,34 @@ in
           position = "${toString (0 * displayScale)}, ${toString (-190 * displayScale)}";
           halign = "center";
           valign = "center";
+        }
+        # current song
+        {
+          monitor = primaryMonitor;
+
+          text = ''cmd[update:1000] echo "$(${songDetails})"'';
+          color = "rgba(216, 222, 233, 0.80)";
+
+          font_size = 18 * displayScale;
+          font_family = "SF Pro Nerd Display Bold";
+
+          position = "0, ${toString (50 * displayScale)}";
+          halign = "center";
+          valign = "bottom";
+        }
+        # weather
+        {
+          monitor = primaryMonitor;
+
+          text = ''cmd[update:1000] echo "$(${weather})"'';
+          color = "rgba(216, 222, 233, 0.80)";
+
+          font_size = 18 * displayScale;
+          font_family = "SF Pro Nerd Display Bold";
+
+          position = "0, ${toString (100 * displayScale)}";
+          halign = "center";
+          valign = "bottom";
         }
       ];
 
