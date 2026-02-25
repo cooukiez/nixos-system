@@ -5,6 +5,7 @@
 }:
 let
   primaryMonitor = "eDP-1";
+  # 4k display scaling factor
   displayScale = 2;
 in
 {
@@ -39,21 +40,21 @@ in
       ];
 
       label = [
-        # Time
+        # time
         {
           monitor = primaryMonitor;
 
           text = ''cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"'';
           color = "rgba(216, 222, 233, 0.7)";
 
-          font_size = 160 * displayScale;
+          font_size = 185 * displayScale;
           font_family = "steelfish outline regular";
 
-          position = "${toString (0 * displayScale)}, ${toString (370 * displayScale)}";
+          position = "${toString (0 * displayScale)}, ${toString (340 * displayScale)}";
           halign = "center";
           valign = "center";
         }
-        # Day-Month-Date
+        # day-month-date
         {
           monitor = primaryMonitor;
 
@@ -67,7 +68,7 @@ in
           halign = "center";
           valign = "center";
         }
-        # USER
+        # user
         {
           monitor = primaryMonitor;
 
@@ -77,7 +78,7 @@ in
           font_size = 18 * displayScale;
           font_family = "SF Pro Display Bold";
 
-          position = "${toString (0 * displayScale)}, ${toString (-180 * displayScale)}";
+          position = "${toString (0 * displayScale)}, ${toString (-190 * displayScale)}";
           halign = "center";
           valign = "center";
         }
