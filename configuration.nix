@@ -129,7 +129,7 @@
     };
 
     extraHosts = ''
-      192.168.178.51 homepage.localhost
+      192.168.178.51 homepage.homeserver
     '';
   };
 
