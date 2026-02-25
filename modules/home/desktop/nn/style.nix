@@ -26,12 +26,12 @@
     enableReleaseChecks = false;
 
     # disable stylix targets we configure ourselves
-    targets.noctalia-shell.enable = false;
-    targets.kitty.enable = false;
     targets.firefox.enable = false;
-    targets.zen-browser.enable = false;
-    targets.vscode.enable = false;
     targets.hyprlock.colors.enable = false;
+    targets.kitty.enable = false;
+    targets.noctalia-shell.enable = false;
+    targets.vscode.enable = false;
+    targets.zen-browser.enable = false;
 
     targets.firefox.profileNames = [ "default" ];
     targets.zen-browser.profileNames = [ "default" ];

@@ -12,14 +12,14 @@
     settings = {
       general = {
         ignore_dbus_inhibit = false;
-        lock_cmd = "noctalia-shell ipc call sessionMenu lockAndSuspend";
+        lock_cmd = "hyprlock";
       };
 
       listener = [
         # lock after 10 min
         {
           timeout = 10 * 60;
-          on-timeout = "noctalia-shell ipc call sessionMenu lockAndSuspend";
+          on-timeout = "hyprlock";
         }
 
         # turn off screen after 5 min

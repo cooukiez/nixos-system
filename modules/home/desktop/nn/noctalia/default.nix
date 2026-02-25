@@ -91,10 +91,14 @@ in
         autoStartAuth = false;
         avatarImage = "${config.home.homeDirectory}/.face";
 
-        compactLockScreen = false;
-        enableLockScreenCountdown = true;
-        lockOnSuspend = true;
-        lockScreenCountdownDuration = 10000;
+        /*
+          compactLockScreen = false;
+          enableLockScreenCountdown = true;
+          lockOnSuspend = true;
+          lockScreenCountdownDuration = 10000;
+          showHibernateOnLockScreen = true;
+          showSessionButtonsOnLockScreen = true;
+        */
 
         dimmerOpacity = 0.45;
 
@@ -108,8 +112,6 @@ in
         animationSpeed = 1.5;
 
         showChangelogOnStartup = true;
-        showHibernateOnLockScreen = true;
-        showSessionButtonsOnLockScreen = true;
         showScreenCorners = false;
 
         telemetryEnabled = false;

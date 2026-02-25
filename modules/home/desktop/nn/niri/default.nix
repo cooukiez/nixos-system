@@ -81,13 +81,13 @@
       lid-close.action.spawn = [
         "sh"
         "-c"
-        "niri msg action power-off-monitors && noctalia-shell ipc call lockScreen lock && systemctl suspend"
+        "niri msg action power-off-monitors && hyprlock && systemctl suspend"
       ];
 
       lid-open.action.spawn = [
         "sh"
         "-c"
-        "noctalia-shell ipc call lockScreen lock"
+        "hyprlock"
       ];
     };
 

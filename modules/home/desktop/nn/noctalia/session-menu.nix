@@ -5,6 +5,9 @@
   on 2026-02-21
 */
 
+let
+  lockScreenCommand = "noctalia-shell ipc call sessionMenu toggle && hyprlock";
+in
 {
   position = "center";
 
@@ -22,19 +25,19 @@
       action = "lock";
       enabled = true;
       countdownEnabled = false;
-      command = "";
+      command = lockScreenCommand;
     }
     {
       action = "suspend";
       enabled = true;
       countdownEnabled = true;
-      command = "niri msg action power-off-monitors && noctalia-shell ipc call lockScreen lock && systemctl suspend";
+      command = "niri msg action power-off-monitors && ${lockScreenCommand} && systemctl suspend";
     }
     {
       action = "hibernate";
       enabled = true;
       countdownEnabled = true;
-      command = "niri msg action power-off-monitors && noctalia-shell ipc call lockScreen lock && systemctl hibernate";
+      command = "niri msg action power-off-monitors && ${lockScreenCommand} && systemctl hibernate";
     }
     {
       action = "reboot";
