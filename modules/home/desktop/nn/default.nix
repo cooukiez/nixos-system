@@ -57,7 +57,7 @@ in
   };
 
   # weather daemon
-  systemd.user.services.hyprlock-weather = {
+  systemd.user.services.formatted-weather = {
     Unit = {
       Description = "Update cached formatted weather";
       After = [ "network-online.target" ];
