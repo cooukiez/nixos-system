@@ -54,11 +54,11 @@
       "org.vinegarhq.Sober"
       "org.vinegarhq.Vinegar"
 
+      "com.ranfdev.Lobjur"
       "io.github.giantpinkrobots.flatsweep"
+      "io.github.wanglin2.mind-map"
       "page.codeberg.lo_vely.Nucleus"
       "tech.digiroad.Convertidor"
-      "com.ranfdev.Lobjur"
-      "io.github.wanglin2.mind-map"
     ];
 
     update.onActivation = true;

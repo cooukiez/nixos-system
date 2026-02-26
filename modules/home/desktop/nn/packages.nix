@@ -20,6 +20,7 @@
     errands
     euphonica
     gapless
+    iplookup-gtk
     keypunch
     kitty
     libreoffice-fresh
@@ -30,7 +31,6 @@
     saber
     sly
     snapshot
-    iplookup-gtk
 
     # gnome apps
     baobab
