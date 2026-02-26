@@ -11,7 +11,7 @@
   ...
 }:
 let
-  formattedWeather = pkgs.writeShellScriptBin "formatted-weather" (
+  formattedWeather = pkgs.writeShellScript "formatted-weather" (
     builtins.readFile ./scripts/formatted-weather.sh
   );
 in

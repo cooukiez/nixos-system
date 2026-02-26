@@ -303,11 +303,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1772105884,
-        "narHash": "sha256-p40qlnsrNzik4ozNH7ggbtKjceOhL+Ewv9sQPraFyTQ=",
+        "lastModified": 1772105971,
+        "narHash": "sha256-nxL2dbgGA1lqGzyWB1OebQcf2Z9r/vLK31qhTqF1XWQ=",
         "owner": "cooukiez",
         "repo": "gamemaker-flake",
-        "rev": "bffabffc7f560b0baebcd5bd58d0a411420b544f",
+        "rev": "c565722e8884a589ec0b70a328e2ff9d0f82cbd2",
         "type": "github"
       },
       "original": {
@@ -681,11 +681,11 @@
         "noctalia-qs": "noctalia-qs"
       },
       "locked": {
-        "lastModified": 1772075638,
-        "narHash": "sha256-M3U3DdQo/5G88ULedS8BkafiXYL1NyIEer9YL4P9fxQ=",
+        "lastModified": 1772131976,
+        "narHash": "sha256-sfki5hpMegyjjK4ccDiLvy4DWQe1Nz2doI3ByqOHkyg=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "5137c5efcac31d9aee6952b99f1dcaec9966fe21",
+        "rev": "28dc8229b77a8c3e5b23f20306d821de3e13a84c",
         "type": "github"
       },
       "original": {
@@ -723,11 +723,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772105683,
-        "narHash": "sha256-M5rPpC0VEIHrfrp5XJQeMBowuKwLdDgzmzjwNEbz1nE=",
+        "lastModified": 1772140017,
+        "narHash": "sha256-wFUc9tn5Ik11oL009BkVnj4NxsY63UbZjhOyEqCsIQE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5d08a67e2d9ced6f4c5e2e5f7d8a202d9ec28087",
+        "rev": "be0fea0af0e8cfadb3995dd7bb3a167bc012e935",
         "type": "github"
       },
       "original": {

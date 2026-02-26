@@ -55,7 +55,7 @@
 - [x] fprintd integration (also with bitwarden)
 - [x] noctalia polkit
 - [-] sort flake inputs
-- [ ] sort kde packages
+- [-] sort kde packages
 - [x] hyprlock, replace noctalia lockscreen
 ---
 - [-] issue in noctalia, resolution in brightness menu not updating (display mode)
