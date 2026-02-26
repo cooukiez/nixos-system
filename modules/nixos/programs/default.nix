@@ -50,13 +50,15 @@
       # "org.freedownloadmanager.Manager"
 
       "edu.mit.Scratch"
-      "io.github.giantpinkrobots.flatsweep"
-      "org.jdownloader.JDownloader"
       "org.turbowarp.TurboWarp"
       "org.vinegarhq.Sober"
       "org.vinegarhq.Vinegar"
+
+      "io.github.giantpinkrobots.flatsweep"
       "page.codeberg.lo_vely.Nucleus"
       "tech.digiroad.Convertidor"
+      "com.ranfdev.Lobjur"
+      "io.github.wanglin2.mind-map"
     ];
 
     update.onActivation = true;
@@ -146,6 +148,7 @@
     pavucontrol
     qdirstat
     renderdoc
+    rnote
     rustdesk
     safeeyes
     scribus
@@ -154,7 +157,9 @@
     sniffnet
     solvespace
     sql-studio
+    texstudio
     timeshift
+    vym
     wl-crosshair
     zed-editor
     zoom-us

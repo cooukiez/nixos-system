@@ -26,11 +26,11 @@
     metadata-cleaner
     mission-center
     pdfarranger
-    # plattenalbum
     quick-lookup
     saber
     sly
     snapshot
+    iplookup-gtk
 
     # gnome apps
     baobab
