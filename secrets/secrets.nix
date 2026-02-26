@@ -1,3 +1,10 @@
+/*
+  secrets/secrets.nix
+
+  created by ludw
+  on 2026-02-23
+*/
+
 let
   # admins
   ceirs = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDTfSJByS/+4vIn4AMZMjy2ehWfHFDnSq2WXzMDZnXDk ceirs@lvl";

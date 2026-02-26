@@ -2,7 +2,7 @@
   modules/nixos/dashboard/default.nix
 
   created by ludw
-  on 2026-02-20
+  on 2026-02-23
 */
 
 {

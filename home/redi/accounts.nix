@@ -2,7 +2,7 @@
   home/redi/accounts.nix
 
   created by ludw
-  on 2026-02-21
+  on 2026-02-23
 */
 
 {

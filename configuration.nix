@@ -2,7 +2,7 @@
   configuration.nix
 
   created by ludw
-  on 2026-02-21
+  on 2026-02-23
 */
 
 # system configuration file
