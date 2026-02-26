@@ -161,7 +161,7 @@
     zotero
 
     # code editors / IDE
-    inputs.gamemaker.packages.${hostSystem}.ide-latest-beta
+    inputs.gamemaker.packages.${hostSystem}.default
     unityhub
     unstable.jetbrains-toolbox
     unstable.jetbrains.clion
