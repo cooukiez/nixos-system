@@ -303,15 +303,15 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1771534487,
-        "narHash": "sha256-10q10NymYZtEj63+7cZ+k/dMrosvmAThILdpjAIfdaA=",
-        "owner": "skirlez",
+        "lastModified": 1772105884,
+        "narHash": "sha256-p40qlnsrNzik4ozNH7ggbtKjceOhL+Ewv9sQPraFyTQ=",
+        "owner": "cooukiez",
         "repo": "gamemaker-flake",
-        "rev": "b94fdb621b33d602782b8160dc5cc7dd8ff199bb",
+        "rev": "bffabffc7f560b0baebcd5bd58d0a411420b544f",
         "type": "github"
       },
       "original": {
-        "owner": "skirlez",
+        "owner": "cooukiez",
         "repo": "gamemaker-flake",
         "type": "github"
       }
@@ -723,11 +723,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772101730,
-        "narHash": "sha256-EwZ3Sv3kufTIalCMFjUX1udry9XqKmaXajghcCV8GMA=",
+        "lastModified": 1772105683,
+        "narHash": "sha256-M5rPpC0VEIHrfrp5XJQeMBowuKwLdDgzmzjwNEbz1nE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "e4613c1ac49884b33d0ab672f9d9de2a93786ad4",
+        "rev": "5d08a67e2d9ced6f4c5e2e5f7d8a202d9ec28087",
         "type": "github"
       },
       "original": {

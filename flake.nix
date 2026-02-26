@@ -79,7 +79,7 @@
 
     copyparty.url = "github:9001/copyparty";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    gamemaker.url = "github:skirlez/gamemaker-flake";
+    gamemaker.url = "github:cooukiez/gamemaker-flake";
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
