@@ -62,6 +62,7 @@
     glib
     gtk3
     kdePackages.qt6ct
+    lisgd
 
     # compatibility
     libsecret

@@ -77,6 +77,40 @@ in
     };
   };
 
+  # touchscreen gestures
+  systemd.user.services.lisgd = {
+    Unit = {
+      Description = "lisgd Touchscreen Gestures for niri";
+      After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart =
+        let
+          device = "/dev/input/by-path/pci-0000:00:15.1-platform-i2c_designware.1-event";
+          gestures = [
+            "-g '1,RL,R,*,R,niri msg action focus-column-right'"
+            "-g '1,LR,L,*,R,niri msg action focus-column-left'"
+            "-g '1,DU,B,*,R,niri msg action open-overview'"
+
+            "-g '3,LR,*,*,R,niri msg action focus-column-left'"
+            "-g '3,RL,*,*,R,niri msg action focus-column-right'"
+            "-g '3,UD,*,*,R,niri msg action focus-workspace-up'"
+            "-g '3,DU,*,*,R,niri msg action focus-workspace-down'"
+          ];
+        in
+        "${pkgs.lisgd}/bin/lisgd -d ${device} -t 10 -T 5 ${builtins.concatStringsSep " " gestures}";
+
+      Restart = "on-failure";
+      RestartSec = "5s";
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
   # disable niri selecting polkit agent
   systemd.user.services."niri-flake-polkit" = {
     Unit = {
