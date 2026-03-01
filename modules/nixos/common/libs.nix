@@ -89,9 +89,9 @@
     #
 
     # wine compatibilty
-    wineWowPackages.stable
     winetricks
-    wineWowPackages.waylandFull
+    # wineWow64Packages.staging
+    wineWow64Packages.waylandFull
 
     # proton
     protonup-ng
