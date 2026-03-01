@@ -69,6 +69,12 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    # home-manager / noctalia quickshell fork
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # home-manager / nixos vim config with nixvim
     nixvim = {
       url = "github:nix-community/nixvim";

@@ -18,7 +18,7 @@ let
 
   overriddenNoctalia = inputs.noctalia.packages.${hostSystem}.default.override {
     calendarSupport = true;
-    quickshell = customQuickshell;
+    # quickshell = customQuickshell;
   };
 in
 {

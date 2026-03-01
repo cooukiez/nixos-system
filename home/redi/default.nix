@@ -42,6 +42,7 @@ in
       inputs.self.overlays.nur
 
       inputs.niri.overlays.niri
+      inputs.noctalia-qs.overlays.default
 
       (self: super: {
         gnome = super.gnome.overrideScope (
