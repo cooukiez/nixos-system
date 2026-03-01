@@ -14,7 +14,7 @@
   ...
 }:
 let
-  customQuickshell = inputs.quickshell.packages.${hostSystem}.default;
+  # customQuickshell = inputs.quickshell.packages.${hostSystem}.default;
 
   overriddenNoctalia = inputs.noctalia.packages.${hostSystem}.default.override {
     calendarSupport = true;
