@@ -63,6 +63,7 @@
     gtk3
     kdePackages.qt6ct
     lisgd
+    zenity
 
     # compatibility
     libsecret
