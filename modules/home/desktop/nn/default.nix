@@ -56,26 +56,28 @@ in
     enableZshIntegration = true;
   };
 
-  # weather daemon
-  systemd.user.services.formatted-weather = {
-    Unit = {
-      Description = "Update cached formatted weather";
-      After = [ "network-online.target" ];
+  /*
+    # weather daemon
+    systemd.user.services.formatted-weather = {
+      Unit = {
+        Description = "Update cached formatted weather";
+        After = [ "network-online.target" ];
+      };
+      Service = {
+        ExecStart = "${formattedWeather}";
+        Restart = "on-failure";
+        Path = [
+          pkgs.bash
+          pkgs.coreutils
+          pkgs.curl
+          pkgs.jq
+        ];
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
     };
-    Service = {
-      ExecStart = "${formattedWeather}";
-      Restart = "on-failure";
-      Path = [
-        pkgs.bash
-        pkgs.coreutils
-        pkgs.curl
-        pkgs.jq
-      ];
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
+  */
 
   # touchscreen gestures
   systemd.user.services.lisgd = {

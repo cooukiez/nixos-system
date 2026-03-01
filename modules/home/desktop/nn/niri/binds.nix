@@ -15,12 +15,12 @@ let
   brightnessctl = spawn "brightnessctl";
   noctalia-ipc = spawn "noctalia-shell" "ipc" "call";
 
-  # set screen resolution to 1920x1080@60 on laptop display
+  # set screen resolution to 1920x1200@60 on laptop display
   low-resolution = spawn "bash" "-c" ''
-    niri msg output "eDP-1" custom-mode "1920x1080@60.000"
+    niri msg output "eDP-1" custom-mode "1920x1200@60.000"
     niri msg output "eDP-1" scale 1.0
     # xrdb -merge <<< "Xft.dpi: 96"
-    notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 1920x1080@60." -i "$f"
+    notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 1920x1200@60." -i "$f"
   '';
 
   # set screen resolution to 3480x2160@60 on laptop display
