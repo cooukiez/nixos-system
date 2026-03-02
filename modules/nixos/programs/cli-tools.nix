@@ -10,6 +10,7 @@
   ...
 }:
 let
+  cp-fonts = pkgs.writeShellScriptBin "cp-fonts" (builtins.readFile ./scripts/cp-fonts.sh);
   del-snaps = pkgs.writeShellScriptBin "del-snaps" (builtins.readFile ./scripts/del-snaps.sh);
   edit-secret = pkgs.writeShellScriptBin "edit-secret" (builtins.readFile ./scripts/edit-secret.sh);
   fix-perms = pkgs.writeShellScriptBin "fix-perms" (builtins.readFile ./scripts/fix-perms.sh);
@@ -52,6 +53,7 @@ in
     bench
     bitwarden-cli
     clean
+    cp-fonts
     ddgr
     dfc
     diff-so-fancy
