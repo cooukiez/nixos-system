@@ -47,5 +47,8 @@
     nerd-fonts.meslo-lg
     roboto
     steelfish-fonts
+    vista-fonts
   ];
+
+  fonts.fontDir.enable = true;
 }
