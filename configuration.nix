@@ -45,6 +45,12 @@
 
       inputs.niri.overlays.niri
       inputs.copyparty.overlays.default
+
+      (final: prev: {
+        valkey = prev.valkey.overrideAttrs (oldAttrs: {
+          doCheck = false;
+        });
+      })
     ];
 
     # configure nixpkgs instance
