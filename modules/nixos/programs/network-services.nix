@@ -9,6 +9,7 @@
   config,
   inputs,
   hostSystem,
+  staticIP,
   pkgs,
   ...
 }:
@@ -51,6 +52,16 @@
     defaultWindowManager = "startplasma-x11";
     enable = true;
     openFirewall = true;
+  };
+
+  services.glances = {
+    enable = true;
+    # ensure it listens to subnet IP
+    extraArgs = [
+      "-w"
+      "-B"
+      "${staticIP}"
+    ];
   };
 
   # see https://wiki.nixos.org/wiki/Syncthing

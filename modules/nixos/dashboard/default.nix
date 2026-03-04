@@ -147,16 +147,6 @@
     };
   };
 
-  services.glances = {
-    enable = true;
-    # ensure it listens to subnet IP
-    extraArgs = [
-      "-w"
-      "-B"
-      "${staticIP}"
-    ];
-  };
-
   services.nginx = {
     enable = true;
     virtualHosts."${staticIP}" = {
