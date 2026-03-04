@@ -30,6 +30,7 @@
     mariadb
     nvtopPackages.full
     pandoc
+    poppler-utils
     shared-mime-info
     tesseract
     vulkan-tools
