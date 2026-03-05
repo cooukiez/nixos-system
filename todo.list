@@ -50,7 +50,7 @@
 - [x] change cursor for nnn desktop
 - [x] use noctalia internal binds for volume control
 - [x] use agenix secret storage for storing secrets in copyparty and other stuff
-- [ ] fix refresh headers script
+- [x] fix refresh headers script
 - [ ] update zen-browser pinned tabs to per user pinned tabs
 - [ ] homepage for browsers to homepage dashboard
 - [x] fprintd integration (also with bitwarden)
