@@ -39,6 +39,9 @@
     bpm-tools
     picard
 
+    # cd / dvd
+    kdePackages.k3b
+
     # image viewers
     gthumb
     xnviewmp
