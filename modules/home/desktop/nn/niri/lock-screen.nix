@@ -2,7 +2,7 @@
   modules/home/desktop/nn/niri/lock-screen.nix
 
   created by ludw
-  on 2026-02-24
+  on 2026-02-26
 */
 
 {

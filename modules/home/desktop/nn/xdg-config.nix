@@ -2,7 +2,7 @@
   modules/home/desktop/nn/xdg-config.nix
 
   created by ludw
-  on 2026-02-21
+  on 2026-02-26
 */
 
 # modules/home/desktop/nn/xdg-config.nix

@@ -31,7 +31,7 @@ while IFS= read -r -d '' file; do
     rel_path="${file#$base_dir/}"
 
     created_date="$(get_file_date "$file")"
-
+    
     header="/*
   $rel_path
 
@@ -43,13 +43,31 @@ while IFS= read -r -d '' file; do
 
     if head -n 1 "$file" | grep -q '^/\*'; then
         awk '
-        BEGIN { skipping=0; done=0 }
+        BEGIN { skipping=0; status=0 }
         {
-            if (!done && $0 ~ /^\/\*/) { skipping=1 }
+            # status=0: looking for header
+            # status=1: skipping empty lines after header
+            # status=2: printing regular code
+            
+            if (status == 0 && $0 ~ /^\/\*/) { skipping=1 }
+            
             if (skipping) {
-                if ($0 ~ /\*\//) { skipping=0; done=1; next }
+                if ($0 ~ /\*\//) { 
+                    skipping=0
+                    status=1 
+                    next 
+                }
                 next
             }
+            
+            if (status == 1) {
+                if ($0 ~ /^[ \t]*$/) { 
+                    next # skip the empty lines right after the header
+                } else {
+                    status=2 # found real code, stop skipping
+                }
+            }
+            
             print
         }' "$file" > "$tmp"
     else
