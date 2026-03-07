@@ -67,6 +67,10 @@
 
         # disable requirement for extension signatures
         "xpinstall.signatures.required" = false;
+
+        # networking & local dns
+        "browser.fixup.domainsuffixwhitelist.lan" = true;
+        "browser.fixup.domainsuffixwhitelist.local" = true;
       };
     };
   };

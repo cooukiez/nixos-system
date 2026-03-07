@@ -173,6 +173,8 @@
       "video"
       "input"
       "docker"
+      "cdrom"
+      "optical"
     ];
     password = "CHANGE-ME";
     shell = pkgs.zsh;

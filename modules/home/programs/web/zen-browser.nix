@@ -178,6 +178,10 @@
           # restore workspaces/tabs from previous session
           "zen.workspaces.continue-where-left-off" = true;
 
+          # networking & local dns
+          "browser.fixup.domainsuffixwhitelist.lan" = true;
+          "browser.fixup.domainsuffixwhitelist.local" = true;
+
         };
 
         # see https://github.com/0xc000022070/zen-browser-flake#search
