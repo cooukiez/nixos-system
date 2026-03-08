@@ -94,6 +94,7 @@ in
 
       # pretend desktop is gnome
       XDG_CURRENT_DESKTOP = "GNOME";
+      XDG_MENU_PREFIX = "gnome-";
 
       # smoother scrolling for firefox
       MOZ_USE_XINPUT2 = "1";

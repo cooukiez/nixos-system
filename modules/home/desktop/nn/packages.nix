@@ -44,7 +44,7 @@
     gnome-frog
     gnome-graphs
     gnome-maps
-    # gnome-music
+    gnome-menus
     gnome-notes
     gnome-obfuscate
     gnome-photos
