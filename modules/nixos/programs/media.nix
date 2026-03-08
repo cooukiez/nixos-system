@@ -26,7 +26,6 @@
   environment.systemPackages = with pkgs; [
     # video players (some support audio too)
     vlc
-    mpv
 
     # music
     audacious
@@ -34,13 +33,13 @@
     audacity
     feishin
     spotify
+    # ---
+    cdparanoia
+    mpv
 
     # audio tools
     bpm-tools
     picard
-
-    # cd / dvd
-    kdePackages.k3b
 
     # image viewers
     gthumb
@@ -72,6 +71,8 @@
     zathuraPkgs.zathura_core
     zathuraPkgs.zathura_pdf_mupdf
   ];
+
+  programs.k3b.enable = true;
 
   # extensions for spotify, directly wrapping spotify
   programs.spicetify =

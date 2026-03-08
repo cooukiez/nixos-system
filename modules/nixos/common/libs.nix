@@ -16,6 +16,8 @@
   environment.systemPackages = with pkgs; [
     # general tools / libraries, sorted alphabetically
     bluez-tools
+    cdrkit
+    cdrtools
     ffmpeg
     fuse3
     go
@@ -23,6 +25,7 @@
     ifuse
     imagemagick
     intel-gpu-tools
+    libburn
     libgphoto2
     libimobiledevice
     libimobiledevice-glue
