@@ -22,20 +22,6 @@
 
   services.dbus.enable = true;
 
-  # common container config
-  virtualisation = {
-    containers.enable = true;
-    docker = {
-      enable = true;
-      storageDriver = "btrfs";
-    };
-
-    podman = {
-      enable = true;
-      defaultNetwork.settings.dns_enabled = true;
-    };
-  };
-
   environment.sessionVariables = {
     # set LIBVA_DRIVER_NAME environment variable for video acceleration
     LIBVA_DRIVER_NAME = "iHD";
