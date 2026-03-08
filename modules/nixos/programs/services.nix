@@ -6,8 +6,16 @@
 */
 
 {
+  pkgs,
+  ...
+}:
+{
   # printing services
   services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplip ];
+  # printer discovery
+  services.avahi.enable = true;
+
   # location services
   services.locate.enable = true;
   # enable firmware update services
