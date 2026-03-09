@@ -31,6 +31,7 @@
     saber
     sly
     snapshot
+    system-config-printer
 
     # gnome apps
     baobab
