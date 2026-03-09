@@ -150,7 +150,7 @@
     renderdoc
     rnote
     rustdesk
-    safeeyes
+    # safeeyes
     scribus
     shutter
     slack
