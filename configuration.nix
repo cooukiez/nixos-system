@@ -136,6 +136,8 @@
 
     extraHosts = ''
       192.168.178.51 home.lan
+      192.168.178.51 glances.home.lan
+      192.168.178.51 paperless.home.lan
       192.168.178.51 jupyter.home.lan
     '';
   };
