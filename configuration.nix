@@ -135,7 +135,7 @@
     };
 
     extraHosts = ''
-      192.168.178.51 homepage.lan
+      192.168.178.51 home.lan
     '';
   };
 
