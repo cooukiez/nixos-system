@@ -70,25 +70,46 @@
     outputs.eDP-1 = {
       enable = true;
       mode = {
+        width = 3840;
+        height = 2400;
+        refresh = 60.000;
+      };
+      scale = 2.0;
+      position = {
+        x = 0;
+        y = 0;
+      };
+    };
+
+    outputs.HDMI-A-1 = {
+      enable = true;
+      mode = {
         width = 1920;
         height = 1080;
         refresh = 60.000;
       };
-      scale = 2.0;
+      scale = 1.0;
+      position = {
+        # place rigth to eDP-1
+        x = 1920;
+        y = 0;
+      };
     };
 
     switch-events = {
       lid-close.action.spawn = [
         "sh"
         "-c"
-        "niri msg action power-off-monitors && hyprlock && systemctl suspend"
+        "niri msg action power-off-monitors && hyprlock"
       ];
 
-      lid-open.action.spawn = [
-        "sh"
-        "-c"
-        "hyprlock"
-      ];
+      /*
+        lid-open.action.spawn = [
+          "sh"
+          "-c"
+          "hyprlock"
+        ];
+      */
     };
 
     overview = {
