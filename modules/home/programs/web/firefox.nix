@@ -71,6 +71,9 @@
         # networking & local dns
         "browser.fixup.domainsuffixwhitelist.lan" = true;
         "browser.fixup.domainsuffixwhitelist.local" = true;
+
+        # allow pipewire camera
+        "media.webrtc.camera.allow-pipewire" = true;
       };
     };
   };

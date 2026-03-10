@@ -182,6 +182,8 @@
           "browser.fixup.domainsuffixwhitelist.lan" = true;
           "browser.fixup.domainsuffixwhitelist.local" = true;
 
+          # allow pipewire camera
+          "media.webrtc.camera.allow-pipewire" = true;
         };
 
         # see https://github.com/0xc000022070/zen-browser-flake#search
