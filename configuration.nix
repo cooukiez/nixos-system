@@ -114,11 +114,23 @@
     plymouth-quit-wait.enable = false;
   };
 
-  # hostname
   networking = {
     hostName = hostname;
-    nameservers = [ "1.1.1.1" ];
-    networkmanager.enable = true;
+
+    nameservers = [
+      "192.168.178.51"
+      # fallback dns
+      "1.1.1.1"
+    ];
+
+    networkmanager = {
+      enable = true;
+      insertNameservers = [
+        "192.168.178.51"
+        # fallback dns
+        "1.1.1.1"
+      ];
+    };
 
     firewall = {
       enable = true;
@@ -133,14 +145,6 @@
       ];
       allowedUDPPorts = [ ];
     };
-
-    extraHosts = ''
-      192.168.178.51 dns.home.lan
-      192.168.178.51 home.lan
-      192.168.178.51 glances.home.lan
-      192.168.178.51 jupyter.home.lan
-      192.168.178.51 paperless.home.lan
-    '';
   };
 
   # timezone
