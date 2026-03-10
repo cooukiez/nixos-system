@@ -45,7 +45,7 @@
 
       mouse = {
         enable = true;
-        accel-speed = 0.5;
+        accel-speed = 0.1;
         natural-scroll = false;
       };
 
