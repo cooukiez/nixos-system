@@ -118,18 +118,11 @@
     hostName = hostname;
 
     nameservers = [
-      "192.168.178.51"
-      # fallback dns
       "1.1.1.1"
     ];
 
     networkmanager = {
       enable = true;
-      insertNameservers = [
-        "192.168.178.51"
-        # fallback dns
-        "1.1.1.1"
-      ];
     };
 
     firewall = {

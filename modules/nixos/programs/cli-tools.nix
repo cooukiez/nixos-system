@@ -51,6 +51,7 @@ in
     ### cli tools, sorted alphabetically ###
 
     aria2
+    apacheHttpd
     bench
     bitwarden-cli
     clean
@@ -58,6 +59,7 @@ in
     ddgr
     dfc
     diff-so-fancy
+    dig
     dog
     dua
     entr
