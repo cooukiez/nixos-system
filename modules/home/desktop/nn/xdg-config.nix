@@ -187,7 +187,7 @@ let
     "org.kde.kate.desktop"
     "org.kde.ark.desktop"
     "org.kde.elisa.desktop"
-    "org.kde.okular.desktop"
+    # "org.kde.okular.desktop"
     "org.kde.konsole.desktop"
     "org.kde.khelpcenter.desktop"
     "org.kde.discover.desktop"
