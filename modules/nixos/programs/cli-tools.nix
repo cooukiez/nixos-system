@@ -46,6 +46,7 @@ in
     s-tui # monitoring tool
     taskwarrior2 # task manager
     tuir # reddit terminal client
+    wiper # disk analyzer and cleanup tool
 
     ### cli tools, sorted alphabetically ###
 

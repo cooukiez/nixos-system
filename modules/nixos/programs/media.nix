@@ -49,6 +49,7 @@
     # image tools
     gimp-with-plugins
     inkscape
+    ipe
     krita
     pinta
     rapidraw
@@ -65,6 +66,7 @@
 
     # pdf
     sioyek
+    pdfpc
 
     # zathura
     zathura
