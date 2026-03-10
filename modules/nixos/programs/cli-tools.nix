@@ -107,7 +107,7 @@ in
     xdotool
     xmodmap
 
-    # clipboard / screenshot /
+    # clipboard / screenshot / screenrecording
     cliphist
     grim
     slurp

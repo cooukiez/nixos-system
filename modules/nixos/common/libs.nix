@@ -36,6 +36,7 @@
     poppler-utils
     shared-mime-info
     tesseract
+    v4l-utils
     vulkan-tools
     yt-dlp
     zlib
