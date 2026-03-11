@@ -15,6 +15,7 @@ let
   edit-secret = pkgs.writeShellScriptBin "edit-secret" (builtins.readFile ./scripts/edit-secret.sh);
   fix-perms = pkgs.writeShellScriptBin "fix-perms" (builtins.readFile ./scripts/fix-perms.sh);
   snaps-du = pkgs.writeShellScriptBin "snaps-du" (builtins.readFile ./scripts/snaps-du.sh);
+  sync-flake = pkgs.writeShellScriptBin "sync-flake" (builtins.readFile ./scripts/sync-flake.sh);
 in
 {
   # nvim base editor
@@ -55,7 +56,6 @@ in
     bench
     bitwarden-cli
     clean
-    cp-fonts
     ddgr
     dfc
     diff-so-fancy
@@ -86,10 +86,12 @@ in
     ventoy
 
     # my system tools
+    cp-fonts
     del-snaps
     edit-secret
     fix-perms
     snaps-du
+    sync-flake
 
     # playful tools
     asciinema
