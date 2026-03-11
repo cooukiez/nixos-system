@@ -82,8 +82,7 @@ in
     surge
     tealdeer
     tldr
-    tlrc
-    tlrc
+    tealdeer
     ventoy
 
     # my system tools
