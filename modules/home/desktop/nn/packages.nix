@@ -20,6 +20,7 @@
     errands
     euphonica
     gapless
+    impression
     iplookup-gtk
     keypunch
     kitty
