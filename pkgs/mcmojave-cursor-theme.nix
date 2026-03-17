@@ -17,7 +17,7 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "vinceliuice";
     repo = "McMojave-cursors";
-    rev = "master";
+    rev = version;
     sha256 = "sha256-4YqSucpxA7jsuJ9aADjJfKRPgPR89oq2l0T1N28+GV0=";
   };
 

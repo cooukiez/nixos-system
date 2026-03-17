@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "bilelmoussaoui";
     repo = "Hardcode-Tray";
-    rev = "v4.3";
+    rev = "v${version}";
     sha256 = "sha256-VY2pySi/sCqc9Mx+azj2fR3a46w+fcmPuK+jTBj9018=";
   };
 
