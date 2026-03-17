@@ -25,9 +25,10 @@
       us = "sudo nixos-rebuild switch --upgrade-all";
       uh = "home-manager switch --flake /etc/nixos#${userConfig.name}@${hostname}";
 
-      nus = "nh os switch /etc/nixos#nixosConfigurations.${hostname} --update";
-      nuh = "nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@${hostname}.activationPackage";
-      nuuh = "nh home switch /etc/nixos#homeConfigurations.${userConfig.name}@${hostname}.activationPackage --update";
+      nus = "nh os switch /etc/nixos";
+      nuus = "nh os switch /etc/nixos --update";
+      nuh = "nh home switch /etc/nixos";
+      nuuh = "nh home switch /etc/nixos --update";
 
       cns = "sudo sh -c 'nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d && nix-store --optimise && nix-store --verify --check-contents --repair'";
       cnh = "nix-env --delete-generations old && nix profile wipe-history && home-manager expire-generations \"-0 seconds\" && nix-collect-garbage -d";
