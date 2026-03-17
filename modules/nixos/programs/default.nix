@@ -98,6 +98,7 @@
     affine
     ausweisapp
     ausweiskopie
+    bambu-studio
     bitwarden-desktop
     blender
     bottles
