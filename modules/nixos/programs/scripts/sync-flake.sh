@@ -6,8 +6,8 @@ cd "$REPO_DIR"
 
 BRANCH=$(git branch --show-current)
 
-# check if flake.lock actually has changes
-if ! git diff --quiet flake.lock 2>/dev/null; then
+# check if flake.lock actually has changes (check HEAD against working dir)
+if ! git diff --quiet HEAD flake.lock 2>/dev/null; then
     echo "Changes detected in flake.lock."
     
     git add flake.lock
