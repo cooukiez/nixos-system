@@ -47,7 +47,7 @@ in
 
         services.homepage-dashboard = {
           enable = true;
-          listenPort = 8082;
+          listenPort = 80;
 
           widgets = [
             {
@@ -75,6 +75,11 @@ in
 
                 units = "metric";
                 cache = 5;
+              };
+            }
+            {
+              resources = {
+                disk = "/";
               };
             }
           ];
@@ -181,10 +186,10 @@ in
         };
 
         systemd.services.homepage-dashboard.environment = {
-          HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "127.0.0.1,${staticIP},localhost,home.localhost";
+          HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "127.0.0.1,localhost,${staticIP}";
         };
 
-        networking.firewall.allowedTCPPorts = [ 8082 ];
+        networking.firewall.allowedTCPPorts = [ 80 ];
         system.stateVersion = "25.11";
       };
   };

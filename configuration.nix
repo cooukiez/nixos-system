@@ -131,10 +131,10 @@
         20 # allow ftp data
         21 # allow ftp control
         22 # allow openssh
-        80 # allow http
+
+        80 # allow dashboard
         3923 # allow copyparty
-        8080 # allow http / transfer-sh
-        8082 # allow dashboard
+        8080 # allow transfer-sh
       ];
       allowedUDPPorts = [ ];
     };

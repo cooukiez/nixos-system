@@ -10,8 +10,6 @@
   ...
 }:
 {
-  services.dbus.enable = true;
-
   # location services
   services.locate.enable = true;
   # enable firmware update services

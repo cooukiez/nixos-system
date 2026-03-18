@@ -20,6 +20,8 @@
     ./libs.nix
   ];
 
+  services.dbus.enable = true;
+
   environment.sessionVariables = {
     # set LIBVA_DRIVER_NAME environment variable for video acceleration
     LIBVA_DRIVER_NAME = "iHD";
