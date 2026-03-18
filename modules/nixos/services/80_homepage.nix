@@ -21,6 +21,12 @@ in
         hostPath = "/etc/ssh/ssh_host_ed25519_key";
         isReadOnly = true;
       };
+
+      bindMounts."/var/lib/homepage-dashboard" = {
+        hostPath = "/var/lib/homepage-dashboard";
+        isReadOnly = false;
+      };
+
     };
 
     config =
