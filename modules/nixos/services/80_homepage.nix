@@ -124,6 +124,16 @@ in
                   };
                 }
                 {
+                  "Swap Usage" = {
+                    widget = {
+                      type = "glances";
+                      url = glancesAddress;
+                      version = 4;
+                      metric = "swap";
+                    };
+                  };
+                }
+                {
                   "Network Usage" = {
                     widget = {
                       type = "glances";
@@ -200,7 +210,7 @@ in
             layout = {
               "System Monitor" = {
                 style = "row";
-                columns = 4;
+                columns = 5;
               };
               "File Management" = {
                 style = "row";
