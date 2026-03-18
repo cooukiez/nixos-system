@@ -11,9 +11,9 @@
 }:
 {
   imports = [
+    ./80_homepage.nix
     ./3923_copyparty.nix
     ./8080_transfer-sh.nix
-    ./8082_homepage.nix
     ./8384_syncthing.nix
     ./61208_glances.nix
   ];
