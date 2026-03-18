@@ -148,6 +148,7 @@
     zed-editor
     zoom-us
     zotero
+    filezilla
 
     # code editors / IDE
     inputs.gamemaker.packages.${hostSystem}.default

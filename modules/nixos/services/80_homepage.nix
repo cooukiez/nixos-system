@@ -58,7 +58,7 @@ in
           package = pkgs.homepage-dashboard.overrideAttrs (oldAttrs: {
             postInstall = ''
               mkdir -p $out/share/homepage/public/images
-              ln -s ${./nb.png} $out/share/homepage/public/images/background.png
+              ln -s ${./background.png} $out/share/homepage/public/images/background.png
             '';
           });
 
@@ -189,7 +189,7 @@ in
 
             background = {
               image = "/images/background.png";
-              blur = "sm";
+              # blur = "";
               saturate = 75;
               brightness = 70;
               opacity = 100;
