@@ -124,16 +124,6 @@ in
                   };
                 }
                 {
-                  "Swap Usage" = {
-                    widget = {
-                      type = "glances";
-                      url = glancesAddress;
-                      version = 4;
-                      metric = "swap";
-                    };
-                  };
-                }
-                {
                   "Network Usage" = {
                     widget = {
                       type = "glances";
@@ -199,7 +189,7 @@ in
 
             background = {
               image = "/images/background.png";
-              # blur = "sm";
+              blur = "sm";
               saturate = 75;
               brightness = 70;
               opacity = 100;
