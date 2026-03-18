@@ -47,7 +47,7 @@ in
 
         services.homepage-dashboard = {
           enable = true;
-          listenPort = 80;
+          listenPort = 8082;
 
           widgets = [
             {
@@ -187,6 +187,16 @@ in
 
         systemd.services.homepage-dashboard.environment = {
           HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "127.0.0.1,localhost,${staticIP}";
+        };
+
+        # redirect to port 80
+        services.caddy = {
+          enable = true;
+          virtualHosts."http://${staticIP}" = {
+            extraConfig = ''
+              reverse_proxy 127.0.0.1:8082
+            '';
+          };
         };
 
         networking.firewall.allowedTCPPorts = [ 80 ];
