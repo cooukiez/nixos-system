@@ -16,28 +16,32 @@
 
       "/srv/sync" = {
         hostPath = "/srv/sync";
-        isReadOnly = true;
+        isReadOnly = false;
+      };
+      "/var/lib/syncthing" = {
+        hostPath = "/var/lib/syncthing";
+        isReadOnly = false;
       };
 
       "/data/documents" = {
         hostPath = "/data/documents";
-        isReadOnly = true;
+        isReadOnly = false;
       };
       "/data/downloads" = {
         hostPath = "/data/downloads";
-        isReadOnly = true;
+        isReadOnly = false;
       };
       "/data/music" = {
         hostPath = "/data/music";
-        isReadOnly = true;
+        isReadOnly = false;
       };
       "/data/pictures" = {
         hostPath = "/data/pictures";
-        isReadOnly = true;
+        isReadOnly = false;
       };
       "/data/videos" = {
         hostPath = "/data/videos";
-        isReadOnly = true;
+        isReadOnly = false;
       };
     };
 

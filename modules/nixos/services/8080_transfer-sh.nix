@@ -3,6 +3,11 @@
     autoStart = true;
     privateNetwork = false;
 
+    bindMounts."/var/lib/transfer-sh" = {
+      hostPath = "/var/lib/transfer-sh";
+      isReadOnly = false;
+    };
+
     config =
       { config, pkgs, ... }:
       {

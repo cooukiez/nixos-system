@@ -16,7 +16,11 @@
 
       "/srv/copyparty" = {
         hostPath = "/srv/copyparty";
-        isReadOnly = true;
+        isReadOnly = false;
+      };
+      "/var/lib/copyparty" = {
+        hostPath = "/var/lib/copyparty";
+        isReadOnly = false;
       };
     };
 
