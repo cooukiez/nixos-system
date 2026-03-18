@@ -31,8 +31,6 @@
     inputs.nix-snapd.nixosModules.default
     inputs.niri.nixosModules.niri
     inputs.agenix.nixosModules.default
-
-    inputs.copyparty.nixosModules.default
     inputs.spicetify-nix.nixosModules.default
   ];
   nixpkgs = {
@@ -44,7 +42,6 @@
       inputs.self.overlays.nur
 
       inputs.niri.overlays.niri
-      inputs.copyparty.overlays.default
 
       (final: prev: {
         valkey = prev.valkey.overrideAttrs (oldAttrs: {
@@ -180,40 +177,6 @@
     password = "CHANGE-ME";
     shell = pkgs.zsh;
   }) users;
-
-  /*
-    # create bind targets (directories)
-    systemd.tmpfiles.rules = lib.concatLists (
-      lib.mapAttrsToList (
-        username: user:
-        map (bind: "d /home/${username}/${bind.target} 0775 ${username} users - -") (user.bindDirs or [ ])
-      ) users
-    );
-
-    # bind mount configuration
-    systemd.mounts = lib.concatLists (
-      lib.mapAttrsToList (
-        username: user:
-        map (bind: {
-          where = "/home/${username}/${bind.target}";
-          what = bind.source;
-          type = "none";
-          options = "bind,rw,nofail";
-          unitConfig = {
-            DefaultDependencies = false;
-          };
-
-          after = [
-            "local-fs.target"
-            "home.mount"
-          ];
-
-          before = [ "remote-fs.target" ];
-          wantedBy = [ "multi-user.target" ];
-        }) (user.bindDirs or [ ])
-      ) users
-    );
-  */
 
   systemd.tmpfiles.rules = lib.concatLists (
     lib.mapAttrsToList (
