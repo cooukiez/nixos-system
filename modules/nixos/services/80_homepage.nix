@@ -189,11 +189,13 @@ in
 
             background = {
               image = "/images/background.png";
-              blur = "md";
+              # blur = "sm";
               saturate = 75;
-              brightness = 80;
+              brightness = 70;
               opacity = 100;
             };
+
+            cardBlur = "sm";
 
             layout = {
               "System Monitor" = {
