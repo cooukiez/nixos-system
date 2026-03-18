@@ -23,9 +23,9 @@
 
     # import other system configuration modules
     inputs.self.nixosModules.common
-    inputs.self.nixosModules.dashboard
     inputs.self.nixosModules.desktop
     inputs.self.nixosModules.programs
+    inputs.self.nixosModules.services
 
     inputs.nix-flatpak.nixosModules.nix-flatpak
     inputs.nix-snapd.nixosModules.default

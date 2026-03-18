@@ -127,13 +127,6 @@
     };
   };
 
-  /*
-    users.users.syncthing = {
-      isSystemUser = true;
-      extraGroups = [ "users" ];
-    };
-  */
-
   # ftp server
   services.vsftpd = {
     enable = true;
