@@ -58,7 +58,7 @@ in
           package = pkgs.homepage-dashboard.overrideAttrs (oldAttrs: {
             postInstall = ''
               mkdir -p $out/share/homepage/public/images
-              ln -s ${./background.png} $out/share/homepage/public/images/background.jpeg
+              ln -s ${./background.png} $out/share/homepage/public/images/background.png
             '';
           });
 
