@@ -186,7 +186,14 @@ in
           settings = {
             title = "lvl";
             headerStyle = "clean";
-            background = "/images/background.png";
+
+            background = {
+              image = "/images/background.png";
+              blur = "md";
+              saturate = 75;
+              brightness = 80;
+              opacity = 100;
+            };
 
             layout = {
               "System Monitor" = {
