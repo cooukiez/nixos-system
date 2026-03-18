@@ -102,6 +102,46 @@ in
 
           services = [
             {
+              "Networking" = [
+                {
+                  "VNStat" = {
+                    icon = "mdi-chart-timeline-variant";
+                    href = vnstatAddress;
+                    description = "VNStat Dashboard";
+                  };
+                }
+              ];
+            }
+            {
+              "File Management" = [
+                {
+                  "Syncthing" = {
+                    icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg";
+                    href = syncthingAddress;
+                    description = "Continuous File Synchronization";
+                  };
+                }
+                {
+                  "Copyparty" = {
+                    icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/copyparty.svg";
+                    href = copypartyAddress;
+                    description = "File Server & Gallery";
+                  };
+                }
+              ];
+            }
+            {
+              "Network Storage" = [
+                {
+                  "VSFTPD" = {
+                    icon = "mdi-server-network";
+                    href = ftpAddress;
+                    description = "FTP Server";
+                  };
+                }
+              ];
+            }
+            {
               "System Monitor" = [
                 {
                   "CPU Usage" = {
@@ -145,42 +185,6 @@ in
                 }
               ];
             }
-            {
-              "File Management" = [
-                {
-                  "Syncthing" = {
-                    icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/syncthing.svg";
-                    href = syncthingAddress;
-                    description = "Continuous File Synchronization";
-                  };
-                }
-                {
-                  "Copyparty" = {
-                    icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/copyparty.svg";
-                    href = copypartyAddress;
-                    description = "File Server & Gallery";
-                  };
-                }
-                {
-                  "VNStat" = {
-                    icon = "mdi-chart-timeline-variant";
-                    href = vnstatAddress;
-                    description = "VNStat Dashboard";
-                  };
-                }
-              ];
-            }
-            {
-              "Network Storage" = [
-                {
-                  "VSFTPD" = {
-                    icon = "mdi-server-network";
-                    href = ftpAddress;
-                    description = "FTP Server";
-                  };
-                }
-              ];
-            }
           ];
 
           settings = {
@@ -198,9 +202,9 @@ in
             cardBlur = "md";
 
             layout = {
-              "System Monitor" = {
+              "Networking" = {
                 style = "row";
-                columns = 5;
+                columns = 4;
               };
               "File Management" = {
                 style = "row";
@@ -209,6 +213,10 @@ in
               "Network Storage" = {
                 style = "row";
                 columns = 4;
+              };
+              "System Monitor" = {
+                style = "row";
+                columns = 5;
               };
             };
           };

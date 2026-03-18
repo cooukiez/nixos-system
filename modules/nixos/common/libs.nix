@@ -31,7 +31,7 @@
     libimobiledevice-glue
     libnotify
     mariadb
-    nvtopPackages.full
+    nvtopPackages.intel
     pandoc
     poppler-utils
     shared-mime-info
