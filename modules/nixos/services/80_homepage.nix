@@ -192,9 +192,12 @@ in
         # redirect to port 80
         services.caddy = {
           enable = true;
-          virtualHosts."http://${staticIP}" = {
+          virtualHosts."http://127.0.0.1, http://localhost, http://${staticIP}" = {
             extraConfig = ''
-              reverse_proxy 127.0.0.1:8082
+              reverse_proxy 127.0.0.1:8082 {
+                  header_up Host {host}
+                  header_up X-Real-IP {remote_host}
+              }
             '';
           };
         };
