@@ -37,6 +37,21 @@
         target = "Videos";
       }
     ];
+
+    zenBrowserShortcuts = {
+      youtube = {
+        url = "https://www.youtube.com/";
+        position = 101;
+      };
+      chatgpt = {
+        url = "https://chatgpt.com/";
+        position = 102;
+      };
+      maps = {
+        url = "https://www.google.com/maps";
+        position = 103;
+      };
+    };
   };
 
   ludw = {
@@ -70,6 +85,21 @@
         target = "Videos";
       }
     ];
+
+    zenBrowserShortcuts = {
+      youtube = {
+        url = "https://www.youtube.com/";
+        position = 101;
+      };
+      chatgpt = {
+        url = "https://chatgpt.com/";
+        position = 102;
+      };
+      maps = {
+        url = "https://www.google.com/maps";
+        position = 103;
+      };
+    };
   };
 
   redi = {
@@ -103,5 +133,32 @@
         target = "Videos";
       }
     ];
+
+    zenBrowserShortcuts = {
+      asana = {
+        url = "https://app.asana.com/1/955672552271708/project/1210867499376597/board/1210867499376611";
+        position = 101;
+      };
+      personio = {
+        url = "https://redi-school-of-digital-integration.app.personio.com/my-desk";
+        position = 102;
+      };
+      google-calendar = {
+        url = "https://calendar.google.com/calendar/u/0/r?pli=1";
+        position = 103;
+      };
+      chatgpt = {
+        url = "https://chatgpt.com/";
+        position = 104;
+      };
+      gemini = {
+        url = "https://gemini.google.com/app";
+        position = 105;
+      };
+      gmail = {
+        url = "https://mail.google.com/mail/u/0/#inbox";
+        position = 106;
+      };
+    };
   };
 }

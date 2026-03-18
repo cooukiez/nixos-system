@@ -6,12 +6,17 @@
 */
 
 {
-  config,
   inputs,
+  config,
+  userConfig,
   pkgs,
+  lib,
   hostSystem,
   ...
 }:
+let
+  genId = name: builtins.hashString "sha256" name;
+in
 {
   # see https://github.com/0xc000022070/zen-browser-flake
   programs.zen-browser =
@@ -57,32 +62,12 @@
       };
 
       # see https://github.com/0xc000022070/zen-browser-flake#pinned-tabs-pins
-      pins = {
-        "youtube" = {
-          id = "9d8a8f91-7e29-4688-ae2e-da4e49d4a179";
-          container = containers.Personal.id;
-          url = "https://www.youtube.com/";
-          isEssential = true;
-          position = 101;
-        };
-
-        "chatgpt" = {
-          id = "c93f0c08-6866-40da-940b-b5cd509d6295";
-          container = containers.Personal.id;
-          url = "https://chatgpt.com/";
-          isEssential = true;
-          position = 102;
-        };
-
-        "maps" = {
-          id = "43cfa3ce-d40c-4ca7-a390-313e122ce120";
-          container = containers.Personal.id;
-          url = "https://www.google.com/maps";
-          isEssential = true;
-          position = 103;
-        };
-      };
-
+      pins = lib.mapAttrs (name: value: {
+        inherit (value) url position;
+        id = genId name;
+        container = containers.Personal.id;
+        isEssential = true;
+      }) userConfig.zenBrowserShortcuts;
     in
     {
       enable = true;

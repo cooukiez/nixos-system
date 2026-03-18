@@ -9,8 +9,8 @@
   inputs,
   config,
   userConfig,
-  hostSystem,
   pkgs,
+  hostSystem,
   ...
 }:
 let
