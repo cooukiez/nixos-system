@@ -18,6 +18,14 @@ let
   sync-flake = pkgs.writeShellScriptBin "sync-flake" (builtins.readFile ./scripts/sync-flake.sh);
 in
 {
+  programs.nix-ld.enable = true;
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/etc/nixos"; # sets NH_OS_FLAKE variable for you
+  };
+
   # nvim base editor
   programs.neovim.enable = true;
 
@@ -51,10 +59,13 @@ in
 
     ### cli tools, sorted alphabetically ###
 
-    aria2
     apacheHttpd
+    aria2
     bench
     bitwarden-cli
+    bpm-tools
+    brightnessctl
+    cdparanoia
     clean
     ddgr
     dfc
@@ -64,6 +75,7 @@ in
     dua
     entr
     eza
+    gphoto2
     hexdump
     httpie
     hyperfine
@@ -73,6 +85,8 @@ in
     metadata
     neofetch
     ngrok
+    pdfpc
+    playerctl
     rip2
     ripgrep
     scc
@@ -81,8 +95,8 @@ in
     speedtest-cli
     surge
     tealdeer
-    tldr
     tealdeer
+    tldr
     ventoy
 
     # my system tools
@@ -102,21 +116,5 @@ in
     kittysay
     lolcat
     sl
-
-    # window / system control
-    brightnessctl
-    playerctl
-    wmctrl
-    xdotool
-    xmodmap
-
-    # clipboard / screenshot / screenrecording
-    cliphist
-    grim
-    slurp
-    wf-recorder
-    wl-clipboard
-    xclip
-    xsel
   ];
 }

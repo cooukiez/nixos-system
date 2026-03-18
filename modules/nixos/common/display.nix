@@ -31,7 +31,24 @@
     # wayland utilities
     wayland-utils
     wlinhibit
+
+    # window controls
+    wmctrl
+    xdotool
+    xmodmap
+
+    # clipboard / screenshot / screenrecording
+    cliphist
+    grim
+    slurp
+    wf-recorder
+    wl-clipboard
+    xclip
+    xsel
   ];
+
+  # input functionality
+  services.libinput.enable = true;
 
   # fonts configuration
   fonts.packages = with pkgs; [

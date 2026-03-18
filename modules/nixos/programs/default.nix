@@ -23,13 +23,6 @@
     ./web.nix
   ];
 
-  programs.nh = {
-    enable = true;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/etc/nixos"; # sets NH_OS_FLAKE variable for you
-  };
-
   # SUID wrappers
   programs.mtr.enable = true;
   programs.gnupg.agent = {
@@ -83,15 +76,6 @@
   };
 
   services.snap.enable = true;
-
-  # running gnome apps outside of gnome
-  programs.dconf.enable = true;
-  services.gvfs.enable = true;
-
-  # gnome calendar support
-  services.gnome.evolution-data-server.enable = true;
-  services.gnome.tinysparql.enable = true;
-  services.gnome.localsearch.enable = true;
 
   environment.systemPackages = with pkgs; [
     # general programs, sorted alphabetically
@@ -151,7 +135,6 @@
     renderdoc
     rnote
     rustdesk
-    # safeeyes
     scribus
     shutter
     slack

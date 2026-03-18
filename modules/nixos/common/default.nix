@@ -20,8 +20,6 @@
     ./libs.nix
   ];
 
-  services.dbus.enable = true;
-
   environment.sessionVariables = {
     # set LIBVA_DRIVER_NAME environment variable for video acceleration
     LIBVA_DRIVER_NAME = "iHD";
@@ -33,12 +31,6 @@
     VCPKG_FORCE_SYSTEM_BINARIES = 1;
     LD_LIBRARY_PATH = [ "${pkgs.zlib}/lib" ];
   };
-
-  environment.pathsToLink = [
-    "/share/nautilus-python/extensions"
-  ];
-
-  programs.nix-ld.enable = true;
 
   # zsh shell
   programs.zsh.enable = true;

@@ -10,11 +10,7 @@
   ...
 }:
 {
-  # printing services
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.hplip ];
-  # printer discovery
-  services.avahi.enable = true;
+  services.dbus.enable = true;
 
   # location services
   services.locate.enable = true;
@@ -24,4 +20,18 @@
   services.devmon.enable = true;
   # network statistics
   services.vnstat.enable = true;
+
+  # printing services
+  services.printing.enable = true;
+  services.printing.drivers = [ pkgs.hplip ];
+  services.avahi.enable = true;
+
+  # running gnome apps outside of gnome
+  programs.dconf.enable = true;
+  services.gvfs.enable = true;
+
+  # gnome calendar support
+  services.gnome.evolution-data-server.enable = true;
+  services.gnome.tinysparql.enable = true;
+  services.gnome.localsearch.enable = true;
 }

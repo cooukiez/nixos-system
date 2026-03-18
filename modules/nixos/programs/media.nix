@@ -24,51 +24,29 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # video players (some support audio too)
-    vlc
-
-    # music
     audacious
     audacious-plugins
     audacity
+    darktable
+    davinci-resolve
+    digikam
     feishin
-    spotify
-    # ---
-    cdparanoia
-    mpv
-
-    # audio tools
-    bpm-tools
-    picard
-
-    # image viewers
-    gthumb
-    xnviewmp
-    sxiv
-
-    # image tools
     gimp-with-plugins
+    gthumb
     inkscape
     ipe
     krita
+    mpv
+    picard
     pinta
-    rapidraw
-    darktable
-    upscayl
-
-    # photo management
-    gphoto2
     rapid-photo-downloader
-    digikam
-
-    # video tools
-    davinci-resolve
-
-    # pdf
+    rapidraw
     sioyek
-    pdfpc
-
-    # zathura
+    spotify
+    sxiv
+    upscayl
+    vlc
+    xnviewmp
     zathura
     zathuraPkgs.zathura_core
     zathuraPkgs.zathura_pdf_mupdf
@@ -76,7 +54,7 @@
 
   programs.k3b.enable = true;
 
-  # extensions for spotify, directly wrapping spotify
+  # directly wrapping spotify
   programs.spicetify =
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${hostSystem};

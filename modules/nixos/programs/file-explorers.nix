@@ -27,6 +27,10 @@ in
     code-nautilus
   ];
 
+  environment.pathsToLink = [
+    "/share/nautilus-python/extensions"
+  ];
+
   # thunar file manager
   /*
     programs.thunar = {

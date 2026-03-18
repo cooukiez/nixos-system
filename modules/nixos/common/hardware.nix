@@ -13,9 +13,6 @@
   # power profiles
   services.power-profiles-daemon.enable = true;
 
-  # battery
-  services.upower.enable = true;
-
   # graphics hardware configuration
   hardware.graphics = {
     enable = true;
@@ -102,12 +99,13 @@
     };
   };
 
-  # enable touchpad and other input functionality
-  services.libinput.enable = true;
+  # battery
+  services.upower.enable = true;
 
   # mounting usb devices
   services.usbmuxd = {
     enable = true;
     package = pkgs.usbmuxd2;
   };
+
 }

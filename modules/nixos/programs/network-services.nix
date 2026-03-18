@@ -28,13 +28,6 @@
 
   age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
-  environment.systemPackages = with pkgs; [
-    # enable copyparty standalone package
-    pkgs.copyparty
-    # age encrypted secrets management
-    inputs.agenix.packages.${hostSystem}.default
-  ];
-
   # openssh
   services.openssh = {
     enable = true;
@@ -52,16 +45,6 @@
     defaultWindowManager = "startplasma-x11";
     enable = true;
     openFirewall = true;
-  };
-
-  services.glances = {
-    enable = true;
-    # ensure it listens to subnet IP
-    extraArgs = [
-      "-w"
-      "-B"
-      "${staticIP}"
-    ];
   };
 
   # see https://wiki.nixos.org/wiki/Syncthing
