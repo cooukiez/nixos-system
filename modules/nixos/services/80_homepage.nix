@@ -58,7 +58,7 @@ in
           package = pkgs.homepage-dashboard.overrideAttrs (oldAttrs: {
             postInstall = ''
               mkdir -p $out/share/homepage/public/images
-              ln -s ${./background.png} $out/share/homepage/public/images/background.png
+              ln -s ${./nb.png} $out/share/homepage/public/images/background.png
             '';
           });
 
@@ -195,7 +195,7 @@ in
               opacity = 100;
             };
 
-            cardBlur = "sm";
+            cardBlur = "md";
 
             layout = {
               "System Monitor" = {

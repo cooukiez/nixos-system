@@ -74,6 +74,10 @@
 
         # allow pipewire camera
         "media.webrtc.camera.allow-pipewire" = true;
+
+        "browser.startup.homepage" = "http://localhost/";
+        "browser.startup.page" = 1; # 0 = blank, 1 = home page, 2 = last visited, 3 = previous session
+        "browser.newtabpage.enabled" = false;
       };
     };
   };
