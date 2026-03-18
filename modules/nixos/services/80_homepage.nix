@@ -7,9 +7,9 @@
 let
   glancesAddress = "http://127.0.0.1:61208";
   syncthingAddress = "http://127.0.0.1:8384";
-  copypartyAddress = "http://${staticIP}:3923";
+  copypartyAddress = "http://127.0.0.1:3923";
   vnstatAddress = "http://127.0.0.1:8000";
-  ftpAddress = "ftp://${staticIP}";
+  ftpAddress = "ftp://127.0.0.1";
 in
 {
   containers.homepage = {
