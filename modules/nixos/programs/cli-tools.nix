@@ -101,6 +101,7 @@ in
     ventoy
 
     # my system tools
+    clear-logs
     cp-fonts
     del-snaps
     edit-secret

@@ -8,6 +8,7 @@ let
   glancesAddress = "http://127.0.0.1:61208";
   syncthingAddress = "http://127.0.0.1:8384";
   copypartyAddress = "http://${staticIP}:3923";
+  vnstatAddress = "http://127.0.0.1:8000";
   ftpAddress = "ftp://${staticIP}";
 in
 {
@@ -22,11 +23,10 @@ in
         isReadOnly = true;
       };
 
-      bindMounts."/var/lib/homepage-dashboard" = {
+      "/var/lib/homepage-dashboard" = {
         hostPath = "/var/lib/homepage-dashboard";
         isReadOnly = false;
       };
-
     };
 
     config =
@@ -54,6 +54,13 @@ in
         services.homepage-dashboard = {
           enable = true;
           listenPort = 8082;
+
+          package = pkgs.homepage-dashboard.overrideAttrs (oldAttrs: {
+            postInstall = ''
+              mkdir -p $out/share/homepage/public/images
+              ln -s ${./background.png} $out/share/homepage/public/images/background.jpeg
+            '';
+          });
 
           widgets = [
             {
@@ -154,6 +161,13 @@ in
                     description = "File Server & Gallery";
                   };
                 }
+                {
+                  "VNStat" = {
+                    icon = "mdi-chart-timeline-variant";
+                    href = vnstatAddress;
+                    description = "VNStat Dashboard";
+                  };
+                }
               ];
             }
             {
@@ -172,7 +186,7 @@ in
           settings = {
             title = "lvl";
             headerStyle = "clean";
-            background = "/background.png";
+            background = "/images/background.png";
 
             layout = {
               "System Monitor" = {
@@ -191,8 +205,11 @@ in
           };
         };
 
-        systemd.services.homepage-dashboard.environment = {
-          HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "127.0.0.1,localhost,${staticIP}";
+        systemd.services.homepage-dashboard = {
+          serviceConfig.PermissionsStartOnly = true;
+          environment = {
+            HOMEPAGE_ALLOWED_HOSTS = lib.mkForce "127.0.0.1,localhost,${staticIP}";
+          };
         };
 
         # redirect to port 80
