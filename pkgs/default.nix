@@ -12,6 +12,7 @@ let
   # appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
   hardcodeTrayPkg = pkgs.callPackage ./hardcode-tray.nix { };
   heidisqlPkg = pkgs.callPackage ./heidisql.nix { };
+  iloaderPkg = pkgs.callPackage ./iloader.nix { };
   mcMojaveCursorThemePkg = pkgs.callPackage ./mcmojave-cursor-theme.nix { };
   steelFishFontsPkg = pkgs.callPackage ./steelfish-fonts.nix { };
 in
@@ -19,6 +20,7 @@ in
   # appmenu-gtk-module = appmenuGtkModule;
   hardcode-tray = hardcodeTrayPkg;
   heidisql = heidisqlPkg;
+  iloader = iloaderPkg;
   mcmojave-cursor-theme = mcMojaveCursorThemePkg;
   steelfish-fonts = steelFishFontsPkg;
 }

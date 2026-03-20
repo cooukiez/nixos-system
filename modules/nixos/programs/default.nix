@@ -113,6 +113,7 @@
     heroic
     homebank
     icon-slicer
+    iloader
     ipscan
     jflap
     joplin-desktop
