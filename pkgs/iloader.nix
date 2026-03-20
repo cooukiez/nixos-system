@@ -10,6 +10,13 @@
   libusb1,
   usbmuxd,
   libimobiledevice,
+  gtk3,
+  webkitgtk_4_1,
+  libsoup_3,
+  cairo,
+  gdk-pixbuf,
+  pango,
+  atk,
 }:
 
 stdenv.mkDerivation rec {
@@ -18,7 +25,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/nab138/iloader/releases/download/v${version}/iloader-linux-amd64.deb";
-    hash = "sha256-0000000000000000000000000000000000000000000000000000=";
+    hash = "sha256-MoC+NVdzMml9t6WzIm0A5GgPrqX1ohAR552XkpQT6iI=";
   };
 
   nativeBuildInputs = [
@@ -33,6 +40,13 @@ stdenv.mkDerivation rec {
     libusb1
     usbmuxd
     libimobiledevice
+    gtk3
+    webkitgtk_4_1
+    libsoup_3
+    cairo
+    gdk-pixbuf
+    pango
+    atk
   ];
 
   unpackPhase = "dpkg-deb -x $src .";
@@ -43,12 +57,10 @@ stdenv.mkDerivation rec {
     mkdir -p $out/bin
     mkdir -p $out/share/iloader
 
-    # Move binaries
     if [ -d usr/bin ]; then
       cp -r usr/bin/* $out/bin/
     fi
 
-    # Move libraries and other assets if they exist in the deb
     if [ -d usr/lib ]; then
       cp -r usr/lib $out/
     fi

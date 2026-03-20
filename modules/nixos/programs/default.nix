@@ -164,6 +164,9 @@
     unstable.jetbrains.webstorm
     unstable.jetbrains.datagrip
 
+    # run appimages
+    fuse
+
     # from flakes
     inputs.honklet.packages.${hostSystem}.default
   ];
