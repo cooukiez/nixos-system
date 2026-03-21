@@ -16,9 +16,13 @@
   environment.systemPackages = with pkgs; [
     # general tools / libraries, sorted alphabetically
     bluez-tools
+    cairo
     cdrkit
     cdrtools
     ffmpeg
+    fontconfig
+    freetype
+    fuse
     fuse3
     go
     icu
@@ -30,12 +34,15 @@
     libimobiledevice
     libimobiledevice-glue
     libnotify
+    libpng
+    leptonica
+    tesseract
     mariadb
     nvtopPackages.intel
     pandoc
+    pango
     poppler-utils
     shared-mime-info
-    tesseract
     v4l-utils
     vulkan-tools
     yt-dlp

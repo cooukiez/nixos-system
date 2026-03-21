@@ -18,7 +18,6 @@
   pango,
   atk,
 }:
-
 stdenv.mkDerivation rec {
   pname = "iloader";
   version = "2.0.9";
@@ -68,6 +67,10 @@ stdenv.mkDerivation rec {
     if [ -d usr/share ]; then
       cp -r usr/share/* $out/share/
     fi
+
+    # wrap the main program
+    wrapProgram $out/bin/iloader \
+      --set GDK_BACKEND x11
 
     runHook postInstall
   '';
