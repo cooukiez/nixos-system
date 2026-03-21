@@ -24,4 +24,5 @@ in
 {
   "copyparty-pw.age".publicKeys = all_keys;
   "syncthing-pw.age".publicKeys = all_keys;
+  "fritz-credentials.age".publicKeys = all_keys;
 }

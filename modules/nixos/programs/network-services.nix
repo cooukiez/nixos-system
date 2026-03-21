@@ -14,6 +14,10 @@
   ...
 }:
 {
+  age.secrets.fritz-credentials = {
+    file = ../../../secrets/fritz-credentials.age;
+  };
+
   # openssh
   services.openssh = {
     enable = true;
@@ -94,6 +98,20 @@
         };
       */
     };
+  };
+
+  # fritzbox smb
+  fileSystems."/mnt/fritz" = {
+    device = "//fritz.box/fritz.box";
+    fsType = "cifs";
+    options = [
+      "credentials=${config.age.secrets.fritz-credentials.path}"
+      "x-systemd.automount"
+      "noatime"
+      "uid=1000"
+      "gid=100"
+      "vers=3.0"
+    ];
   };
 
   services.samba-wsdd = {
