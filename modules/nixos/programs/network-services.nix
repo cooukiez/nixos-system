@@ -29,6 +29,11 @@
     };
   };
 
+  # tailscale configuration
+  services.tailscale = {
+    enable = true;
+  };
+
   # remote desktop
   services.xrdp = {
     # plasma is only wm with x11 support
