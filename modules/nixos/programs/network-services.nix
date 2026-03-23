@@ -14,8 +14,8 @@
   ...
 }:
 {
-  age.secrets.fritz-credentials = {
-    file = ../../../secrets/fritz-credentials.age;
+  age.secrets.fritz-creds = {
+    file = ../../../secrets/fritz-creds.age;
   };
 
   # openssh
@@ -110,7 +110,7 @@
     device = "//fritz.box/fritz.box";
     fsType = "cifs";
     options = [
-      "credentials=${config.age.secrets.fritz-credentials.path}"
+      "credentials=${config.age.secrets.fritz-creds.path}"
       "x-systemd.automount"
       "noatime"
       "uid=1000"

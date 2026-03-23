@@ -58,8 +58,8 @@ in
         users.groups.homepage-dashboard = { };
 
         age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-        age.secrets.tailscale-dhs-key = {
-          file = ../../../secrets/tailscale-dhs-key.age;
+        age.secrets.tailscale-key = {
+          file = ../../../secrets/tailscale-key.age;
           owner = "homepage-dashboard";
           group = "homepage-dashboard";
         };
@@ -76,7 +76,7 @@ in
           });
 
           environmentFile = "${pkgs.writeText "homepage-env" ''
-            HOMEPAGE_FILE_TAILSCALE_DHS_KEY=${config.age.secrets.tailscale-dhs-key.path}
+            HOMEPAGE_FILE_TAILSCALE_KEY=${config.age.secrets.tailscale-key.path}
           ''}";
 
           widgets = [
@@ -129,7 +129,7 @@ in
                     widget = {
                       type = "tailscale";
                       deviceid = "n8oPyaceHJ11CNTRL";
-                      key = "{{HOMEPAGE_FILE_TAILSCALE_DHS_KEY}}";
+                      key = "{{HOMEPAGE_FILE_TAILSCALE_KEY}}";
                     };
                   };
                   "VNStat" = {
