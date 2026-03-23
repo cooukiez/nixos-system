@@ -15,6 +15,7 @@ let
   glancesAddress = "http://127.0.0.1:61208";
   syncthingAddress = "http://127.0.0.1:8384";
   copypartyAddress = "http://127.0.0.1:3923";
+  tailscaleAddress = "https://login.tailscale.com/admin/machines";
   vnstatAddress = "http://127.0.0.1:8000";
   ftpAddress = "ftp://127.0.0.1";
 in
@@ -57,6 +58,11 @@ in
         users.groups.homepage-dashboard = { };
 
         age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+        age.secrets.tailscale-dhs-key = {
+          file = ../../../secrets/tailscale-dhs-key.age;
+          owner = "homepage-dashboard";
+          group = "homepage-dashboard";
+        };
 
         services.homepage-dashboard = {
           enable = true;
@@ -68,6 +74,10 @@ in
               ln -s ${./background.png} $out/share/homepage/public/images/background.png
             '';
           });
+
+          environmentFile = "${pkgs.writeText "homepage-env" ''
+            HOMEPAGE_FILE_TAILSCALE_DHS_KEY=${config.age.secrets.tailscale-dhs-key.path}
+          ''}";
 
           widgets = [
             {
@@ -111,6 +121,17 @@ in
             {
               "Networking" = [
                 {
+                  "Tailscale" = {
+                    icon = "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/tailscale.svg";
+                    href = tailscaleAddress;
+                    description = "VPN Connection to Homeserver";
+
+                    widget = {
+                      type = "tailscale";
+                      deviceid = "n8oPyaceHJ11CNTRL";
+                      key = "{{HOMEPAGE_FILE_TAILSCALE_DHS_KEY}}";
+                    };
+                  };
                   "VNStat" = {
                     icon = "mdi-chart-timeline-variant";
                     href = vnstatAddress;
