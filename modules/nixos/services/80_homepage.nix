@@ -132,6 +132,8 @@ in
                       key = "{{HOMEPAGE_FILE_TAILSCALE_KEY}}";
                     };
                   };
+                }
+                {
                   "VNStat" = {
                     icon = "mdi-chart-timeline-variant";
                     href = vnstatAddress;
@@ -228,6 +230,8 @@ in
             };
 
             cardBlur = "md";
+            theme = "dark";
+            color = "stone";
 
             layout = {
               "Networking" = {
