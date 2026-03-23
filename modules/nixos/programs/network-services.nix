@@ -32,8 +32,8 @@
   # tailscale configuration
   services.tailscale = {
     enable = true;
-    useRoutingFeatures = "client";
-    extraUpFlags = [ "--accept-dns=true" ];
+    # useRoutingFeatures = "client";
+    # extraUpFlags = [ "--accept-dns=true" ];
   };
 
   # remote desktop
