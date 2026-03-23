@@ -1,3 +1,10 @@
+/*
+  modules/nixos/services/8080_transfer-sh.nix
+
+  created by ludw
+  on 2026-03-18
+*/
+
 {
   containers.transfer-sh = {
     autoStart = true;

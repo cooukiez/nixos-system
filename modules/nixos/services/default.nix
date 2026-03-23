@@ -1,5 +1,5 @@
 /*
-  modules/nixos/dashboard/default.nix
+  modules/nixos/services/default.nix
 
   created by ludw
   on 2026-02-26

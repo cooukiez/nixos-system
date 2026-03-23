@@ -1,3 +1,10 @@
+/*
+  modules/nixos/services/8384_syncthing.nix
+
+  created by ludw
+  on 2026-03-18
+*/
+
 {
   inputs,
   ...

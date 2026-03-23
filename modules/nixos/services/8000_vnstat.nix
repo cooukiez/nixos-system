@@ -1,3 +1,10 @@
+/*
+  modules/nixos/services/8000_vnstat.nix
+
+  created by ludw
+  on 2026-03-18
+*/
+
 {
   virtualisation.oci-containers.containers.vnstat-dashboard = {
     image = "kshitizb/vnstat-dashboard:latest";

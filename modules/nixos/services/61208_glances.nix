@@ -1,3 +1,10 @@
+/*
+  modules/nixos/services/61208_glances.nix
+
+  created by ludw
+  on 2026-03-18
+*/
+
 {
   containers.glances = {
     autoStart = true;
