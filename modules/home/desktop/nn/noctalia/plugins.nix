@@ -36,6 +36,14 @@
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+    network-manager-vpn = {
+      enabled = true;
+      sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    };
+    polkit-agent = {
+      enabled = true;
+      sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    };
     privacy-indicator = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
@@ -61,10 +69,6 @@
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
     world-clock = {
-      enabled = true;
-      sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-    };
-    polkit-agent = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };

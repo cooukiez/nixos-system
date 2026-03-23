@@ -32,8 +32,10 @@
   # tailscale configuration
   services.tailscale = {
     enable = true;
-    # useRoutingFeatures = "client";
-    # extraUpFlags = [ "--accept-dns=true" ];
+    extraUpFlags = [
+      "--exit-node=100.71.244.88"
+      "--exit-node-allow-lan-access=true"
+    ];
   };
 
   # remote desktop
