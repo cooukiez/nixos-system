@@ -13,6 +13,7 @@
   pkgs,
   lib,
   hostname,
+  dnsServers,
   users,
   ...
 }:
@@ -114,12 +115,30 @@
   networking = {
     hostName = hostname;
 
-    nameservers = [
-      "1.1.1.1"
-    ];
+    /*
+      # unnecessary as we configure dns ourselves
+      useDHCP = false;
+      interfaces.wlp0s20f3.useDHCP = true;
+
+      dhcpcd.enable = true;
+      dhcpcd.extraConfig = ''
+        nohook resolv.conf
+      '';
+    */
+
+    # link to dnsmasq
+    nameservers = [ "127.0.0.1" ];
 
     networkmanager = {
       enable = true;
+      # dns = "systemd-resolved";
+      dns = lib.mkForce "dnsmasq";
+
+      settings = {
+
+      };
+
+      wifi.powersave = true;
     };
 
     firewall = {
@@ -136,6 +155,29 @@
       allowedUDPPorts = [ ];
     };
   };
+
+  # dnsmasq for networkmanager
+  services.dnsmasq = {
+    enable = true;
+
+    settings = {
+      server = dnsServers;
+      cache-size = 1000;
+      listen-address = "127.0.0.1";
+    };
+  };
+
+  # resolved for networkmanager
+  /*
+    services.resolved = {
+      enable = true;
+      extraConfig = ''
+        # forces tailscale node
+        DNS=100.71.244.88
+        Domains=~.
+      '';
+    };
+  */
 
   # timezone
   time.timeZone = "Europe/Berlin";

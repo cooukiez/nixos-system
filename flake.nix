@@ -127,6 +127,15 @@
       # set local subnet static IP
       staticIP = "192.168.178.24";
 
+      dnsServers = [
+        # dhs@tailscale dns
+        "100.71.244.88"
+
+        "1.1.1.1"
+        "8.8.8.8"
+        "9.9.9.9"
+      ];
+
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
       mkNixosConfiguration =
@@ -139,6 +148,7 @@
               hostSystem
               hostname
               staticIP
+              dnsServers
               users
               ;
             nixosModules = "${self}/modules/nixos";
