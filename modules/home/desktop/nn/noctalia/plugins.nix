@@ -14,6 +14,10 @@
     }
   ];
 
+  home.file.".config/noctalia/plugins/tailscale/icons/tailscale.svg" = {
+    source = ./vpn.svg;
+  };
+
   # install noctalia plugins here
   states = {
     catwalk = {
@@ -53,6 +57,10 @@
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
     screenshot = {
+      enabled = true;
+      sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    };
+    tailscale = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
