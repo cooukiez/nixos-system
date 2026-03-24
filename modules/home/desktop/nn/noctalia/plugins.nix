@@ -55,6 +55,11 @@
       enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+    screen-toolkit = {
+      # great but buggy
+      enabled = false;
+      sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+    };
     screenshot = {
       # not used
       enabled = false;
