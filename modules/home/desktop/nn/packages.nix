@@ -22,6 +22,7 @@
     eyedropper
     gapless
     impression
+    inspector
     iplookup-gtk
     keypunch
     kitty
