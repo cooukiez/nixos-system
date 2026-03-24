@@ -13,7 +13,7 @@
 }:
 {
   home.packages = with pkgs; [
-    inputs.quickshell.packages.${hostSystem}.default
+    # inputs.quickshell.packages.${hostSystem}.default
 
     # programs
     apostrophe
