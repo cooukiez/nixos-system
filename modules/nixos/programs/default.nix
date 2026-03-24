@@ -50,6 +50,7 @@
 
       "com.ranfdev.Lobjur"
       "io.github.giantpinkrobots.flatsweep"
+      "io.github.nokse22.Exhibit"
       "io.github.wanglin2.mind-map"
       "page.codeberg.lo_vely.Nucleus"
       "tech.digiroad.Convertidor"

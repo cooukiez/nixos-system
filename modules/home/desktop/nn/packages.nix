@@ -38,7 +38,6 @@
     # gnome apps
     baobab
     decibels
-    exhibit
     gedit
     gnome-calculator
     gnome-calendar
