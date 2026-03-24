@@ -34,7 +34,6 @@
     jetbrains-runner
 
     # programs
-    fontforge
     gImageReader-qt
     libreoffice-qt-fresh
     strawberry

@@ -19,7 +19,6 @@
     apostrophe
     errands
     euphonica
-    fontforge-gtk
     gapless
     impression
     iplookup-gtk

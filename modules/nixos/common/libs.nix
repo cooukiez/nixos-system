@@ -21,6 +21,7 @@
     cdrtools
     ffmpeg
     fontconfig
+    fontforge
     freetype
     fuse
     fuse3

@@ -33,6 +33,7 @@
     davinci-resolve
     digikam
     feishin
+    fontforge-gtk
     gimp-with-plugins
     gthumb
     inkscape
