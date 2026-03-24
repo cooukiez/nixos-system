@@ -196,6 +196,12 @@
 
   # enable polkit
   security.polkit.enable = true;
+  services.fprintd.enable = true;
+
+  # disable fprintd login in sddm
+  security.pam.services.login.fprintAuth = false;
+  # security.pam.services.sddm.fprintAuth = false;
+  # security.pam.services.sddm-greeter.fprintAuth = false;
 
   # for generating entropy for the system
   services.haveged.enable = true;

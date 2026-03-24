@@ -16,18 +16,16 @@ let
     name = "auto-session-selector";
     text = ''
       case "$USER" in
-        ceirs)
-          exec niri-session
+        ceirs|redi)
+          exec ${pkgs.niri-unstable}/bin/niri-session
           ;;
         ludw)
           exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed \
                ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland
           ;;
-        redi)
-          exec niri-session
-          ;;
         *)
-          echo "no session configured for user $USER."
+          echo "No session configured for user $USER." >&2
+          exit 1
           ;;
       esac
     '';
