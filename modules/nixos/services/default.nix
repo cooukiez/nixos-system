@@ -13,7 +13,6 @@
   imports = [
     ./80_homepage.nix
     ./3923_copyparty.nix
-    ./4173_4174_6379_rsurva.nix
     ./8000_vnstat.nix
     ./8080_transfer-sh.nix
     ./8384_syncthing.nix

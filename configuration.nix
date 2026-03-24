@@ -167,6 +167,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "tailscale"
       "audio"
       "video"
       "input"

@@ -36,7 +36,13 @@
       "--exit-node=100.71.244.88"
       "--exit-node-allow-lan-access=true"
     ];
+
+    extraSetFlags = [
+      "--operator=ceirs"
+    ];
   };
+
+  users.groups.tailscale = { };
 
   # remote desktop
   services.xrdp = {
