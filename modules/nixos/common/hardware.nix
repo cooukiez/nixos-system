@@ -24,8 +24,10 @@
   # audio configuration
   services.pipewire = {
     enable = true;
+
     audio.enable = true;
     pulse.enable = true;
+    jack.enable = true;
     alsa = {
       enable = true;
       support32Bit = true;
@@ -33,6 +35,7 @@
 
     # opens UDP ports 6001-6002
     raopOpenFirewall = true;
+
     extraConfig.pipewire = {
       # airplay configuration
       "10-airplay" = {
@@ -56,8 +59,28 @@
 
       # see https://wiki.nixos.org/wiki/PipeWire
     };
-    jack.enable = true;
+
+    /*
+      wireplumber.extraConfig = {
+        "51-camera-suspend" = {
+          "monitor.v4l2.rules" = [
+            {
+              matches = [ { "device.name" = "~v4l2_device.*"; } ];
+              actions = {
+                update-props = {
+                  "session.suspend-on-idle" = true;
+                  "dma-buf.enabled" = true;
+                };
+              };
+            }
+          ];
+        };
+      };
+    */
   };
+
+  # service for camera
+  # services.v4l2-relayd
 
   # allow pipewire real-time scheduling
   security.rtkit.enable = true;
@@ -100,12 +123,14 @@
   };
 
   # battery
-  services.upower.enable = true;
+  services.upower = {
+    enable = true;
+    ignoreLid = false;
+  };
 
   # mounting usb devices
   services.usbmuxd = {
     enable = true;
     package = pkgs.usbmuxd2;
   };
-
 }

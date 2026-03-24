@@ -90,6 +90,7 @@ in
     playerctl
     rip2
     ripgrep
+    s0ix-selftest-tool
     scc
     sla2pdf
     slack-cli

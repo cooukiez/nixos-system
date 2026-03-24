@@ -72,6 +72,7 @@
     ntfsprogs
     openssl
     parted
+    psmisc
     rclone
     rsync
     rustup

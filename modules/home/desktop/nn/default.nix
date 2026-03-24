@@ -126,5 +126,17 @@ in
     };
   };
 
+  # disable wireplumber / pipewire camera usage on startup
+  /*
+    xdg.configFile."wireplumber/wireplumber.conf.d/10-disable-camera.conf".text = ''
+      wireplumber.profiles = {
+        main = {
+          monitor.v4l2 = disabled
+          monitor.libcamera = disabled
+        }
+      }
+    '';
+  */
+
   # systemd.user.services."niri-flake-polkit".enable = false;
 }
