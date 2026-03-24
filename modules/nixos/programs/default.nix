@@ -43,6 +43,7 @@
       # "org.freedownloadmanager.Manager"
 
       "edu.mit.Scratch"
+      "org.shadered.SHADERed"
       "org.turbowarp.TurboWarp"
       "org.vinegarhq.Sober"
       "org.vinegarhq.Vinegar"
@@ -95,7 +96,9 @@
     dune3d
     f3d
     figma-linux
+    filezilla
     firestarter
+    fontforge-gtk
     freecad
     fsv
     furmark
@@ -112,6 +115,7 @@
     hardinfo2
     heidisql
     heroic
+    hexedit
     homebank
     icon-slicer
     iloader
@@ -150,7 +154,6 @@
     zed-editor
     zoom-us
     zotero
-    filezilla
 
     # code editors / IDE
     inputs.gamemaker.packages.${hostSystem}.default

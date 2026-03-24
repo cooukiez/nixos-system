@@ -30,20 +30,22 @@
     ifuse
     imagemagick
     intel-gpu-tools
+    leptonica
     libburn
     libgphoto2
     libimobiledevice
     libimobiledevice-glue
     libnotify
     libpng
-    leptonica
-    tesseract
     mariadb
     nvtopPackages.intel
     pandoc
     pango
     poppler-utils
+    shader-slang
+    shaderc
     shared-mime-info
+    tesseract
     v4l-utils
     vulkan-tools
     yt-dlp
