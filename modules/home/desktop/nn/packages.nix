@@ -19,6 +19,7 @@
     apostrophe
     errands
     euphonica
+    eyedropper
     gapless
     impression
     iplookup-gtk
@@ -37,6 +38,7 @@
     # gnome apps
     baobab
     decibels
+    exhibit
     gedit
     gnome-calculator
     gnome-calendar

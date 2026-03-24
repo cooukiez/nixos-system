@@ -93,6 +93,7 @@
     design
     displaycal
     dune3d
+    f3d
     figma-linux
     firestarter
     freecad
