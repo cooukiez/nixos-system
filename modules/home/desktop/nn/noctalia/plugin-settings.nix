@@ -15,6 +15,23 @@
     compactMode = false;
   };
 
+  tailscale = {
+    compactMode = true;
+    showIpAddress = false;
+    showPeerCount = false;
+
+    hideDisconnected = false;
+    hideMullvadExitNodes = true;
+
+    terminalCommand = "kitty";
+
+    pingCount = 5;
+
+    refreshInterval = 30000;
+
+    defaultPeerAction = "copy-ip";
+  };
+
   # not in use currently
   world-clock = {
     timezones = [

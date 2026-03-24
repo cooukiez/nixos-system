@@ -126,6 +126,9 @@
         };
       }
       {
+        id = "plugin:tailscale";
+      }
+      {
         id = "plugin:timer";
         defaultSettings = {
           compactMode = false;

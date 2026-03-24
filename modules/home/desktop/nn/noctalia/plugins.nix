@@ -14,10 +14,6 @@
     }
   ];
 
-  home.file.".config/noctalia/plugins/tailscale/icons/tailscale.svg" = {
-    source = ./vpn.svg;
-  };
-
   # install noctalia plugins here
   states = {
     catwalk = {

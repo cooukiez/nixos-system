@@ -43,6 +43,13 @@ in
   # copy avatar picture
   home.file.".face".source = userConfig.avatar;
 
+  # patch tailscale icon
+  /*
+    home.file.".config/noctalia/plugins/tailscale/icons/tailscale.svg" = {
+      source = ./vpn.svg;
+    };
+  */
+
   programs.noctalia-shell = {
     enable = true;
     package = overriddenNoctalia;
