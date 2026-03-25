@@ -132,6 +132,7 @@
     minder
     muse-sounds-manager
     musescore
+    nicotine-plus
     obsidian
     onlyoffice-desktopeditors
     openscad
