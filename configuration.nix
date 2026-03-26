@@ -198,6 +198,10 @@
   security.polkit.enable = true;
   services.fprintd.enable = true;
 
+  security.pki.certificateFiles = [
+    ./dhs.cert
+  ];
+
   # disable fprintd login in sddm
   security.pam.services.login.fprintAuth = false;
   # security.pam.services.sddm.fprintAuth = false;
