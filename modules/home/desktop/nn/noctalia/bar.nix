@@ -149,7 +149,7 @@
       {
         id = "Battery";
         deviceNativePath = "";
-        displayMode = "onhover";
+        displayMode = "graphic";
 
         hideIfIdle = false;
         hideIfNotDetected = false;
