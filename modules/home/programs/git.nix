@@ -30,6 +30,7 @@
         directory = [
           "/etc/nixos"
           "/data/documents/vault"
+          "/data/documents/server-system"
         ];
       };
     };

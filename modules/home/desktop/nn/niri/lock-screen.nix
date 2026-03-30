@@ -55,7 +55,7 @@ in
         {
           monitor = primaryMonitor;
 
-          text = ''cmd[update:1000] echo "<span>$(date +"%I:%M")</span>"'';
+          text = ''cmd[update:1000] echo "<span>$(date +"%H:%M")</span>"'';
           color = "rgba(216, 222, 233, 0.7)";
 
           font_size = 185 * displayScale;
