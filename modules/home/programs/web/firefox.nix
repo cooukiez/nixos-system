@@ -40,6 +40,7 @@
         "widget.gtk.global-menu.enabled" = true;
         "widget.gtk.global-menu.wayland.enabled" = true;
         "widget.gtk.native-context-menus" = false;
+
         # custom stylesheets
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
 
@@ -76,8 +77,32 @@
         "media.webrtc.camera.allow-pipewire" = true;
 
         "browser.startup.homepage" = "http://localhost/";
-        "browser.startup.page" = 1; # 0 = blank, 1 = home page, 2 = last visited, 3 = previous session
+        "browser.startup.page" = 0; # 0 = blank, 1 = home page, 2 = last visited, 3 = previous session
         "browser.newtabpage.enabled" = false;
+      };
+
+      extensions = {
+        force = true;
+
+        settings = {
+          # violentmonkey
+          "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}" = {
+            force = true;
+            settings = {
+              scripts = [
+                {
+                  url = "https://raw.githubusercontent.com/murdos/musicbrainz-userscripts/master/deezer_importer.user.js";
+                  enabled = true;
+                }
+              ];
+
+              config = {
+                isApplied = true;
+                autoUpdate = true;
+              };
+            };
+          };
+        };
       };
     };
   };
