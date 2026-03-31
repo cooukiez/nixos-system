@@ -80,30 +80,6 @@
         "browser.startup.page" = 0; # 0 = blank, 1 = home page, 2 = last visited, 3 = previous session
         "browser.newtabpage.enabled" = false;
       };
-
-      extensions = {
-        force = true;
-
-        settings = {
-          # violentmonkey
-          "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}" = {
-            force = true;
-            settings = {
-              scripts = [
-                {
-                  url = "https://raw.githubusercontent.com/murdos/musicbrainz-userscripts/master/deezer_importer.user.js";
-                  enabled = true;
-                }
-              ];
-
-              config = {
-                isApplied = true;
-                autoUpdate = true;
-              };
-            };
-          };
-        };
-      };
     };
   };
 
