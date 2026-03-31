@@ -31,6 +31,7 @@
           "/etc/nixos"
           "/data/documents/vault"
           "/data/documents/server-system"
+          "/data/documents/server-system-new"
         ];
       };
     };
