@@ -108,19 +108,21 @@ in
           valign = "center";
         }
         # current song
-        {
-          monitor = primaryMonitor;
+        /*
+          {
+            monitor = primaryMonitor;
 
-          text = ''cmd[update:1000] echo "$(${songDetails})"'';
-          color = "rgba(216, 222, 233, 0.80)";
+            text = ''cmd[update:1000] echo "$(${songDetails})"'';
+            color = "rgba(216, 222, 233, 0.80)";
 
-          font_size = 18 * displayScale;
-          font_family = "SF Pro Nerd Display";
+            font_size = 18 * displayScale;
+            font_family = "SF Pro Nerd Display";
 
-          position = "0, ${toString (50 * displayScale)}";
-          halign = "center";
-          valign = "bottom";
-        }
+            position = "0, ${toString (50 * displayScale)}";
+            halign = "center";
+            valign = "bottom";
+          }
+        */
       ];
 
       input-field = [
