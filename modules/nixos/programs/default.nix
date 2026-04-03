@@ -170,6 +170,9 @@
     unstable.jetbrains.webstorm
     unstable.jetbrains.datagrip
 
+    # web utility
+    authelia
+
     # from flakes
     inputs.honklet.packages.${hostSystem}.default
   ];

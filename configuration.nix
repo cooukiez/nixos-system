@@ -199,7 +199,7 @@
   services.fprintd.enable = true;
 
   security.pki.certificateFiles = [
-    ./dhs.cert
+    ./dhs.crt
   ];
 
   # disable fprintd login in sddm
