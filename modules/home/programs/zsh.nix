@@ -30,7 +30,7 @@
       nuh = "sync-flake && nh home switch /etc/nixos";
       nuuh = "sync-flake && nh home switch /etc/nixos --update";
 
-      cns = "sudo sh -c 'nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d && nix-store --optimise && nix-store --verify --check-contents --repair'";
+      cns = "sudo sh -c 'nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d && nix-store --optimise --verify'";
       cnh = "nix-env --delete-generations old && nix profile wipe-history && home-manager expire-generations \"-0 seconds\" && nix-collect-garbage -d";
 
       nd = "cd /etc/nixos";
