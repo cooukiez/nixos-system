@@ -5,7 +5,12 @@
   on 2026-02-26
 */
 
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   # read all files in the current directory
   files = builtins.readDir ./.;
@@ -19,7 +24,12 @@ let
   fileImports = map (name: ./. + "/${name}") nixFiles;
 in
 {
-  programs.nixvim = {
+  options.programs.neovim.initLua = lib.mkOption {
+    type = lib.types.str;
+    default = "";
+  };
+
+  config.programs.nixvim = {
     enable = true;
     version.enableNixpkgsReleaseCheck = false;
 
