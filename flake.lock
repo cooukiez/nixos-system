@@ -650,7 +650,7 @@
       "inputs": {
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
-          "nixpkgs-unstable"
+          "nixpkgs"
         ],
         "systems": "systems_3"
       },
@@ -742,11 +742,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776174161,
-        "narHash": "sha256-iUfEdnKMjXTUF+WQFI/cWTkhB0vH8lNibTGmvS/TPRk=",
+        "lastModified": 1776198971,
+        "narHash": "sha256-MCuhO+k+/lmiNM0PQSKCBdGjaQspQ9K+Z68haQYfJpk=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "8f0f01e89abe6c165967837f60513667957ec6f1",
+        "rev": "f47531b31686d166c56a00d5e27558d86d62198a",
         "type": "github"
       },
       "original": {
