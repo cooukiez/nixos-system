@@ -92,6 +92,7 @@
       ps: with ps; [
         numpy
         pandas
+        emoji
       ]
     ))
 
