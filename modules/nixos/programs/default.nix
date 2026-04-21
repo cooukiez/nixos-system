@@ -36,23 +36,7 @@
 
     # declare packages declaratively
     packages = [
-      # "be.alexandervanhee.gradia"
-      # "com.github.vikdevelop.photopea_app"
-      # "com.leinardi.gst"
-      # "com.odnoyko.valot"
-      # "org.freedownloadmanager.Manager"
-
-      # "edu.mit.Scratch"
       "org.shadered.SHADERed"
-      "org.turbowarp.TurboWarp"
-      "org.vinegarhq.Sober"
-      "org.vinegarhq.Vinegar"
-
-      "com.ranfdev.Lobjur"
-      "io.github.giantpinkrobots.flatsweep"
-      "io.github.nokse22.Exhibit"
-      "io.github.wanglin2.mind-map"
-      "page.codeberg.lo_vely.Nucleus"
       "tech.digiroad.Convertidor"
     ];
 
@@ -172,6 +156,9 @@
 
     # new
     scratch-desktop
+    nucleus
+    exhibit
+    vinegar
 
     # web utility
     authelia
