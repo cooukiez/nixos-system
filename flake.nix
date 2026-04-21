@@ -35,7 +35,7 @@
     # home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # niri, scrolling wayland compositor
@@ -46,8 +46,8 @@
 
     # home-manager / stylix, configure application style
     stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/stylix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # home-manager / declarative kde plasma manager
@@ -77,8 +77,8 @@
 
     # home-manager / nixos vim config with nixvim
     nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      url = "github:nix-community/nixvim/nixos-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     agenix.url = "github:ryantm/agenix";

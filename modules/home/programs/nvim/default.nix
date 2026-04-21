@@ -30,7 +30,7 @@ in
   };
 
   config.programs.nixvim = {
-    enable = false;
+    enable = true;
     version.enableNixpkgsReleaseCheck = false;
 
     imports = fileImports;
