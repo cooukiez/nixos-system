@@ -29,8 +29,6 @@
     enableSSHSupport = true;
   };
 
-  services.snap.enable = true;
-
   environment.systemPackages = with pkgs; [
     # general programs, sorted alphabetically
     affine

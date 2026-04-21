@@ -15,74 +15,18 @@
 
   environment.systemPackages = with pkgs; [
     # general tools / libraries, sorted alphabetically
-    bluez-tools
     cairo
-    cdrkit
-    cdrtools
-    ffmpeg
     fontconfig
     fontforge
     freetype
-    fuse
-    fuse3
-    go
     icu
-    ifuse
-    imagemagick
-    intel-gpu-tools
     leptonica
-    libburn
-    libgphoto2
-    libimobiledevice
-    libimobiledevice-glue
-    libnotify
-    libpng
     mariadb
-    nvtopPackages.intel
     pandoc
     pango
-    poppler-utils
-    shader-slang
-    shaderc
-    shared-mime-info
-    tesseract
-    v4l-utils
-    vulkan-tools
-    yt-dlp
     zlib
 
-    # widgets / input
-    libsForQt5.qt5.qtbase
-    libsForQt5.qt5.qtdeclarative
-    libsForQt5.qt5.qtmultimedia
-    qt6.qtbase
-    qt6.qtmultimedia
-    qt6.qtsvg
-    qt6.qtvirtualkeyboard
-
-    libinput
-    libinput-gestures
-    libxcb-cursor
-    libxcursor
-
     # appmenu support
-    libappindicator
-    libappindicator-gtk2
-    libappindicator-gtk3
-    appmenu-glib-translator
-    libdbusmenu
-    libdbusmenu-gtk2
-    libdbusmenu-gtk3
-    lxqt.libdbusmenu-lxqt
-
-    # python
-    (python3.withPackages (
-      ps: with ps; [
-        numpy
-        pandas
-        emoji
-      ]
-    ))
 
     #
     # compatibility layers
@@ -96,11 +40,4 @@
     # proton
     protonup-ng
   ];
-
-  environment.shellAliases = {
-    # dotnet version aliases
-    dotnet8 = "${pkgs.dotnetCorePackages.sdk_8_0-bin}/bin/dotnet";
-    dotnet9 = "${pkgs.dotnetCorePackages.sdk_9_0-bin}/bin/dotnet";
-    dotnet10 = "${pkgs.dotnetCorePackages.sdk_10_0-bin}/bin/dotnet";
-  };
 }
