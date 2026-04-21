@@ -7,20 +7,15 @@
 
 # custom packages
 
-pkgs:
-let
-  # appmenuGtkModule = pkgs.callPackage ./appmenu-gtk-module.nix {};
-  hardcodeTrayPkg = pkgs.callPackage ./hardcode-tray.nix { };
-  heidisqlPkg = pkgs.callPackage ./heidisql.nix { };
-  iloaderPkg = pkgs.callPackage ./iloader.nix { };
-  mcMojaveCursorThemePkg = pkgs.callPackage ./mcmojave-cursor-theme.nix { };
-  steelFishFontsPkg = pkgs.callPackage ./steelfish-fonts.nix { };
-in
-{
-  # appmenu-gtk-module = appmenuGtkModule;
-  hardcode-tray = hardcodeTrayPkg;
-  heidisql = heidisqlPkg;
-  iloader = iloaderPkg;
-  mcmojave-cursor-theme = mcMojaveCursorThemePkg;
-  steelfish-fonts = steelFishFontsPkg;
+pkgs: {
+  hardcode-tray = pkgs.callPackage ./hardcode-tray.nix { };
+  heidisql = pkgs.callPackage ./heidisql.nix { };
+  iloader = pkgs.callPackage ./iloader.nix { };
+  mcmojave-cursor-theme = pkgs.callPackage ./mcmojave-cursor-theme.nix { };
+
+  scratch-desktop = pkgs.callPackage ./scratch {
+    electron = pkgs.electron_23;
+  };
+
+  steelfish-fonts = pkgs.callPackage ./steelfish-fonts.nix { };
 }

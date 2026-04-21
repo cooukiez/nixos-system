@@ -42,7 +42,7 @@
       # "com.odnoyko.valot"
       # "org.freedownloadmanager.Manager"
 
-      "edu.mit.Scratch"
+      # "edu.mit.Scratch"
       "org.shadered.SHADERed"
       "org.turbowarp.TurboWarp"
       "org.vinegarhq.Sober"
@@ -169,6 +169,9 @@
     unstable.jetbrains.rust-rover
     unstable.jetbrains.webstorm
     unstable.jetbrains.datagrip
+
+    # new
+    scratch-desktop
 
     # web utility
     authelia
