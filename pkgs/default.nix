@@ -12,10 +12,6 @@ pkgs: {
   heidisql = pkgs.callPackage ./heidisql.nix { };
   iloader = pkgs.callPackage ./iloader.nix { };
   mcmojave-cursor-theme = pkgs.callPackage ./mcmojave-cursor-theme.nix { };
-
-  scratch-desktop = pkgs.callPackage ./scratch.nix {
-    electron = pkgs.electron_39;
-  };
-
+  shadered = pkgs.callPackage ./shadered.nix { };
   steelfish-fonts = pkgs.callPackage ./steelfish-fonts.nix { };
 }

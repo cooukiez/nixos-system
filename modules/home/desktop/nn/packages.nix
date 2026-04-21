@@ -74,6 +74,11 @@
     gnome-online-accounts
     gsettings-desktop-schemas
 
+    # new
+    qalculate-gtk
+    nucleus
+    exhibit
+
     # for debugging
     nwg-look
   ];

@@ -37,5 +37,8 @@
     gImageReader-qt
     libreoffice-qt-fresh
     strawberry
+
+    # new
+    qalculate-qt
   ];
 }

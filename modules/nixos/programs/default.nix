@@ -23,42 +23,10 @@
     ./web.nix
   ];
 
-  # SUID wrappers
   programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-  };
-
-  # enable flatpak and install apps from flathub
-  services.flatpak = {
-    enable = true;
-
-    # declare packages declaratively
-    packages = [
-      "org.shadered.SHADERed"
-      "tech.digiroad.Convertidor"
-    ];
-
-    update.onActivation = true;
-
-    # see https://github.com/gmodena/nix-flatpak?tab=readme-ov-file#overrides
-    overrides = {
-      global = {
-        # force Wayland by default
-        Context.sockets = [
-          "wayland"
-          # "!x11"
-          # "!fallback-x11"
-        ];
-        Environment = {
-          # fix un-themed cursor in some wayland apps
-          XCURSOR_PATH = "/run/host/user-share/icons:/run/host/share/icons";
-          # force correct theme for some gtk appsjoplin-desktop
-          GTK_THEME = "Adwaita:dark";
-        };
-      };
-    };
   };
 
   services.snap.enable = true;
@@ -155,9 +123,6 @@
     unstable.jetbrains.datagrip
 
     # new
-    scratch-desktop
-    nucleus
-    exhibit
     vinegar
 
     # web utility
