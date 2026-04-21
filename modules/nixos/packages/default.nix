@@ -21,10 +21,7 @@ in
     pkgLib.filesystem
 
     # Networking & Security
-    pkgLib.networking
     pkgLib.secrets
-
-    pkgLib.desktop
 
     # Media
     pkgLib.media

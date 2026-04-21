@@ -107,14 +107,6 @@
       ];
     };
 
-  networking =
-    { pkgs, ... }:
-    {
-      environment.systemPackages = with pkgs; [
-        inetutils
-      ];
-    };
-
   secrets =
     { pkgs, ... }:
     {
@@ -149,6 +141,8 @@
         poppler-utils
         tesseract
         yt-dlp
+
+        gphoto2
       ];
     };
 }

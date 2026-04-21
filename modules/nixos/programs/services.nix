@@ -19,11 +19,6 @@
   # network statistics
   services.vnstat.enable = true;
 
-  # printing services
-  services.printing.enable = true;
-  services.printing.drivers = [ pkgs.hplip ];
-  services.avahi.enable = true;
-
   # running gnome apps outside of gnome
   programs.dconf.enable = true;
   services.gvfs.enable = true;

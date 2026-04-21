@@ -39,54 +39,41 @@ in
     btop # system monitor with curses interface
     cmus # terminal music player
     cointop # cryptocurrency dashboard
-    ctop # container metrics dashboard
     duf # disk usage viewer
     fff # simple file
     gdb-dashboard # gdb interface
     glances # system monitor with curses interface
-    gping # ping visualizer
     htop # interactive process viewer
     khal # interactive calendar client
-    lazydocker # interactive docker manager
     lazygit # interactive git client
     navi # interactive cheatsheet browser
-    newsboat # RSS feed reader
     powertop # power consumption monitor
     procs # interactive process viewer
     s-tui # monitoring tool
     taskwarrior2 # task manager
-    tuir # reddit terminal client
     wiper # disk analyzer and cleanup tool
 
     ### cli tools, sorted alphabetically ###
 
-    apacheHttpd
-    aria2
     bench
     bitwarden-cli
     bpm-tools
     brightnessctl
     cdparanoia
     clean
-    ddgr
     dfc
     diff-so-fancy
-    dig
     dog
     dua
     entr
     eza
-    gphoto2
     hexdump
-    httpie
     hyperfine
     joplin-cli
     just
     mani
     metadata
     neofetch
-    ngrok
-    pdfpc
     playerctl
     rip2
     ripgrep
@@ -94,8 +81,6 @@ in
     scc
     sla2pdf
     slack-cli
-    speedtest-cli
-    surge
     tealdeer
     tealdeer
     tldr
