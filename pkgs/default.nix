@@ -13,8 +13,8 @@ pkgs: {
   iloader = pkgs.callPackage ./iloader.nix { };
   mcmojave-cursor-theme = pkgs.callPackage ./mcmojave-cursor-theme.nix { };
 
-  scratch-desktop = pkgs.callPackage ./scratch {
-    electron = pkgs.electron_23;
+  scratch-desktop = pkgs.callPackage ./scratch.nix {
+    electron = pkgs.electron_39;
   };
 
   steelfish-fonts = pkgs.callPackage ./steelfish-fonts.nix { };

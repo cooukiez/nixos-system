@@ -96,9 +96,11 @@
       ]
     ))
 
-    # node
-    nodejs_24
-    nodePackages_latest.vercel
+    /*
+      # node
+      nodejs_24
+      nodePackages_latest.vercel
+    */
 
     #
     # compatibility layers
