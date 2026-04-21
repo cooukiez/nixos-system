@@ -5,104 +5,67 @@
   on 2026-02-26
 */
 
-# start config from https://github.com/Misterio77/nix-starter-configs
-# inspired by https://github.com/AlexNabokikh/nix-config
-
 {
   description = "system configuration for my laptop";
 
   inputs = {
-    # nixpkgs stable nixpkgs-unstable
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # nixos profiles to optimize settings for different hardware
     hardware.url = "github:nixos/nixos-hardware";
-
-    # declarative flatpak manager
-    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=v0.6.0";
-
-    nix-snapd = {
-      url = "github:nix-community/nix-snapd";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
 
     nur = {
       url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # home manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # niri, scrolling wayland compositor
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # home-manager / stylix, configure application style
     stylix = {
       url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # home-manager / declarative kde plasma manager
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager";
     };
 
-    # home-manager / quickshell, declarative shell configuration
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # home-manager / noctalia shell, written in quickshell
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # home-manager / noctalia quickshell fork
     noctalia-qs = {
       url = "github:noctalia-dev/noctalia-qs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # home-manager / nixos vim config with nixvim
     nixvim = {
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     agenix.url = "github:ryantm/agenix";
-
     copyparty.url = "github:9001/copyparty";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     gamemaker.url = "github:cooukiez/gamemaker-flake";
-
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        # IMPORTANT: using "libgbm" and is only available in unstable so ensure
-        # to have it up-to-date or simply not specify the nixpkgs input
-        nixpkgs.follows = "nixpkgs-unstable";
-        home-manager.follows = "home-manager";
-      };
-    };
-
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-
-    honklet = {
-      url = "github:hannahfluch/honklet";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    honklet.url = "github:hannahfluch/honklet";
   };
 
   outputs =

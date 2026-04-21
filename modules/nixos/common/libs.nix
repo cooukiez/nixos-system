@@ -59,6 +59,7 @@
     qt6.qtmultimedia
     qt6.qtsvg
     qt6.qtvirtualkeyboard
+
     libinput
     libinput-gestures
     libxcb-cursor
@@ -69,23 +70,10 @@
     libappindicator-gtk2
     libappindicator-gtk3
     appmenu-glib-translator
-    haskellPackages.gi-dbusmenu # not needed
-    haskellPackages.gi-dbusmenugtk3 # not needed
     libdbusmenu
     libdbusmenu-gtk2
     libdbusmenu-gtk3
     lxqt.libdbusmenu-lxqt
-
-    #
-    # development libraries
-    #
-
-    # dotnet
-    (dotnetCorePackages.combinePackages [
-      dotnetCorePackages.sdk_8_0-bin
-      dotnetCorePackages.sdk_9_0-bin
-      dotnetCorePackages.sdk_10_0-bin
-    ])
 
     # python
     (python3.withPackages (
@@ -95,12 +83,6 @@
         emoji
       ]
     ))
-
-    /*
-      # node
-      nodejs_24
-      nodePackages_latest.vercel
-    */
 
     #
     # compatibility layers
