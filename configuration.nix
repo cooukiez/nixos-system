@@ -29,8 +29,6 @@
     inputs.self.nixosModules.programs
     inputs.self.nixosModules.services
 
-    inputs.nix-flatpak.nixosModules.nix-flatpak
-    inputs.nix-snapd.nixosModules.default
     inputs.niri.nixosModules.niri
     inputs.agenix.nixosModules.default
     inputs.spicetify-nix.nixosModules.default
