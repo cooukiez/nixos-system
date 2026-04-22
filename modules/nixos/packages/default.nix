@@ -3,10 +3,14 @@
   hostSystem,
   ...
 }:
-
 let
-  # Import the package library file
-  pkgLib = import ./core.nix { inherit inputs hostSystem; };
+  packages = import ./packages.nix { inherit pkgs; };
+  cfg = config.graphicalConfig;
+
+  mkEnableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+  };
 in
 {
   imports = [

@@ -33,58 +33,7 @@ in
   environment.systemPackages = with pkgs; [
     ### tui tools, sorted alphabetically ###
 
-    bandwhich # network bandwidth monitor
-    bat # file viewer with syntax highlighting
-    bottom # interactive system monitor
-    btop # system monitor with curses interface
-    cmus # terminal music player
-    cointop # cryptocurrency dashboard
-    duf # disk usage viewer
-    fff # simple file
-    gdb-dashboard # gdb interface
-    glances # system monitor with curses interface
-    htop # interactive process viewer
-    khal # interactive calendar client
-    lazygit # interactive git client
-    navi # interactive cheatsheet browser
-    powertop # power consumption monitor
-    procs # interactive process viewer
-    s-tui # monitoring tool
-    taskwarrior2 # task manager
-    wiper # disk analyzer and cleanup tool
-
     ### cli tools, sorted alphabetically ###
-
-    bench
-    bitwarden-cli
-    bpm-tools
-    brightnessctl
-    cdparanoia
-    clean
-    dfc
-    diff-so-fancy
-    dog
-    dua
-    entr
-    eza
-    hexdump
-    hyperfine
-    joplin-cli
-    just
-    mani
-    metadata
-    neofetch
-    playerctl
-    rip2
-    ripgrep
-    s0ix-selftest-tool
-    scc
-    sla2pdf
-    slack-cli
-    tealdeer
-    tealdeer
-    tldr
-    ventoy
 
     # my system tools
     clear-logs
@@ -96,13 +45,5 @@ in
     sync-flake
 
     # playful tools
-    asciinema
-    cmatrix
-    cowsay
-    figlet
-    fortune
-    kittysay
-    lolcat
-    sl
   ];
 }

@@ -114,6 +114,7 @@
     ausweisapp
     ausweiskopie
     bitwarden-desktop
+    bitwarden-cli
     chemtool
     figma-linux
     googleearth-pro

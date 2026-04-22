@@ -9,6 +9,7 @@
     unstable.legcord
     element-desktop
     slack
+    slack-cli
   ];
 
   download = with pkgs; [

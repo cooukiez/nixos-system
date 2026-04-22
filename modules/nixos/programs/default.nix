@@ -28,20 +28,4 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    # general programs, sorted alphabetically
-
-    hardcode-tray
-    icon-slicer
-
-    # code editors / IDE
-
-    # new
-
-    # web utility
-    authelia
-
-    # from flakes
-  ];
 }
