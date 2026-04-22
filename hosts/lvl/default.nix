@@ -1,7 +1,20 @@
 {
-  users,
+  userList,
   ...
 }:
+let
+  globalConfig = {
+    hostname = "lvl";
+    hostSystem = "x86_64-linux";
+    staticIP = "192.168.178.67";
+
+    dnsServers = [
+      "1.1.1.1"
+      "8.8.8.8"
+      "9.9.9.9"
+    ];
+  };
+in
 {
   imports = [
     ./config.nix
@@ -73,7 +86,7 @@
     ];
     password = "CHANGE-ME";
     shell = pkgs.zsh;
-  }) users;
+  }) userList;
 
   systemd.tmpfiles.rules = lib.concatLists (
     lib.mapAttrsToList (
@@ -82,6 +95,6 @@
         "r /home/${username}/${target}"
         "L /home/${username}/${target} - - - - ${source}"
       ]) (user.bindDirs or { })
-    ) users
+    ) userList
   );
 }

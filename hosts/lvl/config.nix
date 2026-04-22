@@ -1,4 +1,8 @@
 {
+  pkgs,
+  ...
+}:
+{
   # boot configuration
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
