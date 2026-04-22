@@ -6,40 +6,41 @@
 }:
 let
   network = import ./packages.nix { inherit pkgs; };
-  cfg = config.graphicalPkgNetwork;
+  cfg = config.networkConfig;
+
+  mkEnableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+  };
 in
 {
-  options.graphicalPkgNetwork = {
-    core = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    tui = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
+  imports = [
+    ./shares.nix
+  ];
 
-    ssh = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    tailscale = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    vsftpd = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    printing = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
+  options.networkConfig = {
+    corePkg = mkEnableDefault;
+    tuiPkg = mkEnableDefault;
+
+    ssh = mkEnableDefault;
+    tailscale = mkEnableDefault;
+    vsftpd = mkEnableDefault;
+    printing = mkEnableDefault;
+
+    samba = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          server = mkEnableDefault;
+          fritzMount = mkEnableDefault;
+        };
+      };
+      default = { };
     };
   };
 
   config = {
     environment.systemPackages =
-      (lib.optionals cfg.core network.core) ++ (lib.optionals cfg.tui network.tui);
+      (lib.optionals cfg.corePkg network.core) ++ (lib.optionals cfg.tuiPkg network.tui);
 
     services.openssh = lib.mkIf cfg.ssh {
       enable = true;

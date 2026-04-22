@@ -1,39 +1,43 @@
 {
-  age.secrets.fritz-creds = {
-    file = ../../../secrets/fritz-creds.age;
-  };
-
-  services.samba = {
-    enable = false;
-    settings = {
-      global = {
-        "workgroup" = "WORKGROUP";
-        "server string" = "smbnix";
-        "netbios name" = "smbnix";
-        "security" = "user";
-
-        "hosts allow" = "192.168.178.";
-        "hosts deny" = "0.0.0.0/0";
-
-        "guest account" = "nobody";
-        "map to guest" = "bad user";
+  config,
+  ...
+}:
+let
+  cfg = config.networkConfig.samba;
+in
+{
+  config = {
+    services.samba = lib.mkIf cfg.server {
+      enable = true;
+      settings = {
+        global = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "smbnix";
+          "netbios name" = "smbnix";
+          "security" = "user";
+          "hosts allow" = "192.168.178.";
+          "hosts deny" = "0.0.0.0/0";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
+        };
       };
     };
-  };
 
-  #
-  # mounts
-  #
-  fileSystems."/mnt/fritz" = {
-    device = "//fritz.box/fritz.box";
-    fsType = "cifs";
-    options = [
-      "credentials=${config.age.secrets.fritz-creds.path}"
-      "x-systemd.automount"
-      "noatime"
-      "uid=1000"
-      "gid=100"
-      "vers=3.0"
-    ];
+    age.secrets.fritz-creds = lib.mkIf cfg.fritzMount {
+      file = ../../../secrets/fritz-creds.age;
+    };
+
+    fileSystems."/mnt/fritz" = lib.mkIf cfg.fritzMount {
+      device = "//fritz.box/fritz.box";
+      fsType = "cifs";
+      options = [
+        "credentials=${config.age.secrets.fritz-creds.path}"
+        "x-systemd.automount"
+        "noatime"
+        "uid=1000"
+        "gid=100"
+        "vers=3.0"
+      ];
+    };
   };
 }

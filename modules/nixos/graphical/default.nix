@@ -6,28 +6,24 @@
 }:
 let
   desktop = import ./packages.nix { inherit pkgs; };
-  cfg = config.graphicalPkg;
+  cfg = config.graphicalConfig;
+
+  mkEnableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+  };
 in
 {
-  options.graphicalPkg = {
-    core = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    qt = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    appmenu = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
+  options.graphicalConfig = {
+    corePkg = mkEnableDefault;
+    qtPkg = mkEnableDefault;
+    appmenuPkg = mkEnableDefault;
   };
 
   config = {
     environment.systemPackages =
-      (lib.optionals cfg.core desktop.core)
-      ++ (lib.optionals cfg.qt desktop.qt)
-      ++ (lib.optionals cfg.appmenu desktop.appmenu);
+      (lib.optionals cfg.corePkg desktop.core)
+      ++ (lib.optionals cfg.qtPkg desktop.qt)
+      ++ (lib.optionals cfg.appmenuPkg desktop.appmenu);
   };
 }

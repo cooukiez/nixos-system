@@ -6,22 +6,25 @@
 }:
 let
   web = import ./packages.nix { inherit pkgs; };
-  cfg = config.graphicalPkgWeb;
+  cfg = config.graphicalConfig.web;
+
+  mkEnableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+  };
 in
 {
-  options.graphicalPkgWeb = {
-    firefox = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
+  options.graphicalConfig = {
+    web = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          messengerPkg = mkEnableDefault;
+          downloadPkg = mkEnableDefault;
 
-    messenger = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
-    download = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
+          firefox = mkEnableDefault;
+        };
+      };
+      default = { };
     };
   };
 
@@ -29,6 +32,6 @@ in
     imports = lib.optional cfg.firefox ./firefox.nix;
 
     environment.systemPackages =
-      (lib.optionals cfg.messenger web.messenger) ++ (lib.optionals cfg.download web.download);
+      (lib.optionals cfg.messengerPkg web.messenger) ++ (lib.optionals cfg.downloadPkg web.download);
   };
 }
