@@ -45,16 +45,16 @@
   # audio
   services.pipewire = {
     enable = true;
+    raopOpenFirewall = true;
 
     audio.enable = true;
     pulse.enable = true;
     jack.enable = true;
+
     alsa = {
       enable = true;
       support32Bit = true;
     };
-
-    raopOpenFirewall = true;
 
     extraConfig.pipewire = {
       "10-airplay" = {
@@ -76,24 +76,6 @@
         };
       };
     };
-
-    /*
-      wireplumber.extraConfig = {
-        "51-camera-suspend" = {
-          "monitor.v4l2.rules" = [
-            {
-              matches = [ { "device.name" = "~v4l2_device.*"; } ];
-              actions = {
-                update-props = {
-                  "session.suspend-on-idle" = true;
-                  "dma-buf.enabled" = true;
-                };
-              };
-            }
-          ];
-        };
-      };
-    */
   };
 
   # allow pipewire real-time scheduling
@@ -123,20 +105,70 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
+
     settings = {
       General = {
-        # shows battery charge of connected devices on supported
         Experimental = true;
-        # when enabled other devices can connect faster to us
-        # the tradeoff is increased power consumption
         FastConnectable = true;
-        # enable A2DP audio sink
         Enable = "Source,Sink,Media,Socket";
       };
+
       Policy = {
-        # enable all controllers when they are found
         AutoEnable = true;
       };
     };
+  };
+
+  # drive
+  services.btrfs.autoScrub = {
+    enable = true;
+    interval = "weekly";
+  };
+
+  # data snapshots (every 30 min)
+  systemd.services.snapshot-data = {
+    description = "btrfs data snapshot";
+    serviceConfig.Type = "oneshot";
+    path = with pkgs; [
+      coreutils
+      btrfs-progs
+    ];
+
+    script = ''
+      DATE=$(date +%Y-%m-%d-%H%M)
+      mkdir -p /snapshots/data/data-$DATE
+      btrfs subvolume snapshot -r /data /snapshots/data/data-$DATE/data
+    '';
+  };
+
+  systemd.timers.snapshot-data = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnCalendar = "*:0/30";
+      Persistent = true;
+    };
+  };
+
+  # cleanup policy
+  systemd.services.snapshot-cleanup = {
+    description = "cleanup old snapshots";
+    serviceConfig.Type = "oneshot";
+    path = with pkgs; [
+      findutils
+      btrfs-progs
+    ];
+    script = ''
+      find /snapshots/data -mindepth 1 -maxdepth 1 -type d -mtime +3 -exec sh -c '
+        for dir do
+          btrfs subvolume delete "$dir"/*
+          rmdir "$dir"
+        done
+      ' sh {} +
+    '';
+  };
+
+  systemd.timers.snapshot-cleanup = {
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = "daily";
   };
 }
