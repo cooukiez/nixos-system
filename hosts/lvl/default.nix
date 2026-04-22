@@ -1,8 +1,10 @@
 {
   inputs,
+  outputs,
   config,
   pkgs,
   lib,
+  hostConfig,
   userList,
   ...
 }:
@@ -102,7 +104,7 @@
       inherit
         inputs
         outputs
-        globalConfig
+        hostConfig
         ;
     };
 

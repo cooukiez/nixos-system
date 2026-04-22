@@ -23,6 +23,10 @@ let
   };
 in
 {
+  imports = [
+    ./programs/zsh.nix
+  ];
+
   options.packageConfig = {
     corePkg = mkEnableDefault;
     nixPkg = mkEnableDefault;
@@ -66,10 +70,8 @@ in
       enableSSHSupport = true;
     };
 
-    programs.zsh.enable = true;
     programs.neovim.enable = true;
 
-    # session variables
     environment.sessionVariables = {
       VCPKG_FORCE_SYSTEM_BINARIES = 1;
       LD_LIBRARY_PATH = [ "${pkgs.zlib}/lib" ];
