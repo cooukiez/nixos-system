@@ -17,6 +17,7 @@
     inputs.self.systemModules.packages
 
     inputs.agenix.nixosModules.default
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   nixpkgs = {
@@ -92,4 +93,34 @@
       ]) (user.bindDirs or { })
     ) userList
   );
+
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+
+    extraSpecialArgs = {
+      inherit
+        inputs
+        outputs
+        globalConfig
+        ;
+    };
+
+    users = lib.mapAttrs (username: userConfig: {
+      imports = [
+        # inputs.self.homeModules.programs
+      ];
+
+      _module.args.userConfig = userConfig;
+
+      home = {
+        username = username;
+        homeDirectory = "/home/${username}";
+        stateVersion = "25.11";
+      };
+
+      programs.home-manager.enable = true;
+      systemd.user.startServices = "sd-switch";
+    }) userList;
+  };
 }

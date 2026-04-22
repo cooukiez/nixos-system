@@ -79,11 +79,11 @@
           "activityBar.activeBorder" = "#ebebeb";
         };
 
-        "editorGutter.modifiedBackground" = "#00000000"; # transparent modified gutter
-        "editorGutter.addedBackground" = "#00000000"; # transparent added gutter
-        "editorGutter.deletedBackground" = "#00000000"; # transparent deleted gutter
-        "editorGutter.warningBackground" = "#00000000"; # transparent warning gutter
-        "editorGutter.errorBackground" = "#00000000"; # transparent error gutter
+        "editorGutter.modifiedBackground" = "#00000000";
+        "editorGutter.addedBackground" = "#00000000";
+        "editorGutter.deletedBackground" = "#00000000";
+        "editorGutter.warningBackground" = "#00000000";
+        "editorGutter.errorBackground" = "#00000000";
 
         "favouriteThemes.pinnedThemes" = [
           "Ardent (contrast 0, chroma 0, lightness 0)"

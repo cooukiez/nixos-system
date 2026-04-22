@@ -1,15 +1,3 @@
-/*
-  modules/home/programs/zsh.nix
-
-  created by ludw
-  on 2026-02-26
-*/
-
-{
-  userConfig,
-  hostname,
-  ...
-}:
 let
   promptFirstColor = "%F{yellow}";
   promptSecondColor = "%F{blue}";
@@ -19,13 +7,19 @@ in
     enable = true;
 
     enableCompletion = true;
-    autosuggestion.enable = true;
+    autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
     shellAliases = {
       ll = "ls -la";
       gs = "git status";
 
+      help = "bash -c 'help'";
+      c = "clear";
+
+      pwf = "edit-secret /data/upm.age";
+
+      # nix system
       nd = "cd /etc/nixos";
 
       us = "sudo nixos-rebuild switch --impure";
@@ -37,24 +31,20 @@ in
 
       cns = "sudo sh -c 'nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d && nix-store --optimise && nix-store --verify'";
 
-      ne = "kate /etc/nixos";
-
-      pwf = "edit-secret /data/upm.age";
-
+      # utility
       gtop = "sudo intel_gpu_top";
-
-      help = "bash -c 'help'";
-      c = "clear";
     };
 
-    initContent = ''
+    interactiveShellInit = ''
       bindkey -e
       export EDITOR=nvim
-
       autoload -U colors && colors
+    '';
+
+    promptInit = ''
       PROMPT='${promptFirstColor}%n@${promptSecondColor}%m%f:%~$ '
     '';
 
-    history.size = 16384;
+    histSize = 16384;
   };
 }

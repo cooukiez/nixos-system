@@ -11,6 +11,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    wrappers.url = "github:lassulus/wrappers";
     agenix.url = "github:ryantm/agenix";
 
     home-manager = {
