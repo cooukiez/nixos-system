@@ -1,20 +1,11 @@
 {
+  config,
+  inputs,
+  pkgs,
+  lib,
   userList,
   ...
 }:
-let
-  globalConfig = {
-    hostname = "lvl";
-    hostSystem = "x86_64-linux";
-    staticIP = "192.168.178.67";
-
-    dnsServers = [
-      "1.1.1.1"
-      "8.8.8.8"
-      "9.9.9.9"
-    ];
-  };
-in
 {
   imports = [
     ./config.nix

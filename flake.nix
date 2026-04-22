@@ -60,34 +60,40 @@
       inherit (self) outputs;
       lib = nixpkgs.lib;
 
-      systems = [
-        hostSystem
-      ];
+      hostDirs = lib.attrNames (
+        lib.filterAttrs (name: type: type == "directory") (builtins.readDir ./hosts)
+      );
 
-      forAllSystems = nixpkgs.lib.genAttrs systems;
-
-      mkNixosConfiguration =
-        hostname:
-        nixpkgs.lib.nixosSystem {
+      mkHost =
+        hostName:
+        let
+          hostPath = ./hosts/${hostName};
+          hostData = import "${hostPath}/default.nix";
+          hostConfig = import "${hostPath}/host.nix";
+          userList = import "${hostPath}/users.nix";
+        in
+        lib.nixosSystem {
+          system = hostConfig.hostSystem;
           specialArgs = {
             inherit
               inputs
               outputs
-              hostSystem
-              hostname
-              staticIP
-              dnsServers
-              users
+              hostConfig
+              userList
               ;
-            nixosModules = "${self}/modules/nixos";
+            inherit (hostConfig) hostname;
           };
-          modules = [
-            # main config file
-            ./configuration.nix
 
-            inputs.hardware.nixosModules.lenovo-thinkpad-x1-yoga-8th-gen
+          modules = [
+            hostPath
           ];
         };
+
+      supportedSystems = [
+        "x86_64-linux"
+      ];
+
+      forAllSystems = lib.genAttrs supportedSystems;
     in
     {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
@@ -101,19 +107,9 @@
           ;
       };
 
-      nixosModules = import ./modules/nixos;
-      homeManagerModules = import ./modules/home;
+      systemModules = import ./modules/system;
+      homeModules = import ./modules/home;
 
-      # nixos configuration entrypoint
-      nixosConfigurations = {
-        lvl = mkNixosConfiguration "lvl";
-      };
-
-      # standalone home-manager configuration entrypoint
-      homeConfigurations = {
-        "ceirs@lvl" = mkHomeConfiguration hostSystem "ceirs" "lvl";
-        "ludw@lvl" = mkHomeConfiguration hostSystem "ludw" "lvl";
-        "redi@lvl" = mkHomeConfiguration hostSystem "redi" "lvl";
-      };
+      nixosConfigurations = lib.genAttrs hostDirs (name: mkHost name);
     };
 }

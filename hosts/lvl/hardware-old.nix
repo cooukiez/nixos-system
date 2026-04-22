@@ -1,4 +1,8 @@
 {
+  pkgs,
+  ...
+}:
+{
   hardware.enableAllFirmware = true;
 
   # session variables
