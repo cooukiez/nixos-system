@@ -12,14 +12,18 @@ let
   wpctl = [ "wpctl" ];
   brightnessctl = [ "brightnessctl" ];
 
-  noctalia-ipc =
-    args:
-    [
+  mkNoctaliaBind = title: commandList: {
+    _attrs = {
+      hotkey-overlay-title = title;
+    };
+
+    spawn = [
       "noctalia-shell"
       "ipc"
       "call"
     ]
-    ++ args;
+    ++ commandList;
+  };
 
   low-res-pkg = pkgs.writeShellScriptBin "niri-low-res" ''
     ${pkgs.niri}/bin/niri msg output "eDP-1" custom-mode "1920x1200@60.000"

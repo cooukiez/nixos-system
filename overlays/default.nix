@@ -7,11 +7,32 @@
 
 {
   inputs,
+  hostConfig,
   ...
 }:
+let
+  system = hostConfig.hostSystem;
+in
 {
   additions = final: _prev: import ../pkgs final.pkgs;
-  modifications = final: prev: { };
+
+  modifications = final: prev: {
+    agenix = inputs.agenix.packages.${system}.default;
+
+    noctalia = inputs.noctalia.packages.${system}.default.override {
+      calendarSupport = true;
+    };
+
+    sf-compact = inputs.apple-fonts.packages.${system}.sf-compact;
+    sf-mono = inputs.apple-fonts.packages.${system}.sf-mono;
+    sf-pro = inputs.apple-fonts.packages.${system}.sf-pro;
+    sf-pro-nerd = inputs.apple-fonts.packages.${system}.sf-pro-nerd;
+
+    gamemaker = inputs.gamemaker.packages.${system}.default;
+
+    # useless
+    honklet = inputs.honklet.packages.${system}.default;
+  };
 
   unstable-packages = final: _prev: {
     unstable = import inputs.nixpkgs-unstable {

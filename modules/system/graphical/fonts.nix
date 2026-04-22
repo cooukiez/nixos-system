@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   pkgs,
   lib,
@@ -46,17 +45,16 @@ in
       roboto-flex
       roboto-serif
       rubik
+      sf-compac
+      sf-mono
+      sf-pro
+      sf-pro-nerd
       sn-pro
       steelfish-fonts
       ubuntu-sans
       ubuntu-sans-mono
       vista-fonts
       work-sans
-
-      inputs.apple-fonts.packages.${hostConfig.hostSystem}.sf-compact
-      inputs.apple-fonts.packages.${hostConfig.hostSystem}.sf-mono
-      inputs.apple-fonts.packages.${hostConfig.hostSystem}.sf-pro
-      inputs.apple-fonts.packages.${hostConfig.hostSystem}.sf-pro-nerd
     ];
   };
 }

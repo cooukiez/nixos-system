@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   pkgs,
   lib,
@@ -7,7 +6,7 @@
   ...
 }:
 let
-  packages = import ./packages.nix { inherit inputs pkgs hostConfig; };
+  packages = import ./packages.nix { inherit pkgs hostConfig; };
   cfg = config.packageConfig;
 
   clear-logs = pkgs.writeShellScriptBin "clear-logs" (builtins.readFile ./scripts/clear-logs.sh);

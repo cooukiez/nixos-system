@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   hostConfig,
   ...
@@ -36,10 +35,9 @@
 
   secrets = with pkgs; [
     age
+    agenix
     authelia
     openssl
-
-    inputs.agenix.packages.${hostConfig.hostSystem}.default
   ];
 
   utils = with pkgs; [

@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   pkgs,
   lib,
@@ -7,7 +6,7 @@
   ...
 }:
 let
-  desktop = import ./packages.nix { inherit inputs pkgs hostConfig; };
+  desktop = import ./packages.nix { inherit pkgs hostConfig; };
   cfg = config.graphicalConfig;
 
   mkEnableDefault = lib.mkOption {
