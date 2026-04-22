@@ -1,215 +1,218 @@
 {
-  wlib,
-  lib,
-  pkgs,
+  inputs,
   config,
-  ...
+  pkgs,
 }:
-let
-  myNiri = (
-    wrappers.wrapModule (
-      { config, wlib, ... }:
-      {
-        config = {
-          package = pkgs.niri;
+inputs.wrappers.wrapperModules.niri.apply {
+  inherit pkgs;
 
-          settings = {
-            prefer-no-csd = true;
-            hotkey-overlay.skip-at-startup = true;
-            xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+  settings = {
 
-            # input
-            input = {
-              keyboard.xkb.layout = "de";
-              touchpad = {
-                enable = true;
-                tap = true;
-                accel-speed = 0.25;
-                scroll-factor = 1.5;
-                natural-scroll = true;
-              };
-              mouse = {
-                enable = true;
-                accel-speed = 0.1;
-                natural-scroll = false;
-              };
-              trackpoint = {
-                enable = true;
-                accel-speed = 1.0;
-                natural-scroll = false;
-              };
-              focus-follows-mouse = {
-                enable = true;
-                max-scroll-amount = "25%";
-              };
-              power-key-handling.enable = true;
-              warp-mouse-to-focus.enable = true;
-              mod-key = "Super";
-              mod-key-nested = "Alt";
-            };
+    prefer-no-csd = true;
+    hotkey-overlay.skip-at-startup = true;
 
-            # output
-            outputs = {
-              "eDP-1" = {
-                enable = true;
-                mode = {
-                  width = 3840;
-                  height = 2400;
-                  refresh = 60.0;
-                };
-                scale = 2.0;
-                position = {
-                  _attrs = {
-                    x = 0;
-                    y = 0;
-                  };
-                };
-              };
+    screenshot-path = "${config.home.homeDirectory}/Pictures/Screenshots/%Y-%m-%d-%H%M%S.png";
 
-              "HDMI-A-1" = {
-                enable = true;
-                mode = {
-                  width = 1920;
-                  height = 1080;
-                  refresh = 60.0;
-                };
-                scale = 1.0;
-                position = {
-                  _attrs = {
-                    x = 1920;
-                    y = 0;
-                  };
-                };
-              };
-            };
+    xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-            # layout
-            layout = {
-              gaps = 5;
+    binds = import ./binds.nix { inherit config; };
 
-              struts = {
-                left = 10;
-                right = 10;
-                top = 10;
-                bottom = 10;
-              };
-
-              border.enable = false;
-              focus-ring.enable = false;
-
-              default-column-width.proportion = 0.5;
-
-              preset-column-widths = [
-                { proportion = 1.0 / 3.0; }
-                { proportion = 0.5; }
-                { proportion = 2.0 / 3.0; }
-              ];
-
-              preset-window-heights = [
-                { proportion = 1.0 / 3.0; }
-                { proportion = 0.5; }
-                { proportion = 2.0 / 3.0; }
-                { proportion = 1.0; }
-              ];
-
-              shadow = {
-                enable = true;
-                draw-behind-window = true;
-                softness = 30;
-                spread = 5;
-
-                offset = {
-                  _attrs = {
-                    x = 0;
-                    y = 5;
-                  };
-                };
-
-                color = "#00000070";
-              };
-
-              tab-indicator = {
-                enable = true;
-                place-within-column = true;
-
-                position = "top";
-                width = 8;
-
-                corner-radius = 8;
-                gap = 8;
-                gaps-between-tabs = 8;
-
-                active.color = "rgba(224, 224, 224, 100%)";
-                inactive.color = "rgba(224, 224, 224, 30%)";
-
-                length.total-proportion = 1.0;
-              };
-            };
-
-            # Rules - These use the mkRule helper in the wrapper
-            window-rules = [
-              {
-                matches = [ ]; # Apply to all by default or specify
-                geometry-corner-radius = {
-                  _attrs = {
-                    bottom-left = 10.0;
-                    bottom-right = 10.0;
-                    top-left = 10.0;
-                    top-right = 10.0;
-                  };
-                };
-                clip-to-geometry = true;
-                draw-border-with-background = false;
-                open-maximized = true;
-                open-fullscreen = false;
-              }
-              {
-                matches = [
-                  { app-id = "kitty"; }
-                  { app-id = "thunar"; }
-                ];
-                open-maximized = false;
-              }
-            ];
-
-            layer-rules = [
-              {
-                matches = [ { namespace = "^noctalia-overview*"; } ];
-                place-within-backdrop = true;
-              }
-            ];
-
-            binds = import ./binds.nix { inherit config; };
-
-            spawn-at-startup = [
-
-            ];
-
-            switch-events = {
-              lid-close = {
-                action.spawn = [
-                  "sh"
-                  "-c"
-                  "niri msg action power-off-monitors && hyprlock"
-                ];
-              };
-            };
-
-            overview.workspace-shadow.enable = false;
-          };
-
-          config.systemd = {
-            description = "Niri Wayland Compositor";
-            serviceConfig = {
-              Type = "notify";
-              ExecStart = "${config.package}/bin/niri --session";
-              Restart = "on-failure";
-            };
-          };
+    input = {
+      keyboard = {
+        xkb = {
+          layout = "de";
         };
+      };
+
+      touchpad = {
+        enable = true;
+        tap = true;
+
+        accel-speed = 0.25;
+        scroll-factor = 1.5;
+        natural-scroll = true;
+      };
+
+      mouse = {
+        enable = true;
+        accel-speed = 0.1;
+        natural-scroll = false;
+      };
+
+      trackpoint = {
+        enable = true;
+        accel-speed = 1.0;
+        natural-scroll = false;
+      };
+
+      focus-follows-mouse = {
+        enable = true;
+        max-scroll-amount = "25%";
+      };
+
+      power-key-handling.enable = true;
+      warp-mouse-to-focus.enable = true;
+
+      mod-key = "Super";
+      mod-key-nested = "Alt";
+    };
+
+    outputs.eDP-1 = {
+      enable = true;
+      mode = {
+        width = 3840;
+        height = 2400;
+        refresh = 60.000;
+      };
+      scale = 2.0;
+      position = {
+        x = 0;
+        y = 0;
+      };
+    };
+
+    outputs.HDMI-A-1 = {
+      enable = true;
+      mode = {
+        width = 1920;
+        height = 1080;
+        refresh = 60.000;
+      };
+      scale = 1.0;
+      position = {
+        # place rigth to eDP-1
+        x = 1920;
+        y = 0;
+      };
+    };
+
+    switch-events = {
+      lid-close.action.spawn = [
+        "sh"
+        "-c"
+        "niri msg action power-off-monitors && hyprlock"
+      ];
+
+      /*
+        lid-open.action.spawn = [
+          "sh"
+          "-c"
+          "hyprlock"
+        ];
+      */
+    };
+
+    overview = {
+      workspace-shadow = {
+        enable = false;
+      };
+    };
+
+    layout = {
+      gaps = 5;
+      struts = {
+        left = 10;
+        right = 10;
+        top = 10;
+        bottom = 10;
+      };
+
+      border.enable = false;
+
+      default-column-width.proportion = 0.5;
+
+      preset-column-widths = [
+        { proportion = 1.0 / 3.0; }
+        { proportion = 0.5; }
+        { proportion = 2.0 / 3.0; }
+      ];
+
+      preset-window-heights = [
+        { proportion = 1.0 / 3.0; }
+        { proportion = 0.5; }
+        { proportion = 2.0 / 3.0; }
+        { proportion = 1.0; }
+      ];
+
+      focus-ring = {
+        enable = false;
+      };
+
+      shadow = {
+        enable = true;
+        draw-behind-window = true;
+        softness = 30;
+        spread = 5;
+        offset.x = 0;
+        offset.y = 5;
+        color = "#00000070";
+      };
+
+      tab-indicator = {
+        enable = true;
+        place-within-column = true;
+        position = "top";
+
+        width = 8;
+        corner-radius = 8;
+        gap = 8;
+        gaps-between-tabs = 8;
+
+        active = {
+          color = "rgba(224, 224, 224, 100%)";
+        };
+
+        inactive = {
+          color = "rgba(224, 224, 224, 30%)";
+        };
+
+        length.total-proportion = 1.0;
+      };
+
+    };
+
+    layer-rules = [
+      {
+        matches = [
+          {
+            namespace = "^noctalia-overview*";
+          }
+        ];
+
+        place-within-backdrop = true;
       }
-    )
-  );
-in
-{
+    ];
+
+    window-rules = [
+      {
+        geometry-corner-radius =
+          let
+            radius = 10.0;
+          in
+          {
+            bottom-left = radius;
+            bottom-right = radius;
+            top-left = radius;
+            top-right = radius;
+          };
+
+        clip-to-geometry = true;
+        draw-border-with-background = false;
+        open-maximized = true;
+        open-fullscreen = false;
+      }
+      {
+        matches = [
+          {
+            app-id = "kitty";
+          }
+          {
+            app-id = "thunar";
+          }
+        ];
+
+        open-maximized = false;
+      }
+    ];
+  };
 }

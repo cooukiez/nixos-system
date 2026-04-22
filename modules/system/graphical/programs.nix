@@ -44,6 +44,8 @@ in
   config = lib.mkMerge [
     (lib.mkIf cfg.development {
       environment.systemPackages = desktop.development ++ desktop.developmentGameEngines;
+
+      programs.vscode.enable = true;
     })
 
     (lib.mkIf cfg.gaming {
