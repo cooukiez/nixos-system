@@ -5,9 +5,6 @@
   on 2026-02-26
 */
 
-# generated config by nixos
-# do not modify this file
-
 {
   config,
   lib,
@@ -22,9 +19,8 @@
 
   boot.initrd.availableKernelModules = [
     "xhci_pci"
+    "thunderbolt"
     "nvme"
-    "usb_storage"
-    "sd_mod"
   ];
 
   boot.initrd.kernelModules = [ ];
@@ -51,16 +47,19 @@
     fsType = "btrfs";
     options = [ "subvol=data" ];
   };
+
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
     options = [ "subvol=home" ];
   };
+
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
     options = [ "subvol=nix" ];
   };
+
   fileSystems."/var" = {
     device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
