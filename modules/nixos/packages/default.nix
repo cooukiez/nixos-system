@@ -5,7 +5,14 @@
 }:
 let
   packages = import ./packages.nix { inherit pkgs; };
-  cfg = config.graphicalConfig;
+  cfg = config.packageConfig;
+
+  clear-logs = pkgs.writeShellScriptBin "clear-logs" (builtins.readFile ./scripts/clear-logs.sh);
+  cp-fonts = pkgs.writeShellScriptBin "cp-fonts" (builtins.readFile ./scripts/cp-fonts.sh);
+  del-snaps = pkgs.writeShellScriptBin "del-snaps" (builtins.readFile ./scripts/del-snaps.sh);
+  edit-secret = pkgs.writeShellScriptBin "edit-secret" (builtins.readFile ./scripts/edit-secret.sh);
+  fix-perms = pkgs.writeShellScriptBin "fix-perms" (builtins.readFile ./scripts/fix-perms.sh);
+  snaps-du = pkgs.writeShellScriptBin "snaps-du" (builtins.readFile ./scripts/snaps-du.sh);
 
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
@@ -13,21 +20,24 @@ let
   };
 in
 {
-  imports = [
-    # General Groups
-    pkgLib.core
-    pkgLib.dev
-    pkgLib.utils
-    pkgLib.nix-utils
+  options.graphicalConfig = {
+    corePkg = mkEnableDefault;
+    qtPkg = mkEnableDefault;
+    appmenuPkg = mkEnableDefault;
+    compatibilityPkg = mkEnableDefault;
 
-    # System & Hardware
-    pkgLib.hardware
-    pkgLib.filesystem
+    gnomeSupport = mkEnableDefault;
+  };
 
-    # Networking & Security
-    pkgLib.secrets
+  config = {
+    environment.systemPackages = [
+      clear-logs
+      cp-fonts
+      del-snaps
+      edit-secret
+      fix-perms
+      snaps-du
+    ];
 
-    # Media
-    pkgLib.media
-  ];
+  };
 }

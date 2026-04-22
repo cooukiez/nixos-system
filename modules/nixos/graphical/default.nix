@@ -15,7 +15,7 @@ let
 in
 {
   imports = [
-    ./packages.nix
+    ./programs.nix
   ];
 
   options.graphicalConfig = {

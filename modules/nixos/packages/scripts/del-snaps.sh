@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # delete ALL snapshots in the defined directories
-
 SNAPSHOT_DIRS=(
   "/snapshots/system"
   "/snapshots/home"
