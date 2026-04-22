@@ -1,4 +1,8 @@
 {
+  users,
+  ...
+}:
+{
   imports = [
     ./config.nix
     ./hardware-generated.nix
@@ -25,8 +29,9 @@
       permittedInsecurePackages = [
         "dotnet-sdk-6.0.428"
         "dotnet-runtime-6.0.36"
-        "ventoy-1.1.10"
+
         "googleearth-pro-7.3.6.10201"
+        "ventoy-1.1.10"
       ];
     };
   };
@@ -50,4 +55,33 @@
       optimise.dates = [ "03:45" ];
     };
 
+  users.users = lib.mapAttrs (_: user: {
+    description = user.fullName;
+    isNormalUser = true;
+    extraGroups = [
+      "wheel"
+
+      "audio"
+      "input"
+      "video"
+
+      "networkmanager"
+      "tailscale"
+
+      "cdrom"
+      "optical"
+    ];
+    password = "CHANGE-ME";
+    shell = pkgs.zsh;
+  }) users;
+
+  systemd.tmpfiles.rules = lib.concatLists (
+    lib.mapAttrsToList (
+      username: user:
+      lib.mapAttrsToList (target: source: [
+        "r /home/${username}/${target}"
+        "L /home/${username}/${target} - - - - ${source}"
+      ]) (user.bindDirs or { })
+    ) users
+  );
 }

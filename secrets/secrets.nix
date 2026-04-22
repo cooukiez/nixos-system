@@ -6,9 +6,10 @@
 */
 
 let
-  # admins
-  ceirs = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDTfSJByS/+4vIn4AMZMjy2ehWfHFDnSq2WXzMDZnXDk ceirs@lvl";
+  # ludw will be deprectaed
   ludw = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGHBIf2ycXKqaa5o8isf99gRFRhtvefyjq1ib/x0lF9e ludw@lvl";
+
+  ceirs = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDTfSJByS/+4vIn4AMZMjy2ehWfHFDnSq2WXzMDZnXDk ceirs@lvl";
   redi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGe437tVoIrqmV1UzVBObyvsr+pNJ6Gp+UgQtWx6frpV redi@lvl";
 
   system_host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOe6C64fZmVmZN1uQSJexFBoQRFaQXOpfg9piE+r8cdQ";
@@ -22,8 +23,6 @@ let
   ];
 in
 {
-  "copyparty-pw.age".publicKeys = all_keys;
-  "syncthing-pw.age".publicKeys = all_keys;
-  "tailscale-dhs-key.age".publicKeys = all_keys;
-  "fritz-credentials.age".publicKeys = all_keys;
+  "tailscale-key.age".publicKeys = all_keys;
+  "fritz-creds.age".publicKeys = all_keys;
 }

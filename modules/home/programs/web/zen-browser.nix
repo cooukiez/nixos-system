@@ -63,8 +63,10 @@ in
 
       # see https://github.com/0xc000022070/zen-browser-flake#pinned-tabs-pins
       pins = lib.mapAttrs (name: value: {
-        inherit (value) url position;
+        inherit (value) url;
+
         id = genId name;
+        position = value.position + 100;
         container = containers.Personal.id;
         isEssential = true;
       }) userConfig.zenBrowserShortcuts;
