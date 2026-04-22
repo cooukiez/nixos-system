@@ -10,7 +10,6 @@
     ./graphical
   ];
 
-  # list module files here
   common = import ./common;
   desktop = import ./desktop;
   packages = import ./packages;
