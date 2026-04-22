@@ -14,6 +14,5 @@
     ./imv.nix
     ./vscode.nix
     ./zathura.nix
-    ./zsh.nix
   ];
 }

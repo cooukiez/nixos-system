@@ -8,15 +8,11 @@ inputs.wrappers.wrapperModules.niri.apply {
   inherit pkgs;
 
   settings = {
-
     prefer-no-csd = true;
-    hotkey-overlay.skip-at-startup = true;
-
-    screenshot-path = "${config.home.homeDirectory}/Pictures/Screenshots/%Y-%m-%d-%H%M%S.png";
 
     xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-    binds = import ./binds.nix { inherit config; };
+    binds = import ./binds.nix { inherit pkgs lib; };
 
     input = {
       keyboard = {
@@ -26,87 +22,69 @@ inputs.wrappers.wrapperModules.niri.apply {
       };
 
       touchpad = {
-        enable = true;
-        tap = true;
+        tap = null;
 
         accel-speed = 0.25;
         scroll-factor = 1.5;
-        natural-scroll = true;
+
+        natural-scroll = null;
+        disabled-on-external-mouse = null;
       };
 
       mouse = {
-        enable = true;
         accel-speed = 0.1;
-        natural-scroll = false;
+        natural-scroll = null;
       };
 
       trackpoint = {
-        enable = true;
         accel-speed = 1.0;
-        natural-scroll = false;
+        natural-scroll = null;
       };
 
       focus-follows-mouse = {
-        enable = true;
-        max-scroll-amount = "25%";
+        _attrs = {
+          max-scroll-amount = "25%";
+        };
       };
 
-      power-key-handling.enable = true;
-      warp-mouse-to-focus.enable = true;
+      warp-mouse-to-focus = null;
 
       mod-key = "Super";
       mod-key-nested = "Alt";
     };
 
-    outputs.eDP-1 = {
-      enable = true;
-      mode = {
-        width = 3840;
-        height = 2400;
-        refresh = 60.000;
-      };
+    outputs."eDP-1" = {
+      mode = "3840x2400@60.000";
       scale = 2.0;
       position = {
-        x = 0;
-        y = 0;
+        _attrs = {
+          x = 0;
+          y = 0;
+        };
       };
     };
 
-    outputs.HDMI-A-1 = {
-      enable = true;
-      mode = {
-        width = 1920;
-        height = 1080;
-        refresh = 60.000;
-      };
+    outputs."HDMI-A-1" = {
+      mode = "1920x1080@60.000";
       scale = 1.0;
       position = {
-        # place rigth to eDP-1
-        x = 1920;
-        y = 0;
+        _attrs = {
+          x = 1920;
+          y = 0;
+        };
       };
     };
 
     switch-events = {
-      lid-close.action.spawn = [
+      lid-close.spawn = [
         "sh"
         "-c"
-        "niri msg action power-off-monitors && hyprlock"
+        "niri msg action power-off-monitors; hyprlock; sleep 3; systemctl suspend"
       ];
-
-      /*
-        lid-open.action.spawn = [
-          "sh"
-          "-c"
-          "hyprlock"
-        ];
-      */
     };
 
     overview = {
-      workspace-shadow = {
-        enable = false;
-      };
+      workspace-shadow.off = null;
     };
 
     layout = {
@@ -118,7 +96,7 @@ inputs.wrappers.wrapperModules.niri.apply {
         bottom = 10;
       };
 
-      border.enable = false;
+      border.off = null;
 
       default-column-width.proportion = 0.5;
 
@@ -136,22 +114,29 @@ inputs.wrappers.wrapperModules.niri.apply {
       ];
 
       focus-ring = {
-        enable = false;
+        off = null;
       };
 
       shadow = {
-        enable = true;
+        on = null;
         draw-behind-window = true;
+
         softness = 30;
         spread = 5;
-        offset.x = 0;
-        offset.y = 5;
+        offset = {
+          _attrs = {
+            x = 0;
+            y = 5;
+          };
+        };
+
         color = "#00000070";
       };
 
       tab-indicator = {
-        enable = true;
-        place-within-column = true;
+        on = null;
+
+        place-within-column = null;
         position = "top";
 
         width = 8;
@@ -159,15 +144,8 @@ inputs.wrappers.wrapperModules.niri.apply {
         gap = 8;
         gaps-between-tabs = 8;
 
-        active = {
-          color = "rgba(224, 224, 224, 100%)";
-        };
-
-        inactive = {
-          color = "rgba(224, 224, 224, 30%)";
-        };
-
-        length.total-proportion = 1.0;
+        active-color = "rgba(224, 224, 224, 100%)";
+        inactive-color = "rgba(224, 224, 224, 30%)";
       };
 
     };
@@ -186,17 +164,7 @@ inputs.wrappers.wrapperModules.niri.apply {
 
     window-rules = [
       {
-        geometry-corner-radius =
-          let
-            radius = 10.0;
-          in
-          {
-            bottom-left = radius;
-            bottom-right = radius;
-            top-left = radius;
-            top-right = radius;
-          };
-
+        geometry-corner-radius = 10.0;
         clip-to-geometry = true;
         draw-border-with-background = false;
         open-maximized = true;
@@ -207,13 +175,13 @@ inputs.wrappers.wrapperModules.niri.apply {
           {
             app-id = "kitty";
           }
-          {
-            app-id = "thunar";
-          }
         ];
 
         open-maximized = false;
       }
     ];
+
+    hotkey-overlay.skip-at-startup = true;
+    screenshot-path = "~/Pictures/Screenshots/%Y-%m-%d-%H%M%S.png";
   };
 }

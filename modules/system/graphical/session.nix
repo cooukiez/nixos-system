@@ -9,7 +9,6 @@
 let
   cfg = config.graphicalConfig.session;
 
-  /*
   niri = (
     import ./desktop/niri.nix {
       inherit
@@ -20,7 +19,6 @@ let
         ;
     }
   );
-  */
 
   sessionCommands = {
     niri = "exec ${pkgs.niri-unstable}/bin/niri-session";
@@ -104,6 +102,10 @@ in
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
       graphicalConfig.display.wayland = lib.mkForce true;
+
+      environment.systemPackages = with pkgs; [
+        niri.wrapper
+      ];
 
       niri-flake.cache.enable = true;
       programs.niri = {

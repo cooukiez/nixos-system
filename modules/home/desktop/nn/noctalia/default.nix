@@ -23,7 +23,7 @@ let
 in
 {
   imports = [
-          inputs.noctalia.homeModules.default
+    inputs.noctalia.homeModules.default
   ];
   systemd.user.services.noctalia = {
     Unit = {
