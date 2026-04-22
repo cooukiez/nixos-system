@@ -4,8 +4,15 @@
 }:
 {
   documents = with pkgs; [
+    affine
+    joplin-desktop
+    obsidian
+    onlyoffice-desktopeditors
+    rnote
+    scribus
     pdfpc
     sioyek
+    texstudio
     zathura
     zathuraPkgs.zathura_core
     zathuraPkgs.zathura_pdf_mupdf
@@ -13,7 +20,6 @@
 
   images = with pkgs; [
     gimp-with-plugins
-    # gthumb
     inkscape
     ipe
     krita
@@ -23,6 +29,12 @@
     xnviewmp
   ];
 
+  literature = with pkgs; [
+    calibre
+    calibre
+    zotero
+  ];
+
   music = with pkgs; [
     audacious
     audacious-plugins
@@ -30,6 +42,7 @@
     kdePackages.k3b
     mpv
     picard
+    shutter
     vlc
   ];
 
@@ -41,9 +54,15 @@
 
   sound = with pkgs; [
     audacity
+    muse-sounds-manager
+    musescore
   ];
 
   videos = with pkgs; [
     davinci-resolve
+
+    # recording
+    gpu-screen-recorder
+    gpu-screen-recorder-gtk
   ];
 }

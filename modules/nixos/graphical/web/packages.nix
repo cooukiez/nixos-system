@@ -8,10 +8,12 @@
     unstable.discord
     unstable.legcord
     element-desktop
-    # cinny-desktop
+    slack
   ];
 
   download = with pkgs; [
+    nicotine-plus
+
     # qbittorrent-enhanced
     # qbittorrent-cli
   ];

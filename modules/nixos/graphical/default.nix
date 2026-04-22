@@ -14,16 +14,35 @@ let
   };
 in
 {
+  imports = [
+    ./packages.nix
+  ];
+
   options.graphicalConfig = {
     corePkg = mkEnableDefault;
     qtPkg = mkEnableDefault;
     appmenuPkg = mkEnableDefault;
+    compatibilityPkg = mkEnableDefault;
+
+    gnomeSupport = mkEnableDefault;
   };
 
-  config = {
-    environment.systemPackages =
-      (lib.optionals cfg.corePkg desktop.core)
-      ++ (lib.optionals cfg.qtPkg desktop.qt)
-      ++ (lib.optionals cfg.appmenuPkg desktop.appmenu);
-  };
+  config = lib.mkMerge [
+    {
+      environment.systemPackages =
+        (lib.optionals cfg.corePkg desktop.core)
+        ++ (lib.optionals cfg.qtPkg desktop.qt)
+        ++ (lib.optionals cfg.appmenuPkg desktop.appmenu)
+        ++ (lib.optionals cfg.compatibilityPkg desktop.compatibility);
+    }
+
+    (lib.mkIf cfg.gnomeSupport {
+      programs.dconf.enable = true;
+      services.gvfs.enable = true;
+
+      services.gnome.evolution-data-server.enable = true;
+      services.gnome.tinysparql.enable = true;
+      services.gnome.localsearch.enable = true;
+    })
+  ];
 }

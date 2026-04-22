@@ -20,6 +20,7 @@ in
         options = {
           documentsPkg = mkEnableDefault;
           imagesPkg = mkEnableDefault;
+          literaturePkg = mkEnableDefault;
           musicPkg = mkEnableDefault;
           photosPkg = mkEnableDefault;
           soundPkg = mkEnableDefault;
@@ -28,6 +29,7 @@ in
           spotify = mkEnableDefault;
         };
       };
+
       default = { };
     };
   };
@@ -38,6 +40,7 @@ in
     environment.systemPackages =
       (lib.optionals cfg.documentsPkg media.documents)
       ++ (lib.optionals cfg.imagesPkg media.images)
+      ++ (lib.optionals cfg.literaturePkg media.literature)
       ++ (lib.optionals cfg.musicPkg media.music)
       ++ (lib.optionals cfg.photosPkg media.photos)
       ++ (lib.optionals cfg.soundPkg media.sound)

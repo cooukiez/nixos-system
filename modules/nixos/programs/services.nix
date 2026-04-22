@@ -19,12 +19,4 @@
   # network statistics
   services.vnstat.enable = true;
 
-  # running gnome apps outside of gnome
-  programs.dconf.enable = true;
-  services.gvfs.enable = true;
-
-  # gnome calendar support
-  services.gnome.evolution-data-server.enable = true;
-  services.gnome.tinysparql.enable = true;
-  services.gnome.localsearch.enable = true;
 }

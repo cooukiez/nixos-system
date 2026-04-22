@@ -25,19 +25,5 @@
     pandoc
     pango
     zlib
-
-    # appmenu support
-
-    #
-    # compatibility layers
-    #
-
-    # wine compatibilty
-    winetricks
-    # wineWow64Packages.staging
-    wineWow64Packages.waylandFull
-
-    # proton
-    protonup-ng
   ];
 }

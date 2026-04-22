@@ -24,6 +24,7 @@ in
           firefox = mkEnableDefault;
         };
       };
+
       default = { };
     };
   };
