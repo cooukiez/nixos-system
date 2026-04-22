@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
 }:
 inputs.wrappers.wrapperModules.niri.apply {
   inherit pkgs;

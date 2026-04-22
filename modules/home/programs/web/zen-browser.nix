@@ -11,7 +11,7 @@
   userConfig,
   pkgs,
   lib,
-  hostSystem,
+  hostConfig,
   ...
 }:
 let
@@ -62,6 +62,7 @@ in
       };
 
       # see https://github.com/0xc000022070/zen-browser-flake#pinned-tabs-pins
+      /*
       pins = lib.mapAttrs (name: value: {
         inherit (value) url;
 
@@ -70,10 +71,11 @@ in
         container = containers.Personal.id;
         isEssential = true;
       }) userConfig.zenBrowserShortcuts;
+      */
     in
     {
       enable = true;
-      package = inputs.zen-browser.packages.${hostSystem}.twilight;
+      package = inputs.zen-browser.packages.${hostConfig.hostSystem}.twilight;
 
       policies = {
         AutofillAddressEnabled = true;
@@ -112,7 +114,7 @@ in
         spacesForce = true;
         pinsForce = true;
 
-        inherit containers spaces pins;
+        inherit containers spaces; # pins;
 
         settings = {
           # performance

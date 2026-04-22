@@ -9,18 +9,21 @@
 let
   cfg = config.graphicalConfig.session;
 
+  /*
   niri = (
     import ./desktop/niri.nix {
       inherit
         inputs
         config
         pkgs
+        lib
         ;
     }
   );
+  */
 
   sessionCommands = {
-    niri = "exec ${niri.wrapper}/bin/niri-session";
+    niri = "exec ${pkgs.niri-unstable}/bin/niri-session";
     kde = "exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland";
     none = "exit 0";
   };
@@ -105,7 +108,7 @@ in
       niri-flake.cache.enable = true;
       programs.niri = {
         enable = true;
-        package = niri.wrapper;
+        package = pkgs.niri-unstable;
       };
     })
 

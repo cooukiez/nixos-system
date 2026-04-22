@@ -10,18 +10,21 @@
   config,
   userConfig,
   pkgs,
-  hostSystem,
+  hostConfig,
   ...
 }:
 let
-  # customQuickshell = inputs.quickshell.packages.${hostSystem}.default;
+  # customQuickshell = inputs.quickshell.packages.${hostConfig.hostSystem}.default;
 
-  overriddenNoctalia = inputs.noctalia.packages.${hostSystem}.default.override {
+  overriddenNoctalia = inputs.noctalia.packages.${hostConfig.hostSystem}.default.override {
     calendarSupport = true;
     # quickshell = customQuickshell;
   };
 in
 {
+  imports = [
+          inputs.noctalia.homeModules.default
+  ];
   systemd.user.services.noctalia = {
     Unit = {
       Description = "Noctalia Shell";
@@ -41,7 +44,7 @@ in
   };
 
   # copy avatar picture
-  home.file.".face".source = userConfig.avatar;
+  # home.file.".face".source = userConfig.avatar;
 
   # patch tailscale icon
   /*

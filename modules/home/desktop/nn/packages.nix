@@ -8,12 +8,12 @@
 {
   inputs,
   pkgs,
-  hostSystem,
+  hostConfig,
   ...
 }:
 {
   home.packages = with pkgs; [
-    # inputs.quickshell.packages.${hostSystem}.default
+    # inputs.quickshell.packages.${hostConfig.hostSystem}.default
 
     # programs
     apostrophe

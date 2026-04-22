@@ -15,7 +15,7 @@
     githubEmail = "ludwig-geyer@web.de";
     name = "ceirs";
 
-    avatar = ./files/avatar/ceirs.jpg;
+    avatar = ../../files/avatar/ceirs.jpg;
 
     bindDirs = {
       "Documents" = "/data/documents";
@@ -41,7 +41,7 @@
     githubEmail = "ludwig-geyer@web.de";
     name = "redi";
 
-    avatar = ./files/avatar/redi.jpg;
+    avatar = ../../files/avatar/redi.jpg;
 
     bindDirs = {
       "Documents" = "/data/documents/work/redi";

@@ -99,6 +99,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    backupFileExtension = "hm-bak";
 
     extraSpecialArgs = {
       inherit
@@ -110,7 +111,8 @@
 
     users = lib.mapAttrs (username: userConfig: {
       imports = [
-        # inputs.self.homeModules.programs
+        inputs.self.homeModules.programs
+        inputs.self.homeModules.desktopNN
       ];
 
       _module.args.userConfig = userConfig;

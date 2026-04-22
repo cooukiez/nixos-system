@@ -6,12 +6,16 @@
 */
 
 {
+  inputs,
   config,
   pkgs,
   lib,
   ...
 }:
 {
+  imports = [
+    inputs.stylix.homeModules.default
+  ];
   # set cursor theme
   home.pointerCursor = {
     name = "McMojave-cursors";
@@ -116,7 +120,7 @@
     enable = true;
 
     # global qt widget style
-    style.name = "Adwaita-Dark";
+    style.name = lib.mkForce "Adwaita-Dark";
 
     qt6ctSettings = {
       Appearance = {
@@ -127,11 +131,6 @@
 
         style = "Adwaita-Dark";
         icon_theme = "Papirus-Dark";
-      };
-
-      Fonts = {
-        fixed = "\"JetBrainsMono NF, 10\"";
-        general = "\"Inter, 10\"";
       };
 
       Interface = {
