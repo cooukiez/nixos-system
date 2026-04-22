@@ -1,46 +1,53 @@
 {
+  config,
   pkgs,
+  lib,
   ...
 }:
+let
+  cfg = config.graphicalConfig.web;
+in
 {
-  programs.firefox = {
-    enable = true;
-    package = pkgs.unstable.firefox;
+  config = lib.mkIf cfg.firefox {
+    programs.firefox = {
+      enable = true;
+      package = pkgs.unstable.firefox;
 
-    languagePacks = [
-      "en-US"
-      "de"
-    ];
+      languagePacks = [
+        "en-US"
+        "de"
+      ];
 
-    nativeMessagingHosts.packages = [
-      pkgs.firefoxpwa
-      pkgs.kdePackages.plasma-browser-integration
-    ];
+      nativeMessagingHosts.packages = [
+        pkgs.firefoxpwa
+        pkgs.kdePackages.plasma-browser-integration
+      ];
 
-    preferences = {
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
-    };
+      preferences = {
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+      };
 
-    policies = {
-      AutofillAddressEnabled = true;
-      AutofillCreditCardEnabled = false;
+      policies = {
+        AutofillAddressEnabled = true;
+        AutofillCreditCardEnabled = false;
 
-      DisableAppUpdate = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxStudies = true;
-      DisablePocket = true;
-      DisableTelemetry = true;
+        DisableAppUpdate = true;
+        DisableFeedbackCommands = true;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
 
-      DontCheckDefaultBrowser = true;
+        DontCheckDefaultBrowser = true;
 
-      NoDefaultBookmarks = true;
-      OfferToSaveLogins = false;
+        NoDefaultBookmarks = true;
+        OfferToSaveLogins = false;
 
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
       };
     };
   };

@@ -1,9 +1,15 @@
 {
   config,
+  lib,
   ...
 }:
 let
   cfg = config.networkConfig.samba;
+
+  mkEnableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+  };
 in
 {
   options.networkConfig = {

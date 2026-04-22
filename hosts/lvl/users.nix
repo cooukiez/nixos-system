@@ -25,23 +25,11 @@
       "Videos" = "/data/videos";
     };
 
-    zenBrowserShortcuts =
-      let
-        shortcuts = {
-          youtube = "https://www.youtube.com/";
-          chatgpt = "https://chatgpt.com/";
-          maps = "https://www.google.com/maps";
-        };
-      in
-      builtins.listToAttrs (
-        lib.imap1 (i: name: {
-          inherit name;
-          value = {
-            url = shortcuts.${name};
-            position = i;
-          };
-        }) (builtins.attrNames shortcuts)
-      );
+    zenBrowserShortcuts = {
+      youtube = "https://www.youtube.com/";
+      chatgpt = "https://chatgpt.com/";
+      maps = "https://www.google.com/maps";
+    };
   };
 
   redi = {
@@ -63,25 +51,13 @@
       "Videos" = "/data/documents/work/redi/videos";
     };
 
-    zenBrowserShortcuts =
-      let
-        shortcuts = {
-          asana = "https://app.asana.com/1/955672552271708/project/1210867499376597/board/1210867499376611";
-          personio = "https://redi-school-of-digital-integration.app.personio.com/my-desk";
-          google-calendar = "https://calendar.google.com/calendar/u/0/r?pli=1";
-          chatgpt = "https://chatgpt.com/";
-          gemini = "https://gemini.google.com/app";
-          gmail = "https://mail.google.com/mail/u/0/#inbox";
-        };
-      in
-      builtins.listToAttrs (
-        lib.imap1 (i: name: {
-          inherit name;
-          value = {
-            url = shortcuts.${name};
-            position = i;
-          };
-        }) (builtins.attrNames shortcuts)
-      );
+    zenBrowserShortcuts = {
+      asana = "https://app.asana.com/1/955672552271708/project/1210867499376597/board/1210867499376611";
+      personio = "https://redi-school-of-digital-integration.app.personio.com/my-desk";
+      google-calendar = "https://calendar.google.com/calendar/u/0/r?pli=1";
+      chatgpt = "https://chatgpt.com/";
+      gemini = "https://gemini.google.com/app";
+      gmail = "https://mail.google.com/mail/u/0/#inbox";
+    };
   };
 }

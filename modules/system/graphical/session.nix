@@ -1,11 +1,14 @@
 {
   inputs,
+  config,
   pkgs,
-  hostSystem,
+  lib,
   userConfig,
   ...
 }:
 let
+  cfg = config.graphicalConfig.session;
+
   sessionCommands = {
     niri = "exec ${pkgs.niri-unstable}/bin/niri-session";
     kde = "exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland";
@@ -43,6 +46,10 @@ let
       });
 in
 {
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
+
   options.graphicalConfig = {
     session = lib.mkOption {
       type = lib.types.submodule {
@@ -81,7 +88,6 @@ in
     }
 
     (lib.mkIf cfg.niri {
-      imports = [ inputs.niri.nixosModules.niri ];
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
 
       graphicalConfig.display.wayland = lib.mkForce true;

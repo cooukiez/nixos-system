@@ -6,13 +6,7 @@
 */
 
 {
-  imports = [
-    ./graphical
-  ];
-
-  common = import ./common;
-  desktop = import ./desktop;
+  graphical = import ./graphical;
+  network = import ./network;
   packages = import ./packages;
-  programs = import ./programs;
-  services = import ./services;
 }

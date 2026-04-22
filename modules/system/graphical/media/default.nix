@@ -14,6 +14,10 @@ let
   };
 in
 {
+  imports = [
+    ./spotify.nix
+  ];
+
   options.graphicalConfig = {
     media = lib.mkOption {
       type = lib.types.submodule {
@@ -35,8 +39,6 @@ in
   };
 
   config = {
-    imports = lib.optional cfg.spotify ./spotify.nix;
-
     environment.systemPackages =
       (lib.optionals cfg.documentsPkg media.documents)
       ++ (lib.optionals cfg.imagesPkg media.images)

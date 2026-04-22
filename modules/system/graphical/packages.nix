@@ -1,7 +1,7 @@
 {
   inputs,
   pkgs,
-  hostSystem,
+  hostConfig,
   ...
 }:
 {
@@ -74,7 +74,7 @@
     godot
     unityhub
 
-    inputs.gamemaker.packages.${hostSystem}.default
+    inputs.gamemaker.packages.${hostConfig.hostSystem}.default
   ];
 
   gameClients = with pkgs; [
@@ -128,7 +128,7 @@
     vym
     zoom
 
-    inputs.honklet.packages.${hostSystem}.default
+    inputs.honklet.packages.${hostConfig.hostSystem}.default
   ];
 
   system = with pkgs; [

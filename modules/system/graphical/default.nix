@@ -1,11 +1,13 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
+  hostConfig,
   ...
 }:
 let
-  desktop = import ./packages.nix { inherit pkgs; };
+  desktop = import ./packages.nix { inherit inputs pkgs hostConfig; };
   cfg = config.graphicalConfig;
 
   mkEnableDefault = lib.mkOption {
@@ -15,7 +17,11 @@ let
 in
 {
   imports = [
+    ./media
+    ./web
+
     ./display.nix
+    ./fonts.nix
     ./programs.nix
     ./session.nix
   ];
@@ -24,16 +30,15 @@ in
     appmenuPkg = mkEnableDefault;
     compatibilityPkg = mkEnableDefault;
     corePkg = mkEnableDefault;
-    fontsPkg = mkEnableDefault;
     qtPkg = mkEnableDefault;
+
+    fontsPkg = mkEnableDefault;
 
     gnomeSupport = mkEnableDefault;
   };
 
   config = lib.mkMerge [
     {
-      imports = lib.optional cfg.fontsPkg ./fonts.nix;
-
       environment.systemPackages =
         (lib.optionals cfg.corePkg desktop.core)
         ++ (lib.optionals cfg.qtPkg desktop.qt)

@@ -1,6 +1,6 @@
 {
-  config,
   inputs,
+  config,
   pkgs,
   lib,
   userList,
@@ -11,6 +11,10 @@
     ./config.nix
     ./hardware-generated.nix
     ./hardware-old.nix
+
+    inputs.self.systemModules.graphical
+    inputs.self.systemModules.network
+    inputs.self.systemModules.packages
 
     inputs.agenix.nixosModules.default
   ];

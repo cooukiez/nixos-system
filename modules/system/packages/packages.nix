@@ -1,9 +1,13 @@
 {
   inputs,
-  hostSystem,
+  pkgs,
+  hostConfig,
   ...
 }:
 {
+  #
+  # core
+  #
   core = with pkgs; [
     coreutils
     curl
@@ -23,6 +27,53 @@
     zip
   ];
 
+  nix = with pkgs; [
+    nixfmt-rfc-style
+    nixfmt-tree
+    nix-prefetch-git
+    nix-search
+  ];
+
+  secrets = with pkgs; [
+    age
+    authelia
+    openssl
+
+    inputs.agenix.packages.${hostConfig.hostSystem}.default
+  ];
+
+  utils = with pkgs; [
+    bench
+    btop
+    diff-so-fancy
+    diffutils
+    dog
+    entr
+    eza
+    fdupes
+    fff
+    fzf
+    glances
+    hexdump
+    hyperfine
+    just
+    mani
+    navi
+    neofetch
+    procs
+    rip2
+    ripgrep
+    s-tui
+    scc
+    tealdeer
+    tldr
+    toybox
+    wiper
+  ];
+
+  #
+  # general
+  #
   dev = with pkgs; [
     clang
     cmake
@@ -35,7 +86,6 @@
     shader-slang
     shaderc
 
-    # python
     (python3.withPackages (
       ps: with ps; [
         emoji
@@ -84,6 +134,9 @@
     vulkan-tools
   ];
 
+  #
+  # media
+  #
   mediaCore = with pkgs; [
     exiftool
     ffmpeg
@@ -105,50 +158,6 @@
     sla2pdf
     tesseract
     yt-dlp
-  ];
-
-  nix = with pkgs; [
-    nixfmt-rfc-style
-    nixfmt-tree
-    nix-prefetch-git
-    nix-search
-  ];
-
-  secrets = with pkgs; [
-    age
-    authelia
-    openssl
-
-    inputs.agenix.packages.${hostSystem}.default
-  ];
-
-  utils = with pkgs; [
-    bench
-    btop
-    diff-so-fancy
-    diffutils
-    dog
-    entr
-    eza
-    fdupes
-    fff
-    fzf
-    glances
-    hexdump
-    hyperfine
-    just
-    mani
-    navi
-    neofetch
-    procs
-    rip2
-    ripgrep
-    s-tui
-    scc
-    tealdeer
-    tldr
-    toybox
-    wiper
   ];
 
   #

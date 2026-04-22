@@ -14,6 +14,10 @@ let
   };
 in
 {
+  imports = [
+    ./firefox.nix
+  ];
+
   options.graphicalConfig = {
     web = lib.mkOption {
       type = lib.types.submodule {
@@ -30,8 +34,6 @@ in
   };
 
   config = {
-    imports = lib.optional cfg.firefox ./firefox.nix;
-
     environment.systemPackages =
       (lib.optionals cfg.messengerPkg web.messenger) ++ (lib.optionals cfg.downloadPkg web.download);
   };

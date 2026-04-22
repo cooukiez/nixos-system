@@ -86,6 +86,8 @@
 
           modules = [
             hostPath
+
+            ({ system.stateVersion = "25.11"; })
           ];
         };
 

@@ -1,10 +1,13 @@
 {
   inputs,
-  hostSystem,
+  config,
+  pkgs,
+  lib,
+  hostConfig,
   ...
 }:
 let
-  packages = import ./packages.nix { inherit pkgs; };
+  packages = import ./packages.nix { inherit inputs pkgs hostConfig; };
   cfg = config.packageConfig;
 
   clear-logs = pkgs.writeShellScriptBin "clear-logs" (builtins.readFile ./scripts/clear-logs.sh);
@@ -22,22 +25,25 @@ in
 {
   options.packageConfig = {
     corePkg = mkEnableDefault;
+    nixPkg = mkEnableDefault;
+    secretsPkg = mkEnableDefault;
+    utilsPkg = mkEnableDefault;
+
     devPkg = mkEnableDefault;
     filesystemPkg = mkEnableDefault;
+
     hardwareCorePkg = mkEnableDefault;
     hardwareDesktopPkg = mkEnableDefault;
+
     mediaCorePkg = mkEnableDefault;
     mediaExtraPkg = mkEnableDefault;
-    nixPkg = mkEnableDefault;
-    penetrationPkg = mkEnableDefault;
-    secretsPkg = mkEnableDefault;
-    tuiPkg = mkEnableDefault;
-    utilsPkg = mkEnableDefault;
 
     uselessPkg = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
+
+    penetrationPkg = mkEnableDefault;
   };
 
   config = {
@@ -77,16 +83,20 @@ in
       fix-perms
       snaps-du
     ]
-    ++ (lib.optionals cfg.corePkg network.core)
-    ++ (lib.optionals cfg.devPkg network.dev)
-    ++ (lib.optionals cfg.filesystemPkg network.filesystem)
-    ++ (lib.optionals cfg.hardwareCorePkg network.hardwareCore)
-    ++ (lib.optionals cfg.hardwareDesktopPkg network.hardwareDesktop)
-    ++ (lib.optionals cfg.mediaCorePkg network.mediaCore)
-    ++ (lib.optionals cfg.mediaExtraPkg network.mediaExtra)
-    ++ (lib.optionals cfg.nixPkg network.nix)
-    ++ (lib.optionals cfg.secretsPkg network.secrets)
-    ++ (lib.optionals cfg.tuiPkg network.tui)
-    ++ (lib.optionals cfg.utilsPkg network.utils);
+    ++ (lib.optionals cfg.corePkg packages.core)
+    ++ (lib.optionals cfg.nixPkg packages.nix)
+    ++ (lib.optionals cfg.secretsPkg packages.secrets)
+    ++ (lib.optionals cfg.utilsPkg packages.utils)
+
+    ++ (lib.optionals cfg.devPkg packages.dev)
+    ++ (lib.optionals cfg.filesystemPkg packages.filesystem)
+
+    ++ (lib.optionals cfg.hardwareCorePkg packages.hardwareCore)
+    ++ (lib.optionals cfg.hardwareDesktopPkg packages.hardwareDesktop)
+
+    ++ (lib.optionals cfg.mediaCorePkg packages.mediaCore)
+    ++ (lib.optionals cfg.mediaExtraPkg packages.mediaExtra)
+
+    ++ (lib.optionals cfg.uselessPkg packages.useless);
   };
 }

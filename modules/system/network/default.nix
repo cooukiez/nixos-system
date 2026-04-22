@@ -44,7 +44,6 @@ in
 
     services.vsftpd = lib.mkIf cfg.vsftpd {
       enable = true;
-      openFirewall = true;
 
       localUsers = true;
       writeEnable = true;
@@ -66,6 +65,16 @@ in
         pasv_min_port=30000
         pasv_max_port=31000
       '';
+    };
+
+    networking.firewall = lib.mkIf cfg.vsftpd {
+      allowedTCPPorts = [ 21 ];
+      allowedTCPPortRanges = [
+        {
+          from = 30000;
+          to = 31000;
+        }
+      ];
     };
 
     services.vnstat.enable = lib.mkIf cfg.vnstat true;
