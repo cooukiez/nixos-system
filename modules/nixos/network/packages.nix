@@ -9,6 +9,7 @@
     dig
     httpie
     inetutils
+    mtr
     ngrok
     speedtest-cli
   ];

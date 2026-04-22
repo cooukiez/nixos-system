@@ -64,6 +64,67 @@
     ventoy
   ];
 
+  hardware = with pkgs; [
+    bluez-tools
+    brightnessctl
+    cpuid
+    dmidecode
+    intel-gpu-tools
+    mesa
+    nvtopPackages.intel
+    s0ix-selftest-tool
+    v4l-utils
+    vulkan-tools
+  ];
+
+  media = with pkgs; [
+    bpm-tools
+    cmus
+    exiftool
+    ffmpeg
+    gphoto2
+    icon-slicer
+    imagemagick
+    libpng
+    metadata
+    playerctl
+    poppler-utils
+    shared-mime-info
+    sla2pdf
+    tesseract
+    yt-dlp
+  ];
+
+  nix = with pkgs; [
+    nixfmt-rfc-style
+    nixfmt-tree
+    nix-prefetch-git
+    nix-search
+  ];
+
+  secrets = with pkgs; [
+    age
+    authelia
+    openssl
+
+    inputs.agenix.packages.${hostSystem}.default
+  ];
+
+  tui = with pkgs; [
+    bandwhich # network bandwidth monitor
+    btop # system monitor with curses interface
+    duf # disk usage viewer
+    fff # simple file viewer
+    glances # system monitor with curses interface
+    htop # interactive process viewer
+    lazygit # interactive git client
+    navi # interactive cheatsheet browser
+    powertop # power consumption monitor
+    procs # interactive process viewer
+    s-tui # monitoring tool
+    wiper # disk analyzer and cleanup tool
+  ];
+
   utils = with pkgs; [
     bench
     diff-so-fancy
@@ -86,67 +147,9 @@
     toybox
   ];
 
-  hardware = with pkgs; [
-    bluez-tools
-    brightnessctl
-    cpuid
-    dmidecode
-    intel-gpu-tools
-    mesa
-    nvtopPackages.intel
-    s0ix-selftest-tool
-    v4l-utils
-    vulkan-tools
-  ];
-
-  secrets = with pkgs; [
-    age
-    authelia
-    openssl
-
-    inputs.agenix.packages.${hostSystem}.default
-  ];
-
-  nix-utils = with pkgs; [
-    nixfmt-rfc-style
-    nixfmt-tree
-    nix-prefetch-git
-    nix-search
-  ];
-
-  media = with pkgs; [
-    bpm-tools
-    cmus
-    exiftool
-    ffmpeg
-    gphoto2
-    icon-slicer
-    imagemagick
-    libpng
-    metadata
-    playerctl
-    poppler-utils
-    shared-mime-info
-    sla2pdf
-    tesseract
-    yt-dlp
-  ];
-
-  tui = with pkgs; [
-    bandwhich # network bandwidth monitor
-    btop # system monitor with curses interface
-    duf # disk usage viewer
-    fff # simple file viewer
-    glances # system monitor with curses interface
-    htop # interactive process viewer
-    lazygit # interactive git client
-    navi # interactive cheatsheet browser
-    powertop # power consumption monitor
-    procs # interactive process viewer
-    s-tui # monitoring tool
-    wiper # disk analyzer and cleanup tool
-  ];
-
+  #
+  # disabled
+  #
   useless = with pkgs; [
     asciinema
     cmatrix
