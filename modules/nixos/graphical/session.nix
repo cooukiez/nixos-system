@@ -2,24 +2,30 @@
   inputs,
   pkgs,
   hostSystem,
+  userConfig,
   ...
 }:
 let
+  sessionCommands = {
+    niri = "exec ${pkgs.niri-unstable}/bin/niri-session";
+    kde = "exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland";
+    none = "exit 0";
+  };
+
+  caseBranches = lib.concatStringsSep "\n" (
+    lib.mapAttrsToList (name: config: ''
+      ${name})
+        ${sessionCommands.${config.session}}
+        ;;
+    '') userConfig
+  );
+
   autoSessionScript = pkgs.writeShellApplication {
     name = "auto-session-selector";
     text = ''
       case "$USER" in
-        ceirs|redi)
-          exec ${pkgs.niri-unstable}/bin/niri-session
-          ;;
-        ludw)
-          exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed \
-               ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland
-          ;;
-        *)
-          echo "No session configured for user $USER." >&2
-          exit 1
-          ;;
+        ${caseBranches}
+        *) exit 1 ;;
       esac
     '';
   };
@@ -35,18 +41,16 @@ let
       (_: {
         passthru.providedSessions = [ "auto-selection" ];
       });
-
-  mkEnableDefault = lib.mkOption {
-    type = lib.types.bool;
-    default = true;
-  };
 in
 {
   options.graphicalConfig = {
     session = lib.mkOption {
       type = lib.types.submodule {
         options = {
-          niri = mkEnableDefault;
+          niri = lib.mkOption {
+            type = lib.types.bool;
+            default = true;
+          };
 
           kde = lib.mkOption {
             type = lib.types.bool;
@@ -77,6 +81,8 @@ in
     }
 
     (lib.mkIf cfg.niri {
+      graphicalConfig.display.wayland = lib.mkForce true;
+
       niri-flake.cache.enable = true;
       programs.niri = {
         enable = true;
@@ -85,8 +91,9 @@ in
     })
 
     (lib.mkIf cfg.kde {
-      services.desktopManager.plasma6.enable = true;
+      graphicalConfig.display.x11 = lib.mkForce true;
 
+      services.desktopManager.plasma6.enable = true;
       environment.plasma6.excludePackages = with pkgs; [
         kdePackages.polkit-kde-agent-1
       ];

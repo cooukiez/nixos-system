@@ -7,8 +7,10 @@
 
 {
   ceirs = {
+    session = "niri";
+
     email = "ludwig.geyer@mailbox.org";
-    fullName = "Ceirs";
+    fullName = "Ludwig";
     githubName = "cooukiez";
     githubEmail = "ludwig-geyer@web.de";
     name = "ceirs";
@@ -55,6 +57,8 @@
   };
 
   ludw = {
+    session = "kde";
+
     email = "ludwig.geyer@mailbox.org";
     fullName = "Ludwig";
     githubName = "cooukiez";
@@ -103,6 +107,8 @@
   };
 
   redi = {
+    session = "niri";
+
     email = "ludwig@redi-school.org";
     fullName = "Ludwig";
     githubName = "cooukiez";

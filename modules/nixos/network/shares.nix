@@ -6,6 +6,19 @@ let
   cfg = config.networkConfig.samba;
 in
 {
+  options.networkConfig = {
+    samba = lib.mkOption {
+      type = lib.types.submodule {
+        options = {
+          server = mkEnableDefault;
+          fritzMount = mkEnableDefault;
+        };
+      };
+
+      default = { };
+    };
+  };
+
   config = {
     services.samba = lib.mkIf cfg.server {
       enable = true;

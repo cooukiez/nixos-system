@@ -7,7 +7,7 @@ let
   desktop = import ./packages.nix { inherit pkgs; };
   cfg = config.graphicalConfig.programs;
 
-  _nautilusBackspaceSrc = pkgs.fetchFromGitHub {
+  nautilusBackspaceSrc = pkgs.fetchFromGitHub {
     owner = "TheWeirdDev";
     repo = "nautilus-backspace";
     rev = "main";
@@ -73,11 +73,18 @@ in
     })
 
     (lib.mkIf cfg.programNautilus {
-      environment.systemPackages = desktop.nautilus;
-
-      environment.pathsToLink = [
-        "/share/nautilus-python/extensions"
+      environment.systemPackages = with pkgs; [
+        nautilus
+        nautilus-python
+        nautilus-open-any-terminal
+        code-nautilus
       ];
+
+      environment.pathsToLink = [ "/share/nautilus-python/extensions" ];
+      environment.sessionVariables = {
+        NAUTILUS_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions";
+        NAUTILUS_4_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
+      };
     })
   ];
 }

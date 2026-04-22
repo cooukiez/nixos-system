@@ -10,6 +10,7 @@
     fastfetch
     git
     gnutar
+    htop
     jq
     lsof
     psmisc
@@ -29,6 +30,7 @@
     gdb
     gdb-dashboard
     gnumake
+    mariadb
     rustup
     shader-slang
     shaderc
@@ -50,6 +52,7 @@
     cifs-utils
     dfc
     dua
+    duf
     exfatprogs
     fuse
     fuse3
@@ -64,32 +67,41 @@
     ventoy
   ];
 
-  hardware = with pkgs; [
-    bluez-tools
-    brightnessctl
+  hardwareCore = with pkgs; [
     cpuid
     dmidecode
     intel-gpu-tools
     mesa
     nvtopPackages.intel
+    powertop
+  ];
+
+  hardwareDesktop = with pkgs; [
+    bluez-tools
+    brightnessctl
     s0ix-selftest-tool
     v4l-utils
     vulkan-tools
   ];
 
-  media = with pkgs; [
-    bpm-tools
-    cmus
+  mediaCore = with pkgs; [
     exiftool
     ffmpeg
+    imagemagick
+    poppler-utils
+    shared-mime-info
+  ];
+
+  mediaExtra = with pkgs; [
+    bpm-tools
+    cairo
+    cmus
     gphoto2
     icon-slicer
-    imagemagick
+    leptonica
     libpng
     metadata
     playerctl
-    poppler-utils
-    shared-mime-info
     sla2pdf
     tesseract
     yt-dlp
@@ -110,41 +122,33 @@
     inputs.agenix.packages.${hostSystem}.default
   ];
 
-  tui = with pkgs; [
-    bandwhich # network bandwidth monitor
-    btop # system monitor with curses interface
-    duf # disk usage viewer
-    fff # simple file viewer
-    glances # system monitor with curses interface
-    htop # interactive process viewer
-    lazygit # interactive git client
-    navi # interactive cheatsheet browser
-    powertop # power consumption monitor
-    procs # interactive process viewer
-    s-tui # monitoring tool
-    wiper # disk analyzer and cleanup tool
-  ];
-
   utils = with pkgs; [
     bench
+    btop
     diff-so-fancy
     diffutils
     dog
     entr
     eza
     fdupes
+    fff
     fzf
+    glances
     hexdump
     hyperfine
     just
     mani
+    navi
     neofetch
+    procs
     rip2
     ripgrep
+    s-tui
     scc
     tealdeer
     tldr
     toybox
+    wiper
   ];
 
   #

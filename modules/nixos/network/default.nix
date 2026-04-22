@@ -25,17 +25,8 @@ in
     ssh = mkEnableDefault;
     tailscale = mkEnableDefault;
     vsftpd = mkEnableDefault;
+    vnstat = mkEnableDefault;
     printing = mkEnableDefault;
-
-    samba = lib.mkOption {
-      type = lib.types.submodule {
-        options = {
-          server = mkEnableDefault;
-          fritzMount = mkEnableDefault;
-        };
-      };
-      default = { };
-    };
   };
 
   config = {
@@ -89,13 +80,14 @@ in
         pasv_max_port=31000
       '';
     };
+    services.vnstat.enable = lib.mkIf cfg.vnstat true;
 
-    services.printing = lib.mkIf cfg.priting {
+    services.printing = lib.mkIf cfg.printing {
       enable = true;
       drivers = [ pkgs.hplip ];
     };
 
-    services.avahi = lib.mkIf cfg.priting {
+    services.avahi = lib.mkIf cfg.printing {
       enable = true;
       nssmdns4 = true;
       openFirewall = true;

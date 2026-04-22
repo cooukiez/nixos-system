@@ -150,11 +150,4 @@
     furmark
     geekbench
   ];
-
-  nautilus = with pkgs; [
-    nautilus
-    nautilus-python
-    nautilus-open-any-terminal
-    code-nautilus
-  ];
 }

@@ -15,20 +15,25 @@ let
 in
 {
   imports = [
+    ./display.nix
     ./programs.nix
+    ./session.nix
   ];
 
   options.graphicalConfig = {
-    corePkg = mkEnableDefault;
-    qtPkg = mkEnableDefault;
     appmenuPkg = mkEnableDefault;
     compatibilityPkg = mkEnableDefault;
+    corePkg = mkEnableDefault;
+    fontsPkg = mkEnableDefault;
+    qtPkg = mkEnableDefault;
 
     gnomeSupport = mkEnableDefault;
   };
 
   config = lib.mkMerge [
     {
+      imports = lib.optional cfg.fontsPkg ./fonts.nix;
+
       environment.systemPackages =
         (lib.optionals cfg.corePkg desktop.core)
         ++ (lib.optionals cfg.qtPkg desktop.qt)

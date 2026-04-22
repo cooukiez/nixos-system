@@ -13,6 +13,23 @@
   # power profiles
   services.power-profiles-daemon.enable = true;
 
+  # todo: move this
+  # location services
+  services.locate.enable = true;
+  # enable firmware update services
+  services.fwupd.enable = true;
+  # enable devmon for device management
+  services.devmon.enable = true;
+
+  environment.sessionVariables = {
+    # set LIBVA_DRIVER_NAME environment variable for video acceleration
+    LIBVA_DRIVER_NAME = "iHD";
+
+    # fix for nautilus extension path
+    VCPKG_FORCE_SYSTEM_BINARIES = 1;
+    LD_LIBRARY_PATH = [ "${pkgs.zlib}/lib" ];
+  };
+
   # graphics hardware configuration
   hardware.graphics = {
     enable = true;
