@@ -23,7 +23,6 @@ in
     tuiPkg = mkEnableDefault;
 
     ssh = mkEnableDefault;
-    tailscale = mkEnableDefault;
     vsftpd = mkEnableDefault;
     vnstat = mkEnableDefault;
     printing = mkEnableDefault;
@@ -41,18 +40,6 @@ in
         PermitRootLogin = "no";
         PasswordAuthentication = true;
       };
-    };
-
-    services.tailscale = lib.mkIf cfg.tailscale {
-      enable = true;
-
-      extraUpFlags = [
-        "--exit-node=100.71.244.88"
-        "--exit-node-allow-lan-access=true"
-      ];
-      extraSetFlags = [
-        "--operator=ceirs"
-      ];
     };
 
     services.vsftpd = lib.mkIf cfg.vsftpd {
@@ -80,6 +67,7 @@ in
         pasv_max_port=31000
       '';
     };
+
     services.vnstat.enable = lib.mkIf cfg.vnstat true;
 
     services.printing = lib.mkIf cfg.printing {

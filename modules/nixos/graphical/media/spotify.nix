@@ -4,6 +4,10 @@
   ...
 }:
 {
+  imports = [
+    inputs.spicetify-nix.nixosModules.default
+  ];
+
   programs.spicetify =
     let
       spicePkgs = inputs.spicetify-nix.legacyPackages.${hostSystem};

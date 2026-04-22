@@ -13,15 +13,17 @@
   disko.devices.disk = {
     lvl-disk = {
       type = "disk";
-
       device = "/dev/nvme0n1";
+
       content = {
         type = "gpt";
+
         partitions = {
           ESP = {
             type = "EF00";
             size = "1G";
             label = "esp";
+
             content = {
               type = "filesystem";
               format = "vfat";
@@ -29,17 +31,21 @@
               mountOptions = [ "umask=0077" ];
             };
           };
+
           swap = {
             type = "8200";
             size = "32G";
             label = "swap";
           };
+
           nixos = {
             size = "100%";
             label = "nixos";
+
             content = {
               type = "btrfs";
               extraArgs = [ "--force" ];
+
               subvolumes = {
                 "root" = {
                   mountpoint = "/";
@@ -49,6 +55,7 @@
                     "noatime"
                   ];
                 };
+
                 "nix" = {
                   mountpoint = "/nix";
                   mountOptions = [
@@ -57,6 +64,7 @@
                     "noatime"
                   ];
                 };
+
                 "home" = {
                   mountpoint = "/home";
                   mountOptions = [
@@ -65,6 +73,7 @@
                     "noatime"
                   ];
                 };
+
                 "var" = {
                   mountpoint = "/var";
                   mountOptions = [
@@ -73,6 +82,7 @@
                     "noatime"
                   ];
                 };
+
                 "data" = {
                   mountpoint = "/data";
                   mountOptions = [

@@ -41,6 +41,7 @@ in
   };
 
   config = {
+    environment.localBinInPath = true;
     environment.enableAllTerminfo = true;
 
     services.dbus.enable = true;
@@ -61,6 +62,12 @@ in
 
     programs.zsh.enable = true;
     programs.neovim.enable = true;
+
+    # session variables
+    environment.sessionVariables = {
+      VCPKG_FORCE_SYSTEM_BINARIES = 1;
+      LD_LIBRARY_PATH = [ "${pkgs.zlib}/lib" ];
+    };
 
     environment.systemPackages = [
       clear-logs

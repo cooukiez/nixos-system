@@ -81,6 +81,9 @@ in
     }
 
     (lib.mkIf cfg.niri {
+      imports = [ inputs.niri.nixosModules.niri ];
+      nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+
       graphicalConfig.display.wayland = lib.mkForce true;
 
       niri-flake.cache.enable = true;
