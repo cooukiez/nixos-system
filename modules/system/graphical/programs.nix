@@ -1,11 +1,13 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
+  hostConfig,
   ...
 }:
 let
-  desktop = import ./packages.nix { inherit pkgs; };
+  desktop = import ./packages.nix { inherit inputs pkgs hostConfig; };
   cfg = config.graphicalConfig.programs;
 
   nautilusBackspaceSrc = pkgs.fetchFromGitHub {

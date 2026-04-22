@@ -83,7 +83,7 @@
     shell = pkgs.zsh;
   }) userList;
 
-  systemd.tmpfiles.rules = lib.concatLists (
+  systemd.tmpfiles.rules = lib.flatten (
     lib.mapAttrsToList (
       username: user:
       lib.mapAttrsToList (target: source: [

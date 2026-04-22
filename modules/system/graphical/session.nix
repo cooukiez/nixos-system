@@ -3,7 +3,7 @@
   config,
   pkgs,
   lib,
-  userConfig,
+  userList,
   ...
 }:
 let
@@ -20,7 +20,7 @@ let
       ${name})
         ${sessionCommands.${config.session}}
         ;;
-    '') userConfig
+    '') userList
   );
 
   autoSessionScript = pkgs.writeShellApplication {
