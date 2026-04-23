@@ -119,7 +119,7 @@ in
         };
 
         hyprlock =
-          (import ./desktop/hyprloc.nix {
+          (import ./desktop/niri/hyprlock.nix {
             inherit
               inputs
               config
@@ -128,6 +128,10 @@ in
               ;
           }).wrapper;
       };
+
+      environment.systemPackages = [
+        config.pkgConfig.hyprlock
+      ];
 
       graphicalConfig.display.wayland = lib.mkForce true;
 

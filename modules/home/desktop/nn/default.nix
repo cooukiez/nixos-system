@@ -17,7 +17,7 @@ let
 in
 {
   imports = [
-    ./niri
+    # ./niri
     ./noctalia
     ./programs
 

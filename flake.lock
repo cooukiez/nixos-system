@@ -1190,15 +1190,15 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1776505856,
-        "narHash": "sha256-VbnOijrn4EdYYJwiNQFxQNXECKBa60U66UPxUQAGkBE=",
-        "owner": "lassulus",
+        "lastModified": 1776988316,
+        "narHash": "sha256-Jv/3ENv/8FON5PX3FXE/TNlbGBYH1AOi174XufzQcD8=",
+        "owner": "cooukiez",
         "repo": "wrappers",
-        "rev": "738d4bf81cbf306f6917c540a5b798110e3cf1e8",
+        "rev": "bfee7baac682240cb320e35b7b5d7dde09dc0b35",
         "type": "github"
       },
       "original": {
-        "owner": "lassulus",
+        "owner": "cooukiez",
         "repo": "wrappers",
         "type": "github"
       }
