@@ -1,6 +1,8 @@
 let
   promptFirstColor = "%F{yellow}";
   promptSecondColor = "%F{blue}";
+
+  prompt = "${promptFirstColor}%n@${promptSecondColor}%m%f:%~$";
 in
 {
   programs.zsh = {
@@ -42,7 +44,7 @@ in
     '';
 
     promptInit = ''
-      PROMPT='${promptFirstColor}%n@${promptSecondColor}%m%f:%~$ '
+      PROMPT='${prompt} '
     '';
 
     histSize = 16384;

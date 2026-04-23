@@ -1,4 +1,8 @@
 {
+  pkgs,
+  ...
+}:
+{
   programs.git = {
     enable = true;
     package = pkgs.git;
@@ -9,6 +13,15 @@
     };
 
     config = {
+      advice.defaultBranchName = false;
+
+      pull.rebase = true;
+      rebase = {
+        autoSquash = true;
+        autoStash = true;
+        updateRefs = true;
+      };
+
       safe = {
         directory = [
           "/etc/nixos"
