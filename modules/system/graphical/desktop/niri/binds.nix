@@ -52,8 +52,9 @@ in
 
   "Mod+I" = mkNoctaliaBind "Open Settings" "settings toggle";
 
+  "Mod+Q" = mkExecBind "Open Terminal" "${lib.getExe pkgs.kitty}";
+
   "Mod+E" = mkExecBind "Open File Manager" "${lib.getExe config.pkgConfig.nautilus}";
-  "Mod+Q" = mkExecBind "Open Terminal" "${lib.getExe config.pkgConfig.kitty}";
   "Mod+Shift+F" = mkExecBind "Open Firefox" "${lib.getExe config.pkgConfig.firefox}";
   "Mod+Shift+D" = mkExecBind "Open Zen-Browser" "${lib.getExe config.pkgConfig.zen-browser}";
   "Mod+Shift+C" = mkExecBind "Open VSCode" "${lib.getExe config.pkgConfig.vscode}";

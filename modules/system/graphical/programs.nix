@@ -33,6 +33,7 @@ in
           system = mkEnableDefault;
 
           programNautilus = mkEnableDefault;
+          programVSCode = mkEnableDefault;
         };
       };
 
@@ -41,8 +42,8 @@ in
   };
 
   options.pkgConfig = {
-    kitty = pkgs.kitty;
-    nautilus = pkgs.nautilus;
+    nautilus = lib.mkOption { type = lib.types.package; };
+    vscode = lib.mkOption { type = lib.types.package; };
   };
 
   config = lib.mkMerge [
@@ -82,17 +83,29 @@ in
     })
 
     (lib.mkIf cfg.programNautilus {
-      environment.systemPackages = with pkgs; [
-        nautilus
-        nautilus-python
-        nautilus-open-any-terminal
-        code-nautilus
+      pkgConfig.nautilus = pkgs.unstable.nautilus;
+
+      environment.systemPackages = [
+        config.pkgConfig.nautilus
+
+        pkgs.unstable.nautilus-python
+        pkgs.unstable.nautilus-open-any-terminal
+        pkgs.unstable.code-nautilus
       ];
 
       environment.pathsToLink = [ "/share/nautilus-python/extensions" ];
       environment.sessionVariables = {
-        NAUTILUS_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions";
-        NAUTILUS_4_EXTENSION_DIR = "${pkgs.nautilus-python}/lib/nautilus/extensions-4";
+        NAUTILUS_EXTENSION_DIR = "${pkgs.unstable.nautilus-python}/lib/nautilus/extensions";
+        NAUTILUS_4_EXTENSION_DIR = "${pkgs.unstable.nautilus-python}/lib/nautilus/extensions-4";
+      };
+    })
+
+    (lib.mkIf cfg.programVSCode {
+      pkgConfig.vscode = pkgs.unstable.vscode;
+
+      programs.vscode = {
+        enable = true;
+        package = config.pkgConfig.vscode;
       };
     })
   ];

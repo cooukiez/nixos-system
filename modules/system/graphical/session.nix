@@ -78,10 +78,8 @@ in
   };
 
   options.pkgConfig = {
-    niri = niri.wrapper;
-    noctalia = pkgs.noctalia.override {
-      calendarSupport = true;
-    };
+    niri = lib.mkOption { type = lib.types.package; };
+    noctalia = lib.mkOption { type = lib.types.package; };
   };
 
   config = lib.mkMerge [
@@ -105,6 +103,13 @@ in
     }
 
     (lib.mkIf cfg.niri {
+      pkgConfig = {
+        niri = niriModule.wrapper;
+        noctalia = pkgs.noctalia.override {
+          calendarSupport = true;
+        };
+      };
+
       graphicalConfig.display.wayland = lib.mkForce true;
 
       security.pam.services.sddm.enableGnomeKeyring = true;

@@ -9,10 +9,12 @@ let
 in
 {
   options.pkgConfig = {
-    firefox = pkgs.unstable.firefox;
+    firefox = lib.mkOption { type = lib.types.package; };
   };
 
   config = lib.mkIf cfg.firefox {
+    pkgConfig.firefox = pkgs.unstabe.firefox;
+
     programs.firefox = {
       enable = true;
       package = config.pkgConfig.firefox;
@@ -27,32 +29,8 @@ in
         pkgs.kdePackages.plasma-browser-integration
       ];
 
-      preferences = {
-        "widget.use-xdg-desktop-portal.file-picker" = 1;
-      };
-
-      policies = {
-        AutofillAddressEnabled = true;
-        AutofillCreditCardEnabled = false;
-
-        DisableAppUpdate = true;
-        DisableFeedbackCommands = true;
-        DisableFirefoxStudies = true;
-        DisablePocket = true;
-        DisableTelemetry = true;
-
-        DontCheckDefaultBrowser = true;
-
-        NoDefaultBookmarks = true;
-        OfferToSaveLogins = false;
-
-        EnableTrackingProtection = {
-          Value = true;
-          Locked = true;
-          Cryptomining = true;
-          Fingerprinting = true;
-        };
-      };
+      policies = (import ./config-browser.nix).policies;
+      preferences = (import ./config-browser.nix).preferences;
     };
   };
 }
