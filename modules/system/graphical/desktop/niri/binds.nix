@@ -1,8 +1,3 @@
-/*
-  modules/home/desktop/nn/niri/binds.nix
-  Updated: Corrected all .spawn values to be lists.
-*/
-
 {
   config,
   pkgs,
@@ -16,7 +11,7 @@ let
 
   mkNoctaliaBind = title: cmdStr: {
     spawn = [
-      "${lib.getExe pkgs.noctalia}"
+      "${lib.getExe config.pkgConfig.noctalia}"
       "ipc"
       "call"
     ]

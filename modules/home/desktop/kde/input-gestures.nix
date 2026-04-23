@@ -7,10 +7,11 @@
 
 {
   pkgs,
+  lib,
   ...
 }:
 {
-  # enable three finger gestures for workspace switching
+  # three finger gestures for workspace switching
   xdg.configFile."libinput-gestures.conf".text = ''
     # three finger gestures
     gesture swipe left 3 xdotool key Super+Right
@@ -21,12 +22,12 @@
 
   systemd.user.services.libinput-gestures = {
     Unit = {
-      Description = "libinput gestures";
+      Description = "KDE libinput-Gestures";
       PartOf = [ "graphical-session.target" ];
     };
 
     Service = {
-      ExecStart = "${pkgs.libinput-gestures}/bin/libinput-gestures";
+      ExecStart = "${libpkgs.libinput-gestures}/bin/libinput-gestures";
       Environment = "DISPLAY=:0";
     };
 

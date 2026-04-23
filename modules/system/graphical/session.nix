@@ -69,6 +69,7 @@ in
   options.pkgConfig = {
     niri = lib.mkOption { type = lib.types.package; };
     noctalia = lib.mkOption { type = lib.types.package; };
+    hyprlock = lib.mkOption { type = lib.types.package; };
   };
 
   config = lib.mkMerge [
@@ -90,6 +91,8 @@ in
 
       services.displayManager.sessionPackages = [ autoSessionDesktop ];
       services.displayManager.defaultSession = "auto-selection";
+
+      security.pam.services.hyprlock = { };
 
       # disable fingerprint for boot login
       security.pam.services.login.fprintAuth = false;
@@ -114,6 +117,16 @@ in
         noctalia = pkgs.noctalia.override {
           calendarSupport = true;
         };
+
+        hyprlock =
+          (import ./desktop/hyprloc.nix {
+            inherit
+              inputs
+              config
+              pkgs
+              lib
+              ;
+          }).wrapper;
       };
 
       graphicalConfig.display.wayland = lib.mkForce true;
