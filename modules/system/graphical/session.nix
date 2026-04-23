@@ -79,7 +79,9 @@ in
 
   options.pkgConfig = {
     niri = niri.wrapper;
-    noctalia = pkgs.noctalia;
+    noctalia = pkgs.noctalia.override {
+      calendarSupport = true;
+    };
   };
 
   config = lib.mkMerge [

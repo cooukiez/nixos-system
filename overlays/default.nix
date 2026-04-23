@@ -16,9 +16,7 @@
   modifications = final: prev: {
     agenix = inputs.agenix.packages.${system}.default;
 
-    noctalia = inputs.noctalia.packages.${system}.default.override {
-      calendarSupport = true;
-    };
+    noctalia = inputs.noctalia.packages.${system}.default;
 
     sf-compact = inputs.apple-fonts.packages.${system}.sf-compact;
     sf-mono = inputs.apple-fonts.packages.${system}.sf-mono;

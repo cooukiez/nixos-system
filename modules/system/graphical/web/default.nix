@@ -26,6 +26,7 @@ in
           downloadPkg = mkEnableDefault;
 
           firefox = mkEnableDefault;
+          zen-browser = mkEnableDefault;
         };
       };
 
