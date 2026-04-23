@@ -13,11 +13,11 @@ in
   };
 
   config = lib.mkIf cfg.firefox {
-    pkgConfig.firefox = pkgs.unstabe.firefox;
+    pkgConfig.firefox = pkgs.unstable.firefox;
 
     programs.firefox = {
       enable = true;
-      package = config.pkgConfig.firefox;
+      package = pkgs.unstable.firefox;
 
       languagePacks = [
         "en-US"
@@ -29,8 +29,8 @@ in
         pkgs.kdePackages.plasma-browser-integration
       ];
 
-      policies = (import ./config-browser.nix).policies;
-      preferences = (import ./config-browser.nix).preferences;
+      policies = (import ./config.nix).policies;
+      preferences = (import ./config.nix).preferences;
     };
   };
 }

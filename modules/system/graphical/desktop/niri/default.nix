@@ -74,15 +74,7 @@ inputs.wrappers.wrapperModules.niri.apply {
       lid-close.spawn = [
         "sh"
         "-c"
-        "${lib.getExe config.pkgConfig.hyprlock}; sleep 3; systemctl suspend"
-      ];
-
-      tablet-mode-on.spawn = [
-        "${pkgs.libnotify}/bin/notify-send --app-name=\"Niri Compositor\" \"Tablet-Mode changed\" \"Table-Mode is activated.\""
-      ];
-
-      tablet-mode-off.spawn = [
-        "${pkgs.libnotify}/bin/notify-send --app-name=\"Niri Compositor\" \"Tablet-Mode changed\" \"Table-Mode is deactivated.\""
+        "${lib.getExe pkgs.hyprlock}; sleep 3; systemctl suspend"
       ];
     };
 

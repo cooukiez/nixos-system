@@ -28,12 +28,9 @@
 
   qt = with pkgs; [
     libsForQt5.qt5.qtbase
-    libsForQt5.qt5.qtdeclarative
     libsForQt5.qt5.qtmultimedia
     qt6.qtbase
     qt6.qtmultimedia
-    qt6.qtsvg
-    qt6.qtvirtualkeyboard
   ];
 
   compatibility = with pkgs; [

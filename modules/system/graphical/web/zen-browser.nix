@@ -14,8 +14,9 @@ in
 
   config = lib.mkIf cfg.zen-browser {
     pkgConfig.zen-browser = pkgs.zen-browser.override {
-      policies = (import ./config-browser.nix).policies;
-      policies.Preferences = (import ./config-browser.nix).preferences;
+      extraPolicies = (import ./config.nix).policies // {
+        Preferences = (import ./config.nix).preferences;
+      };
     };
 
     environment.systemPackages = [

@@ -67,7 +67,7 @@ in
   "Mod+X" = mkNoctaliaBind "Control Center" "controlCenter toggle";
   "Mod+P" = mkNoctaliaBind "Session Menu" "sessionMenu toggle";
 
-  "Mod+L" = mkExecBind "Lock Screen" "${lib.getExe config.pkgConfig.hyprlock}";
+  "Mod+L" = mkExecBind "Lock Screen" "${lib.getExe pkgs.hyprlock}";
 
   "Mod+Shift+L" = mkExecBind "Apply low resolution" "${scripts.lowRes}/bin/low-res";
   "Mod+Shift+H" = mkExecBind "Apply high resolution" "${scripts.highRes}/bin/high-res";

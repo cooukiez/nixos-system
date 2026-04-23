@@ -16,6 +16,7 @@ in
 {
   imports = [
     ./firefox.nix
+    ./zen-browser.nix
   ];
 
   options.graphicalConfig = {

@@ -9,17 +9,6 @@
 let
   cfg = config.graphicalConfig.session;
 
-  niri = (
-    import ./desktop/niri {
-      inherit
-        inputs
-        config
-        pkgs
-        lib
-        ;
-    }
-  );
-
   sessionCommands = {
     niri = "exec ${config.pkgConfig.niri}/bin/niri-session";
     kde = "exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland";
@@ -35,7 +24,7 @@ let
   );
 
   autoSessionScript = pkgs.writeShellApplication {
-    name = "auto-session-selector";
+    name = "auto-session";
     text = ''
       case "$USER" in
         ${caseBranches}
@@ -49,7 +38,7 @@ let
       [Desktop Entry]
       Name=Automatic Session
       Comment=User-specific session auto-detect
-      Exec=${autoSessionScript}/bin/auto-session-selector
+      Exec=${autoSessionScript}/bin/auto-session
       Type=Application
     '').overrideAttrs
       (_: {
@@ -87,8 +76,16 @@ in
       services.displayManager.sddm = {
         enable = true;
         enableHidpi = true;
-        wayland.enable = true;
+        wayland = {
+          enable = true;
+          compositor = "kwin";
+        };
+
         theme = "sddm-astronaut-theme";
+
+        extraPackages = with pkgs; [
+          kdePackages.qtmultimedia
+        ];
       };
 
       services.displayManager.sessionPackages = [ autoSessionDesktop ];
@@ -104,7 +101,16 @@ in
 
     (lib.mkIf cfg.niri {
       pkgConfig = {
-        niri = niriModule.wrapper;
+        niri =
+          (import ./desktop/niri {
+            inherit
+              inputs
+              config
+              pkgs
+              lib
+              ;
+          }).wrapper;
+
         noctalia = pkgs.noctalia.override {
           calendarSupport = true;
         };
