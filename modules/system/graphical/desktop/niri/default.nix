@@ -9,7 +9,6 @@ inputs.wrappers.wrapperModules.niri.apply {
 
   settings = {
     prefer-no-csd = true;
-
     xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
     binds = import ./binds.nix { inherit pkgs lib; };
@@ -57,10 +56,8 @@ inputs.wrappers.wrapperModules.niri.apply {
       mode = "3840x2400@60.000";
       scale = 2.0;
       position = {
-        _attrs = {
-          x = 0;
-          y = 0;
-        };
+        _attrs.x = 0;
+        _attrs.y = 0;
       };
     };
 
@@ -68,10 +65,8 @@ inputs.wrappers.wrapperModules.niri.apply {
       mode = "1920x1080@60.000";
       scale = 1.0;
       position = {
-        _attrs = {
-          x = 1920;
-          y = 0;
-        };
+        _attrs.x = 1920;
+        _attrs.y = 0;
       };
     };
 
@@ -89,6 +84,7 @@ inputs.wrappers.wrapperModules.niri.apply {
 
     layout = {
       gaps = 5;
+
       struts = {
         left = 10;
         right = 10;
@@ -124,10 +120,8 @@ inputs.wrappers.wrapperModules.niri.apply {
         softness = 30;
         spread = 5;
         offset = {
-          _attrs = {
-            x = 0;
-            y = 5;
-          };
+          _attrs.x = 0;
+          _attrs.y = 5;
         };
 
         color = "#00000070";
@@ -166,15 +160,15 @@ inputs.wrappers.wrapperModules.niri.apply {
       {
         geometry-corner-radius = 10.0;
         clip-to-geometry = true;
+
         draw-border-with-background = false;
+
         open-maximized = true;
         open-fullscreen = false;
       }
       {
         matches = [
-          {
-            app-id = "kitty";
-          }
+          { app-id = "kitty"; }
         ];
 
         open-maximized = false;

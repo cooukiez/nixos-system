@@ -45,7 +45,7 @@ in
       roboto-flex
       roboto-serif
       rubik
-      sf-compac
+      sf-compact
       sf-mono
       sf-pro
       sf-pro-nerd

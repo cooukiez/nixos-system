@@ -7,12 +7,9 @@
 
 {
   inputs,
-  hostConfig,
+  system,
   ...
 }:
-let
-  system = hostConfig.hostSystem;
-in
 {
   additions = final: _prev: import ../pkgs final.pkgs;
 

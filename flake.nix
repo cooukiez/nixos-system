@@ -98,9 +98,8 @@
           ];
         };
 
-      supportedSystems = [
-        "x86_64-linux"
-      ];
+      system = "x86_64-linux";
+      supportedSystems = [ system ];
 
       forAllSystems = lib.genAttrs supportedSystems;
     in
@@ -109,7 +108,7 @@
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
       overlays = {
-        inherit (import ./overlays { inherit inputs; })
+        inherit (import ./overlays { inherit inputs system; })
           additions
           modifications
           unstable-packages

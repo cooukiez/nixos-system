@@ -10,7 +10,7 @@ let
   cfg = config.graphicalConfig.session;
 
   niri = (
-    import ./desktop/niri.nix {
+    import ./desktop/niri {
       inherit
         inputs
         config

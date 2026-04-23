@@ -9,246 +9,120 @@
   ...
 }:
 let
-  wpctl = [ "wpctl" ];
-  brightnessctl = [ "brightnessctl" ];
+  scripts = import ./scripts.nix { inherit pkgs; };
 
-  mkNoctaliaBind = title: commandList: {
-    _attrs = {
-      hotkey-overlay-title = title;
-    };
+  split = str: builtins.filter builtins.isString (builtins.split " " str);
 
+  mkNoctaliaBind = title: cmdStr: {
     spawn = [
-      "noctalia-shell"
+      "${pkgs.noctalia}/bin/noctalia-shell"
       "ipc"
       "call"
     ]
-    ++ commandList;
+    ++ (split cmdStr);
+
+    _attrs.hotkey-overlay-title = title;
   };
 
-  low-res-pkg = pkgs.writeShellScriptBin "niri-low-res" ''
-    ${pkgs.niri}/bin/niri msg output "eDP-1" custom-mode "1920x1200@60.000"
-    ${pkgs.niri}/bin/niri msg output "eDP-1" scale 1.0
-    ${pkgs.libnotify}/bin/notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 1920x1200@60."
-  '';
-
-  high-res-pkg = pkgs.writeShellScriptBin "niri-high-res" ''
-    ${pkgs.niri}/bin/niri msg output "eDP-1" mode "3480x2160@60.000"
-    ${pkgs.niri}/bin/niri msg output "eDP-1" scale 2.0
-    ${pkgs.libnotify}/bin/notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 3480x2160@60."
-  '';
-
-  screenshot-full-pkg = pkgs.writeShellScriptBin "niri-screenshot-full" ''
-    mkdir -p ~/Pictures/Screenshots
-    f=~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d_%H-%M-%S-%3N).png
-    ${pkgs.grim}/bin/grim "$f" && \
-    ${pkgs.wl-clipboard}/bin/wl-copy < "$f" && \
-    ${pkgs.libnotify}/bin/notify-send --app-name=Screencapture Screenshot "Captured" -i "$f"
-  '';
-
-  screenshot-region-pkg = pkgs.writeShellScriptBin "niri-screenshot-region" ''
-    mkdir -p ~/Pictures/Screenshots
-    f=~/Pictures/Screenshots/Screenshot-$(date +%Y-%m-%d_%H-%M-%S-%3N).png
-    ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" "$f" && \
-    ${pkgs.wl-clipboard}/bin/wl-copy < "$f" && \
-    ${pkgs.libnotify}/bin/notify-send --app-name=Screencapture Screenshot "Captured region" -i "$f"
-  '';
-
-  record-full-pkg = pkgs.writeShellScriptBin "niri-record-full" ''
-    mkdir -p ~/Videos/Captures
-    f=~/Videos/Captures/Recording-$(date +%Y-%m-%d_%H-%M-%S-%3N).mp4
-    ${pkgs.wf-recorder}/bin/wf-recorder -f "$f"
-  '';
-
-  record-region-pkg = pkgs.writeShellScriptBin "niri-record-region" ''
-    mkdir -p ~/Videos/Captures
-    f=~/Videos/Captures/Recording-$(date +%Y-%m-%d_%H-%M-%S-%3N).mp4
-    ${pkgs.wf-recorder}/bin/wf-recorder -g "$(${pkgs.slurp}/bin/slurp)" -f "$f"
-  '';
-
-  record-stop-pkg = pkgs.writeShellScriptBin "niri-record-stop" ''
-    ${pkgs.procps}/bin/pkill -INT wf-recorder
-    ${pkgs.libnotify}/bin/notify-send --app-name=Screencapture "Recording stopped"
-  '';
+  mkExecBind = title: cmdStr: {
+    spawn = split cmdStr;
+    _attrs.hotkey-overlay-title = title;
+  };
 in
 {
-  "XF86AudioRaiseVolume" = {
-    _attrs = {
-      hotkey-overlay-title = "Raise Volume";
-    };
-    spawn = (
-      noctalia-ipc [
-        "volume"
-        "increase"
-      ]
-    );
-  };
+  "XF86AudioRaiseVolume" = mkNoctaliaBind "Raise Volume" "volume increase";
+  "XF86AudioLowerVolume" = mkNoctaliaBind "Lower Volume" "volume decrease";
+  "XF86AudioMute" = mkNoctaliaBind "Mute Sound" "volume muteOutput";
+  "XF86AudioMicMute" = mkNoctaliaBind "Mute Microphone" "volume muteInput";
 
-  "XF86AudioLowerVolume" = {
-    _attrs = {
-      hotkey-overlay-title = "Lower Volume";
-    };
-    spawn = (
-      noctalia-ipc [
-        "volume"
-        "decrease"
-      ]
-    );
-  };
+  "Mod+TouchpadScrollDown" = mkNoctaliaBind "Scroll Volume Up" "volume increase";
+  "Mod+TouchpadScrollUp" = mkNoctaliaBind "Scroll Volume Down" "volume decrease";
 
-  "XF86AudioMute".spawn = (
-    noctalia-ipc [
-      "volume"
-      "muteOutput"
-    ]
-  );
-  "XF86AudioMicMute".spawn = (
-    noctalia-ipc [
-      "volume"
-      "muteInput"
-    ]
-  );
+  "XF86MonBrightnessUp" = mkNoctaliaBind "Increase Brightness" "brightness increase";
+  "XF86MonBrightnessDown" = mkNoctaliaBind "Decrease Brightness" "brightness decrease";
 
-  "Mod+TouchpadScrollDown".spawn = (
-    noctalia-ipc [
-      "volume"
-      "increase"
-    ]
-  );
-  "Mod+TouchpadScrollUp".spawn = (
-    noctalia-ipc [
-      "volume"
-      "decrease"
-    ]
-  );
+  "Mod+Shift+TouchpadScrollDown" =
+    mkExecBind "Scroll Brightness Up" "${pkgs.brightnessctl}/bin/brightnessctl set 2%+";
+  "Mod+Shift+TouchpadScrollUp" =
+    mkExecBind "Scroll Brightness Down" "${pkgs.brightnessctl}/bin/brightnessctl set 2%-";
 
-  "XF86MonBrightnessUp".spawn = (
-    noctalia-ipc [
-      "brightness"
-      "increase"
-    ]
-  );
-  "XF86MonBrightnessDown".spawn = (
-    noctalia-ipc [
-      "brightness"
-      "decrease"
-    ]
-  );
+  "XF86RFKill" = mkNoctaliaBind "Airplane Mode" "wifi disable";
+  "XF86Bluetooth" = mkNoctaliaBind "Toggle Bluetooth" "bluetooth toggle";
 
-  "Mod+Shift+TouchpadScrollDown".spawn = brightnessctl ++ [
-    "set"
-    "2%+"
-  ];
-  "Mod+Shift+TouchpadScrollUp".spawn = brightnessctl ++ [
-    "set"
-    "2%-"
-  ];
+  "Mod+I" = mkNoctaliaBind "Open Settings" "settings toggle";
 
-  "XF86RFKill".spawn = (
-    noctalia-ipc [
-      "wifi"
-      "disable"
-    ]
-  );
-  "XF86Bluetooth".spawn = (
-    noctalia-ipc [
-      "bluetooth"
-      "toggle"
-    ]
-  );
+  "Mod+E" = mkExecBind "Open File Manager" "${pkgs.nautilus}/bin/nautilus";
+  "Mod+Q" = mkExecBind "Open Terminal" "${pkgs.kitty}/bin/kitty";
+  "Mod+Shift+F" = mkExecBind "Open Firefox" "${pkgs.firefox}/bin/firefox";
+  # "Mod+Shift+D" = mkExecBind "Open Zen-Browser" "${pkgs.zen-twilight}/bin/zen-browser";
+  "Mod+Shift+C" = mkExecBind "Open VSCode" "${pkgs.vscode}/bin/code";
 
-  "XF86Tools".spawn = (
-    noctalia-ipc [
-      "settings"
-      "toggle"
-    ]
-  );
-  "Mod+I".spawn = (
-    noctalia-ipc [
-      "settings"
-      "toggle"
-    ]
-  );
+  "Mod+F1" = mkNoctaliaBind "Toggle Cheatsheet" "plugin:keybind-cheatsheet toggle";
+  "Mod+D" = mkNoctaliaBind "Application Launcher" "launcher toggle";
+  "Mod+R" = mkNoctaliaBind "Command Runner" "launcher command";
+  "Mod+Shift+E" = mkNoctaliaBind "Emoji Selector" "launcher emoji";
+  "Mod+Shift+V" = mkNoctaliaBind "Clipboard History" "launcher clipboard";
+  "Mod+X" = mkNoctaliaBind "Control Center" "controlCenter toggle";
+  "Mod+P" = mkNoctaliaBind "Session Menu" "sessionMenu toggle";
 
-  # Applications
-  "Mod+E".spawn = [ "nautilus" ];
-  "Mod+Q".spawn = [ "kitty" ];
-  "Mod+Shift+F".spawn = [ "firefox" ];
-  "Mod+Shift+D".spawn = [ "zen-twilight" ];
-  "Mod+Shift+C".spawn = [ "code" ];
+  "Mod+L" = mkExecBind "Lock Screen" "${pkgs.hyprlock}/bin/hyprlock";
 
-  # UI Components
-  "Mod+F1".spawn = (
-    noctalia-ipc [
-      "plugin:keybind-cheatsheet"
-      "toggle"
-    ]
-  );
-  "Mod+D".spawn = (
-    noctalia-ipc [
-      "launcher"
-      "toggle"
-    ]
-  );
-  "Mod+R".spawn = (
-    noctalia-ipc [
-      "launcher"
-      "command"
-    ]
-  );
-  "Mod+Shift+E".spawn = (
-    noctalia-ipc [
-      "launcher"
-      "emoji"
-    ]
-  );
-  "Mod+Shift+V".spawn = (
-    noctalia-ipc [
-      "launcher"
-      "clipboard"
-    ]
-  );
-  "Mod+X".spawn = (
-    noctalia-ipc [
-      "controlCenter"
-      "toggle"
-    ]
-  );
-  "Mod+P".spawn = (
-    noctalia-ipc [
-      "sessionMenu"
-      "toggle"
-    ]
-  );
+  "Mod+Shift+L" = mkExecBind "Apply low resolution" "${scripts.lowRes}/bin/low-res";
+  "Mod+Shift+H" = mkExecBind "Apply high resolution" "${scripts.highRes}/bin/high-res";
 
-  "Mod+L".spawn = [ "hyprlock" ];
+  "Print" = mkExecBind "Screenshot full screen" "${scripts.screenshotFull}/bin/screenshot-full";
+  "Mod+Print" = mkExecBind "Screenshot region" "${scripts.screenshotRegion}/bin/screenshot-region";
 
-  # Resolution & Screenshots (Variables now defined as lists)
-  "Mod+Shift+L".spawn = [ "${low-res-pkg}/bin/niri-low-res" ];
-  "Mod+Shift+H".spawn = [ "${high-res-pkg}/bin/niri-high-res" ];
+  "Mod+F2" = mkExecBind "Record full screen" "${scripts.recordFull}/bin/record-full";
+  "Mod+F3" = mkExecBind "Record region" "${scripts.recordRegion}/bin/record-region";
+  "Mod+F4" = mkExecBind "Stop all recordings" "${scripts.recordStop}/bin/record-stop";
 
-  "Print".spawn = [ "${screenshot-full-pkg}/bin/niri-screenshot-full" ];
-  "Mod+Print".spawn = [ "${screenshot-region-pkg}/bin/niri-screenshot-region" ];
-
-  "Mod+F2".spawn = [ "${record-full-pkg}/bin/niri-record-full" ];
-  "Mod+F3".spawn = [ "${record-region-pkg}/bin/niri-record-region" ];
-  "Mod+F4".spawn = [ "${record-stop-pkg}/bin/niri-record-stop" ];
-
-  # Window Management (Non-spawn binds)
   "Mod+C".close-window = null;
   "Mod+H".maximize-column = null;
   "Mod+S".toggle-overview = null;
+
+  "Mod+WheelScrollDown".focus-workspace-down = null;
+  "Mod+WheelScrollUp".focus-workspace-up = null;
+  "Mod+WheelScrollRight".focus-column-right = null;
+  "Mod+WheelScrollLeft".focus-column-left = null;
+
   "Mod+Left".focus-column-or-monitor-left = null;
   "Mod+Right".focus-column-or-monitor-right = null;
   "Mod+Up".focus-window-or-workspace-up = null;
   "Mod+Down".focus-window-or-workspace-down = null;
+
+  "Mod+Shift+Return".move-window-to-monitor-next = null;
+
+  "Mod+Shift+Left".move-column-left-or-to-monitor-left = null;
+  "Mod+Shift+Right".move-column-right-or-to-monitor-right = null;
+  "Mod+Shift+Up".move-window-up-or-to-workspace-up = null;
+  "Mod+Shift+Down".move-window-down-or-to-workspace-down = null;
+
   "Mod+V".toggle-window-floating = null;
   "Mod+F".fullscreen-window = null;
-  # "Mod+Shift+M".quit = "skip-confirmation";
+  "Mod+G".toggle-windowed-fullscreen = null;
+
+  "Ctrl+Alt+Left".consume-or-expel-window-left = null;
+  "Ctrl+Alt+Right".consume-or-expel-window-right = null;
+
+  "Ctrl+Alt+Q".switch-preset-column-width = null;
+  "Ctrl+Alt+A".switch-preset-window-height = null;
+  "Ctrl+Alt+S".expand-column-to-available-width = null;
+
   "Mod+W".toggle-column-tabbed-display = null;
+
+  "Mod+Shift+M" = {
+    quit = {
+      _attrs.skip-confirmation = true;
+    };
+
+    _attrs.hotkey-overlay-title = "Quit Compositor";
+  };
 }
 // builtins.foldl' (acc: elem: acc // elem) { } (
   map (i: {
     "Mod+${builtins.toString i}".focus-workspace = i;
     "Mod+Shift+${builtins.toString i}".move-column-to-workspace = i;
+
   }) (lib.genList (x: x) 10)
 )
