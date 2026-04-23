@@ -11,7 +11,7 @@ inputs.wrappers.wrapperModules.niri.apply {
     prefer-no-csd = true;
     xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-    binds = import ./binds.nix { inherit pkgs lib; };
+    binds = import ./binds.nix { inherit config pkgs lib; };
 
     input = {
       keyboard = {
@@ -74,7 +74,15 @@ inputs.wrappers.wrapperModules.niri.apply {
       lid-close.spawn = [
         "sh"
         "-c"
-        "niri msg action power-off-monitors; hyprlock; sleep 3; systemctl suspend"
+        "${lib.getExe config.pkgConfig.hyprlock}; sleep 3; systemctl suspend"
+      ];
+
+      tablet-mode-on.spawn = [
+        "${pkgs.libnotify}/bin/notify-send --app-name=\"Niri Compositor\" \"Tablet-Mode changed\" \"Table-Mode is activated.\""
+      ];
+
+      tablet-mode-off.spawn = [
+        "${pkgs.libnotify}/bin/notify-send --app-name=\"Niri Compositor\" \"Tablet-Mode changed\" \"Table-Mode is deactivated.\""
       ];
     };
 
@@ -84,6 +92,7 @@ inputs.wrappers.wrapperModules.niri.apply {
 
     layout = {
       gaps = 5;
+      border.off = null;
 
       struts = {
         left = 10;
@@ -91,8 +100,6 @@ inputs.wrappers.wrapperModules.niri.apply {
         top = 10;
         bottom = 10;
       };
-
-      border.off = null;
 
       default-column-width.proportion = 0.5;
 

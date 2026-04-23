@@ -4,6 +4,7 @@
 */
 
 {
+  config,
   pkgs,
   lib,
   ...
@@ -15,7 +16,7 @@ let
 
   mkNoctaliaBind = title: cmdStr: {
     spawn = [
-      "${pkgs.noctalia}/bin/noctalia-shell"
+      "${lib.getExe pkgs.noctalia}"
       "ipc"
       "call"
     ]
@@ -42,20 +43,20 @@ in
   "XF86MonBrightnessDown" = mkNoctaliaBind "Decrease Brightness" "brightness decrease";
 
   "Mod+Shift+TouchpadScrollDown" =
-    mkExecBind "Scroll Brightness Up" "${pkgs.brightnessctl}/bin/brightnessctl set 2%+";
+    mkExecBind "Scroll Brightness Up" "${lib.getExe pkgs.brightnessctl} set 2%+";
   "Mod+Shift+TouchpadScrollUp" =
-    mkExecBind "Scroll Brightness Down" "${pkgs.brightnessctl}/bin/brightnessctl set 2%-";
+    mkExecBind "Scroll Brightness Down" "${lib.getExe pkgs.brightnessctl} set 2%-";
 
   "XF86RFKill" = mkNoctaliaBind "Airplane Mode" "wifi disable";
   "XF86Bluetooth" = mkNoctaliaBind "Toggle Bluetooth" "bluetooth toggle";
 
   "Mod+I" = mkNoctaliaBind "Open Settings" "settings toggle";
 
-  "Mod+E" = mkExecBind "Open File Manager" "${pkgs.nautilus}/bin/nautilus";
-  "Mod+Q" = mkExecBind "Open Terminal" "${pkgs.kitty}/bin/kitty";
-  "Mod+Shift+F" = mkExecBind "Open Firefox" "${pkgs.firefox}/bin/firefox";
-  # "Mod+Shift+D" = mkExecBind "Open Zen-Browser" "${pkgs.zen-twilight}/bin/zen-browser";
-  "Mod+Shift+C" = mkExecBind "Open VSCode" "${pkgs.vscode}/bin/code";
+  "Mod+E" = mkExecBind "Open File Manager" "${lib.getExe config.pkgConfig.nautilus}";
+  "Mod+Q" = mkExecBind "Open Terminal" "${lib.getExe config.pkgConfig.kitty}";
+  "Mod+Shift+F" = mkExecBind "Open Firefox" "${lib.getExe config.pkgConfig.firefox}";
+  "Mod+Shift+D" = mkExecBind "Open Zen-Browser" "${lib.getExe config.pkgConfig.zen-browser}";
+  "Mod+Shift+C" = mkExecBind "Open VSCode" "${lib.getExe config.pkgConfig.vscode}";
 
   "Mod+F1" = mkNoctaliaBind "Toggle Cheatsheet" "plugin:keybind-cheatsheet toggle";
   "Mod+D" = mkNoctaliaBind "Application Launcher" "launcher toggle";
@@ -65,7 +66,7 @@ in
   "Mod+X" = mkNoctaliaBind "Control Center" "controlCenter toggle";
   "Mod+P" = mkNoctaliaBind "Session Menu" "sessionMenu toggle";
 
-  "Mod+L" = mkExecBind "Lock Screen" "${pkgs.hyprlock}/bin/hyprlock";
+  "Mod+L" = mkExecBind "Lock Screen" "${lib.getExe config.pkgConfig.hyprlock}";
 
   "Mod+Shift+L" = mkExecBind "Apply low resolution" "${scripts.lowRes}/bin/low-res";
   "Mod+Shift+H" = mkExecBind "Apply high resolution" "${scripts.highRes}/bin/high-res";

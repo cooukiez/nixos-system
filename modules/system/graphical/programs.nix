@@ -40,6 +40,11 @@ in
     };
   };
 
+  options.pkgConfig = {
+    kitty = pkgs.kitty;
+    nautilus = pkgs.nautilus;
+  };
+
   config = lib.mkMerge [
     (lib.mkIf cfg.development {
       environment.systemPackages = desktop.development ++ desktop.developmentGameEngines;

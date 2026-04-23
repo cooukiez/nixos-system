@@ -26,6 +26,7 @@
     sf-pro-nerd = inputs.apple-fonts.packages.${system}.sf-pro-nerd;
 
     gamemaker = inputs.gamemaker.packages.${system}.default;
+    zen-browser = inputs.zen-browser.packages.${system}.twilight;
 
     # useless
     honklet = inputs.honklet.packages.${system}.default;

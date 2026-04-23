@@ -21,7 +21,7 @@ let
   );
 
   sessionCommands = {
-    niri = "exec ${pkgs.niri-unstable}/bin/niri-session";
+    niri = "exec ${config.pkgConfig.niri}/bin/niri-session";
     kde = "exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland";
     none = "exit 0";
   };
@@ -57,10 +57,6 @@ let
       });
 in
 {
-  imports = [
-    inputs.niri.nixosModules.niri
-  ];
-
   options.graphicalConfig = {
     session = lib.mkOption {
       type = lib.types.submodule {
@@ -81,6 +77,11 @@ in
     };
   };
 
+  options.pkgConfig = {
+    niri = niri.wrapper;
+    noctalia = pkgs.noctalia;
+  };
+
   config = lib.mkMerge [
     {
       services.displayManager.sddm = {
@@ -93,24 +94,23 @@ in
       services.displayManager.sessionPackages = [ autoSessionDesktop ];
       services.displayManager.defaultSession = "auto-selection";
 
+      # disable fingerprint for boot login
+      security.pam.services.login.fprintAuth = false;
+
       environment.systemPackages = with pkgs; [
         sddm-astronaut
       ];
     }
 
     (lib.mkIf cfg.niri {
-      nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-
       graphicalConfig.display.wayland = lib.mkForce true;
 
-      environment.systemPackages = with pkgs; [
-        niri.wrapper
-      ];
+      security.pam.services.sddm.enableGnomeKeyring = true;
+      services.gnome.gnome-keyring.enable = true;
 
-      niri-flake.cache.enable = true;
       programs.niri = {
         enable = true;
-        package = pkgs.niri-unstable;
+        package = config.pkgConfig.niri;
       };
     })
 

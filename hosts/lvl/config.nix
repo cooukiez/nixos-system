@@ -90,9 +90,6 @@
   security.polkit.enable = true;
   services.fprintd.enable = true;
 
-  # disable fingerprint for boot login
-  security.pam.services.login.fprintAuth = false;
-
   security.pki.certificateFiles = [
     ../../dhs.crt
   ];

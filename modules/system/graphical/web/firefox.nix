@@ -8,10 +8,14 @@ let
   cfg = config.graphicalConfig.web;
 in
 {
+  options.pkgConfig = {
+    firefox = pkgs.unstable.firefox;
+  };
+
   config = lib.mkIf cfg.firefox {
     programs.firefox = {
       enable = true;
-      package = pkgs.unstable.firefox;
+      package = config.pkgConfig.firefox;
 
       languagePacks = [
         "en-US"

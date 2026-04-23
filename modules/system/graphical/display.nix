@@ -6,21 +6,19 @@
 }:
 let
   cfg = config.graphicalConfig.display;
+
+  mkEnableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+  };
 in
 {
   options.graphicalConfig = {
     display = lib.mkOption {
       type = lib.types.submodule {
         options = {
-          wayland = lib.mkOption {
-            type = lib.types.bool;
-            default = true;
-          };
-
-          x11 = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-          };
+          wayland = mkEnableDefault;
+          x11 = mkEnableDefault;
         };
       };
 
