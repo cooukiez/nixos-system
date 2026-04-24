@@ -1,9 +1,12 @@
 {
+  inputs,
   config,
-  wlib,
   lib,
   ...
 }:
+let
+  wlib = inputs.wrappers.lib;
+in
 wlib.wrapModule (
   {
     config,
@@ -16,14 +19,7 @@ wlib.wrapModule (
 
     options = {
       settings = lib.mkOption {
-        type = types.attrsOf (
-          types.oneOf [
-            yamlFormat.type
-            types.path
-            types.lines
-          ]
-        );
-
+        type = lib.types.attrs;
         default = { };
       };
 
@@ -50,7 +46,7 @@ wlib.wrapModule (
         };
       in
       {
-        NIRI_CONFIG = toString config."config.kdl".path;
+        NIRI_CONFIG = "${checkedConfig}";
       };
 
     config.package = config.pkgs.niri;

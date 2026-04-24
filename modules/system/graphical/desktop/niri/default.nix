@@ -4,7 +4,7 @@
   pkgs,
   lib,
 }:
-(import ./wrappers/niri.nix { inherit config wlib lib; }).apply {
+(import ./wrappers/niri.nix { inherit inputs config lib; }).apply {
   inherit pkgs;
 
   settings = {

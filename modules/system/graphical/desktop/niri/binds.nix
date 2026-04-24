@@ -10,19 +10,19 @@ let
   split = str: builtins.filter builtins.isString (builtins.split " " str);
 
   mkNoctaliaBind = title: cmdStr: {
-    spawn = [
+    spawn._args = [
       "${lib.getExe config.pkgConfig.noctalia}"
       "ipc"
       "call"
     ]
     ++ (split cmdStr);
 
-    _attrs.hotkey-overlay-title = title;
+    _props.hotkey-overlay-title = title;
   };
 
   mkExecBind = title: cmdStr: {
-    spawn = split cmdStr;
-    _attrs.hotkey-overlay-title = title;
+    spawn._args = split cmdStr;
+    _props.hotkey-overlay-title = title;
   };
 in
 {
@@ -74,46 +74,43 @@ in
   "Mod+F3" = mkExecBind "Record region" "${scripts.recordRegion}/bin/record-region";
   "Mod+F4" = mkExecBind "Stop all recordings" "${scripts.recordStop}/bin/record-stop";
 
-  "Mod+C".close-window = null;
-  "Mod+H".maximize-column = null;
-  "Mod+S".toggle-overview = null;
+  "Mod+C".close-window = { };
+  "Mod+H".maximize-column = { };
+  "Mod+S".toggle-overview = { };
 
-  "Mod+WheelScrollDown".focus-workspace-down = null;
-  "Mod+WheelScrollUp".focus-workspace-up = null;
-  "Mod+WheelScrollRight".focus-column-right = null;
-  "Mod+WheelScrollLeft".focus-column-left = null;
+  "Mod+WheelScrollDown".focus-workspace-down = { };
+  "Mod+WheelScrollUp".focus-workspace-up = { };
+  "Mod+WheelScrollRight".focus-column-right = { };
+  "Mod+WheelScrollLeft".focus-column-left = { };
 
-  "Mod+Left".focus-column-or-monitor-left = null;
-  "Mod+Right".focus-column-or-monitor-right = null;
-  "Mod+Up".focus-window-or-workspace-up = null;
-  "Mod+Down".focus-window-or-workspace-down = null;
+  "Mod+Left".focus-column-or-monitor-left = { };
+  "Mod+Right".focus-column-or-monitor-right = { };
+  "Mod+Up".focus-window-or-workspace-up = { };
+  "Mod+Down".focus-window-or-workspace-down = { };
 
-  "Mod+Shift+Return".move-window-to-monitor-next = null;
+  "Mod+Shift+Return".move-window-to-monitor-next = { };
 
-  "Mod+Shift+Left".move-column-left-or-to-monitor-left = null;
-  "Mod+Shift+Right".move-column-right-or-to-monitor-right = null;
-  "Mod+Shift+Up".move-window-up-or-to-workspace-up = null;
-  "Mod+Shift+Down".move-window-down-or-to-workspace-down = null;
+  "Mod+Shift+Left".move-column-left-or-to-monitor-left = { };
+  "Mod+Shift+Right".move-column-right-or-to-monitor-right = { };
+  "Mod+Shift+Up".move-window-up-or-to-workspace-up = { };
+  "Mod+Shift+Down".move-window-down-or-to-workspace-down = { };
 
-  "Mod+V".toggle-window-floating = null;
-  "Mod+F".fullscreen-window = null;
-  "Mod+G".toggle-windowed-fullscreen = null;
+  "Mod+V".toggle-window-floating = { };
+  "Mod+F".fullscreen-window = { };
+  "Mod+G".toggle-windowed-fullscreen = { };
 
-  "Ctrl+Alt+Left".consume-or-expel-window-left = null;
-  "Ctrl+Alt+Right".consume-or-expel-window-right = null;
+  "Ctrl+Alt+Left".consume-or-expel-window-left = { };
+  "Ctrl+Alt+Right".consume-or-expel-window-right = { };
 
-  "Ctrl+Alt+Q".switch-preset-column-width = null;
-  "Ctrl+Alt+A".switch-preset-window-height = null;
-  "Ctrl+Alt+S".expand-column-to-available-width = null;
+  "Ctrl+Alt+Q".switch-preset-column-width = { };
+  "Ctrl+Alt+A".switch-preset-window-height = { };
+  "Ctrl+Alt+S".expand-column-to-available-width = { };
 
-  "Mod+W".toggle-column-tabbed-display = null;
+  "Mod+W".toggle-column-tabbed-display = { };
 
   "Mod+Shift+M" = {
-    quit = {
-      _attrs.skip-confirmation = true;
-    };
-
-    _attrs.hotkey-overlay-title = "Quit Compositor";
+    quit._props.skip-confirmation = true;
+    _props.hotkey-overlay-title = "Quit Compositor";
   };
 }
 // builtins.foldl' (acc: elem: acc // elem) { } (

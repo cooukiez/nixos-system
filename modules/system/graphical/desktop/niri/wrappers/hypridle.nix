@@ -1,9 +1,12 @@
 {
+  inputs,
   config,
-  wlib,
   lib,
   ...
 }:
+let
+  wlib = inputs.wrappers.lib;
+in
 wlib.wrapModule (
   {
     config,
