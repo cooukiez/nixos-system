@@ -46,6 +46,10 @@ let
       });
 in
 {
+  imports = [
+    ./desktop/niri/testing.nix
+  ];
+
   options.graphicalConfig = {
     session = lib.mkOption {
       type = lib.types.submodule {
@@ -103,57 +107,77 @@ in
       ];
     }
 
-    (lib.mkIf cfg.niri {
-      pkgConfig = {
-        niri =
-          (import ./desktop/niri {
+    (lib.mkIf cfg.niri (
+      let
+        niri = (
+          import ./desktop/niri {
             inherit
               inputs
               config
               pkgs
               lib
               ;
-          }).wrapper;
+          }
+        );
+        hyprlock = (
+          import ./desktop/niri/hyprlock.nix {
+            inherit
+              inputs
+              config
+              pkgs
+              lib
+              ;
+          }
+        );
 
-        noctalia = pkgs.noctalia.override {
-          calendarSupport = true;
+        hypridle = (
+          import ./desktop/niri/hypridle.nix {
+            inherit
+              inputs
+              config
+              pkgs
+              lib
+              ;
+          }
+        );
+      in
+      {
+        pkgConfig = {
+          niri = niri.wrapper;
+          noctalia = pkgs.noctalia.override {
+            calendarSupport = true;
+          };
+
+          hyprlock = hyprlock.wrapper;
+          hypridle = hypridle.wrapper;
         };
 
-        hyprlock =
-          (import ./desktop/niri/hyprlock.nix {
-            inherit
-              inputs
-              config
-              pkgs
-              lib
-              ;
-          }).wrapper;
+        environment.systemPackages = [
+          config.pkgConfig.hyprlock
+          # config.pkgConfig.hypridle
+        ];
 
-        hypridle =
-          (import ./desktop/niri/hypridle.nix {
-            inherit
-              inputs
-              config
-              pkgs
-              lib
-              ;
-          }).wrapper;
-      };
+        graphicalConfig.display.wayland = lib.mkForce true;
 
-      environment.systemPackages = [
-        config.pkgConfig.hypridle
-      ];
+        security.pam.services.sddm.enableGnomeKeyring = true;
+        services.gnome.gnome-keyring.enable = true;
 
-      graphicalConfig.display.wayland = lib.mkForce true;
+        services.hypridle = {
+          enable = true;
+          package = config.pkgConfig.hypridle;
+        };
 
-      security.pam.services.sddm.enableGnomeKeyring = true;
-      services.gnome.gnome-keyring.enable = true;
+        programs.niri = {
+          enable = true;
+          package = config.pkgConfig.niri;
+        };
 
-      programs.niri = {
-        enable = true;
-        package = config.pkgConfig.niri;
-      };
-    })
+        xdg.portal = {
+          xdgOpenUsePortal = true;
+          extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+        };
+      }
+    ))
 
     (lib.mkIf cfg.kde {
       graphicalConfig.display.x11 = lib.mkForce true;

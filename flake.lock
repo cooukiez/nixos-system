@@ -1190,11 +1190,11 @@
         "nixpkgs": "nixpkgs_7"
       },
       "locked": {
-        "lastModified": 1776988316,
-        "narHash": "sha256-Jv/3ENv/8FON5PX3FXE/TNlbGBYH1AOi174XufzQcD8=",
+        "lastModified": 1777036127,
+        "narHash": "sha256-Me+BtcVnDy1cWtxtimKlUHGPMGG0XLgZ8BWc9XGcb0g=",
         "owner": "cooukiez",
         "repo": "wrappers",
-        "rev": "bfee7baac682240cb320e35b7b5d7dde09dc0b35",
+        "rev": "5e31f0a41a7b203879154fddba01a67ac60fcae8",
         "type": "github"
       },
       "original": {

@@ -7,8 +7,6 @@
 inputs.wrappers.wrapperModules.hypridle.apply {
   inherit pkgs;
 
-  binName = "myHypridle";
-
   settings = {
     general = {
       ignore_dbus_inhibit = false;
