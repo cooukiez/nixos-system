@@ -70,6 +70,7 @@ in
     niri = lib.mkOption { type = lib.types.package; };
     noctalia = lib.mkOption { type = lib.types.package; };
     hyprlock = lib.mkOption { type = lib.types.package; };
+    hypridle = lib.mkOption { type = lib.types.package; };
   };
 
   config = lib.mkMerge [
@@ -127,10 +128,20 @@ in
               lib
               ;
           }).wrapper;
+
+        hypridle =
+          (import ./desktop/niri/hypridle.nix {
+            inherit
+              inputs
+              config
+              pkgs
+              lib
+              ;
+          }).wrapper;
       };
 
       environment.systemPackages = [
-        config.pkgConfig.hyprlock
+        config.pkgConfig.hypridle
       ];
 
       graphicalConfig.display.wayland = lib.mkForce true;
