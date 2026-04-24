@@ -181,7 +181,7 @@ let
 
   # 2. Access the generator function
   # Note: This assumes home-manager is active in your config
-  kdlGenerator = config.lib.hm.generators.toKDL { };
+  kdlGenerator = (import ./generators.nix { inherit lib; }).toKDL;
 
   # 3. Convert the Nix set to a KDL string
   kdlString = kdlGenerator settings;
