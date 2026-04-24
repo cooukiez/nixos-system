@@ -105,52 +105,30 @@ in
 
     (lib.mkIf cfg.niri (
       let
-        niri = (
-          import ./desktop/niri {
+        load =
+          path:
+          import path {
             inherit
               inputs
               config
               pkgs
               lib
               ;
-          }
-        );
-        hyprlock = (
-          import ./desktop/niri/hyprlock.nix {
-            inherit
-              inputs
-              config
-              pkgs
-              lib
-              ;
-          }
-        );
-
-        hypridle = (
-          import ./desktop/niri/hypridle.nix {
-            inherit
-              inputs
-              config
-              pkgs
-              lib
-              ;
-          }
-        );
-      in
-      {
-        pkgConfig = {
-          niri = niri.wrapper;
-          noctalia = pkgs.noctalia.override {
-            calendarSupport = true;
           };
 
-          hyprlock = hyprlock.wrapper;
-          hypridle = hypridle.wrapper;
+        modules = {
+          niri = load ./desktop/niri;
+          hyprlock = load ./desktop/niri/hyprlock.nix;
+          hypridle = load ./desktop/niri/hypridle.nix;
+        };
+      in
+      {
+        pkgConfig = (lib.mapAttrs (_: m: m.wrapper) modules) // {
+          noctalia = pkgs.noctalia.override { calendarSupport = true; };
         };
 
         environment.systemPackages = [
           config.pkgConfig.hyprlock
-          # config.pkgConfig.hypridle
         ];
 
         graphicalConfig.display.wayland = lib.mkForce true;

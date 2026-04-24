@@ -23,6 +23,7 @@ let
 in
 {
   imports = [
+    ./programs/nvim
     ./programs/git.nix
     ./programs/zsh.nix
   ];
