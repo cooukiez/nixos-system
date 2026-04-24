@@ -4,14 +4,11 @@
   pkgs,
   lib,
 }:
-inputs.wrappers.wrapperModules.niri.apply {
+(import ./wrappers/niri.nix { inherit config wlib lib; }).apply {
   inherit pkgs;
 
   settings = {
-    prefer-no-csd = true;
     xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
-
-    binds = import ./binds.nix { inherit config pkgs lib; };
 
     input = {
       keyboard = {
@@ -21,70 +18,46 @@ inputs.wrappers.wrapperModules.niri.apply {
       };
 
       touchpad = {
-        tap = null;
+        tap = { };
 
         accel-speed = 0.25;
         scroll-factor = 1.5;
 
-        natural-scroll = null;
-        disabled-on-external-mouse = null;
+        natural-scroll = { };
+        disabled-on-external-mouse = { };
       };
 
       mouse = {
         accel-speed = 0.1;
-        natural-scroll = null;
+        natural-scroll = { };
       };
 
       trackpoint = {
         accel-speed = 1.0;
-        natural-scroll = null;
+        natural-scroll = { };
       };
 
       focus-follows-mouse = {
-        _attrs = {
+        _props = {
           max-scroll-amount = "25%";
         };
       };
 
-      warp-mouse-to-focus = null;
+      warp-mouse-to-focus = { };
 
       mod-key = "Super";
       mod-key-nested = "Alt";
     };
 
-    outputs."eDP-1" = {
-      mode = "3840x2400@60.000";
-      scale = 2.0;
-      position = {
-        _attrs.x = 0;
-        _attrs.y = 0;
-      };
-    };
-
-    outputs."HDMI-A-1" = {
-      mode = "1920x1080@60.000";
-      scale = 1.0;
-      position = {
-        _attrs.x = 1920;
-        _attrs.y = 0;
-      };
-    };
-
-    switch-events = {
-      lid-close.spawn = [
-        "sh"
-        "-c"
-        "${lib.getExe pkgs.hyprlock}; sleep 3; systemctl suspend"
-      ];
-    };
+    binds = import ./binds.nix { inherit config pkgs lib; };
 
     overview = {
-      workspace-shadow.off = null;
+      workspace-shadow.off = { };
     };
 
     layout = {
       gaps = 5;
-      border.off = null;
+      border.off = { };
 
       struts = {
         left = 10;
@@ -95,13 +68,13 @@ inputs.wrappers.wrapperModules.niri.apply {
 
       default-column-width.proportion = 0.5;
 
-      preset-column-widths = [
+      preset-column-widths._children = [
         { proportion = 1.0 / 3.0; }
         { proportion = 0.5; }
         { proportion = 2.0 / 3.0; }
       ];
 
-      preset-window-heights = [
+      preset-window-heights._children = [
         { proportion = 1.0 / 3.0; }
         { proportion = 0.5; }
         { proportion = 2.0 / 3.0; }
@@ -109,27 +82,27 @@ inputs.wrappers.wrapperModules.niri.apply {
       ];
 
       focus-ring = {
-        off = null;
+        off = { };
       };
 
       shadow = {
-        on = null;
+        on = { };
         draw-behind-window = true;
 
         softness = 30;
         spread = 5;
         offset = {
-          _attrs.x = 0;
-          _attrs.y = 5;
+          _props.x = 0;
+          _props.y = 5;
         };
 
         color = "#00000070";
       };
 
       tab-indicator = {
-        on = null;
+        on = { };
 
-        place-within-column = null;
+        place-within-column = { };
         position = "top";
 
         width = 8;
@@ -140,39 +113,71 @@ inputs.wrappers.wrapperModules.niri.apply {
         active-color = "rgba(224, 224, 224, 100%)";
         inactive-color = "rgba(224, 224, 224, 30%)";
       };
-
     };
 
-    layer-rules = [
+    _children = [
+      # outputs
       {
-        matches = [
-          {
-            namespace = "^noctalia-overview*";
-          }
-        ];
+        output = {
+          _args = [ "eDP-1" ];
+          mode = "3840x2400@60.000";
+          scale = 2.0;
+          position = {
+            _props.x = 0;
+            _props.y = 0;
+          };
+        };
+      }
+      {
+        output = {
+          _args = [ "HDMI-A-1" ];
+          mode = "1920x1080@60.000";
+          scale = 1.0;
+          position = {
+            _props.x = 1920;
+            _props.y = 0;
+          };
+        };
+      }
 
-        place-within-backdrop = true;
+      # layer rules
+      {
+        layer-rule = {
+          _children = [ { match._props.namespace = "^noctalia-overview*"; } ];
+          place-within-backdrop = true;
+        };
+      }
+
+      # window rules
+      {
+        window-rule = {
+          geometry-corner-radius = 10.0;
+          clip-to-geometry = true;
+
+          draw-border-with-background = false;
+
+          open-maximized = true;
+          open-fullscreen = false;
+        };
+      }
+      {
+        window-rule = {
+          _children = [ { match._props.app-id = "kitty"; } ];
+          open-maximized = false;
+        };
       }
     ];
 
-    window-rules = [
-      {
-        geometry-corner-radius = 10.0;
-        clip-to-geometry = true;
+    # disable window decorations
+    prefer-no-csd = true;
 
-        draw-border-with-background = false;
-
-        open-maximized = true;
-        open-fullscreen = false;
-      }
-      {
-        matches = [
-          { app-id = "kitty"; }
-        ];
-
-        open-maximized = false;
-      }
-    ];
+    switch-events = {
+      lid-close.spawn._args = [
+        "sh"
+        "-c"
+        "${lib.getExe pkgs.hyprlock}; sleep 3; systemctl suspend"
+      ];
+    };
 
     hotkey-overlay.skip-at-startup = true;
     screenshot-path = "~/Pictures/Screenshots/%Y-%m-%d-%H%M%S.png";

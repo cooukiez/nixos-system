@@ -4,7 +4,7 @@
   pkgs,
   lib,
 }:
-inputs.wrappers.wrapperModules.hypridle.apply {
+(import ./wrappers/hypridle.nix { inherit config wlib lib; }).apply {
   inherit pkgs;
 
   settings = {

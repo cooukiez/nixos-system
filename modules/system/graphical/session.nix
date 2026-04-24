@@ -46,10 +46,6 @@ let
       });
 in
 {
-  imports = [
-    ./desktop/niri/testing.nix
-  ];
-
   options.graphicalConfig = {
     session = lib.mkOption {
       type = lib.types.submodule {

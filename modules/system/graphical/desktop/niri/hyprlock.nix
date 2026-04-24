@@ -9,7 +9,7 @@ let
   primaryMonitor = "eDP-1";
   displayScale = 2;
 in
-inputs.wrappers.wrapperModules.hyprlock.apply {
+(import ./wrappers/hyprlock.nix { inherit config wlib lib; }).apply {
   inherit pkgs;
 
   binName = "myHyprlock";

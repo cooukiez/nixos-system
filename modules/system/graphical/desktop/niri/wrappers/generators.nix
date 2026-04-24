@@ -3,6 +3,9 @@
   ...
 }:
 {
+  # imported from home-manager
+  # https://github.com/nix-community/home-manager/blob/6012cf1fed3eba66115f3fd117b9be6bd2a15b2f/modules/lib/generators.nix#L4
+
   toHyprconf =
     {
       attrs,
@@ -68,6 +71,9 @@
     in
     toHyprconf' initialIndent attrs;
 
+  # imported from home-manager
+  # https://github.com/nix-community/home-manager/blob/6012cf1fed3eba66115f3fd117b9be6bd2a15b2f/modules/lib/generators.nix#L4
+
   toKDL =
     _:
     let
@@ -78,22 +84,16 @@
         ;
       inherit (builtins) typeOf replaceStrings elem;
 
-      # ListOf String -> String
       indentStrings =
         let
-          # Although the input of this function is a list of strings,
-          # the strings themselves *will* contain newlines, so you need
-          # to normalize the list by joining and resplitting them.
           unlines = lib.splitString "\n";
           lines = lib.concatStringsSep "\n";
           indentAll = lines: concatStringsSep "\n" (map (x: "	" + x) lines);
         in
         stringsWithNewlines: indentAll (unlines (lines stringsWithNewlines));
 
-      # String -> String
       sanitizeString = replaceStrings [ "\n" ''"'' ] [ "\\n" ''\"'' ];
 
-      # OneOf [Int Float String Bool Null] -> String
       literalValueToString =
         element:
         lib.throwIfNot
@@ -118,8 +118,6 @@
               toString element
           );
 
-      # Attrset Conversion
-      # String -> AttrsOf Anything -> String
       convertAttrsToKDL =
         name: attrs:
         let
@@ -152,8 +150,6 @@
         in
         lib.concatStringsSep " " ([ name ] ++ optArgs ++ optProps ++ optChildren);
 
-      # List Conversion
-      # String -> ListOf (OneOf [Int Float String Bool Null])  -> String
       convertListOfFlatAttrsToKDL =
         name: list:
         let
@@ -161,13 +157,11 @@
         in
         "${name} ${concatStringsSep " " flatElements}";
 
-      # String -> ListOf Anything -> String
       convertListOfNonFlatAttrsToKDL = name: list: ''
         ${name} {
         ${indentStrings (map (x: convertAttributeToKDL "-" x) list)}
         }'';
 
-      # String -> ListOf Anything  -> String
       convertListToKDL =
         name: list:
         let
@@ -185,8 +179,6 @@
         else
           convertListOfNonFlatAttrsToKDL name list;
 
-      # Combined Conversion
-      # String -> Anything  -> String
       convertAttributeToKDL =
         name: value:
         let
