@@ -136,14 +136,15 @@ in
         security.pam.services.sddm.enableGnomeKeyring = true;
         services.gnome.gnome-keyring.enable = true;
 
-        services.hypridle = {
-          enable = true;
-          package = config.pkgConfig.hypridle;
-        };
-
         programs.niri = {
           enable = true;
           package = config.pkgConfig.niri;
+          useNautilus = true;
+        };
+
+        services.hypridle = {
+          enable = true;
+          package = config.pkgConfig.hypridle;
         };
 
         xdg.portal = {

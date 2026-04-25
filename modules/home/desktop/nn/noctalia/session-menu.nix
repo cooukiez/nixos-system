@@ -5,63 +5,73 @@
   on 2026-02-26
 */
 
+{
+  pkgs,
+  lib,
+  ...
+}:
 let
-  lockScreenCommand = "noctalia-shell ipc call sessionMenu toggle && hyprlock";
+  lock = "noctalia-shell ipc call sessionMenu toggle && ${lib.getExe pkgs.hyprlock}";
+  sysCall = cmd: "sleep 3; systemctl ${cmd}";
+  sysCallInstant = cmd: "systemctl ${cmd}";
+
+  menuItems = [
+    [
+      "lock"
+      lock
+      false
+    ]
+    [
+      "suspend"
+      "${lock}; ${sysCall "suspend"}"
+    ]
+    [
+      "hibernate"
+      "${lock}; ${sysCall "hibernate"}"
+    ]
+    [
+      "reboot"
+      (sysCallInstant "reboot")
+    ]
+    [
+      "logout"
+      ""
+    ]
+    [
+      "shutdown"
+      (sysCallInstant "poweroff")
+    ]
+  ];
 in
 {
-  position = "center";
-
   enableCountdown = true;
   countdownDuration = 3000;
 
+  position = "center";
+
   showHeader = true;
-  showNumberLabels = true;
+  showKeybinds = true;
 
   largeButtonsStyle = true;
   largeButtonsLayout = "grid";
 
-  powerOptions = [
-    {
-      action = "lock";
+  powerOptions =
+    (lib.imap1 (i: opt: {
+      action = builtins.elemAt opt 0;
+      command = builtins.elemAt opt 1;
+      keybind = toString i;
+
+      countdownEnabled = lib.attrByPath [ 2 ] true opt;
       enabled = true;
-      countdownEnabled = false;
-      command = lockScreenCommand;
-    }
-    {
-      action = "suspend";
-      enabled = true;
-      countdownEnabled = true;
-      command = "niri msg action power-off-monitors && ${lockScreenCommand} && systemctl suspend";
-    }
-    {
-      action = "hibernate";
-      enabled = true;
-      countdownEnabled = true;
-      command = "niri msg action power-off-monitors && ${lockScreenCommand} && systemctl hibernate";
-    }
-    {
-      action = "reboot";
-      enabled = true;
-      countdownEnabled = true;
-      command = "systemctl reboot";
-    }
-    {
-      action = "logout";
-      enabled = true;
-      countdownEnabled = true;
-      command = "";
-    }
-    {
-      action = "shutdown";
-      enabled = true;
-      countdownEnabled = true;
-      command = "systemctl poweroff";
-    }
-    {
-      action = "rebootToUefi";
-      command = "";
-      countdownEnabled = true;
-      enabled = false;
-    }
-  ];
+    }) menuItems)
+    ++ [
+      {
+        action = "rebootToUefi";
+        enabled = false;
+      }
+      {
+        action = "userspaceReboot";
+        enabled = false;
+      }
+    ];
 }

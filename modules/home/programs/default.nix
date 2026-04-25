@@ -7,7 +7,6 @@
 
 {
   imports = [
-    # ./nvim
     ./web
 
     ./git.nix

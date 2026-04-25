@@ -14,74 +14,88 @@
     }
   ];
 
-  # install noctalia plugins here
   states = {
     catwalk = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     fancy-audiovisualizer = {
       enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     kaomoji-provider = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     keybind-cheatsheet = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     network-indicator = {
-      # not used
+      # not used currently
       enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     network-manager-vpn = {
-      # not used
+      # not used currently
       enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     polkit-agent = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     privacy-indicator = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     screen-recorder = {
-      # not used
+      # not used currently
       enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     screen-toolkit = {
       # great but buggy
       enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     screenshot = {
-      # not used
+      # not used currently
       enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     tailscale = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     timer = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     translator = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     update-count = {
-      # not used
+      # not used currently
       enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
+
     world-clock = {
       enabled = true;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";

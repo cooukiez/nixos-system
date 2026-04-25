@@ -6,36 +6,47 @@
 */
 
 {
-  position = "center";
-  sortByMostUsed = true;
-  # alternative: grid
-  viewMode = "list";
-
-  autoPasteClipboard = false;
-  clipboardWrapText = true;
-  enableClipPreview = true;
+  # clipboard
+  enableClipboardChips = true;
   enableClipboardHistory = true;
+  enableClipboardSmartIcons = true;
+  enableClipPreview = true;
+  clipboardWrapText = true;
+  autoPasteClipboard = false;
+  clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
+  clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
 
-  enableSettingsSearch = true;
-
+  # application
   pinnedApps = [
     "firefox"
     "code"
     "org.gnome.Nautilus"
-    "spotify"
     "obsidian"
     "signal"
-    # "thunderbird"
-    # "github-desktop"
   ];
 
-  terminalCommand = "kitty -e";
-  # todo: put in screenshot tool
-  screenshotAnnotationTool = "";
-
+  sortByMostUsed = true;
   showCategories = true;
-  # will add dark background to icons
+  enableSettingsSearch = false;
+  enableWindowsSearch = true;
+  enableSessionSearch = true;
+
+  # interface
+  viewMode = "grid";
+  position = "center";
+  density = "default";
+  overviewLayer = true;
+  ignoreMouseInput = false;
+
+  # icons
+  iconMode = "tabler";
   showIconBackground = false;
 
-  useApp2Unit = false;
+  # external
+  terminalCommand = "kitty -e";
+  screenshotAnnotationTool = "pinta";
+
+  # prefixes
+  customLaunchPrefixEnabled = false;
+  customLaunchPrefix = "";
 }

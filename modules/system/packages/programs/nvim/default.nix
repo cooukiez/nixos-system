@@ -16,13 +16,13 @@ let
   # read all files in the modules directory
   files = builtins.readDir ./modules;
 
-  # filter out default.nix and non nix files
-  nixFiles = builtins.filter (name: name != "default.nix" && builtins.match ".*\\.nix" name != null) (
+  # filter out non nix files
+  nixFiles = builtins.filter (name: builtins.match ".*\\.nix" name != null) (
     builtins.attrNames files
   );
 
   # create a list of import statements
-  fileImports = map (name: ./. + "/${name}") nixFiles;
+  fileImports = map (name: ./modules + "/${name}") nixFiles;
 in
 {
   imports = [

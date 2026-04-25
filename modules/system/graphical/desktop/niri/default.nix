@@ -175,7 +175,7 @@
       lid-close.spawn._args = [
         "sh"
         "-c"
-        "${lib.getExe pkgs.hyprlock}; sleep 3; systemctl suspend"
+        "${lib.getExe config.pkgConfig.hyprlock}; sleep 3; systemctl suspend"
       ];
     };
 

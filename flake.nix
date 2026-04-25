@@ -75,7 +75,6 @@
         hostName:
         let
           hostPath = ./hosts/${hostName};
-          hostData = import "${hostPath}/default.nix";
           hostConfig = import "${hostPath}/host.nix";
           userList = import "${hostPath}/users.nix";
         in

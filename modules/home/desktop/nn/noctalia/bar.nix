@@ -6,23 +6,57 @@
 */
 
 {
-  barType = "floating";
-  floating = true;
-  density = "default";
+  # layout
   position = "top";
-
-  useSeparateOpacity = true;
-  backgroundOpacity = 0.6;
-  capsuleOpacity = 0.3;
-
-  showCapsule = false;
-  showOutline = false;
-
-  frameRadius = 12;
-  frameThickness = 8;
-
+  barType = "floating";
+  density = "default";
   marginHorizontal = 4;
   marginVertical = 4;
+  contentPadding = 4;
+  widgetSpacing = 6;
+  enableExclusionZoneInset = true;
+
+  # behavior
+  displayMode = "always_visible";
+  autoHideDelay = 500;
+  autoShowDelay = 150;
+  showOnWorkspaceSwitch = true;
+  hideOnOverview = false;
+
+  # visuals
+  backgroundOpacity = 0.75;
+  useSeparateOpacity = true;
+  frameRadius = 12;
+  frameThickness = 8;
+  outerCorners = true;
+  showOutline = false;
+  fontScale = 1;
+
+  showCapsule = false;
+  capsuleColorKey = "none";
+  capsuleOpacity = 0.3;
+
+  # interaction
+  middleClickAction = "launcherPanel";
+  middleClickCommand = "";
+  middleClickFollowMouse = false;
+
+  rightClickAction = "controlCenter";
+  rightClickCommand = "";
+  rightClickFollowMouse = false;
+
+  mouseWheelAction = "workspace";
+  mouseWheelWrap = true;
+  reverseScroll = false;
+
+  # monitors
+  monitors = [ ];
+  screenOverrides = [
+    {
+      enabled = false;
+      name = "eDP-1";
+    }
+  ];
 
   widgets = {
     left = [
@@ -40,44 +74,55 @@
         id = "SystemMonitor";
         compactMode = true;
 
+        iconColor = "none";
+        textColor = "none";
+        useMonospaceFont = true;
+        usePadding = false;
+
         diskPath = "/";
 
+        showCpuCores = false;
+        showCpuFreq = false;
         showCpuTemp = true;
         showCpuUsage = true;
-        showDiskUsage = false;
+        showDiskAvailable = false;
+        showDiskUsage = true;
+        showDiskUsageAsPercent = false;
         showGpuTemp = false;
         showLoadAverage = false;
         showMemoryAsPercent = false;
         showMemoryUsage = true;
         showNetworkStats = false;
         showSwapUsage = false;
-
-        useMonospaceFont = true;
       }
       {
         id = "ActiveWindow";
         useFixedWidth = false;
         maxWidth = 145;
 
-        scrollingMode = "hover";
-        hideMode = "hidden";
+        colorizeIcons = false;
+        textColor = "none";
+
         showIcon = true;
+        showText = true;
+
+        hideMode = "hidden";
+        scrollingMode = "hover";
       }
       {
         id = "MediaMini";
         useFixedWidth = false;
         maxWidth = 145;
 
-        scrollingMode = "hover";
-        hideMode = "hidden";
-        hideWhenIdle = false;
-
         compactMode = false;
         compactShowAlbumArt = true;
         compactShowVisualizer = false;
+        hideMode = "hidden";
+        hideWhenIdle = false;
 
         panelShowAlbumArt = true;
         panelShowVisualizer = true;
+        scrollingMode = "hover";
 
         showAlbumArt = true;
         showArtistFirst = true;
@@ -93,20 +138,28 @@
         id = "Workspace";
         labelMode = "index";
 
-        enableScrollWheel = true;
-        showApplications = false;
-
-        followFocusedScreen = false;
+        iconScale = 0.8;
+        fontWeight = "bold";
+        characterCount = 2;
         showBadge = true;
 
+        enableScrollWheel = true;
+        followFocusedScreen = false;
         hideUnoccupied = false;
+
+        showApplications = true;
+        showApplicationsHover = false;
         showLabelsOnlyWhenOccupied = true;
 
-        characterCount = 2;
-        iconScale = 0.8;
+        colorizeIcons = false;
 
-        groupedBorderOpacity = 1;
+        emptyColor = "secondary";
+        focusedColor = "primary";
+        occupiedColor = "secondary";
+
         unfocusedIconsOpacity = 1;
+        groupedBorderOpacity = 1;
+        pillSize = 0.6;
       }
     ];
 
@@ -148,7 +201,7 @@
       }
       {
         id = "Battery";
-        deviceNativePath = "";
+        deviceNativePath = "BAT0";
         displayMode = "graphic";
 
         hideIfIdle = false;
@@ -170,8 +223,10 @@
       {
         id = "ControlCenter";
         icon = "noctalia";
-        customIconPath = "";
+        enableColorization = false;
+        colorizeSystemIcon = "none";
         useDistroLogo = false;
+        customIconPath = "";
       }
     ];
   };

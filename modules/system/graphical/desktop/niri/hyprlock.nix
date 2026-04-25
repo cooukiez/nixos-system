@@ -12,8 +12,6 @@ in
 (import ./wrappers/hyprlock.nix { inherit inputs config lib; }).apply {
   inherit pkgs;
 
-  binName = "myHyprlock";
-
   settings = {
     general = {
       hide_cursor = true;
