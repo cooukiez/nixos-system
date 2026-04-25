@@ -107,6 +107,8 @@
         outputs
         hostConfig
         ;
+
+      pkgConfig = config.pkgConfig;
     };
 
     users = lib.mapAttrs (username: userConfig: {

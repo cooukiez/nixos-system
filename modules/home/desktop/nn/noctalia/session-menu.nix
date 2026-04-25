@@ -6,72 +6,62 @@
 */
 
 {
-  pkgs,
+  pkgConfig,
   lib,
   ...
 }:
 let
-  lock = "noctalia-shell ipc call sessionMenu toggle && ${lib.getExe pkgs.hyprlock}";
-  sysCall = cmd: "sleep 3; systemctl ${cmd}";
-  sysCallInstant = cmd: "systemctl ${cmd}";
+  lock = "noctalia-shell ipc call sessionMenu toggle && ${lib.getExe pkgConfig.hyprlock}";
 
-  menuItems = [
-    [
-      "lock"
-      lock
-      false
-    ]
-    [
-      "suspend"
-      "${lock}; ${sysCall "suspend"}"
-    ]
-    [
-      "hibernate"
-      "${lock}; ${sysCall "hibernate"}"
-    ]
-    [
-      "reboot"
-      (sysCallInstant "reboot")
-    ]
-    [
-      "logout"
-      ""
-    ]
-    [
-      "shutdown"
-      (sysCallInstant "poweroff")
-    ]
-  ];
+  powerOptions =
+    lib.imap1
+      (
+        i: opt:
+        {
+          enabled = true;
+          keybind = toString i;
+          countdownEnabled = opt.countdown or true;
+        }
+        // opt
+      )
+      [
+        {
+          action = "lock";
+          command = lock;
+          countdown = false;
+        }
+        {
+          action = "suspend";
+          command = "${lock}; sleep 3; systemctl suspend";
+        }
+        {
+          action = "hibernate";
+          command = "${lock}; sleep 3; systemctl hibernate";
+        }
+        {
+          action = "reboot";
+          command = "systemctl reboot";
+        }
+        {
+          action = "logout";
+          command = "";
+        }
+        {
+          action = "shutdown";
+          command = "systemctl poweroff";
+        }
+      ];
 in
 {
+  inherit powerOptions;
+
   enableCountdown = true;
   countdownDuration = 3000;
 
   position = "center";
-
   showHeader = true;
   showKeybinds = true;
 
   largeButtonsStyle = true;
   largeButtonsLayout = "grid";
-
-  powerOptions =
-    (lib.imap1 (i: opt: {
-      action = builtins.elemAt opt 0;
-      command = builtins.elemAt opt 1;
-      keybind = toString i;
-
-      countdownEnabled = lib.attrByPath [ 2 ] true opt;
-      enabled = true;
-    }) menuItems)
-    ++ [
-      {
-        action = "rebootToUefi";
-        enabled = false;
-      }
-      {
-        action = "userspaceReboot";
-        enabled = false;
-      }
-    ];
 }

@@ -11,8 +11,43 @@
     hideBackground = false;
   };
 
-  timer = {
-    compactMode = false;
+  network-indicator = {
+    useCustomColors = false;
+    showNumbers = true;
+
+    forceMegabytes = true;
+    byteThresholdActive = 1024;
+
+    arrowType = "caret";
+    minWidth = 70;
+
+    fontSizeModifier = 1;
+    iconSizeModifier = 1;
+    spacingInbetween = -1;
+  };
+
+  network-manager-vpn = {
+    displayMode = "alwaysHide";
+    connectedColor = "";
+    disconnectedColor = "";
+  };
+
+  privacy-indicator = {
+    hideInactive = false;
+    enableToast = true;
+    removeMargins = false;
+
+    iconSpacing = 4;
+
+    activeColor = "primary";
+    inactiveColor = "none";
+
+    micFilterRegex = "";
+    camFilterRegex = "pipewire|wireplumber";
+  };
+
+  screenshot = {
+    mode = "screen";
   };
 
   tailscale = {
@@ -30,6 +65,10 @@
     refreshInterval = 30000;
 
     defaultPeerAction = "copy-ip";
+  };
+
+  timer = {
+    compactMode = false;
   };
 
   # not in use currently

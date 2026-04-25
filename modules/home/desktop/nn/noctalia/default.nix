@@ -8,23 +8,18 @@
 {
   inputs,
   config,
-  userConfig,
   pkgs,
+  pkgConfig,
+  lib,
   hostConfig,
+  userConfig,
   ...
 }:
-let
-  # customQuickshell = inputs.quickshell.packages.${hostConfig.hostSystem}.default;
-
-  overriddenNoctalia = inputs.noctalia.packages.${hostConfig.hostSystem}.default.override {
-    calendarSupport = true;
-    # quickshell = customQuickshell;
-  };
-in
 {
   imports = [
     inputs.noctalia.homeModules.default
   ];
+
   systemd.user.services.noctalia = {
     Unit = {
       Description = "Noctalia Shell";
@@ -33,7 +28,7 @@ in
     };
 
     Service = {
-      ExecStart = "${overriddenNoctalia}/bin/noctalia-shell";
+      ExecStart = "${pkgConfig.noctalia}/bin/noctalia-shell";
       # Restart = "on-failure";
       # RestartSec = 5;
     };
@@ -48,7 +43,7 @@ in
 
   programs.noctalia-shell = {
     enable = true;
-    package = overriddenNoctalia;
+    package = pkgConfig.noctalia;
 
     plugins = import ./plugins.nix;
     pluginSettings = import ./plugin-settings.nix;
@@ -87,7 +82,7 @@ in
       controlCenter = import ./control-center.nix;
       desktopWidgets = import ./desktop-widgets.nix;
       dock = import ./dock.nix;
-      sessionMenu = import ./session-menu.nix;
+      sessionMenu = import ./session-menu.nix { inherit pkgConfig lib; };
 
       # colorSchemes.predefinedScheme = "Monochrome";
 
@@ -413,13 +408,13 @@ in
         enabled = true;
 
         screenOffTimeout = 600;
-        lockTimeout = 10;
+        lockTimeout = 300;
         suspendTimeout = 1800;
 
         fadeDuration = 5;
 
         screenOffCommand = "";
-        lockCommand = "${lib.getExe pkgs.hyprlock}";
+        lockCommand = "${lib.getExe pkgConfig.hyprlock}";
         suspendCommand = "";
 
         resumeScreenOffCommand = "";
