@@ -142,11 +142,6 @@ in
           useNautilus = true;
         };
 
-        services.hypridle = {
-          enable = true;
-          package = config.pkgConfig.hypridle;
-        };
-
         xdg.portal = {
           xdgOpenUsePortal = true;
           extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];

@@ -16,7 +16,7 @@
   imports = [
     inputs.stylix.homeModules.default
   ];
-  # set cursor theme
+
   home.pointerCursor = {
     name = "McMojave-cursors";
     package = pkgs.mcmojave-cursor-theme;
@@ -26,10 +26,9 @@
   stylix = {
     enable = true;
 
-    # todo: remove this and fix error
     enableReleaseChecks = false;
 
-    # disable stylix targets we configure ourselves
+    # configured seperately
     targets.firefox.enable = false;
     targets.hyprlock.colors.enable = false;
     targets.kitty.enable = false;
@@ -119,17 +118,14 @@
   qt = {
     enable = true;
 
-    # global qt widget style
-    style.name = lib.mkForce "Adwaita-Dark";
-
     qt6ctSettings = {
       Appearance = {
         color_scheme_path = "${config.xdg.configHome}/qt6ct/colors/noctalia.conf";
-        # enable custom palette instead of system palette
+
         custom_palette = true;
         standard_dialogs = "default";
 
-        style = "Adwaita-Dark";
+        style = lib.mkForce "Adwaita-Dark";
         icon_theme = "Papirus-Dark";
       };
 
@@ -138,15 +134,17 @@
         double_click_interval = 400;
         cursor_flash_time = 1000;
 
-        buttonbox_layout = 2; # layout style for dialog button boxes
+        # layout style dialog button
+        buttonbox_layout = 2;
         dialog_buttons_have_icons = 1;
-        toolbutton_style = 4; # toolbar button style
+
+        # toolbar button style
+        toolbutton_style = 4;
         underline_shortcut = 1;
 
-        # keyboard shortcut scheme preset
         keyboard_scheme = 2;
 
-        # mouse wheel scroll lines per step
+        # scroll lines per step
         wheel_scroll_lines = 3;
 
         menus_have_icons = true;

@@ -31,7 +31,8 @@
     };
 
     keybind-cheatsheet = {
-      enabled = true;
+      # does not work with wrappers nicely
+      enabled = false;
       sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
     };
 

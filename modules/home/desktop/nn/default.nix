@@ -17,14 +17,18 @@ let
 in
 {
   imports = [
-    # ./niri
     ./noctalia
-    ./programs
 
     ./packages.nix
     ./style.nix
     ./xdg-config.nix
   ];
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    enableZshIntegration = true;
+  };
 
   services.gnome-keyring = {
     enable = true;
@@ -36,48 +40,16 @@ in
   };
 
   dconf.settings = {
-    # required to force setting and overwrite multiple others
     "org/gnome/desktop/interface" = {
       color-scheme = lib.mkForce "prefer-dark";
     };
-    # remove all window buttons
     "org/gnome/desktop/wm/preferences" = {
       button-layout = lib.mkForce ":";
     };
-    # set nautilus terminal
     "com/github/stunkymonkey/nautilus-open-any-terminal" = {
       terminal = "kitty";
     };
   };
-
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-    enableZshIntegration = true;
-  };
-
-  /*
-    # weather daemon
-    systemd.user.services.formatted-weather = {
-      Unit = {
-        Description = "Update cached formatted weather";
-        After = [ "network-online.target" ];
-      };
-      Service = {
-        ExecStart = "${formattedWeather}";
-        Restart = "on-failure";
-        Path = [
-          pkgs.bash
-          pkgs.coreutils
-          pkgs.curl
-          pkgs.jq
-        ];
-      };
-      Install = {
-        WantedBy = [ "default.target" ];
-      };
-    };
-  */
 
   # touchscreen gestures
   systemd.user.services.lisgd = {
@@ -113,7 +85,7 @@ in
     };
   };
 
-  # disable niri selecting polkit agent
+  # disable niri polkit agent
   systemd.user.services."niri-flake-polkit" = {
     Unit = {
       Description = "Disabled Niri Polkit Agent (replaced by Noctalia)";
@@ -125,18 +97,4 @@ in
       ExecStart = lib.mkForce "${pkgs.coreutils}/bin/true";
     };
   };
-
-  # disable wireplumber / pipewire camera usage on startup
-  /*
-    xdg.configFile."wireplumber/wireplumber.conf.d/10-disable-camera.conf".text = ''
-      wireplumber.profiles = {
-        main = {
-          monitor.v4l2 = disabled
-          monitor.libcamera = disabled
-        }
-      }
-    '';
-  */
-
-  # systemd.user.services."niri-flake-polkit".enable = false;
 }

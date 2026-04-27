@@ -71,7 +71,7 @@
     compactMode = false;
   };
 
-  # not in use currently
+  # not used currently
   world-clock = {
     timezones = [
       {

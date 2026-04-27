@@ -28,9 +28,9 @@
     };
 
     Service = {
-      ExecStart = "${pkgConfig.noctalia}/bin/noctalia-shell";
-      # Restart = "on-failure";
-      # RestartSec = 5;
+      ExecStart = "${lib.getExe pkgConfig.noctalia}";
+      Restart = "on-failure";
+      RestartSec = 5;
     };
 
     Install = {

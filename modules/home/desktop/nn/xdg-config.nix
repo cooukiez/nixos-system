@@ -5,10 +5,6 @@
   on 2026-02-26
 */
 
-# modules/home/desktop/nn/xdg-config.nix
-
-{ ... }:
-
 let
   disabled = ''
     [Desktop Entry]
@@ -18,10 +14,10 @@ let
     NoDisplay=true
   '';
 
-  # editors
   editors = {
     general = [ "code.desktop" ];
     intermediate = [ "code.desktop" ];
+
     python = [ "pycharm.desktop" ];
     java = [ "idea.desktop" ];
     cpp = [ "clion.desktop" ];
@@ -30,16 +26,19 @@ let
 
   apps = {
     pdf = [ "org.pwmt.zathura.desktop" ];
+
     image = [ "imv.desktop" ];
     imageBackup = [ "org.gnome.Loupe.desktop" ];
+
     audio = [ "org.gnome.Music.desktop" ];
     video = [ "org.gnome.Showtime.desktop" ];
+
     archive = [ "org.gnome.Nautilus.desktop" ];
     file = [ "org.gnome.Nautilus.desktop" ];
+
     browser = [ "firefox.desktop" ];
   };
 
-  # helper to assign one app to many mime types
   forTypes =
     types: app:
     builtins.listToAttrs (
@@ -49,8 +48,10 @@ let
       }) types
     );
 
-  # grouped mime definitions
   mimeDefaults =
+    #
+    # development
+    #
     (forTypes [
       "text/plain"
       "application/octet-stream"
@@ -73,107 +74,113 @@ let
       "text/x-shellscript"
     ] editors.general)
 
-    //
+    // (forTypes [
+      "text/x-python"
+      "application/x-python-code"
 
-      (forTypes [
-        "text/x-python"
-        "application/x-python-code"
+      "text/x-java"
+      "text/x-java-source"
 
-        "text/x-java"
-        "text/x-java-source"
+      "text/x-c"
+      "text/x-c++"
+      "text/x-c++src"
+      "text/x-chdr"
+      "text/x-c++hdr"
 
-        "text/x-c"
-        "text/x-c++"
-        "text/x-c++src"
-        "text/x-chdr"
-        "text/x-c++hdr"
+      "text/rust"
+      "text/x-rust"
 
-        "text/rust"
-        "text/x-rust"
+      "text/html"
+      "application/xhtml+xml"
 
-        "text/html"
-        "application/xhtml+xml"
+      "text/css"
 
-        "text/css"
+      "application/javascript"
+      "text/javascript"
 
-        "application/javascript"
-        "text/javascript"
+      "application/x-typescript"
 
-        "application/x-typescript"
+      "text/x-php"
+      "application/x-php"
 
-        "text/x-php"
-        "application/x-php"
+      "text/x-nix"
+    ] editors.intermediate)
 
-        "text/x-nix"
-      ] editors.intermediate)
+    #
+    # documents
+    #
+    // (forTypes [
+      "application/pdf"
+    ] apps.pdf)
 
-    //
+    #
+    # images
+    #
+    // (forTypes [
+      "image/png"
+      "image/jpeg"
+      "image/webp"
+      "image/gif"
+      "image/bmp"
+      "image/tiff"
+      "image/svg+xml"
+      "image/heif"
+      "image/heic"
+      "image/x-xcf"
+    ] apps.image)
 
-      (forTypes [ "application/pdf" ] apps.pdf)
+    // (forTypes [
+      "image/ico"
+    ] apps.imageBackup)
 
-    //
+    #
+    # audio
+    #
+    // (forTypes [
+      "audio/mpeg"
+      "audio/flac"
+      "audio/ogg"
+      "audio/wav"
+    ] apps.audio)
 
-      (forTypes [
-        "image/png"
-        "image/jpeg"
-        "image/webp"
-        "image/gif"
-        "image/bmp"
-        "image/tiff"
-        "image/svg+xml"
-        "image/heif"
-        "image/heic"
-        "image/x-xcf"
-      ] apps.image)
+    #
+    # video
+    #
+    // (forTypes [
+      "video/mp4"
+      "video/webm"
+      "video/x-matroska"
+      "video/x-msvideo"
+      "video/quicktime"
+      "video/mpeg"
+      "video/ogg"
+    ] apps.video)
 
-    //
+    #
+    # directories
+    #
+    // (forTypes [
+      "application/zip"
+      "application/x-tar"
+      "application/x-gzip"
+      "application/x-bzip2"
+      "application/x-7z-compressed"
+      "application/x-rar"
+    ] apps.archive)
 
-      (forTypes [ "image/ico" ] apps.imageBackup)
+    // (forTypes [
+      "inode/directory"
+    ] apps.file)
 
-    //
-
-      (forTypes [
-        "audio/mpeg"
-        "audio/flac"
-        "audio/ogg"
-        "audio/wav"
-      ] apps.audio)
-
-    //
-
-      (forTypes [
-        "video/mp4"
-        "video/webm"
-        "video/x-matroska"
-        "video/x-msvideo"
-        "video/quicktime"
-        "video/mpeg"
-        "video/ogg"
-      ] apps.video)
-
-    //
-
-      (forTypes [
-        "application/zip"
-        "application/x-tar"
-        "application/x-gzip"
-        "application/x-bzip2"
-        "application/x-7z-compressed"
-        "application/x-rar"
-      ] apps.archive)
-
-    //
-
-      (forTypes [ "inode/directory" ] [ "thunar.desktop" ])
-
-    //
-
-      (forTypes [
-        "x-scheme-handler/http"
-        "x-scheme-handler/https"
-        "x-scheme-handler/about"
-        "x-scheme-handler/unknown"
-      ] apps.browser);
+    #
+    # browsers
+    #
+    // (forTypes [
+      "x-scheme-handler/http"
+      "x-scheme-handler/https"
+      "x-scheme-handler/about"
+      "x-scheme-handler/unknown"
+    ] apps.browser);
 
   disabledDesktopEntries = [
     "kdesystemsettings.desktop"
@@ -195,7 +202,6 @@ let
     "org.kde.kwalletmanager.desktop"
     "org.kde.drkonqi.coredump.gui.desktop"
   ];
-
 in
 {
   xdg = {
