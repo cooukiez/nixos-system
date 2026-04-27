@@ -10,38 +10,46 @@
   lib,
   ...
 }:
+let
+  cfg = config.desktop.kde;
+in
 {
-  services.gpg-agent = {
-    pinentry.package = lib.mkForce pkgs.kwalletcli;
-    extraConfig = "pinentry-program ${pkgs.kwalletcli}/bin/pinentry-kwallet";
-  };
-
-  home.packages = with pkgs; [
-    kde-rounded-corners
-    kdePackages.krohnkite
+  imports = [
+    ./packages.nix
   ];
 
-  # three finger gestures
-  xdg.configFile."libinput-gestures.conf".text = ''
-    gesture swipe left 3 xdotool key Super+Right
-    gesture swipe right 3 xdotool key Super+Left
-    gesture swipe up 3 xdotool key Super+G
-    gesture swipe down 3 xdotool key Super+W
-  '';
+  config = lib.mkIf cfg {
+    services.gpg-agent = {
+      enable = true;
+      enableSshSupport = true;
+      enableZshIntegration = true;
 
-  systemd.user.services.libinput-gestures = {
-    Unit = {
-      Description = "KDE libinput-Gestures";
-      PartOf = [ "graphical-session.target" ];
+      pinentry.package = lib.mkForce pkgs.kwalletcli;
+      extraConfig = "pinentry-program ${pkgs.kwalletcli}/bin/pinentry-kwallet";
     };
 
-    Service = {
-      ExecStart = "${lib.getExe libpkgs.libinput-gestures}";
-      Environment = "DISPLAY=:0";
-    };
+    # three finger gestures
+    xdg.configFile."libinput-gestures.conf".text = ''
+      gesture swipe left 3 xdotool key Super+Right
+      gesture swipe right 3 xdotool key Super+Left
+      gesture swipe up 3 xdotool key Super+G
+      gesture swipe down 3 xdotool key Super+W
+    '';
 
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
+    systemd.user.services.libinput-gestures = {
+      Unit = {
+        Description = "KDE libinput-Gestures";
+        PartOf = [ "graphical-session.target" ];
+      };
+
+      Service = {
+        ExecStart = "${lib.getExe libpkgs.libinput-gestures}";
+        Environment = "DISPLAY=:0";
+      };
+
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
     };
   };
 }

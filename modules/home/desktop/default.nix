@@ -22,6 +22,9 @@
   };
 
   config = {
-
+    desktop = {
+      kde = lib.mkIf (userConfig.session == "kde") true;
+      nn = lib.mkIf (userConfig.session == "nn") true;
+    };
   };
 }

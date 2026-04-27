@@ -6,6 +6,8 @@
 */
 
 let
+  cfg = config.desktop.nn;
+
   disabled = ''
     [Desktop Entry]
     Type=Application
@@ -17,11 +19,6 @@ let
   editors = {
     general = [ "code.desktop" ];
     intermediate = [ "code.desktop" ];
-
-    python = [ "pycharm.desktop" ];
-    java = [ "idea.desktop" ];
-    cpp = [ "clion.desktop" ];
-    rust = [ "rust-rover.desktop" ];
   };
 
   apps = {
@@ -204,29 +201,31 @@ let
   ];
 in
 {
-  xdg = {
-    enable = true;
-
-    autostart = {
+  config = lib.mkIf cfg {
+    xdg = {
       enable = true;
-      readOnly = true;
-      entries = [ ];
+
+      autostart = {
+        enable = true;
+        readOnly = true;
+        entries = [ ];
+      };
+
+      portal.config.common."org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+
+      configFile."mimeapps.list".force = true;
+
+      mimeApps = {
+        enable = true;
+        defaultApplications = mimeDefaults;
+      };
     };
 
-    portal.config.common."org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-
-    configFile."mimeapps.list".force = true;
-
-    mimeApps = {
-      enable = true;
-      defaultApplications = mimeDefaults;
-    };
+    xdg.dataFile = builtins.listToAttrs (
+      map (name: {
+        name = "applications/${name}";
+        value.text = disabled;
+      }) disabledDesktopEntries
+    );
   };
-
-  xdg.dataFile = builtins.listToAttrs (
-    map (name: {
-      name = "applications/${name}";
-      value.text = disabled;
-    }) disabledDesktopEntries
-  );
 }

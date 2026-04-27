@@ -1,83 +1,29 @@
-/*
-  modules/home/desktop/nn/packages.nix
-
-  created by ludw
-  on 2026-02-26
-*/
-
 {
-  inputs,
+  config,
   pkgs,
-  hostConfig,
+  lib,
   ...
 }:
+let
+  cfg = config.desktop.nn;
+in
 {
-  home.packages = with pkgs; [
-    # programs
-    apostrophe
-    errands
-    euphonica
-    eyedropper
-    gapless
-    impression
-    inspector
-    iplookup-gtk
-    keypunch
-    kitty
-    libreoffice-fresh
-    metadata-cleaner
-    mission-center
-    pdfarranger
-    quick-lookup
-    saber
-    sly
-    snapshot
-    system-config-printer
+  config = lib.mkIf cfg {
+    home.packages = with pkgs; [
+      adw-gtk3
+      gtk3
 
-    # gnome apps
-    baobab
-    decibels
-    gedit
-    gnome-calculator
-    gnome-calendar
-    gnome-clocks
-    gnome-contacts
-    gnome-font-viewer
-    gnome-frog
-    gnome-graphs
-    gnome-maps
-    gnome-menus
-    gnome-notes
-    gnome-obfuscate
-    gnome-photos
-    gnome-text-editor
-    gnome-weather
-    loupe
-    seahorse
-    showtime
-    unstable.gImageReader
+      adwaita-icon-theme
 
-    # libraries / packages
-    adw-gtk3
-    adwaita-icon-theme
-    adwaita-qt6
-    glib
-    gtk3
-    kdePackages.qt6ct
-    lisgd
-    zenity
+      adwaita-qt6
+      kdePackages.qt6ct
 
-    # compatibility
-    libsecret
-    gnome-online-accounts
-    gsettings-desktop-schemas
+      libsecret
+      lisgd
+      zenity
 
-    # new
-    qalculate-gtk
-    nucleus
-    exhibit
-
-    # for debugging
-    nwg-look
-  ];
+      gnome-online-accounts
+      gsettings-desktop-schemas
+    ];
+  };
 }

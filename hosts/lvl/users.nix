@@ -7,12 +7,12 @@
 
 {
   ceirs = {
-    session = "niri";
+    session = "nn";
 
     email = "ludwig.geyer@mailbox.org";
     fullName = "Ludwig";
-    githubName = "cooukiez";
-    githubEmail = "ludwig-geyer@web.de";
+    gitName = "cooukiez";
+    gitEmail = "ludwig-geyer@web.de";
     name = "ceirs";
 
     avatar = ../../files/avatar/ceirs.jpg;
@@ -33,12 +33,12 @@
   };
 
   redi = {
-    session = "niri";
+    session = "nn";
 
     email = "ludwig@redi-school.org";
     fullName = "Ludwig";
-    githubName = "cooukiez";
-    githubEmail = "ludwig-geyer@web.de";
+    gitName = "cooukiez";
+    gitEmail = "ludwig-geyer@web.de";
     name = "redi";
 
     avatar = ../../files/avatar/redi.jpg;

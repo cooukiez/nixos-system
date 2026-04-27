@@ -125,6 +125,9 @@
         stateVersion = "25.11";
       };
 
+      # copy avatar picture
+      # home.file.".face".source = userConfig.avatar;
+
       programs.home-manager.enable = true;
       systemd.user.startServices = "sd-switch";
     }) userList;

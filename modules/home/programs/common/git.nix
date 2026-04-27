@@ -16,8 +16,8 @@
 
     settings = {
       user = {
-        name = userConfig.githubName;
-        email = userConfig.githubEmail;
+        name = userConfig.gitName;
+        email = userConfig.gitEmail;
       };
 
       credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
