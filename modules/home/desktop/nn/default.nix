@@ -10,11 +10,6 @@
   lib,
   ...
 }:
-let
-  formattedWeather = pkgs.writeShellScript "formatted-weather" (
-    builtins.readFile ./scripts/formatted-weather.sh
-  );
-in
 {
   imports = [
     ./noctalia

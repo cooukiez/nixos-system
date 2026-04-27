@@ -16,6 +16,10 @@ let
   };
 in
 {
+  home.file.".local/share/icons/Breeze-Chameleon-Dark" = {
+    source = breezeChameleonDark;
+    recursive = true;
+  };
   home.packages = with pkgs; [
     # kde utilities
     kdePackages.kcalc
