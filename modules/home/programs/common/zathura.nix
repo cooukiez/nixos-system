@@ -6,16 +6,22 @@
 */
 
 {
-  programs.zathura = {
-    enable = true;
+  lib,
+  ...
+}:
+{
+  config = lib.mkIf programs.zathura {
+    programs.zathura = {
+      enable = true;
 
-    options = {
-      selection-clipboard = "clipboard";
+      options = {
+        selection-clipboard = "clipboard";
+      };
+
+      extraConfig = ''
+        set font "JetBrainsMono Nerd Font 10"
+        map <F9> toggle statusbar
+      '';
     };
-
-    extraConfig = ''
-      set font "JetBrainsMono Nerd Font 10"
-      map <F9> toggle statusbar
-    '';
   };
 }

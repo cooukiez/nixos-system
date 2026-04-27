@@ -7,21 +7,24 @@
 
 {
   pkgs,
+  lib,
   userConfig,
   ...
 }:
 {
-  programs.git = {
-    enable = true;
+  config = lib.mkIf programs.git {
+    programs.git = {
+      enable = true;
 
-    settings = {
-      user = {
-        name = userConfig.gitName;
-        email = userConfig.gitEmail;
+      settings = {
+        user = {
+          name = userConfig.gitName;
+          email = userConfig.gitEmail;
+        };
+
+        credential.helper = "${lib.getExe pkgs.git-credential-manager}";
+        credential.credentialStore = "secretservice";
       };
-
-      credential.helper = "${pkgs.git-credential-manager}/bin/git-credential-manager";
-      credential.credentialStore = "secretservice";
     };
   };
 }

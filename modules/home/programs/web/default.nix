@@ -1,15 +1,29 @@
-/*
-  modules/home/programs/web/default.nix
+{
+  lib,
+  ...
+}:
+let
+  mkEnableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = true;
+  };
 
-  created by ludw
-  on 2026-02-26
-*/
-
+  mkDisableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+  };
+in
 {
   imports = [
-    ./chrome.nix
     ./firefox.nix
     ./thunderbird.nix
-    # ./zen-browser.nix
+    ./zen-browser.nix
   ];
+
+  options.programs = {
+    firefox = mkEnableDefault;
+    thunderbird = mkEnableDefault;
+
+    zen-browser = mkDisableDefault;
+  };
 }
