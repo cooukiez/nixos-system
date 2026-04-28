@@ -6,6 +6,7 @@
 */
 
 {
+  config,
   pkgs,
   lib,
   ...
@@ -43,7 +44,7 @@ in
       };
 
       Service = {
-        ExecStart = "${lib.getExe libpkgs.libinput-gestures}";
+        ExecStart = "${lib.getExe pkgs.libinput-gestures}";
         Environment = "DISPLAY=:0";
       };
 

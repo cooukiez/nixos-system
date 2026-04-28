@@ -6,13 +6,17 @@
 */
 
 {
+  config,
   pkgs,
   lib,
   ...
 }:
+let
+  cfg = config.programs.code;
+in
 {
   config = {
-    programs.vscode = lib.mkIf programs.code {
+    programs.vscode = lib.mkIf cfg {
       enable = true;
       package = pkgs.unstable.vscode;
 

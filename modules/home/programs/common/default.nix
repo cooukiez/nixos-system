@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   ...
 }:
@@ -33,6 +34,6 @@ in
   };
 
   config = {
-    kitty = lib.mkIf desktop.nn;
+    kitty = lib.mkIf config.desktop.nn;
   };
 }

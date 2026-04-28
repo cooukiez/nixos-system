@@ -6,13 +6,17 @@
 */
 
 {
+  config,
   pkgs,
   lib,
   userConfig,
   ...
 }:
+let
+  cfg = config.programs.git;
+in
 {
-  config = lib.mkIf programs.git {
+  config = lib.mkIf cfg {
     programs.git = {
       enable = true;
 

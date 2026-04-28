@@ -6,11 +6,15 @@
 */
 
 {
+  config,
   lib,
   ...
 }:
+let
+  cfg = config.programs.imv;
+in
 {
-  config = lib.mkIf programs.imv {
+  config = lib.mkIf cfg {
     programs.imv = {
       enable = true;
 

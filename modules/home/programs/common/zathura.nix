@@ -6,11 +6,15 @@
 */
 
 {
+  config,
   lib,
   ...
 }:
+let
+  cfg = config.programs.zathura;
+in
 {
-  config = lib.mkIf programs.zathura {
+  config = lib.mkIf cfg {
     programs.zathura = {
       enable = true;
 

@@ -6,12 +6,16 @@
 */
 
 {
+  config,
   pkgs,
   lib,
   ...
 }:
+let
+  cfg = config.programs.thunderbird;
+in
 {
-  config = lib.mkIf programs.thunderbird {
+  config = lib.mkIf cfg {
     programs.thunderbird = {
       enable = true;
       package = pkgs.unstable.thunderbird;

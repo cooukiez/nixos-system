@@ -15,10 +15,12 @@
   ...
 }:
 let
+  cfg = config.programs.zen-browser;
+
   genId = name: builtins.hashString "sha256" name;
 in
 {
-  config = lib.mkIf programs.zen-browser {
+  config = lib.mkIf cfg {
     # see https://github.com/0xc000022070/zen-browser-flake
     programs.zen-browser =
       let

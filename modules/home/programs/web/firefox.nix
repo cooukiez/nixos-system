@@ -6,12 +6,16 @@
 */
 
 {
+  config,
   pkgs,
   lib,
   ...
 }:
+let
+  cfg = config.programs.firefox;
+in
 {
-  config = lib.mkIf programs.firefox {
+  config = lib.mkIf cfg {
     programs.firefox = {
       enable = true;
       package = null;

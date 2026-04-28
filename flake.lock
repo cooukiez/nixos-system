@@ -311,27 +311,6 @@
     "home-manager_3": {
       "inputs": {
         "nixpkgs": [
-          "plasma-manager",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1776879051,
-        "narHash": "sha256-VygjmVGXoLLGg3DH65Kd0SN1gITk6V1Me3jwY0MVQfk=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "f9d2b2da819d1428d75299582421371c1e99fc75",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager_4": {
-      "inputs": {
-        "nixpkgs": [
           "zen-browser",
           "nixpkgs"
         ]
@@ -762,27 +741,6 @@
         "url": "https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
       }
     },
-    "plasma-manager": {
-      "inputs": {
-        "home-manager": "home-manager_3",
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1775856943,
-        "narHash": "sha256-b7Mp7P+q2Md5AGt4rjHfMcBykzMumFTen10ST++AuTU=",
-        "owner": "nix-community",
-        "repo": "plasma-manager",
-        "rev": "a524a6160e6df89f7673ba293cf7d78b559eb1a5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "plasma-manager",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -796,7 +754,6 @@
         "nixvim": "nixvim",
         "noctalia": "noctalia",
         "noctalia-qs": "noctalia-qs_2",
-        "plasma-manager": "plasma-manager",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "wrappers": "wrappers",
@@ -1238,7 +1195,7 @@
     },
     "zen-browser": {
       "inputs": {
-        "home-manager": "home-manager_4",
+        "home-manager": "home-manager_3",
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {

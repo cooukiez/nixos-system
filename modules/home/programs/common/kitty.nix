@@ -5,12 +5,15 @@
   on 2026-02-26
 */
 {
+  config,
   lib,
   ...
 }:
+let
+  cfg = config.programs.kitty;
+in
 {
-
-  config = lib.mkIf programs.kitty {
+  config = lib.mkIf cfg {
     programs.kitty = {
       enable = true;
 

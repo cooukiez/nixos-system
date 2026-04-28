@@ -4,7 +4,11 @@
   created by ludw
   on 2026-02-26
 */
-
+{
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.desktop.nn;
 

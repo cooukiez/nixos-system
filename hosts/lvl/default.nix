@@ -113,8 +113,7 @@
 
     users = lib.mapAttrs (username: userConfig: {
       imports = [
-        inputs.self.homeModules.programs
-        inputs.self.homeModules.desktopNN
+        inputs.self.homeModules
       ];
 
       _module.args.userConfig = userConfig;

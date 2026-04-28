@@ -20,13 +20,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # start: unstable section
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -39,6 +35,7 @@
       url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    # end: unstable section
 
     stylix = {
       url = "github:nix-community/stylix/release-25.11";
