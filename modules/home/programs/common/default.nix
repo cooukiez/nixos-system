@@ -34,6 +34,6 @@ in
   };
 
   config = {
-    kitty = lib.mkIf config.desktop.nn;
+    graphicalPrograms.kitty = lib.mkIf config.desktop.nn true;
   };
 }

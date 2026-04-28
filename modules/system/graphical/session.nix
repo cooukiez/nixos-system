@@ -10,7 +10,7 @@ let
   cfg = config.graphicalConfig.session;
 
   sessionCommands = {
-    niri = "exec ${config.pkgConfig.niri}/bin/niri-session";
+    nn = "exec ${config.pkgConfig.niri}/bin/niri-session";
     kde = "exec ${pkgs.kdePackages.plasma-workspace}/libexec/plasma-dbus-run-session-if-needed ${pkgs.kdePackages.plasma-workspace}/bin/startplasma-wayland";
     none = "exit 0";
   };

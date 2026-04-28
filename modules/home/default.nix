@@ -35,8 +35,11 @@ in
       nn = lib.mkIf (userConfig.session == "nn") true;
     };
 
-    environment.systemPackages =
-      lib.optionals config.desktop.nn (packages.nn ++ packages.gnome)
-      ++ lib.optionals config.desktop.kde (packages.kde);
+    home.packages =
+      let
+        kde = packages.kde;
+        nn = packages.nn ++ packages.gnome;
+      in
+      lib.optionals config.desktop.kde kde ++ lib.optionals config.desktop.nn nn;
   };
 }

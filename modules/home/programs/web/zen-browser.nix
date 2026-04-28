@@ -8,10 +8,10 @@
 {
   inputs,
   config,
-  userConfig,
   pkgs,
   lib,
   hostConfig,
+  userConfig,
   ...
 }:
 let
@@ -20,7 +20,12 @@ let
   genId = name: builtins.hashString "sha256" name;
 in
 {
+  imports = [
+    inputs.zen-browser.homeModules.twilight
+  ];
+
   config = lib.mkIf cfg {
+
     # see https://github.com/0xc000022070/zen-browser-flake
     programs.zen-browser =
       let
@@ -65,16 +70,14 @@ in
         };
 
         # see https://github.com/0xc000022070/zen-browser-flake#pinned-tabs-pins
-        /*
-          pins = lib.mapAttrs (name: value: {
-            inherit (value) url;
+        pins = lib.mapAttrs (name: value: {
+          inherit (value) url;
 
-            id = genId name;
-            position = value.position + 100;
-            container = containers.Personal.id;
-            isEssential = true;
-          }) userConfig.zenBrowserShortcuts;
-        */
+          id = genId name;
+          position = value.position + 100;
+          container = containers.Personal.id;
+          isEssential = true;
+        }) userConfig.zenBrowserShortcuts;
       in
       {
         enable = true;
