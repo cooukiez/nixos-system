@@ -12,6 +12,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    flake-utils.url = "github:numtide/flake-utils";
+
     wrappers.url = "github:cooukiez/wrappers";
     agenix.url = "github:ryantm/agenix";
 
@@ -46,6 +48,13 @@
       url = "github:nix-community/nixvim/nixos-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # start: flake-utils
+    firefox-addons = {
+      url = "github:petrkozorezov/firefox-addons-nix";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+    # end: flake-utils
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     gamemaker.url = "github:cooukiez/gamemaker-flake";

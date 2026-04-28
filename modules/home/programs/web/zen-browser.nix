@@ -16,7 +16,7 @@
 }:
 let
   cfg = config.graphicalPrograms.zen-browser;
-  settings = import ./mozilla.nix;
+  settings = import ./settings.nix;
 
   genId = name: builtins.hashString "sha256" name;
 in

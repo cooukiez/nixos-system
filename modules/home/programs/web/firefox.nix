@@ -13,7 +13,7 @@
 }:
 let
   cfg = config.graphicalPrograms.firefox;
-  settings = import ./mozilla.nix;
+  settings = import ./settings.nix;
 in
 {
   config = lib.mkIf cfg {
@@ -35,14 +35,46 @@ in
         isDefault = true;
 
         settings = settings.core // settings.firefoxCore // settings.firefoxExtra;
+
+        extensions = {
+          force = true;
+          packages = with pkgs.firefox-addons; [
+            (ublock-origin.overrideAttrs (old: {
+              meta = old.meta // {
+                license = [ ];
+              };
+            }))
+          ];
+        };
       };
     };
 
     home.file.".mozilla/firefox/default/chrome/userChrome.css" = {
       text = ''
-        /* Remove close button*/
+        /* remove close button */
         .titlebar-buttonbox-container {
           display:none
+        }
+      '';
+    };
+
+    home.file.".mozilla/firefox/new/chrome/userChrome.css" = {
+      text = ''
+        /* remove close button */
+        .titlebar-buttonbox-container {
+          display:none
+        }
+
+        toolbarspring {
+          display: none !important;
+        }
+
+        #fxa-toolbar-menu-button {
+          display: none !important;
+        }
+
+        #alltabs-button {
+          display: none !important;
         }
       '';
     };

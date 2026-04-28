@@ -13,7 +13,7 @@
 }:
 let
   cfg = config.graphicalPrograms.thunderbird;
-  settings = import ./mozilla.nix;
+  settings = import ./settings.nix;
 in
 {
   config = lib.mkIf cfg {

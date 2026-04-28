@@ -28,6 +28,8 @@
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
 
+      inputs.firefox-addons.overlays.default
+
       (final: prev: {
         valkey = prev.valkey.overrideAttrs (oldAttrs: {
           doCheck = false;
