@@ -20,7 +20,7 @@ in
     ./zen-browser.nix
   ];
 
-  options.programs = {
+  options.graphicalPrograms = {
     firefox = mkEnableDefault;
     thunderbird = mkEnableDefault;
 

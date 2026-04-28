@@ -11,7 +11,7 @@
   ...
 }:
 let
-  cfg = config.programs.zathura;
+  cfg = config.graphicalPrograms.zathura;
 in
 {
   config = lib.mkIf cfg {

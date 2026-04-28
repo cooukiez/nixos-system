@@ -24,7 +24,7 @@ in
     ./zathura.nix
   ];
 
-  options.programs = {
+  options.graphicalPrograms = {
     code = mkEnableDefault;
     git = mkEnableDefault;
     imv = mkEnableDefault;

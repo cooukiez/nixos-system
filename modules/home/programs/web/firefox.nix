@@ -12,13 +12,13 @@
   ...
 }:
 let
-  cfg = config.programs.firefox;
+  cfg = config.graphicalPrograms.firefox;
 in
 {
   config = lib.mkIf cfg {
     programs.firefox = {
       enable = true;
-      package = null;
+      package = pkgs.unstable.firefox;
 
       profiles.default = {
         id = 0;

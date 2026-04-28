@@ -10,7 +10,7 @@
   ...
 }:
 let
-  cfg = config.programs.kitty;
+  cfg = config.graphicalPrograms.kitty;
 in
 {
   config = lib.mkIf cfg {

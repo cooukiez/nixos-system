@@ -15,7 +15,7 @@
   ...
 }:
 let
-  cfg = config.programs.zen-browser;
+  cfg = config.graphicalPrograms.zen-browser;
 
   genId = name: builtins.hashString "sha256" name;
 in

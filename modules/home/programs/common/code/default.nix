@@ -12,7 +12,7 @@
   ...
 }:
 let
-  cfg = config.programs.code;
+  cfg = config.graphicalPrograms.code;
 in
 {
   config = {

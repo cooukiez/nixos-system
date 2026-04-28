@@ -13,7 +13,7 @@
   ...
 }:
 let
-  cfg = config.programs.git;
+  cfg = config.graphicalPrograms.git;
 in
 {
   config = lib.mkIf cfg {

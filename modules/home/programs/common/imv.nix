@@ -11,7 +11,7 @@
   ...
 }:
 let
-  cfg = config.programs.imv;
+  cfg = config.graphicalPrograms.imv;
 in
 {
   config = lib.mkIf cfg {

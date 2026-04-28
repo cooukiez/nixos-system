@@ -12,7 +12,7 @@
   ...
 }:
 let
-  cfg = config.programs.thunderbird;
+  cfg = config.graphicalPrograms.thunderbird;
 in
 {
   config = lib.mkIf cfg {
