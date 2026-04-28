@@ -13,6 +13,7 @@
 }:
 let
   cfg = config.graphicalPrograms.thunderbird;
+  settings = import ./mozilla.nix;
 in
 {
   config = lib.mkIf cfg {
@@ -23,24 +24,7 @@ in
       profiles.default = {
         isDefault = true;
 
-        settings = {
-          # performance
-          "gfx.webrender.all" = true;
-          "layers.acceleration.force-enabled" = true;
-          "media.hardware-video-decoding.enabled" = true;
-          "network.http.pipelining" = true;
-          "network.http.pipelining.maxrequests" = 8;
-
-          # desktop integration
-          "widget.use-xdg-desktop-portal.file-picker" = 1;
-          "widget.use-xdg-desktop-portal.settings" = 1;
-          "widget.gtk.global-menu.enabled" = true;
-          "widget.gtk.global-menu.wayland.enabled" = true;
-          "widget.gtk.native-context-menus" = false;
-
-          # custom stylesheets
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        };
+        settings = settings.core;
 
         userChrome = ''
           .titlebar-buttonbox-container {

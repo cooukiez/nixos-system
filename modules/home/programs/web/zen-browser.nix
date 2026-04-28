@@ -16,6 +16,7 @@
 }:
 let
   cfg = config.graphicalPrograms.zen-browser;
+  settings = import ./mozilla.nix;
 
   genId = name: builtins.hashString "sha256" name;
 in
@@ -122,64 +123,7 @@ in
 
           inherit containers spaces; # pins;
 
-          settings = {
-            # performance
-            "gfx.webrender.all" = true;
-            "layers.acceleration.force-enabled" = true;
-            "media.hardware-video-decoding.enabled" = true;
-            "browser.cache.disk.enable" = false;
-            "browser.cache.memory.enable" = true;
-            "network.http.pipelining" = true;
-            "network.http.pipelining.maxrequests" = 8;
-
-            # desktop integration
-            "widget.use-xdg-desktop-portal.file-picker" = 1;
-            "widget.use-xdg-desktop-portal.settings" = 1;
-            "widget.gtk.global-menu.enabled" = true;
-            "widget.gtk.global-menu.wayland.enabled" = true;
-            "widget.gtk.native-context-menus" = false;
-            # custom stylesheets
-            "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-
-            # content blocking
-            "browser.contentblocking.category" = "strict";
-
-            # set locale
-            "browser.search.region" = "DE";
-            "browser.search.isUS" = false;
-            "distribution.searchplugins.defaultLocale" = "en-US";
-            "general.useragent.locale" = "en-Us";
-
-            # default browser
-            "browser.shell.checkDefaultBrowser" = false;
-
-            # sponsors
-            "browser.newtabpage.activity-stream.system.showSponsored" = false;
-            "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-            "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-            "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored" = false;
-            "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-
-            # new tab pinned
-            "browser.newtabpage.pinned" = [ ];
-
-            # disable requirement for extension signatures
-            "xpinstall.signatures.required" = false;
-
-            # restore pins to original URL, not last visited
-            "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
-            # show essential pins in all workspaces
-            "zen.workspaces.separate-essentials" = false;
-            # restore workspaces/tabs from previous session
-            "zen.workspaces.continue-where-left-off" = true;
-
-            # networking & local dns
-            "browser.fixup.domainsuffixwhitelist.lan" = true;
-            "browser.fixup.domainsuffixwhitelist.local" = true;
-
-            # allow pipewire camera
-            "media.webrtc.camera.allow-pipewire" = true;
-          };
+          settings = settings.core // settings.firefoxCore // settings.zenExtra;
 
           # see https://github.com/0xc000022070/zen-browser-flake#search
           search = {

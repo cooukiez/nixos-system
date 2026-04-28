@@ -13,6 +13,7 @@
 }:
 let
   cfg = config.graphicalPrograms.firefox;
+  settings = import ./mozilla.nix;
 in
 {
   config = lib.mkIf cfg {
@@ -23,69 +24,17 @@ in
       profiles.default = {
         id = 0;
         name = "default";
+        isDefault = false;
+
+        settings = settings.core // settings.firefoxCore // settings.firefoxExtra;
+      };
+
+      profiles.new = {
+        id = 1;
+        name = "new";
         isDefault = true;
 
-        settings = {
-          # performance
-          "gfx.webrender.all" = true;
-          "layers.acceleration.force-enabled" = true;
-          "media.hardware-video-decoding.enabled" = true;
-          "browser.cache.disk.enable" = false;
-          "browser.cache.memory.enable" = true;
-          "network.http.pipelining" = true;
-          "network.http.pipelining.maxrequests" = 8;
-
-          # ui tweaks
-          "browser.tabs.drawInTitlebar" = true; # hides window buttons (see note below)
-          "browser.compactmode.show" = true; # set for compact
-          "browser.uidensity" = 0; # 1 for compact
-
-          # desktop integration
-          "widget.use-xdg-desktop-portal.file-picker" = 1;
-          "widget.use-xdg-desktop-portal.settings" = 1;
-          "widget.gtk.global-menu.enabled" = true;
-          "widget.gtk.global-menu.wayland.enabled" = true;
-          "widget.gtk.native-context-menus" = false;
-
-          # custom stylesheets
-          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-
-          # content blocking
-          "browser.contentblocking.category" = "strict";
-
-          # set locale
-          "browser.search.region" = "DE";
-          "browser.search.isUS" = false;
-          "distribution.searchplugins.defaultLocale" = "en-US";
-          "general.useragent.locale" = "en-Us";
-
-          # default browser
-          "browser.shell.checkDefaultBrowser" = false;
-
-          # sponsors
-          "browser.newtabpage.activity-stream.system.showSponsored" = false;
-          "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
-          "browser.urlbar.suggest.quicksuggest.sponsored" = false;
-          "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsored" = false;
-          "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-
-          # new tab pinned
-          "browser.newtabpage.pinned" = [ ];
-
-          # disable requirement for extension signatures
-          "xpinstall.signatures.required" = false;
-
-          # networking & local dns
-          "browser.fixup.domainsuffixwhitelist.lan" = true;
-          "browser.fixup.domainsuffixwhitelist.local" = true;
-
-          # allow pipewire camera
-          "media.webrtc.camera.allow-pipewire" = true;
-
-          "browser.startup.homepage" = "http://localhost/";
-          "browser.startup.page" = 0; # 0 = blank, 1 = home page, 2 = last visited, 3 = previous session
-          "browser.newtabpage.enabled" = false;
-        };
+        settings = settings.core // settings.firefoxCore // settings.firefoxExtra;
       };
     };
 

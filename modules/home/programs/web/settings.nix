@@ -70,6 +70,9 @@
 
     "browser.compactmode.show" = true;
     "browser.uidensity" = 0;
+
+    "browser.aboutwelcome.enabled" = false;
+    "browser.startup.firstrunSkipsHomepage" = true;
   };
 
   zenExtra = {
