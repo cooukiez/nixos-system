@@ -67,26 +67,6 @@
     "browser.shell.checkDefaultBrowser" = false;
   };
 
-  firefoxExtra = {
-    # hides window buttons
-    "browser.tabs.drawInTitlebar" = true;
-
-    "browser.compactmode.show" = true;
-    "browser.uidensity" = 0;
-
-    # disable welcome / tips stuff
-    "browser.aboutwelcome.enabled" = false;
-    "browser.startup.firstrunSkipsHomepage" = true;
-
-    "browser.uitour.enabled" = false;
-    "browser.tips.enabled" = false;
-    "browser.vpn_promo.enabled" = false;
-    "browser.promo.focus.enabled" = false;
-
-    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
-    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
-  };
-
   zenExtra = {
     # restore pins to original URL, not last visited
     "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
