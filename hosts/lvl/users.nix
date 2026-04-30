@@ -25,6 +25,10 @@
       "Videos" = "/data/videos";
     };
 
+    passwordManagers = [
+      "bitwarden"
+    ];
+
     zenBrowserShortcuts = {
       youtube = "https://www.youtube.com/";
       chatgpt = "https://chatgpt.com/";
@@ -50,6 +54,11 @@
       "Pictures" = "/data/documents/work/redi/pictures";
       "Videos" = "/data/documents/work/redi/videos";
     };
+
+    passwordManagers = [
+      "bitwarden"
+      "passbolt"
+    ];
 
     zenBrowserShortcuts = {
       asana = "https://app.asana.com/1/955672552271708/project/1210867499376597/board/1210867499376611";

@@ -9,11 +9,49 @@
   config,
   pkgs,
   lib,
+  userConfig,
   ...
 }:
 let
   cfg = config.graphicalPrograms.firefox;
   settings = import ./settings.nix;
+
+  hasPasswordManager = name: builtins.elem name (userConfig.passwordManagers or [ ]);
+
+  mkAction = extID: extID + "-browser-action";
+
+  extensions = {
+    duckduckgo-for-firefox = mkAction "jid1-zadieub7xozojw_jetpack";
+    floccus = mkAction "floccus_handmadeideas_org";
+
+    darkreader = mkAction "addon_darkreader_org";
+
+    clearurls = mkAction "clearurls_kevin_roebert";
+    i-dont-want-cookies = mkAction "_1d048372-7ac6-4292-b9ad-6cc53f399513_";
+
+    sink-it-for-reddit = mkAction "_09acf9ff-55d4-4366-a1a9-c9b3c8877c09_";
+
+    sponsorblock = mkAction "sponsorblocker_ajay_app";
+    spot-sponsorblock = mkAction "sponsorblocker_spotsponsorblock_org";
+
+    youtube-recommended-videos = mkAction "myallychou_gmail_com";
+
+    violentmonkey = mkAction "_aecec67f-0d10-4fa7-b7c7-609a2db280cf_";
+  };
+
+  extNavBar = {
+    ublock-origin = mkAction "ublock0_raymondhill_net";
+  };
+
+  extOptional = {
+    bitwarden-password-manager = mkAction "_446900e4-71c2-419f-a6a7-df9c091e268b_";
+    passbolt = mkAction "passbolt_passbolt_com";
+
+    single-file = mkAction "_531906d3-e22f-4a6c-a102-8057b88a1a63_";
+
+    privacy-badger17 = mkAction "jid1-mnnxcxisbpnsxq_jetpack";
+    decentraleyes = mkAction "jid1-bofifl9vbdl2zq_jetpack";
+  };
 in
 {
   config = lib.mkIf cfg {
@@ -29,10 +67,94 @@ in
         settings = settings.core // settings.firefoxCore;
       };
 
+      profiles.test = {
+        id = 5;
+        name = "test";
+        isDefault = false;
+
+        settings = settings.core // settings.firefoxCore;
+      };
+
       profiles.new = {
         id = 1;
         name = "new";
         isDefault = true;
+
+        search = {
+          force = true;
+          default = "ddg";
+          privateDefault = "ddg";
+
+          order = [
+            "ddg"
+            "google"
+          ];
+
+          engines = {
+            ddg = {
+              name = "DuckDuckGo";
+              urls = [
+                {
+                  template = "https://duckduckgo.com/?q={searchTerms}";
+                }
+              ];
+
+              icon = "https://duckduckgo.com/favicon.ico";
+              definedAliases = [ "@ddg" ];
+            };
+
+            nix-packages = {
+              name = "Nix Packages";
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages";
+                  params = [
+                    {
+                      name = "type";
+                      value = "packages";
+                    }
+                    {
+                      name = "query";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@np" ];
+            };
+
+            mynixos = {
+              name = "MyNixOS";
+              urls = [
+                {
+                  template = "https://mynixos.com/search?q={searchTerms}";
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@mn" ];
+            };
+
+            nixos-wiki = {
+              name = "NixOS Wiki";
+              urls = [
+                {
+                  template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
+                }
+              ];
+
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = [ "@nw" ];
+            };
+
+            google.metaData.hidden = true;
+            bing.metaData.hidden = true;
+            ecosia.metaData.hidden = true;
+            perplexity.metaData.hidden = true;
+          };
+        };
 
         settings =
           settings.core
@@ -67,14 +189,7 @@ in
               placements = {
                 "widget-overflow-fixed-list" = [ ];
 
-                "unified-extensions-area" = [
-                  "addon_darkreader_org-browser-action"
-
-                  "clearurls_kevin_roebert-browser-action"
-
-                  "sponsorblocker_ajay_app-browser-action"
-                  "sponsorblocker_spotsponsorblock_org-browser-action"
-                ];
+                "unified-extensions-area" = builtins.attrValues extensions;
 
                 "nav-bar" = [
                   "back-button"
@@ -84,11 +199,10 @@ in
                   "urlbar-container"
                   "downloads-button"
                   "unified-extensions-button"
-
-                  "ublock0_raymondhill_net-browser-action"
-                  "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action"
-                  "passbolt_passbolt_com-browser-action"
-                ];
+                ]
+                ++ builtins.attrValues extNavBar
+                ++ lib.optional (hasPasswordManager "bitwarden") extOptional.bitwarden-password-manager
+                ++ lib.optional (hasPasswordManager "passbolt") extOptional.passbolt;
 
                 "toolbar-menubar" = [
                   "menubar-items"
@@ -110,9 +224,11 @@ in
               seen = [
                 "developer-button"
                 "screenshot-button"
-
-                "ublock0_raymondhill_net-browser-action"
-              ];
+              ]
+              ++ builtins.attrValues extensions
+              ++ builtins.attrValues extNavBar
+              ++ lib.optional (hasPasswordManager "bitwarden") extOptional.bitwarden-password-manager
+              ++ lib.optional (hasPasswordManager "passbolt") extOptional.passbolt;
 
               dirtyAreaCache = [
                 "nav-bar"
@@ -132,6 +248,8 @@ in
           force = true;
           packages =
             let
+              getAddons = attrs: map (name: pkgs.firefox-addons.${name}) (builtins.attrNames attrs);
+
               unlicense =
                 pkg:
                 pkg.overrideAttrs (old: {
@@ -141,42 +259,28 @@ in
                 });
             in
             with pkgs.firefox-addons;
-            map unlicense [
-              ublock-origin
-
-              bitwarden-password-manager
-              passbolt
-
-              darkreader
-
-              clearurls
-              i-dont-want-cookies
-
-              sink-it-for-reddit
-              reddit-ad-remover
-              reddit-nsfw-unblocker
-
-              sponsorblock
-              spot-sponsorblock
-
-              youtube-recommended-videos
-
-              violentmonkey
-            ];
+            map unlicense (
+              [
+                reddit-ad-remover
+                return-youtube-dislikes
+              ]
+              ++ getAddons extensions
+              ++ getAddons extNavBar
+              ++ lib.optionals (hasPasswordManager "bitwarden") [ bitwarden-password-manager ]
+              ++ lib.optionals (hasPasswordManager "passbolt") [ passbolt ]
+            );
         };
+
+        userChrome = ''
+          /* remove close button */
+          .titlebar-buttonbox-container {
+            display:none
+          }
+        '';
       };
     };
 
     home.file.".mozilla/firefox/default/chrome/userChrome.css" = {
-      text = ''
-        /* remove close button */
-        .titlebar-buttonbox-container {
-          display:none
-        }
-      '';
-    };
-
-    home.file.".mozilla/firefox/new/chrome/userChrome.css" = {
       text = ''
         /* remove close button */
         .titlebar-buttonbox-container {

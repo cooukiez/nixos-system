@@ -16,13 +16,53 @@
     DontCheckDefaultBrowser = true;
 
     NoDefaultBookmarks = true;
+
     OfferToSaveLogins = false;
+    PasswordManagerEnabled = false;
+
+    Certificates = {
+      Install = [
+        ../../../../dhs.crt
+      ];
+    };
 
     EnableTrackingProtection = {
       Value = true;
-      Locked = true;
       Cryptomining = true;
       Fingerprinting = true;
+
+      Locked = true;
+    };
+
+    GenerativeAI = {
+      Enabled = false;
+      Chatbot = false;
+      LinkPreviews = false;
+      TabGroups = false;
+
+      Locked = true;
+    };
+
+    AIControls = {
+      SidebarChatbot = {
+        Value = "unavailable";
+        Locked = true;
+      };
+
+      LinkPreviewKeyPoints = {
+        Value = "unavailable";
+        Locked = true;
+      };
+
+      SmartTabGroups = {
+        Value = "unavailable";
+        Locked = true;
+      };
+
+      SmartWindow = {
+        Value = "unavailable";
+        Locked = true;
+      };
     };
   };
 }
