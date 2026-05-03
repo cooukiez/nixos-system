@@ -406,7 +406,7 @@ in
         };
 
         idle = {
-          enabled = true;
+          enabled = false;
 
           screenOffTimeout = 600;
           lockTimeout = 300;
@@ -414,9 +414,9 @@ in
 
           fadeDuration = 5;
 
-          screenOffCommand = "";
+          screenOffCommand = "${lib.getExe pkgConfig.hyprlock}";
           lockCommand = "${lib.getExe pkgConfig.hyprlock}";
-          suspendCommand = "";
+          suspendCommand = "${lib.getExe pkgConfig.hyprlock}; sleep 3; systemctl suspend";
 
           resumeScreenOffCommand = "";
           resumeLockCommand = "";

@@ -14,15 +14,12 @@
     };
 
     listener = [
-      # lock after 10 min
       {
-        timeout = 10 * 60;
+        timeout = 180;
         on-timeout = "${lib.getExe config.pkgConfig.hyprlock}";
       }
-
-      # turn off screen after 5 min
       {
-        timeout = 5 * 60;
+        timeout = 60;
         on-timeout = "niri msg action power-off-monitors";
         on-resume = "niri msg action power-on-monitors";
       }

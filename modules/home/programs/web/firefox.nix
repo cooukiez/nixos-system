@@ -68,7 +68,7 @@ in
       };
 
       profiles.test = {
-        id = 5;
+        id = 2;
         name = "test";
         isDefault = false;
 

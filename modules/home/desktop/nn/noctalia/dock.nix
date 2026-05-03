@@ -1,6 +1,6 @@
 {
   # core
-  enabled = true;
+  enabled = false;
   position = "right";
   dockType = "attached";
   size = 1;
