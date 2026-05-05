@@ -29,12 +29,12 @@
 
       mouse = {
         accel-speed = 0.1;
-        natural-scroll = { };
+        # natural-scroll = { };
       };
 
       trackpoint = {
         accel-speed = 1.0;
-        natural-scroll = { };
+        # natural-scroll = { };
       };
 
       focus-follows-mouse = {

@@ -39,7 +39,7 @@
   ignoreMouseInput = false;
 
   # icons
-  iconMode = "native";
+  iconMode = "tabler";
   showIconBackground = false;
 
   # external
