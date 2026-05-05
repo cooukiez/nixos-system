@@ -87,6 +87,24 @@ let
 in
 {
   config = lib.mkIf cfg {
+    xdg.configFile."obsidian/obsidian.json" = lib.mkForce {
+      force = true;
+
+      text = builtins.toJSON {
+        updateDisabled = true;
+
+        frame = "native";
+        disableGpu = false;
+
+        vaults = {
+          "5b70a213f150f01f0776fa9481ef2ddf" = {
+            open = true;
+            path = "/home/ceirs/Vault";
+          };
+        };
+      };
+    };
+
     programs.obsidian = {
       enable = true;
 
@@ -114,6 +132,8 @@ in
             interfaceFontFamily = "Inter";
             monospaceFontFamily = "JetBrainsMono NF";
             baseFontSize = 16;
+
+            windowFrameStyle = "native";
 
             enabledCssSnippets = [ "Stylix Config" ];
           };
