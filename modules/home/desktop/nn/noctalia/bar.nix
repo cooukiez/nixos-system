@@ -147,7 +147,7 @@
         followFocusedScreen = false;
         hideUnoccupied = false;
 
-        showApplications = true;
+        showApplications = false;
         showApplicationsHover = false;
         showLabelsOnlyWhenOccupied = true;
 

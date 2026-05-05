@@ -7,11 +7,19 @@
     AutofillAddressEnabled = true;
     AutofillCreditCardEnabled = false;
 
+    AppAutoUpdate = false;
+    BackgroundAppUpdate = false;
     DisableAppUpdate = true;
+
     DisableFeedbackCommands = true;
     DisableFirefoxStudies = true;
     DisablePocket = true;
     DisableTelemetry = true;
+
+    DisableFormHistory = true;
+    DisableProfileImport = true;
+    DisableProfileRefresh = true;
+    DisableSetDesktopBackground = true;
 
     DontCheckDefaultBrowser = true;
 

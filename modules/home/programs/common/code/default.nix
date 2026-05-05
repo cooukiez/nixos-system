@@ -21,21 +21,136 @@ in
       package = pkgs.unstable.vscode;
 
       profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          fill-labs.dependi
+          hbenl.vscode-test-explorer
+          usernamehw.errorlens
+
+          ms-vscode-remote.remote-containers
+          ms-vscode-remote.remote-ssh
+          ms-vscode-remote.remote-ssh-edit
+          ms-vscode.remote-explorer
+
+          tomoki1207.pdf
+
+          # git
+          donjayamanne.githistory
+          codezombiech.gitignore
+          eamodio.gitlens
+
+          fabiospampinato.vscode-open-in-github
+          github.vscode-pull-request-github
+
+          #
+          # languages
+          #
+
+          # nix
+          jnoortheen.nix-ide
+
+          # rust
+          rust-lang.rust-analyzer
+
+          # python
+          ms-python.python
+          charliermarsh.ruff
+
+          ms-python.black-formatter
+          ms-python.debugpy
+          ms-python.vscode-pylance
+
+          ms-toolsai.jupyter
+          ms-toolsai.jupyter-keymap
+          ms-toolsai.jupyter-renderers
+          ms-toolsai.vscode-jupyter-cell-tags
+          ms-toolsai.vscode-jupyter-slideshow
+
+          njpwerner.autodocstring
+
+          # c / cpp
+          ms-vscode.cpptools-extension-pack
+          ms-vscode.cpptools
+
+          vadimcn.vscode-lldb
+
+          ms-vscode.cmake-tools
+          twxs.cmake
+
+          xaver.clang-format
+          llvm-vs-code-extensions.vscode-clangd
+
+          # shader
+          wgsl-analyzer.wgsl-analyzer
+
+          # cs
+          ms-dotnettools.csdevkit
+          ms-dotnettools.csharp
+          ms-dotnettools.vscode-dotnet-runtime
+
+          # unity
+          visualstudiotoolsforunity.vstuc
+
+          # markdown
+          yzhang.markdown-all-in-one
+
+          davidanson.vscode-markdownlint
+          chrischinchilla.vscode-pandoc
+
+          # web
+          ecmel.vscode-html-css
+
+          bmewburn.vscode-intelephense-client
+          xdebug.php-debug
+
+          vue.vscode-typescript-vue-plugin
+          bierner.comment-tagged-templates
+          yoavbls.pretty-ts-errors
+
+          svelte.svelte-vscode
+
+          # java
+          redhat.java
+
+          vscjava.vscode-java-debug
+          vscjava.vscode-java-dependency
+          vscjava.vscode-gradle
+          vscjava.vscode-maven
+
+          vscjava.vscode-java-test
+
+          # typst
+          myriad-dreamin.tinymist
+
+          # binary
+          ms-vscode.hexeditor
+
+          # file formats
+          zainchen.json
+          mechatroner.rainbow-csv
+          tamasfe.even-better-toml
+          redhat.vscode-yaml
+
+          dotjoshjohnson.xml
+          redhat.vscode-xml
+        ];
+
         userSettings = {
           "settingsSync.ignoredSettings" = [ ];
+
+          "security.allowedUNCHosts" = [ ];
 
           "window.titleBarStyle" = "custom";
           "window.controlsStyle" = "hidden";
 
+          "editor.detectIndentation" = false;
           "editor.insertSpaces" = true;
           "editor.tabSize" = 2;
-          "editor.detectIndentation" = false;
 
           "editor.formatOnSave" = true;
           "editor.semanticHighlighting.enabled" = true;
           "editor.unicodeHighlight.nonBasicASCII" = false;
-          "editor.largeFileOptimizations" = false;
-          "editor.showUnused" = false; # hide unused warnings
+          "editor.largeFileOptimizations" = true;
+          "editor.showUnused" = true;
           "editor.guides.bracketPairs" = true;
 
           "editor.fontFamily" = "JetBrainsMono NF";
@@ -45,18 +160,8 @@ in
           "explorer.confirmDragAndDrop" = false;
           "explorer.confirmPasteNative" = false;
 
-          "terminal.integrated.defaultProfile.windows" = "Command Prompt";
-
           "tinymist.exportPdf" = "onSave";
           "redhat.telemetry.enabled" = false;
-
-          "security.allowedUNCHosts" = [ ];
-
-          "autoAlign.associations" = {
-            "csv" = ",";
-            "bsv" = "|";
-            "" = "#";
-          };
 
           # customizations
           "workbench.colorCustomizations" = {
@@ -75,29 +180,6 @@ in
           "editorGutter.warningBackground" = "#00000000";
           "editorGutter.errorBackground" = "#00000000";
 
-          "favouriteThemes.pinnedThemes" = [
-            "Ardent (contrast 0, chroma 0, lightness 0)"
-            "Ardent (contrast 1, chroma 0, lightness 5)"
-            "Ardent (contrast 1, chroma 1, lightness 5)"
-            "Catppuccin Frappe"
-            "Catppuccin Frappe Darker"
-            "Catppuccin Macchiato"
-            "Catppuccin Mocha"
-            "Dainty – Nord (chroma 0, lightness 0)"
-            "Dainty – Nord (chroma 0, lightness 4)"
-            "Material Theme"
-            "Material Theme Ocean"
-            "Material Theme Palenight"
-            "Nathan's Gruvbox"
-            "Night Owl"
-            "Night Owl Light"
-            "Red"
-            "Shades of Purple (Super Dark)"
-            "Tokyo Night"
-            "Tokyo Night Dark"
-            "Tokyo Night Light"
-          ];
-
           # git configuration
           "git.autofetch" = true;
           "git.enableSmartCommit" = true;
@@ -110,89 +192,18 @@ in
           "gitlens.ai.model" = "vscode";
           "gitlens.ai.vscode.model" = "copilot:gpt-4.1";
 
-          #
-          # language configuarations
-          #
-
-          "[python]" = {
-            "editor.semanticHighlighting.enabled" = true;
-            "editor.defaultFormatter" = "charliermarsh.ruff";
+          "autoAlign.associations" = {
+            "csv" = ",";
+            "bsv" = "|";
+            "" = "#";
           };
 
-          "[xml]" = {
-            "editor.defaultFormatter" = "DotJoshJohnson.xml";
-          };
-
-          # shader languages
-          "[glsl]" = { };
-
-          "glsl-lsp.syntaxHighlighting.highlightEntireFile" = true;
-          "glsllint.glslangValidatorArgs" = [
-            "-V"
-          ];
-
-          "wgsl-analyzer.server.path" = "~/.cargo/bin/wgsl_analyzer";
-
-          # binary files
           "[code-text-binary]" = { };
 
           "hexeditor.columnWidth" = 32;
           "hexeditor.showDecodedText" = false;
           "hexeditor.defaultEndianness" = "little";
           "hexeditor.inspectorType" = "aside";
-
-          # c / cpp / cmake configuration
-          "[c]" = {
-            "editor.wordBasedSuggestions" = "matchingDocuments";
-            "editor.suggest.insertMode" = "replace";
-            "editor.semanticHighlighting.enabled" = true;
-            "editor.defaultFormatter" = "xaver.clang-format";
-          };
-
-          "[cpp]" = {
-            "editor.defaultFormatter" = "xaver.clang-format";
-          };
-
-          "cmake.configureOnOpen" = true;
-          "cmake.options.statusBarVisibility" = "visible";
-          "cmake.showOptionsMovedNotification" = false;
-
-          "cmake.additionalCompilerSearchDirs" = [
-            "C:\\Program Files\\MinGW\\bin"
-          ];
-
-          "cmake.debugConfig" = {
-            "externalConsole" = true;
-          };
-
-          "C_Cpp.default.compilerPath" = "";
-          "C_Cpp.default.cStandard" = "c99";
-
-          # typst configuration
-          "[typst]" = {
-            "editor.wordSeparators" = "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?";
-          };
-
-          "[typst-code]" = {
-            "editor.wordSeparators" = "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?";
-          };
-
-          "typst-lsp.experimentalFormatterMode" = "on";
-          "typst-lsp.trace.server" = "messages";
-
-          # typescript configuration
-          "[typescript]" = {
-            "editor.defaultFormatter" = "vscode.typescript-language-features";
-          };
-
-          "typescript.updateImportsOnFileMove.enabled" = "always";
-
-          "svelte.enable-ts-plugin" = true;
-
-          # qml
-          "[qml]" = {
-            "editor.defaultFormatter" = "Delgan.qml-format";
-          };
         };
       };
     };
