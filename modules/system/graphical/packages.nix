@@ -47,7 +47,6 @@
     dbeaver-bin
     gephi
     github-desktop
-    heidisql
     hexedit
     jflap
     renderdoc
@@ -115,7 +114,6 @@
     googleearth-pro
     geogebra6
     homebank
-    iloader
     mangl
     meld
     minder
@@ -129,6 +127,7 @@
 
   pwa = with pkgs; [
     typst-pwa
+    asana-pwa
   ];
 
   system = with pkgs; [

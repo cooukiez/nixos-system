@@ -29,6 +29,7 @@
       inputs.self.overlays.unstable-packages
 
       inputs.firefox-addons.overlays.default
+      inputs.obsidian-plugins.overlays.default
 
       (final: prev: {
         valkey = prev.valkey.overrideAttrs (oldAttrs: {

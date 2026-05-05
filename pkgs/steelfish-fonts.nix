@@ -6,15 +6,14 @@
 */
 
 {
-  lib,
   stdenvNoCC,
+  lib,
   fetchurl,
   unzip,
 }:
-
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   pname = "steelfish-fonts";
-  version = "2026";
+  version = "0-unstable-2026-05-05";
 
   src = fetchurl {
     url = "https://www.1001fonts.com/download/steelfish.zip";

@@ -6,20 +6,22 @@
 */
 
 {
-  stdenv,
+  stdenvNoCC,
   lib,
   fetchFromGitHub,
 }:
-stdenv.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   pname = "mcmojave-cursors";
-  version = "master";
+  version = "0-unstable-2026-05-05";
 
   src = fetchFromGitHub {
     owner = "vinceliuice";
     repo = "McMojave-cursors";
-    rev = version;
+    rev = "7d0bfc1f91028191cdc220b87fd335a235ee4439";
     sha256 = "sha256-4YqSucpxA7jsuJ9aADjJfKRPgPR89oq2l0T1N28+GV0=";
   };
+
+  dontBuild = true;
 
   installPhase = ''
     runHook preInstall
