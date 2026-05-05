@@ -58,9 +58,14 @@
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     gamemaker.url = "github:cooukiez/gamemaker-flake";
-    honklet.url = "github:hannahfluch/honklet";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    # portable web apps
+    typst-pwa.url = "github:ceirs-nix-system/typst-pwa";
+
+    # useless
+    honklet.url = "github:hannahfluch/honklet";
   };
 
   outputs =

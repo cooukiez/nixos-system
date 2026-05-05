@@ -55,15 +55,15 @@
     zed-editor
 
     # jetbrains
-    unstable.jetbrains-toolbox
-    unstable.jetbrains.clion
+    # unstable.jetbrains-toolbox
+    # unstable.jetbrains.clion
     unstable.jetbrains.idea-oss
-    unstable.jetbrains.jdk
+    # unstable.jetbrains.jdk
     unstable.jetbrains.pycharm-oss
-    unstable.jetbrains.rider
-    unstable.jetbrains.rust-rover
-    unstable.jetbrains.webstorm
-    unstable.jetbrains.datagrip
+    # unstable.jetbrains.rider
+    # unstable.jetbrains.rust-rover
+    # unstable.jetbrains.webstorm
+    # unstable.jetbrains.datagrip
   ];
 
   developmentGameEngines = with pkgs; [
@@ -125,6 +125,10 @@
 
     # useless
     honklet
+  ];
+
+  pwa = with pkgs; [
+    typst-pwa
   ];
 
   system = with pkgs; [

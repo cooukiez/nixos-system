@@ -30,6 +30,7 @@ in
           gaming = mkEnableDefault;
           modelling = mkEnableDefault;
           other = mkEnableDefault;
+          pwa = mkEnableDefault;
           system = mkEnableDefault;
 
           programNautilus = mkEnableDefault;
@@ -76,6 +77,10 @@ in
 
     (lib.mkIf cfg.other {
       environment.systemPackages = desktop.other;
+    })
+
+    (lib.mkIf cfg.pwa {
+      environment.systemPackages = desktop.pwa;
     })
 
     (lib.mkIf cfg.system {

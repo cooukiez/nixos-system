@@ -26,6 +26,9 @@
     gamemaker = inputs.gamemaker.packages.${system}.default;
     zen-browser = inputs.zen-browser.packages.${system}.twilight;
 
+    # portable web apps
+    typst-pwa = inputs.typst-pwa.packages.${system}.default;
+
     # useless
     honklet = inputs.honklet.packages.${system}.default;
   };

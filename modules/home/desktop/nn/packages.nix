@@ -14,6 +14,7 @@ in
       gtk3
 
       adwaita-icon-theme
+      papirus-icon-theme
 
       adwaita-qt6
       kdePackages.qt6ct
