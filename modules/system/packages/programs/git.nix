@@ -25,6 +25,7 @@
       safe = {
         directory = [
           "/etc/nixos"
+          "/data/vault"
           "/data/documents/vault"
           "/data/documents/server"
         ];
