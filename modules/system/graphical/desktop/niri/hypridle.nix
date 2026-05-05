@@ -21,7 +21,7 @@
       {
         timeout = 60;
         on-timeout = "niri msg action power-off-monitors";
-        on-resume = "niri msg action power-on-monitors";
+        # on-resume = "niri msg action power-on-monitors";
       }
     ];
   };

@@ -21,9 +21,12 @@ in
       package = pkgs.unstable.vscode;
 
       profiles.default = {
+        enableUpdateCheck = false;
+        enableExtensionUpdateCheck = false;
+
         extensions = with pkgs.vscode-extensions; [
           fill-labs.dependi
-          hbenl.vscode-test-explorer
+          # hbenl.vscode-test-explorer
           usernamehw.errorlens
 
           ms-vscode-remote.remote-containers
@@ -102,7 +105,6 @@ in
           bmewburn.vscode-intelephense-client
           xdebug.php-debug
 
-          vue.vscode-typescript-vue-plugin
           bierner.comment-tagged-templates
           yoavbls.pretty-ts-errors
 
@@ -125,7 +127,6 @@ in
           ms-vscode.hexeditor
 
           # file formats
-          zainchen.json
           mechatroner.rainbow-csv
           tamasfe.even-better-toml
           redhat.vscode-yaml
@@ -208,7 +209,7 @@ in
       };
     };
 
-    # fix for vscode keyring
+    # fix vscode keyring
     home.file.".vscode/argv.json".text = ''
       {
         "password-store": "gnome-libsecret",
