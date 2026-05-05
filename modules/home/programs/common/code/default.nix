@@ -136,6 +136,7 @@ in
         ];
 
         userSettings = {
+          "settingsSync" = 0;
           "settingsSync.ignoredSettings" = [ ];
 
           "security.allowedUNCHosts" = [ ];
