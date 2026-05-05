@@ -21,6 +21,7 @@ in
     ./git.nix
     ./imv.nix
     ./kitty.nix
+    ./obsidian.nix
     ./zathura.nix
   ];
 
@@ -28,6 +29,7 @@ in
     code = mkEnableDefault;
     git = mkEnableDefault;
     imv = mkEnableDefault;
+    obsidian = mkEnableDefault;
     zathura = mkEnableDefault;
 
     kitty = mkDisableDefault;

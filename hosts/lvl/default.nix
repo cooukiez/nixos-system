@@ -126,7 +126,6 @@
         stateVersion = "25.11";
 
         sessionVariables = {
-          # qt settings
           QT_AUTO_SCREEN_SCALE_FACTOR = "1";
           QT_ENABLE_HIGHDPI_SCALING = "1";
           QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -137,17 +136,16 @@
 
           ELM_DISPLAY = "wl";
           CLUTTER_BACKEND = "wayland";
+
           ELECTRON_OZONE_PLATFORM_HINT = "auto";
           ELECTRON_PASSWORD_STORE = "gnome-libsecret";
-
-          # enable wayland support for chromium and electron
           NIXOS_OZONE_WL = "1";
 
           # pretend gnome
           XDG_CURRENT_DESKTOP = "GNOME";
           XDG_MENU_PREFIX = "gnome-";
 
-          # smoother scrolling for firefox
+          # smoother scrolling
           MOZ_USE_XINPUT2 = "1";
 
           _JAVA_OPTIONS = "-Dawt.toolkit.name=WLToolkit -Dide.linux.hide.native.title.bar=true";

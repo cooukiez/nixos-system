@@ -5,9 +5,6 @@
 {
   documents = with pkgs; [
     affine
-    joplin-desktop
-    joplin-cli
-    obsidian
     onlyoffice-desktopeditors
     rnote
     scribus

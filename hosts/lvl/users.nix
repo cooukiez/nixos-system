@@ -23,6 +23,8 @@
       "Music" = "/data/music";
       "Pictures" = "/data/pictures";
       "Videos" = "/data/videos";
+
+      "Vault" = "/data/vault";
     };
 
     passwordManagers = [
@@ -53,6 +55,8 @@
       "Music" = "/data/music";
       "Pictures" = "/data/documents/work/redi/pictures";
       "Videos" = "/data/documents/work/redi/videos";
+
+      "Vault" = "/data/vault";
     };
 
     passwordManagers = [
