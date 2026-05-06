@@ -25,7 +25,6 @@ in
       ];
 
       nativeMessagingHosts.packages = [
-        pkgs.firefoxpwa
         pkgs.kdePackages.plasma-browser-integration
       ];
 

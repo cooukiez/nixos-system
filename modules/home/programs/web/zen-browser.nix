@@ -95,7 +95,6 @@ in
         package = pkgConfig.zen-browser;
 
         nativeMessagingHosts = [
-          pkgs.firefoxpwa
           pkgs.kdePackages.plasma-browser-integration
         ];
 
