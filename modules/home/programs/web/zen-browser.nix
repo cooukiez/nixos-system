@@ -18,45 +18,11 @@
 let
   cfg = config.graphicalPrograms.zen-browser;
   settings = import ./config/settings.nix;
+  extensions = import ./config/extensions.nix;
 
   genId = name: builtins.hashString "sha256" name;
 
   hasPasswordManager = name: builtins.elem name (userConfig.passwordManagers or [ ]);
-
-  mkAction = extID: extID + "-browser-action";
-
-  extensions = {
-    duckduckgo-for-firefox = mkAction "jid1-zadieub7xozojw_jetpack";
-    floccus = mkAction "floccus_handmadeideas_org";
-
-    darkreader = mkAction "addon_darkreader_org";
-
-    clearurls = mkAction "clearurls_kevin_roebert";
-    i-dont-want-cookies = mkAction "_1d048372-7ac6-4292-b9ad-6cc53f399513_";
-
-    sink-it-for-reddit = mkAction "_09acf9ff-55d4-4366-a1a9-c9b3c8877c09_";
-
-    sponsorblock = mkAction "sponsorblocker_ajay_app";
-    spot-sponsorblock = mkAction "sponsorblocker_spotsponsorblock_org";
-
-    youtube-recommended-videos = mkAction "myallychou_gmail_com";
-
-    violentmonkey = mkAction "_aecec67f-0d10-4fa7-b7c7-609a2db280cf_";
-  };
-
-  extNavBar = {
-    ublock-origin = mkAction "ublock0_raymondhill_net";
-  };
-
-  extOptional = {
-    bitwarden-password-manager = mkAction "_446900e4-71c2-419f-a6a7-df9c091e268b_";
-    passbolt = mkAction "passbolt_passbolt_com";
-
-    single-file = mkAction "_531906d3-e22f-4a6c-a102-8057b88a1a63_";
-
-    privacy-badger17 = mkAction "jid1-mnnxcxisbpnsxq_jetpack";
-    decentraleyes = mkAction "jid1-bofifl9vbdl2zq_jetpack";
-  };
 in
 {
   imports = [
@@ -165,6 +131,8 @@ in
           name = "default";
           isDefault = true;
 
+          search = import ./config/search.nix { inherit pkgs; };
+
           containersForce = true;
           spacesForce = true;
           pinsForce = true;
@@ -202,7 +170,7 @@ in
                 placements = {
                   "widget-overflow-fixed-list" = [ ];
 
-                  "unified-extensions-area" = builtins.attrValues extensions;
+                  "unified-extensions-area" = map (x: x.action) (builtins.attrValues extensions.extensions);
 
                   "nav-bar" = [
                     "back-button"
@@ -213,9 +181,9 @@ in
                     "downloads-button"
                     "unified-extensions-button"
                   ]
-                  ++ builtins.attrValues extNavBar
-                  ++ lib.optional (hasPasswordManager "bitwarden") extOptional.bitwarden-password-manager
-                  ++ lib.optional (hasPasswordManager "passbolt") extOptional.passbolt;
+                  ++ map (x: x.action) (builtins.attrValues extensions.extNavBar)
+                  ++ lib.optional (hasPasswordManager "bitwarden") extensions.extOptional.bitwarden-password-manager.action
+                  ++ lib.optional (hasPasswordManager "passbolt") extensions.extOptional.passbolt.action;
 
                   "toolbar-menubar" = [
                     "menubar-items"
@@ -246,10 +214,10 @@ in
                   "developer-button"
                   "screenshot-button"
                 ]
-                ++ builtins.attrValues extensions
-                ++ builtins.attrValues extNavBar
-                ++ lib.optional (hasPasswordManager "bitwarden") extOptional.bitwarden-password-manager
-                ++ lib.optional (hasPasswordManager "passbolt") extOptional.passbolt;
+                ++ map (x: x.action) (builtins.attrValues extensions.extensions)
+                ++ map (x: x.action) (builtins.attrValues extensions.extNavBar)
+                ++ lib.optional (hasPasswordManager "bitwarden") extensions.extOptional.bitwarden-password-manager.action
+                ++ lib.optional (hasPasswordManager "passbolt") extensions.extOptional.passbolt.action;
 
                 dirtyAreaCache = [
                   "nav-bar"
@@ -286,14 +254,12 @@ in
                   reddit-ad-remover
                   return-youtube-dislikes
                 ]
-                ++ getAddons extensions
-                ++ getAddons extNavBar
+                ++ getAddons extensions.extensions
+                ++ getAddons extensions.extNavBar
                 ++ lib.optionals (hasPasswordManager "bitwarden") [ bitwarden-password-manager ]
                 ++ lib.optionals (hasPasswordManager "passbolt") [ passbolt ]
               );
           };
-
-          search = import ./config/search.nix { inherit pkgs; };
         };
       };
   };
