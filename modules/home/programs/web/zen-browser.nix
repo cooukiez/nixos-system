@@ -20,6 +20,43 @@ let
   settings = import ./config/settings.nix;
 
   genId = name: builtins.hashString "sha256" name;
+
+  hasPasswordManager = name: builtins.elem name (userConfig.passwordManagers or [ ]);
+
+  mkAction = extID: extID + "-browser-action";
+
+  extensions = {
+    duckduckgo-for-firefox = mkAction "jid1-zadieub7xozojw_jetpack";
+    floccus = mkAction "floccus_handmadeideas_org";
+
+    darkreader = mkAction "addon_darkreader_org";
+
+    clearurls = mkAction "clearurls_kevin_roebert";
+    i-dont-want-cookies = mkAction "_1d048372-7ac6-4292-b9ad-6cc53f399513_";
+
+    sink-it-for-reddit = mkAction "_09acf9ff-55d4-4366-a1a9-c9b3c8877c09_";
+
+    sponsorblock = mkAction "sponsorblocker_ajay_app";
+    spot-sponsorblock = mkAction "sponsorblocker_spotsponsorblock_org";
+
+    youtube-recommended-videos = mkAction "myallychou_gmail_com";
+
+    violentmonkey = mkAction "_aecec67f-0d10-4fa7-b7c7-609a2db280cf_";
+  };
+
+  extNavBar = {
+    ublock-origin = mkAction "ublock0_raymondhill_net";
+  };
+
+  extOptional = {
+    bitwarden-password-manager = mkAction "_446900e4-71c2-419f-a6a7-df9c091e268b_";
+    passbolt = mkAction "passbolt_passbolt_com";
+
+    single-file = mkAction "_531906d3-e22f-4a6c-a102-8057b88a1a63_";
+
+    privacy-badger17 = mkAction "jid1-mnnxcxisbpnsxq_jetpack";
+    decentraleyes = mkAction "jid1-bofifl9vbdl2zq_jetpack";
+  };
 in
 {
   imports = [
@@ -27,7 +64,6 @@ in
   ];
 
   config = lib.mkIf cfg {
-
     # see https://github.com/0xc000022070/zen-browser-flake
     programs.zen-browser =
       let
@@ -38,15 +74,15 @@ in
             id = 1;
           };
 
-          Public = {
-            color = "turqoise";
-            icon = "glasses";
+          Work = {
+            color = "red";
+            icon = "briefcase";
             id = 2;
           };
 
           Media = {
             color = "blue";
-            icon = "briefcase";
+            icon = "chill";
             id = 3;
           };
 
@@ -77,22 +113,22 @@ in
 
         # see https://github.com/0xc000022070/zen-browser-flake?tab=readme-ov-file#spaces
         spaces = {
+          "Space" = {
+            id = "7057f3dc-2c44-4777-b967-ca03cc6da12f";
+            position = 1000;
+          };
+
           "Personal" = {
             id = "532b719b-1f82-45c8-9644-6baf4e034c76";
             icon = "🫆";
             container = containers.Personal.id;
-            position = 1000;
-          };
-
-          "Space" = {
-            id = "7057f3dc-2c44-4777-b967-ca03cc6da12f";
             position = 2000;
           };
 
-          "Public" = {
+          "Work" = {
             id = "0e008614-d063-4847-95ba-0ea4418939a6";
-            icon = "🌍";
-            container = containers.Public.id;
+            icon = "💼";
+            container = containers.Work.id;
             position = 3000;
           };
         };
@@ -146,6 +182,8 @@ in
               "zen.view.hide-window-controls" = true;
               "zen.view.experimental-no-window-controls" = true;
 
+              "zen.view.use-single-toolbar" = false;
+
               "zen.watermark.enabled" = false;
 
               # restore pins to original url
@@ -159,7 +197,101 @@ in
 
               # restore workspace tabs
               "zen.workspaces.continue-where-left-off" = true;
+
+              "browser.uiCustomization.state" = builtins.toJSON {
+                placements = {
+                  "widget-overflow-fixed-list" = [ ];
+
+                  "unified-extensions-area" = builtins.attrValues extensions;
+
+                  "nav-bar" = [
+                    "back-button"
+                    "forward-button"
+                    "stop-reload-button"
+                    "vertical-spacer"
+                    "urlbar-container"
+                    "downloads-button"
+                    "unified-extensions-button"
+                  ]
+                  ++ builtins.attrValues extNavBar
+                  ++ lib.optional (hasPasswordManager "bitwarden") extOptional.bitwarden-password-manager
+                  ++ lib.optional (hasPasswordManager "passbolt") extOptional.passbolt;
+
+                  "toolbar-menubar" = [
+                    "menubar-items"
+                  ];
+
+                  "TabsToolbar" = [
+                    "tabbrowser-tabs"
+                  ];
+
+                  "vertical-tabs" = [ ];
+
+                  "PersonalToolbar" = [
+                    "personal-bookmarks"
+                  ];
+
+                  "zen-sidebar-top-buttons" = [
+                    "zen-toggle-compact-mode"
+                  ];
+
+                  "zen-sidebar-foot-buttons" = [
+                    "downloads-button"
+                    "zen-workspaces-button"
+                    "zen-create-new-button"
+                  ];
+                };
+
+                seen = [
+                  "developer-button"
+                  "screenshot-button"
+                ]
+                ++ builtins.attrValues extensions
+                ++ builtins.attrValues extNavBar
+                ++ lib.optional (hasPasswordManager "bitwarden") extOptional.bitwarden-password-manager
+                ++ lib.optional (hasPasswordManager "passbolt") extOptional.passbolt;
+
+                dirtyAreaCache = [
+                  "nav-bar"
+                  "vertical-tabs"
+                  "zen-sidebar-foot-buttons"
+                  "PersonalToolbar"
+                  "toolbar-menubar"
+                  "TabsToolbar"
+                  "zen-sidebar-top-buttons"
+                ];
+
+                currentVersion = 23;
+                newElementCount = 2;
+              };
             };
+
+          extensions = {
+            force = true;
+            packages =
+              let
+                getAddons = attrs: map (name: pkgs.firefox-addons.${name}) (builtins.attrNames attrs);
+
+                unlicense =
+                  pkg:
+                  pkg.overrideAttrs (old: {
+                    meta = (old.meta or { }) // {
+                      license = [ ];
+                    };
+                  });
+              in
+              with pkgs.firefox-addons;
+              map unlicense (
+                [
+                  reddit-ad-remover
+                  return-youtube-dislikes
+                ]
+                ++ getAddons extensions
+                ++ getAddons extNavBar
+                ++ lib.optionals (hasPasswordManager "bitwarden") [ bitwarden-password-manager ]
+                ++ lib.optionals (hasPasswordManager "passbolt") [ passbolt ]
+              );
+          };
 
           search = import ./config/search.nix { inherit pkgs; };
         };

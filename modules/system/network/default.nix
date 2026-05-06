@@ -84,10 +84,12 @@ in
       drivers = [ pkgs.hplip ];
     };
 
-    services.avahi = lib.mkIf cfg.printing {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
+    /*
+      services.avahi = lib.mkIf cfg.printing {
+        enable = true;
+        nssmdns4 = true;
+        openFirewall = true;
+      };
+    */
   };
 }

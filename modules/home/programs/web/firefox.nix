@@ -67,14 +67,6 @@ in
         settings = settings.core // settings.firefoxCore;
       };
 
-      profiles.test = {
-        id = 2;
-        name = "test";
-        isDefault = false;
-
-        settings = settings.core // settings.firefoxCore;
-      };
-
       profiles.new = {
         id = 1;
         name = "new";
