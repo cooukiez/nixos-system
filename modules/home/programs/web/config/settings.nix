@@ -32,6 +32,10 @@
     "browser.fixup.domainsuffixwhitelist.lan" = true;
     "browser.fixup.domainsuffixwhitelist.local" = true;
 
+    # disable config warning
+    "browser.aboutConfig.showWarning" = false;
+    "browser.tabs.warnOnClose" = false;
+
     # sponsors
     "browser.newtabpage.activity-stream.system.showSponsored" = false;
     "browser.urlbar.suggest.quicksuggest.nonsponsored" = false;
@@ -77,5 +81,7 @@
 
     "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
     "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
+
+    "media.videocontrols.picture-in-picture.video-toggle.enabled" = true;
   };
 }

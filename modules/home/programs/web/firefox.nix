@@ -80,7 +80,7 @@ in
         name = "new";
         isDefault = true;
 
-        search = import ./search.nix { inherit pkgs; };
+        search = import ./config/search.nix { inherit pkgs; };
 
         settings =
           settings.core

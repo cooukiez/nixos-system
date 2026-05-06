@@ -37,36 +37,62 @@ in
             icon = "fingerprint";
             id = 1;
           };
-          Work = {
-            color = "blue";
-            icon = "briefcase";
+
+          Public = {
+            color = "turqoise";
+            icon = "glasses";
             id = 2;
           };
+
+          Media = {
+            color = "blue";
+            icon = "briefcase";
+            id = 3;
+          };
+
+          Banking = {
+            color = "green";
+            icon = "dollar";
+            id = 4;
+          };
+
           Shopping = {
             color = "yellow";
             icon = "cart";
-            id = 3;
+            id = 5;
+          };
+
+          Google = {
+            color = "red";
+            icon = "fence";
+            id = 6;
+          };
+
+          Facebook = {
+            color = "blue";
+            icon = "fence";
+            id = 7;
           };
         };
 
         # see https://github.com/0xc000022070/zen-browser-flake?tab=readme-ov-file#spaces
         spaces = {
-          "Space" = {
-            id = "7057f3dc-2c44-4777-b967-ca03cc6da12f";
+          "Personal" = {
+            id = "532b719b-1f82-45c8-9644-6baf4e034c76";
+            icon = "🫆";
+            container = containers.Personal.id;
             position = 1000;
           };
 
-          "Work" = {
-            id = "5307ca30-2ffc-4beb-8b10-7e265630a9f7";
-            icon = "💼";
-            container = containers.Work.id;
+          "Space" = {
+            id = "7057f3dc-2c44-4777-b967-ca03cc6da12f";
             position = 2000;
           };
 
-          "Shopping" = {
-            id = "abc85490-f3a3-4767-b290-bf4016592431";
-            icon = "🛒";
-            container = containers.Shopping.id;
+          "Public" = {
+            id = "0e008614-d063-4847-95ba-0ea4418939a6";
+            icon = "🌍";
+            container = containers.Public.id;
             position = 3000;
           };
         };
@@ -114,14 +140,24 @@ in
             // settings.firefoxCore
             // {
               "zen.welcome-screen.seen" = true;
+              "doh-rollout.doneFirstRun" = true;
+              "app.normandy.first_run" = false;
 
-              # restore pins to original URL, not last visited
+              "zen.view.hide-window-controls" = true;
+              "zen.view.experimental-no-window-controls" = true;
+
+              "zen.watermark.enabled" = false;
+
+              # restore pins to original url
               "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
 
               # show essential pins in all workspaces
               "zen.workspaces.separate-essentials" = false;
 
-              # restore workspaces / tabs from previous session
+              "zen.view.compact.enable-at-startup" = false;
+              "zen.ui.migration.compact-mode-button-added" = true;
+
+              # restore workspace tabs
               "zen.workspaces.continue-where-left-off" = true;
             };
 
