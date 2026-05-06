@@ -65,16 +65,17 @@
 
     # default browser checks
     "browser.shell.checkDefaultBrowser" = false;
-  };
 
-  zenExtra = {
-    # restore pins to original URL, not last visited
-    "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
+    # disable welcome / tips stuff
+    "browser.aboutwelcome.enabled" = false;
+    "browser.startup.firstrunSkipsHomepage" = true;
 
-    # show essential pins in all workspaces
-    "zen.workspaces.separate-essentials" = false;
+    "browser.uitour.enabled" = false;
+    "browser.tips.enabled" = false;
+    "browser.vpn_promo.enabled" = false;
+    "browser.promo.focus.enabled" = false;
 
-    # restore workspaces / tabs from previous session
-    "zen.workspaces.continue-where-left-off" = true;
+    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
   };
 }

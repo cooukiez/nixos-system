@@ -27,6 +27,33 @@
     thunderbird.profiles = [ "default" ];
   };
 
+  ludwigWeb = {
+    enable = true;
+
+    address = "ludwig-geyer@web.de";
+    userName = "ludwig-geyer@web.de";
+
+    imap = {
+      host = "imap.web.de";
+      port = 993;
+      tls.enable = true;
+    };
+
+    smtp = {
+      host = "smtp.web.de";
+      port = 587;
+      tls = {
+        enable = true;
+        useStartTls = true;
+      };
+    };
+
+    realName = "Ludwig";
+
+    thunderbird.enable = true;
+    thunderbird.profiles = [ "default" ];
+  };
+
   webAccount = {
     enable = true;
     address = "cookiecenter@web.de";

@@ -9,6 +9,7 @@
   inputs,
   config,
   pkgs,
+  pkgConfig,
   lib,
   hostConfig,
   userConfig,
@@ -71,41 +72,27 @@ in
         };
 
         # see https://github.com/0xc000022070/zen-browser-flake#pinned-tabs-pins
-        pins = lib.mapAttrs (name: value: {
-          inherit (value) url;
+        pins =
+          let
+            names = builtins.attrNames userConfig.zenBrowserShortcuts;
+          in
+          builtins.listToAttrs (
+            lib.imap0 (i: name: {
+              inherit name;
+              value = {
+                url = userConfig.zenBrowserShortcuts.${name};
 
-          id = genId name;
-          position = value.position + 100;
-          container = containers.Personal.id;
-          isEssential = true;
-        }) userConfig.zenBrowserShortcuts;
+                id = genId name;
+                position = i + 100;
+                container = containers.Personal.id;
+                isEssential = true;
+              };
+            }) names
+          );
       in
       {
         enable = true;
-        package = inputs.zen-browser.packages.${hostConfig.hostSystem}.twilight;
-
-        policies = {
-          AutofillAddressEnabled = true;
-          AutofillCreditCardEnabled = false;
-
-          DisableAppUpdate = true;
-          DisableFeedbackCommands = true;
-          DisableFirefoxStudies = true;
-          DisablePocket = true;
-          DisableTelemetry = true;
-
-          DontCheckDefaultBrowser = true;
-
-          NoDefaultBookmarks = true;
-          OfferToSaveLogins = false;
-
-          EnableTrackingProtection = {
-            Value = true;
-            Locked = true;
-            Cryptomining = true;
-            Fingerprinting = true;
-          };
-        };
+        package = pkgConfig.zen-browser;
 
         nativeMessagingHosts = [
           pkgs.firefoxpwa
@@ -121,13 +108,24 @@ in
           spacesForce = true;
           pinsForce = true;
 
-          inherit containers spaces; # pins;
+          inherit containers spaces pins;
 
-          settings = settings.core // settings.firefoxCore // settings.zenExtra;
+          settings =
+            settings.core
+            // settings.firefoxCore
+            // {
+              # restore pins to original URL, not last visited
+              "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
+
+              # show essential pins in all workspaces
+              "zen.workspaces.separate-essentials" = false;
+
+              # restore workspaces / tabs from previous session
+              "zen.workspaces.continue-where-left-off" = true;
+            };
 
           # see https://github.com/0xc000022070/zen-browser-flake#search
           search = {
-            # needed for nix to overwrite search settings on rebuild
             force = true;
             default = "google";
 

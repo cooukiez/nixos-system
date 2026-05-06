@@ -52,5 +52,15 @@ in
         WantedBy = [ "graphical-session.target" ];
       };
     };
+
+    home.sessionVariables = {
+      XCURSOR_SIZE = "24";
+
+      # GIT_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+      # SSH_ASKPASS = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
+
+      # remove decorations
+      UBUNTU_MENUPROXY = 1;
+    };
   };
 }

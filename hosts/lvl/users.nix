@@ -15,7 +15,7 @@
     gitEmail = "ludwig-geyer@web.de";
     name = "ceirs";
 
-    avatar = ../../files/avatar/ceirs.jpg;
+    avatar = "ceirs.jpg";
 
     bindDirs = {
       "Documents" = "/data/documents";
@@ -47,7 +47,7 @@
     gitEmail = "ludwig-geyer@web.de";
     name = "redi";
 
-    avatar = ../../files/avatar/redi.jpg;
+    avatar = "redi.jpg";
 
     bindDirs = {
       "Documents" = "/data/documents/work/redi";

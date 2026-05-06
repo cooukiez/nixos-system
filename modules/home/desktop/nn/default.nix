@@ -25,6 +25,32 @@ in
   ];
 
   config = lib.mkIf cfg {
+    home.sessionVariables = {
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_ENABLE_HIGHDPI_SCALING = "1";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+
+      QT_SCALE_FACTOR_ROUNDING_POLICY = "PassThrough";
+
+      QS_ICON_THEME = "Papirus-Dark";
+
+      ELM_DISPLAY = "wl";
+      CLUTTER_BACKEND = "wayland";
+
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
+      ELECTRON_PASSWORD_STORE = "gnome-libsecret";
+      NIXOS_OZONE_WL = "1";
+
+      # pretend gnome
+      XDG_CURRENT_DESKTOP = "GNOME";
+      XDG_MENU_PREFIX = "gnome-";
+
+      # smoother scrolling
+      MOZ_USE_XINPUT2 = "1";
+
+      _JAVA_OPTIONS = "-Dawt.toolkit.name=WLToolkit -Dide.linux.hide.native.title.bar=true";
+    };
+
     services.gpg-agent = {
       enable = true;
       enableSshSupport = true;

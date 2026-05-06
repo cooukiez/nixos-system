@@ -24,7 +24,9 @@ in
       profiles.default = {
         isDefault = true;
 
-        settings = settings.core;
+        settings = settings.core // {
+          "mail.biff.play_sound" = false;
+        };
 
         userChrome = ''
           .titlebar-buttonbox-container {

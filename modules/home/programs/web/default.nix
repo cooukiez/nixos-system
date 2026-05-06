@@ -23,7 +23,6 @@ in
   options.graphicalPrograms = {
     firefox = mkEnableDefault;
     thunderbird = mkEnableDefault;
-
-    zen-browser = mkDisableDefault;
+    zen-browser = mkEnableDefault;
   };
 }
