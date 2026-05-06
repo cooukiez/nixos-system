@@ -1,9 +1,10 @@
 /*
-  modules/home/desktop/nn/programs/kitty.nix
+  modules/home/programs/common/kitty.nix
 
   created by ludw
   on 2026-02-26
 */
+
 {
   config,
   lib,

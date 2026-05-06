@@ -1,3 +1,10 @@
+/*
+  modules/system/graphical/desktop/niri/wrappers/generators.nix
+
+  created by ludw
+  on 2026-04-24
+*/
+
 {
   lib,
   ...

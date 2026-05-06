@@ -1,5 +1,5 @@
 /*
-  modules/home/programs/zathura.nix
+  modules/home/programs/common/zathura.nix
 
   created by ludw
   on 2026-02-26

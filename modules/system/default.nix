@@ -1,5 +1,5 @@
 /*
-  modules/nixos/default.nix
+  modules/system/default.nix
 
   created by ludw
   on 2026-02-26

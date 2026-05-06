@@ -1,5 +1,5 @@
 /*
-  modules/home/programs/vscode.nix
+  modules/home/programs/common/code/default.nix
 
   created by ludw
   on 2026-02-26

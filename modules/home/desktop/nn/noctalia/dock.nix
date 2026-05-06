@@ -1,3 +1,10 @@
+/*
+  modules/home/desktop/nn/noctalia/dock.nix
+
+  created by ludw
+  on 2026-04-25
+*/
+
 {
   # core
   enabled = false;

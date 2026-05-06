@@ -1,3 +1,10 @@
+/*
+  modules/system/packages/default.nix
+
+  created by ludw
+  on 2026-04-21
+*/
+
 {
   config,
   pkgs,

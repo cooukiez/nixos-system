@@ -1,3 +1,10 @@
+/*
+  modules/system/graphical/web/config.nix
+
+  created by ludw
+  on 2026-04-23
+*/
+
 {
   preferences = {
     "widget.use-xdg-desktop-portal.file-picker" = 1;

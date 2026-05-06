@@ -1,3 +1,10 @@
+/*
+  modules/system/packages/programs/zsh.nix
+
+  created by ludw
+  on 2026-04-22
+*/
+
 let
   promptFirstColor = "%F{yellow}";
   promptSecondColor = "%F{blue}";

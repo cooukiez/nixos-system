@@ -1,8 +1,8 @@
 /*
-  modules/home/programs/nvim/mini.nix
+  modules/system/packages/programs/nvim/modules/mini.nix
 
   created by ludw
-  on 2026-02-26
+  on 2026-04-24
 */
 
 {

@@ -1,8 +1,8 @@
 /*
-  modules/home/programs/nvim/which-key.nix
+  modules/system/packages/programs/nvim/modules/which-key.nix
 
   created by ludw
-  on 2026-02-26
+  on 2026-04-24
 */
 
 {

@@ -1,3 +1,10 @@
+/*
+  hosts/lvl/config.nix
+
+  created by ludw
+  on 2026-04-22
+*/
+
 {
   pkgs,
   hostConfig,

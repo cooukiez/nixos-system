@@ -1,3 +1,10 @@
+/*
+  modules/system/graphical/web/firefox.nix
+
+  created by ludw
+  on 2026-04-22
+*/
+
 {
   config,
   pkgs,

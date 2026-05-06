@@ -1,5 +1,5 @@
 /*
-  modules/home/programs/imv.nix
+  modules/home/programs/common/imv.nix
 
   created by ludw
   on 2026-02-26

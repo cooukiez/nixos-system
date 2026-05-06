@@ -1,3 +1,10 @@
+/*
+  modules/home/programs/web/config/settings.nix
+
+  created by ludw
+  on 2026-04-28
+*/
+
 {
   core = {
     # performance

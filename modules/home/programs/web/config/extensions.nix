@@ -1,3 +1,10 @@
+/*
+  modules/home/programs/web/config/extensions.nix
+
+  created by ludw
+  on 2026-05-06
+*/
+
 {
   extensions = {
     # core

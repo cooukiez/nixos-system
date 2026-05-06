@@ -1,3 +1,10 @@
+/*
+  modules/home/programs/packages.nix
+
+  created by ludw
+  on 2026-04-27
+*/
+
 {
   pkgs,
   ...

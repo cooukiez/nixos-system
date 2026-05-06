@@ -1,3 +1,10 @@
+/*
+  modules/system/graphical/desktop/niri/hypridle.nix
+
+  created by ludw
+  on 2026-04-24
+*/
+
 {
   inputs,
   config,

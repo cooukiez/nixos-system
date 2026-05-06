@@ -1,8 +1,8 @@
 /*
-  user-configuration.nix
+  hosts/lvl/users.nix
 
   created by ludw
-  on 2026-02-26
+  on 2026-04-22
 */
 
 {

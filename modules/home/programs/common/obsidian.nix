@@ -1,8 +1,8 @@
 /*
-  modules/home/programs/zathura.nix
+  modules/home/programs/common/obsidian.nix
 
   created by ludw
-  on 2026-02-26
+  on 2026-05-05
 */
 
 {

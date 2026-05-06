@@ -1,3 +1,10 @@
+/*
+  hosts/lvl/accounts.nix
+
+  created by ludw
+  on 2026-04-22
+*/
+
 {
   ludwigMailbox = {
     enable = true;

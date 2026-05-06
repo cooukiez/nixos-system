@@ -1,3 +1,10 @@
+/*
+  modules/system/graphical/web/zen-browser.nix
+
+  created by ludw
+  on 2026-04-23
+*/
+
 {
   config,
   pkgs,

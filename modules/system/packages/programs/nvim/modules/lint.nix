@@ -1,8 +1,8 @@
 /*
-  modules/home/programs/nvim/lint.nix
+  modules/system/packages/programs/nvim/modules/lint.nix
 
   created by ludw
-  on 2026-02-26
+  on 2026-04-24
 */
 
 {
