@@ -114,6 +114,8 @@ in
             settings.core
             // settings.firefoxCore
             // {
+              "zen.welcome-screen.seen" = true;
+
               # restore pins to original URL, not last visited
               "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
 
@@ -124,49 +126,7 @@ in
               "zen.workspaces.continue-where-left-off" = true;
             };
 
-          # see https://github.com/0xc000022070/zen-browser-flake#search
-          search = {
-            force = true;
-            default = "google";
-
-            engines = {
-              mynixos = {
-                name = "My NixOS";
-                urls = [
-                  {
-                    template = "https://mynixos.com/search?q={searchTerms}";
-                    params = [
-                      {
-                        name = "query";
-                        value = "searchTerms";
-                      }
-                    ];
-                  }
-                ];
-
-                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@nx" ];
-              };
-
-              nixpkgs = {
-                name = "NixOS Search - Packages";
-                urls = [
-                  {
-                    template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";
-                    params = [
-                      {
-                        name = "query";
-                        value = "searchTerms";
-                      }
-                    ];
-                  }
-                ];
-
-                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                definedAliases = [ "@np" ];
-              };
-            };
-          };
+          search = import ./search.nix { inherit pkgs; };
         };
       };
   };

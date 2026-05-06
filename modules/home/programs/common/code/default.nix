@@ -200,8 +200,6 @@ in
             "" = "#";
           };
 
-          "[code-text-binary]" = { };
-
           "hexeditor.columnWidth" = 32;
           "hexeditor.showDecodedText" = false;
           "hexeditor.defaultEndianness" = "little";
