@@ -14,7 +14,7 @@
 }:
 let
   cfg = config.graphicalPrograms.firefox;
-  settings = import ./settings.nix;
+  settings = import ./config/settings.nix;
 
   hasPasswordManager = name: builtins.elem name (userConfig.passwordManagers or [ ]);
 

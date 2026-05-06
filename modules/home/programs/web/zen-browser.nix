@@ -17,7 +17,7 @@
 }:
 let
   cfg = config.graphicalPrograms.zen-browser;
-  settings = import ./settings.nix;
+  settings = import ./config/settings.nix;
 
   genId = name: builtins.hashString "sha256" name;
 in
@@ -126,7 +126,7 @@ in
               "zen.workspaces.continue-where-left-off" = true;
             };
 
-          search = import ./search.nix { inherit pkgs; };
+          search = import ./config/search.nix { inherit pkgs; };
         };
       };
   };
