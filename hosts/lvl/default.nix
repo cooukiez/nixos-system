@@ -124,6 +124,8 @@
     users = lib.mapAttrs (username: userConfig: {
       imports = [
         inputs.self.homeModules
+
+        inputs.agenix.homeManagerModules.default
       ];
 
       _module.args.userConfig = userConfig;

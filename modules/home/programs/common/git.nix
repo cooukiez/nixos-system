@@ -25,7 +25,7 @@ let
 in
 {
   config = lib.mkIf cfg {
-    age.secrets.github-token.file = ../../../secrets/github-token.age;
+    age.secrets.github-token.file = ../../../../secrets/github-token.age;
 
     programs.git = {
       enable = true;
