@@ -144,6 +144,8 @@ in
           "window.titleBarStyle" = "custom";
           "window.controlsStyle" = "hidden";
 
+          "keyboard.dispatch" = "keyCode";
+
           # core editor
           "editor.detectIndentation" = false;
           "editor.insertSpaces" = true;
@@ -207,6 +209,24 @@ in
           "hexeditor.defaultEndianness" = "little";
           "hexeditor.inspectorType" = "aside";
         };
+
+        keybindings = [
+          {
+            key = "ctrl+z";
+            command = "undo";
+            when = "textInputFocus && !editorReadonly";
+          }
+          {
+            key = "ctrl+y";
+            command = "redo";
+            when = "textInputFocus && !editorReadonly";
+          }
+          {
+            key = "ctrl+shift+z";
+            command = "redo";
+            when = "textInputFocus && !editorReadonly";
+          }
+        ];
       };
     };
 

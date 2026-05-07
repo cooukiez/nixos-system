@@ -28,14 +28,6 @@ in
       profiles.default = {
         id = 0;
         name = "default";
-        isDefault = false;
-
-        settings = settings.core // settings.firefoxCore;
-      };
-
-      profiles.new = {
-        id = 1;
-        name = "new";
         isDefault = true;
 
         search = import ./config/search.nix { inherit pkgs; };
@@ -56,6 +48,12 @@ in
 
             # bookmarks toolbar
             "browser.toolbars.bookmarks.visibility" = "newtab";
+
+            "browser.newtabpage.activity-stream.discoverystream.endpointSpocsClear" = "";
+            "browser.newtabpage.activity-stream.discoverystream.endpoints" = "";
+
+            "browser.newtabpage.activity-stream.default.sites" = "";
+            "browser.newtabpage.pinned" = builtins.toJSON [ ];
 
             "browser.uiCustomization.state" = builtins.toJSON {
               placements = {

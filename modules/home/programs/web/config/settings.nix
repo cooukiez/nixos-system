@@ -81,7 +81,9 @@
     "browser.aboutwelcome.enabled" = false;
     "browser.startup.firstrunSkipsHomepage" = true;
 
+    "browser.uitour.url" = "";
     "browser.uitour.enabled" = false;
+
     "browser.tips.enabled" = false;
     "browser.vpn_promo.enabled" = false;
     "browser.promo.focus.enabled" = false;
@@ -89,6 +91,10 @@
     "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
     "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
 
+    "browser.messaging-system.whatsNewPanel.enabled" = false;
+
     "media.videocontrols.picture-in-picture.video-toggle.enabled" = true;
+
+    "browser.translations.neverTranslateLanguages" = "en,de";
   };
 }

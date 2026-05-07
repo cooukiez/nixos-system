@@ -39,11 +39,11 @@ in
     zathura = mkEnableDefault;
 
     kitty = mkDisableDefault;
-    nemo = mkDisableDefault;
+
+    nemoConfig = mkEnableDefault;
   };
 
   config = {
     graphicalPrograms.kitty = lib.mkIf config.desktop.nn true;
-    graphicalPrograms.nemo = lib.mkIf config.desktop.nn true;
   };
 }
