@@ -20,7 +20,7 @@
   pinnedApps = [
     "firefox"
     "code"
-    "org.gnome.Nautilus"
+    "nemo"
     "obsidian"
     "signal"
   ];

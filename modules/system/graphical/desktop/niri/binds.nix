@@ -56,7 +56,7 @@ in
 
   "Mod+Q" = mkExecBind "Open Terminal" "${lib.getExe pkgs.kitty}";
 
-  "Mod+E" = mkExecBind "Open File Manager" "${lib.getExe config.pkgConfig.nautilus}";
+  "Mod+E" = mkExecBind "Open File Manager" "${lib.getExe config.pkgConfig.nemo}";
   "Mod+Shift+F" = mkExecBind "Open Firefox" "${lib.getExe config.pkgConfig.firefox}";
   "Mod+Shift+D" = mkExecBind "Open Zen-Browser" "${lib.getExe config.pkgConfig.zen-browser}";
   "Mod+Shift+C" = mkExecBind "Open VSCode" "${lib.getExe config.pkgConfig.vscode}";

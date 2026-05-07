@@ -28,7 +28,6 @@
     metadata-cleaner
     mission-center
     nucleus
-    nwg-look
     pdfarranger
     qalculate-gtk
     quick-lookup

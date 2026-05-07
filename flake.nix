@@ -63,8 +63,9 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # portable web apps
-    typst-pwa.url = "github:ceirs-nix-system/typst-pwa";
     asana-pwa.url = "github:ceirs-nix-system/asana-pwa";
+    gemini-pwa.url = "github:ceirs-nix-system/gemini-pwa";
+    typst-pwa.url = "github:ceirs-nix-system/typst-pwa";
 
     # useless
     honklet.url = "github:hannahfluch/honklet";
@@ -89,7 +90,7 @@
         let
           hostPath = ./hosts/${hostName};
           hostConfig = import "${hostPath}/host.nix";
-          userList = import "${hostPath}/users.nix";
+          userList = import ./users.nix;
         in
         lib.nixosSystem {
           system = hostConfig.hostSystem;

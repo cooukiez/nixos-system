@@ -35,8 +35,8 @@ let
     audio = [ "org.gnome.Music.desktop" ];
     video = [ "org.gnome.Showtime.desktop" ];
 
-    archive = [ "org.gnome.Nautilus.desktop" ];
-    file = [ "org.gnome.Nautilus.desktop" ];
+    archive = [ "nemo.desktop" ];
+    file = [ "nemo.desktop" ];
 
     browser = [ "firefox.desktop" ];
   };

@@ -15,6 +15,7 @@
     onlyoffice-desktopeditors
     rnote
     scribus
+    obsidian
     pdfpc
     sioyek
     texstudio

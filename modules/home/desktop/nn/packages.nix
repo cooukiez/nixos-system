@@ -30,6 +30,9 @@ in
       lisgd
       zenity
 
+      nwg-look
+      dconf-editor
+
       gnome-online-accounts
       gsettings-desktop-schemas
     ];

@@ -16,12 +16,14 @@ let
   desktop = import ./packages.nix { inherit pkgs hostConfig; };
   cfg = config.graphicalConfig.programs;
 
-  nautilusBackspaceSrc = pkgs.fetchFromGitHub {
-    owner = "TheWeirdDev";
-    repo = "nautilus-backspace";
-    rev = "main";
-    sha256 = "sha256-4x5bMIgwNIp9nxuCHWLLNvWG2zuviyEOyCZgVLRZ5W4=";
-  };
+  /*
+    nautilusBackspaceSrc = pkgs.fetchFromGitHub {
+      owner = "TheWeirdDev";
+      repo = "nautilus-backspace";
+      rev = "main";
+      sha256 = "sha256-4x5bMIgwNIp9nxuCHWLLNvWG2zuviyEOyCZgVLRZ5W4=";
+    };
+  */
 
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
@@ -40,7 +42,7 @@ in
           pwa = mkEnableDefault;
           system = mkEnableDefault;
 
-          programNautilus = mkEnableDefault;
+          programNemo = mkEnableDefault;
           programVSCode = mkEnableDefault;
         };
       };
@@ -50,7 +52,7 @@ in
   };
 
   options.pkgConfig = {
-    nautilus = lib.mkOption { type = lib.types.package; };
+    nemo = lib.mkOption { type = lib.types.package; };
     vscode = lib.mkOption { type = lib.types.package; };
   };
 
@@ -94,22 +96,38 @@ in
       environment.systemPackages = desktop.system;
     })
 
-    (lib.mkIf cfg.programNautilus {
-      pkgConfig.nautilus = pkgs.unstable.nautilus;
+    (lib.mkIf cfg.programNemo {
+      pkgConfig.nemo = (
+        pkgs.nemo-with-extensions.override {
+          extensions = with pkgs; [
+            folder-color-switcher
+            nemo-emblems
+            nemo-seahorse
+            nemo-python
+            nemo-fileroller
+          ];
+
+          useDefaultExtensions = false;
+        }
+      );
 
       environment.systemPackages = [
-        config.pkgConfig.nautilus
+        config.pkgConfig.nemo
 
-        pkgs.unstable.nautilus-python
-        pkgs.unstable.nautilus-open-any-terminal
-        pkgs.unstable.code-nautilus
+        /*
+          pkgs.unstable.nautilus-python
+          pkgs.unstable.nautilus-open-any-terminal
+          pkgs.unstable.code-nautilus
+        */
       ];
 
-      environment.pathsToLink = [ "/share/nautilus-python/extensions" ];
-      environment.sessionVariables = {
-        NAUTILUS_EXTENSION_DIR = "${pkgs.unstable.nautilus-python}/lib/nautilus/extensions";
-        NAUTILUS_4_EXTENSION_DIR = "${pkgs.unstable.nautilus-python}/lib/nautilus/extensions-4";
-      };
+      /*
+        environment.pathsToLink = [ "/share/nautilus-python/extensions" ];
+        environment.sessionVariables = {
+          NAUTILUS_EXTENSION_DIR = "${pkgs.unstable.nautilus-python}/lib/nautilus/extensions";
+          NAUTILUS_4_EXTENSION_DIR = "${pkgs.unstable.nautilus-python}/lib/nautilus/extensions-4";
+        };
+      */
     })
 
     (lib.mkIf cfg.programVSCode {

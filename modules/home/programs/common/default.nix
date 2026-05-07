@@ -28,7 +28,7 @@ in
     ./git.nix
     ./imv.nix
     ./kitty.nix
-    ./obsidian.nix
+    ./nemo.nix
     ./zathura.nix
   ];
 
@@ -36,13 +36,14 @@ in
     code = mkEnableDefault;
     git = mkEnableDefault;
     imv = mkEnableDefault;
-    obsidian = mkEnableDefault;
     zathura = mkEnableDefault;
 
     kitty = mkDisableDefault;
+    nemo = mkDisableDefault;
   };
 
   config = {
     graphicalPrograms.kitty = lib.mkIf config.desktop.nn true;
+    graphicalPrograms.nemo = lib.mkIf config.desktop.nn true;
   };
 }

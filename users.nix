@@ -5,7 +5,50 @@
   on 2026-04-22
 */
 
+let
+  accounts = import ./accounts.nix;
+in
 {
+  ludw = {
+    session = "nn";
+
+    email = "ludwig.geyer@mailbox.org";
+    fullName = "Ludwig";
+    gitName = "cooukiez";
+    gitEmail = "ludwig-geyer@web.de";
+    name = "ludw";
+
+    avatar = "ludw.jpg";
+
+    accounts = {
+      Mailbox = accounts.ludwigMailbox;
+      Old = accounts.ludwigWeb;
+      Web = accounts.webAccount;
+    };
+
+    packages = pkgs: with pkgs; [ ];
+
+    bindDirs = {
+      "Documents" = "/data/documents";
+      "Downloads" = "/data/downloads";
+      "Music" = "/data/music";
+      "Pictures" = "/data/pictures";
+      "Videos" = "/data/videos";
+
+      "Vault" = "/data/vault";
+    };
+
+    passwordManagers = [
+      "bitwarden"
+    ];
+
+    zenBrowserShortcuts = {
+      youtube = "https://www.youtube.com/";
+      chatgpt = "https://chatgpt.com/";
+      maps = "https://www.google.com/maps";
+    };
+  };
+
   ceirs = {
     session = "nn";
 
@@ -16,6 +59,14 @@
     name = "ceirs";
 
     avatar = "ceirs.jpg";
+
+    accounts = {
+      Mailbox = accounts.ludwigMailbox;
+      Old = accounts.ludwigWeb;
+      Web = accounts.webAccount;
+    };
+
+    packages = pkgs: with pkgs; [ ];
 
     bindDirs = {
       "Documents" = "/data/documents";
@@ -48,6 +99,16 @@
     name = "redi";
 
     avatar = "redi.jpg";
+
+    accounts = {
+      Mailbox = accounts.ludwigMailbox;
+      Web = accounts.webAccount;
+    };
+
+    packages =
+      pkgs: with pkgs; [
+        asana-pwa
+      ];
 
     bindDirs = {
       "Documents" = "/data/documents/work/redi";

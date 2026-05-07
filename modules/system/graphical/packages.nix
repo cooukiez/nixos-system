@@ -126,15 +126,15 @@
     minder
     rustdesk
     vym
-    zoom
+    zoom-us
 
     # useless
     honklet
   ];
 
   pwa = with pkgs; [
+    gemini-pwa
     typst-pwa
-    asana-pwa
   ];
 
   system = with pkgs; [

@@ -146,7 +146,8 @@ in
         programs.niri = {
           enable = true;
           package = config.pkgConfig.niri;
-          useNautilus = true;
+
+          useNautilus = false;
         };
 
         xdg.portal = {

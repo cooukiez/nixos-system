@@ -33,6 +33,7 @@ in
 
       Service = {
         ExecStart = "${lib.getExe pkgConfig.noctalia}";
+        Environment = "QS_ICON_THEME=Papirus-Dark";
         Restart = "on-failure";
         RestartSec = 5;
       };

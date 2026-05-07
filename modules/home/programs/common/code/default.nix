@@ -39,10 +39,10 @@ in
           # git
           donjayamanne.githistory
           codezombiech.gitignore
-          eamodio.gitlens
+          # eamodio.gitlens
 
-          fabiospampinato.vscode-open-in-github
-          github.vscode-pull-request-github
+          # fabiospampinato.vscode-open-in-github
+          # github.vscode-pull-request-github
 
           #
           # languages
@@ -144,27 +144,27 @@ in
           "window.titleBarStyle" = "custom";
           "window.controlsStyle" = "hidden";
 
+          # core editor
           "editor.detectIndentation" = false;
           "editor.insertSpaces" = true;
           "editor.tabSize" = 2;
 
-          "editor.formatOnSave" = true;
-          "editor.semanticHighlighting.enabled" = true;
-          "editor.unicodeHighlight.nonBasicASCII" = false;
-          "editor.largeFileOptimizations" = true;
-          "editor.showUnused" = true;
-          "editor.guides.bracketPairs" = true;
-
           "editor.fontFamily" = "JetBrainsMono NF";
           "editor.codeLensFontFamily" = "JetBrainsMono NF";
+
+          "editor.formatOnSave" = true;
+          "editor.largeFileOptimizations" = true;
+
+          "editor.guides.bracketPairs" = true;
+          "editor.semanticHighlighting.enabled" = true;
+          "editor.unicodeHighlight.nonBasicASCII" = false;
+          "editor.showUnused" = true;
 
           "explorer.confirmDelete" = false;
           "explorer.confirmDragAndDrop" = false;
           "explorer.confirmPasteNative" = false;
-
-          "tinymist.exportPdf" = "onSave";
-          "redhat.telemetry.enabled" = false;
-
+        }
+        // {
           # customizations
           "workbench.colorCustomizations" = {
             "tab.activeBorder" = "#00000000";
@@ -181,6 +181,9 @@ in
           "editorGutter.deletedBackground" = "#00000000";
           "editorGutter.warningBackground" = "#00000000";
           "editorGutter.errorBackground" = "#00000000";
+        }
+        // {
+          "redhat.telemetry.enabled" = false;
 
           # git configuration
           "git.autofetch" = true;
@@ -191,14 +194,13 @@ in
           "github.copilot.nextEditSuggestions.enabled" = true;
           "github.copilot.nextEditSuggestions.fixes" = false;
 
-          "gitlens.ai.model" = "vscode";
-          "gitlens.ai.vscode.model" = "copilot:gpt-4.1";
-
           "autoAlign.associations" = {
             "csv" = ",";
             "bsv" = "|";
             "" = "#";
           };
+
+          "tinymist.exportPdf" = "onSave";
 
           "hexeditor.columnWidth" = 32;
           "hexeditor.showDecodedText" = false;
