@@ -36,8 +36,10 @@
   ];
 
   literature = with pkgs; [
-    calibre
-    calibre
+    (calibre.override {
+      unrarSupport = true;
+    })
+
     zotero
   ];
 

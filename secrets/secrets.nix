@@ -14,7 +14,7 @@ let
 
   system_host = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOe6C64fZmVmZN1uQSJexFBoQRFaQXOpfg9piE+r8cdQ";
 
-  all_keys = [
+  allKeys = [
     ludw
     ceirs
     redi
@@ -23,6 +23,7 @@ let
   ];
 in
 {
-  "tailscale-key.age".publicKeys = all_keys;
-  "fritz-creds.age".publicKeys = all_keys;
+  "tailscale-key.age".publicKeys = allKeys;
+  "fritz-creds.age".publicKeys = allKeys;
+  "github-token.age".publicKeys = allKeys;
 }

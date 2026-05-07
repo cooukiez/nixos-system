@@ -14,9 +14,19 @@
 }:
 let
   cfg = config.graphicalPrograms.git;
+
+  gitSecretHelper = pkgs.writeShellScript "git-secret-helper" ''
+    if [ "$1" = "get" ]; then
+      token=$(cat ${config.age.secrets.github-token.path})
+      echo "username=${userConfig.gitName}"
+      echo "password=$token"
+    fi
+  '';
 in
 {
   config = lib.mkIf cfg {
+    age.secrets.github-token.file = ../../../secrets/github-token.age;
+
     programs.git = {
       enable = true;
 
@@ -26,7 +36,7 @@ in
           email = userConfig.gitEmail;
         };
 
-        credential.helper = "${lib.getExe pkgs.git-credential-manager}";
+        credential.helper = "${gitSecretHelper}";
         credential.credentialStore = "secretservice";
       };
     };

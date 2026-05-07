@@ -16,15 +16,6 @@ let
   desktop = import ./packages.nix { inherit pkgs hostConfig; };
   cfg = config.graphicalConfig.programs;
 
-  /*
-    nautilusBackspaceSrc = pkgs.fetchFromGitHub {
-      owner = "TheWeirdDev";
-      repo = "nautilus-backspace";
-      rev = "main";
-      sha256 = "sha256-4x5bMIgwNIp9nxuCHWLLNvWG2zuviyEOyCZgVLRZ5W4=";
-    };
-  */
-
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
