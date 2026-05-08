@@ -24,6 +24,7 @@
     sf-pro-nerd = inputs.apple-fonts.packages.${system}.sf-pro-nerd;
 
     gamemaker = inputs.gamemaker.packages.${system}.default;
+    zed-latest = inputs.zed.packages.${system}.default;
     zen-browser = inputs.zen-browser.packages.${system}.twilight;
 
     # portable web apps

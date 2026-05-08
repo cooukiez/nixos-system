@@ -60,6 +60,7 @@
     gamemaker.url = "github:cooukiez/gamemaker-flake";
     obsidian-plugins.url = "github:vomba/obsidian-plugins-nix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    zed.url = "github:zed-industries/zed";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
     # portable web apps

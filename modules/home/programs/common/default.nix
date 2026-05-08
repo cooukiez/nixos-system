@@ -31,6 +31,7 @@ in
     ./kitty.nix
     ./nemo.nix
     ./zathura.nix
+    ./zed.nix
   ];
 
   options.graphicalPrograms = {
