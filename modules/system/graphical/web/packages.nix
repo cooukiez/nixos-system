@@ -22,7 +22,7 @@
   download = with pkgs; [
     nicotine-plus
 
-    # qbittorrent-enhanced
-    # qbittorrent-cli
+    qbittorrent-enhanced
+    qbittorrent-cli
   ];
 }

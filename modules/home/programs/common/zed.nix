@@ -1,39 +1,41 @@
 {
+  config,
   pkgs,
+  pkgConfig,
+  lib,
   ...
 }:
+let
+  cfg = config.graphicalPrograms.zedEditor;
+in
 {
-  programs.zed-editor = {
-    enable = true;
-    package = pkgs.zed-latest;
+  config = lib.mkIf cfg {
+    programs.zed-editor = {
+      enable = true;
+      package = pkgConfig.zedEditor;
 
-    extensions = [
-      "nix"
-      "rust"
-      "toml"
-    ];
+      extensions = [
+        "nix"
+        "rust"
+        "toml"
+      ];
 
-    userSettings = {
-      theme = {
-        mode = "system";
-        dark = "One Dark";
-        light = "One Light";
+      userSettings = {
+        disable_ai = true;
+        features = {
+          edit_prediction_provider = "none";
+        };
+
+        language_models = { };
+
+        autosave = "on_window_change";
+        vim_mode = false;
+
+        telemetry = {
+          diagnostics = false;
+          metrics = false;
+        };
       };
-
-      features = {
-        copilot = false;
-      };
-
-      telemetry = {
-        metrics = false;
-      };
-
-      hour_format = "hour24";
-
-      ui_font_size = 16;
-      buffer_font_size = 16;
-
-      vim_mode = false;
     };
   };
 }

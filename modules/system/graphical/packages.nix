@@ -58,7 +58,6 @@
     jflap
     renderdoc
     sql-studio
-    zed-latest
 
     # jetbrains
     # unstable.jetbrains-toolbox

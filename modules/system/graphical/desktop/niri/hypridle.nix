@@ -26,9 +26,8 @@
         on-timeout = "${lib.getExe config.pkgConfig.hyprlock}";
       }
       {
-        timeout = 60;
-        on-timeout = "niri msg action power-off-monitors";
-        # on-resume = "niri msg action power-on-monitors";
+        timeout = 180 * 4;
+        on-timeout = "systemctl suspend";
       }
     ];
   };

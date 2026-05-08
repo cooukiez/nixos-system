@@ -35,6 +35,7 @@ in
 
           programNemo = mkEnableDefault;
           programVSCode = mkEnableDefault;
+          programZedEditor = mkEnableDefault;
         };
       };
 
@@ -45,13 +46,12 @@ in
   options.pkgConfig = {
     nemo = lib.mkOption { type = lib.types.package; };
     vscode = lib.mkOption { type = lib.types.package; };
+    zedEditor = lib.mkOption { type = lib.types.package; };
   };
 
   config = lib.mkMerge [
     (lib.mkIf cfg.development {
       environment.systemPackages = desktop.development ++ desktop.developmentGameEngines;
-
-      programs.vscode.enable = true;
     })
 
     (lib.mkIf cfg.gaming {
@@ -104,21 +104,7 @@ in
 
       environment.systemPackages = [
         config.pkgConfig.nemo
-
-        /*
-          pkgs.unstable.nautilus-python
-          pkgs.unstable.nautilus-open-any-terminal
-          pkgs.unstable.code-nautilus
-        */
       ];
-
-      /*
-        environment.pathsToLink = [ "/share/nautilus-python/extensions" ];
-        environment.sessionVariables = {
-          NAUTILUS_EXTENSION_DIR = "${pkgs.unstable.nautilus-python}/lib/nautilus/extensions";
-          NAUTILUS_4_EXTENSION_DIR = "${pkgs.unstable.nautilus-python}/lib/nautilus/extensions-4";
-        };
-      */
     })
 
     (lib.mkIf cfg.programVSCode {
@@ -128,6 +114,14 @@ in
         enable = true;
         package = config.pkgConfig.vscode;
       };
+    })
+
+    (lib.mkIf cfg.programZedEditor {
+      pkgConfig.zedEditor = pkgs.unstable.zed-editor;
+
+      environment.systemPackages = [
+        config.pkgConfig.zedEditor
+      ];
     })
   ];
 }

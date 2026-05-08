@@ -23,7 +23,7 @@ let
 in
 {
   imports = [
-    ./code
+    ./vscode
 
     ./feishin.nix
     ./git.nix
@@ -35,18 +35,19 @@ in
   ];
 
   options.graphicalPrograms = {
-    code = mkEnableDefault;
     feishin = mkEnableDefault;
     git = mkEnableDefault;
     imv = mkEnableDefault;
+    vscode = mkEnableDefault;
     zathura = mkEnableDefault;
+    zedEditor = mkEnableDefault;
 
     kitty = mkDisableDefault;
-
-    nemoConfig = mkEnableDefault;
+    nemo = mkDisableDefault;
   };
 
   config = {
     graphicalPrograms.kitty = lib.mkIf config.desktop.nn true;
+    graphicalPrograms.nemo = lib.mkIf config.desktop.nn true;
   };
 }

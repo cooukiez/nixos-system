@@ -8,6 +8,7 @@
 {
   config,
   pkgs,
+  pkgConfig,
   lib,
   ...
 }:
@@ -18,7 +19,7 @@ in
   config = {
     programs.vscode = lib.mkIf cfg {
       enable = true;
-      package = pkgs.vscode;
+      package = pkgConfig.vscode;
 
       profiles.default = {
         enableUpdateCheck = false;

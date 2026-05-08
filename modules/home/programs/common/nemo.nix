@@ -21,7 +21,7 @@ in
       "org/nemo/preferences" = {
         click-policy = "double";
 
-        "default-folder-viewer" = "compact-view";
+        "default-folder-viewer" = "list-view";
         "inherit-folder-viewer" = true;
 
         date-format = "informal";
