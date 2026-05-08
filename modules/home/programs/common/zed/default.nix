@@ -20,14 +20,10 @@ in
         "toml"
       ];
 
-      themes = {
-        kaimandres = import ./kaimandres;
-      };
-
       userSettings = {
         disable_ai = true;
 
-        theme = "kaimandres";
+        theme = "Ayu Dark";
 
         buffer_font_family = lib.mkForce "JetBrainsMono Nerd Font Mono";
         buffer_font_size = lib.mkForce 16;
