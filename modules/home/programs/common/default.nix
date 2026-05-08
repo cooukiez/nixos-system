@@ -25,6 +25,7 @@ in
   imports = [
     ./code
 
+    ./feishin.nix
     ./git.nix
     ./imv.nix
     ./kitty.nix
