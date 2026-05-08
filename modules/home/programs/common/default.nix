@@ -35,6 +35,7 @@ in
 
   options.graphicalPrograms = {
     code = mkEnableDefault;
+    feishin = mkEnableDefault;
     git = mkEnableDefault;
     imv = mkEnableDefault;
     zathura = mkEnableDefault;
