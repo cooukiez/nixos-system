@@ -20,16 +20,16 @@
       # linux
       bash
       ssh_config
-      # sway
+      sway
       tmux
 
       # nix
       nix
-      query # treesitter queries
+      query
       vim
       vimdoc
-      # lua
-      # luadoc
+      lua
+      luadoc
 
       # general development
       csv
@@ -41,11 +41,11 @@
       gitcommit
       gitignore
       ini
-      # llvm
+      llvm
       markdown
       markdown_inline
       regex
-      # xml
+      xml
       yaml
 
       # rust development
@@ -53,25 +53,23 @@
       toml
 
       # web development
+      astro
       css
       html
-      # http
+      http
       javascript
       json
-      # json5
-      # php
-      # php_only
-      # phpdoc
-      # sql
-      # scss
-      # twig
-      # tsx
-      # typescript
-
-      # web/other
-      # astro
-      # nginx
-      # svelte
+      json5
+      nginx
+      php
+      php_only
+      phpdoc
+      scss
+      sql
+      svelte
+      tsx
+      twig
+      typescript
     ];
 
     settings = {

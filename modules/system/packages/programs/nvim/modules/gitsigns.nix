@@ -24,7 +24,9 @@
   };
 
   keymaps = [
+    #
     # navigation
+    #
     {
       mode = "n";
       key = "]c";
@@ -58,7 +60,10 @@
       };
     }
 
+    #
     # actions
+    #
+
     # visual mode
     {
       mode = "v";

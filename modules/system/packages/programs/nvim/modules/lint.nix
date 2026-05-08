@@ -14,10 +14,12 @@
     # enabling these will cause errors unless these tools are installed
     lintersByFt = {
       nix = [ "nix" ];
+
       markdown = [
         "markdownlint"
         # "vale"
       ];
+
       #clojure = ["clj-kondo"];
       #dockerfile = ["hadolint"];
       #inko = ["inko"];

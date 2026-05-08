@@ -22,7 +22,7 @@
         # see `:help blink-cmp-config-keymap`
         preset = "default";
 
-        # for more advanced Luasnip keymaps
+        # for more advanced lausnip keymaps
         # https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
       };
 
@@ -61,7 +61,7 @@
         implementation = "lua";
       };
 
-      # shows a signature help window while you type arguments for a function
+      # signature help window while you type arguments
       signature = {
         enabled = true;
       };

@@ -212,6 +212,11 @@ in
 
         keybindings = [
           {
+            key = "ctrl+d";
+            command = "editor.action.copyLinesDownAction";
+            when = "textInputFocus && !editorReadonly";
+          }
+          {
             key = "ctrl+z";
             command = "undo";
             when = "textInputFocus && !editorReadonly";

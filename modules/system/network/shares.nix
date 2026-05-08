@@ -49,21 +49,23 @@ in
       };
     };
 
-    age.secrets.fritz-creds = lib.mkIf cfg.fritzMount {
-      file = ../../../secrets/fritz-creds.age;
-    };
+    /*
+      age.secrets.fritz-creds = lib.mkIf cfg.fritzMount {
+        file = ../../../secrets/fritz-creds.age;
+      };
 
-    fileSystems."/mnt/fritz" = lib.mkIf cfg.fritzMount {
-      device = "//fritz.box/fritz.box";
-      fsType = "cifs";
-      options = [
-        "credentials=${config.age.secrets.fritz-creds.path}"
-        "x-systemd.automount"
-        "noatime"
-        "uid=1000"
-        "gid=100"
-        "vers=3.0"
-      ];
-    };
+      fileSystems."/mnt/fritz" = lib.mkIf cfg.fritzMount {
+        device = "//fritz.box/fritz.box";
+        fsType = "cifs";
+        options = [
+          "credentials=${config.age.secrets.fritz-creds.path}"
+          "x-systemd.automount"
+          "noatime"
+          "uid=1000"
+          "gid=100"
+          "vers=3.0"
+        ];
+      };
+    */
   };
 }

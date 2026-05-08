@@ -6,13 +6,13 @@
 */
 
 {
-  # collection of various small independent plugins/modules
+  # collection of various small independent plugins / modules
   # https://nix-community.github.io/nixvim/plugins/mini.html
   plugins.mini = {
     enable = true;
 
     modules = {
-      # better around/inside textobjects
+      # better around / inside textobjects
       ai = {
         n_lines = 500;
       };

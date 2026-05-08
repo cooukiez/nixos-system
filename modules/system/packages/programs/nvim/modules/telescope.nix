@@ -6,7 +6,7 @@
 */
 
 {
-  # fuzzy finder (files, lsp, etc)
+  # fuzzy finder for files, lsp, etc.
   # https://nix-community.github.io/nixvim/plugins/telescope/index.html
   plugins.telescope = {
     # see `:help telescope`

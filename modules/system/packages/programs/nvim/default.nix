@@ -93,8 +93,12 @@ in
     opts = {
       # show line numbers
       number = true;
-      # can also add relative line numbers to help with jumping
-      # relativenumber = true;
+
+      # add relative line numbers to help with jumping
+      relativenumber = true;
+
+      # global statusline
+      laststatus = 3;
 
       # enable mouse mode
       mouse = "a";
@@ -142,7 +146,7 @@ in
       scrolloff = 10;
 
       # if performing an operation that would fail
-      # instead raise a dialog asking if you wish to save the current file
+      # instead raise dialog asking if you wish to save the current file
       # see `:help 'confirm'`
       confirm = true;
 
@@ -170,28 +174,27 @@ in
         };
       }
       # disable arrow keys in normal mode
-      /*
-        {
-          mode = "n";
-          key = "<left>";
-          action = "<cmd>echo 'Use h to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<right>";
-          action = "<cmd>echo 'Use l to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<up>";
-          action = "<cmd>echo 'Use k to move!!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<down>";
-          action = "<cmd>echo 'Use j to move!!'<CR>";
-        }
-      */
+      {
+        mode = "n";
+        key = "<left>";
+        action = "<cmd>echo 'Use h to move!'<CR>";
+      }
+      {
+        mode = "n";
+        key = "<right>";
+        action = "<cmd>echo 'Use l to move!'<CR>";
+      }
+      {
+        mode = "n";
+        key = "<up>";
+        action = "<cmd>echo 'Use k to move!'<CR>";
+      }
+      {
+        mode = "n";
+        key = "<down>";
+        action = "<cmd>echo 'Use j to move!'<CR>";
+      }
+
       # keybinds to make split navigation easier
       # use ctrl+<hjkl> to switch between windows
       #
@@ -226,6 +229,20 @@ in
         action = "<C-w><C-k>";
         options = {
           desc = "Move focus to the upper window";
+        };
+      }
+
+      # normal editor saving
+      {
+        mode = [
+          "n"
+          "i"
+          "v"
+        ];
+        key = "<C-s>";
+        action = "<cmd>w<CR>";
+        options = {
+          desc = "Save file";
         };
       }
     ];
@@ -324,13 +341,13 @@ in
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraplugins
     extraPlugins = with pkgs.vimPlugins; [
-      # add a vim plugin that is not implemented in nixvim
+      # add vim plugin that is not implemented in nixvim
       vim-gnupg
     ];
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraconfigluapost
     extraConfigLuaPost = ''
-      -- The line beneath this is called `modeline`. See `:help modeline`
+      -- line beneath this is called `modeline`. See `:help modeline`
       -- vim: ts=2 sts=2 sw=2 et
     '';
   };

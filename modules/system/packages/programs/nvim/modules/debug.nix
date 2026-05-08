@@ -133,7 +133,7 @@
 
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraconfiglua
   extraConfigLua = ''
-    -- Change breakpoint icons
+    -- change breakpoint icons
     -- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
     -- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
     -- local breakpoint_icons = vim.g.have_nerd_font

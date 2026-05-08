@@ -56,6 +56,7 @@
       nil_ls = {
         enable = true;
       };
+
       # gopls = {
       #   enable = true;
       # };
@@ -65,7 +66,7 @@
       # ts_ls = {
       #   enable = true;
       # };
-      #
+
       # see `https://nix-community.github.io/nixvim/plugins/lsp`
       #
       # some languages (like typscript) have entire language plugins
@@ -80,11 +81,12 @@
           completion = {
             callSnippet = "Replace";
           };
-          # diagnostics = {
-          #   disable = [
-          #     "missing-fields"
-          #   ];
-          # };
+
+          diagnostics = {
+            disable = [
+              "missing-fields"
+            ];
+          };
         };
       };
     };
@@ -161,7 +163,7 @@
           action = "rename";
           desc = "LSP: [R]e[n]ame";
         };
-        # execute a code action, usually your cursor needs to be on top of an error
+        # execute a code action, usually cursor needs to be on top of error
         "gra" = {
           mode = [
             "n"
@@ -170,7 +172,7 @@
           action = "code_action";
           desc = "LSP: [G]oto Code [A]ction";
         };
-        # WARN: this is not goto Definition, this is goto Declaration
+        # this is not goto Definition, this is goto declaration
         "grD" = {
           action = "declaration";
           desc = "LSP: [G]oto [D]eclaration";
