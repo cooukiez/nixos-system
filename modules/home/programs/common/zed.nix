@@ -22,9 +22,9 @@ in
 
       userSettings = {
         disable_ai = true;
-        features = {
-          edit_prediction_provider = "none";
-        };
+
+        buffer_font_family = lib.mkForce "JetBrainsMono Nerd Font Mono";
+        buffer_font_size = lib.mkForce 12;
 
         language_models = { };
 
