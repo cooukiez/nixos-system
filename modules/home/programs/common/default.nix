@@ -24,6 +24,7 @@ in
 {
   imports = [
     ./vscode
+    ./zed
 
     ./feishin.nix
     ./git.nix
@@ -31,7 +32,6 @@ in
     ./kitty.nix
     ./nemo.nix
     ./zathura.nix
-    ./zed.nix
   ];
 
   options.graphicalPrograms = {
