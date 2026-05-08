@@ -9,7 +9,6 @@
 {
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extrapackages
   extraPackages = with pkgs; [
-    # used to format lua code
     stylua
   ];
 
@@ -33,8 +32,6 @@
       '';
       formatters_by_ft = {
         lua = [ "stylua" ];
-
-        powershell = [ "powershell_beautifier" ];
 
         python = [
           "isort"

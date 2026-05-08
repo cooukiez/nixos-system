@@ -70,6 +70,9 @@
       tsx
       twig
       typescript
+
+      # other
+      powershell
     ];
 
     settings = {
