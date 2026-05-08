@@ -20,11 +20,24 @@ in
         "toml"
       ];
 
+      themes = {
+        kaimandres = import ./kaimandres;
+      };
+
       userSettings = {
         disable_ai = true;
 
+        theme = "kaimandres";
+
         buffer_font_family = lib.mkForce "JetBrainsMono Nerd Font Mono";
-        buffer_font_size = lib.mkForce 12;
+        buffer_font_size = lib.mkForce 16;
+        ui_font_size = lib.mkForce 16;
+
+        title_bar = {
+          show_sign_in = false;
+        };
+
+        mouse_wheel_zoom = true;
 
         language_models = { };
 

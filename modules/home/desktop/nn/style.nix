@@ -38,6 +38,7 @@ in
       targets.kitty.enable = false;
       targets.noctalia-shell.enable = false;
       targets.vscode.enable = false;
+      targets.zed.enable = false;
       targets.zen-browser.enable = false;
 
       targets.firefox.profileNames = [ "default" ];
