@@ -14,14 +14,13 @@ let
 
   kdeArgs = [ "--password-store=kwallet6" ];
   nnArgs = [ "--password-store=gnome-libsecret" ];
-
 in
 {
   config = lib.mkIf cfg {
     home.packages = [
       (pkgs.element-desktop.override {
         commandLineArgs =
-          baseArgs ++ lib.mkIf config.desktop.kde kdeArgs ++ lib.mkIf config.desktop.nn nnArgs;
+          baseArgs ++ lib.optionals config.desktop.kde kdeArgs ++ lib.optionals config.desktop.nn nnArgs;
       })
     ];
   };

@@ -16,6 +16,7 @@
     unstable.legcord
     slack
     slack-cli
+    telegram-desktop
   ];
 
   download = with pkgs; [
