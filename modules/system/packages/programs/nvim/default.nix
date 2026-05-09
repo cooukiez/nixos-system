@@ -63,11 +63,11 @@ in
 
       have_nerd_font = true;
 
-      #gpg_encryption_method = "symmetric";
-      #gpg_use_agent = 1;
+      # gpg_encryption_method = "symmetric";
+      # gpg_use_agent = 1;
 
-      #GPGPreferArmor = 1;
-      #GPGPreferSign = 1;
+      # GPGPreferArmor = 1;
+      # GPGPreferSign = 1;
 
       /*
         GPGDefaultRecipients = [
@@ -172,29 +172,6 @@ in
           desc = "Exit terminal mode";
         };
       }
-      # disable arrow keys in normal mode
-      /*
-        {
-          mode = "n";
-          key = "<left>";
-          action = "<cmd>echo 'Use h to move!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<right>";
-          action = "<cmd>echo 'Use l to move!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<up>";
-          action = "<cmd>echo 'Use k to move!'<CR>";
-        }
-        {
-          mode = "n";
-          key = "<down>";
-          action = "<cmd>echo 'Use j to move!'<CR>";
-        }
-      */
 
       # keybinds to make split navigation easier
       # use ctrl+<hjkl> to switch between windows

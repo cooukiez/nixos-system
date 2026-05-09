@@ -22,6 +22,8 @@ in
 
     ./programs/common
     ./programs/web
+
+    ./gpg.nix
   ];
 
   options.desktop = {
