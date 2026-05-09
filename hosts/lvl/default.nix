@@ -56,6 +56,7 @@
       ];
     };
   };
+
   nix =
     let
       flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -75,6 +76,8 @@
       optimise.automatic = true;
       optimise.dates = [ "03:45" ];
     };
+
+  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   users.users = lib.mapAttrs (_: user: {
     description = user.fullName;
@@ -96,15 +99,32 @@
     shell = pkgs.zsh;
   }) userList;
 
-  systemd.tmpfiles.rules = lib.flatten (
-    lib.mapAttrsToList (
-      username: user:
-      lib.mapAttrsToList (target: source: [
-        "r /home/${username}/${target}"
-        "L /home/${username}/${target} - - - - ${source}"
-      ]) (user.bindDirs or { })
-    ) userList
-  );
+  systemd.tmpfiles.rules =
+    lib.flatten (
+      lib.mapAttrsToList (username: _: [
+        "d /home/${username}/.ssh 0700 ${username} users - -"
+      ]) userList
+    )
+    ++ lib.flatten (
+      lib.mapAttrsToList (
+        username: user:
+        lib.mapAttrsToList (target: source: [
+          "r /home/${username}/${target}"
+          "L /home/${username}/${target} - - - - ${source}"
+        ]) (user.bindDirs or { })
+      ) userList
+    );
+
+  age.secrets = lib.mapAttrs' (
+    username: _:
+    lib.nameValuePair "ssh-${username}" {
+      file = ../../secrets/ssh/${username}.age;
+      path = "/home/${username}/.ssh/id_ed25519";
+      owner = username;
+      group = "users";
+      mode = "600";
+    }
+  ) userList;
 
   home-manager = {
     useGlobalPkgs = true;
@@ -121,44 +141,59 @@
       pkgConfig = config.pkgConfig;
     };
 
-    users = lib.mapAttrs (username: userConfig: {
-      imports = [
-        inputs.self.homeModules
+    users = lib.mapAttrs (
+      username: userConfig:
+      {
+        config,
+        hostConfig,
+        ...
+      }:
+      {
+        imports = [
+          inputs.self.homeModules
 
-        inputs.agenix.homeManagerModules.default
-      ];
+          inputs.agenix.homeManagerModules.default
+        ];
 
-      age.identityPaths = [ "/home/${username}/.ssh/id_ed25519" ];
+        age.identityPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
 
-      _module.args.userConfig = userConfig;
+        _module.args.userConfig = userConfig;
 
-      home = {
-        username = username;
+        home = {
+          username = username;
 
-        homeDirectory = "/home/${username}";
-        file.".face".source = ../../assets/avatar + "/${userConfig.avatar}";
+          homeDirectory = "/home/${username}";
+          file.".face".source = ../../assets/avatar + "/${userConfig.avatar}";
+          file.".ssh/id_ed25519.pub" = {
+            text = ''
+              ${userConfig.sshPublicKey} ${username}@${hostConfig.hostname}
+            '';
+          };
 
-        stateVersion = "25.11";
+          stateVersion = "25.11";
 
-        packages = userConfig.packages pkgs;
-      };
+          packages = userConfig.packages pkgs;
+        };
 
-      age.secrets = builtins.mapAttrs (name: _: {
-        file = ../../secrets/mail/${name}.age;
-      }) userConfig.accounts;
+        age.secrets = (
+          builtins.mapAttrs (name: _: {
+            file = ../../secrets/mail/${name}.age;
+          }) userConfig.accounts
+        );
 
-      accounts.email.accounts = builtins.mapAttrs (
-        name: value:
-        value
-        // {
-          passwordCommand = "cat ${config.age.secrets.${name}.path}";
-        }
-      ) userConfig.accounts;
+        accounts.email.accounts = builtins.mapAttrs (
+          name: value:
+          value
+          // {
+            passwordCommand = "cat ${config.age.secrets.${name}.path}";
+          }
+        ) userConfig.accounts;
 
-      programs.home-manager.enable = true;
-      programs.zsh.enable = true;
+        programs.home-manager.enable = true;
+        programs.zsh.enable = true;
 
-      systemd.user.startServices = "sd-switch";
-    }) userList;
+        systemd.user.startServices = "sd-switch";
+      }
+    ) userList;
   };
 }

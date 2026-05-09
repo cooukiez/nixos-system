@@ -18,6 +18,8 @@ in
     gitEmail = "ludwig-geyer@web.de";
     name = "ludw";
 
+    sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHFFrZLZVIUZBYTGX5gRONHPEv+5QAhq8i6Rm9wHeasK";
+
     avatar = "ludw.jpg";
 
     accounts = {
@@ -58,12 +60,14 @@ in
     gitEmail = "ludwig-geyer@web.de";
     name = "ceirs";
 
+    sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDTfSJByS/+4vIn4AMZMjy2ehWfHFDnSq2WXzMDZnXDk";
+
     avatar = "ceirs.jpg";
 
     accounts = {
       ludwig-mailbox = accounts.ludwig-mailbox;
       ludwig-web = accounts.ludwig-web;
-      web = accounts.web
+      web = accounts.web;
     };
 
     packages = pkgs: with pkgs; [ ];
@@ -98,11 +102,13 @@ in
     gitEmail = "ludwig-geyer@web.de";
     name = "redi";
 
+    sshPublicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGe437tVoIrqmV1UzVBObyvsr+pNJ6Gp+UgQtWx6frpV";
+
     avatar = "redi.jpg";
 
     accounts = {
       ludwig-mailbox = accounts.ludwig-mailbox;
-      web = accounts.web
+      web = accounts.web;
     };
 
     packages =

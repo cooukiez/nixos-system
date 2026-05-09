@@ -20,15 +20,6 @@ in
   ];
 
   config = lib.mkIf cfg {
-    services.gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-      enableZshIntegration = true;
-
-      pinentry.package = lib.mkForce pkgs.kwalletcli;
-      extraConfig = "pinentry-program ${pkgs.kwalletcli}/bin/pinentry-kwallet";
-    };
-
     # three finger gestures
     xdg.configFile."libinput-gestures.conf".text = ''
       gesture swipe left 3 xdotool key Super+Right

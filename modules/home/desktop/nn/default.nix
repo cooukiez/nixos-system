@@ -36,12 +36,6 @@ in
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     };
 
-    services.gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-      enableZshIntegration = true;
-    };
-
     dconf.settings = {
       "org/gnome/desktop/interface" = {
         color-scheme = lib.mkForce "prefer-dark";

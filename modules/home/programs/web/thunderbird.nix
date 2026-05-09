@@ -26,6 +26,10 @@ in
 
         settings = settings.core // {
           "mail.biff.play_sound" = false;
+
+          "browser.aboutwelcome.enabled" = false;
+          "mailnews.start_page.enabled" = false;
+          "mailnews.start_page_override.mstone" = "ignore";
         };
 
         userChrome = ''
