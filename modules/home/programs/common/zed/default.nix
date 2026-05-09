@@ -23,6 +23,8 @@ in
       userSettings = {
         disable_ai = true;
 
+        show_welcome_guide = false;
+
         theme = "Ayu Dark";
 
         buffer_font_family = lib.mkForce "JetBrainsMono Nerd Font Mono";

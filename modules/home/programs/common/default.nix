@@ -26,7 +26,6 @@ in
     ./vscode
     ./zed
 
-    ./feishin.nix
     ./git.nix
     ./imv.nix
     ./kitty.nix
@@ -35,7 +34,6 @@ in
   ];
 
   options.graphicalPrograms = {
-    feishin = mkEnableDefault;
     git = mkEnableDefault;
     imv = mkEnableDefault;
     vscode = mkEnableDefault;

@@ -147,6 +147,10 @@ in
 
           "keyboard.dispatch" = "keyCode";
 
+          "workbench.startupEditor" = "none";
+          "workbench.welcomePage.walkthroughs.openOnInstall" = false;
+          "walkthroughs.enabled" = false;
+
           # core editor
           "editor.detectIndentation" = false;
           "editor.insertSpaces" = true;

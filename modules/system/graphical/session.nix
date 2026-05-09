@@ -90,10 +90,17 @@ in
           compositor = "kwin";
         };
 
+        settings = {
+          Theme = {
+            CursorTheme = "McMojave-cursors";
+          };
+        };
+
         theme = "sddm-astronaut-theme";
 
         extraPackages = with pkgs; [
           kdePackages.qtmultimedia
+          mcmojave-cursor-theme
         ];
       };
 
@@ -140,8 +147,8 @@ in
 
         graphicalConfig.display.wayland = lib.mkForce true;
 
-        security.pam.services.sddm.enableGnomeKeyring = true;
         services.gnome.gnome-keyring.enable = true;
+        security.pam.services.sddm.enableGnomeKeyring = true;
 
         programs.niri = {
           enable = true;

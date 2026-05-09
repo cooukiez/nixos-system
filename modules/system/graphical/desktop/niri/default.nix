@@ -58,6 +58,22 @@
 
     binds = import ./binds.nix { inherit config pkgs lib; };
 
+    environment = {
+      ELM_DISPLAY = "wl";
+      CLUTTER_BACKEND = "wayland";
+
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
+      NIXOS_OZONE_WL = "1";
+
+      # scaling
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_ENABLE_HIGHDPI_SCALING = "1";
+      QT_SCALE_FACTOR_ROUNDING_POLICY = "PassThrough";
+
+      # smoother scrolling
+      MOZ_USE_XINPUT2 = "1";
+    };
+
     overview = {
       workspace-shadow.off = { };
     };

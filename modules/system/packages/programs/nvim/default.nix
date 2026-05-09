@@ -94,8 +94,8 @@ in
       # show line numbers
       number = true;
 
-      # add relative line numbers to help with jumping
-      relativenumber = true;
+      # relative line numbers
+      relativenumber = false;
 
       # global statusline
       laststatus = 3;
@@ -103,7 +103,7 @@ in
       # enable mouse mode
       mouse = "a";
 
-      # do not show mode since we use statusline
+      # not show mode since we use statusline
       showmode = false;
 
       # enable break indent
@@ -133,7 +133,6 @@ in
       # see `:help 'list'`
       # and `:help 'listchars'`
       list = true;
-      # NOTE: `.__raw` here means that this field is raw lua code
       listchars.__raw = "{ tab = '» ', trail = '·', nbsp = '␣' }";
 
       # preview substitutions live
