@@ -22,12 +22,14 @@ let
 in
 {
   imports = [
+    ./element.nix
     ./firefox.nix
     ./thunderbird.nix
     ./zen-browser.nix
   ];
 
   options.graphicalPrograms = {
+    element = mkEnableDefault;
     firefox = mkEnableDefault;
     thunderbird = mkEnableDefault;
     zen-browser = mkEnableDefault;

@@ -14,7 +14,6 @@
     signal-desktop
     unstable.discord
     unstable.legcord
-    element-desktop
     slack
     slack-cli
   ];
