@@ -22,6 +22,10 @@ let
   ];
 in
 {
+  "mail/ludwig-mailbox.age".publicKeys = allKeys;
+  "mail/ludwig-web.age".publicKeys = allKeys;
+  "mail/web.age".publicKeys = allKeys;
+
   "smb/fritz.age".publicKeys = allKeys;
 
   "ssh/ludw.age".publicKeys = allKeys;

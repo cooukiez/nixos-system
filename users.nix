@@ -21,9 +21,9 @@ in
     avatar = "ludw.jpg";
 
     accounts = {
-      Mailbox = accounts.ludwigMailbox;
-      Old = accounts.ludwigWeb;
-      Web = accounts.webAccount;
+      ludwig-mailbox = accounts.ludwig-mailbox;
+      ludwig-web = accounts.ludwig-web;
+      web = accounts.web;
     };
 
     packages = pkgs: with pkgs; [ ];
@@ -61,9 +61,9 @@ in
     avatar = "ceirs.jpg";
 
     accounts = {
-      Mailbox = accounts.ludwigMailbox;
-      Old = accounts.ludwigWeb;
-      Web = accounts.webAccount;
+      ludwig-mailbox = accounts.ludwig-mailbox;
+      ludwig-web = accounts.ludwig-web;
+      web = accounts.web
     };
 
     packages = pkgs: with pkgs; [ ];
@@ -101,8 +101,8 @@ in
     avatar = "redi.jpg";
 
     accounts = {
-      Mailbox = accounts.ludwigMailbox;
-      Web = accounts.webAccount;
+      ludwig-mailbox = accounts.ludwig-mailbox;
+      web = accounts.web
     };
 
     packages =

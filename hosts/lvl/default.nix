@@ -143,7 +143,17 @@
         packages = userConfig.packages pkgs;
       };
 
-      accounts.email.accounts = userConfig.accounts;
+      age.secrets = builtins.mapAttrs (name: _: {
+        file = ../../secrets/mail/${name}.age;
+      }) userConfig.accounts;
+
+      accounts.email.accounts = builtins.mapAttrs (
+        name: value:
+        value
+        // {
+          passwordCommand = "cat ${config.age.secrets.${name}.path}";
+        }
+      ) userConfig.accounts;
 
       programs.home-manager.enable = true;
       programs.zsh.enable = true;

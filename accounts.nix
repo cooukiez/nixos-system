@@ -6,7 +6,7 @@
 */
 
 {
-  ludwigMailbox = {
+  ludwig-mailbox = {
     enable = true;
     primary = true;
 
@@ -34,7 +34,7 @@
     thunderbird.profiles = [ "default" ];
   };
 
-  ludwigWeb = {
+  ludwig-web = {
     enable = true;
 
     address = "ludwig-geyer@web.de";
@@ -61,7 +61,7 @@
     thunderbird.profiles = [ "default" ];
   };
 
-  webAccount = {
+  web = {
     enable = true;
     address = "cookiecenter@web.de";
     userName = "cookiecenter@web.de";
