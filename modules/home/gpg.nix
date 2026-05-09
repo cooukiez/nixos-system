@@ -26,12 +26,12 @@
 
   age.secrets.gpg-primary = {
     file = ../../secrets/gpg-secret.age;
-    path = "${config.home.homeDirectory}/.gnupg/imported-key.asc";
+    path = "${config.home.homeDirectory}/.gnupg/primary.asc";
   };
 
-  age.secrets.gpg-public = {
+  age.secrets.gpg-primary-public = {
     file = ../../secrets/gpg-public.age;
-    path = "${config.home.homeDirectory}/.gnupg/public-key.asc";
+    path = "${config.home.homeDirectory}/.gnupg/primary-public.asc";
   };
 
   home.activation = {
@@ -49,10 +49,10 @@
         rm -f "${config.age.secrets.gpg-primary.path}"
       fi
 
-      if [ -f "${config.age.secrets.gpg-public.path}" ]; then
+      if [ -f "${config.age.secrets.gpg-primary-public.path}" ]; then
         echo "Importing public GPG key..."
-        ${lib.getExe pkgs.gnupg} --batch --import "${config.age.secrets.gpg-public.path}"
-        rm -f "${config.age.secrets.gpg-public.path}"
+        ${lib.getExe pkgs.gnupg} --batch --import "${config.age.secrets.gpg-primary-public.path}"
+        rm -f "${config.age.secrets.gpg-primary-public.path}"
       fi
 
       ${pkgs.gnupg}/bin/gpg --list-secret-keys --with-colons | \
