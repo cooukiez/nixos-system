@@ -106,4 +106,7 @@
 
   # location
   services.locate.enable = true;
+
+  # disable documentation temporary
+  documentation.nixos.enable = false;
 }

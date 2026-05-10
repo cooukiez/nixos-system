@@ -6,11 +6,24 @@
 */
 
 {
+  inputs,
+  config,
   pkgs,
+  hostConfig,
   ...
 }:
+let
+  unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${hostConfig.system};
+in
 {
-  hardware.enableAllFirmware = true;
+  disabledModules = [
+    "hardware/facter"
+  ];
+
+  imports = [
+    "${inputs.nixpkgs-unstable}/nixos/modules/hardware/facter"
+  ];
+
   hardware.facter = {
     enable = true;
     reportPath = ./facter.json;
@@ -28,19 +41,17 @@
     detected.virtualisation.hyperv.enable = true;
   };
 
-  # session variables
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "iHD";
-  };
-
-  # firmware updating
+  hardware.enableAllFirmware = true;
   services.fwupd.enable = true;
 
-  # device monitoring
   services.devmon.enable = true;
 
   # processor and graphics
   services.power-profiles-daemon.enable = true;
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
+  };
 
   hardware.graphics = {
     enable = true;
