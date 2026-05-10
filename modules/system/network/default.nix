@@ -30,9 +30,13 @@ in
     tuiPkg = mkEnableDefault;
 
     ssh = mkEnableDefault;
-    vsftpd = mkEnableDefault;
     vnstat = mkEnableDefault;
-    printing = mkEnableDefault;
+    vsftpd = mkEnableDefault;
+
+    printing = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
   };
 
   config = {
@@ -48,6 +52,8 @@ in
         PasswordAuthentication = true;
       };
     };
+
+    services.vnstat.enable = lib.mkIf cfg.vnstat true;
 
     services.vsftpd = lib.mkIf cfg.vsftpd {
       enable = true;
@@ -84,19 +90,15 @@ in
       ];
     };
 
-    services.vnstat.enable = lib.mkIf cfg.vnstat true;
-
     services.printing = lib.mkIf cfg.printing {
       enable = true;
       drivers = [ pkgs.hplip ];
     };
 
-    /*
-      services.avahi = lib.mkIf cfg.printing {
-        enable = true;
-        nssmdns4 = true;
-        openFirewall = true;
-      };
-    */
+    services.avahi = lib.mkIf cfg.printing {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
   };
 }

@@ -57,7 +57,7 @@ in
     ];
   };
 
-  packageConfig.gpuPowerAppsEnabled = false;
+  packageConfig.gpuPowerApps = false;
 
   # memory and swap
   swapDevices = [
@@ -81,6 +81,8 @@ in
     "net.ipv6.conf.all.use_tempaddr" = lib.mkForce 2;
     "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
   };
+
+  networkConfig.printing = true;
 
   # battery
   services.upower = {
@@ -158,6 +160,8 @@ in
     enable = true;
     interval = "weekly";
   };
+
+  packageConfig.dataPartition = true;
 
   # data snapshots (every 30 min)
   systemd.services.snapshot-data = {

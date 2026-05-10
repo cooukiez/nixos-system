@@ -5,6 +5,11 @@
   on 2026-04-22
 */
 
+{
+  config,
+  lib,
+  ...
+}:
 let
   promptFirstColor = "%F{yellow}";
   promptSecondColor = "%F{blue}";
@@ -29,8 +34,6 @@ in
       help = "bash -c 'help'";
       c = "clear";
 
-      pwf = "edit-secret /data/upm.age";
-
       # nix system
       nd = "cd /etc/nixos";
 
@@ -47,6 +50,9 @@ in
       gtop = "sudo intel_gpu_top";
 
       fdn = "sudo fix-perms /etc/nixos";
+    }
+    // lib.optionals config.packageConfig.dataPartition {
+      pwf = "edit-secret /data/upm.age";
       fdp = "sudo fix-perms /data";
     };
 

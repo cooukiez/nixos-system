@@ -77,7 +77,7 @@
       gpu-screen-recorder
       gpu-screen-recorder-gtk
     ]
-    ++ lib.optionals config.packageConfig.gpuPowerAppsEnabled [
+    ++ lib.optionals config.packageConfig.gpuPowerApps [
       davinci-resolve
     ];
 }

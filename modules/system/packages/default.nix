@@ -57,7 +57,12 @@ in
 
     penetrationPkg = mkEnableDefault;
 
-    gpuPowerAppsEnabled = lib.mkOption {
+    gpuPowerApps = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    };
+
+    dataPartition = lib.mkOption {
       type = lib.types.bool;
       default = false;
     };
