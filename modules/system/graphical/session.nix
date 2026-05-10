@@ -33,7 +33,9 @@ let
   autoSessionScript = pkgs.writeShellApplication {
     name = "auto-session";
     text = ''
-      case "$USER" in
+      CURRENT_USER=$(id -un)
+
+      case "$CURRENT_USER" in
         ${caseBranches}
         *) exit 1 ;;
       esac
@@ -93,6 +95,7 @@ in
         settings = {
           Theme = {
             CursorTheme = "McMojave-cursors";
+            CursorSize = 24;
           };
         };
 
@@ -100,6 +103,9 @@ in
 
         extraPackages = with pkgs; [
           kdePackages.qtmultimedia
+          kdePackages.qtsvg
+          kdePackages.qtvirtualkeyboard
+
           mcmojave-cursor-theme
         ];
       };
@@ -114,6 +120,7 @@ in
 
       environment.systemPackages = with pkgs; [
         sddm-astronaut
+        mcmojave-cursor-theme
       ];
     }
 

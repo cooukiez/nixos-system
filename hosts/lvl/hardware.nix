@@ -9,6 +9,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   hostConfig,
   ...
 }:
@@ -35,10 +36,6 @@ in
 
     detected.camera.ipu6.enable = true;
     detected.fingerprint.enable = true;
-
-    detected.dhcp.enable = true;
-
-    detected.virtualisation.hyperv.enable = true;
   };
 
   hardware.enableAllFirmware = true;
@@ -68,6 +65,20 @@ in
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;
   zramSwap.algorithm = "lz4";
+
+  services.udev.extraRules = ''
+    SUBSYSTEM=="memory", ACTION=="add", ATTR{state}=="online", GOTO="hyperv_hotadd_end"
+    LABEL="hyperv_hotadd_end"
+  '';
+
+  # network
+  boot.kernel.sysctl = {
+    "net.ipv4.conf.all.proxy_arp" = 0;
+    "net.ipv4.conf.default.proxy_arp" = 0;
+
+    "net.ipv6.conf.all.use_tempaddr" = lib.mkForce 2;
+    "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
+  };
 
   # battery
   services.upower = {
@@ -130,6 +141,15 @@ in
       };
     };
   };
+
+  # webcam support
+  boot.kernelModules = [
+    "v4l2loopback"
+    "intel-ipu6"
+    "intel-ipu6-isys"
+  ];
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
   # drive
   services.btrfs.autoScrub = {
