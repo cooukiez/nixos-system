@@ -104,7 +104,6 @@
     extremetuxracer
     flare
     freedroidrpg
-    naev
     openclonk
     pong3d
     veloren
