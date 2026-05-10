@@ -47,7 +47,8 @@ in
 
   config = {
     environment.systemPackages =
-      (lib.optionals cfg.documentsPkg media.documents)
+      [ ]
+      ++ (lib.optionals cfg.documentsPkg media.documents)
       ++ (lib.optionals cfg.imagesPkg media.images)
       ++ (lib.optionals cfg.literaturePkg media.literature)
       ++ (lib.optionals cfg.musicPkg media.music)

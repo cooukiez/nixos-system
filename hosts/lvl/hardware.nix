@@ -82,12 +82,10 @@ in
     "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
   };
 
-  networkConfig.printing = true;
-
   # battery
   services.upower = {
     enable = true;
-    # ignoreLid = false;
+    ignoreLid = false;
   };
 
   # mounting usb devices

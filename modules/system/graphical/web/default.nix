@@ -44,6 +44,8 @@ in
 
   config = {
     environment.systemPackages =
-      (lib.optionals cfg.messengerPkg web.messenger) ++ (lib.optionals cfg.downloadPkg web.download);
+      [ ]
+      ++ (lib.optionals cfg.messengerPkg web.messenger)
+      ++ (lib.optionals cfg.downloadPkg web.download);
   };
 }

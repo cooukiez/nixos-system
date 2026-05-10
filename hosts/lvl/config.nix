@@ -61,18 +61,11 @@
     };
   };
 
-  services.tailscale = {
-    enable = true;
+  networkConfig.tailscaleClient = true;
+  networkConfig.tailscaleClientExitNode = "100.71.244.88";
+  networkConfig.tailscaleOperator = "ludw";
 
-    extraUpFlags = [
-      "--exit-node=100.71.244.88"
-      "--exit-node-allow-lan-access=true"
-    ];
-
-    extraSetFlags = [
-      "--operator=ceirs"
-    ];
-  };
+  networkConfig.printing = true;
 
   # locale configuration
   i18n.defaultLocale = "en_US.UTF-8";

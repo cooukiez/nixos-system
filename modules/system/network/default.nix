@@ -19,6 +19,11 @@ let
     type = lib.types.bool;
     default = true;
   };
+
+  mkDisableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+  };
 in
 {
   imports = [
@@ -30,12 +35,29 @@ in
     tuiPkg = mkEnableDefault;
 
     ssh = mkEnableDefault;
+
+    tailscaleClient = mkDisableDefault;
+    tailscaleServer = mkDisableDefault;
+
+    tailscaleClientExitNode = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+    };
+
+    tailscaleOperator = lib.mkOption {
+      type = lib.types.str;
+      default = "root";
+    };
+
     vnstat = mkEnableDefault;
     vsftpd = mkEnableDefault;
 
-    printing = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
+    printing = mkDisableDefault;
+
+    glances = mkDisableDefault;
+    glancesPort = lib.mkOption {
+      type = lib.types.int;
+      default = 61208;
     };
   };
 
@@ -48,8 +70,44 @@ in
       openFirewall = true;
 
       settings = {
+        UseDns = true;
+        X11Forwarding = false;
+
         PermitRootLogin = "no";
         PasswordAuthentication = true;
+      };
+    };
+
+    services.tailscale =
+      let
+        tailscaleEnabled = cfg.tailscaleClient || cfg.tailscaleServer;
+      in
+      lib.mkIf tailscaleEnabled {
+        enable = true;
+
+        extraUpFlags =
+          [ ]
+          ++ lib.optionals cfg.tailscaleClient [
+            "--exit-node=${cfg.tailscaleClientExitNode}"
+            "--exit-node-allow-lan-access=true"
+          ]
+          ++ lib.optionals cfg.tailscaleServer [
+            "--advertise-exit-node"
+            "--advertise-routes=192.168.178.0/24"
+          ];
+
+        extraSetFlags = [
+          "--operator=${cfg.tailscaleOperator}"
+        ];
+      };
+
+    services.networkd-dispatcher = lib.mkIf cfg.tailscaleServer {
+      enable = true;
+      rules."50-tailscale-optimizations" = {
+        onState = [ "routable" ];
+        script = ''
+          ${pkgs.ethtool}/bin/ethtool -K eth0 rx-udp-gro-forwarding on rx-gro-list off
+        '';
       };
     };
 
@@ -99,6 +157,18 @@ in
       enable = true;
       nssmdns4 = true;
       openFirewall = true;
+    };
+
+    services.glances = lib.mkIf cfg.glances {
+      enable = true;
+
+      extraArgs = [
+        "-w"
+        "-p"
+        "${toString cfg.glancesPort}"
+        "-B"
+        "0.0.0.0"
+      ];
     };
   };
 }
