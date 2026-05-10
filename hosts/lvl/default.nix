@@ -127,7 +127,7 @@
   ) userList;
 
   home-manager = {
-    useGlobalPkgs = true;
+    useGlobalPkgs = false;
     useUserPackages = true;
     backupFileExtension = "hm-bak";
 
@@ -154,6 +154,34 @@
 
           inputs.agenix.homeManagerModules.default
         ];
+
+        nixpkgs = {
+          overlays = [
+            inputs.self.overlays.additions
+            inputs.self.overlays.modifications
+            inputs.self.overlays.unstable-packages
+
+            inputs.firefox-addons.overlays.default
+            inputs.obsidian-plugins.overlays.default
+
+            (final: prev: {
+              valkey = prev.valkey.overrideAttrs (oldAttrs: {
+                doCheck = false;
+              });
+            })
+          ];
+
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages = [
+              "dotnet-sdk-6.0.428"
+              "dotnet-runtime-6.0.36"
+
+              "googleearth-pro-7.3.6.10201"
+              "ventoy-1.1.10"
+            ];
+          };
+        };
 
         age.identityPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
 
