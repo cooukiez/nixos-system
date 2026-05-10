@@ -72,7 +72,6 @@
   ];
 
   developmentGameEngines = with pkgs; [
-    gamemaker
     godot
     unityhub
   ];

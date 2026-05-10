@@ -114,6 +114,7 @@ in
     packages =
       pkgs: with pkgs; [
         asana-pwa
+        gamemaker
       ];
 
     bindDirs = {
