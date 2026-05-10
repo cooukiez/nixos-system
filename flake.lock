@@ -636,6 +636,22 @@
     },
     "nixpkgs_12": {
       "locked": {
+        "lastModified": 1778003029,
+        "narHash": "sha256-q/nkKLDtHIyLjZpKhWk3cSK5IYsFqtMd6UtXF3ddjgA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "0c88e1f2bdb93d5999019e99cb0e61e1fe2af4c5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_13": {
+      "locked": {
         "lastModified": 1773734432,
         "narHash": "sha256-IF5ppUWh6gHGHYDbtVUyhwy/i7D261P7fWD1bPefOsw=",
         "owner": "NixOS",
@@ -650,7 +666,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_13": {
+    "nixpkgs_14": {
       "locked": {
         "lastModified": 1769789167,
         "narHash": "sha256-kKB3bqYJU5nzYeIROI82Ef9VtTbu4uA3YydSk/Bioa8=",
@@ -666,7 +682,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_14": {
+    "nixpkgs_15": {
       "locked": {
         "lastModified": 1777268161,
         "narHash": "sha256-bxrdOn8SCOv8tN4JbTF/TXq7kjo9ag4M+C8yzzIRYbE=",
@@ -999,6 +1015,7 @@
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "typst-pwa": "typst-pwa",
+        "whatsapp-pwa": "whatsapp-pwa",
         "wrappers": "wrappers",
         "zed": "zed",
         "zen-browser": "zen-browser"
@@ -1440,9 +1457,27 @@
         "type": "github"
       }
     },
-    "wrappers": {
+    "whatsapp-pwa": {
       "inputs": {
         "nixpkgs": "nixpkgs_12"
+      },
+      "locked": {
+        "lastModified": 1778417051,
+        "narHash": "sha256-qYEIz3nj1Yr1YVC7Lm4f+pNa313gH5ufVqtCkWlzWF8=",
+        "owner": "ceirs-nix-system",
+        "repo": "whatsapp-pwa",
+        "rev": "2a1b8b8deee6ff84fb9a8d5a524fbcc52653544f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ceirs-nix-system",
+        "repo": "whatsapp-pwa",
+        "type": "github"
+      }
+    },
+    "wrappers": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_13"
       },
       "locked": {
         "lastModified": 1777036643,
@@ -1495,7 +1530,7 @@
       "inputs": {
         "crane": "crane",
         "flake-parts": "flake-parts_3",
-        "nixpkgs": "nixpkgs_13",
+        "nixpkgs": "nixpkgs_14",
         "rust-overlay": "rust-overlay"
       },
       "locked": {
@@ -1515,7 +1550,7 @@
     "zen-browser": {
       "inputs": {
         "home-manager": "home-manager_3",
-        "nixpkgs": "nixpkgs_14"
+        "nixpkgs": "nixpkgs_15"
       },
       "locked": {
         "lastModified": 1778394798,

@@ -1,3 +1,10 @@
+/*
+  modules/home/programs/web/element.nix
+
+  created by ludw
+  on 2026-05-10
+*/
+
 {
   config,
   pkgs,

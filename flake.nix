@@ -67,6 +67,7 @@
     asana-pwa.url = "github:ceirs-nix-system/asana-pwa";
     gemini-pwa.url = "github:ceirs-nix-system/gemini-pwa";
     typst-pwa.url = "github:ceirs-nix-system/typst-pwa";
+    whatsapp-pwa.url = "github:ceirs-nix-system/whatsapp-pwa";
 
     # useless
     honklet.url = "github:hannahfluch/honklet";

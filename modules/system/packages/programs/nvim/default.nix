@@ -48,7 +48,7 @@ in
           style = "night";
           styles = {
             comments = {
-              # italic = false; # disable italics in comments
+              italic = true;
             };
           };
         };
@@ -72,7 +72,6 @@ in
       /*
         GPGDefaultRecipients = [
           "ludwig.geyer@mailbox.org"
-          "ludwig@redi-school.org"
         ];
       */
     };
@@ -91,45 +90,32 @@ in
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html#opts
     # see `:help vim.o`
     opts = {
-      # show line numbers
       number = true;
-
-      # relative line numbers
       relativenumber = false;
 
       # global statusline
       laststatus = 3;
-
-      # enable mouse mode
-      mouse = "a";
-
-      # not show mode since we use statusline
       showmode = false;
 
-      # enable break indent
-      breakindent = true;
+      mouse = "a";
 
-      # save undo history
+      breakindent = true;
       undofile = true;
 
-      # case-insensitive searching UNLESS \C or one or more capital letters in the search term
       ignorecase = true;
       smartcase = true;
 
-      # keep signcolumn on by default
+      # keep signcolumn on
       signcolumn = "yes";
 
-      # decrease update time
       updatetime = 250;
-
-      # decrease mapped sequence wait time
       timeoutlen = 300;
 
-      # configure how new splits should be opened
+      # configure new splits
       splitright = true;
       splitbelow = true;
 
-      # sets how neovim will display certain whitespace characters in the editor
+      # displaying whitespace characters
       # see `:help 'list'`
       # and `:help 'listchars'`
       list = true;
@@ -138,14 +124,11 @@ in
       # preview substitutions live
       inccommand = "split";
 
-      # show which line cursor is on
       cursorline = true;
-
-      # minimal number of screen lines to keep above and below the cursor
       scrolloff = 10;
 
-      # if performing an operation that would fail
-      # instead raise dialog asking if you wish to save the current file
+      # if performing failing operation
+      # ask to save the current file
       # see `:help 'confirm'`
       confirm = true;
 
@@ -307,7 +290,7 @@ in
     };
 
     plugins = {
-      # adds icons for plugins to utilize in ui
+      # adds icons for plugins
       web-devicons.enable = true;
 
       # detect tabstop and shiftwidth automatically
@@ -319,13 +302,14 @@ in
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraplugins
     extraPlugins = with pkgs.vimPlugins; [
-      # add vim plugin that is not implemented in nixvim
+      # not implemented plugins
       vim-gnupg
     ];
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extraconfigluapost
     extraConfigLuaPost = ''
-      -- line beneath this is called `modeline`. See `:help modeline`
+      -- line beneath this is called `modeline`
+      -- see `:help modeline`
       -- vim: ts=2 sts=2 sw=2 et
     '';
   };

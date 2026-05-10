@@ -31,6 +31,7 @@
     asana-pwa = inputs.asana-pwa.packages.${system}.default;
     gemini-pwa = inputs.gemini-pwa.packages.${system}.default;
     typst-pwa = inputs.typst-pwa.packages.${system}.default;
+    whatsapp-pwa = inputs.whatsapp-pwa.packages.${system}.default;
 
     # useless
     honklet = inputs.honklet.packages.${system}.default;

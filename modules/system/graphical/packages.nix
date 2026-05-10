@@ -98,15 +98,27 @@
   ];
 
   games = with pkgs; [
+    assaultcube
+    bzflag
     cataclysm-dda
     domination
+    doomretro
     dwarf-fortress
+    ecwolf
+    ete
     extremetuxracer
     flare
     freedroidrpg
+    gnubg
+    nexuiz
+    openarena
     openclonk
     pong3d
+    quakespasm
+    uhexen2
     veloren
+    vkquake
+    xonotic
   ];
 
   modelling = with pkgs; [
@@ -146,6 +158,7 @@
   pwa = with pkgs; [
     gemini-pwa
     typst-pwa
+    whatsapp-pwa
   ];
 
   system = with pkgs; [

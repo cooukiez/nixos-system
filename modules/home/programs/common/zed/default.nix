@@ -1,3 +1,10 @@
+/*
+  modules/home/programs/common/zed/default.nix
+
+  created by ludw
+  on 2026-05-08
+*/
+
 {
   config,
   pkgs,

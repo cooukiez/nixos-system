@@ -1,5 +1,5 @@
 /*
-  hosts/lvl/accounts.nix
+  accounts.nix
 
   created by ludw
   on 2026-04-22

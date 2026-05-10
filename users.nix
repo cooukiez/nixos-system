@@ -1,5 +1,5 @@
 /*
-  hosts/lvl/users.nix
+  users.nix
 
   created by ludw
   on 2026-04-22

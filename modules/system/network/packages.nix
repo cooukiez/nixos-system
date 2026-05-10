@@ -24,5 +24,6 @@
   tui = with pkgs; [
     bandwhich
     gping
+    nethogs
   ];
 }

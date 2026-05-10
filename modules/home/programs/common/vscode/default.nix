@@ -1,5 +1,5 @@
 /*
-  modules/home/programs/common/code/default.nix
+  modules/home/programs/common/vscode/default.nix
 
   created by ludw
   on 2026-02-26
@@ -14,6 +14,117 @@
 }:
 let
   cfg = config.graphicalPrograms.vscode;
+
+  myExtensions = with pkgs.vscode-extensions; [
+    fill-labs.dependi
+    # hbenl.vscode-test-explorer
+    usernamehw.errorlens
+
+    ms-vscode-remote.remote-containers
+    ms-vscode-remote.remote-ssh
+    ms-vscode-remote.remote-ssh-edit
+    ms-vscode.remote-explorer
+
+    tomoki1207.pdf
+
+    # git
+    donjayamanne.githistory
+    codezombiech.gitignore
+    # eamodio.gitlens
+
+    # fabiospampinato.vscode-open-in-github
+    # github.vscode-pull-request-github
+
+    #
+    # languages
+    #
+
+    # nix
+    jnoortheen.nix-ide
+
+    # rust
+    rust-lang.rust-analyzer
+
+    # python
+    ms-python.python
+    charliermarsh.ruff
+
+    ms-python.black-formatter
+    ms-python.debugpy
+    ms-python.vscode-pylance
+
+    ms-toolsai.jupyter
+    ms-toolsai.jupyter-keymap
+    ms-toolsai.jupyter-renderers
+    ms-toolsai.vscode-jupyter-cell-tags
+    ms-toolsai.vscode-jupyter-slideshow
+
+    njpwerner.autodocstring
+
+    # c / cpp
+    ms-vscode.cpptools-extension-pack
+    ms-vscode.cpptools
+
+    vadimcn.vscode-lldb
+
+    ms-vscode.cmake-tools
+    twxs.cmake
+
+    xaver.clang-format
+    llvm-vs-code-extensions.vscode-clangd
+
+    # shader
+    wgsl-analyzer.wgsl-analyzer
+
+    # cs
+    ms-dotnettools.csdevkit
+    ms-dotnettools.csharp
+    ms-dotnettools.vscode-dotnet-runtime
+
+    # unity
+    visualstudiotoolsforunity.vstuc
+
+    # markdown
+    yzhang.markdown-all-in-one
+
+    davidanson.vscode-markdownlint
+    chrischinchilla.vscode-pandoc
+
+    # web
+    ecmel.vscode-html-css
+
+    bmewburn.vscode-intelephense-client
+    xdebug.php-debug
+
+    bierner.comment-tagged-templates
+    yoavbls.pretty-ts-errors
+
+    svelte.svelte-vscode
+
+    # java
+    redhat.java
+
+    vscjava.vscode-java-debug
+    vscjava.vscode-java-dependency
+    vscjava.vscode-gradle
+    vscjava.vscode-maven
+
+    vscjava.vscode-java-test
+
+    # typst
+    myriad-dreamin.tinymist
+
+    # binary
+    ms-vscode.hexeditor
+
+    # file formats
+    mechatroner.rainbow-csv
+    tamasfe.even-better-toml
+    redhat.vscode-yaml
+
+    dotjoshjohnson.xml
+    redhat.vscode-xml
+  ];
 in
 {
   config = {
@@ -25,116 +136,7 @@ in
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
 
-        extensions = with pkgs.vscode-extensions; [
-          fill-labs.dependi
-          # hbenl.vscode-test-explorer
-          usernamehw.errorlens
-
-          ms-vscode-remote.remote-containers
-          ms-vscode-remote.remote-ssh
-          ms-vscode-remote.remote-ssh-edit
-          ms-vscode.remote-explorer
-
-          tomoki1207.pdf
-
-          # git
-          donjayamanne.githistory
-          codezombiech.gitignore
-          # eamodio.gitlens
-
-          # fabiospampinato.vscode-open-in-github
-          # github.vscode-pull-request-github
-
-          #
-          # languages
-          #
-
-          # nix
-          jnoortheen.nix-ide
-
-          # rust
-          rust-lang.rust-analyzer
-
-          # python
-          ms-python.python
-          charliermarsh.ruff
-
-          ms-python.black-formatter
-          ms-python.debugpy
-          ms-python.vscode-pylance
-
-          ms-toolsai.jupyter
-          ms-toolsai.jupyter-keymap
-          ms-toolsai.jupyter-renderers
-          ms-toolsai.vscode-jupyter-cell-tags
-          ms-toolsai.vscode-jupyter-slideshow
-
-          njpwerner.autodocstring
-
-          # c / cpp
-          ms-vscode.cpptools-extension-pack
-          ms-vscode.cpptools
-
-          vadimcn.vscode-lldb
-
-          ms-vscode.cmake-tools
-          twxs.cmake
-
-          xaver.clang-format
-          llvm-vs-code-extensions.vscode-clangd
-
-          # shader
-          wgsl-analyzer.wgsl-analyzer
-
-          # cs
-          ms-dotnettools.csdevkit
-          ms-dotnettools.csharp
-          ms-dotnettools.vscode-dotnet-runtime
-
-          # unity
-          visualstudiotoolsforunity.vstuc
-
-          # markdown
-          yzhang.markdown-all-in-one
-
-          davidanson.vscode-markdownlint
-          chrischinchilla.vscode-pandoc
-
-          # web
-          ecmel.vscode-html-css
-
-          bmewburn.vscode-intelephense-client
-          xdebug.php-debug
-
-          bierner.comment-tagged-templates
-          yoavbls.pretty-ts-errors
-
-          svelte.svelte-vscode
-
-          # java
-          redhat.java
-
-          vscjava.vscode-java-debug
-          vscjava.vscode-java-dependency
-          vscjava.vscode-gradle
-          vscjava.vscode-maven
-
-          vscjava.vscode-java-test
-
-          # typst
-          myriad-dreamin.tinymist
-
-          # binary
-          ms-vscode.hexeditor
-
-          # file formats
-          mechatroner.rainbow-csv
-          tamasfe.even-better-toml
-          redhat.vscode-yaml
-
-          dotjoshjohnson.xml
-          redhat.vscode-xml
-        ];
+        extensions = myExtensions;
 
         userSettings = {
           "settingsSync" = 0;

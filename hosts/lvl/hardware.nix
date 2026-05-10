@@ -1,5 +1,5 @@
 /*
-  hosts/lvl/hardware-old.nix
+  hosts/lvl/hardware.nix
 
   created by ludw
   on 2026-04-22
