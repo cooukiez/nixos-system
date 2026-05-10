@@ -19,7 +19,7 @@
   imports = [
     ./config.nix
     ./hardware-generated.nix
-    ./hardware-old.nix
+    ./hardware.nix
 
     inputs.self.systemModules.graphical
     inputs.self.systemModules.network
