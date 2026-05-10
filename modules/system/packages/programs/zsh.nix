@@ -52,7 +52,7 @@ in
 
       fdn = "sudo fix-perms /etc/nixos";
     }
-    // lib.optionals config.packageConfig.dataPartition {
+    // lib.optionalAttrs config.packageConfig.dataPartition {
       pwf = "edit-secret /data/upm.age";
       fdp = "sudo fix-perms /data";
     };
