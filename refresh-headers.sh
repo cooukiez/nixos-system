@@ -83,5 +83,3 @@ while IFS= read -r -d '' file; do
     rm "$tmp"
 
 done < <(find "$base_dir" -type f -name "*.nix" -print0)
-
-echo "headers processed."
