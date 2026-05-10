@@ -12,7 +12,7 @@
   ...
 }:
 let
-  media = import ./packages.nix { inherit pkgs; };
+  media = import ./packages.nix { inherit config pkgs; };
   cfg = config.graphicalConfig.media;
 
   mkEnableDefault = lib.mkOption {

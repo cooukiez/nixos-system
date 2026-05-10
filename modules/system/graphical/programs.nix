@@ -55,7 +55,7 @@ in
     })
 
     (lib.mkIf cfg.gaming {
-      environment.systemPackages = desktop.gameClients ++ desktop.gamingExtra;
+      environment.systemPackages = desktop.gameClients ++ desktop.gamingExtra ++ desktop.games;
 
       programs.steam = {
         enable = true;

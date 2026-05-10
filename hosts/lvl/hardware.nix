@@ -57,6 +57,8 @@ in
     ];
   };
 
+  packageConfig.gpuPowerAppsEnabled = false;
+
   # memory and swap
   swapDevices = [
     { device = "/dev/disk/by-partlabel/swap"; }

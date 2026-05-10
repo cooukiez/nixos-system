@@ -5,8 +5,8 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-sudo chmod -R 775 "$1"
-sudo chmod -R g+s "$1"
-sudo chown -R root:users "$1"
+chmod -R 775 "$1"
+chmod -R g+s "$1"
+chown -R root:users "$1"
 
 echo "Permissions fixed."

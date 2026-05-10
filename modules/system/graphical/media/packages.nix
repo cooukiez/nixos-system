@@ -6,6 +6,7 @@
 */
 
 {
+  config,
   pkgs,
   ...
 }:
@@ -31,6 +32,7 @@
     krita
     pinta
     sxiv
+    tuxpaint
     upscayl
     xnviewmp
   ];
@@ -66,11 +68,16 @@
     musescore
   ];
 
-  videos = with pkgs; [
-    davinci-resolve
+  videos =
+    with pkgs;
+    [
+      kdePackages.kdenlive
 
-    # recording
-    gpu-screen-recorder
-    gpu-screen-recorder-gtk
-  ];
+      # recording
+      gpu-screen-recorder
+      gpu-screen-recorder-gtk
+    ]
+    ++ lib.optionals config.packageConfig.gpuPowerAppsEnabled [
+      davinci-resolve
+    ];
 }

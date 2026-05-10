@@ -92,8 +92,22 @@
   ];
 
   gamingExtra = with pkgs; [
+    gamemode
     mangohud
     wl-crosshair
+  ];
+
+  games = with pkgs; [
+    cataclysm-dda
+    domination
+    dwarf-fortress
+    extremetuxracer
+    flare
+    freedroidrpg
+    naev
+    openclonk
+    pong3d
+    veloren
   ];
 
   modelling = with pkgs; [

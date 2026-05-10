@@ -45,6 +45,9 @@ in
 
       # utility
       gtop = "sudo intel_gpu_top";
+
+      fdn = "sudo fix-perms /etc/nixos";
+      fdp = "sudo fix-perms /data";
     };
 
     interactiveShellInit = ''

@@ -22,7 +22,7 @@ fi
 # ensure cleanup on exit
 trap "rm -f $TMP_FILE" EXIT
 
-# decrypt existing file into RAM
+# decrypt existing file into memory
 if [[ -f "$SECURE_FILE" ]]; then
     # decrypt the key file, then use it to decrypt the target
     age -d -i <(age -d "$KEY_FILE") "$SECURE_FILE" > "$TMP_FILE"
