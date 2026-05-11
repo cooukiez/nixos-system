@@ -101,17 +101,15 @@ in
         ];
       };
 
-    /*
-      services.networkd-dispatcher = lib.mkIf cfg.tailscaleServer {
-        enable = true;
-        rules."50-tailscale-optimizations" = {
-          onState = [ "routable" ];
-          script = ''
-            ${pkgs.ethtool}/bin/ethtool -K eth0 rx-udp-gro-forwarding on rx-gro-list off
-          '';
-        };
+    services.networkd-dispatcher = lib.mkIf cfg.tailscaleServer {
+      enable = true;
+      rules."50-tailscale-optimizations" = {
+        onState = [ "routable" ];
+        script = ''
+          ${pkgs.ethtool}/bin/ethtool -K eth0 rx-udp-gro-forwarding on rx-gro-list off
+        '';
       };
-    */
+    };
 
     services.vnstat.enable = lib.mkIf cfg.vnstat true;
 
