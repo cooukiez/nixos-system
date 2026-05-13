@@ -34,6 +34,8 @@
   ];
 
   nix = with pkgs; [
+    disnix
+    nixd
     nixfmt-rfc-style
     nixfmt-tree
     nix-prefetch-git
