@@ -122,7 +122,6 @@
       path = "/home/${username}/.ssh/id_ed25519";
       owner = username;
       group = "users";
-      mode = "600";
     }
   ) userList;
 
@@ -173,13 +172,7 @@
 
           config = {
             allowUnfree = true;
-            permittedInsecurePackages = [
-              "dotnet-sdk-6.0.428"
-              "dotnet-runtime-6.0.36"
-
-              "googleearth-pro-7.3.6.10201"
-              "ventoy-1.1.10"
-            ];
+            permittedInsecurePackages = [ ];
           };
         };
 
