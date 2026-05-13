@@ -1,8 +1,8 @@
 /*
   modules/home/desktop/kde/packages.nix
 
-  created by ludw
-  on 2026-04-27
+  part of nixos system
+  created 2026-04-27
 */
 
 {

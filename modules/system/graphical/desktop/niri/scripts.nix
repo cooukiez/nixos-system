@@ -1,8 +1,8 @@
 /*
   modules/system/graphical/desktop/niri/scripts.nix
 
-  created by ludw
-  on 2026-04-23
+  part of nixos system
+  created 2026-04-23
 */
 
 {

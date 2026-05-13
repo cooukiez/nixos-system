@@ -1,8 +1,8 @@
 /*
   modules/home/programs/common/nemo.nix
 
-  created by ludw
-  on 2026-05-07
+  part of nixos system
+  created 2026-05-07
 */
 
 {

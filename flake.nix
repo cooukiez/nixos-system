@@ -1,8 +1,8 @@
 /*
   flake.nix
 
-  created by ludw
-  on 2026-02-26
+  part of nixos system
+  created 2026-02-26
 */
 
 {

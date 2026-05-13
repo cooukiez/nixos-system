@@ -1,8 +1,8 @@
 /*
   modules/system/packages/packages.nix
 
-  created by ludw
-  on 2026-04-21
+  part of nixos system
+  created 2026-04-21
 */
 
 {

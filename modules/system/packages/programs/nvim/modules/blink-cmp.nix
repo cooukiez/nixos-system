@@ -1,8 +1,8 @@
 /*
   modules/system/packages/programs/nvim/modules/blink-cmp.nix
 
-  created by ludw
-  on 2026-04-24
+  part of nixos system
+  created 2026-04-24
 */
 
 {

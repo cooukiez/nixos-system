@@ -1,8 +1,8 @@
 /*
   hosts/lvl/hardware.nix
 
-  created by ludw
-  on 2026-04-22
+  part of nixos system
+  created 2026-04-22
 */
 
 {

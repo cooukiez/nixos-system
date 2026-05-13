@@ -1,8 +1,8 @@
 /*
   modules/home/gpg.nix
 
-  created by ludw
-  on 2026-05-10
+  part of nixos system
+  created 2026-05-10
 */
 
 {
