@@ -27,6 +27,11 @@ let
     type = lib.types.bool;
     default = true;
   };
+
+  mkDisableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+  };
 in
 {
   imports = [
@@ -57,15 +62,7 @@ in
 
     penetrationPkg = mkEnableDefault;
 
-    gpuPowerApps = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-
-    dataPartition = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
+    gpuPowerApps = mkDisableDefault;
   };
 
   config = {

@@ -159,7 +159,7 @@ in
     interval = "weekly";
   };
 
-  packageConfig.dataPartition = true;
+  zshSettings.dataPartitionAliases = true;
 
   # data snapshots (every 30 min)
   systemd.services.snapshot-data = {
