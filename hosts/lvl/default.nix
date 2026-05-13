@@ -177,11 +177,11 @@
         };
 
         age.identityPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
-
         _module.args.userConfig = userConfig;
 
         home = {
           username = username;
+          packages = userConfig.packages pkgs;
 
           homeDirectory = "/home/${username}";
           file.".face".source = ../../assets/avatar + "/${userConfig.avatar}";
@@ -192,8 +192,6 @@
           };
 
           stateVersion = "25.11";
-
-          packages = userConfig.packages pkgs;
         };
 
         age.secrets = (

@@ -105,7 +105,7 @@ in
       '';
 
       promptInit = ''
-        PROMPT='${mkPrompt cfg.userColor cfg.systemColor}'
+        PROMPT='${mkPrompt cfg.userColor cfg.systemColor} '
       '';
 
       histSize = 16384;
