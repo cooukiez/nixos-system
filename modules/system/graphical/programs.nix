@@ -26,6 +26,7 @@ in
     programs = lib.mkOption {
       type = lib.types.submodule {
         options = {
+          # todo: add pkg suffix
           development = mkEnableDefault;
           gaming = mkEnableDefault;
           modelling = mkEnableDefault;
