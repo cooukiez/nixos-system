@@ -2,7 +2,7 @@
   secrets/secrets.nix
 
   part of nixos system
-  created 2026-02-23
+  created 2026-02-23 by ludw
 */
 
 let

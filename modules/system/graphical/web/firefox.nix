@@ -2,7 +2,7 @@
   modules/system/graphical/web/firefox.nix
 
   part of nixos system
-  created 2026-04-22
+  created 2026-04-22 by ludw
 */
 
 {

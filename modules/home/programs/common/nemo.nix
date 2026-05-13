@@ -2,7 +2,7 @@
   modules/home/programs/common/nemo.nix
 
   part of nixos system
-  created 2026-05-07
+  created 2026-05-07 by ludw
 */
 
 {

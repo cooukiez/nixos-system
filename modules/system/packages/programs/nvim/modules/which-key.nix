@@ -2,7 +2,7 @@
   modules/system/packages/programs/nvim/modules/which-key.nix
 
   part of nixos system
-  created 2026-04-24
+  created 2026-04-24 by ludw
 */
 
 {

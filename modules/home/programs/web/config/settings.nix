@@ -2,7 +2,7 @@
   modules/home/programs/web/config/settings.nix
 
   part of nixos system
-  created 2026-04-28
+  created 2026-04-28 by ludw
 */
 
 {

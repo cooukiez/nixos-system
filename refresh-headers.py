@@ -45,7 +45,7 @@ def process_nix_files():
                 f"  {rel_path}\n"
                 f"\n"
                 f"  part of nixos system\n"
-                f"  created {creation_date}\n"
+                f"  created {creation_date} by ludw\n"
                 f"*/\n\n"
             )
             

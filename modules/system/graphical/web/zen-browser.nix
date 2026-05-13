@@ -2,7 +2,7 @@
   modules/system/graphical/web/zen-browser.nix
 
   part of nixos system
-  created 2026-04-23
+  created 2026-04-23 by ludw
 */
 
 {

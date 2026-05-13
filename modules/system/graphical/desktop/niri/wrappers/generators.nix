@@ -2,7 +2,7 @@
   modules/system/graphical/desktop/niri/wrappers/generators.nix
 
   part of nixos system
-  created 2026-04-24
+  created 2026-04-24 by ludw
 */
 
 {

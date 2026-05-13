@@ -2,7 +2,7 @@
   modules/home/programs/web/config/extensions.nix
 
   part of nixos system
-  created 2026-05-06
+  created 2026-05-06 by ludw
 */
 
 {

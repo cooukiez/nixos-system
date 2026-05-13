@@ -2,7 +2,7 @@
   modules/home/desktop/nn/noctalia/dock.nix
 
   part of nixos system
-  created 2026-04-25
+  created 2026-04-25 by ludw
 */
 
 {

@@ -2,7 +2,7 @@
   modules/home/gpg.nix
 
   part of nixos system
-  created 2026-05-10
+  created 2026-05-10 by ludw
 */
 
 {
