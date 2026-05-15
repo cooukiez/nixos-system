@@ -14,11 +14,6 @@ let
     type = lib.types.bool;
     default = true;
   };
-
-  mkDisableDefault = lib.mkOption {
-    type = lib.types.bool;
-    default = false;
-  };
 in
 {
   imports = [

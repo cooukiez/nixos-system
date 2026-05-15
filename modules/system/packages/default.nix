@@ -9,11 +9,10 @@
   config,
   pkgs,
   lib,
-  hostConfig,
   ...
 }:
 let
-  packages = import ./packages.nix { inherit pkgs hostConfig; };
+  packages = import ./packages.nix { inherit pkgs; };
   cfg = config.packageConfig;
 
   clear-logs = pkgs.writeShellScriptBin "clear-logs" (builtins.readFile ./scripts/clear-logs.sh);
@@ -38,6 +37,7 @@ in
     ./programs/nvim
     ./programs/git.nix
     ./programs/zsh.nix
+    ./penetration.nix
   ];
 
   options.packageConfig = {

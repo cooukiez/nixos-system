@@ -121,7 +121,6 @@
       "optical"
     ];
 
-    password = "CHANGE-ME";
     shell = pkgs.zsh;
   }) userList;
 

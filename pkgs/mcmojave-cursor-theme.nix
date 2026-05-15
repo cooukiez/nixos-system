@@ -36,6 +36,5 @@ stdenvNoCC.mkDerivation {
     description = "McMojave GTK cursor theme";
     homepage = "https://github.com/vinceliuice/McMojave-cursors";
     license = licenses.mit;
-    maintainers = with maintainers; [ ];
   };
 }

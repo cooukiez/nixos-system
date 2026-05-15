@@ -7,7 +7,6 @@
 
 {
   config,
-  pkgs,
   pkgConfig,
   lib,
   ...

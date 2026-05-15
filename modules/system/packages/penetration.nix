@@ -6,7 +6,9 @@
 */
 
 {
+  config,
   pkgs,
+  lib,
   ...
 }:
 let

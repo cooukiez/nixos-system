@@ -11,7 +11,6 @@
   pkgs,
   pkgConfig,
   lib,
-  hostConfig,
   userConfig,
   ...
 }:

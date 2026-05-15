@@ -9,11 +9,10 @@
   config,
   pkgs,
   lib,
-  hostConfig,
   ...
 }:
 let
-  desktop = import ./packages.nix { inherit pkgs hostConfig; };
+  desktop = import ./packages.nix { inherit pkgs; };
   cfg = config.graphicalConfig.programs;
 
   mkEnableDefault = lib.mkOption {
