@@ -92,7 +92,9 @@
         let
           hostPath = ./hosts/${hostName};
           hostConfig = import "${hostPath}/host.nix";
-          userList = import ./users.nix;
+          allUsers = import ./users.nix;
+
+          selectedUsers = lib.filterAttrs (username: _: lib.elem username (hostConfig.users or [ ])) allUsers;
         in
         lib.nixosSystem {
           system = hostConfig.hostSystem;
@@ -101,15 +103,16 @@
               inputs
               outputs
               hostConfig
-              userList
               ;
+
+            userList = selectedUsers;
             inherit (hostConfig) hostname;
           };
 
           modules = [
             hostPath
 
-            ({ system.stateVersion = "25.11"; })
+            { system.stateVersion = "25.11"; }
           ];
         };
 

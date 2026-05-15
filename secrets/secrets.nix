@@ -26,6 +26,10 @@ in
   "mail/ludwig-web.age".publicKeys = allKeys;
   "mail/web.age".publicKeys = allKeys;
 
+  "passwords/ceirs.age".publicKeys = allKeys;
+  "passwords/ludw.age".publicKeys = allKeys;
+  "passwords/redi.age".publicKeys = allKeys;
+
   "smb/fritz.age".publicKeys = allKeys;
 
   "ssh/ludw.age".publicKeys = allKeys;

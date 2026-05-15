@@ -8,11 +8,8 @@
 {
   inputs,
   config,
-  pkgs,
   pkgConfig,
   lib,
-  hostConfig,
-  userConfig,
   ...
 }:
 let

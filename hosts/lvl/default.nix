@@ -79,9 +79,34 @@
 
   age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
+  age.secrets =
+    lib.mapAttrs' (
+      username: _:
+      lib.nameValuePair "password-${username}" {
+        file = ../../secrets/passwords/${username}.age;
+        owner = username;
+        group = "users";
+      }
+    ) userList
+    // lib.mapAttrs' (
+      username: _:
+      lib.nameValuePair "ssh-${username}" {
+        file = ../../secrets/ssh/${username}.age;
+        path = "/home/${username}/.ssh/id_ed25519";
+        owner = username;
+        group = "users";
+      }
+    ) userList;
+
   users.users = lib.mapAttrs (_: user: {
+    enable = true;
+
     description = user.fullName;
     isNormalUser = true;
+    createHome = true;
+
+    hashedPasswordFile = config.age.secrets."password-${user.name}".path;
+
     extraGroups = [
       "wheel"
 
@@ -95,6 +120,7 @@
       "cdrom"
       "optical"
     ];
+
     password = "CHANGE-ME";
     shell = pkgs.zsh;
   }) userList;
@@ -114,16 +140,6 @@
         ]) (user.bindDirs or { })
       ) userList
     );
-
-  age.secrets = lib.mapAttrs' (
-    username: _:
-    lib.nameValuePair "ssh-${username}" {
-      file = ../../secrets/ssh/${username}.age;
-      path = "/home/${username}/.ssh/id_ed25519";
-      owner = username;
-      group = "users";
-    }
-  ) userList;
 
   home-manager = {
     useGlobalPkgs = false;

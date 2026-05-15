@@ -6,10 +6,6 @@
 */
 
 {
-  lib,
-  ...
-}:
-{
   disko.devices.disk = {
     lvl-disk = {
       type = "disk";

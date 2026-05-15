@@ -27,16 +27,16 @@ in
       type = lib.types.submodule {
         options = {
           # todo: add pkg suffix
-          development = mkEnableDefault;
-          gaming = mkEnableDefault;
-          modelling = mkEnableDefault;
-          other = mkEnableDefault;
-          pwa = mkEnableDefault;
-          system = mkEnableDefault;
+          developmentPkg = mkEnableDefault;
+          gamingPkg = mkEnableDefault;
+          modellingPkg = mkEnableDefault;
+          otherPkg = mkEnableDefault;
+          pwaPkg = mkEnableDefault;
+          systemPkg = mkEnableDefault;
 
-          programNemo = mkEnableDefault;
-          programVSCode = mkEnableDefault;
-          programZedEditor = mkEnableDefault;
+          nemo = mkEnableDefault;
+          vscode = mkEnableDefault;
+          zedEditor = mkEnableDefault;
         };
       };
 
@@ -51,11 +51,11 @@ in
   };
 
   config = lib.mkMerge [
-    (lib.mkIf cfg.development {
+    (lib.mkIf cfg.developmentPkg {
       environment.systemPackages = desktop.development ++ desktop.developmentGameEngines;
     })
 
-    (lib.mkIf cfg.gaming {
+    (lib.mkIf cfg.gamingPkg {
       environment.systemPackages = desktop.gameClients ++ desktop.gamingExtra ++ desktop.games;
 
       programs.steam = {
@@ -72,23 +72,23 @@ in
       };
     })
 
-    (lib.mkIf cfg.modelling {
+    (lib.mkIf cfg.modellingPkg {
       environment.systemPackages = desktop.modelling;
     })
 
-    (lib.mkIf cfg.other {
+    (lib.mkIf cfg.otherPkg {
       environment.systemPackages = desktop.other;
     })
 
-    (lib.mkIf cfg.pwa {
+    (lib.mkIf cfg.pwaPkg {
       environment.systemPackages = desktop.pwa;
     })
 
-    (lib.mkIf cfg.system {
+    (lib.mkIf cfg.systemPkg {
       environment.systemPackages = desktop.system;
     })
 
-    (lib.mkIf cfg.programNemo {
+    (lib.mkIf cfg.nemo {
       pkgConfig.nemo = (
         pkgs.nemo-with-extensions.override {
           extensions = with pkgs; [
@@ -108,7 +108,7 @@ in
       ];
     })
 
-    (lib.mkIf cfg.programVSCode {
+    (lib.mkIf cfg.vscode {
       pkgConfig.vscode = pkgs.unstable.vscode;
 
       programs.vscode = {
@@ -117,7 +117,7 @@ in
       };
     })
 
-    (lib.mkIf cfg.programZedEditor {
+    (lib.mkIf cfg.zedEditor {
       pkgConfig.zedEditor = pkgs.unstable.zed-editor;
 
       environment.systemPackages = [

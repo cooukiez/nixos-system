@@ -10,12 +10,8 @@
   config,
   pkgs,
   lib,
-  hostConfig,
   ...
 }:
-let
-  unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${hostConfig.system};
-in
 {
   disabledModules = [
     "hardware/facter"
