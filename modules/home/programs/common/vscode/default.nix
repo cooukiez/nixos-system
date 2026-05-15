@@ -9,6 +9,7 @@
   config,
   pkgs,
   pkgConfig,
+  hostConfig,
   lib,
   ...
 }:
@@ -190,6 +191,26 @@ in
           "editorGutter.deletedBackground" = "#00000000";
           "editorGutter.warningBackground" = "#00000000";
           "editorGutter.errorBackground" = "#00000000";
+        }
+        // {
+          "nix.enableLanguageServer" = true;
+          "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
+
+          "nix.formatterPath" = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
+
+          "nix.serverSettings" = {
+            "nixd" = {
+              "formatting" = {
+                "command" = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
+              };
+              "options" = {
+                "nixos" = {
+                  "expr" =
+                    "(builtins.getFlake \"\${workspaceFolder}\").nixosConfigurations.${hostConfig.hostname}.options";
+                };
+              };
+            };
+          };
         }
         // {
           "redhat.telemetry.enabled" = false;

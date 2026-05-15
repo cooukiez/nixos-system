@@ -30,7 +30,6 @@
     detected.graphics.enable = true;
     detected.bluetooth.enable = true;
 
-    detected.camera.ipu6.enable = true;
     detected.fingerprint.enable = true;
   };
 
@@ -143,8 +142,6 @@
   # webcam support
   boot.kernelModules = [
     "v4l2loopback"
-    "intel-ipu6"
-    "intel-ipu6-isys"
   ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
