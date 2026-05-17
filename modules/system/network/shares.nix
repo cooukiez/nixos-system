@@ -81,6 +81,25 @@ in {
         "uid=1000"
         "gid=100"
         "vers=3.0"
+        "x-gvfs-show"
+      ];
+    };
+
+    age.secrets.dhs-smb = lib.mkIf cfg.dhsMount {
+      file = ../../../secrets/smb/dhs.age;
+    };
+
+    fileSystems."/mnt/dhs" = lib.mkIf cfg.dhsMount {
+      device = "//192.168.178.3/root-share";
+      fsType = "cifs";
+      options = [
+        "credentials=${config.age.secrets.dhs-smb.path}"
+        "x-systemd.automount"
+        "noatime"
+        "uid=0"
+        "gid=0"
+        "vers=3.0"
+        "x-gvfs-show"
       ];
     };
   };

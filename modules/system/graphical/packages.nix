@@ -85,28 +85,46 @@ created 2026-04-22 by ludw
   ];
 
   games = with pkgs; [
+    armagetronad
     assaultcube
     bzflag
     cataclysm-dda
     domination
     doomretro
-    dwarf-fortress
+    dwarf-fortress-full
     ecwolf
+    endless-sky
     ete
     extremetuxracer
     flare
+    freeciv
+    freedink
     freedroidrpg
     gnubg
+    lincity
+    lincity-ng
+    luanti
+    lutris
+    mindustry
+    nethack
     nexuiz
     openarena
     openclonk
+    openloco
+    openra
+    openttd
     pong3d
     quakespasm
+    sgt-puzzles
+    shattered-pixel-dungeon
     space-cadet-pinball
+    tibia
     uhexen2
     veloren
     vkquake
+    wesnoth
     xonotic
+    zeroad-unwrapped
   ];
 
   modelling = with pkgs; [
