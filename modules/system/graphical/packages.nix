@@ -54,15 +54,8 @@ created 2026-04-22 by ludw
     sql-studio
 
     # jetbrains
-    # unstable.jetbrains-toolbox
-    # unstable.jetbrains.clion
     unstable.jetbrains.idea-oss
-    # unstable.jetbrains.jdk
     unstable.jetbrains.pycharm-oss
-    # unstable.jetbrains.rider
-    # unstable.jetbrains.rust-rover
-    # unstable.jetbrains.webstorm
-    # unstable.jetbrains.datagrip
   ];
 
   developmentGameEngines = with pkgs; [

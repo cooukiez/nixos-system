@@ -28,6 +28,7 @@ in {
   "passwords/ludw.age".publicKeys = allKeys;
   "passwords/redi.age".publicKeys = allKeys;
 
+  "smb/dhs.age".publicKeys = allKeys;
   "smb/fritz.age".publicKeys = allKeys;
 
   "ssh/ludw.age".publicKeys = allKeys;

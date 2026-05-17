@@ -57,6 +57,11 @@ created 2026-04-22 by ludw
       allowedTCPPorts = [];
       allowedUDPPorts = [];
     };
+
+    hosts = {
+      "127.0.0.1" = ["nixos.wiki"];
+      "192.168.178.1" = ["fritz.box"];
+    };
   };
 
   networkConfig.tailscaleClient = true;
@@ -64,6 +69,9 @@ created 2026-04-22 by ludw
   networkConfig.tailscaleOperator = "ludw";
 
   networkConfig.printing = true;
+
+  networkConfig.samba.fritzMount = true;
+  networkConfig.samba.dhsMount = true;
 
   # locale configuration
   i18n.defaultLocale = "en_US.UTF-8";

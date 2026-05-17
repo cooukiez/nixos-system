@@ -15,6 +15,11 @@ created 2026-04-22 by ludw
     type = lib.types.bool;
     default = true;
   };
+
+  mkDisableDefault = lib.mkOption {
+    type = lib.types.bool;
+    default = false;
+  };
 in {
   options.networkConfig = {
     samba = lib.mkOption {
@@ -23,7 +28,8 @@ in {
           server = mkEnableDefault;
           localNetPolicy = mkEnableDefault;
 
-          fritzMount = mkEnableDefault;
+          fritzMount = mkDisableDefault;
+          dhsMount = mkDisableDefault;
 
           shares = lib.mkOption {
             type = lib.types.attrsOf (lib.types.attrsOf lib.types.str);
@@ -61,16 +67,15 @@ in {
       ];
     };
 
-    /*
-    age.secrets.fritz-creds = lib.mkIf cfg.fritzMount {
-      file = ../../../secrets/fritz-creds.age;
+    age.secrets.fritz-smb = lib.mkIf cfg.fritzMount {
+      file = ../../../secrets/smb/fritz.age;
     };
 
     fileSystems."/mnt/fritz" = lib.mkIf cfg.fritzMount {
       device = "//fritz.box/fritz.box";
       fsType = "cifs";
       options = [
-        "credentials=${config.age.secrets.fritz-creds.path}"
+        "credentials=${config.age.secrets.fritz-smb.path}"
         "x-systemd.automount"
         "noatime"
         "uid=1000"
@@ -78,6 +83,5 @@ in {
         "vers=3.0"
       ];
     };
-    */
   };
 }
