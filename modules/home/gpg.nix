@@ -51,20 +51,20 @@ created 2026-05-10 by ludw
 
       if [ -f "${config.age.secrets.gpg-primary.path}" ]; then
         echo "Importing private GPG key..."
-        ${lib.getExe pkgs.gnupg} --batch --import "${config.age.secrets.gpg-primary.path}"
+        ${pkgs.gnupg}/bin/gpg --batch --import "${config.age.secrets.gpg-primary.path}"
         rm -f "${config.age.secrets.gpg-primary.path}"
       fi
 
       if [ -f "${config.age.secrets.gpg-primary-public.path}" ]; then
         echo "Importing public GPG key..."
-        ${lib.getExe pkgs.gnupg} --batch --import "${config.age.secrets.gpg-primary-public.path}"
+        ${pkgs.gnupg}/bin/gpg --batch --import "${config.age.secrets.gpg-primary-public.path}"
         rm -f "${config.age.secrets.gpg-primary-public.path}"
       fi
 
       ${pkgs.gnupg}/bin/gpg --list-secret-keys --with-colons | \
         grep '^fpr' | cut -d: -f10 | \
         xargs -I {} echo "{}:6:" | \
-        ${lib.getExe pkgs.gnupg} --batch --import-ownertrust || true
+        ${pkgs.gnupg}/bin/gpg --batch --import-ownertrust || true
     '';
   };
 }

@@ -118,7 +118,6 @@ created 2026-04-22 by ludw
     sgt-puzzles
     shattered-pixel-dungeon
     space-cadet-pinball
-    tibia
     uhexen2
     veloren
     vkquake
