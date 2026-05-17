@@ -22,13 +22,13 @@ created 2026-05-17 by ludw
     enable = true;
     reportPath = ./facter.json;
 
-    detected.uefi.supported = true;
+    # detected.uefi.supported = true;
 
-    detected.graphics.enable = true;
-    detected.bluetooth.enable = true;
+    # detected.graphics.enable = true;
+    # detected.bluetooth.enable = true;
 
-    detected.camera.ipu6.enable = true;
-    detected.fingerprint.enable = true;
+    # detected.camera.ipu6.enable = true;
+    # detected.fingerprint.enable = true;
   };
 
   hardware.enableAllFirmware = true;
@@ -67,10 +67,6 @@ created 2026-05-17 by ludw
   '';
 
   # network
-  networking.interfaces.enp0s20f0u1c4i2 = {
-    useDHCP = true;
-  };
-
   boot.kernel.sysctl = {
     # "net.ipv4.conf.all.proxy_arp" = 0;
     # "net.ipv4.conf.default.proxy_arp" = 0;
