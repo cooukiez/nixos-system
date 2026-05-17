@@ -1,26 +1,23 @@
 /*
-  modules/system/graphical/default.nix
+modules/system/graphical/default.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
-  desktop = import ./packages.nix { inherit pkgs; };
+}: let
+  desktop = import ./packages.nix {inherit pkgs;};
   cfg = config.graphicalConfig;
 
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
   };
-in
-{
+in {
   imports = [
     ./media
     ./web

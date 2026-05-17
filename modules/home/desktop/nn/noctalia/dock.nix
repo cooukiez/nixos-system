@@ -1,10 +1,9 @@
 /*
-  modules/home/desktop/nn/noctalia/dock.nix
+modules/home/desktop/nn/noctalia/dock.nix
 
-  part of nixos system
-  created 2026-04-25 by ludw
+part of nixos system
+created 2026-04-25 by ludw
 */
-
 {
   # core
   enabled = false;
@@ -12,7 +11,7 @@
   dockType = "attached";
   size = 1;
   onlySameOutput = true;
-  monitors = [ ];
+  monitors = [];
   sitOnFrame = false;
 
   # appearance
@@ -27,7 +26,7 @@
   # app management
   showLauncherIcon = false;
 
-  pinnedApps = [ ];
+  pinnedApps = [];
   pinnedStatic = false;
   groupApps = true;
   groupContextMenuMode = "extended";

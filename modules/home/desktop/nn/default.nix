@@ -1,21 +1,18 @@
 /*
-  modules/home/desktop/nn/default.nix
+modules/home/desktop/nn/default.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   pkgs,
   pkgConfig,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.desktop.nn;
-in
-{
+in {
   imports = [
     ./noctalia
 
@@ -25,16 +22,17 @@ in
   ];
 
   config = lib.mkIf cfg {
-    home.sessionVariables = {
-      ELECTRON_PASSWORD_STORE = "gnome-libsecret";
-      XDG_CURRENT_DESKTOP = "GNOME";
-      XDG_MENU_PREFIX = "gnome-";
-    }
-    // {
-      # window decorations
-      _JAVA_OPTIONS = "-Dawt.toolkit.name=WLToolkit -Dide.linux.hide.native.title.bar=true";
-      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    };
+    home.sessionVariables =
+      {
+        ELECTRON_PASSWORD_STORE = "gnome-libsecret";
+        XDG_CURRENT_DESKTOP = "GNOME";
+        XDG_MENU_PREFIX = "gnome-";
+      }
+      // {
+        # window decorations
+        _JAVA_OPTIONS = "-Dawt.toolkit.name=WLToolkit -Dide.linux.hide.native.title.bar=true";
+        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      };
 
     dconf.settings = {
       "org/gnome/desktop/interface" = {
@@ -49,35 +47,33 @@ in
     systemd.user.services.lisgd = {
       Unit = {
         Description = "lisgd Touchscreen Gestures for niri";
-        After = [ "graphical-session.target" ];
-        PartOf = [ "graphical-session.target" ];
+        After = ["graphical-session.target"];
+        PartOf = ["graphical-session.target"];
       };
 
       Service = {
-        ExecStart =
-          let
-            niri = "${pkgConfig.niri}/bin/niri msg action";
-            device = "/dev/input/by-path/pci-0000:00:15.1-platform-i2c_designware.1-event";
+        ExecStart = let
+          niri = "${pkgConfig.niri}/bin/niri msg action";
+          device = "/dev/input/by-path/pci-0000:00:15.1-platform-i2c_designware.1-event";
 
-            gestures = [
-              "-g '1,RL,R,*,R,${niri} focus-column-right'"
-              "-g '1,LR,L,*,R,${niri} focus-column-left'"
-              "-g '1,DU,B,*,R,${niri} open-overview'"
+          gestures = [
+            "-g '1,RL,R,*,R,${niri} focus-column-right'"
+            "-g '1,LR,L,*,R,${niri} focus-column-left'"
+            "-g '1,DU,B,*,R,${niri} open-overview'"
 
-              "-g '3,LR,*,*,R,${niri} focus-column-left'"
-              "-g '3,RL,*,*,R,${niri} focus-column-right'"
-              "-g '3,UD,*,*,R,${niri} focus-workspace-up'"
-              "-g '3,DU,*,*,R,${niri} focus-workspace-down'"
-            ];
-          in
-          "${lib.getExe pkgs.lisgd} -d ${device} -t 10 -T 5 ${builtins.concatStringsSep " " gestures}";
+            "-g '3,LR,*,*,R,${niri} focus-column-left'"
+            "-g '3,RL,*,*,R,${niri} focus-column-right'"
+            "-g '3,UD,*,*,R,${niri} focus-workspace-up'"
+            "-g '3,DU,*,*,R,${niri} focus-workspace-down'"
+          ];
+        in "${lib.getExe pkgs.lisgd} -d ${device} -t 10 -T 5 ${builtins.concatStringsSep " " gestures}";
 
         Restart = "on-failure";
         RestartSec = "5s";
       };
 
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = ["graphical-session.target"];
       };
     };
 
@@ -87,7 +83,7 @@ in
         Description = "Disabled Niri Polkit Agent (replaced by Noctalia)";
       };
       Install = {
-        WantedBy = lib.mkForce [ ];
+        WantedBy = lib.mkForce [];
       };
       Service = {
         ExecStart = lib.mkForce "${pkgs.coreutils}/bin/true";

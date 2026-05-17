@@ -1,10 +1,9 @@
 /*
-  hosts/lvl/disko-config.nix
+hosts/lvl/disko-config.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   disko.devices.disk = {
     lvl-disk = {
@@ -24,7 +23,7 @@
               type = "filesystem";
               format = "vfat";
               mountpoint = "/boot";
-              mountOptions = [ "umask=0077" ];
+              mountOptions = ["umask=0077"];
             };
           };
 
@@ -40,7 +39,7 @@
 
             content = {
               type = "btrfs";
-              extraArgs = [ "--force" ];
+              extraArgs = ["--force"];
 
               subvolumes = {
                 "root" = {

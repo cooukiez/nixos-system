@@ -1,58 +1,55 @@
 /*
-  modules/home/desktop/nn/noctalia/session-menu.nix
+modules/home/desktop/nn/noctalia/session-menu.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   pkgConfig,
   lib,
   ...
-}:
-let
+}: let
   lock = "noctalia-shell ipc call sessionMenu toggle && ${lib.getExe pkgConfig.hyprlock}";
 
   powerOptions =
     lib.imap1
-      (
-        i: opt:
+    (
+      i: opt:
         {
           enabled = true;
           keybind = toString i;
           countdownEnabled = opt.countdown or true;
         }
         // opt
-      )
-      [
-        {
-          action = "lock";
-          command = lock;
-          countdown = false;
-        }
-        {
-          action = "suspend";
-          command = "${lock}; sleep 3; systemctl suspend";
-        }
-        {
-          action = "hibernate";
-          command = "${lock}; sleep 3; systemctl hibernate";
-        }
-        {
-          action = "reboot";
-          command = "systemctl reboot";
-        }
-        {
-          action = "logout";
-          command = "";
-        }
-        {
-          action = "shutdown";
-          command = "systemctl poweroff";
-        }
-      ];
-in
-{
+    )
+    [
+      {
+        action = "lock";
+        command = lock;
+        countdown = false;
+      }
+      {
+        action = "suspend";
+        command = "${lock}; sleep 3; systemctl suspend";
+      }
+      {
+        action = "hibernate";
+        command = "${lock}; sleep 3; systemctl hibernate";
+      }
+      {
+        action = "reboot";
+        command = "systemctl reboot";
+      }
+      {
+        action = "logout";
+        command = "";
+      }
+      {
+        action = "shutdown";
+        command = "systemctl poweroff";
+      }
+    ];
+in {
   inherit powerOptions;
 
   enableCountdown = true;

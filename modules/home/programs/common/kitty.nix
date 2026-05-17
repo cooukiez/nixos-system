@@ -1,19 +1,16 @@
 /*
-  modules/home/programs/common/kitty.nix
+modules/home/programs/common/kitty.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.kitty;
-in
-{
+in {
   config = lib.mkIf cfg {
     programs.kitty = {
       enable = true;

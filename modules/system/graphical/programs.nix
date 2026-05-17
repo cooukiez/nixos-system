@@ -1,26 +1,23 @@
 /*
-  modules/system/graphical/programs.nix
+modules/system/graphical/programs.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
-  desktop = import ./packages.nix { inherit pkgs; };
+}: let
+  desktop = import ./packages.nix {inherit pkgs;};
   cfg = config.graphicalConfig.programs;
 
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
   };
-in
-{
+in {
   options.graphicalConfig = {
     programs = lib.mkOption {
       type = lib.types.submodule {
@@ -39,14 +36,14 @@ in
         };
       };
 
-      default = { };
+      default = {};
     };
   };
 
   options.pkgConfig = {
-    nemo = lib.mkOption { type = lib.types.package; };
-    vscode = lib.mkOption { type = lib.types.package; };
-    zedEditor = lib.mkOption { type = lib.types.package; };
+    nemo = lib.mkOption {type = lib.types.package;};
+    vscode = lib.mkOption {type = lib.types.package;};
+    zedEditor = lib.mkOption {type = lib.types.package;};
   };
 
   config = lib.mkMerge [

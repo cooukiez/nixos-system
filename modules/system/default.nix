@@ -1,10 +1,9 @@
 /*
-  modules/system/default.nix
+modules/system/default.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   graphical = import ./graphical;
   network = import ./network;

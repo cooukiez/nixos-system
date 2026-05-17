@@ -1,10 +1,9 @@
 /*
-  modules/home/programs/web/config/settings.nix
+modules/home/programs/web/config/settings.nix
 
-  part of nixos system
-  created 2026-04-28 by ludw
+part of nixos system
+created 2026-04-28 by ludw
 */
-
 {
   core = {
     # performance
@@ -72,7 +71,7 @@
     "browser.newtabpage.enabled" = false;
 
     # new tab pinned
-    "browser.newtabpage.pinned" = [ ];
+    "browser.newtabpage.pinned" = [];
 
     # default browser checks
     "browser.shell.checkDefaultBrowser" = false;

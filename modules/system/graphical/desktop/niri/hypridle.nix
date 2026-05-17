@@ -1,17 +1,16 @@
 /*
-  modules/system/graphical/desktop/niri/hypridle.nix
+modules/system/graphical/desktop/niri/hypridle.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   inputs,
   config,
   pkgs,
   lib,
 }:
-(import ./wrappers/hypridle.nix { inherit inputs config lib; }).apply {
+(import ./wrappers/hypridle.nix {inherit inputs config lib;}).apply {
   inherit pkgs;
 
   settings = {

@@ -1,17 +1,15 @@
 /*
-  hosts/lvl/hardware-generated.nix
+hosts/lvl/hardware-generated.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   lib,
   modulesPath,
   ...
-}:
-{
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -22,14 +20,14 @@
     "nvme"
   ];
 
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = [];
+  boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
-    options = [ "subvol=root" ];
+    options = ["subvol=root"];
   };
 
   fileSystems."/boot" = {
@@ -44,29 +42,29 @@
   fileSystems."/data" = {
     device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
-    options = [ "subvol=data" ];
+    options = ["subvol=data"];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
-    options = [ "subvol=home" ];
+    options = ["subvol=home"];
   };
 
   fileSystems."/nix" = {
     device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
-    options = [ "subvol=nix" ];
+    options = ["subvol=nix"];
   };
 
   fileSystems."/var" = {
     device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
-    options = [ "subvol=var" ];
+    options = ["subvol=var"];
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/2a3b20f5-7e74-4655-a560-f2c5f045da27"; }
+    {device = "/dev/disk/by-uuid/2a3b20f5-7e74-4655-a560-f2c5f045da27";}
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

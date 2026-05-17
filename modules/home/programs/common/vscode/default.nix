@@ -1,10 +1,9 @@
 /*
-  modules/home/programs/common/vscode/default.nix
+modules/home/programs/common/vscode/default.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   pkgs,
@@ -12,8 +11,7 @@
   hostConfig,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.vscode;
 
   myExtensions = with pkgs.vscode-extensions; [
@@ -126,8 +124,7 @@ let
     dotjoshjohnson.xml
     redhat.vscode-xml
   ];
-in
-{
+in {
   config = {
     programs.vscode = lib.mkIf cfg {
       enable = true;
@@ -139,104 +136,104 @@ in
 
         extensions = myExtensions;
 
-        userSettings = {
-          "settingsSync" = 0;
-          "settingsSync.ignoredSettings" = [ ];
+        userSettings =
+          {
+            "settingsSync" = 0;
+            "settingsSync.ignoredSettings" = [];
 
-          "security.allowedUNCHosts" = [ ];
+            "security.allowedUNCHosts" = [];
 
-          "window.titleBarStyle" = "custom";
-          "window.controlsStyle" = "hidden";
+            "window.titleBarStyle" = "custom";
+            "window.controlsStyle" = "hidden";
 
-          "keyboard.dispatch" = "keyCode";
+            "keyboard.dispatch" = "keyCode";
 
-          "workbench.startupEditor" = "none";
-          "workbench.welcomePage.walkthroughs.openOnInstall" = false;
-          "walkthroughs.enabled" = false;
+            "workbench.startupEditor" = "none";
+            "workbench.welcomePage.walkthroughs.openOnInstall" = false;
+            "walkthroughs.enabled" = false;
 
-          # core editor
-          "editor.detectIndentation" = false;
-          "editor.insertSpaces" = true;
-          "editor.tabSize" = 2;
+            # core editor
+            "editor.detectIndentation" = false;
+            "editor.insertSpaces" = true;
+            "editor.tabSize" = 2;
 
-          "editor.fontFamily" = "JetBrainsMono NF";
-          "editor.codeLensFontFamily" = "JetBrainsMono NF";
+            "editor.fontFamily" = "JetBrainsMono NF";
+            "editor.codeLensFontFamily" = "JetBrainsMono NF";
 
-          "editor.formatOnSave" = true;
-          "editor.largeFileOptimizations" = true;
+            "editor.formatOnSave" = true;
+            "editor.largeFileOptimizations" = true;
 
-          "editor.guides.bracketPairs" = true;
-          "editor.semanticHighlighting.enabled" = true;
-          "editor.unicodeHighlight.nonBasicASCII" = false;
-          "editor.showUnused" = true;
+            "editor.guides.bracketPairs" = true;
+            "editor.semanticHighlighting.enabled" = true;
+            "editor.unicodeHighlight.nonBasicASCII" = false;
+            "editor.showUnused" = true;
 
-          "explorer.confirmDelete" = false;
-          "explorer.confirmDragAndDrop" = false;
-          "explorer.confirmPasteNative" = false;
-        }
-        // {
-          # customizations
-          "workbench.colorCustomizations" = {
-            "tab.activeBorder" = "#00000000";
-            "tab.activeBorderTop" = "#00000000";
-            "tab.activeModifiedBorder" = "#00000000";
-            "tab.unfocusedActiveBorder" = "#00000000";
-            "tab.unfocusedActiveBorderTop" = "#00000000";
-            "activityBar.foreground" = "#ebebeb";
-            "activityBar.activeBorder" = "#ebebeb";
-          };
+            "explorer.confirmDelete" = false;
+            "explorer.confirmDragAndDrop" = false;
+            "explorer.confirmPasteNative" = false;
+          }
+          // {
+            # customizations
+            "workbench.colorCustomizations" = {
+              "tab.activeBorder" = "#00000000";
+              "tab.activeBorderTop" = "#00000000";
+              "tab.activeModifiedBorder" = "#00000000";
+              "tab.unfocusedActiveBorder" = "#00000000";
+              "tab.unfocusedActiveBorderTop" = "#00000000";
+              "activityBar.foreground" = "#ebebeb";
+              "activityBar.activeBorder" = "#ebebeb";
+            };
 
-          "editorGutter.modifiedBackground" = "#00000000";
-          "editorGutter.addedBackground" = "#00000000";
-          "editorGutter.deletedBackground" = "#00000000";
-          "editorGutter.warningBackground" = "#00000000";
-          "editorGutter.errorBackground" = "#00000000";
-        }
-        // {
-          "nix.enableLanguageServer" = true;
-          "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
+            "editorGutter.modifiedBackground" = "#00000000";
+            "editorGutter.addedBackground" = "#00000000";
+            "editorGutter.deletedBackground" = "#00000000";
+            "editorGutter.warningBackground" = "#00000000";
+            "editorGutter.errorBackground" = "#00000000";
+          }
+          // {
+            "nix.enableLanguageServer" = true;
+            "nix.serverPath" = "${lib.getExe pkgs.nixd}";
 
-          "nix.formatterPath" = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
+            "nix.formatterPath" = "${lib.getExe pkgs.alejandra}";
 
-          "nix.serverSettings" = {
-            "nixd" = {
-              "formatting" = {
-                "command" = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
-              };
-              "options" = {
-                "nixos" = {
-                  "expr" =
-                    "(builtins.getFlake \"\${workspaceFolder}\").nixosConfigurations.${hostConfig.hostname}.options";
+            "nix.serverSettings" = {
+              "nixd" = {
+                "formatting" = {
+                  "command" = ["${lib.getExe pkgs.alejandra}"];
+                };
+                "options" = {
+                  "nixos" = {
+                    "expr" = "(builtins.getFlake \"\${workspaceFolder}\").nixosConfigurations.${hostConfig.hostname}.options";
+                  };
                 };
               };
             };
+          }
+          // {
+            "redhat.telemetry.enabled" = false;
+
+            # git configuration
+            "git.autofetch" = true;
+            "git.enableSmartCommit" = true;
+            "git.confirmSync" = false;
+
+            "github.copilot.editor.enableAutoCompletions" = true;
+            "github.copilot.nextEditSuggestions.enabled" = true;
+            "github.copilot.nextEditSuggestions.fixes" = false;
+
+            "autoAlign.associations" = {
+              "csv" = ",";
+              "bsv" = "|";
+              "" = "#";
+            };
+
+            "tinymist.exportPdf" = "onSave";
+
+            "hexeditor.columnWidth" = 32;
+            "hexeditor.showDecodedText" = false;
+            "hexeditor.defaultEndianness" = "little";
+            "hexeditor.inspectorType" = "aside";
           };
-        }
-        // {
-          "redhat.telemetry.enabled" = false;
-
-          # git configuration
-          "git.autofetch" = true;
-          "git.enableSmartCommit" = true;
-          "git.confirmSync" = false;
-
-          "github.copilot.editor.enableAutoCompletions" = true;
-          "github.copilot.nextEditSuggestions.enabled" = true;
-          "github.copilot.nextEditSuggestions.fixes" = false;
-
-          "autoAlign.associations" = {
-            "csv" = ",";
-            "bsv" = "|";
-            "" = "#";
-          };
-
-          "tinymist.exportPdf" = "onSave";
-
-          "hexeditor.columnWidth" = 32;
-          "hexeditor.showDecodedText" = false;
-          "hexeditor.defaultEndianness" = "little";
-          "hexeditor.inspectorType" = "aside";
-        };
 
         keybindings = [
           {

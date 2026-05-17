@@ -1,20 +1,17 @@
 /*
-  modules/home/desktop/kde/default.nix
+modules/home/desktop/kde/default.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.desktop.kde;
-in
-{
+in {
   imports = [
     ./packages.nix
   ];
@@ -31,7 +28,7 @@ in
     systemd.user.services.libinput-gestures = {
       Unit = {
         Description = "KDE libinput-Gestures";
-        PartOf = [ "graphical-session.target" ];
+        PartOf = ["graphical-session.target"];
       };
 
       Service = {
@@ -40,7 +37,7 @@ in
       };
 
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = ["graphical-session.target"];
       };
     };
 

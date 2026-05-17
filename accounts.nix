@@ -1,10 +1,9 @@
 /*
-  accounts.nix
+accounts.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   ludwig-mailbox = {
     enable = true;
@@ -31,7 +30,7 @@
     realName = "Ludwig Geyer";
 
     thunderbird.enable = true;
-    thunderbird.profiles = [ "default" ];
+    thunderbird.profiles = ["default"];
   };
 
   ludwig-web = {
@@ -58,7 +57,7 @@
     realName = "Ludwig";
 
     thunderbird.enable = true;
-    thunderbird.profiles = [ "default" ];
+    thunderbird.profiles = ["default"];
   };
 
   web = {
@@ -84,6 +83,6 @@
     realName = "Web Account";
 
     thunderbird.enable = true;
-    thunderbird.profiles = [ "default" ];
+    thunderbird.profiles = ["default"];
   };
 }

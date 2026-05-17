@@ -1,16 +1,14 @@
 /*
-  modules/home/programs/common/default.nix
+modules/home/programs/common/default.nix
 
-  part of nixos system
-  created 2026-04-27 by ludw
+part of nixos system
+created 2026-04-27 by ludw
 */
-
 {
   config,
   lib,
   ...
-}:
-let
+}: let
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
@@ -20,8 +18,7 @@ let
     type = lib.types.bool;
     default = false;
   };
-in
-{
+in {
   imports = [
     ./vscode
     ./zed

@@ -1,10 +1,9 @@
 /*
-  modules/system/packages/programs/nvim/modules/telescope.nix
+modules/system/packages/programs/nvim/modules/telescope.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   # fuzzy finder for files, lsp, etc.
   # https://nix-community.github.io/nixvim/plugins/telescope/index.html

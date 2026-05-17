@@ -1,20 +1,17 @@
 /*
-  modules/home/desktop/nn/packages.nix
+modules/home/desktop/nn/packages.nix
 
-  part of nixos system
-  created 2026-04-27 by ludw
+part of nixos system
+created 2026-04-27 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.desktop.nn;
-in
-{
+in {
   config = lib.mkIf cfg {
     home.packages = with pkgs; [
       adw-gtk3

@@ -1,10 +1,9 @@
 /*
-  modules/system/packages/programs/nvim/modules/neo-tree.nix
+modules/system/packages/programs/nvim/modules/neo-tree.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   # plugin to browse the file system
   # https://nix-community.github.io/nixvim/plugins/neo-tree/index.html?highlight=neo-tree#pluginsneo-treepackage

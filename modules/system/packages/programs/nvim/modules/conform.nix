@@ -1,12 +1,10 @@
 /*
-  modules/system/packages/programs/nvim/modules/conform.nix
+modules/system/packages/programs/nvim/modules/conform.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # https://nix-community.github.io/nixvim/NeovimOptions/index.html#extrapackages
   extraPackages = with pkgs; [
     stylua
@@ -31,7 +29,7 @@
         end
       '';
       formatters_by_ft = {
-        lua = [ "stylua" ];
+        lua = ["stylua"];
 
         python = [
           "isort"

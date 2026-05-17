@@ -1,19 +1,16 @@
 /*
-  modules/home/programs/common/zathura.nix
+modules/home/programs/common/zathura.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.zathura;
-in
-{
+in {
   config = lib.mkIf cfg {
     programs.zathura = {
       enable = true;

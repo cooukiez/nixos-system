@@ -1,10 +1,9 @@
 /*
-  modules/home/desktop/nn/noctalia/app-launcher.nix
+modules/home/desktop/nn/noctalia/app-launcher.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   # clipboard
   enableClipboardChips = true;

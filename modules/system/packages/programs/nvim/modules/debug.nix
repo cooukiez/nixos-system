@@ -1,10 +1,9 @@
 /*
-  modules/system/packages/programs/nvim/modules/debug.nix
+modules/system/packages/programs/nvim/modules/debug.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   # https://nix-community.github.io/nixvim/plugins/dap/index.html
   plugins.dap = {

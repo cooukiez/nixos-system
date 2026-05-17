@@ -1,26 +1,23 @@
 /*
-  modules/system/graphical/web/default.nix
+modules/system/graphical/web/default.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   pkgs,
   lib,
   config,
   ...
-}:
-let
-  web = import ./packages.nix { inherit pkgs; };
+}: let
+  web = import ./packages.nix {inherit pkgs;};
   cfg = config.graphicalConfig.web;
 
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
   };
-in
-{
+in {
   imports = [
     ./firefox.nix
     ./zen-browser.nix
@@ -38,13 +35,13 @@ in
         };
       };
 
-      default = { };
+      default = {};
     };
   };
 
   config = {
     environment.systemPackages =
-      [ ]
+      []
       ++ (lib.optionals cfg.messengerPkg web.messenger)
       ++ (lib.optionals cfg.downloadPkg web.download);
   };

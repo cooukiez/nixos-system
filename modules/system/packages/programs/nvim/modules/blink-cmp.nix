@@ -1,10 +1,9 @@
 /*
-  modules/system/packages/programs/nvim/modules/blink-cmp.nix
+modules/system/packages/programs/nvim/modules/blink-cmp.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   # snippet engine for Neovim
   # https://nix-community.github.io/nixvim/plugins/luasnip/index.html
@@ -16,7 +15,6 @@
     enable = true;
 
     settings = {
-
       keymap = {
         # see `:help ins-completion`
         # see `:help blink-cmp-config-keymap`

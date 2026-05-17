@@ -1,10 +1,9 @@
 /*
-  pkgs/steelfish-fonts.nix
+pkgs/steelfish-fonts.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   stdenvNoCC,
   lib,
@@ -20,7 +19,7 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-R3B92Y60phVPNtVZy843wMe2jjaVXwzipBDYsyrSefQ=";
   };
 
-  nativeBuildInputs = [ unzip ];
+  nativeBuildInputs = [unzip];
 
   unpackPhase = ''
     unzip $src

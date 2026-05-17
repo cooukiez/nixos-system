@@ -1,10 +1,9 @@
 /*
-  modules/home/desktop/nn/noctalia/plugin-settings.nix
+modules/home/desktop/nn/noctalia/plugin-settings.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   catwalk = {
     minimumThreshold = 20;

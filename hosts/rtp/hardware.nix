@@ -1,18 +1,16 @@
 /*
-  hosts/lvl/hardware.nix
+hosts/lvl/hardware.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   inputs,
   config,
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   disabledModules = [
     "hardware/facter"
   ];
@@ -56,7 +54,7 @@
 
   # memory and swap
   swapDevices = [
-    { device = "/dev/disk/by-partlabel/swap"; }
+    {device = "/dev/disk/by-partlabel/swap";}
   ];
 
   zramSwap.enable = true;
@@ -106,7 +104,7 @@
     extraConfig.pipewire = {
       "10-airplay" = {
         "context.modules" = [
-          { name = "libpipewire-module-raop-discover"; }
+          {name = "libpipewire-module-raop-discover";}
         ];
       };
 
@@ -144,7 +142,7 @@
     "v4l2loopback"
   ];
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
 
   # drive
   services.btrfs.autoScrub = {
@@ -171,7 +169,7 @@
   };
 
   systemd.timers.snapshot-data = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig = {
       OnCalendar = "*:0/30";
       Persistent = true;
@@ -197,7 +195,7 @@
   };
 
   systemd.timers.snapshot-cleanup = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig.OnCalendar = "daily";
   };
 

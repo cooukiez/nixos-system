@@ -1,19 +1,16 @@
 /*
-  modules/home/programs/common/imv.nix
+modules/home/programs/common/imv.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.imv;
-in
-{
+in {
   config = lib.mkIf cfg {
     programs.imv = {
       enable = true;

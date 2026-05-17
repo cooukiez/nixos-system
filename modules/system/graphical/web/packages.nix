@@ -1,15 +1,10 @@
 /*
-  modules/system/graphical/web/packages.nix
+modules/system/graphical/web/packages.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   messenger = with pkgs; [
     signal-desktop
     unstable.discord

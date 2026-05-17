@@ -1,10 +1,9 @@
 /*
-  modules/system/graphical/session.nix
+modules/system/graphical/session.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   inputs,
   config,
@@ -12,8 +11,7 @@
   lib,
   userList,
   ...
-}:
-let
+}: let
   cfg = config.graphicalConfig.session;
 
   sessionCommands = {
@@ -27,7 +25,8 @@ let
       ${name})
         ${sessionCommands.${config.session}}
         ;;
-    '') userList
+    '')
+    userList
   );
 
   autoSessionScript = pkgs.writeShellApplication {
@@ -50,11 +49,10 @@ let
       Exec=${autoSessionScript}/bin/auto-session
       Type=Application
     '').overrideAttrs
-      (_: {
-        passthru.providedSessions = [ "auto-selection" ];
-      });
-in
-{
+    (_: {
+      passthru.providedSessions = ["auto-selection"];
+    });
+in {
   options.graphicalConfig = {
     session = lib.mkOption {
       type = lib.types.submodule {
@@ -71,15 +69,15 @@ in
         };
       };
 
-      default = { };
+      default = {};
     };
   };
 
   options.pkgConfig = {
-    niri = lib.mkOption { type = lib.types.package; };
-    noctalia = lib.mkOption { type = lib.types.package; };
-    hyprlock = lib.mkOption { type = lib.types.package; };
-    hypridle = lib.mkOption { type = lib.types.package; };
+    niri = lib.mkOption {type = lib.types.package;};
+    noctalia = lib.mkOption {type = lib.types.package;};
+    hyprlock = lib.mkOption {type = lib.types.package;};
+    hypridle = lib.mkOption {type = lib.types.package;};
   };
 
   config = lib.mkMerge [
@@ -110,10 +108,10 @@ in
         ];
       };
 
-      services.displayManager.sessionPackages = [ autoSessionDesktop ];
+      services.displayManager.sessionPackages = [autoSessionDesktop];
       services.displayManager.defaultSession = "auto-selection";
 
-      security.pam.services.hyprlock = { };
+      security.pam.services.hyprlock = {};
 
       # disable fingerprint for boot login
       security.pam.services.login.fprintAuth = false;
@@ -126,8 +124,7 @@ in
 
     (lib.mkIf cfg.niri (
       let
-        load =
-          path:
+        load = path:
           import path {
             inherit
               inputs
@@ -142,11 +139,12 @@ in
           hyprlock = load ./desktop/niri/hyprlock.nix;
           hypridle = load ./desktop/niri/hypridle.nix;
         };
-      in
-      {
-        pkgConfig = (lib.mapAttrs (_: m: m.wrapper) modules) // {
-          noctalia = pkgs.noctalia.override { calendarSupport = true; };
-        };
+      in {
+        pkgConfig =
+          (lib.mapAttrs (_: m: m.wrapper) modules)
+          // {
+            noctalia = pkgs.noctalia.override {calendarSupport = true;};
+          };
 
         environment.systemPackages = [
           config.pkgConfig.hyprlock
@@ -166,7 +164,7 @@ in
 
         xdg.portal = {
           xdgOpenUsePortal = true;
-          extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+          extraPortals = with pkgs; [xdg-desktop-portal-gtk];
         };
       }
     ))

@@ -1,10 +1,9 @@
 /*
-  modules/system/packages/programs/nvim/modules/lint.nix
+modules/system/packages/programs/nvim/modules/lint.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   # linting
   # https://nix-community.github.io/nixvim/plugins/lint/index.html
@@ -13,7 +12,7 @@
 
     # enabling these will cause errors unless these tools are installed
     lintersByFt = {
-      nix = [ "nix" ];
+      nix = ["nix"];
 
       markdown = [
         "markdownlint"

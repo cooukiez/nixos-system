@@ -1,21 +1,15 @@
 /*
-  modules/home/programs/web/default.nix
+modules/home/programs/web/default.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
-{
-  lib,
-  ...
-}:
-let
+{lib, ...}: let
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
   };
-in
-{
+in {
   imports = [
     ./element.nix
     ./firefox.nix

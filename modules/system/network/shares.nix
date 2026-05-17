@@ -1,24 +1,21 @@
 /*
-  modules/system/network/shares.nix
+modules/system/network/shares.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.networkConfig.samba;
 
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
   };
-in
-{
+in {
   options.networkConfig = {
     samba = lib.mkOption {
       type = lib.types.submodule {
@@ -30,12 +27,12 @@ in
 
           shares = lib.mkOption {
             type = lib.types.attrsOf (lib.types.attrsOf lib.types.str);
-            default = { };
+            default = {};
           };
         };
       };
 
-      default = { };
+      default = {};
     };
   };
 
@@ -65,22 +62,22 @@ in
     };
 
     /*
-      age.secrets.fritz-creds = lib.mkIf cfg.fritzMount {
-        file = ../../../secrets/fritz-creds.age;
-      };
+    age.secrets.fritz-creds = lib.mkIf cfg.fritzMount {
+      file = ../../../secrets/fritz-creds.age;
+    };
 
-      fileSystems."/mnt/fritz" = lib.mkIf cfg.fritzMount {
-        device = "//fritz.box/fritz.box";
-        fsType = "cifs";
-        options = [
-          "credentials=${config.age.secrets.fritz-creds.path}"
-          "x-systemd.automount"
-          "noatime"
-          "uid=1000"
-          "gid=100"
-          "vers=3.0"
-        ];
-      };
+    fileSystems."/mnt/fritz" = lib.mkIf cfg.fritzMount {
+      device = "//fritz.box/fritz.box";
+      fsType = "cifs";
+      options = [
+        "credentials=${config.age.secrets.fritz-creds.path}"
+        "x-systemd.automount"
+        "noatime"
+        "uid=1000"
+        "gid=100"
+        "vers=3.0"
+      ];
+    };
     */
   };
 }

@@ -1,17 +1,15 @@
 /*
-  modules/system/packages/programs/nvim/default.nix
+modules/system/packages/programs/nvim/default.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   inputs,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   # read all files in the modules directory
   files = builtins.readDir ./modules;
 
@@ -22,8 +20,7 @@ let
 
   # create a list of import statements
   fileImports = map (name: ./modules + "/${name}") nixFiles;
-in
-{
+in {
   imports = [
     inputs.nixvim.nixosModules.nixvim
   ];
@@ -69,9 +66,9 @@ in
       # GPGPreferSign = 1;
 
       /*
-        GPGDefaultRecipients = [
-          "ludwig.geyer@mailbox.org"
-        ];
+      GPGDefaultRecipients = [
+        "ludwig.geyer@mailbox.org"
+      ];
       */
     };
 
@@ -220,7 +217,7 @@ in
       # highlight when yanking (copying) text
       # see `:help vim.hl.on_yank()`
       {
-        event = [ "TextYankPost" ];
+        event = ["TextYankPost"];
         desc = "Highlight when yanking (copying) text";
         group = "kickstart-highlight-yank";
         callback.__raw = ''

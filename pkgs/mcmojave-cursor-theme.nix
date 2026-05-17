@@ -1,10 +1,9 @@
 /*
-  pkgs/mcmojave-cursor-theme.nix
+pkgs/mcmojave-cursor-theme.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   stdenvNoCC,
   lib,

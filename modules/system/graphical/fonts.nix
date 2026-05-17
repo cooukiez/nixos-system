@@ -1,20 +1,17 @@
 /*
-  modules/system/graphical/fonts.nix
+modules/system/graphical/fonts.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalConfig;
-in
-{
+in {
   config = lib.mkIf cfg.fontsPkg {
     fonts.fontDir.enable = true;
 

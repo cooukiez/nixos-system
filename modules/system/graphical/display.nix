@@ -1,25 +1,22 @@
 /*
-  modules/system/graphical/display.nix
+modules/system/graphical/display.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalConfig.display;
 
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
   };
-in
-{
+in {
   options.graphicalConfig = {
     display = lib.mkOption {
       type = lib.types.submodule {
@@ -29,7 +26,7 @@ in
         };
       };
 
-      default = { };
+      default = {};
     };
   };
 
@@ -56,7 +53,7 @@ in
           options = "eurosign:e,caps:escape";
           variant = "";
         };
-        excludePackages = with pkgs; [ xterm ];
+        excludePackages = with pkgs; [xterm];
       };
 
       environment.systemPackages = with pkgs; [

@@ -1,15 +1,10 @@
 /*
-  modules/system/graphical/desktop/niri/scripts.nix
+modules/system/graphical/desktop/niri/scripts.nix
 
-  part of nixos system
-  created 2026-04-23 by ludw
+part of nixos system
+created 2026-04-23 by ludw
 */
-
-{
-  pkgs,
-  ...
-}:
-let
+{pkgs, ...}: let
   resHD = {
     w = "1920";
     h = "1200";
@@ -19,8 +14,7 @@ let
     w = "3480";
     h = "2400";
   };
-in
-{
+in {
   lowRes = pkgs.writeShellScriptBin "low-res" ''
     ${pkgs.niri}/bin/niri msg output "eDP-1" custom-mode "${resHD.w}x${resHD.h}@60.000"
     ${pkgs.niri}/bin/niri msg output "eDP-1" scale 1.0

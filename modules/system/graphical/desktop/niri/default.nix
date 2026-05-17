@@ -1,17 +1,16 @@
 /*
-  modules/system/graphical/desktop/niri/default.nix
+modules/system/graphical/desktop/niri/default.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   inputs,
   config,
   pkgs,
   lib,
 }:
-(import ./wrappers/niri.nix { inherit inputs config lib; }).apply {
+(import ./wrappers/niri.nix {inherit inputs config lib;}).apply {
   inherit pkgs;
 
   settings = {
@@ -25,13 +24,13 @@
       };
 
       touchpad = {
-        tap = { };
+        tap = {};
 
         accel-speed = 0.25;
         scroll-factor = 1.5;
 
-        natural-scroll = { };
-        disabled-on-external-mouse = { };
+        natural-scroll = {};
+        disabled-on-external-mouse = {};
       };
 
       mouse = {
@@ -50,13 +49,13 @@
         };
       };
 
-      warp-mouse-to-focus = { };
+      warp-mouse-to-focus = {};
 
       mod-key = "Super";
       mod-key-nested = "Alt";
     };
 
-    binds = import ./binds.nix { inherit config pkgs lib; };
+    binds = import ./binds.nix {inherit config pkgs lib;};
 
     environment = {
       ELM_DISPLAY = "wl";
@@ -75,12 +74,12 @@
     };
 
     overview = {
-      workspace-shadow.off = { };
+      workspace-shadow.off = {};
     };
 
     layout = {
       gaps = 5;
-      border.off = { };
+      border.off = {};
 
       struts = {
         left = 10;
@@ -92,24 +91,24 @@
       default-column-width.proportion = 0.5;
 
       preset-column-widths._children = [
-        { proportion = 1.0 / 3.0; }
-        { proportion = 0.5; }
-        { proportion = 2.0 / 3.0; }
+        {proportion = 1.0 / 3.0;}
+        {proportion = 0.5;}
+        {proportion = 2.0 / 3.0;}
       ];
 
       preset-window-heights._children = [
-        { proportion = 1.0 / 3.0; }
-        { proportion = 0.5; }
-        { proportion = 2.0 / 3.0; }
-        { proportion = 1.0; }
+        {proportion = 1.0 / 3.0;}
+        {proportion = 0.5;}
+        {proportion = 2.0 / 3.0;}
+        {proportion = 1.0;}
       ];
 
       focus-ring = {
-        off = { };
+        off = {};
       };
 
       shadow = {
-        on = { };
+        on = {};
         draw-behind-window = true;
 
         softness = 30;
@@ -123,9 +122,9 @@
       };
 
       tab-indicator = {
-        on = { };
+        on = {};
 
-        place-within-column = { };
+        place-within-column = {};
         position = "top";
 
         width = 8;
@@ -142,7 +141,7 @@
       # outputs
       {
         output = {
-          _args = [ "eDP-1" ];
+          _args = ["eDP-1"];
           mode = "3840x2400@60.000";
           scale = 2.0;
           position = {
@@ -153,7 +152,7 @@
       }
       {
         output = {
-          _args = [ "HDMI-A-1" ];
+          _args = ["HDMI-A-1"];
           mode = "1920x1080@60.000";
           scale = 1.0;
           position = {
@@ -166,7 +165,7 @@
       # layer rules
       {
         layer-rule = {
-          _children = [ { match._props.namespace = "^noctalia-overview*"; } ];
+          _children = [{match._props.namespace = "^noctalia-overview*";}];
           place-within-backdrop = true;
         };
       }
@@ -185,7 +184,7 @@
       }
       {
         window-rule = {
-          _children = [ { match._props.app-id = "kitty"; } ];
+          _children = [{match._props.app-id = "kitty";}];
           open-maximized = false;
         };
       }

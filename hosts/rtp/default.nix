@@ -1,10 +1,9 @@
 /*
-  hosts/lvl/default.nix
+hosts/lvl/default.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   inputs,
   outputs,
@@ -14,8 +13,7 @@
   hostConfig,
   userList,
   ...
-}:
-{
+}: {
   imports = [
     ./config.nix
     ./hardware-generated.nix
@@ -57,87 +55,91 @@
     };
   };
 
-  nix =
-    let
-      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-    in
-    {
-      settings = {
-        experimental-features = "nix-command flakes";
-        flake-registry = "";
-        nix-path = config.nix.nixPath;
-      };
-
-      channel.enable = false;
-
-      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-
-      optimise.automatic = true;
-      optimise.dates = [ "03:45" ];
+  nix = let
+    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+  in {
+    settings = {
+      experimental-features = "nix-command flakes";
+      flake-registry = "";
+      nix-path = config.nix.nixPath;
     };
 
-  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    channel.enable = false;
+
+    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
+    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+
+    optimise.automatic = true;
+    optimise.dates = ["03:45"];
+  };
+
+  age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
   age.secrets =
     lib.mapAttrs' (
       username: _:
-      lib.nameValuePair "password-${username}" {
-        file = ../../secrets/passwords/${username}.age;
-        owner = username;
-        group = "users";
-      }
-    ) userList
+        lib.nameValuePair "password-${username}" {
+          file = ../../secrets/passwords/${username}.age;
+          owner = username;
+          group = "users";
+        }
+    )
+    userList
     // lib.mapAttrs' (
       username: _:
-      lib.nameValuePair "ssh-${username}" {
-        file = ../../secrets/ssh/${username}.age;
-        path = "/home/${username}/.ssh/id_ed25519";
-        owner = username;
-        group = "users";
-      }
-    ) userList;
+        lib.nameValuePair "ssh-${username}" {
+          file = ../../secrets/ssh/${username}.age;
+          path = "/home/${username}/.ssh/id_ed25519";
+          owner = username;
+          group = "users";
+        }
+    )
+    userList;
 
-  users.users = lib.mapAttrs (_: user: {
-    enable = true;
+  users.users =
+    lib.mapAttrs (_: user: {
+      enable = true;
 
-    description = user.fullName;
-    isNormalUser = true;
-    createHome = true;
+      description = user.fullName;
+      isNormalUser = true;
+      createHome = true;
 
-    hashedPasswordFile = config.age.secrets."password-${user.name}".path;
+      hashedPasswordFile = config.age.secrets."password-${user.name}".path;
 
-    extraGroups = [
-      "wheel"
+      extraGroups = [
+        "wheel"
 
-      "audio"
-      "input"
-      "video"
+        "audio"
+        "input"
+        "video"
 
-      "networkmanager"
-      "tailscale"
+        "networkmanager"
+        "tailscale"
 
-      "cdrom"
-      "optical"
-    ];
+        "cdrom"
+        "optical"
+      ];
 
-    shell = pkgs.zsh;
-  }) userList;
+      shell = pkgs.zsh;
+    })
+    userList;
 
   systemd.tmpfiles.rules =
     lib.flatten (
       lib.mapAttrsToList (username: _: [
         "d /home/${username}/.ssh 0700 ${username} users - -"
-      ]) userList
+      ])
+      userList
     )
     ++ lib.flatten (
       lib.mapAttrsToList (
         username: user:
-        lib.mapAttrsToList (target: source: [
-          "r /home/${username}/${target}"
-          "L /home/${username}/${target} - - - - ${source}"
-        ]) (user.bindDirs or { })
-      ) userList
+          lib.mapAttrsToList (target: source: [
+            "r /home/${username}/${target}"
+            "L /home/${username}/${target} - - - - ${source}"
+          ]) (user.bindDirs or {})
+      )
+      userList
     );
 
   home-manager = {
@@ -155,79 +157,82 @@
       pkgConfig = config.pkgConfig;
     };
 
-    users = lib.mapAttrs (
-      username: userConfig:
-      {
-        config,
-        hostConfig,
-        ...
-      }:
-      {
-        imports = [
-          inputs.self.homeModules
+    users =
+      lib.mapAttrs (
+        username: userConfig: {
+          config,
+          hostConfig,
+          ...
+        }: {
+          imports = [
+            inputs.self.homeModules
 
-          inputs.agenix.homeManagerModules.default
-        ];
-
-        nixpkgs = {
-          overlays = [
-            inputs.self.overlays.additions
-            inputs.self.overlays.modifications
-            inputs.self.overlays.unstable-packages
-
-            inputs.firefox-addons.overlays.default
-            inputs.obsidian-plugins.overlays.default
-
-            (final: prev: {
-              valkey = prev.valkey.overrideAttrs (oldAttrs: {
-                doCheck = false;
-              });
-            })
+            inputs.agenix.homeManagerModules.default
           ];
 
-          config = {
-            allowUnfree = true;
-            permittedInsecurePackages = [ ];
+          nixpkgs = {
+            overlays = [
+              inputs.self.overlays.additions
+              inputs.self.overlays.modifications
+              inputs.self.overlays.unstable-packages
+
+              inputs.firefox-addons.overlays.default
+              inputs.obsidian-plugins.overlays.default
+
+              (final: prev: {
+                valkey = prev.valkey.overrideAttrs (oldAttrs: {
+                  doCheck = false;
+                });
+              })
+            ];
+
+            config = {
+              allowUnfree = true;
+              permittedInsecurePackages = [];
+            };
           };
-        };
 
-        age.identityPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
-        _module.args.userConfig = userConfig;
+          age.identityPaths = ["${config.home.homeDirectory}/.ssh/id_ed25519"];
+          _module.args.userConfig = userConfig;
 
-        home = {
-          username = username;
-          packages = userConfig.packages pkgs;
+          home = {
+            username = username;
+            packages = userConfig.packages pkgs;
 
-          homeDirectory = "/home/${username}";
-          file.".face".source = ../../assets/avatar + "/${userConfig.avatar}";
-          file.".ssh/id_ed25519.pub" = {
-            text = ''
-              ${userConfig.sshPublicKey} ${username}@${hostConfig.hostname}
-            '';
+            homeDirectory = "/home/${username}";
+            file.".face".source = ../../assets/avatar + "/${userConfig.avatar}";
+            file.".ssh/id_ed25519.pub" = {
+              text = ''
+                ${userConfig.sshPublicKey} ${username}@${hostConfig.hostname}
+              '';
+            };
+
+            stateVersion = "25.11";
           };
 
-          stateVersion = "25.11";
-        };
+          age.secrets = (
+            builtins.mapAttrs (name: _: {
+              file = ../../secrets/mail/${name}.age;
+            })
+            userConfig.accounts
+          );
 
-        age.secrets = (
-          builtins.mapAttrs (name: _: {
-            file = ../../secrets/mail/${name}.age;
-          }) userConfig.accounts
-        );
+          accounts.email.accounts =
+            builtins.mapAttrs (
+              name: value:
+                value
+                // {
+                  passwordCommand = "cat ${config.age.secrets.${name}.path}";
+                }
+            )
+            userConfig.accounts;
 
-        accounts.email.accounts = builtins.mapAttrs (
-          name: value:
-          value
-          // {
-            passwordCommand = "cat ${config.age.secrets.${name}.path}";
-          }
-        ) userConfig.accounts;
+          programs.home-manager.enable = true;
+          programs.zsh.enable = true;
 
-        programs.home-manager.enable = true;
-        programs.zsh.enable = true;
-
-        systemd.user.startServices = "sd-switch";
-      }
-    ) userList;
+          systemd.user.startServices = "sd-switch";
+        }
+      )
+      userList;
   };
 }

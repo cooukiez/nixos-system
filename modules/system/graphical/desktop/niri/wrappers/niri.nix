@@ -1,46 +1,42 @@
 /*
-  modules/system/graphical/desktop/niri/wrappers/niri.nix
+modules/system/graphical/desktop/niri/wrappers/niri.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   inputs,
   config,
   lib,
   ...
-}:
-let
+}: let
   wlib = inputs.wrappers.lib;
 in
-wlib.wrapModule (
-  {
-    config,
-    wlib,
-    lib,
-    ...
-  }:
-  {
-    _class = "wrapper";
+  wlib.wrapModule (
+    {
+      config,
+      wlib,
+      lib,
+      ...
+    }: {
+      _class = "wrapper";
 
-    options = {
-      settings = lib.mkOption {
-        type = lib.types.attrs;
-        default = { };
+      options = {
+        settings = lib.mkOption {
+          type = lib.types.attrs;
+          default = {};
+        };
+
+        extraConfig = lib.mkOption {
+          type = lib.types.lines;
+          default = "";
+        };
       };
 
-      extraConfig = lib.mkOption {
-        type = lib.types.lines;
-        default = "";
-      };
-    };
-
-    config.env =
-      let
+      config.env = let
         compiledConfig =
-          (lib.optionalString (config.settings != { }) (
-            (import ./generators.nix { inherit lib; }).toKDL { } config.settings
+          (lib.optionalString (config.settings != {}) (
+            (import ./generators.nix {inherit lib;}).toKDL {} config.settings
           ))
           + lib.optionalString (config.extraConfig != "") config.extraConfig;
 
@@ -51,24 +47,23 @@ wlib.wrapModule (
             ${lib.getExe config.package} validate -c $out
           '';
         };
-      in
-      {
+      in {
         NIRI_CONFIG = "${checkedConfig}";
       };
 
-    config.package = config.pkgs.niri;
-    config.filesToPatch = [
-      "share/applications/*.desktop"
-      "share/systemd/user/niri.service"
-    ];
+      config.package = config.pkgs.niri;
+      config.filesToPatch = [
+        "share/applications/*.desktop"
+        "share/systemd/user/niri.service"
+      ];
 
-    config.meta.platforms = lib.platforms.linux;
-    config.meta.maintainers = [
-      {
-        name = "cooukiez";
-        github = "cooukiez";
-        githubId = 61082023;
-      }
-    ];
-  }
-)
+      config.meta.platforms = lib.platforms.linux;
+      config.meta.maintainers = [
+        {
+          name = "cooukiez";
+          github = "cooukiez";
+          githubId = 61082023;
+        }
+      ];
+    }
+  )

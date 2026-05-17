@@ -1,10 +1,9 @@
 /*
-  modules/home/desktop/nn/noctalia/bar.nix
+modules/home/desktop/nn/noctalia/bar.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   # layout
   position = "top";
@@ -50,7 +49,7 @@
   reverseScroll = false;
 
   # monitors
-  monitors = [ ];
+  monitors = [];
   screenOverrides = [
     {
       enabled = false;

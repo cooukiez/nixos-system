@@ -1,16 +1,14 @@
 /*
-  hosts/lvl/config.nix
+hosts/lvl/config.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   pkgs,
   hostConfig,
   ...
-}:
-{
+}: {
   # boot configuration
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
@@ -56,8 +54,8 @@
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ ];
-      allowedUDPPorts = [ ];
+      allowedTCPPorts = [];
+      allowedUDPPorts = [];
     };
   };
 
@@ -69,7 +67,7 @@
 
   # locale configuration
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocales = [ ];
+  i18n.extraLocales = [];
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_IE.UTF-8";
     LC_IDENTIFICATION = "en_IE.UTF-8";

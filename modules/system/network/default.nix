@@ -1,18 +1,16 @@
 /*
-  modules/system/network/default.nix
+modules/system/network/default.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
-  network = import ./packages.nix { inherit pkgs; };
+}: let
+  network = import ./packages.nix {inherit pkgs;};
   cfg = config.networkConfig;
 
   mkEnableDefault = lib.mkOption {
@@ -24,8 +22,7 @@ let
     type = lib.types.bool;
     default = false;
   };
-in
-{
+in {
   imports = [
     ./shares.nix
   ];
@@ -78,15 +75,14 @@ in
       };
     };
 
-    services.tailscale =
-      let
-        tailscaleEnabled = cfg.tailscaleClient || cfg.tailscaleServer;
-      in
+    services.tailscale = let
+      tailscaleEnabled = cfg.tailscaleClient || cfg.tailscaleServer;
+    in
       lib.mkIf tailscaleEnabled {
         enable = true;
 
         extraUpFlags =
-          [ ]
+          []
           ++ lib.optionals cfg.tailscaleClient [
             "--exit-node=${cfg.tailscaleClientExitNode}"
             "--exit-node-allow-lan-access=true"
@@ -104,7 +100,7 @@ in
     services.networkd-dispatcher = lib.mkIf cfg.tailscaleServer {
       enable = true;
       rules."50-tailscale-optimizations" = {
-        onState = [ "routable" ];
+        onState = ["routable"];
         script = ''
           ${pkgs.ethtool}/bin/ethtool -K eth0 rx-udp-gro-forwarding on rx-gro-list off
         '';
@@ -139,7 +135,7 @@ in
     };
 
     networking.firewall = lib.mkIf cfg.vsftpd {
-      allowedTCPPorts = [ 21 ];
+      allowedTCPPorts = [21];
       allowedTCPPortRanges = [
         {
           from = 30000;
@@ -150,7 +146,7 @@ in
 
     services.printing = lib.mkIf cfg.printing {
       enable = true;
-      drivers = [ pkgs.hplip ];
+      drivers = [pkgs.hplip];
     };
 
     services.avahi = lib.mkIf cfg.printing {

@@ -1,18 +1,16 @@
 /*
-  modules/system/packages/default.nix
+modules/system/packages/default.nix
 
-  part of nixos system
-  created 2026-04-21 by ludw
+part of nixos system
+created 2026-04-21 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
-  packages = import ./packages.nix { inherit pkgs; };
+}: let
+  packages = import ./packages.nix {inherit pkgs;};
   cfg = config.packageConfig;
 
   clear-logs = pkgs.writeShellScriptBin "clear-logs" (builtins.readFile ./scripts/clear-logs.sh);
@@ -31,8 +29,7 @@ let
     type = lib.types.bool;
     default = false;
   };
-in
-{
+in {
   imports = [
     ./programs/nvim
     ./programs/git.nix
@@ -87,31 +84,28 @@ in
 
     environment.sessionVariables = {
       VCPKG_FORCE_SYSTEM_BINARIES = 1;
-      LD_LIBRARY_PATH = [ "${pkgs.zlib}/lib" ];
+      LD_LIBRARY_PATH = ["${pkgs.zlib}/lib"];
     };
 
-    environment.systemPackages = [
-      clear-logs
-      cp-fonts
-      del-snaps
-      edit-secret
-      fix-perms
-      snaps-du
-    ]
-    ++ (lib.optionals cfg.corePkg packages.core)
-    ++ (lib.optionals cfg.nixPkg packages.nix)
-    ++ (lib.optionals cfg.secretsPkg packages.secrets)
-    ++ (lib.optionals cfg.utilsPkg packages.utils)
-
-    ++ (lib.optionals cfg.devPkg packages.dev)
-    ++ (lib.optionals cfg.filesystemPkg packages.filesystem)
-
-    ++ (lib.optionals cfg.hardwareCorePkg packages.hardwareCore)
-    ++ (lib.optionals cfg.hardwareDesktopPkg packages.hardwareDesktop)
-
-    ++ (lib.optionals cfg.mediaCorePkg packages.mediaCore)
-    ++ (lib.optionals cfg.mediaExtraPkg packages.mediaExtra)
-
-    ++ (lib.optionals cfg.uselessPkg packages.useless);
+    environment.systemPackages =
+      [
+        clear-logs
+        cp-fonts
+        del-snaps
+        edit-secret
+        fix-perms
+        snaps-du
+      ]
+      ++ (lib.optionals cfg.corePkg packages.core)
+      ++ (lib.optionals cfg.nixPkg packages.nix)
+      ++ (lib.optionals cfg.secretsPkg packages.secrets)
+      ++ (lib.optionals cfg.utilsPkg packages.utils)
+      ++ (lib.optionals cfg.devPkg packages.dev)
+      ++ (lib.optionals cfg.filesystemPkg packages.filesystem)
+      ++ (lib.optionals cfg.hardwareCorePkg packages.hardwareCore)
+      ++ (lib.optionals cfg.hardwareDesktopPkg packages.hardwareDesktop)
+      ++ (lib.optionals cfg.mediaCorePkg packages.mediaCore)
+      ++ (lib.optionals cfg.mediaExtraPkg packages.mediaExtra)
+      ++ (lib.optionals cfg.uselessPkg packages.useless);
   };
 }

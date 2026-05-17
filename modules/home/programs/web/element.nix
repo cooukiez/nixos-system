@@ -1,17 +1,15 @@
 /*
-  modules/home/programs/web/element.nix
+modules/home/programs/web/element.nix
 
-  part of nixos system
-  created 2026-05-10 by ludw
+part of nixos system
+created 2026-05-10 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.firefox;
 
   baseArgs = [
@@ -19,10 +17,9 @@ let
     "--disable-vulkan"
   ];
 
-  kdeArgs = [ "--password-store=kwallet6" ];
-  nnArgs = [ "--password-store=gnome-libsecret" ];
-in
-{
+  kdeArgs = ["--password-store=kwallet6"];
+  nnArgs = ["--password-store=gnome-libsecret"];
+in {
   config = lib.mkIf cfg {
     home.packages = [
       (pkgs.element-desktop.override {

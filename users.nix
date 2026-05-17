@@ -1,14 +1,12 @@
 /*
-  users.nix
+users.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 let
   accounts = import ./accounts.nix;
-in
-{
+in {
   ludw = {
     session = "nn";
 
@@ -28,7 +26,7 @@ in
       web = accounts.web;
     };
 
-    packages = pkgs: with pkgs; [ ];
+    packages = pkgs: with pkgs; [];
 
     bindDirs = {
       "Documents" = "/data/documents";
@@ -70,7 +68,7 @@ in
       web = accounts.web;
     };
 
-    packages = pkgs: with pkgs; [ ];
+    packages = pkgs: with pkgs; [];
 
     bindDirs = {
       "Documents" = "/data/documents";
@@ -111,8 +109,8 @@ in
       web = accounts.web;
     };
 
-    packages =
-      pkgs: with pkgs; [
+    packages = pkgs:
+      with pkgs; [
         asana-pwa
         gamemaker
       ];

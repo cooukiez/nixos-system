@@ -1,12 +1,10 @@
 /*
-  modules/system/packages/programs/nvim/modules/treesitter.nix
+modules/system/packages/programs/nvim/modules/treesitter.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # highlight, edit, and navigate code
   # https://nix-community.github.io/nixvim/plugins/treesitter/index.html
   plugins.treesitter = {

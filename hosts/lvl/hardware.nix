@@ -1,18 +1,15 @@
 /*
-  hosts/lvl/hardware.nix
+hosts/lvl/hardware.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   inputs,
   config,
   pkgs,
-  lib,
   ...
-}:
-{
+}: {
   disabledModules = [
     "hardware/facter"
   ];
@@ -57,7 +54,7 @@
 
   # memory and swap
   swapDevices = [
-    { device = "/dev/disk/by-partlabel/swap"; }
+    {device = "/dev/disk/by-partlabel/swap";}
   ];
 
   zramSwap.enable = true;
@@ -71,11 +68,11 @@
 
   # network
   boot.kernel.sysctl = {
-    "net.ipv4.conf.all.proxy_arp" = 0;
-    "net.ipv4.conf.default.proxy_arp" = 0;
+    # "net.ipv4.conf.all.proxy_arp" = 0;
+    # "net.ipv4.conf.default.proxy_arp" = 0;
 
-    "net.ipv6.conf.all.use_tempaddr" = lib.mkForce 2;
-    "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
+    # "net.ipv6.conf.all.use_tempaddr" = lib.mkForce 2;
+    # "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
   };
 
   # battery
@@ -107,7 +104,7 @@
     extraConfig.pipewire = {
       "10-airplay" = {
         "context.modules" = [
-          { name = "libpipewire-module-raop-discover"; }
+          {name = "libpipewire-module-raop-discover";}
         ];
       };
 
@@ -147,7 +144,7 @@
     "intel-ipu6-isys"
   ];
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
 
   # drive
   services.btrfs.autoScrub = {
@@ -174,7 +171,7 @@
   };
 
   systemd.timers.snapshot-data = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig = {
       OnCalendar = "*:0/30";
       Persistent = true;
@@ -200,7 +197,7 @@
   };
 
   systemd.timers.snapshot-cleanup = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
     timerConfig.OnCalendar = "daily";
   };
 

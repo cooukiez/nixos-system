@@ -1,15 +1,10 @@
 /*
-  modules/system/graphical/packages.nix
+modules/system/graphical/packages.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   #
   # packages
   #
@@ -81,7 +76,7 @@
     lunar-client
 
     (prismlauncher.override {
-      additionalPrograms = [ ffmpeg ];
+      additionalPrograms = [ffmpeg];
 
       jdks = [
         pkgs.jdk

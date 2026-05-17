@@ -1,15 +1,10 @@
 /*
-  modules/system/packages/programs/git.nix
+modules/system/packages/programs/git.nix
 
-  part of nixos system
-  created 2026-04-23 by ludw
+part of nixos system
+created 2026-04-23 by ludw
 */
-
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   programs.git = {
     enable = true;
     package = pkgs.git;

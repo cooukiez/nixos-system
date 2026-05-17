@@ -1,21 +1,18 @@
 /*
-  modules/home/default.nix
+modules/home/default.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   userConfig,
   ...
-}:
-let
-  packages = import ./programs/packages.nix { inherit pkgs; };
-in
-{
+}: let
+  packages = import ./programs/packages.nix {inherit pkgs;};
+in {
   imports = [
     ./desktop/kde
     ./desktop/nn
@@ -44,11 +41,10 @@ in
       nn = lib.mkIf (userConfig.session == "nn") true;
     };
 
-    home.packages =
-      let
-        kde = packages.kde;
-        nn = packages.nn ++ packages.gnome;
-      in
+    home.packages = let
+      kde = packages.kde;
+      nn = packages.nn ++ packages.gnome;
+    in
       lib.optionals config.desktop.kde kde ++ lib.optionals config.desktop.nn nn;
   };
 }

@@ -1,10 +1,9 @@
 /*
-  modules/system/packages/programs/nvim/modules/indent-blankline.nix
+modules/system/packages/programs/nvim/modules/indent-blankline.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   # add indentation guides even on blank lines
   # https://nix-community.github.io/nixvim/plugins/indent-blankline/index.html

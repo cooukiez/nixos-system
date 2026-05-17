@@ -1,26 +1,23 @@
 /*
-  modules/system/graphical/media/default.nix
+modules/system/graphical/media/default.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
-  media = import ./packages.nix { inherit config pkgs; };
+}: let
+  media = import ./packages.nix {inherit config pkgs;};
   cfg = config.graphicalConfig.media;
 
   mkEnableDefault = lib.mkOption {
     type = lib.types.bool;
     default = true;
   };
-in
-{
+in {
   imports = [
     ./spotify.nix
   ];
@@ -41,13 +38,13 @@ in
         };
       };
 
-      default = { };
+      default = {};
     };
   };
 
   config = {
     environment.systemPackages =
-      [ ]
+      []
       ++ (lib.optionals cfg.documentsPkg media.documents)
       ++ (lib.optionals cfg.imagesPkg media.images)
       ++ (lib.optionals cfg.literaturePkg media.literature)

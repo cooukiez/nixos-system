@@ -1,15 +1,10 @@
 /*
-  modules/home/programs/web/config/search.nix
+modules/home/programs/web/config/search.nix
 
-  part of nixos system
-  created 2026-05-06 by ludw
+part of nixos system
+created 2026-05-06 by ludw
 */
-
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   force = true;
   default = "ddg";
   privateDefault = "ddg";
@@ -29,7 +24,7 @@
       ];
 
       icon = "https://duckduckgo.com/favicon.ico";
-      definedAliases = [ "@ddg" ];
+      definedAliases = ["@ddg"];
     };
 
     nix-packages = {
@@ -51,7 +46,7 @@
       ];
 
       icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-      definedAliases = [ "@np" ];
+      definedAliases = ["@np"];
     };
 
     mynixos = {
@@ -63,7 +58,7 @@
       ];
 
       icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-      definedAliases = [ "@mn" ];
+      definedAliases = ["@mn"];
     };
 
     nixos-wiki = {
@@ -75,7 +70,7 @@
       ];
 
       icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-      definedAliases = [ "@nw" ];
+      definedAliases = ["@nw"];
     };
 
     google.metaData.hidden = true;

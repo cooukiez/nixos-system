@@ -1,15 +1,10 @@
 /*
-  modules/home/programs/packages.nix
+modules/home/programs/packages.nix
 
-  part of nixos system
-  created 2026-04-27 by ludw
+part of nixos system
+created 2026-04-27 by ludw
 */
-
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   #
   # desktop specific
   #

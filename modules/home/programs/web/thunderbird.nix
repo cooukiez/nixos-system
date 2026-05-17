@@ -1,21 +1,18 @@
 /*
-  modules/home/programs/web/thunderbird.nix
+modules/home/programs/web/thunderbird.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.thunderbird;
   settings = import ./config/settings.nix;
-in
-{
+in {
   config = lib.mkIf cfg {
     programs.thunderbird = {
       enable = true;
@@ -24,13 +21,15 @@ in
       profiles.default = {
         isDefault = true;
 
-        settings = settings.core // {
-          "mail.biff.play_sound" = false;
+        settings =
+          settings.core
+          // {
+            "mail.biff.play_sound" = false;
 
-          "browser.aboutwelcome.enabled" = false;
-          "mailnews.start_page.enabled" = false;
-          "mailnews.start_page_override.mstone" = "ignore";
-        };
+            "browser.aboutwelcome.enabled" = false;
+            "mailnews.start_page.enabled" = false;
+            "mailnews.start_page_override.mstone" = "ignore";
+          };
 
         userChrome = ''
           .titlebar-buttonbox-container {

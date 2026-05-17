@@ -1,10 +1,9 @@
 /*
-  secrets/secrets.nix
+secrets/secrets.nix
 
-  part of nixos system
-  created 2026-02-23 by ludw
+part of nixos system
+created 2026-02-23 by ludw
 */
-
 let
   ludw = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHFFrZLZVIUZBYTGX5gRONHPEv+5QAhq8i6Rm9wHeasK";
   redi = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGe437tVoIrqmV1UzVBObyvsr+pNJ6Gp+UgQtWx6frpV";
@@ -20,8 +19,7 @@ let
 
     lvl
   ];
-in
-{
+in {
   "mail/ludwig-mailbox.age".publicKeys = allKeys;
   "mail/ludwig-web.age".publicKeys = allKeys;
   "mail/web.age".publicKeys = allKeys;

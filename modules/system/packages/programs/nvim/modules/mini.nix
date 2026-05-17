@@ -1,10 +1,9 @@
 /*
-  modules/system/packages/programs/nvim/modules/mini.nix
+modules/system/packages/programs/nvim/modules/mini.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
 {
   # collection of various small independent plugins / modules
   # https://nix-community.github.io/nixvim/plugins/mini.html

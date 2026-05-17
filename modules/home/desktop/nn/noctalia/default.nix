@@ -1,21 +1,18 @@
 /*
-  modules/home/desktop/nn/noctalia/default.nix
+modules/home/desktop/nn/noctalia/default.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   inputs,
   config,
   pkgConfig,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.desktop.nn;
-in
-{
+in {
   imports = [
     inputs.noctalia.homeModules.default
   ];
@@ -24,8 +21,8 @@ in
     systemd.user.services.noctalia = {
       Unit = {
         Description = "Noctalia Shell";
-        PartOf = [ "graphical-session.target" ];
-        After = [ "graphical-session.target" ];
+        PartOf = ["graphical-session.target"];
+        After = ["graphical-session.target"];
       };
 
       Service = {
@@ -36,7 +33,7 @@ in
       };
 
       Install = {
-        WantedBy = [ "graphical-session.target" ];
+        WantedBy = ["graphical-session.target"];
       };
     };
 
@@ -81,7 +78,7 @@ in
         controlCenter = import ./control-center.nix;
         desktopWidgets = import ./desktop-widgets.nix;
         dock = import ./dock.nix;
-        sessionMenu = import ./session-menu.nix { inherit pkgConfig lib; };
+        sessionMenu = import ./session-menu.nix {inherit pkgConfig lib;};
 
         # colorSchemes.predefinedScheme = "Monochrome";
 
@@ -113,16 +110,16 @@ in
           reverseScroll = false;
           smoothScrollEnabled = true;
           keybinds = {
-            keyUp = [ "Up" ];
-            keyDown = [ "Down" ];
-            keyLeft = [ "Left" ];
-            keyRight = [ "Right" ];
+            keyUp = ["Up"];
+            keyDown = ["Down"];
+            keyLeft = ["Left"];
+            keyRight = ["Right"];
             keyEnter = [
               "Return"
               "Enter"
             ];
-            keyEscape = [ "Esc" ];
-            keyRemove = [ "Del" ];
+            keyEscape = ["Esc"];
+            keyRemove = ["Del"];
           };
 
           # system
@@ -144,14 +141,14 @@ in
           spectrumMirrored = true;
 
           preferredPlayer = "";
-          mprisBlacklist = [ ];
+          mprisBlacklist = [];
         };
 
         brightness = {
           brightnessStep = 5;
           enforceMinimum = false;
           enableDdcSupport = true;
-          backlightDeviceMappings = [ ];
+          backlightDeviceMappings = [];
         };
 
         colorSchemes = {
@@ -170,7 +167,7 @@ in
         };
 
         templates = {
-          activeTemplates = [ ];
+          activeTemplates = [];
           enableUserTheming = false;
         };
 
@@ -305,7 +302,7 @@ in
           enableBatteryToast = true;
 
           # monitors
-          monitors = [ ];
+          monitors = [];
         };
 
         osd = {
@@ -361,8 +358,8 @@ in
           enableMultiMonitorDirectories = true;
 
           # file management
-          monitorDirectories = [ ];
-          favorites = [ ];
+          monitorDirectories = [];
+          favorites = [];
           sortOrder = "name";
           showHiddenFiles = false;
           hideWallpaperFilenames = false;

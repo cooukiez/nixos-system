@@ -1,18 +1,16 @@
 /*
-  modules/home/programs/common/git.nix
+modules/home/programs/common/git.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   userConfig,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.git;
   githubTokenSecretFile = ../../../../secrets/github-token-classic.age;
 
@@ -25,8 +23,7 @@ let
   '';
 
   gitSecretHelper = pkgs.writeShellScript "git-secret-helper" gitSecretHelperScript;
-in
-{
+in {
   config = lib.mkIf cfg {
     age.secrets.github-token.file = githubTokenSecretFile;
 

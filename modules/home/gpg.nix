@@ -1,35 +1,34 @@
 /*
-  modules/home/gpg.nix
+modules/home/gpg.nix
 
-  part of nixos system
-  created 2026-05-10 by ludw
+part of nixos system
+created 2026-05-10 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-{
+}: {
   programs.gpg = {
     enable = true;
     homedir = "${config.home.homeDirectory}/.gnupg";
   };
 
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-    enableZshIntegration = true;
-    defaultCacheTtl = 3600;
-  }
-  // lib.optionalAttrs (config.desktop.kde or false) {
-    pinentry.package = pkgs.kwalletcli;
-    pinentry.program = "${pkgs.kwalletcli}/bin/pinentry-kwallet";
-  }
-  // lib.optionalAttrs (config.desktop.nn or false) {
-    pinentry.package = pkgs.pinentry-gnome3;
-  };
+  services.gpg-agent =
+    {
+      enable = true;
+      enableSshSupport = true;
+      enableZshIntegration = true;
+      defaultCacheTtl = 3600;
+    }
+    // lib.optionalAttrs (config.desktop.kde or false) {
+      pinentry.package = pkgs.kwalletcli;
+      pinentry.program = "${pkgs.kwalletcli}/bin/pinentry-kwallet";
+    }
+    // lib.optionalAttrs (config.desktop.nn or false) {
+      pinentry.package = pkgs.pinentry-gnome3;
+    };
 
   age.secrets.gpg-primary = {
     file = ../../secrets/gpg-secret.age;
@@ -42,7 +41,7 @@
   };
 
   home.activation = {
-    importGpgKeys = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    importGpgKeys = config.lib.dag.entryAfter ["writeBoundary"] ''
       export GNUPGHOME="${config.programs.gpg.homedir}"
 
       if [ ! -d "$GNUPGHOME" ]; then

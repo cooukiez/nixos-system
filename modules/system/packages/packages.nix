@@ -1,15 +1,10 @@
 /*
-  modules/system/packages/packages.nix
+modules/system/packages/packages.nix
 
-  part of nixos system
-  created 2026-04-21 by ludw
+part of nixos system
+created 2026-04-21 by ludw
 */
-
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   #
   # core
   #
@@ -93,11 +88,12 @@
     shaderc
 
     (python3.withPackages (
-      ps: with ps; [
-        emoji
-        numpy
-        pandas
-      ]
+      ps:
+        with ps; [
+          emoji
+          numpy
+          pandas
+        ]
     ))
   ];
 

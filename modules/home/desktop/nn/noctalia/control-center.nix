@@ -1,25 +1,24 @@
 /*
-  modules/home/desktop/nn/noctalia/control-center.nix
+modules/home/desktop/nn/noctalia/control-center.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   position = "close_to_bar_button";
   diskPath = "/";
   shortcuts = {
     left = [
-      { id = "Network"; }
-      { id = "Bluetooth"; }
-      { id = "WallpaperSelector"; }
-      { id = "NoctaliaPerformance"; }
+      {id = "Network";}
+      {id = "Bluetooth";}
+      {id = "WallpaperSelector";}
+      {id = "NoctaliaPerformance";}
     ];
     right = [
-      { id = "Notifications"; }
-      { id = "PowerProfile"; }
-      { id = "KeepAwake"; }
-      { id = "NightLight"; }
+      {id = "Notifications";}
+      {id = "PowerProfile";}
+      {id = "KeepAwake";}
+      {id = "NightLight";}
     ];
   };
   cards = [

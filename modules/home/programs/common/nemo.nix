@@ -1,20 +1,17 @@
 /*
-  modules/home/programs/common/nemo.nix
+modules/home/programs/common/nemo.nix
 
-  part of nixos system
-  created 2026-05-07 by ludw
+part of nixos system
+created 2026-05-07 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.kitty;
-in
-{
+in {
   config = lib.mkIf cfg {
     dconf.settings = {
       "org/cinnamon/desktop/applications/terminal" = {

@@ -1,25 +1,22 @@
 /*
-  modules/home/desktop/kde/packages.nix
+modules/home/desktop/kde/packages.nix
 
-  part of nixos system
-  created 2026-04-27 by ludw
+part of nixos system
+created 2026-04-27 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.desktop.kde;
 
   breezeChameleonDark = pkgs.fetchzip {
     url = "https://github.com/cooukiez/breeze-chameleon-dark-upstream/releases/download/latest/Breeze-Chameleon-Dark.tar.xz";
     sha256 = "sha256-18d1HcluLQbMcigaGn5tG01xzTug5sNyGZawot0zrG8=";
   };
-in
-{
+in {
   config = lib.mkIf cfg {
     home.file.".local/share/icons/Breeze-Chameleon-Dark" = {
       source = breezeChameleonDark;

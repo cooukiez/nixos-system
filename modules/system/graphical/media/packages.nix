@@ -1,16 +1,14 @@
 /*
-  modules/system/graphical/media/packages.nix
+modules/system/graphical/media/packages.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   pkgs,
   ...
-}:
-{
+}: {
   documents = with pkgs; [
     affine
     onlyoffice-desktopeditors
@@ -68,8 +66,7 @@
     musescore
   ];
 
-  videos =
-    with pkgs;
+  videos = with pkgs;
     [
       kdePackages.kdenlive
 

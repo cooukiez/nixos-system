@@ -1,15 +1,10 @@
 /*
-  modules/system/packages/programs/nvim/modules/lsp.nix
+modules/system/packages/programs/nvim/modules/lsp.nix
 
-  part of nixos system
-  created 2026-04-24 by ludw
+part of nixos system
+created 2026-04-24 by ludw
 */
-
-{
-  pkgs,
-  ...
-}:
-{
+{pkgs, ...}: {
   # useful status updates for lsp
   # https://nix-community.github.io/nixvim/plugins/fidget/index.html
   plugins.fidget = {
@@ -31,7 +26,7 @@
       library = [
         {
           path = "\${3rd}/luv/library";
-          words = [ "vim%.uv" ];
+          words = ["vim%.uv"];
         }
       ];
     };

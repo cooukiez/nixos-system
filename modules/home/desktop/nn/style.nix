@@ -1,21 +1,18 @@
 /*
-  modules/home/desktop/nn/style.nix
+modules/home/desktop/nn/style.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   inputs,
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.desktop.nn;
-in
-{
+in {
   imports = [
     inputs.stylix.homeModules.default
   ];
@@ -41,8 +38,8 @@ in
       targets.zed.enable = false;
       targets.zen-browser.enable = false;
 
-      targets.firefox.profileNames = [ "default" ];
-      targets.zen-browser.profileNames = [ "default" ];
+      targets.firefox.profileNames = ["default"];
+      targets.zen-browser.profileNames = ["default"];
 
       # horizon base16
       base16Scheme = {

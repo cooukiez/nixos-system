@@ -1,23 +1,19 @@
 /*
-  modules/system/packages/penetration.nix
+modules/system/packages/penetration.nix
 
-  part of nixos system
-  created 2026-04-22 by ludw
+part of nixos system
+created 2026-04-22 by ludw
 */
-
 {
   config,
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.packageConfig;
-in
-{
+in {
   environment.systemPackages = lib.mkIf cfg.penetrationPkg (
-    with pkgs;
-    [
+    with pkgs; [
       ### exploitation ###
       commix
       crackle

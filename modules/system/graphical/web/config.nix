@@ -1,10 +1,9 @@
 /*
-  modules/system/graphical/web/config.nix
+modules/system/graphical/web/config.nix
 
-  part of nixos system
-  created 2026-04-23 by ludw
+part of nixos system
+created 2026-04-23 by ludw
 */
-
 {
   preferences = {
     "widget.use-xdg-desktop-portal.file-picker" = 1;

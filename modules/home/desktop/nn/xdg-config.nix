@@ -1,16 +1,14 @@
 /*
-  modules/home/desktop/nn/xdg-config.nix
+modules/home/desktop/nn/xdg-config.nix
 
-  part of nixos system
-  created 2026-02-26 by ludw
+part of nixos system
+created 2026-02-26 by ludw
 */
-
 {
   config,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.desktop.nn;
 
   disabled = ''
@@ -22,32 +20,32 @@ let
   '';
 
   editors = {
-    general = [ "code.desktop" ];
-    intermediate = [ "code.desktop" ];
+    general = ["code.desktop"];
+    intermediate = ["code.desktop"];
   };
 
   apps = {
-    pdf = [ "org.pwmt.zathura.desktop" ];
+    pdf = ["org.pwmt.zathura.desktop"];
 
-    image = [ "imv.desktop" ];
-    imageBackup = [ "org.gnome.Loupe.desktop" ];
+    image = ["imv.desktop"];
+    imageBackup = ["org.gnome.Loupe.desktop"];
 
-    audio = [ "org.gnome.Music.desktop" ];
-    video = [ "org.gnome.Showtime.desktop" ];
+    audio = ["org.gnome.Music.desktop"];
+    video = ["org.gnome.Showtime.desktop"];
 
-    archive = [ "nemo.desktop" ];
-    file = [ "nemo.desktop" ];
+    archive = ["nemo.desktop"];
+    file = ["nemo.desktop"];
 
-    browser = [ "firefox.desktop" ];
+    browser = ["firefox.desktop"];
   };
 
-  forTypes =
-    types: app:
+  forTypes = types: app:
     builtins.listToAttrs (
       map (t: {
         name = t;
         value = app;
-      }) types
+      })
+      types
     );
 
   mimeDefaults =
@@ -55,134 +53,135 @@ let
     # development
     #
     (forTypes [
-      "text/plain"
-      "application/octet-stream"
+        "text/plain"
+        "application/octet-stream"
 
-      "application/xml"
-      "text/xml"
+        "application/xml"
+        "text/xml"
 
-      "text/x-yaml"
-      "application/x-yaml"
+        "text/x-yaml"
+        "application/x-yaml"
 
-      "application/toml"
+        "application/toml"
 
-      "text/csv"
+        "text/csv"
 
-      "application/json"
-      "application/ld+json"
-      "text/json"
+        "application/json"
+        "application/ld+json"
+        "text/json"
 
-      "application/x-shellscript"
-      "text/x-shellscript"
-    ] editors.general)
-
+        "application/x-shellscript"
+        "text/x-shellscript"
+      ]
+      editors.general)
     // (forTypes [
-      "text/x-python"
-      "application/x-python-code"
+        "text/x-python"
+        "application/x-python-code"
 
-      "text/x-java"
-      "text/x-java-source"
+        "text/x-java"
+        "text/x-java-source"
 
-      "text/x-c"
-      "text/x-c++"
-      "text/x-c++src"
-      "text/x-chdr"
-      "text/x-c++hdr"
+        "text/x-c"
+        "text/x-c++"
+        "text/x-c++src"
+        "text/x-chdr"
+        "text/x-c++hdr"
 
-      "text/rust"
-      "text/x-rust"
+        "text/rust"
+        "text/x-rust"
 
-      "text/html"
-      "application/xhtml+xml"
+        "text/html"
+        "application/xhtml+xml"
 
-      "text/css"
+        "text/css"
 
-      "application/javascript"
-      "text/javascript"
+        "application/javascript"
+        "text/javascript"
 
-      "application/x-typescript"
+        "application/x-typescript"
 
-      "text/x-php"
-      "application/x-php"
+        "text/x-php"
+        "application/x-php"
 
-      "text/x-nix"
-    ] editors.intermediate)
-
+        "text/x-nix"
+      ]
+      editors.intermediate)
     #
     # documents
     #
     // (forTypes [
-      "application/pdf"
-    ] apps.pdf)
-
+        "application/pdf"
+      ]
+      apps.pdf)
     #
     # images
     #
     // (forTypes [
-      "image/png"
-      "image/jpeg"
-      "image/webp"
-      "image/gif"
-      "image/bmp"
-      "image/tiff"
-      "image/svg+xml"
-      "image/heif"
-      "image/heic"
-      "image/x-xcf"
-    ] apps.image)
-
+        "image/png"
+        "image/jpeg"
+        "image/webp"
+        "image/gif"
+        "image/bmp"
+        "image/tiff"
+        "image/svg+xml"
+        "image/heif"
+        "image/heic"
+        "image/x-xcf"
+      ]
+      apps.image)
     // (forTypes [
-      "image/ico"
-    ] apps.imageBackup)
-
+        "image/ico"
+      ]
+      apps.imageBackup)
     #
     # audio
     #
     // (forTypes [
-      "audio/mpeg"
-      "audio/flac"
-      "audio/ogg"
-      "audio/wav"
-    ] apps.audio)
-
+        "audio/mpeg"
+        "audio/flac"
+        "audio/ogg"
+        "audio/wav"
+      ]
+      apps.audio)
     #
     # video
     #
     // (forTypes [
-      "video/mp4"
-      "video/webm"
-      "video/x-matroska"
-      "video/x-msvideo"
-      "video/quicktime"
-      "video/mpeg"
-      "video/ogg"
-    ] apps.video)
-
+        "video/mp4"
+        "video/webm"
+        "video/x-matroska"
+        "video/x-msvideo"
+        "video/quicktime"
+        "video/mpeg"
+        "video/ogg"
+      ]
+      apps.video)
     #
     # directories
     #
     // (forTypes [
-      "application/zip"
-      "application/x-tar"
-      "application/x-gzip"
-      "application/x-bzip2"
-      "application/x-7z-compressed"
-      "application/x-rar"
-    ] apps.archive)
-
+        "application/zip"
+        "application/x-tar"
+        "application/x-gzip"
+        "application/x-bzip2"
+        "application/x-7z-compressed"
+        "application/x-rar"
+      ]
+      apps.archive)
     // (forTypes [
-      "inode/directory"
-    ] apps.file)
-
+        "inode/directory"
+      ]
+      apps.file)
     #
     # browsers
     #
     // (forTypes [
-      "x-scheme-handler/http"
-      "x-scheme-handler/https"
-      "x-scheme-handler/about"
-      "x-scheme-handler/unknown"
-    ] apps.browser);
+        "x-scheme-handler/http"
+        "x-scheme-handler/https"
+        "x-scheme-handler/about"
+        "x-scheme-handler/unknown"
+      ]
+      apps.browser);
 
   disabledDesktopEntries = [
     "kdesystemsettings.desktop"
@@ -204,8 +203,7 @@ let
     "org.kde.kwalletmanager.desktop"
     "org.kde.drkonqi.coredump.gui.desktop"
   ];
-in
-{
+in {
   config = lib.mkIf cfg {
     xdg = {
       enable = true;
@@ -213,10 +211,10 @@ in
       autostart = {
         enable = true;
         readOnly = true;
-        entries = [ ];
+        entries = [];
       };
 
-      portal.config.common."org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      portal.config.common."org.freedesktop.impl.portal.Secret" = ["gnome-keyring"];
 
       configFile."mimeapps.list".force = true;
 
@@ -230,7 +228,8 @@ in
       map (name: {
         name = "applications/${name}";
         value.text = disabled;
-      }) disabledDesktopEntries
+      })
+      disabledDesktopEntries
     );
   };
 }
