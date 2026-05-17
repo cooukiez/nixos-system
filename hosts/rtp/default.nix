@@ -49,6 +49,7 @@ created 2026-05-15 by ludw
         "dotnet-sdk-6.0.428"
         "dotnet-runtime-6.0.36"
 
+        "luanti-5.14.0"
         "googleearth-pro-7.3.6.10201"
         "ventoy-1.1.10"
       ];
