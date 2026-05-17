@@ -67,6 +67,10 @@ created 2026-05-17 by ludw
   '';
 
   # network
+  networking.interfaces.enp0s20f0u1c4i2 = {
+    useDHCP = true;
+  };
+
   boot.kernel.sysctl = {
     # "net.ipv4.conf.all.proxy_arp" = 0;
     # "net.ipv4.conf.default.proxy_arp" = 0;
