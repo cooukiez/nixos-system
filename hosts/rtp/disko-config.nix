@@ -1,8 +1,8 @@
 /*
-hosts/lvl/disko-config.nix
+hosts/rtp/disko-config.nix
 
 part of nixos system
-created 2026-02-26 by ludw
+created 2026-05-15 by ludw
 */
 {
   disko.devices.disk = {
