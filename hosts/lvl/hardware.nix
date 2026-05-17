@@ -8,6 +8,7 @@ created 2026-05-17 by ludw
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }: {
   disabledModules = [
@@ -22,13 +23,13 @@ created 2026-05-17 by ludw
     enable = true;
     reportPath = ./facter.json;
 
-    # detected.uefi.supported = true;
+    detected.uefi.supported = true;
 
-    # detected.graphics.enable = true;
-    # detected.bluetooth.enable = true;
+    detected.graphics.enable = true;
+    detected.bluetooth.enable = true;
 
-    # detected.camera.ipu6.enable = true;
-    # detected.fingerprint.enable = true;
+    detected.camera.ipu6.enable = true;
+    detected.fingerprint.enable = true;
   };
 
   hardware.enableAllFirmware = true;
@@ -68,11 +69,11 @@ created 2026-05-17 by ludw
 
   # network
   boot.kernel.sysctl = {
-    # "net.ipv4.conf.all.proxy_arp" = 0;
-    # "net.ipv4.conf.default.proxy_arp" = 0;
+    "net.ipv4.conf.all.proxy_arp" = 0;
+    "net.ipv4.conf.default.proxy_arp" = 0;
 
-    # "net.ipv6.conf.all.use_tempaddr" = lib.mkForce 2;
-    # "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
+    "net.ipv6.conf.all.use_tempaddr" = lib.mkForce 2;
+    "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
   };
 
   # battery

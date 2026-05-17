@@ -109,6 +109,7 @@ created 2026-04-22 by ludw
     openclonk
     pong3d
     quakespasm
+    space-cadet-pinball
     uhexen2
     veloren
     vkquake
