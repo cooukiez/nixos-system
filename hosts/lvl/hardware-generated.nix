@@ -25,7 +25,7 @@ created 2026-02-26 by ludw
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = lib.mkForce "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
+    device = "/dev/disk/by-uuid/314a17cb-460f-4952-8c92-d41295b63692";
     fsType = "btrfs";
     options = ["subvol=root"];
   };
