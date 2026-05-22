@@ -11,6 +11,7 @@ let
   ceirs = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDTfSJByS/+4vIn4AMZMjy2ehWfHFDnSq2WXzMDZnXDk";
 
   lvl = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOe6C64fZmVmZN1uQSJexFBoQRFaQXOpfg9piE+r8cdQ";
+  rtp = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJg+fbJcNykFYfpwCNE1xDVXvs6cBwYm67mKQz687c1j";
 
   allKeys = [
     ludw
@@ -18,6 +19,7 @@ let
     redi
 
     lvl
+    rtp
   ];
 in {
   "mail/ludwig-mailbox.age".publicKeys = allKeys;
