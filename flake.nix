@@ -13,6 +13,11 @@ created 2026-02-26 by ludw
 
     flake-utils.url = "github:numtide/flake-utils";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wrappers.url = "github:cooukiez/wrappers";
     agenix.url = "github:ryantm/agenix";
 

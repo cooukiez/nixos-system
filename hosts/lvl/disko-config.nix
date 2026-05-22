@@ -6,7 +6,7 @@ created 2026-02-26 by ludw
 */
 {
   disko.devices.disk = {
-    lvl-disk = {
+    main-disk = {
       type = "disk";
       device = "/dev/nvme0n1";
 

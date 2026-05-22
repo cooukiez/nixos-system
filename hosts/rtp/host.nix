@@ -5,7 +5,7 @@ part of nixos system
 created 2026-05-15 by ludw
 */
 {
-  hostname = "lvl";
+  hostname = "rtp";
   hostSystem = "x86_64-linux";
 
   users = ["redi"];
