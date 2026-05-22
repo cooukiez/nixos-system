@@ -19,6 +19,7 @@ created 2026-05-15 by ludw
     "${inputs.nixpkgs-unstable}/nixos/modules/hardware/facter"
   ];
 
+  /*
   hardware.facter = {
     enable = true;
     reportPath = ./facter.json;
@@ -30,6 +31,7 @@ created 2026-05-15 by ludw
 
     detected.fingerprint.enable = true;
   };
+  */
 
   hardware.enableAllFirmware = true;
   services.fwupd.enable = true;
