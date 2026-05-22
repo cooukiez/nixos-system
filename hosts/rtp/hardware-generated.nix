@@ -20,7 +20,7 @@
   boot.extraModulePackages = [];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/47ae29a9-f04a-460e-9159-6eda50cbf45e";
+    device = lib.mkForce "/dev/disk/by-uuid/47ae29a9-f04a-460e-9159-6eda50cbf45e";
     fsType = "btrfs";
     options = ["subvol=root"];
   };
