@@ -33,6 +33,11 @@ created 2026-02-26 by ludw
 
     # useless
     honklet = inputs.honklet.packages.${system}.default;
+
+    # disable tests
+    gtksourceview = prev.gtksourceview.overrideAttrs (oldAttrs: {
+      doCheck = false;
+    });
   };
 
   unstable-packages = final: _prev: {
