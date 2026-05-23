@@ -43,6 +43,12 @@ created 2026-05-15 by ludw
           doCheck = false;
         });
       })
+
+      (final: prev: {
+        gtksourceview = prev.gtksourceview.overrideAttrs (oldAttrs: {
+          doCheck = false;
+        });
+      })
     ];
 
     config = {
