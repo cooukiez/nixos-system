@@ -9,7 +9,7 @@ created 2026-04-27 by ludw
   # desktop specific
   #
   nn = with pkgs; [
-    errands
+    # errands
     euphonica
     exhibit
     eyedropper
