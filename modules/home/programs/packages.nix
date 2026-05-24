@@ -9,7 +9,8 @@ created 2026-04-27 by ludw
   # desktop specific
   #
   nn = with pkgs; [
-    # errands
+    /*
+    errands
     euphonica
     exhibit
     eyedropper
@@ -27,9 +28,11 @@ created 2026-04-27 by ludw
     qalculate-gtk
     quick-lookup
     system-config-printer
+    */
   ];
 
   gnome = with pkgs; [
+    /*
     gnome-calculator
     gnome-calendar
     gnome-clocks
@@ -51,6 +54,7 @@ created 2026-04-27 by ludw
     seahorse
     showtime
     snapshot
+    */
   ];
 
   kde = with pkgs; [
