@@ -9,9 +9,10 @@ created 2026-04-24 by ludw
   config,
   pkgs,
   lib,
+  hostConfig,
 }: let
-  primaryMonitor = "eDP-1";
-  displayScale = 2;
+  primaryMonitor = hostConfig.primaryMonitor;
+  displayScale = hostConfig.displayScale;
 in
   (import ./wrappers/hyprlock.nix {inherit inputs config lib;}).apply {
     inherit pkgs;

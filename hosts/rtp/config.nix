@@ -82,6 +82,9 @@ created 2026-05-15 by ludw
 
   console.keyMap = "de";
 
+  # package configuration
+  graphicalConfig.programs.gamingPkg = false;
+
   # security configuration
   security.sudo.wheelNeedsPassword = false;
 

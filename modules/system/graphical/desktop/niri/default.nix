@@ -9,6 +9,7 @@ created 2026-04-22 by ludw
   config,
   pkgs,
   lib,
+  hostConfig,
 }:
 (import ./wrappers/niri.nix {inherit inputs config lib;}).apply {
   inherit pkgs;
@@ -137,58 +138,48 @@ created 2026-04-22 by ludw
       };
     };
 
-    _children = [
+    _children =
       # outputs
-      {
+      builtins.map (out: {
         output = {
-          _args = ["eDP-1"];
-          mode = "1920x1080@60.000";
-          scale = 1.0;
+          _args = [out.name];
+          mode = out.mode;
+          scale = out.scale or 1.0;
           position = {
-            _props.x = 0;
-            _props.y = 0;
+            _props.x = out.x or 0;
+            _props.y = out.y or 0;
           };
         };
-      }
-      {
-        output = {
-          _args = ["HDMI-A-1"];
-          mode = "1920x1080@60.000";
-          scale = 1.0;
-          position = {
-            _props.x = 1920;
-            _props.y = 0;
+      })
+      hostConfig.outputs
+      ++ [
+        # layer rules
+        {
+          layer-rule = {
+            _children = [{match._props.namespace = "^noctalia-overview*";}];
+            place-within-backdrop = true;
           };
-        };
-      }
+        }
 
-      # layer rules
-      {
-        layer-rule = {
-          _children = [{match._props.namespace = "^noctalia-overview*";}];
-          place-within-backdrop = true;
-        };
-      }
+        # window rules
+        {
+          window-rule = {
+            geometry-corner-radius = 10.0;
+            clip-to-geometry = true;
 
-      # window rules
-      {
-        window-rule = {
-          geometry-corner-radius = 10.0;
-          clip-to-geometry = true;
+            draw-border-with-background = false;
 
-          draw-border-with-background = false;
-
-          open-maximized = true;
-          open-fullscreen = false;
-        };
-      }
-      {
-        window-rule = {
-          _children = [{match._props.app-id = "kitty";}];
-          open-maximized = false;
-        };
-      }
-    ];
+            open-maximized = true;
+            open-fullscreen = false;
+          };
+        }
+        {
+          window-rule = {
+            _children = [{match._props.app-id = "kitty";}];
+            open-maximized = false;
+          };
+        }
+      ];
 
     # disable window decorations
     prefer-no-csd = true;

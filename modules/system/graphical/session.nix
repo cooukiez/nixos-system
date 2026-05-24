@@ -9,6 +9,7 @@ created 2026-04-22 by ludw
   config,
   pkgs,
   lib,
+  hostConfig,
   userList,
   ...
 }: let
@@ -131,6 +132,7 @@ in {
               config
               pkgs
               lib
+              hostConfig
               ;
           };
 
