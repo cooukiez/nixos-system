@@ -116,11 +116,11 @@ in {
       ];
 
     bindDirs = {
-      "Documents" = "/data/documents/work/redi";
+      "Documents" = "/data/documents";
       "Downloads" = "/data/downloads";
       "Music" = "/data/music";
-      "Pictures" = "/data/documents/work/redi/pictures";
-      "Videos" = "/data/documents/work/redi/videos";
+      "Pictures" = "/data/pictures";
+      "Videos" = "/data/videos";
 
       "Vault" = "/data/vault";
     };

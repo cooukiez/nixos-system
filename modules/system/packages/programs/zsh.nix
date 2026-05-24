@@ -83,8 +83,10 @@ in {
           fdn = "sudo fix-perms /etc/nixos";
         }
         // lib.optionalAttrs cfg.dataPartitionAliases {
-          pwf = "edit-secret /data/upm.age";
           fdp = "sudo fix-perms /data";
+
+          # editing password file
+          pwf = "edit-secret /data/upm.age";
         }
         // lib.optionalAttrs cfg.containerImageAliases {
           update-images = ''

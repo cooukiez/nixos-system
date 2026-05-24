@@ -136,6 +136,8 @@ created 2026-04-22 by ludw
       lib.mapAttrsToList (
         username: user:
           lib.mapAttrsToList (target: source: [
+            "d ${source} 0775 root users - -"
+
             "r /home/${username}/${target}"
             "L /home/${username}/${target} - - - - ${source}"
           ]) (user.bindDirs or {})

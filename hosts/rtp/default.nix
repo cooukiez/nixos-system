@@ -43,12 +43,6 @@ created 2026-05-15 by ludw
           doCheck = false;
         });
       })
-
-      (final: prev: {
-        gtksourceview = prev.gtksourceview.overrideAttrs (oldAttrs: {
-          doCheck = false;
-        });
-      })
     ];
 
     config = {
@@ -144,6 +138,8 @@ created 2026-05-15 by ludw
       lib.mapAttrsToList (
         username: user:
           lib.mapAttrsToList (target: source: [
+            "d ${source} 0775 root users - -"
+
             "r /home/${username}/${target}"
             "L /home/${username}/${target} - - - - ${source}"
           ]) (user.bindDirs or {})
