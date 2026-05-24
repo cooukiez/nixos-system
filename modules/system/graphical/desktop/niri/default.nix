@@ -142,8 +142,8 @@ created 2026-04-22 by ludw
       {
         output = {
           _args = ["eDP-1"];
-          mode = "3840x2400@60.000";
-          scale = 2.0;
+          mode = "1920x1080@60.000";
+          scale = 1.0;
           position = {
             _props.x = 0;
             _props.y = 0;
