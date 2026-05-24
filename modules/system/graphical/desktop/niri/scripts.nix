@@ -4,31 +4,7 @@ modules/system/graphical/desktop/niri/scripts.nix
 part of nixos system
 created 2026-04-23 by ludw
 */
-{pkgs, ...}: let
-  resHD = {
-    w = "1920";
-    h = "1200";
-  };
-
-  resFull = {
-    w = "3480";
-    h = "2400";
-  };
-in {
-  lowRes = pkgs.writeShellScriptBin "low-res" ''
-    ${pkgs.niri}/bin/niri msg output "eDP-1" custom-mode "${resHD.w}x${resHD.h}@60.000"
-    ${pkgs.niri}/bin/niri msg output "eDP-1" scale 1.0
-
-    ${pkgs.libnotify}/bin/notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 1920x1200@60."
-  '';
-
-  highRes = pkgs.writeShellScriptBin "high-res" ''
-    ${pkgs.niri}/bin/niri msg output "eDP-1" mode "${resFull.w}x${resFull.h}@60.000"
-    ${pkgs.niri}/bin/niri msg output "eDP-1" scale 2.0
-
-    ${pkgs.libnotify}/bin/notify-send --app-name="Niri Compositor" "Screen resolution changed" "Changed monitor mode to 3480x2160@60."
-  '';
-
+{pkgs, ...}: {
   screenshotFull = pkgs.writeShellScriptBin "screenshot-full" ''
     ${pkgs.coreutils}/bin/mkdir -p ~/Pictures/Screenshots
     f=~/Pictures/Screenshots/Screenshot-$(${pkgs.coreutils}/bin/date +%Y-%m-%d_%H-%M-%S-%3N).png

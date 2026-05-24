@@ -70,8 +70,8 @@ in
 
     "Mod+L" = mkExecBind "Lock Screen" "${lib.getExe config.pkgConfig.hyprlock}";
 
-    "Mod+Shift+L" = mkExecBind "Apply low resolution" "${scripts.lowRes}/bin/low-res";
-    "Mod+Shift+H" = mkExecBind "Apply high resolution" "${scripts.highRes}/bin/high-res";
+    # "Mod+Shift+L" = mkExecBind "Apply low resolution" "${scripts.lowRes}/bin/low-res";
+    # "Mod+Shift+H" = mkExecBind "Apply high resolution" "${scripts.highRes}/bin/high-res";
 
     "Print" = mkExecBind "Screenshot full screen" "${scripts.screenshotFull}/bin/screenshot-full";
     "Mod+Print" = mkExecBind "Screenshot region" "${scripts.screenshotRegion}/bin/screenshot-region";
