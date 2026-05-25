@@ -51,6 +51,16 @@ created 2026-04-27 by ludw
     seahorse
     showtime
     snapshot
+
+    (pkgs.symlinkJoin {
+      name = "gnome-control-center-wrapped";
+      paths = [pkgs.gnome-control-center];
+      nativeBuildInputs = [pkgs.makeWrapper];
+      postBuild = ''
+        wrapProgram $out/bin/gnome-control-center \
+          --set XDG_CURRENT_DESKTOP "GNOME"
+      '';
+    })
   ];
 
   kde = with pkgs; [

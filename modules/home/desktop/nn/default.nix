@@ -24,9 +24,10 @@ in {
   config = lib.mkIf cfg {
     home.sessionVariables =
       {
-        ELECTRON_PASSWORD_STORE = "gnome-libsecret";
-        XDG_CURRENT_DESKTOP = "GNOME";
+        XDG_CURRENT_DESKTOP = "niri";
         XDG_MENU_PREFIX = "gnome-";
+
+        ELECTRON_PASSWORD_STORE = "gnome-libsecret";
       }
       // {
         # window decorations
@@ -40,10 +41,6 @@ in {
       };
       "org/gnome/desktop/wm/preferences" = {
         button-layout = lib.mkForce ":";
-      };
-
-      "org/gnome/calendar" = {
-        sources = ["file://${config.home.homeDirectory}/${config.accounts.calendar.accounts.ludwig-radicale.local.path}"];
       };
     };
 

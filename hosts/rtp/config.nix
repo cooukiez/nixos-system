@@ -55,11 +55,7 @@ created 2026-05-15 by ludw
     firewall = {
       enable = true;
 
-      allowedTCPPorts = [
-        21
-        22
-      ];
-
+      allowedTCPPorts = [];
       allowedUDPPorts = [];
     };
   };
