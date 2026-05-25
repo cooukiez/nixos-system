@@ -13,7 +13,7 @@ let
 
     remote = {
       type = "caldav";
-      url = "https://dav.home.lan/";
+      url = "https://dav.home.lan/ludwig/5e65e2ab-2d54-5561-9310-3a7420d54388/";
       userName = "ludwig";
     };
 
