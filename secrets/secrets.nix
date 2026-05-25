@@ -22,6 +22,8 @@ let
     rtp
   ];
 in {
+  "dav/ludwig-radicale.age".publicKeys = allKeys;
+
   "mail/ludwig-mailbox.age".publicKeys = allKeys;
   "mail/ludwig-web.age".publicKeys = allKeys;
   "mail/web.age".publicKeys = allKeys;

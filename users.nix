@@ -6,6 +6,22 @@ created 2026-04-22 by ludw
 */
 let
   accounts = import ./accounts.nix;
+
+  ludwig-radicale = pkgs: {
+    primary = true;
+
+    remote = {
+      type = "caldav";
+      url = "https://dav.home.lan/ludwig/5e65e2ab-2d54-5561-9310-3a7420d54388/";
+      userName = "ludwig";
+    };
+
+    vdirsyncer = {
+      enable = true;
+      collections = ["from a" "from b"];
+      metadata = ["color" "displayname"];
+    };
+  };
 in {
   ludw = {
     session = "nn";
@@ -24,6 +40,10 @@ in {
       ludwig-mailbox = accounts.ludwig-mailbox;
       ludwig-web = accounts.ludwig-web;
       web = accounts.web;
+    };
+
+    calendar = {
+      ludwig-radicale = ludwig-radicale;
     };
 
     packages = pkgs: with pkgs; [];
@@ -68,6 +88,10 @@ in {
       web = accounts.web;
     };
 
+    calendar = {
+      ludwig-radicale = ludwig-radicale;
+    };
+
     packages = pkgs: with pkgs; [];
 
     bindDirs = {
@@ -107,6 +131,10 @@ in {
     accounts = {
       ludwig-mailbox = accounts.ludwig-mailbox;
       web = accounts.web;
+    };
+
+    calendar = {
+      ludwig-radicale = ludwig-radicale;
     };
 
     packages = pkgs:
