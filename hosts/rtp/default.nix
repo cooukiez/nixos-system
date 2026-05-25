@@ -215,22 +215,45 @@ created 2026-05-15 by ludw
             stateVersion = "25.11";
           };
 
-          age.secrets = (
-            builtins.mapAttrs (name: _: {
-              file = ../../secrets/mail/${name}.age;
-            })
-            userConfig.accounts
-          );
+          age.secrets =
+            (
+              builtins.mapAttrs (name: _: {
+                file = ../../secrets/mail/${name}.age;
+              })
+              userConfig.accounts
+            )
+            // (
+              builtins.mapAttrs (name: _: {
+                file = ../../secrets/dav/${name}.age;
+              })
+              userConfig.calendar
+            );
 
           accounts.email.accounts =
             builtins.mapAttrs (
               name: value:
                 value
                 // {
-                  passwordCommand = "cat ${config.age.secrets.${name}.path}";
+                  passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets.${name}.path}";
                 }
             )
             userConfig.accounts;
+
+          services.vdirsyncer = {
+            enable = true;
+            frequency = "*:00/15";
+          };
+
+          accounts.calendar.basePath = ".local/share/calendars";
+          accounts.calendar.accounts =
+            builtins.mapAttrs (
+              name: value:
+                value
+                // {
+                  remote.passwordCommand = "${pkgs.coreutils}/bin/cat ${config.age.secrets.${name}.path}";
+                }
+            )
+            userConfig.calendar;
 
           programs.home-manager.enable = true;
           programs.zsh.enable = true;

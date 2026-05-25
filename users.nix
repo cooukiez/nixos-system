@@ -7,8 +7,9 @@ created 2026-04-22 by ludw
 let
   accounts = import ./accounts.nix;
 
-  ludwig-radicale = pkgs: {
+  ludwig-radicale = {
     primary = true;
+    name = "Personal";
 
     remote = {
       type = "caldav";
@@ -18,8 +19,12 @@ let
 
     vdirsyncer = {
       enable = true;
-      collections = ["from a" "from b"];
-      metadata = ["color" "displayname"];
+      collections = ["from_status"];
+    };
+
+    local = {
+      type = "filesystem";
+      fileExt = ".ics";
     };
   };
 in {

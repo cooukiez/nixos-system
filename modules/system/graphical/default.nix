@@ -52,7 +52,11 @@ in {
       programs.dconf.enable = true;
       services.gvfs.enable = true;
 
-      services.gnome.evolution-data-server.enable = true;
+      services.gnome = {
+        evolution-data-server.enable = true;
+        gnome-online-accounts.enable = true;
+      };
+
       services.gnome.tinysparql.enable = true;
       services.gnome.localsearch.enable = true;
     })

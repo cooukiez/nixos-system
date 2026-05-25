@@ -41,6 +41,10 @@ in {
       "org/gnome/desktop/wm/preferences" = {
         button-layout = lib.mkForce ":";
       };
+
+      "org/gnome/calendar" = {
+        sources = ["file://${config.home.homeDirectory}/${config.accounts.calendar.accounts.ludwig-radicale.local.path}"];
+      };
     };
 
     # touchscreen gestures
