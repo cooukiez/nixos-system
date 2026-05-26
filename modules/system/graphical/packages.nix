@@ -46,12 +46,36 @@ created 2026-04-22 by ludw
   #
   development = with pkgs; [
     dbeaver-bin
-    gephi
     github-desktop
     hexedit
     jflap
     renderdoc
     sql-studio
+
+    (symlinkJoin {
+      name = "gephi-wayland";
+      paths = [gephi];
+
+      nativeBuildInputs = [makeWrapper copyDesktopItems];
+
+      postBuild = ''
+        wrapProgram $out/bin/gephi \
+          --set _JAVA_AWT_WM_NONREPARENTING 1
+      '';
+
+      desktopItems = [
+        (makeDesktopItem {
+          name = "gephi";
+          exec = "gephi";
+          icon = "gephi";
+          comment = "Graph Visualization and Manipulation Platform";
+          desktopName = "Gephi Graph Platform";
+          genericName = "Graph Analysis Tool";
+          categories = ["Development" "Science" "DataVisualization"];
+          terminal = false;
+        })
+      ];
+    })
 
     # jetbrains
     unstable.jetbrains.idea-oss
