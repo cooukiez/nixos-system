@@ -86,6 +86,7 @@ in {
           ++ lib.optionals cfg.tailscaleClient [
             "--exit-node=${cfg.tailscaleClientExitNode}"
             "--exit-node-allow-lan-access=true"
+            "--accept-routes=true"
           ]
           ++ lib.optionals cfg.tailscaleServer [
             "--advertise-exit-node"

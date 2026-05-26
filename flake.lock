@@ -198,11 +198,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1779675307,
-        "narHash": "sha256-wQvGApVkGWX09+HEGb6sy/VaDZpSJop+/LaT9p9BXAQ=",
+        "lastModified": 1779761140,
+        "narHash": "sha256-S9jab0wzEJezaWU/K6zgkMDpoduBqTFVYLlCEH4XPUI=",
         "owner": "petrkozorezov",
         "repo": "firefox-addons-nix",
-        "rev": "75318e4979fee46c3b2bd49f4f7eef8e257a0d6f",
+        "rev": "4329e23bfb315ad1998ba847ef3df24b2c589a52",
         "type": "github"
       },
       "original": {
@@ -1555,11 +1555,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1779779580,
-        "narHash": "sha256-xoE90HxdHIZpI5E6yy9jNembli8DrSCaCaWb0g/ebcE=",
+        "lastModified": 1779786033,
+        "narHash": "sha256-W6xNJKPv7LBfvzuZq9F8QMopbpo8x87LJbJ7bU4W/VQ=",
         "owner": "zed-industries",
         "repo": "zed",
-        "rev": "707c00b474b7c7c82e59d31d1e7ca3a58c614953",
+        "rev": "49fe1fcad5d8676bc7c6e8919a9f59cec4f6843c",
         "type": "github"
       },
       "original": {
@@ -1574,11 +1574,11 @@
         "nixpkgs": "nixpkgs_15"
       },
       "locked": {
-        "lastModified": 1779649538,
-        "narHash": "sha256-k256zgHyqJ/0siFdq5y4GSwJyYKhQnW83N9K8S7OMKo=",
+        "lastModified": 1779781734,
+        "narHash": "sha256-c2FZ7S/rhnCHcwPkc82GOxlCw88HKYBaJkLtMgi72p8=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "e8fbde26a92a8c078fb1355c9f7c8dba5f7eb9d6",
+        "rev": "ef7c137fea3d0d0624864db7aa1f068eed79b0fb",
         "type": "github"
       },
       "original": {

@@ -61,7 +61,7 @@ created 2026-05-15 by ludw
   };
 
   networkConfig.tailscaleClient = true;
-  networkConfig.tailscaleClientExitNode = "100.71.244.88";
+  networkConfig.tailscaleClientExitNode = "dhs";
   networkConfig.tailscaleOperator = "redi";
 
   networkConfig.printing = true;
