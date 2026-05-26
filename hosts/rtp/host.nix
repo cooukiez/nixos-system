@@ -12,7 +12,7 @@ created 2026-05-15 by ludw
   users = ["redi"];
 
   primaryMonitor = "eDP-1";
-  displayScale = 2;
+  displayScale = 1;
 
   outputs = [
     {

@@ -516,11 +516,11 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
-        "lastModified": 1779727848,
-        "narHash": "sha256-SzwGYf4N1l2TK3FWqgpa1446XjZq3/rF04xdX1vA9MU=",
+        "lastModified": 1779748545,
+        "narHash": "sha256-AbRQrrpcNTBUoIf7Kc1qsdhsRLtZ0DDw+udm+8NWlJk=",
         "owner": "sodiboo",
         "repo": "niri-flake",
-        "rev": "6a2b708460b3e3387f37bb870b4f1ad22cf293f8",
+        "rev": "3754a033e05c750ef46fe4f078d79b826c4f9287",
         "type": "github"
       },
       "original": {
@@ -878,11 +878,11 @@
         "noctalia-qs": "noctalia-qs"
       },
       "locked": {
-        "lastModified": 1779591140,
-        "narHash": "sha256-G54zkslNueiiYDtg8QbAkPTv0/vfLzdjDsaUljlRQAE=",
+        "lastModified": 1779763713,
+        "narHash": "sha256-as2Vo4PitnWfXezfkQB2H3Rsr/DXJPp4Oe+dE+dZ0Xo=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "052f533186e6ad8e60541760cfe3123f14108c1e",
+        "rev": "272cd91408b5ff6e329e6397eed042fe422069e7",
         "type": "github"
       },
       "original": {
@@ -1001,11 +1001,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1779676744,
-        "narHash": "sha256-jF7qkPOOKpYKj9nOImD4sBE3kvZSCh+FBOOlgADUuFg=",
+        "lastModified": 1779762553,
+        "narHash": "sha256-5fvlnuzSQh+RjLkS8PpTd/8Wp53T3W+IhJhKaFhFmvI=",
         "owner": "vomba",
         "repo": "obsidian-plugins-nix",
-        "rev": "1bb0a3b6bf9ab97572b11e1c6f1afa0fa5dd1edd",
+        "rev": "02b311f60fbc704884426d5b3f7c25455081e2cb",
         "type": "github"
       },
       "original": {
@@ -1534,11 +1534,11 @@
     "xwayland-satellite-unstable": {
       "flake": false,
       "locked": {
-        "lastModified": 1779591853,
-        "narHash": "sha256-osTG6d7BfV5CchHjETh3jcmZwDYrHpNcpAIyh1KyIs0=",
+        "lastModified": 1779745227,
+        "narHash": "sha256-yqY7RtEJGJiENzR0GwL6q69tSAy6xAAmAcLuIhLjPf8=",
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
-        "rev": "3273a0fccd71da21c6362c74f3b1d1c0a89ff3ba",
+        "rev": "5d1efbc9dc3ab1c10160b656e0247f3325daf0f2",
         "type": "github"
       },
       "original": {
@@ -1555,11 +1555,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1779728518,
-        "narHash": "sha256-WjYRm0fhHmOMoPGIrakPqjP5grq6fTI48a4P4TGbHUQ=",
+        "lastModified": 1779779580,
+        "narHash": "sha256-xoE90HxdHIZpI5E6yy9jNembli8DrSCaCaWb0g/ebcE=",
         "owner": "zed-industries",
         "repo": "zed",
-        "rev": "a6780a5a4769463ba787b48abe36effefd07f0b7",
+        "rev": "707c00b474b7c7c82e59d31d1e7ca3a58c614953",
         "type": "github"
       },
       "original": {
