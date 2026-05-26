@@ -63,6 +63,7 @@ created 2026-02-26 by ludw
     # c / cpp
     ms-vscode.cpptools-extension-pack
     ms-vscode.cpptools
+    # llvm-vs-code-extensions.vscode-clangd
 
     vadimcn.vscode-lldb
 
@@ -70,7 +71,6 @@ created 2026-02-26 by ludw
     twxs.cmake
 
     xaver.clang-format
-    llvm-vs-code-extensions.vscode-clangd
 
     # shader
     wgsl-analyzer.wgsl-analyzer
@@ -193,7 +193,6 @@ in {
           // {
             "nix.enableLanguageServer" = true;
             "nix.serverPath" = "${lib.getExe pkgs.nixd}";
-
             "nix.formatterPath" = "${lib.getExe pkgs.alejandra}";
 
             "nix.serverSettings" = {
@@ -201,9 +200,14 @@ in {
                 "formatting" = {
                   "command" = ["${lib.getExe pkgs.alejandra}"];
                 };
+
+                "nixpkgs" = {
+                  "expr" = "import <nixpkgs> { }";
+                };
+
                 "options" = {
                   "nixos" = {
-                    "expr" = "(builtins.getFlake \"\${workspaceFolder}\").nixosConfigurations.${hostConfig.hostname}.options";
+                    "expr" = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.${hostConfig.hostname}.options";
                   };
                 };
               };

@@ -58,6 +58,11 @@ created 2026-05-15 by ludw
       allowedTCPPorts = [];
       allowedUDPPorts = [];
     };
+
+    hosts = {
+      "127.0.0.1" = ["nixos.wiki"];
+      "192.168.178.1" = ["fritz.box"];
+    };
   };
 
   networkConfig.tailscaleClient = true;

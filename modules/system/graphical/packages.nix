@@ -4,7 +4,17 @@ modules/system/graphical/packages.nix
 part of nixos system
 created 2026-04-22 by ludw
 */
-{pkgs, ...}: {
+{pkgs, ...}: let
+  javaWaylandFix = binName:
+    with pkgs; {
+      nativeBuildInputs = [makeWrapper];
+
+      postBuild = ''
+        wrapProgram $out/bin/${binName} \
+          --set _JAVA_AWT_WM_NONREPARENTING 1
+      '';
+    };
+in {
   #
   # packages
   #
@@ -53,29 +63,16 @@ created 2026-04-22 by ludw
     sql-studio
 
     (symlinkJoin {
-      name = "gephi-wayland";
-      paths = [gephi];
+        name = "cytoscape-wayland";
+        paths = [cytoscape];
+      }
+      // javaWaylandFix "cytoscape")
 
-      nativeBuildInputs = [makeWrapper copyDesktopItems];
-
-      postBuild = ''
-        wrapProgram $out/bin/gephi \
-          --set _JAVA_AWT_WM_NONREPARENTING 1
-      '';
-
-      desktopItems = [
-        (makeDesktopItem {
-          name = "gephi";
-          exec = "gephi";
-          icon = "gephi";
-          comment = "Graph Visualization and Manipulation Platform";
-          desktopName = "Gephi Graph Platform";
-          genericName = "Graph Analysis Tool";
-          categories = ["Development" "Science" "DataVisualization"];
-          terminal = false;
-        })
-      ];
-    })
+    (symlinkJoin {
+        name = "gephi-wayland";
+        paths = [gephi];
+      }
+      // javaWaylandFix "gephi")
 
     # jetbrains
     unstable.jetbrains.idea-oss

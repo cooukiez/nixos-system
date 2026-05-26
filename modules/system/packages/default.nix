@@ -84,7 +84,6 @@ in {
 
     environment.sessionVariables = {
       VCPKG_FORCE_SYSTEM_BINARIES = 1;
-      LD_LIBRARY_PATH = ["${pkgs.zlib}/lib"];
     };
 
     environment.systemPackages =
