@@ -58,6 +58,7 @@ in {
     dbeaver-bin
     github-desktop
     hexedit
+    imhex
     jflap
     renderdoc
     sql-studio
