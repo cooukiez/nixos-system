@@ -28,7 +28,8 @@ created 2026-05-17 by ludw
     detected.graphics.enable = true;
     detected.bluetooth.enable = true;
 
-    detected.camera.ipu6.enable = true;
+    # disable to not load regression bug
+    detected.camera.ipu6.enable = false;
     detected.fingerprint.enable = true;
   };
 
@@ -37,8 +38,9 @@ created 2026-05-17 by ludw
 
   services.devmon.enable = true;
 
-  # processor and graphics
+  # core hardware
   services.power-profiles-daemon.enable = true;
+  services.thermald.enable = true;
 
   environment.sessionVariables = {
     LIBVA_DRIVER_NAME = "iHD";
@@ -53,7 +55,6 @@ created 2026-05-17 by ludw
 
   packageConfig.gpuPowerApps = false;
 
-  # memory and swap
   swapDevices = [
     {device = "/dev/disk/by-partlabel/swap";}
   ];
@@ -63,15 +64,23 @@ created 2026-05-17 by ludw
   zramSwap.algorithm = "lz4";
 
   services.udev.extraRules = ''
+    # switch to performance mode when plugged into AC
+    SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ENV{POWER_SUPPLY_ONLINE}=="1", ATTR{online}=="1", RUN+="${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance"
+
+    # switch to power-saver mode when unplugged (on battery)
+    SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ENV{POWER_SUPPLY_ONLINE}=="0", ATTR{online}=="0", RUN+="${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver"
+
     SUBSYSTEM=="memory", ACTION=="add", ATTR{state}=="online", GOTO="hyperv_hotadd_end"
     LABEL="hyperv_hotadd_end"
   '';
 
   # network
   boot.kernel.sysctl = {
+    # disable proxy arp
     "net.ipv4.conf.all.proxy_arp" = 0;
     "net.ipv4.conf.default.proxy_arp" = 0;
 
+    # enable and prefer temp address
     "net.ipv6.conf.all.use_tempaddr" = lib.mkForce 2;
     "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
   };
@@ -80,6 +89,11 @@ created 2026-05-17 by ludw
   services.upower = {
     enable = true;
     ignoreLid = false;
+  };
+
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
   };
 
   # mounting usb devices
@@ -102,72 +116,14 @@ created 2026-05-17 by ludw
       support32Bit = true;
     };
 
-    extraConfig.pipewire = {
-      # enable apple airplay
-      "10-airplay" = {
-        "context.modules" = [
-          {name = "libpipewire-module-raop-discover";}
-        ];
-      };
-
-      # echo cancellation
-      "15-echo-cancel" = {
-        "context.modules" = [
-          {
-            name = "libpipewire-module-echo-cancel";
-            args = {
-              "capture.props" = {
-                "node.name" = "Echo Cancellation Capture";
-              };
-              "source.props" = {
-                "node.name" = "Echo Cancellation Source";
-                "node.description" = "Echo-Canceled Microphone";
-              };
-              "sink.props" = {
-                "node.name" = "Echo Cancellation Sink";
-              };
-              "playback.props" = {
-                "node.name" = "Echo Cancellation Playback";
-              };
-            };
-          }
-        ];
-      };
-
-      # combined audio sync
-      "20-combine-stream" = {
-        "context.modules" = [
-          {
-            name = "libpipewire-module-combine-stream";
-            args = {
-              "combine.mode" = "sink";
-              "node.name" = "combined_sink";
-              "node.description" = "Simultaneous Output (All Sinks)";
-              "combine.latency-compensate" = true;
-              "combine.props" = {
-                "audio.position" = ["FL" "FR"];
-              };
-              "stream.rules" = [
-                {
-                  matches = [
-                    {"media.class" = "Audio/Sink";}
-                  ];
-                  actions = {
-                    "create-stream" = {};
-                  };
-                }
-              ];
-            };
-          }
-        ];
-      };
-
-      # disable system bell
-      "99-silent-bell.conf" = {
-        "context.properties" = {
-          "module.x11.bell" = false;
-        };
-      };
+    extraConfig.pipewire = let
+      pipewire-modules = import ../hardware/pipewire-modules.nix;
+    in {
+      "10-airplay" = pipewire-modules.apple-airplay;
+      "15-echo-cancel" = pipewire-modules.echo-cancellation;
+      "20-combine-stream" = pipewire-modules.combined-sink;
+      "25-loopback" = pipewire-modules.virtual-loopback;
+      "99-silent-bell.conf" = pipewire-modules.disable-system-bell;
     };
   };
 

@@ -62,6 +62,7 @@ created 2026-04-22 by ludw
 
   sound = with pkgs; [
     audacity
+    easyeffects
     muse-sounds-manager
     musescore
   ];
