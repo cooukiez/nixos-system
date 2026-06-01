@@ -28,8 +28,7 @@ created 2026-05-17 by ludw
     detected.graphics.enable = true;
     detected.bluetooth.enable = true;
 
-    # disable to not load regression bug
-    detected.camera.ipu6.enable = false;
+    detected.camera.ipu6.enable = true;
     detected.fingerprint.enable = true;
   };
 
@@ -40,6 +39,11 @@ created 2026-05-17 by ludw
 
   # core hardware
   services.power-profiles-daemon.enable = true;
+
+  # fix conflicts with ppd
+  services.tlp.enable = false;
+  services.auto-cpufreq.enable = false;
+
   services.thermald.enable = true;
 
   environment.sessionVariables = {
@@ -61,7 +65,7 @@ created 2026-05-17 by ludw
 
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;
-  zramSwap.algorithm = "lz4";
+  zramSwap.algorithm = "zstd";
 
   services.udev.extraRules = ''
     # switch to performance mode when plugged into AC
@@ -120,10 +124,12 @@ created 2026-05-17 by ludw
       pipewire-modules = import ../hardware/pipewire-modules.nix;
     in {
       "10-airplay" = pipewire-modules.apple-airplay;
-      "15-echo-cancel" = pipewire-modules.echo-cancellation;
       "20-combine-stream" = pipewire-modules.combined-sink;
       "25-loopback" = pipewire-modules.virtual-loopback;
       "99-silent-bell.conf" = pipewire-modules.disable-system-bell;
+
+      # disable as automatically start microphone
+      # "15-echo-cancel" = pipewire-modules.echo-cancellation;
     };
   };
 
