@@ -91,20 +91,6 @@ created 2026-05-17 by ludw
   # audio
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
-
-  boot.extraModprobeConfig = ''
-    options snd-intel-dspcfg driver=3
-    options snd-sof-intel-hda-common hda_model=alc287-yoga-xic
-  '';
-
-  /*
-  services.pipewire = {
-    enable = true;
     raopOpenFirewall = true;
 
     audio.enable = true;
@@ -117,9 +103,62 @@ created 2026-05-17 by ludw
     };
 
     extraConfig.pipewire = {
+      # enable apple airplay
       "10-airplay" = {
         "context.modules" = [
           {name = "libpipewire-module-raop-discover";}
+        ];
+      };
+
+      # echo cancellation
+      "15-echo-cancel" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-echo-cancel";
+            args = {
+              "capture.props" = {
+                "node.name" = "Echo Cancellation Capture";
+              };
+              "source.props" = {
+                "node.name" = "Echo Cancellation Source";
+                "node.description" = "Echo-Canceled Microphone";
+              };
+              "sink.props" = {
+                "node.name" = "Echo Cancellation Sink";
+              };
+              "playback.props" = {
+                "node.name" = "Echo Cancellation Playback";
+              };
+            };
+          }
+        ];
+      };
+
+      # combined audio sync
+      "20-combine-stream" = {
+        "context.modules" = [
+          {
+            name = "libpipewire-module-combine-stream";
+            args = {
+              "combine.mode" = "sink";
+              "node.name" = "combined_sink";
+              "node.description" = "Simultaneous Output (All Sinks)";
+              "combine.latency-compensate" = true;
+              "combine.props" = {
+                "audio.position" = ["FL" "FR"];
+              };
+              "stream.rules" = [
+                {
+                  matches = [
+                    {"media.class" = "Audio/Sink";}
+                  ];
+                  actions = {
+                    "create-stream" = {};
+                  };
+                }
+              ];
+            };
+          }
         ];
       };
 
@@ -131,11 +170,20 @@ created 2026-05-17 by ludw
       };
     };
   };
-  */
+
+  boot.extraModprobeConfig = ''
+    options snd-intel-dspcfg driver=3
+    options snd-sof-intel-hda-common hda_model=alc287-yoga-xic
+
+    # completely disable power saving
+    options snd-hda-intel power_save=0 power_save_controller=N
+    options snd_sof dsp_power_save=0
+  '';
 
   # allow pipewire real-time scheduling
-  # security.rtkit.enable = true;
+  security.rtkit.enable = true;
 
+  # bluetooth
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

@@ -11,7 +11,7 @@ created 2026-04-22 by ludw
 }: {
   # boot configuration
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
       "quiet"
