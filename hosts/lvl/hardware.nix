@@ -91,6 +91,20 @@ created 2026-05-17 by ludw
   # audio
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+  };
+
+  boot.extraModprobeConfig = ''
+    options snd-intel-dspcfg driver=3
+    options snd-sof-intel-hda-common hda_model=alc287-yoga-xic
+  '';
+
+  /*
+  services.pipewire = {
+    enable = true;
     raopOpenFirewall = true;
 
     audio.enable = true;
@@ -117,9 +131,10 @@ created 2026-05-17 by ludw
       };
     };
   };
+  */
 
   # allow pipewire real-time scheduling
-  security.rtkit.enable = true;
+  # security.rtkit.enable = true;
 
   hardware.bluetooth = {
     enable = true;
