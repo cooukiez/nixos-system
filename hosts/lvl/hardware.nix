@@ -92,7 +92,7 @@ created 2026-05-17 by ludw
   # battery
   services.upower = {
     enable = true;
-    ignoreLid = false;
+    ignoreLid = true;
   };
 
   powerManagement = {
