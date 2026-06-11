@@ -50,6 +50,7 @@ created 2026-05-15 by ludw
       permittedInsecurePackages = [
         "dotnet-sdk-6.0.428"
         "dotnet-runtime-6.0.36"
+        "electron-39.8.10"
 
         "luanti-5.14.0"
         "googleearth-pro-7.3.6.10201"
