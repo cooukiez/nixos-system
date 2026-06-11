@@ -40,11 +40,13 @@ in {
 
   "ssh/ceirs.age".publicKeys = allKeys;
 
-  "tailscale-key.age".publicKeys = allKeys;
+  "copyparty.age".publicKeys = allKeys;
 
   "gpg-public.age".publicKeys = allKeys;
   "gpg-secret.age".publicKeys = allKeys;
 
   "github-token.age".publicKeys = allKeys;
   "github-token-classic.age".publicKeys = allKeys;
+
+  "tailscale-key.age".publicKeys = allKeys;
 }

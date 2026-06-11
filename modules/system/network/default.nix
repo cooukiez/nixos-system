@@ -24,6 +24,7 @@ created 2026-04-22 by ludw
   };
 in {
   imports = [
+    ./ptp.nix
     ./shares.nix
   ];
 
@@ -49,6 +50,7 @@ in {
     vnstat = mkEnableDefault;
     vsftpd = mkEnableDefault;
 
+    copyparty = mkDisableDefault;
     printing = mkDisableDefault;
 
     glances = mkDisableDefault;
@@ -109,41 +111,6 @@ in {
     };
 
     services.vnstat.enable = lib.mkIf cfg.vnstat true;
-
-    services.vsftpd = lib.mkIf cfg.vsftpd {
-      enable = true;
-
-      localUsers = true;
-      writeEnable = true;
-
-      chrootlocalUser = true;
-      allowWriteableChroot = true;
-
-      localRoot = null;
-      anonymousUser = false;
-
-      forceLocalLoginsSSL = false;
-      forceLocalDataSSL = false;
-
-      extraConfig = ''
-        listen=YES
-        listen_ipv6=NO
-        local_umask=022
-        pasv_enable=YES
-        pasv_min_port=30000
-        pasv_max_port=31000
-      '';
-    };
-
-    networking.firewall = lib.mkIf cfg.vsftpd {
-      allowedTCPPorts = [21];
-      allowedTCPPortRanges = [
-        {
-          from = 30000;
-          to = 31000;
-        }
-      ];
-    };
 
     services.printing = lib.mkIf cfg.printing {
       enable = true;
