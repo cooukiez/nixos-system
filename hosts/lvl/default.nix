@@ -16,6 +16,7 @@ created 2026-04-22 by ludw
 }: {
   imports = [
     ./config.nix
+    ./disko-config.nix
     ./hardware-generated.nix
     ./hardware.nix
 
@@ -23,6 +24,7 @@ created 2026-04-22 by ludw
     inputs.self.systemModules.network
     inputs.self.systemModules.packages
 
+    inputs.disko.nixosModules.disko
     inputs.agenix.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
   ];
