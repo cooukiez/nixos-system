@@ -70,7 +70,6 @@ created 2026-04-22 by ludw
   networkConfig.tailscaleOperator = "ludw";
 
   networkConfig.printing = true;
-  networkConfig.copyparty = true;
 
   networkConfig.samba.fritzMount = true;
   networkConfig.samba.dhsMount = true;

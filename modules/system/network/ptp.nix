@@ -11,12 +11,6 @@ in {
     inputs.copyparty.nixosModules.default
   ];
 
-  age.secrets.copyparty = {
-    file = ../../../secrets/copyparty.age;
-    owner = "copyparty";
-    group = "copyparty";
-  };
-
   # open firewall for ptp sharing
   networking.firewall = lib.mkMerge [
     (lib.mkIf cfg.vsftpd {
@@ -34,6 +28,7 @@ in {
     })
   ];
 
+  # vsftpd
   services.vsftpd = lib.mkIf cfg.vsftpd {
     enable = true;
 
@@ -57,6 +52,13 @@ in {
       pasv_min_port=30000
       pasv_max_port=31000
     '';
+  };
+
+  # copyparty
+  age.secrets.copyparty = {
+    file = ../../../secrets/copyparty.age;
+    owner = "copyparty";
+    group = "copyparty";
   };
 
   users.users.copyparty = lib.mkIf cfg.copyparty {
