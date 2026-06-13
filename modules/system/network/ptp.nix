@@ -59,6 +59,17 @@ in {
     '';
   };
 
+  users.users.copyparty = lib.mkIf cfg.copyparty {
+    isSystemUser = true;
+    group = "copyparty";
+  };
+
+  users.groups.copyparty = lib.mkIf cfg.copyparty {};
+
+  systemd.tmpfiles.rules = lib.mkIf cfg.copyparty [
+    "d /srv/copyparty 0755 copyparty copyparty -"
+  ];
+
   services.copyparty = lib.mkIf cfg.copyparty {
     enable = true;
 

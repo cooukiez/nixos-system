@@ -70,6 +70,7 @@ created 2026-05-15 by ludw
   networkConfig.tailscaleOperator = "redi";
 
   networkConfig.printing = true;
+  networkConfig.copyparty = true;
 
   # locale configuration
   i18n.defaultLocale = "en_US.UTF-8";

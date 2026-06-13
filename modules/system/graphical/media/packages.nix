@@ -36,9 +36,11 @@ created 2026-04-22 by ludw
   ];
 
   literature = with pkgs; [
+    /*
     (calibre.override {
       unrarSupport = true;
     })
+    */
 
     zotero
   ];
