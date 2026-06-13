@@ -49,8 +49,8 @@ in {
 
     vnstat = mkEnableDefault;
     vsftpd = mkEnableDefault;
-    copyparty = mkEnableDefault;
 
+    copyparty = mkDisableDefault;
     printing = mkDisableDefault;
 
     glances = mkDisableDefault;

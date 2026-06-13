@@ -11,6 +11,13 @@ in {
     inputs.copyparty.nixosModules.default
   ];
 
+  users.users.copyparty = {
+    isSystemUser = true;
+    group = "copyparty";
+  };
+
+  users.groups.copyparty = {};
+
   # open firewall for ptp sharing
   networking.firewall = lib.mkMerge [
     (lib.mkIf cfg.vsftpd {
@@ -55,18 +62,11 @@ in {
   };
 
   # copyparty
-  age.secrets.copyparty = {
+  age.secrets.copyparty = lib.mkIf cfg.copyparty {
     file = ../../../secrets/copyparty.age;
     owner = "copyparty";
     group = "copyparty";
   };
-
-  users.users.copyparty = lib.mkIf cfg.copyparty {
-    isSystemUser = true;
-    group = "copyparty";
-  };
-
-  users.groups.copyparty = lib.mkIf cfg.copyparty {};
 
   systemd.tmpfiles.rules = lib.mkIf cfg.copyparty [
     "d /srv/copyparty 0755 copyparty copyparty -"
