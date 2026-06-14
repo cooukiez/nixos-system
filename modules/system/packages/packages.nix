@@ -22,6 +22,7 @@ created 2026-04-21 by ludw
     rclone
     rsync
     sd
+    tmux
     tree
     unzip
     wget
