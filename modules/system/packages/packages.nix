@@ -17,6 +17,7 @@ created 2026-04-21 by ludw
     htop
     jq
     lsof
+    parallel
     psmisc
     rclone
     rsync
