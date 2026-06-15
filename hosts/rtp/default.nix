@@ -33,7 +33,6 @@ created 2026-05-15 by ludw
     overlays = [
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
-      inputs.self.overlays.unstable-packages
 
       inputs.firefox-addons.overlays.default
       inputs.obsidian-plugins.overlays.default
@@ -53,8 +52,8 @@ created 2026-05-15 by ludw
         "electron-39.8.10"
 
         "luanti-5.14.0"
-        "googleearth-pro-7.3.6.10201"
-        "ventoy-1.1.10"
+        "googleearth-pro-7.3.7.1155"
+        "ventoy-1.1.12"
       ];
     };
   };
@@ -180,7 +179,6 @@ created 2026-05-15 by ludw
             overlays = [
               inputs.self.overlays.additions
               inputs.self.overlays.modifications
-              inputs.self.overlays.unstable-packages
 
               inputs.firefox-addons.overlays.default
               inputs.obsidian-plugins.overlays.default
@@ -213,7 +211,7 @@ created 2026-05-15 by ludw
               '';
             };
 
-            stateVersion = "25.11";
+            stateVersion = "26.05";
           };
 
           age.secrets =

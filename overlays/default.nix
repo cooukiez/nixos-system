@@ -34,14 +34,4 @@ created 2026-02-26 by ludw
     # useless
     honklet = inputs.honklet.packages.${system}.default;
   };
-
-  unstable-packages = final: _prev: {
-    unstable = import inputs.nixpkgs-unstable {
-      localSystem = {
-        system = final.stdenv.hostPlatform.system;
-      };
-
-      config.allowUnfree = true;
-    };
-  };
 }

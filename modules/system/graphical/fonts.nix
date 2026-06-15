@@ -38,7 +38,6 @@ in {
       inter
       liberation_ttf
       libertinus
-      manrope
       nerd-fonts.jetbrains-mono
       nerd-fonts.meslo-lg
       notonoto

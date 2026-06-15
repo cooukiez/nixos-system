@@ -76,8 +76,8 @@ in {
       // javaWaylandFix "gephi")
 
     # jetbrains
-    unstable.jetbrains.idea-oss
-    unstable.jetbrains.pycharm-oss
+    jetbrains.idea-oss
+    jetbrains.pycharm-oss
   ];
 
   developmentGameEngines = with pkgs; [

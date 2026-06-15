@@ -16,7 +16,7 @@ in {
   config = lib.mkIf cfg {
     programs.thunderbird = {
       enable = true;
-      package = pkgs.unstable.thunderbird;
+      package = pkgs.thunderbird;
 
       profiles.default = {
         isDefault = true;

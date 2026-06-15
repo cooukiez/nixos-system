@@ -20,7 +20,7 @@ in {
   config = lib.mkIf cfg {
     programs.firefox = {
       enable = true;
-      package = pkgs.unstable.firefox;
+      package = pkgs.firefox;
 
       profiles.default = {
         id = 0;

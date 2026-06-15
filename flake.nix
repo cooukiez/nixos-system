@@ -8,10 +8,7 @@ created 2026-02-26 by ludw
   description = "nixos system configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     disko = {
       url = "github:nix-community/disko";
@@ -22,38 +19,33 @@ created 2026-02-26 by ludw
     agenix.url = "github:ryantm/agenix";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # start: unstable section
     niri = {
       url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     noctalia = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     noctalia-qs = {
       url = "github:noctalia-dev/noctalia-qs";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-    # end: unstable section
-
-    stylix = {
-      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-25.11";
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # start: flake-utils
+    flake-utils.url = "github:numtide/flake-utils";
+
     firefox-addons = {
       url = "github:petrkozorezov/firefox-addons-nix";
       inputs.flake-utils.follows = "flake-utils";
@@ -63,6 +55,7 @@ created 2026-02-26 by ludw
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     copyparty.url = "github:9001/copyparty";
     gamemaker.url = "github:cooukiez/gamemaker-flake";
+    nixvim.url = "github:nix-community/nixvim";
     obsidian-plugins.url = "github:vomba/obsidian-plugins-nix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     zed.url = "github:zed-industries/zed";
@@ -113,7 +106,7 @@ created 2026-02-26 by ludw
         modules = [
           hostPath
 
-          {system.stateVersion = "25.11";}
+          {system.stateVersion = "26.05";}
         ];
       };
 
@@ -130,7 +123,6 @@ created 2026-02-26 by ludw
         (import ./overlays {inherit inputs system;})
         additions
         modifications
-        unstable-packages
         ;
     };
 

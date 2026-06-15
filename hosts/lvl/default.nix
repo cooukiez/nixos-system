@@ -33,7 +33,6 @@ created 2026-04-22 by ludw
     overlays = [
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
-      inputs.self.overlays.unstable-packages
 
       inputs.firefox-addons.overlays.default
       inputs.obsidian-plugins.overlays.default
@@ -179,7 +178,6 @@ created 2026-04-22 by ludw
             overlays = [
               inputs.self.overlays.additions
               inputs.self.overlays.modifications
-              inputs.self.overlays.unstable-packages
 
               inputs.firefox-addons.overlays.default
               inputs.obsidian-plugins.overlays.default
@@ -212,7 +210,7 @@ created 2026-04-22 by ludw
               '';
             };
 
-            stateVersion = "25.11";
+            stateVersion = "26.05";
           };
 
           age.secrets = (

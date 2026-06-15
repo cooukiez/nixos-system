@@ -62,7 +62,6 @@ created 2026-04-21 by ludw
     just
     mani
     navi
-    neofetch
     pciutils
     procs
     rip2

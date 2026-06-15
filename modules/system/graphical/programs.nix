@@ -105,7 +105,7 @@ in {
     })
 
     (lib.mkIf cfg.vscode {
-      pkgConfig.vscode = pkgs.unstable.vscode;
+      pkgConfig.vscode = pkgs.vscode;
 
       programs.vscode = {
         enable = true;
@@ -114,7 +114,7 @@ in {
     })
 
     (lib.mkIf cfg.zedEditor {
-      pkgConfig.zedEditor = pkgs.unstable.zed-editor;
+      pkgConfig.zedEditor = pkgs.zed-editor;
 
       environment.systemPackages = [
         config.pkgConfig.zedEditor

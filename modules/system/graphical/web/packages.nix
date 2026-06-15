@@ -7,8 +7,8 @@ created 2026-04-22 by ludw
 {pkgs, ...}: {
   messenger = with pkgs; [
     beeper
-    unstable.discord
-    unstable.legcord
+    discord
+    legcord
     signal-desktop
     slack
     slack-cli

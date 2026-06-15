@@ -5,12 +5,12 @@ part of nixos system
 created 2026-05-15 by ludw
 */
 {
-  inputs,
   config,
   pkgs,
   lib,
   ...
 }: {
+  /*
   disabledModules = [
     "hardware/facter"
   ];
@@ -18,6 +18,7 @@ created 2026-05-15 by ludw
   imports = [
     "${inputs.nixpkgs-unstable}/nixos/modules/hardware/facter"
   ];
+  */
 
   hardware.facter = {
     enable = true;
