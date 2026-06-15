@@ -63,13 +63,12 @@ in {
 
   # copyparty
   age.secrets.copyparty = lib.mkIf cfg.copyparty {
-    file = ../../../secrets/copyparty.age;
     owner = "copyparty";
     group = "copyparty";
   };
 
   systemd.tmpfiles.rules = lib.mkIf cfg.copyparty [
-    "d /srv/copyparty 0755 copyparty copyparty -"
+    "d /srv/copyparty 0775 copyparty copyparty -"
   ];
 
   services.copyparty = lib.mkIf cfg.copyparty {
@@ -102,6 +101,7 @@ in {
         access = {
           r = "*";
           rw = ["pm"];
+          d = ["pm"];
         };
 
         # see `copyparty --help-flags`

@@ -171,6 +171,7 @@ in {
     googleearth-pro
     geogebra6
     homebank
+    lifeograph
     mangl
     meld
     minder

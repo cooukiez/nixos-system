@@ -69,6 +69,9 @@ created 2026-05-15 by ludw
   networkConfig.tailscaleClientExitNode = "dhs";
   networkConfig.tailscaleOperator = "redi";
 
+  networkConfig.copyparty = true;
+  age.secrets.copyparty.file = ../../secrets/copyparty.age;
+
   networkConfig.printing = true;
 
   # locale configuration
