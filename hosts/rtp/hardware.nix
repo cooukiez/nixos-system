@@ -20,6 +20,10 @@ created 2026-05-15 by ludw
   ];
   */
 
+  imports = [
+    ../hardware/data-snapshots.nix
+  ];
+
   hardware.facter = {
     enable = true;
     reportPath = ./facter.json;
@@ -60,18 +64,26 @@ created 2026-05-15 by ludw
 
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;
-  zramSwap.algorithm = "lz4";
+  zramSwap.algorithm = "zstd";
 
   services.udev.extraRules = ''
+    # switch to performance mode when plugged into AC
+    SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ENV{POWER_SUPPLY_ONLINE}=="1", ATTR{online}=="1", RUN+="${pkgs.power-profiles-daemon}/bin/powerprofilesctl set performance"
+
+    # switch to power-saver mode when unplugged (on battery)
+    SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ENV{POWER_SUPPLY_ONLINE}=="0", ATTR{online}=="0", RUN+="${pkgs.power-profiles-daemon}/bin/powerprofilesctl set power-saver"
+
     SUBSYSTEM=="memory", ACTION=="add", ATTR{state}=="online", GOTO="hyperv_hotadd_end"
     LABEL="hyperv_hotadd_end"
   '';
 
   # network
   boot.kernel.sysctl = {
+    # disable proxy arp
     "net.ipv4.conf.all.proxy_arp" = 0;
     "net.ipv4.conf.default.proxy_arp" = 0;
 
+    # enable and prefer temp address
     "net.ipv6.conf.all.use_tempaddr" = lib.mkForce 2;
     "net.ipv6.conf.default.use_tempaddr" = lib.mkForce 2;
   };
@@ -79,7 +91,12 @@ created 2026-05-15 by ludw
   # battery
   services.upower = {
     enable = true;
-    ignoreLid = false;
+    ignoreLid = true;
+  };
+
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
   };
 
   # mounting usb devices
@@ -102,19 +119,16 @@ created 2026-05-15 by ludw
       support32Bit = true;
     };
 
-    extraConfig.pipewire = {
-      "10-airplay" = {
-        "context.modules" = [
-          {name = "libpipewire-module-raop-discover";}
-        ];
-      };
+    extraConfig.pipewire = let
+      pipewire-modules = import ../hardware/pipewire-modules.nix;
+    in {
+      "10-airplay" = pipewire-modules.apple-airplay;
+      "20-combine-stream" = pipewire-modules.combined-sink;
+      "25-loopback" = pipewire-modules.virtual-loopback;
+      "99-silent-bell.conf" = pipewire-modules.disable-system-bell;
 
-      # disable system bell
-      "99-silent-bell.conf" = {
-        "context.properties" = {
-          "module.x11.bell" = false;
-        };
-      };
+      # disable as automatically start microphone
+      # "15-echo-cancel" = pipewire-modules.echo-cancellation;
     };
   };
 
@@ -152,53 +166,6 @@ created 2026-05-15 by ludw
   };
 
   zshSettings.dataPartitionAliases = true;
-
-  # data snapshots (every 30 min)
-  systemd.services.snapshot-data = {
-    description = "btrfs data snapshot";
-    serviceConfig.Type = "oneshot";
-    path = with pkgs; [
-      coreutils
-      btrfs-progs
-    ];
-
-    script = ''
-      DATE=$(date +%Y-%m-%d-%H%M)
-      mkdir -p /snapshots/data/data-$DATE
-      btrfs subvolume snapshot -r /data /snapshots/data/data-$DATE/data
-    '';
-  };
-
-  systemd.timers.snapshot-data = {
-    wantedBy = ["timers.target"];
-    timerConfig = {
-      OnCalendar = "*:0/30";
-      Persistent = true;
-    };
-  };
-
-  # cleanup policy
-  systemd.services.snapshot-cleanup = {
-    description = "cleanup old snapshots";
-    serviceConfig.Type = "oneshot";
-    path = with pkgs; [
-      findutils
-      btrfs-progs
-    ];
-    script = ''
-      find /snapshots/data -mindepth 1 -maxdepth 1 -type d -mtime +3 -exec sh -c '
-        for dir do
-          btrfs subvolume delete "$dir"/*
-          rmdir "$dir"
-        done
-      ' sh {} +
-    '';
-  };
-
-  systemd.timers.snapshot-cleanup = {
-    wantedBy = ["timers.target"];
-    timerConfig.OnCalendar = "daily";
-  };
 
   security.pam.loginLimits = [
     {
