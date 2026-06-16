@@ -175,7 +175,7 @@ in {
     mangl
     meld
     minder
-    rustdesk
+    # rustdesk
     vym
     zoom-us
 
