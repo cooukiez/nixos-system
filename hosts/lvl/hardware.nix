@@ -187,6 +187,7 @@ created 2026-05-17 by ludw
     interval = "weekly";
   };
 
+  services.udisks2.enable = true;
   services.fstrim.enable = true;
 
   zshSettings.dataPartitionAliases = true;

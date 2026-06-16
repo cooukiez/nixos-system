@@ -43,13 +43,24 @@ created 2026-02-26 by ludw
   fileSystems."/data" = {
     device = lib.mkForce "/dev/mapper/cryptroot";
     fsType = "btrfs";
-    options = ["subvol=data"];
+    options = [
+      "subvol=data"
+      "compress=zstd"
+      "noatime"
+      "x-gvfs-show"
+      "x-gvfs-trash"
+    ];
   };
 
   fileSystems."/home" = {
     device = lib.mkForce "/dev/mapper/cryptroot";
     fsType = "btrfs";
-    options = ["subvol=home"];
+    options = [
+      "subvol=home"
+      "compress=zstd"
+      "noatime"
+      "x-gvfs-trash"
+    ];
   };
 
   fileSystems."/nix" = {
