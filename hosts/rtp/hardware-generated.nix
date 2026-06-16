@@ -58,10 +58,6 @@
     options = ["subvol=var"];
   };
 
-  swapDevices = [
-    {device = lib.mkForce "/dev/disk/by-uuid/690b5019-ca45-4e7a-97f8-cc2845feec22";}
-  ];
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

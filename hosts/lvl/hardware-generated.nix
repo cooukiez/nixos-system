@@ -64,10 +64,6 @@ created 2026-02-26 by ludw
     options = ["subvol=var"];
   };
 
-  swapDevices = [
-    {device = lib.mkForce "/dev/disk/by-uuid/46974f44-fd2a-4c6d-9432-f00266704b4a";}
-  ];
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

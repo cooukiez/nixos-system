@@ -58,9 +58,7 @@ created 2026-05-15 by ludw
   packageConfig.gpuPowerApps = false;
 
   # memory and swap
-  swapDevices = [
-    {device = "/dev/disk/by-partlabel/swap";}
-  ];
+  swapDevices = lib.mkForce [{device = "/dev/disk/by-partlabel/swap";}];
 
   zramSwap.enable = true;
   zramSwap.memoryPercent = 50;

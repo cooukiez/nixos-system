@@ -64,7 +64,7 @@ created 2026-05-17 by ludw
 
   packageConfig.gpuPowerApps = false;
 
-  swapDevices = [
+  swapDevices = lib.mkForce [
     {
       device = "/dev/disk/by-partlabel/swap";
       randomEncryption.enable = true;
