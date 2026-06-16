@@ -61,10 +61,11 @@ created 2026-04-22 by ludw
       permittedInsecurePackages = [
         "dotnet-sdk-6.0.428"
         "dotnet-runtime-6.0.36"
+        "electron-39.8.10"
 
         "luanti-5.14.0"
-        "googleearth-pro-7.3.6.10201"
-        "ventoy-1.1.10"
+        "googleearth-pro-7.3.7.1155"
+        "ventoy-1.1.12"
       ];
     };
   };
