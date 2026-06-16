@@ -32,14 +32,8 @@ created 2026-02-26 by ludw
             size = "32G";
             label = "swap";
             content = {
-              type = "luks";
-              name = "cryptswap";
-              extraFormatArgs = ["--type luks2"];
-
-              content = {
-                type = "swap";
-                discardPolicy = "both";
-              };
+              type = "swap";
+              discardPolicy = "both";
             };
           };
 

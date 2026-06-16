@@ -65,7 +65,11 @@ created 2026-05-17 by ludw
   packageConfig.gpuPowerApps = false;
 
   swapDevices = [
-    {device = "/dev/disk/by-partlabel/swap";}
+    {
+      device = "/dev/disk/by-partlabel/swap";
+      randomEncryption.enable = true;
+      randomEncryption.allowDiscards = true;
+    }
   ];
 
   zramSwap.enable = true;

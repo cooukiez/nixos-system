@@ -33,12 +33,6 @@ created 2026-04-22 by ludw
         device = "/dev/disk/by-partlabel/nixos";
         allowDiscards = true;
       };
-
-      "cryptswap" = {
-        device = "/dev/disk/by-partlabel/swap";
-        keyFile = "/dev/urandom";
-        allowDiscards = true;
-      };
     };
   };
 
