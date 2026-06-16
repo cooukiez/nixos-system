@@ -1,5 +1,4 @@
 {pkgs, ...}: {
-  # data snapshots (every 30 min)
   systemd.services.snapshot-data = {
     description = "btrfs data snapshot";
     serviceConfig.Type = "oneshot";
@@ -15,6 +14,7 @@
     '';
   };
 
+  # data snapshots half an hour
   systemd.timers.snapshot-data = {
     wantedBy = ["timers.target"];
     timerConfig = {

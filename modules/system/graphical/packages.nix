@@ -38,8 +38,8 @@ in {
   ];
 
   qt = with pkgs; [
-    libsForQt5.qt5.qtbase
-    libsForQt5.qt5.qtmultimedia
+    qt5.qtbase
+    qt5.qtmultimedia
     qt6.qtbase
     qt6.qtmultimedia
   ];
@@ -156,7 +156,7 @@ in {
     f3d
     freecad
     librecad
-    openscad
+    openscad-unstable
     orca-slicer
     solvespace
   ];

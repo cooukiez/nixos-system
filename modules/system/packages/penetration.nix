@@ -70,7 +70,7 @@ in {
       sslsplit
       sslstrip
       #sslyze
-      theharvester
+      #theharvester
       testssl
       wireshark
 

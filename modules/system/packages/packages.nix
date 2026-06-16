@@ -32,7 +32,7 @@ created 2026-04-21 by ludw
   nix = with pkgs; [
     disnix
     nixd
-    nixfmt-rfc-style
+    nixfmt
     nixfmt-tree
     nix-prefetch-git
     nix-search
