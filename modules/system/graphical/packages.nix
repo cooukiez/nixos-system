@@ -149,7 +149,7 @@ in {
   ];
 
   modelling = with pkgs; [
-    bambu-studio
+    # bambu-studio
     blender
     design
     dune3d

@@ -55,11 +55,13 @@ created 2026-02-26 by ludw
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     copyparty.url = "github:9001/copyparty";
     gamemaker.url = "github:cooukiez/gamemaker-flake";
-    nixvim.url = "github:nix-community/nixvim";
     obsidian-plugins.url = "github:vomba/obsidian-plugins-nix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     zed.url = "github:zed-industries/zed";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
+    # fixed versions
+    nixvim.url = "github:nix-community/nixvim/nixos-26.05";
 
     # portable web apps
     asana-pwa.url = "github:ceirs-nix-system/asana-pwa";
