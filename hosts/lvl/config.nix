@@ -82,6 +82,9 @@ created 2026-04-22 by ludw
   networkConfig.tailscaleClientExitNode = "100.71.244.88";
   networkConfig.tailscaleOperator = "ludw";
 
+  networkConfig.copyparty = true;
+  age.secrets.copyparty.file = ../../secrets/copyparty.age;
+
   networkConfig.printing = true;
 
   networkConfig.samba.fritzMount = true;
