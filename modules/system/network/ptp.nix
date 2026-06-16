@@ -58,6 +58,7 @@ in {
       pasv_enable=YES
       pasv_min_port=30000
       pasv_max_port=31000
+      pam_service_name=ftp
     '';
   };
 
