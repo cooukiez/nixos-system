@@ -43,6 +43,11 @@ in {
   };
 
   config = {
+    networking.firewall = lib.mkIf cfg.server {
+      allowedTCPPorts = [139 445];
+      allowedUDPPorts = [137 138];
+    };
+
     services.samba = lib.mkIf cfg.server {
       enable = true;
       settings = lib.mkMerge [
