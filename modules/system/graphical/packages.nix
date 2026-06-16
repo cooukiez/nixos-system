@@ -141,7 +141,7 @@ in {
     shattered-pixel-dungeon
     space-cadet-pinball
     uhexen2
-    veloren
+    # veloren
     vkquake
     wesnoth
     xonotic
