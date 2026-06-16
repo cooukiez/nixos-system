@@ -17,12 +17,14 @@ created 2026-04-23 by ludw
     config = {
       advice.defaultBranchName = false;
 
-      pull.rebase = true;
+      # pull.rebase = true;
+      /*
       rebase = {
         autoSquash = true;
         autoStash = true;
         updateRefs = true;
       };
+      */
 
       safe = {
         directory = [
