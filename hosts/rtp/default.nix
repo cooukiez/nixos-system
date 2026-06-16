@@ -104,7 +104,7 @@ created 2026-05-15 by ludw
     userList
     // {
       github-token = {
-        file = ../../secrets/github-token-classic.age;
+        file = ../../secrets/github-token-nix.age;
         mode = "0400";
         owner = "root";
       };

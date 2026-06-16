@@ -47,6 +47,7 @@ in {
 
   "github-token.age".publicKeys = allKeys;
   "github-token-classic.age".publicKeys = allKeys;
+  "github-token-nix.age".publicKeys = allKeys;
 
   "tailscale-key.age".publicKeys = allKeys;
 }
