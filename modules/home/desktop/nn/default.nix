@@ -7,7 +7,6 @@ created 2026-02-26 by ludw
 {
   config,
   pkgs,
-  pkgConfig,
   lib,
   ...
 }: let
