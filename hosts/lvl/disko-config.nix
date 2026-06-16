@@ -51,7 +51,10 @@ created 2026-02-26 by ludw
               type = "luks";
               name = "cryptroot";
               extraFormatArgs = ["--type luks2"];
-              allowDiscards = true;
+
+              settings = {
+                allowDiscards = true;
+              };
 
               content = {
                 type = "btrfs";

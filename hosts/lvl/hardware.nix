@@ -183,6 +183,8 @@ created 2026-05-17 by ludw
     interval = "weekly";
   };
 
+  services.fstrim.enable = true;
+
   zshSettings.dataPartitionAliases = true;
 
   security.pam.loginLimits = [
