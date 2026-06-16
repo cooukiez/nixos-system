@@ -76,7 +76,7 @@ created 2026-05-15 by ludw
     optimise.dates = ["03:45"];
 
     extraOptions = ''
-      !include ${config.age.secrets.github-token.path}
+      !include ${config.age.secrets.ghp-nix.path}
     '';
   };
 
@@ -103,8 +103,8 @@ created 2026-05-15 by ludw
     )
     userList
     // {
-      github-token = {
-        file = ../../secrets/github-token-nix.age;
+      ghp-nix = {
+        file = ../../secrets/ghp-nix.age;
         mode = "0400";
         owner = "root";
       };

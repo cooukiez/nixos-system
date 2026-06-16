@@ -12,7 +12,7 @@ created 2026-02-26 by ludw
   ...
 }: let
   cfg = config.graphicalPrograms.git;
-  githubTokenSecretFile = ../../../../secrets/github-token-classic.age;
+  githubTokenSecretFile = ../../../../secrets/ghp-classic.age;
 
   gitSecretHelperScript = ''
     if [ "$1" = "get" ]; then

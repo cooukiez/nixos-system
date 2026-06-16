@@ -46,8 +46,8 @@ in {
   "gpg-secret.age".publicKeys = allKeys;
 
   "github-token.age".publicKeys = allKeys;
-  "github-token-classic.age".publicKeys = allKeys;
-  "github-token-nix.age".publicKeys = allKeys;
+  "ghp-classic.age".publicKeys = allKeys;
+  "ghp-nix.age".publicKeys = allKeys;
 
   "tailscale-key.age".publicKeys = allKeys;
 }
