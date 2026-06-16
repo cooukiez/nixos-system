@@ -5,6 +5,7 @@ part of nixos system
 created 2026-04-22 by ludw
 */
 {
+  config,
   pkgs,
   hostConfig,
   ...
@@ -76,8 +77,12 @@ created 2026-04-22 by ludw
   networkConfig.tailscaleClientExitNode = "100.71.244.88";
   networkConfig.tailscaleOperator = "ludw";
 
+  age.secrets.tailscale-key.file = ../../secrets/tailscale-key.age;
+  services.tailscale.authKeyFile = config.age.secrets.tailscale-key.path;
+
   networkConfig.copyparty = true;
   age.secrets.copyparty.file = ../../secrets/copyparty.age;
+  networkConfig.copypartyPasswardPath = config.age.secrets.copyparty.path;
 
   networkConfig.printing = true;
 

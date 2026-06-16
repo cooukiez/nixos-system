@@ -87,7 +87,7 @@ in {
     settings.no-reload = true;
 
     accounts = {
-      pm.passwordFile = config.age.secrets.copyparty.path;
+      pm.passwordFile = cfg.copypartyPasswardPath;
     };
 
     groups = {

@@ -51,6 +51,11 @@ in {
     vsftpd = mkEnableDefault;
 
     copyparty = mkDisableDefault;
+    copypartyPasswardPath = lib.mkOption {
+      type = lib.types.str;
+      default = config.age.secrets.copyparty.path;
+    };
+
     printing = mkDisableDefault;
 
     glances = mkDisableDefault;

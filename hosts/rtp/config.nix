@@ -71,6 +71,7 @@ created 2026-05-15 by ludw
 
   networkConfig.copyparty = true;
   age.secrets.copyparty.file = ../../secrets/copyparty.age;
+  networkConfig.copypartyPasswardPath = config.age.secrets.copyparty.path;
 
   networkConfig.printing = true;
 
