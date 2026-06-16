@@ -31,6 +31,16 @@ created 2026-02-26 by ludw
             type = "8200";
             size = "32G";
             label = "swap";
+            content = {
+              type = "luks";
+              name = "cryptswap";
+              extraFormatArgs = ["--type luks2"];
+
+              content = {
+                type = "swap";
+                discardPolicy = "both";
+              };
+            };
           };
 
           nixos = {
@@ -38,53 +48,60 @@ created 2026-02-26 by ludw
             label = "nixos";
 
             content = {
-              type = "btrfs";
-              extraArgs = ["--force"];
+              type = "luks";
+              name = "cryptroot";
+              extraFormatArgs = ["--type luks2"];
+              allowDiscards = true;
 
-              subvolumes = {
-                "root" = {
-                  mountpoint = "/";
-                  mountOptions = [
-                    "subvol=root"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
+              content = {
+                type = "btrfs";
+                extraArgs = ["--force"];
 
-                "nix" = {
-                  mountpoint = "/nix";
-                  mountOptions = [
-                    "subvol=nix"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
+                subvolumes = {
+                  "root" = {
+                    mountpoint = "/";
+                    mountOptions = [
+                      "subvol=root"
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
 
-                "home" = {
-                  mountpoint = "/home";
-                  mountOptions = [
-                    "subvol=home"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
+                  "nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = [
+                      "subvol=nix"
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
 
-                "var" = {
-                  mountpoint = "/var";
-                  mountOptions = [
-                    "subvol=var"
-                    "compress=zstd"
-                    "noatime"
-                  ];
-                };
+                  "home" = {
+                    mountpoint = "/home";
+                    mountOptions = [
+                      "subvol=home"
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
 
-                "data" = {
-                  mountpoint = "/data";
-                  mountOptions = [
-                    "subvol=data"
-                    "compress=zstd"
-                    "noatime"
-                  ];
+                  "var" = {
+                    mountpoint = "/var";
+                    mountOptions = [
+                      "subvol=var"
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
+
+                  "data" = {
+                    mountpoint = "/data";
+                    mountOptions = [
+                      "subvol=data"
+                      "compress=zstd"
+                      "noatime"
+                    ];
+                  };
                 };
               };
             };
