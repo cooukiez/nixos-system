@@ -54,7 +54,6 @@ in {
     (lib.mkIf cfg.gamingPkg {
       environment.systemPackages = desktop.gameClients ++ desktop.gamingExtra ++ desktop.games;
 
-      /*
       programs.steam = {
         enable = true;
 
@@ -62,7 +61,6 @@ in {
         dedicatedServer.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
       };
-      */
 
       programs.gamescope = {
         enable = false;
