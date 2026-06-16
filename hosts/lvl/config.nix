@@ -84,17 +84,6 @@ created 2026-04-22 by ludw
   networkConfig.samba.fritzMount = true;
   networkConfig.samba.dhsMount = true;
 
-  networkConfig.samba.shares = {
-    root-share = {
-      "path" = "/";
-      "browseable" = "no";
-      "read only" = "no";
-      "guest ok" = "no";
-      "valid users" = "admin";
-      "force user" = "root";
-    };
-  };
-
   # locale configuration
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocales = [];

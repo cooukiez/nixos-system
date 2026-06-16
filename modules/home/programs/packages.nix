@@ -9,7 +9,6 @@ created 2026-04-27 by ludw
   # desktop specific
   #
   nn = with pkgs; [
-    errands
     euphonica
     exhibit
     eyedropper
@@ -47,6 +46,7 @@ created 2026-04-27 by ludw
 
     baobab
     decibels
+    errands
     loupe
     seahorse
     showtime
