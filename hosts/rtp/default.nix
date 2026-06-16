@@ -74,6 +74,10 @@ created 2026-05-15 by ludw
 
     optimise.automatic = true;
     optimise.dates = ["03:45"];
+
+    extraOptions = ''
+      !include ${config.age.secrets.github-token.path}
+    '';
   };
 
   age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
@@ -97,7 +101,14 @@ created 2026-05-15 by ludw
           group = "users";
         }
     )
-    userList;
+    userList
+    // {
+      github-token = {
+        file = ../../secrets/github-token-classic.age;
+        mode = "0400";
+        owner = "root";
+      };
+    };
 
   users.users =
     lib.mapAttrs (_: user: {

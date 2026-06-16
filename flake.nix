@@ -43,14 +43,13 @@ created 2026-02-26 by ludw
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # start: flake-utils
+    # flake-utils
     flake-utils.url = "github:numtide/flake-utils";
 
     firefox-addons = {
       url = "github:petrkozorezov/firefox-addons-nix";
       inputs.flake-utils.follows = "flake-utils";
     };
-    # end: flake-utils
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     copyparty.url = "github:9001/copyparty";
