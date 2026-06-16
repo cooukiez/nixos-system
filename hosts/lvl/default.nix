@@ -85,6 +85,10 @@ created 2026-04-22 by ludw
 
     optimise.automatic = true;
     optimise.dates = ["03:45"];
+
+    extraOptions = ''
+      !include ${config.age.secrets.ghp-nix.path}
+    '';
   };
 
   age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
@@ -108,7 +112,14 @@ created 2026-04-22 by ludw
           group = "users";
         }
     )
-    userList;
+    userList
+    // {
+      ghp-nix = {
+        file = ../../secrets/ghp-nix.age;
+        mode = "0400";
+        owner = "root";
+      };
+    };
 
   users.users =
     lib.mapAttrs (_: user: {
