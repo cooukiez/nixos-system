@@ -149,7 +149,7 @@ in {
   ];
 
   modelling = with pkgs; [
-    # bambu-studio
+    bambu-studio
     blender
     design
     dune3d
@@ -175,7 +175,7 @@ in {
     mangl
     meld
     minder
-    # rustdesk
+    rustdesk
     vym
     zoom-us
 

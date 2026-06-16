@@ -7,6 +7,7 @@ created 2026-02-26 by ludw
 {
   config,
   pkgs,
+  pkgConfig,
   lib,
   ...
 }: let
@@ -43,20 +44,6 @@ in {
       };
     };
 
-    # disable niri polkit agent
-    systemd.user.services."niri-flake-polkit" = {
-      Unit = {
-        Description = "Disabled Niri Polkit Agent (replaced by Noctalia)";
-      };
-      Install = {
-        WantedBy = lib.mkForce [];
-      };
-      Service = {
-        ExecStart = lib.mkForce "${pkgs.coreutils}/bin/true";
-      };
-    };
-
-    /*
     # touchscreen gestures
     systemd.user.services.lisgd = {
       Unit = {
@@ -90,6 +77,18 @@ in {
         WantedBy = ["graphical-session.target"];
       };
     };
-    */
+
+    # disable niri polkit agent
+    systemd.user.services."niri-flake-polkit" = {
+      Unit = {
+        Description = "Disabled Niri Polkit Agent (replaced by Noctalia)";
+      };
+      Install = {
+        WantedBy = lib.mkForce [];
+      };
+      Service = {
+        ExecStart = lib.mkForce "${pkgs.coreutils}/bin/true";
+      };
+    };
   };
 }

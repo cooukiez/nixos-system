@@ -24,7 +24,7 @@ in {
       kdePackages.qt6ct
 
       libsecret
-      # lisgd
+      lisgd
       zenity
 
       nwg-look

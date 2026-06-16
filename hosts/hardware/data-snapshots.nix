@@ -14,7 +14,7 @@
     '';
   };
 
-  # snapshots half an hour
+  # data snapshots half an hour
   systemd.timers.snapshot-data = {
     wantedBy = ["timers.target"];
     timerConfig = {
