@@ -18,4 +18,7 @@ in {
       search_mode = "fuzzy";
     };
   };
+
+  # force atuin sync to local server
+  home.sessionVariables.ATUIN_SYNC_ADDRESS = lib.mkIf cfg.enable "https://atuin.home.lan";
 }
