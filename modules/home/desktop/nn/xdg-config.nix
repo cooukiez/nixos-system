@@ -33,7 +33,7 @@ created 2026-02-26 by ludw
     audio = ["org.gnome.Music.desktop"];
     video = ["org.gnome.Showtime.desktop"];
 
-    archive = ["nemo.desktop"];
+    archive = ["org.gnome.FileRoller.desktop"];
     file = ["nemo.desktop"];
 
     browser = ["firefox.desktop"];
@@ -166,6 +166,8 @@ created 2026-02-26 by ludw
         "application/x-bzip2"
         "application/x-7z-compressed"
         "application/x-rar"
+        "application/x-xz"
+        "application/x-nix-archive"
       ]
       apps.archive)
     // (forTypes [

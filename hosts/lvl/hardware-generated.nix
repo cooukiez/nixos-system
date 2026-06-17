@@ -35,7 +35,7 @@ created 2026-02-26 by ludw
   boot.initrd.luks.devices."cryptroot".device = lib.mkForce "/dev/disk/by-uuid/3dce443d-10a2-4566-89b0-9b7472177c82";
 
   fileSystems."/boot" = {
-    device = lib.mkForce "/dev/disk/by-uuid/52F3-9803";
+    device = lib.mkForce "/dev/disk/by-partlabel/esp";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
@@ -45,9 +45,12 @@ created 2026-02-26 by ludw
     fsType = "btrfs";
     options = [
       "subvol=data"
+
       "compress=zstd"
       "noatime"
+
       "x-gvfs-show"
+      "x-gvfs-name=Data"
       "x-gvfs-trash"
     ];
   };
@@ -57,8 +60,10 @@ created 2026-02-26 by ludw
     fsType = "btrfs";
     options = [
       "subvol=home"
+
       "compress=zstd"
       "noatime"
+
       "x-gvfs-trash"
     ];
   };
@@ -66,13 +71,21 @@ created 2026-02-26 by ludw
   fileSystems."/nix" = {
     device = lib.mkForce "/dev/mapper/cryptroot";
     fsType = "btrfs";
-    options = ["subvol=nix"];
+    options = [
+      "subvol=nix"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   fileSystems."/var" = {
     device = lib.mkForce "/dev/mapper/cryptroot";
     fsType = "btrfs";
-    options = ["subvol=var"];
+    options = [
+      "subvol=var"
+      "compress=zstd"
+      "noatime"
+    ];
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

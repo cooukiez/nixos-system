@@ -18,9 +18,7 @@ created 2026-02-26 by ludw
   # application
   pinnedApps = [
     "firefox"
-    "code"
     "nemo"
-    "obsidian"
     "signal"
   ];
 

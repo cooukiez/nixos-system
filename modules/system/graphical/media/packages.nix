@@ -63,15 +63,23 @@ created 2026-04-22 by ludw
   ];
 
   sound = with pkgs; [
+    ardour
     audacity
+    cardinal
     easyeffects
+    hydrogen
+    lmms-full
     muse-sounds-manager
     musescore
+    paulstretch
+    sonic-visualiser
   ];
 
   videos = with pkgs;
     [
       kdePackages.kdenlive
+      openshot-qt
+      shotcut
 
       # recording
       gpu-screen-recorder

@@ -82,11 +82,13 @@ in {
       options = [
         "credentials=${config.age.secrets.fritz-smb.path}"
         "x-systemd.automount"
+        "x-systemd.mount-timeout=5"
         "noatime"
         "uid=1000"
         "gid=100"
         "vers=3.0"
         "x-gvfs-show"
+        "x-gvfs-name=Fritz NAS"
       ];
     };
 
@@ -100,11 +102,13 @@ in {
       options = [
         "credentials=${config.age.secrets.dhs-smb.path}"
         "x-systemd.automount"
+        "x-systemd.mount-timeout=5"
         "noatime"
         "uid=0"
         "gid=0"
         "vers=3.0"
         "x-gvfs-show"
+        "x-gvfs-name=DHS Share"
       ];
     };
   };

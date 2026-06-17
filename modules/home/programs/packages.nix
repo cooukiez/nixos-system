@@ -47,6 +47,7 @@ created 2026-04-27 by ludw
     baobab
     decibels
     errands
+    file-roller
     loupe
     seahorse
     showtime

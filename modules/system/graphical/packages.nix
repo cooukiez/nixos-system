@@ -176,6 +176,7 @@ in {
     meld
     minder
     rustdesk
+    sirius
     vym
     zoom-us
 

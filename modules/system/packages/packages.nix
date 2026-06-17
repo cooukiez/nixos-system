@@ -14,6 +14,7 @@ created 2026-04-21 by ludw
     fastfetch
     git
     gnutar
+    gzip
     htop
     jq
     lsof
@@ -22,8 +23,10 @@ created 2026-04-21 by ludw
     rclone
     rsync
     sd
+    p7zip
     tmux
     tree
+    unrar
     unzip
     wget
     zip
@@ -143,7 +146,7 @@ created 2026-04-21 by ludw
   #
   mediaCore = with pkgs; [
     exiftool
-    ffmpeg
+    ffmpeg-full
     imagemagick
     poppler-utils
     shared-mime-info
