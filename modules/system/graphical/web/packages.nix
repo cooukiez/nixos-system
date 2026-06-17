@@ -5,6 +5,10 @@ part of nixos system
 created 2026-04-22 by ludw
 */
 {pkgs, ...}: {
+  browser = with pkgs; [
+    tor-browser
+  ];
+
   messenger = with pkgs; [
     beeper
     discord

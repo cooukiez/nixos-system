@@ -27,6 +27,7 @@ in {
     web = lib.mkOption {
       type = lib.types.submodule {
         options = {
+          browserPkg = mkEnableDefault;
           messengerPkg = mkEnableDefault;
           downloadPkg = mkEnableDefault;
 
@@ -42,6 +43,7 @@ in {
   config = {
     environment.systemPackages =
       []
+      ++ (lib.optionals cfg.browserPkg web.browser)
       ++ (lib.optionals cfg.messengerPkg web.messenger)
       ++ (lib.optionals cfg.downloadPkg web.download);
   };

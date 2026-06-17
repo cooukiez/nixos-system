@@ -55,6 +55,7 @@ in {
   # programs
   #
   development = with pkgs; [
+    arduino
     dbeaver-bin
     github-desktop
     hexedit
@@ -188,6 +189,22 @@ in {
     gemini-pwa
     typst-pwa
     whatsapp-pwa
+  ];
+
+  pentesting = with pkgs; [
+    autopsy
+    burpsuite
+    bytecode-viewer
+    cherrytree
+    ddrescueview
+    ghidra
+    gqrx
+    johnny
+    maltego
+    volatility3
+    wireshark
+    zap
+    zenmap
   ];
 
   system = with pkgs; [

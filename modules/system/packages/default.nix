@@ -34,7 +34,7 @@ in {
     ./programs/nvim
     ./programs/git.nix
     ./programs/zsh.nix
-    ./penetration.nix
+    ./pentesting.nix
   ];
 
   options.packageConfig = {
@@ -57,7 +57,7 @@ in {
       default = false;
     };
 
-    penetrationPkg = mkEnableDefault;
+    pentestingPkg = mkEnableDefault;
 
     gpuPowerApps = mkDisableDefault;
   };

@@ -28,6 +28,7 @@ in {
           modellingPkg = mkEnableDefault;
           otherPkg = mkEnableDefault;
           pwaPkg = mkEnableDefault;
+          pentestingPkg = mkEnableDefault;
           systemPkg = mkEnableDefault;
 
           nemo = mkEnableDefault;
@@ -78,6 +79,10 @@ in {
 
     (lib.mkIf cfg.pwaPkg {
       environment.systemPackages = desktop.pwa;
+    })
+
+    (lib.mkIf cfg.pentestingPkg {
+      environment.systemPackages = desktop.pentesting;
     })
 
     (lib.mkIf cfg.systemPkg {
