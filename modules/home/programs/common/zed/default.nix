@@ -1,19 +1,17 @@
 /*
-  modules/home/programs/common/zed/default.nix
+modules/home/programs/common/zed/default.nix
 
-  part of nixos system
-  created 2026-05-08 by ludw
+part of nixos system
+created 2026-05-08 by ludw
 */
 {
   config,
   pkgConfig,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.graphicalPrograms.zedEditor;
-in
-{
+in {
   config = lib.mkIf cfg {
     programs.zed-editor = {
       enable = true;
@@ -43,7 +41,7 @@ in
 
         mouse_wheel_zoom = true;
 
-        language_models = { };
+        language_models = {};
 
         autosave = "on_window_change";
         vim_mode = false;
