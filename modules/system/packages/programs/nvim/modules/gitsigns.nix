@@ -2,7 +2,7 @@
 modules/system/packages/programs/nvim/modules/gitsigns.nix
 
 part of nixos system
-created 2026-04-24 by ludw
+created 2026-06-16 by ludw
 */
 {
   # adds git related signs to the gutter, as well as utilities for managing changes

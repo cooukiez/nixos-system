@@ -2,7 +2,7 @@
 hosts/lvl/hardware.nix
 
 part of nixos system
-created 2026-05-17 by ludw
+created 2026-06-16 by ludw
 */
 {
   config,

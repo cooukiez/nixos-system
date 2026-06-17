@@ -2,7 +2,7 @@
 modules/system/packages/programs/nvim/modules/debug.nix
 
 part of nixos system
-created 2026-04-24 by ludw
+created 2026-06-16 by ludw
 */
 {
   # https://nix-community.github.io/nixvim/plugins/dap/index.html

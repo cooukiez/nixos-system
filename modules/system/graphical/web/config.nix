@@ -2,7 +2,7 @@
 modules/system/graphical/web/config.nix
 
 part of nixos system
-created 2026-04-23 by ludw
+created 2026-06-16 by ludw
 */
 {
   preferences = {

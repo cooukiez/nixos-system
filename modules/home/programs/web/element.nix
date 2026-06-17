@@ -2,7 +2,7 @@
 modules/home/programs/web/element.nix
 
 part of nixos system
-created 2026-05-10 by ludw
+created 2026-06-16 by ludw
 */
 {
   config,

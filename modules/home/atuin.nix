@@ -1,3 +1,9 @@
+/*
+modules/home/atuin.nix
+
+part of nixos system
+created 2026-06-17 by ludw
+*/
 {
   config,
   lib,

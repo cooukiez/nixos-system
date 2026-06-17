@@ -1,3 +1,9 @@
+/*
+hosts/hardware/data-snapshots.nix
+
+part of nixos system
+created 2026-06-16 by ludw
+*/
 {pkgs, ...}: {
   systemd.services.snapshot-data = {
     description = "btrfs data snapshot";

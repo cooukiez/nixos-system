@@ -2,7 +2,7 @@
 modules/system/graphical/desktop/niri/hyprlock.nix
 
 part of nixos system
-created 2026-04-24 by ludw
+created 2026-06-16 by ludw
 */
 {
   inputs,

@@ -2,7 +2,7 @@
 modules/system/packages/packages.nix
 
 part of nixos system
-created 2026-04-21 by ludw
+created 2026-06-16 by ludw
 */
 {pkgs, ...}: {
   #

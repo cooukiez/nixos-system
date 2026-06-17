@@ -2,7 +2,7 @@
 modules/system/packages/programs/git.nix
 
 part of nixos system
-created 2026-04-23 by ludw
+created 2026-06-17 by ludw
 */
 {pkgs, ...}: {
   programs.git = {
