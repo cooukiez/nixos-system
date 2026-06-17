@@ -42,18 +42,6 @@ created 2026-04-22 by ludw
           doCheck = false;
         });
       })
-
-      (final: prev: {
-        pythonPackagesExtensions =
-          prev.pythonPackagesExtensions
-          ++ [
-            (python-final: python-prev: {
-              pybreaker = python-prev.pybreaker.overridePythonAttrs (oldAttrs: {
-                doCheck = false;
-              });
-            })
-          ];
-      })
     ];
 
     config = {

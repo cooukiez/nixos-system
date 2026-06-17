@@ -20,18 +20,26 @@ in {
     ./programs/common
     ./programs/web
 
+    ./atuin.nix
     ./gpg.nix
   ];
 
-  options.desktop = {
-    kde = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
+  options = {
+    desktop = {
+      kde = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
+
+      nn = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
     };
 
-    nn = lib.mkOption {
+    atuinCfg.enable = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
     };
   };
 
