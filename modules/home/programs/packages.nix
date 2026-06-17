@@ -9,6 +9,7 @@ created 2026-04-27 by ludw
   # desktop specific
   #
   nn = with pkgs; [
+    /*
     euphonica
     exhibit
     eyedropper
@@ -26,9 +27,11 @@ created 2026-04-27 by ludw
     qalculate-gtk
     quick-lookup
     system-config-printer
+    */
   ];
 
   gnome = with pkgs; [
+    /*
     gnome-calculator
     gnome-calendar
     gnome-clocks
@@ -62,6 +65,7 @@ created 2026-04-27 by ludw
           --set XDG_CURRENT_DESKTOP "GNOME"
       '';
     })
+    */
   ];
 
   kde = with pkgs; [

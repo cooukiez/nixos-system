@@ -111,7 +111,7 @@ in {
     assaultcube
     bzflag
     cataclysm-dda
-    domination
+    # domination
     doomretro
     dwarf-fortress-full
     ecwolf
@@ -128,7 +128,6 @@ in {
     luanti
     lutris
     mindustry
-    nethack
     nexuiz
     openarena
     openclonk
@@ -142,7 +141,7 @@ in {
     space-cadet-pinball
     uhexen2
     # veloren
-    vkquake
+    # vkquake
     wesnoth
     xonotic
     zeroad-unwrapped
@@ -171,6 +170,7 @@ in {
     googleearth-pro
     geogebra6
     homebank
+    jquake
     lifeograph
     mangl
     meld
