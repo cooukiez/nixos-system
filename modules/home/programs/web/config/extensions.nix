@@ -5,6 +5,7 @@ part of nixos system
 created 2026-06-16 by ludw
 */
 {
+  # https://github.com/petrkozorezov/firefox-addons-nix
   extensions = {
     # core
     duckduckgo-for-firefox = {
@@ -26,6 +27,10 @@ created 2026-06-16 by ludw
 
     i-dont-want-cookies = {
       action = "_1d048372-7ac6-4292-b9ad-6cc53f399513_-browser-action";
+    };
+
+    cookies-txt = {
+      action = "_12cf650b-1822-40aa-bff0-996df6948878_-browser-action";
     };
 
     # reddit

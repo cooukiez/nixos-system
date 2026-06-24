@@ -51,7 +51,9 @@ created 2026-06-16 by ludw
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    apple-fonts.url = "github:Lyndeno/apple-fonts.nix/update/flake-update";
+    # apple-fonts.url = "github:Lyndeno/apple-fonts.nix/update/flake-update";
+
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     copyparty.url = "github:9001/copyparty";
     gamemaker.url = "github:cooukiez/gamemaker-flake";
     obsidian-plugins.url = "github:vomba/obsidian-plugins-nix";
