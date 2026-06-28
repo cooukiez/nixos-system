@@ -43,11 +43,13 @@ created 2026-06-16 by ludw
       clangd = {
         enable = true;
       };
+
       rust_analyzer = {
         enable = true;
         installCargo = true;
         installRustc = true;
       };
+
       nil_ls = {
         enable = true;
       };
@@ -55,9 +57,11 @@ created 2026-06-16 by ludw
       # gopls = {
       #   enable = true;
       # };
+
       # pyright = {
       #   enable = true;
       # };
+
       # ts_ls = {
       #   enable = true;
       # };
@@ -158,6 +162,7 @@ created 2026-06-16 by ludw
           action = "rename";
           desc = "LSP: [R]e[n]ame";
         };
+
         # execute a code action, usually cursor needs to be on top of error
         "gra" = {
           mode = [
@@ -167,6 +172,7 @@ created 2026-06-16 by ludw
           action = "code_action";
           desc = "LSP: [G]oto Code [A]ction";
         };
+
         # this is not goto Definition, this is goto declaration
         "grD" = {
           action = "declaration";

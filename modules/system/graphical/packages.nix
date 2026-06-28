@@ -137,7 +137,7 @@ in {
     openttd
     pong3d
     quakespasm
-    sgt-puzzles
+    # sgt-puzzles
     shattered-pixel-dungeon
     space-cadet-pinball
     uhexen2
@@ -166,7 +166,7 @@ in {
     ausweiskopie
     bitwarden-desktop
     bitwarden-cli
-    chemtool
+    # chemtool
     figma-linux
     googleearth-pro
     geogebra6
