@@ -5,11 +5,11 @@ part of nixos system
 created 2026-06-16 by ludw
 */
 {
-  pkgConfig,
   lib,
+  nnSessionCommands,
   ...
 }: let
-  lock = "noctalia-shell ipc call sessionMenu toggle && ${lib.getExe pkgConfig.hyprlock}";
+  closeMenu = "noctalia-shell ipc call sessionMenu toggle";
 
   powerOptions =
     lib.imap1
@@ -23,30 +23,32 @@ created 2026-06-16 by ludw
         // opt
     )
     [
+      # leave session open
       {
         action = "lock";
-        command = lock;
+        command = "${closeMenu} && ${nnSessionCommands.lock}";
         countdown = false;
       }
       {
         action = "suspend";
-        command = "${lock}; sleep 3; systemctl suspend";
+        command = "${closeMenu} && ${nnSessionCommands.suspend}";
       }
       {
         action = "hibernate";
-        command = "${lock}; sleep 3; systemctl hibernate";
+        command = "${closeMenu} && ${nnSessionCommands.hibernate}";
       }
+      # close session
       {
         action = "reboot";
-        command = "systemctl reboot";
+        command = nnSessionCommands.reboot;
       }
       {
         action = "logout";
-        command = "";
+        command = nnSessionCommands.logout;
       }
       {
         action = "shutdown";
-        command = "systemctl poweroff";
+        command = nnSessionCommands.shutdown;
       }
     ];
 in {

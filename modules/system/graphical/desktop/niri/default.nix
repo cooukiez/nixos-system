@@ -188,7 +188,7 @@ created 2026-06-16 by ludw
       lid-close.spawn._args = [
         "sh"
         "-c"
-        "${lib.getExe config.pkgConfig.hyprlock}; sleep 3; systemctl suspend"
+        config.graphicalConfig.session.nnCommands.suspend
       ];
     };
 

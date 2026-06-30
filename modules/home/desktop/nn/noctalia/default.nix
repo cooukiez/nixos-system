@@ -9,6 +9,7 @@ created 2026-06-16 by ludw
   config,
   pkgConfig,
   lib,
+  nnSessionCommands,
   ...
 }: let
   cfg = config.desktop.nn;
@@ -78,7 +79,7 @@ in {
         controlCenter = import ./control-center.nix;
         desktopWidgets = import ./desktop-widgets.nix;
         dock = import ./dock.nix;
-        sessionMenu = import ./session-menu.nix {inherit pkgConfig lib;};
+        sessionMenu = import ./session-menu.nix {inherit lib nnSessionCommands;};
 
         # colorSchemes.predefinedScheme = "Monochrome";
 
@@ -409,9 +410,9 @@ in {
 
           fadeDuration = 5;
 
-          screenOffCommand = "${lib.getExe pkgConfig.hyprlock}";
-          lockCommand = "${lib.getExe pkgConfig.hyprlock}";
-          suspendCommand = "${lib.getExe pkgConfig.hyprlock}; sleep 3; systemctl suspend";
+          screenOffCommand = nnSessionCommands.lock;
+          lockCommand = nnSessionCommands.lock;
+          suspendCommand = nnSessionCommands.suspend;
 
           resumeScreenOffCommand = "";
           resumeLockCommand = "";

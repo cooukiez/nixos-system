@@ -16,17 +16,17 @@ created 2026-06-16 by ludw
   settings = {
     general = {
       ignore_dbus_inhibit = false;
-      lock_cmd = "${lib.getExe config.pkgConfig.hyprlock}";
+      lock_cmd = config.graphicalConfig.session.nnCommands.lock;
     };
 
     listener = [
       {
         timeout = 180;
-        on-timeout = "${lib.getExe config.pkgConfig.hyprlock}";
+        on-timeout = config.graphicalConfig.session.nnCommands.lock;
       }
       {
         timeout = 180 * 4;
-        on-timeout = "systemctl suspend";
+        on-timeout = config.graphicalConfig.session.nnCommands.suspend;
       }
     ];
   };

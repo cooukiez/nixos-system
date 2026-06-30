@@ -67,6 +67,20 @@ in {
             type = lib.types.bool;
             default = false;
           };
+
+          nnCommands = lib.mkOption {
+            type = lib.types.attrsOf lib.types.str;
+            default = {
+              lock = "${lib.getExe config.pkgConfig.hyprlock}";
+              logout = "";
+
+              suspend = "systemctl suspend";
+              hibernate = "systemctl hibernate";
+
+              reboot = "systemctl reboot";
+              shutdown = "systemctl poweroff";
+            };
+          };
         };
       };
 

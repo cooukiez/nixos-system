@@ -172,6 +172,7 @@ created 2026-06-16 by ludw
         ;
 
       pkgConfig = config.pkgConfig;
+      nnSessionCommands = config.graphicalConfig.session.nnCommands;
     };
 
     users =

@@ -109,6 +109,8 @@ created 2026-06-16 by ludw
     powertop.enable = true;
   };
 
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
+
   # mounting usb devices
   services.usbmuxd = {
     enable = true;
