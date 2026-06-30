@@ -167,6 +167,7 @@ in {
     bitwarden-desktop
     bitwarden-cli
     # chemtool
+    eiciel
     figma-linux
     googleearth-pro
     geogebra6

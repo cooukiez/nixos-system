@@ -50,6 +50,7 @@ created 2026-06-16 by ludw
         "dotnet-sdk-6.0.428"
         "dotnet-runtime-6.0.36"
         "electron-39.8.10"
+        "pnpm-10.29.2"
 
         "luanti-5.14.0"
         "googleearth-pro-7.3.7.1155"
