@@ -17,6 +17,7 @@ created 2026-06-16 by ludw
     obsidian
     pdfpc
     sioyek
+    stirling-pdf-desktop
     texstudio
     zathura
     zathuraPkgs.zathura_core
