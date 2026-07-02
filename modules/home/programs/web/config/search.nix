@@ -73,6 +73,18 @@ created 2026-06-16 by ludw
       definedAliases = ["@nw"];
     };
 
+    youtube = {
+      name = "YouTube";
+      urls = [
+        {
+          template = "https://www.youtube.com/results?search_query={searchTerms}";
+        }
+      ];
+
+      icon = "https://www.youtube.com/favicon.ico";
+      definedAliases = ["@yt"];
+    };
+
     google.metaData.hidden = true;
     bing.metaData.hidden = true;
     ecosia.metaData.hidden = true;
