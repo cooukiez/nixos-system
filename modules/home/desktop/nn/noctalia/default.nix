@@ -328,7 +328,7 @@ in {
           fontDefaultScale = 1;
           fontFixedScale = 1;
 
-          panelBackgroundOpacity = 1;
+          panelBackgroundOpacity = 0.5;
           panelsAttachedToBar = true;
 
           tooltipsEnabled = true;

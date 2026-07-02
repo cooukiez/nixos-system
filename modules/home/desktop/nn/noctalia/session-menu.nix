@@ -26,16 +26,16 @@ created 2026-06-16 by ludw
       # leave session open
       {
         action = "lock";
-        command = "${closeMenu} && ${nnSessionCommands.lock}";
+        command = "${closeMenu}; ${nnSessionCommands.lock} & sleep 0.5";
         countdown = false;
       }
       {
         action = "suspend";
-        command = "${closeMenu} && ${nnSessionCommands.suspend}";
+        command = "${closeMenu}; ${nnSessionCommands.suspend}";
       }
       {
         action = "hibernate";
-        command = "${closeMenu} && ${nnSessionCommands.hibernate}";
+        command = "${closeMenu}; ${nnSessionCommands.hibernate}";
       }
       # close session
       {

@@ -101,7 +101,7 @@ created 2026-06-16 by ludw
   # battery
   services.upower = {
     enable = true;
-    ignoreLid = true;
+    ignoreLid = false;
   };
 
   powerManagement = {

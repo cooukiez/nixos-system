@@ -17,6 +17,7 @@ created 2026-06-16 by ludw
     general = {
       ignore_dbus_inhibit = false;
       lock_cmd = config.graphicalConfig.session.nnCommands.lock;
+      before_sleep_cmd = "loginctl lock-session";
     };
 
     listener = [
@@ -25,7 +26,7 @@ created 2026-06-16 by ludw
         on-timeout = config.graphicalConfig.session.nnCommands.lock;
       }
       {
-        timeout = 180 * 4;
+        timeout = 180 * 2;
         on-timeout = config.graphicalConfig.session.nnCommands.suspend;
       }
     ];

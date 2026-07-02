@@ -70,8 +70,10 @@ in {
 
           nnCommands = lib.mkOption {
             type = lib.types.attrsOf lib.types.str;
-            default = {
-              lock = "${lib.getExe config.pkgConfig.hyprlock}";
+            default = let
+              hyprlockExe = lib.getExe config.pkgConfig.hyprlock;
+            in {
+              lock = "pidof ${hyprlockExe} || ${hyprlockExe} --immediate-render";
               logout = "";
 
               suspend = "systemctl suspend";

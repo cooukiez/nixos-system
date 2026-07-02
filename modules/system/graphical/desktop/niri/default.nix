@@ -186,9 +186,11 @@ created 2026-06-16 by ludw
 
     switch-events = {
       lid-close.spawn._args = [
-        "sh"
-        "-c"
-        config.graphicalConfig.session.nnCommands.suspend
+        "${pkgs.writeShellScript "lid-close-handler" ''
+          ${config.graphicalConfig.session.nnCommands.lock} &
+          sleep 0.5
+          ${config.graphicalConfig.session.nnCommands.suspend}
+        ''}"
       ];
     };
 
