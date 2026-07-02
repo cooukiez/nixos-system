@@ -140,7 +140,7 @@ created 2026-06-16 by ludw
 
     _children =
       # outputs
-      builtins.map (out: {
+      map (out: {
         output = {
           _args = [out.name];
           mode = out.mode;
